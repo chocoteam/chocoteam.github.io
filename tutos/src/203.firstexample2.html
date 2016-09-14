@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Playing around with 8-queens puzzle &mdash; choco-tuto 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="choco-tuto 1.0.0 documentation" href="../index.html" />
+    <link rel="next" title="Verbal arithmetic" href="301.description.html" />
+    <link rel="prev" title="Objects in Choco" href="202.objects.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="playing-around-with-8-queens-puzzle">
+<h1>Playing around with 8-queens puzzle<a class="headerlink" href="#playing-around-with-8-queens-puzzle" title="Permalink to this headline">¶</a></h1>
+<p>We will now see and comment some modifications of the code presented previously :</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">8</span><span class="o">;</span>
+<span class="n">Model</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">(</span><span class="n">n</span> <span class="o">+</span> <span class="s">&quot;-queens problem&quot;</span><span class="o">);</span>
+<span class="n">IntVar</span><span class="o">[]</span> <span class="n">vars</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntVar</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">q</span><span class="o">++){</span>
+    <span class="n">vars</span><span class="o">[</span><span class="n">q</span><span class="o">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">intVar</span><span class="o">(</span><span class="s">&quot;Q_&quot;</span><span class="o">+</span><span class="n">q</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span>  <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">j</span><span class="o">++){</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">arithm</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="s">&quot;!=&quot;</span><span class="o">,</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">]).</span><span class="na">post</span><span class="o">();</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">arithm</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="s">&quot;!=&quot;</span><span class="o">,</span> <span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="s">&quot;-&quot;</span><span class="o">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="o">).</span><span class="na">post</span><span class="o">();</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">arithm</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="s">&quot;!=&quot;</span><span class="o">,</span> <span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="s">&quot;+&quot;</span><span class="o">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="o">).</span><span class="na">post</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">Solution</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">getSolver</span><span class="o">().</span><span class="na">findSolution</span><span class="o">();</span>
+<span class="k">if</span><span class="o">(</span><span class="n">solution</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">solution</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>First, lines 3-6 can be compacted into:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">IntVar</span><span class="o">[]</span> <span class="n">vars</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">intVarArray</span><span class="o">(</span><span class="s">&quot;Q&quot;</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Doing so, an n-array of variables with [1,n]-domain is created.
+Each variable name is &#8220;Q[i]&#8221; where <em>i</em> is its position in the array, starting from 0.
+The last parameter, set to false, indicates that the domains must be enumerated (not bounded).</p>
+</div>
+<div class="section" id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<p>Second, lines 9 to 11 can be replaced by:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">ne</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">]).</span><span class="na">post</span><span class="o">();</span>
+<span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">ne</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">sub</span><span class="o">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="o">)).</span><span class="na">post</span><span class="o">();</span>
+<span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">ne</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="o">)).</span><span class="na">post</span><span class="o">();</span>
+</pre></div>
+</div>
+<p>where <cite>ne</cite> stands for <cite>not equal</cite>.
+Theses instructions express the same constraints, or more complex expressions, in a convenient way.
+Here the expression is posted as a decomposition: the AST is analyzed and additional variables and constraints are added on the fly.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Calling <code class="code docutils literal"><span class="pre">e.post()</span></code> on an expression <cite>e</cite> is a syntactic sugar for <code class="code docutils literal"><span class="pre">e.decompose().post()</span></code>.</p>
+</div>
+<p>Alternatively, one can decide to generate the possible combinations from the expression and post <em>table</em> constraints <a class="footnote-reference" href="#tabcon" id="id1">[1]</a>.
+To do so, the expression should be first turned into extension constraint then be posted</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">ne</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">]).</span><span class="na">extension</span><span class="o">().</span><span class="na">post</span><span class="o">();</span>
+<span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">ne</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">sub</span><span class="o">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="o">)).</span><span class="na">extension</span><span class="o">().</span><span class="na">post</span><span class="o">();</span>
+<span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">ne</span><span class="o">(</span><span class="n">vars</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="o">)).</span><span class="na">extension</span><span class="o">().</span><span class="na">post</span><span class="o">();</span>
+</pre></div>
+</div>
+<table class="docutils footnote" frame="void" id="tabcon" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>such constraint are defined by a set of allowed/forbidden tuples.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="global-constraints">
+<h2>Global constraints<a class="headerlink" href="#global-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Here we posted three groups of 28 constraints.
+The first group expresses that two queens cannot be on the same column by posting a <em>clique</em> of inequality constraints.
+The second and third groups express the same conditions for each diagonal.</p>
+<p>In other words, the variables of each groups must be <em>all different</em>.
+Luckily, there exists a <em>global constraint</em> that captures that conditions:</p>
+<blockquote>
+<div><p><em>Global constraints specify patterns that occur in many problems
+and exploit efficient and effective constraint propagation algorithms for pruning the search space.</em></p>
+<p>(&#8220;<em>The Complexity of Global Constraints</em>&#8221;, C.Bessière, E.Hebrard, B.Hnich and T.Walsh, AAAI 2004.)</p>
+</div></blockquote>
+<p>We can reformulate the set of constraints to:</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">IntVar</span><span class="o">[]</span> <span class="n">diag1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntVar</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+<span class="n">IntVar</span><span class="o">[]</span> <span class="n">diag2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntVar</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="n">diag1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">sub</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">intVar</span><span class="o">();</span>
+    <span class="n">diag2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">intVar</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="n">model</span><span class="o">.</span><span class="na">post</span><span class="o">(</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">vars</span><span class="o">),</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">diag1</span><span class="o">),</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">diag2</span><span class="o">)</span>
+<span class="o">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>Or with Java8 lambdas:</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">IntVar</span><span class="o">[]</span> <span class="n">diag1</span> <span class="o">=</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
+                          <span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">sub</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">intVar</span><span class="o">())</span>
+                          <span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="n">IntVar</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
+<span class="n">IntVar</span><span class="o">[]</span> <span class="n">diag2</span> <span class="o">=</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">)</span>
+                           <span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">intVar</span><span class="o">())</span>
+                           <span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="n">IntVar</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
+<span class="n">model</span><span class="o">.</span><span class="na">post</span><span class="o">(</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">vars</span><span class="o">),</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">diag1</span><span class="o">),</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">diag2</span><span class="o">)</span>
+<span class="o">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>The constraint on line 8 simply states that all variables from <cite>vars</cite> must be different.
+The constraint on line 9 (or 10) states that all variables from a diagonal must be different.
+The variables of a diagonal are given by
+<code class="code docutils literal"><span class="pre">IntStream.range(0,</span> <span class="pre">n).mapToObj(i</span> <span class="pre">-&gt;</span> <span class="pre">vars[i].add(i).intVar()).toArray(IntVar[]::new)</span></code>
+(lines 4-6) which construct an array of <cite>IntVar</cite> from the mapping function <code class="code docutils literal"><span class="pre">-&gt;</span> <span class="pre">vars[i].add(i).intVar()</span></code>.
+This function maps each index <em>i</em> in the [0,n] range to an integer variable equals to <code class="code docutils literal"><span class="pre">vars[i].add(i)</span></code>.
+The call to the <cite>intVar()</cite> method effectively turns the arithmetic expression into an integer variable.
+This extraction may introduce additional variables and constraints automatically.</p>
+</div>
+<div class="section" id="solver">
+<h2>Solver<a class="headerlink" href="#solver" title="Permalink to this headline">¶</a></h2>
+<p>To compare the first model and the modified one, we need to get features and measures.
+A call to <cite>solver.showStatistics();</cite> will output commonly used indicators to the console,
+such as the number of variables, constraints, solutions found, open nodes, etc.</p>
+<p>We can either let the solver explore the search space by itself
+or define a search strategy, like:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">SearchStrategyFactory</span><span class="o">.</span><span class="na">domOverWDegSearch</span><span class="o">(</span><span class="n">vars</span><span class="o">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updated-code">
+<h2>Updated code<a class="headerlink" href="#updated-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">8</span><span class="o">;</span>
+<span class="n">Model</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">(</span><span class="n">n</span> <span class="o">+</span> <span class="s">&quot;-queens problem&quot;</span><span class="o">);</span>
+<span class="n">IntVar</span><span class="o">[]</span> <span class="n">vars</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">intVarArray</span><span class="o">(</span><span class="s">&quot;Q&quot;</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+<span class="n">IntVar</span><span class="o">[]</span> <span class="n">diag1</span> <span class="o">=</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">).</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">sub</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">intVar</span><span class="o">()).</span><span class="na">toArray</span><span class="o">(</span><span class="n">IntVar</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
+<span class="n">IntVar</span><span class="o">[]</span> <span class="n">diag2</span> <span class="o">=</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">).</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">vars</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">intVar</span><span class="o">()).</span><span class="na">toArray</span><span class="o">(</span><span class="n">IntVar</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
+<span class="n">model</span><span class="o">.</span><span class="na">post</span><span class="o">(</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">vars</span><span class="o">),</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">diag1</span><span class="o">),</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">allDifferent</span><span class="o">(</span><span class="n">diag2</span><span class="o">)</span>
+<span class="o">);</span>
+<span class="n">Solver</span> <span class="n">solver</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">getSolver</span><span class="o">();</span>
+<span class="n">solver</span><span class="o">.</span><span class="na">showStatistics</span><span class="o">();</span>
+<span class="n">solver</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">SearchStrategyFactory</span><span class="o">.</span><span class="na">domOverWDegSearch</span><span class="o">(</span><span class="n">vars</span><span class="o">));</span>
+<span class="n">Solution</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="na">findSolution</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">solution</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">solution</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Running the following code outputs something like:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">**</span> <span class="n">Choco</span> <span class="mf">4.0</span><span class="o">.</span><span class="mi">0</span> <span class="p">(</span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="p">)</span> <span class="p">:</span> <span class="n">Constraint</span> <span class="n">Programming</span> <span class="n">Solver</span><span class="p">,</span> <span class="n">Copyleft</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">2016</span>
+<span class="o">-</span> <span class="n">Model</span><span class="p">[</span><span class="mi">8</span><span class="o">-</span><span class="n">queens</span> <span class="n">problem</span><span class="p">]</span> <span class="n">features</span><span class="p">:</span>
+    <span class="n">Variables</span> <span class="p">:</span> <span class="mi">32</span>
+    <span class="n">Constraints</span> <span class="p">:</span> <span class="mi">19</span>
+    <span class="n">Default</span> <span class="n">search</span> <span class="n">strategy</span> <span class="p">:</span> <span class="n">no</span>
+    <span class="n">Completed</span> <span class="n">search</span> <span class="n">strategy</span> <span class="p">:</span> <span class="n">no</span>
+<span class="mi">1</span> <span class="n">solution</span> <span class="n">found</span><span class="o">.</span>
+    <span class="n">Model</span><span class="p">[</span><span class="mi">8</span><span class="o">-</span><span class="n">queens</span> <span class="n">problem</span><span class="p">]</span>
+    <span class="n">Solutions</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="n">Building</span> <span class="n">time</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="mi">000</span><span class="n">s</span>
+    <span class="n">Resolution</span> <span class="n">time</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="mi">012</span><span class="n">s</span>
+    <span class="n">Nodes</span><span class="p">:</span> <span class="mi">6</span> <span class="p">(</span><span class="mi">491</span><span class="p">,</span><span class="mi">9</span> <span class="n">n</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">Backtracks</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">Fails</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">Restarts</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">Variables</span><span class="p">:</span> <span class="mi">32</span>
+    <span class="n">Constraints</span><span class="p">:</span> <span class="mi">19</span>
+<span class="n">Solution</span><span class="p">:</span> <span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Basically, the trace informs that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>there are 32 variables: the eight queens, and the additional ones induced by expressions extraction,</li>
+<li>there are 19 constraints: three <cite>allDifferent</cite> constraints, and the additional ones induced by expressions extraction,</li>
+<li>one solution has been found,</li>
+<li>it took 11 ms to find it,</li>
+<li>in the meantime, 6 decisions were made and none of them were wrong.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">choco-tuto</a></h1>
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=&repo=&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="001.introduction.html">Introduction to choco-tuto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002.history.html">Choco, a constraint programming java library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="003.installation.html">Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="201.firstexample.html">A first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="202.objects.html">Objects in Choco</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Playing around with 8-queens puzzle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constraints">Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#global-constraints">Global constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solver">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updated-code">Updated code</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="301.description.html">Verbal arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="401.description.html">Warehouse Location Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="501.description.html">Aircraft Landing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="601.description.html">Nonogram</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="202.objects.html" title="previous chapter">Objects in Choco</a></li>
+      <li>Next: <a href="301.description.html" title="next chapter">Verbal arithmetic</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Charles Prud'homme.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/src/203.firstexample2.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

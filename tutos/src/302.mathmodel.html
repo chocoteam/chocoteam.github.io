@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modelling &mdash; choco-tuto 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="choco-tuto 1.0.0 documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modelling">
+<h1>Modelling<a class="headerlink" href="#modelling" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>We associate a variable to each letter: <em>s, e, n, d, m, o, r, y</em>:</p>
+<ul class="simple">
+<li><em>e, n, d, o, r, y</em> are defined wih a <span class="math">\([\![0-9]\!]\)</span>-domain,</li>
+<li><em>s, m</em> are defined with a <span class="math">\([\![1-9]\!]\)</span>-domain.</li>
+</ul>
+</div>
+<div class="section" id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<p>The first constraint to satisfy is that no two letters are assigned to the same digit:</p>
+<ul class="simple">
+<li><span class="math">\(\forall i,j \in \{s, e, n, d, m, o, r, y\}, i\ne j\)</span></li>
+</ul>
+<p>Since we handle the constraint &#8220;<em>a word cannot start with à 0</em>&#8221; directly in the variables domain, the other constraints
+deal with the equation itself.
+There are two options, either a unique scalar product, with no additional variables, or cut it up wrt columns.</p>
+<div class="section" id="globally">
+<h3>Globally:<a class="headerlink" href="#globally" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math">\(1000\times s + 100\times e + 10\times n + 1\times d\)</span></p>
+<p><span class="math">\(+ 1000\times m + 100\times o + 10\times r + 1\times e\)</span></p>
+<p><span class="math">\(= 10000\times m + 1000\times o + 100\times n + 10\times e + 1\times y\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="locally">
+<h3>Locally<a class="headerlink" href="#locally" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math">\(d + e = y + 10\times r_1\)</span></p>
+<p><span class="math">\(r_1 + n + r = e +10\times r_2\)</span></p>
+<p><span class="math">\(r_2 + e + o = n +10\times r_3\)</span></p>
+<p><span class="math">\(r_3 + s + e = o + 10\times m\)</span></p>
+</div></blockquote>
+<p>where <span class="math">\(r_1,r_2,r_3\)</span> are <span class="math">\([\![0-1]\!]\)</span>-domain variables and express the carries.</p>
+<p><a class="reference external" href="301.description.html">&lt;&lt;description</a> / <a class="reference external" href="303.code.html">code&gt;&gt;</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">choco-tuto</a></h1>
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=&repo=&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="001.introduction.html">Introduction to choco-tuto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002.history.html">Choco, a constraint programming java library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="003.installation.html">Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="201.firstexample.html">A first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="202.objects.html">Objects in Choco</a></li>
+<li class="toctree-l1"><a class="reference internal" href="203.firstexample2.html">Playing around with 8-queens puzzle</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="301.description.html">Verbal arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="401.description.html">Warehouse Location Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="501.description.html">Aircraft Landing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="601.description.html">Nonogram</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Charles Prud'homme.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../_sources/src/302.mathmodel.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
