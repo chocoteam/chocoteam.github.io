@@ -1,5 +1,4 @@
 org.chocosolver.memory
-org.chocosolver.memory.generator
 org.chocosolver.memory.structure
 org.chocosolver.memory.trailing
 org.chocosolver.memory.trailing.trail
@@ -56,8 +55,8 @@ org.chocosolver.solver.explanations.store
 org.chocosolver.solver.expression.continuous.arithmetic
 org.chocosolver.solver.expression.continuous.relational
 org.chocosolver.solver.expression.discrete.arithmetic
+org.chocosolver.solver.expression.discrete.logical
 org.chocosolver.solver.expression.discrete.relational
-org.chocosolver.solver.features
 org.chocosolver.solver.objective
 org.chocosolver.solver.propagation
 org.chocosolver.solver.propagation.hardcoded
