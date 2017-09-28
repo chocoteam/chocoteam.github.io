@@ -20,7 +20,6 @@ org.chocosolver.solver.constraints.nary.among
 org.chocosolver.solver.constraints.nary.automata
 org.chocosolver.solver.constraints.nary.automata.FA
 org.chocosolver.solver.constraints.nary.automata.FA.utils
-org.chocosolver.solver.constraints.nary.automata.penalty
 org.chocosolver.solver.constraints.nary.automata.structure
 org.chocosolver.solver.constraints.nary.automata.structure.costregular
 org.chocosolver.solver.constraints.nary.automata.structure.multicostregular
