@@ -34,12 +34,12 @@ org.chocosolver.solver.constraints.nary.element
 org.chocosolver.solver.constraints.nary.globalcardinality
 org.chocosolver.solver.constraints.nary.lex
 org.chocosolver.solver.constraints.nary.min_max
-org.chocosolver.solver.constraints.nary.nValue
-org.chocosolver.solver.constraints.nary.nValue.amnv.differences
-org.chocosolver.solver.constraints.nary.nValue.amnv.graph
-org.chocosolver.solver.constraints.nary.nValue.amnv.mis
-org.chocosolver.solver.constraints.nary.nValue.amnv.rules
 org.chocosolver.solver.constraints.nary.nogood
+org.chocosolver.solver.constraints.nary.nvalue
+org.chocosolver.solver.constraints.nary.nvalue.amnv.differences
+org.chocosolver.solver.constraints.nary.nvalue.amnv.graph
+org.chocosolver.solver.constraints.nary.nvalue.amnv.mis
+org.chocosolver.solver.constraints.nary.nvalue.amnv.rules
 org.chocosolver.solver.constraints.nary.sort
 org.chocosolver.solver.constraints.nary.sum
 org.chocosolver.solver.constraints.nary.tree
@@ -58,7 +58,6 @@ org.chocosolver.solver.expression.discrete.logical
 org.chocosolver.solver.expression.discrete.relational
 org.chocosolver.solver.objective
 org.chocosolver.solver.propagation
-org.chocosolver.solver.propagation.hardcoded
 org.chocosolver.solver.search
 org.chocosolver.solver.search.limits
 org.chocosolver.solver.search.loop
