@@ -27,6 +27,7 @@ org.chocosolver.solver.constraints.nary.automata.structure.regular
 org.chocosolver.solver.constraints.nary.binPacking
 org.chocosolver.solver.constraints.nary.channeling
 org.chocosolver.solver.constraints.nary.circuit
+org.chocosolver.solver.constraints.nary.clauses
 org.chocosolver.solver.constraints.nary.cnf
 org.chocosolver.solver.constraints.nary.count
 org.chocosolver.solver.constraints.nary.cumulative
@@ -49,13 +50,12 @@ org.chocosolver.solver.constraints.set
 org.chocosolver.solver.constraints.ternary
 org.chocosolver.solver.constraints.unary
 org.chocosolver.solver.exception
-org.chocosolver.solver.explanations
-org.chocosolver.solver.explanations.store
 org.chocosolver.solver.expression.continuous.arithmetic
 org.chocosolver.solver.expression.continuous.relational
 org.chocosolver.solver.expression.discrete.arithmetic
 org.chocosolver.solver.expression.discrete.logical
 org.chocosolver.solver.expression.discrete.relational
+org.chocosolver.solver.learn
 org.chocosolver.solver.objective
 org.chocosolver.solver.propagation
 org.chocosolver.solver.search
@@ -98,6 +98,7 @@ org.chocosolver.util.objects.setDataStructures.constant
 org.chocosolver.util.objects.setDataStructures.iterable
 org.chocosolver.util.objects.setDataStructures.linkedlist
 org.chocosolver.util.objects.setDataStructures.swapList
+org.chocosolver.util.objects.tree
 org.chocosolver.util.procedure
 org.chocosolver.util.sort
 org.chocosolver.util.tools
