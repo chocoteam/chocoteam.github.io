@@ -1,0 +1,7 @@
+baseURL = "http://choco-solver.org/"
+languageCode = "en-us"
+title = "Choco solver"
+description="Open Source Constraint Programming Java Library"
+theme = "ananke"
+[params]
+    choco_version = "4.10.2"
