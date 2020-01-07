@@ -1,16 +1,10 @@
 ---
 author: "Charles Prud'homme"
-date: 2019-11-14T13:31:39+01:00
-title: "Introduction"
-Description: "Get started with Choco solver, a Constraint Programming Java Library."
-Categories: ["",""]
-Tags: ["installation"]
-aliases:
-  - "/docs/getting-started/"
-  - "/getting-started/"
-slug: ""
-draft: false
-toc: true
+title: "Getting Started"
+linkTitle: "Getting Started"
+weight: 1
+description: >
+  Get started with Choco-solver.
 ---
 ## Quick start
 
@@ -74,7 +68,5 @@ Stay up to date on the development of Choco solver and reach out to the communit
 - Use the [issue tracker](https://github.com/chocoteam/choco-solver/issues) here on GitHub to report issues. As far as possible, provide a [Minimal Working Example](https://en.wikipedia.org/wiki/Minimal_Working_Example).
 
 
-Feel free to meet cho-coders : [@cprudhom](https://github.com/cprudhom) (Charles Prud'homme) and [@jgFages](https://github.com/jgFages) (Jean-Guillaume Fages)        
- 
- 
-_Choco-solver dev team_
+Feel free to meet cho-coders : [@cprudhom](https://github.com/cprudhom) (Charles Prud'homme) and [@jgFages](https://github.com/jgFages) (Jean-Guillaume Fages) 
+
