@@ -1,5 +1,6 @@
 baseURL = "/"
 title = "Choco-solver"
+description="HoO"
 
 enableRobotsTXT = true
 
@@ -51,7 +52,7 @@ anchor = "smart"
 
 [languages]
 [languages.en]
-title = "Choco-solver, a CP library"
+title = "Choco-solver"
 description = "A Java library for Constraint Programming"
 languageName ="English"
 # Weight used for sorting.
@@ -85,11 +86,11 @@ github_repo = "https://github.com/chocoteam/choco-solver"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/chocoteam/choco-solver"
 
-# Specify a value here if your content directory is not in your repo's root directory
-# github_subdir = ""
+# Specify a value here if your content directory is not in your repo's root director
+github_subdir = "site"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-# gcs_engine_id = "002090051099228186981:fjdyae7kf1k"
+gcs_engine_id = "002090051099228186981:fjdyae7kf1k"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
