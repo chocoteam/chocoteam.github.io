@@ -4,6 +4,7 @@ date: 2020-01-07T16:06:55+01:00
 weight: 21
 description: >
   How to declare variables?
+math: "true"  
 ---
 
 ## Principle
@@ -44,9 +45,9 @@ There exists different ways to encode the domain of an integer variable.
 ### Bounded domain
 
 When the domain of an integer variable is said to be *bounded*, it is represented through
-an interval of the form $[\![a,b]\!]$ where $a$ and $b$ are integers such that $a <= b$.
+an interval of the form $[\\![a,b]\\!]$ where $a$ and $b$ are integers such that $a \leq b$.
 This representation is pretty light in memory (it requires only two integers) but it cannot represent *holes* in the domain.
-For instance, if we have a variable whose domain is $[\![0,10]\!]$ and a constraint enables to detect that
+For instance, if we have a variable whose domain is $[\\![0,10]\\!]$ and a constraint enables to detect that
 values 2, 3, 7 and 8 are infeasible, then this learning will be lost as it cannot be encoded in the domain (which remains the same).
 
 To specify you want to use bounded domains, set the `boundedDomain` argument to `true` when creating variables:
@@ -63,8 +64,8 @@ because such branching decisions will not be refutable.
 
 When the domain of an integer variable is said to be *enumerated*, it is represented through
 the set of possible values, in the form:
-- $[\![a,b]\!]$ where $a$ and $b$ are integers such that $a <= b$
-- {$a,b,c,..,z$}, where $a < b < c ... < z$.
+- $[\\![a,b]\\!]$ where $a$ and $b$ are integers such that $a \leq b$
+- $\{a,b,c,..,z\}$, where $a < b < c ... < z$.
 Enumerated domains provide more information than bounded domains but are heavier in memory (the domain usually requires a bitset).
 
 To specify you want to use enumerated domains, either set the `boundedDomain` argument to `false` when creating variables by specifying two bounds
@@ -77,7 +78,7 @@ IntVar v = model.intVar("v", new int[]{1,2,3,4});
 
 ## Boolean variable
 
-Boolean variables, `BoolVar`, are specific `IntVar` that take their value in $[\![0,1]\!]$.
+Boolean variables, `BoolVar`, are specific `IntVar` that take their value in $[\\![0,1]\\!]$.
 The avantage of `BoolVar` is twofold:
 - They can be used to say whether or not constraint should be satisfied (reification)
 - Their domain, and some filtering algorithms, are optimized
@@ -91,17 +92,17 @@ BoolVar b = model.boolVar("b");
 ## Set variables
 
 A set variable, `SetVar`, represents a set of integers, i.e. its value is a set of integers.
-Its domain is defined by a set interval `[LB,UB]` where:
+Its domain is defined by a set interval $[\\![m,o]\\!]$ where:
 
 
-* the lower bound, `LB`, is an `ISet` object which contains integers that figure in every solution.
+* the lower bound, $m$, is an `ISet` object which contains integers that figure in every solution.
 
 
-* the upper bound, `UB`, is an `ISet` object which contains integers that potentially figure in at least one solution,
+* the upper bound, $o$, is an `ISet` object which contains integers that potentially figure in at least one solution,
 
-Initial values for both `LB` and `UB` should be such that `LB` is a subset of `UB`.
-Then, decisions and filtering algorithms will remove integers from `UB` and add some others to `LB`.
-A set variable is instantiated if and only if `LB = UB`.
+Initial values for both $m$ and $o$ should be such that $m \subseteq o$.
+Then, decisions and filtering algorithms will remove integers from $o$ and add some others to $m$.
+A set variable is instantiated if and only if $m = o$.
 
 A set variable can be created as follows:
 
