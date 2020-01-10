@@ -1,6 +1,6 @@
 baseURL = "/"
 title = "Choco-solver"
-description="HoO"
+
 
 enableRobotsTXT = true
 
