@@ -7,7 +7,6 @@ description: >
 math: "true"  
 ---
 
-## Principle
 
 A variable is an *unknown*, mathematically speaking.
 The goal of a resolution is to *assign* a *value* to each variable.
@@ -56,9 +55,11 @@ To specify you want to use bounded domains, set the `boundedDomain` argument to 
 IntVar v = model.intVar("v", 1, 12, true);
 ```
 
-**NOTE**: When using bounded domains, branching decisions must either be domain splits or bound assignments/removals.
+{{% alert title="Info" color="primary" %}}
+When using bounded domains, branching decisions must either be domain splits or bound assignments/removals.
 Indeed, assigning a bounded variable to a value strictly comprised between its bounds may results in infinite loop
 because such branching decisions will not be refutable.
+{{% /alert %}}
 
 ### Enumerated domains
 
@@ -137,32 +138,87 @@ RealVar x = model.realVar("x", 0.2d, 3.4d, 0.001d);
 When a variable is defined as a function of another variable, views can be
 used to make the model shorter. In some cases, the view has a specific (optimized) domain representation.
 Otherwise, it is simply a modeling shortcut to create a variable and post a constraint at the same time.
-Few examples:
 
-`x = y + 2` :
+### Arithmetical views
+
+An arithmetical view requires an integer variable. 
+
+#### $x = y + 2$ :
 
 ```java
 IntVar x = model.intOffsetView(y, 2);
 ```
 
-`x = -y` :
+#### $x = -y$ :
 
 ```java
 IntVar x = model.intMinusView(y);
 ```
 
-`x = 3\*y` :
+#### $x = 3\times y$ :
 
 ```java
 IntVar x = model.intScaleView(y, 3);
 ```
 
-Views can be combined together, e.g. `x = 2\*y + 5` is:
+### Logical views
+
+A logical view is based on an integer variable, a basic arithmetical relation ($=,\neq,\leq,\geq$) and a constant. The resulting view states wether or not the relation holds.
+
+#### $b \Leftrightarrow (x = 4)$ :
+
+```java
+BoolVar x = model.intEqView(x, 4);
+```
+
+#### $b \Leftrightarrow (x \neq 4)$ :
+
+```java
+BoolVar x = model.intNeView(x, 4);
+```
+
+
+#### $b \Leftrightarrow (x \leq 4)$ :
+
+```java
+BoolVar x = model.intLeView(x, 4);
+```
+
+#### $b \Leftrightarrow (x \geq 4)$ :
+
+```java
+BoolVar x = model.intGeView(x, 4);
+```
+
+#### $d \Leftrightarrow \neg b$
+This is a specific case, related to the negation of a `BoolVar`.
+No additional variable is needed, a view based on the variable to refute is enough. 
+
+```java
+BoolVar d = model.boolNotView(b);
+```
+
+{{% alert title="Info" color="primary" %}}
+The same result can be obtained in shorted version:
+
+```java
+BoolVar d = b.not();
+```
+
+
+{{% /alert %}}
+
+
+
+### Composition 
+
+Views can be combined together, e.g. $x = 2\times y + 5$ is:
 
 ```java
 IntVar x = model.intOffsetView(model.intScaleView(y,2),5);
 ```
 
+### View over real variable  
 We can also use a view mecanism to link an integer variable with a real variable.
 
 ```java
