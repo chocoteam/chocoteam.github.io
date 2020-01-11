@@ -1,5 +1,5 @@
 ---
-title: "Variables"
+title: "Declaring variables"
 date: 2020-01-07T16:06:55+01:00
 weight: 21
 description: >
