@@ -81,12 +81,12 @@ choco_version = "4.10.2"
 version_menu = "Releases"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/chocoteam/choco-solver"
+github_repo = "https://github.com/chocoteam/chocoteam.github.io"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/chocoteam/choco-solver"
 
 # Specify a value here if your content directory is not in your repo's root director
-github_subdir = "site"
+#github_subdir = "site"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
 gcs_engine_id = "002090051099228186981:fjdyae7kf1k"
