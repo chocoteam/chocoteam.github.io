@@ -33,16 +33,6 @@
   </url>
   
   <url>
-    <loc>/blog/news/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/releases/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/docs/modeling/variables/</loc>
     <lastmod>2020-01-30T16:48:45+01:00</lastmod>
   </url>
@@ -88,21 +78,6 @@
   </url>
   
   <url>
-    <loc>/blog/2018/10/06/easy-documentation-with-docsy/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2018/10/06/the-second-blog-post/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2018/01/04/another-great-release/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/docs/advanced-usages/to-remove/</loc>
     <priority>0</priority>
   </url>
@@ -128,17 +103,7 @@
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/</loc>
-    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/community/</loc>
     <lastmod>2020-01-30T16:48:45+01:00</lastmod>
   </url>
   
