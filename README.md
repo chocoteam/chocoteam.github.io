@@ -14,8 +14,3 @@ Pour bien commencer, il faut avoir installé [Hugo](https://gohugo.io/).
 5. Constater que ça marche
 
 Et voilà (ou presque). 
-
-
-src:
-- https://gohugo.io/hosting-and-deployment/hosting-on-github/#github-user-or-organization-pages
-- 

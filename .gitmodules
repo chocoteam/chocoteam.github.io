@@ -1,7 +1,3 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/google/docsy
-[submodule "public"]
-	path = public
-	url = https://github.com/chocoteam/chocoteam.github.io.git
-	branch = master
