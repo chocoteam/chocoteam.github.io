@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/docs/getting-started/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/parsing/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/news/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/releases/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/variables/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/constraints/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/intconstraints/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/setconstraints/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/realconstraints/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/expressions/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/strategies/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/solving/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/propagator/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2018/10/06/easy-documentation-with-docsy/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2018/10/06/the-second-blog-post/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2018/01/04/another-great-release/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/to-remove/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/docs/modeling/to-remove/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/to-remove/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/index.json</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/community/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/search/</loc>
+    <lastmod>2020-01-30T16:48:45+01:00</lastmod>
+  </url>
+  
+</urlset>

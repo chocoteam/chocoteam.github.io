@@ -1,0 +1,276 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Choco-solver – Advanced usages</title>
+    <link>/docs/advanced-usages/</link>
+    <description>Recent content in Advanced usages on Choco-solver</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 07 Jan 2020 16:08:22 +0100</lastBuildDate>
+    
+	  <atom:link href="/docs/advanced-usages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Designing a propagator</title>
+      <link>/docs/advanced-usages/propagator/</link>
+      <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
+      
+      <guid>/docs/advanced-usages/propagator/</guid>
+      <description>
+        
+        
+        &lt;h3 id=&#34;designing-your-own-constraint&#34;&gt;Designing your own constraint&lt;/h3&gt;
+&lt;p&gt;You can create your own constraint by creating a generic &lt;code&gt;Constraint&lt;/code&gt; object with the appropriate propagator:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Constraint c = new Constraint(&amp;quot;MyConstraint&amp;quot;, new MyPropagator(vars));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The only tricky part relies in the propagator implementation.
+Your propagator must extend the &lt;code&gt;Propagator&lt;/code&gt; class but, at the begining, not all methods have to be overwritted.
+We will see two ways to implement a propagator ensuring that &lt;code&gt;X &amp;gt;= Y&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;basic-propagator&#34;&gt;Basic propagator&lt;/h4&gt;
+&lt;p&gt;You must at least call the super constructor to specifies the scope (set of variables) of the propagator.
+Then you must implement the two following methods:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void propagate(int evtmask)&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This method applies the global filtering algorithm of the propagator, that is, from &lt;em&gt;scratch&lt;/em&gt;.
+It is called once during initial propagation (to propagate initial domains) and then during the solving process if
+the propagator is not incremental. It is the most important method of the propagator.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;isEntailed()&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This method checks the current state of the propagator. It is used for constraint reification.
+It checks whether the propagator will be always satisfied (&lt;code&gt;ESat.TRUE&lt;/code&gt;), never satisfied (&lt;code&gt;ESat.FALSE&lt;/code&gt;)
+or undefined (&lt;code&gt;ESat.UNDEFINED&lt;/code&gt;) according to the current state of its domain variables. For instance,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$A \neq B$ will always be satisfied when $A={0,1,2}$ and $B={4,5}$.&lt;/li&gt;
+&lt;li&gt;$A = B$ will never be satisfied when $A={0,1,2}$ and $B={4,5}$.&lt;/li&gt;
+&lt;li&gt;The entailment of $A \neq B$ cannot be defined when $A={0,1,2}$ and $B={1,2,3}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;ESat isEntailed()&lt;/code&gt; implementation may be approximate
+but should at least cover the case where all variables are instantiated, in order to check solutions.&lt;/p&gt;
+&lt;p&gt;Here is an example of how to implement a propagator for &lt;code&gt;X &amp;gt;= Y&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Propagator to apply X &amp;gt;= Y
+public class MySimplePropagator extends Propagator&amp;lt;IntVar&amp;gt; {
+
+    IntVar x, y;
+
+    public MySimplePropagator(IntVar x, IntVar y) {
+        super(new IntVar[]{x,y});
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public void propagate(int evtmask) throws ContradictionException {
+        x.updateLowerBound(y.getLB(), this);
+        y.updateUpperBound(x.getUB(), this);
+    }
+
+    @Override
+    public ESat isEntailed() {
+        if (x.getUB() &amp;lt; y.getLB())
+            return ESat.FALSE;
+        else if (x.getLB() &amp;gt;= y.getUB())
+            return ESat.TRUE;
+        else
+            return ESat.UNDEFINED;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;elaborated-propagator&#34;&gt;Elaborated propagator&lt;/h4&gt;
+&lt;p&gt;The super constructor &lt;code&gt;super(Variable[], PropagatorPriority, boolean);&lt;/code&gt; brings more information.
+&lt;code&gt;PropagatorPriority&lt;/code&gt; enables to optimize the propagation engine (low arity for fast propagators is better).
+The boolean argument allows to specifies the propagator is incremental.
+When set to &lt;code&gt;true&lt;/code&gt;, the method &lt;code&gt;propagate(int varIdx, int mask)&lt;/code&gt; must be implemented.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Note that if many variables are modified between two calls, a non-incremental filtering may be faster (and simpler).&lt;/p&gt;
+&lt;p&gt;The method &lt;code&gt;propagate(int varIdx, int mask)&lt;/code&gt; defines the incremental filtering.
+It is called for every variable &lt;code&gt;vars[varIdx]&lt;/code&gt; whose domain has changed since the last call.&lt;/p&gt;
+&lt;p&gt;The method &lt;code&gt;getPropagationConditions(int vIdx)&lt;/code&gt; enables not to react on every kind of domain modification.&lt;/p&gt;
+&lt;p&gt;The method &lt;code&gt;setPassive()&lt;/code&gt; enables to desactivate the propagator when it is entailed, to save time.
+The propagator is automatically reactivated upon backtrack.&lt;/p&gt;
+&lt;p&gt;The method &lt;code&gt;why(...)&lt;/code&gt; explains the filtering, to allow learning.&lt;/p&gt;
+&lt;p&gt;Here is an example of how to implement a propagator for &lt;code&gt;X &amp;gt;= Y&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Propagator to apply X &amp;gt;= Y
+public final class MyIncrementalPropagator extends Propagator&amp;lt;IntVar&amp;gt; {
+
+    IntVar x, y;
+
+    public MyIncrementalPropagator(IntVar x, IntVar y) {
+        super(new IntVar[]{x,y}, PropagatorPriority.BINARY, true);
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public int getPropagationConditions(int vIdx) {
+        if (vIdx == 0) {
+            // awakes if x gets instantiated or if its upper bound decreases
+            return IntEventType.combine(IntEventType.INSTANTIATE, IntEventType.DECUPP);
+        } else {
+            // awakes if y gets instantiated or if its lower bound increases
+            return IntEventType.combine(IntEventType.INSTANTIATE, IntEventType.INCLOW);
+        }
+    }
+
+    @Override
+    public void propagate(int evtmask) throws ContradictionException {
+        x.updateLowerBound(y.getLB(), this);
+        y.updateUpperBound(x.getUB(), this);
+        if (x.getLB() &amp;gt;= y.getUB()) {
+            this.setPassive();
+        }
+    }
+
+    @Override
+    public void propagate(int varIdx, int mask) throws ContradictionException {
+        if (varIdx == 0) {
+            y.updateUpperBound(x.getUB(), this);
+        } else {
+            x.updateLowerBound(y.getLB(), this);
+        }
+        if (x.getLB() &amp;gt;= y.getUB()) {
+            this.setPassive();
+        }
+    }
+
+    @Override
+    public ESat isEntailed() {
+        if (x.getUB() &amp;lt; y.getLB())
+            return ESat.FALSE;
+        else if (x.getLB() &amp;gt;= y.getUB())
+            return ESat.TRUE;
+        else
+            return ESat.UNDEFINED;
+    }
+
+    @Override
+    public boolean why(RuleStore ruleStore, IntVar var, IEventType evt, int value) {
+        boolean newrules = ruleStore.addPropagatorActivationRule(this);
+        if (var.equals(x)) {
+            newrules |=ruleStore.addLowerBoundRule(y);
+        } else if (var.equals(y)) {
+            newrules |=ruleStore.addUpperBoundRule(x);
+        } else {
+            newrules |=super.why(ruleStore, var, evt, value);
+        }
+        return newrules;
+    }
+
+    @Override
+    public String toString() {
+        return &amp;quot;prop(&amp;quot; + vars[0].getName() + &amp;quot;.GEQ.&amp;quot; + vars[1].getName() + &amp;quot;)&amp;quot;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;idempotency&#34;&gt;Idempotency&lt;/h3&gt;
+&lt;p&gt;We distinguish two kinds of propagators:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Necessary&lt;/em&gt; propagators, which ensure constraints to be satisfied.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Redundant&lt;/em&gt; (or &lt;em&gt;Implied&lt;/em&gt;) propagators that come in addition to some necessary propagators in order to get a stronger filtering.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Some propagators cannot be idempotent (Lagrangian relaxation, use of randomness, etc.).
+For some others, forcing idempotency may be very time consuming.
+A redundant propagator does not have to be idempotent but &lt;strong&gt;a necessary propagator should be idempotent&lt;/strong&gt;  .&lt;/p&gt;
+&lt;p&gt;Trying to make a propagator idempotent directly may not be straightforward.
+We provide three implementation possibilities.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;decomposed&lt;/em&gt;  (recommended) option:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Split the original propagator into (partial) propagators so that the fix point is performed through the propagation engine.
+For instance, a channeling propagator $A \Leftrightarrow B$ can be decomposed into two propagators $A \Rightarrow B$ and $B \Rightarrow A$.
+The propagators can (but do not have to) react on fine events.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;em&gt;lazy&lt;/em&gt; option:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Simply post the propagator twice.
+Thus, the fix point is performed through the propagation engine.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;em&gt;coarse&lt;/em&gt; option:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the propagator will perform its fix point by itself.
+The propagator does not react to fine events.
+The coarse filtering algorithm should be surrounded like this:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;// In the case of ``SetVar``, replace ``getDomSize()`` by ``getEnvSize()-getKerSize()``.
+long size;
+do{
+  size = 0;
+  for(IntVar v:vars){
+    size+=v.getDomSize();
+  }
+  // really update domain variables here
+  for(IntVar v:vars){
+    size-=v.getDomSize();
+  }
+}while(size&amp;gt;0);
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Domain variable modifier returns a boolean valued to &lt;code&gt;true&lt;/code&gt; if the domain variable has been modified.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: </title>
+      <link>/docs/advanced-usages/to-remove/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/advanced-usages/to-remove/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h1&gt;
+&lt;h2 id=&#34;settings&#34;&gt;Settings&lt;/h2&gt;
+&lt;p&gt;A &lt;code&gt;Settings&lt;/code&gt; object is attached to each &lt;code&gt;Model&lt;/code&gt;.
+It declares default behavior for various purposes: from general purpose (such as the welcome message), modelling purpose (such as enabling views) or solving purpose (such as the search binder).&lt;/p&gt;
+&lt;p&gt;Default settings can be accessed through &lt;code&gt;DefaultSettings&lt;/code&gt;.
+This class can be extended to provide more settings and set to modified the default values.&lt;/p&gt;
+&lt;p&gt;Settings are declared in a &lt;code&gt;Model&lt;/code&gt; constructor.
+Settings are not immutable but modifying value after &lt;code&gt;Model&lt;/code&gt; construction can lead to unexpected behavior.&lt;/p&gt;
+&lt;h2 id=&#34;extensions-of-choco&#34;&gt;Extensions of Choco&lt;/h2&gt;
+&lt;h3 id=&#34;choco-parsers&#34;&gt;choco-parsers&lt;/h3&gt;
+&lt;p&gt;choco-parsers is an extension of Choco 4. It provides a parser for the FlatZinc language, a low-level solver input language that is the target language for MiniZinc.
+This module follows the flatzinc standards that are used for the annual MiniZinc challenge. It only supports integer variables.
+You will find it at &lt;a href=&#34;https://github.com/chocoteam/choco-parsers&#34;&gt;https://github.com/chocoteam/choco-parsers&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;choco-graph&#34;&gt;choco-graph&lt;/h3&gt;
+&lt;p&gt;choco-graph is a Choco 4 module which allows to search for a graph, which may be subject to graph constraints.
+The domain of a graph variable G is a graph interval in the form [G_lb,G_ub].
+G_lb is the graph representing vertices and edges which must belong to any single solution whereas G_ub is the graph representing vertices and edges which may belong to one solution.
+Therefore, any value G_v must satisfy the graph inclusion “G_lb subgraph of G_v subgraph of  G_ub”.
+One may see a strong connection with set variables.
+A graph variable can be subject to graph constraints to ensure global graph properties (e.g. connectedness, acyclicity) and channeling constraints to link the graph variable with some other binary, integer or set variables.
+The solving process consists of removing nodes and edges from G_ub and adding some others to G_lb until having G_lb = G_ub, i.e. until G gets instantiated.
+These operations stem from both constraint propagation and search. The benefits of graph variables stem from modeling convenience and performance.&lt;/p&gt;
+&lt;p&gt;This extension has documentation. You will find it at &lt;a href=&#34;https://github.com/chocoteam/choco-graph&#34;&gt;https://github.com/chocoteam/choco-graph&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;choco-gui&#34;&gt;choco-gui&lt;/h3&gt;
+&lt;p&gt;choco-gui is an extension of Choco 4.
+It provides a Graphical User Interface with various views which can be simply plugged on any Choco Model object.
+You will find it at &lt;a href=&#34;https://github.com/chocoteam/choco-gui&#34;&gt;https://github.com/chocoteam/choco-gui&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ibex-solver&#34;&gt;Ibex Solver&lt;/h2&gt;
+&lt;p&gt;To manage continuous constraints with Choco, an interface with Ibex has been done.
+It needs Ibex to be installed on your system.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“IBEX is a C++ library for constraint processing over real numbers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It provides reliable algorithms for handling non-linear constraints.
+In particular, round off errors are also taken into account.
+It is based on interval arithmetic and affine arithmetic.”
+– &lt;a href=&#34;http://www.ibex-lib.org/&#34;&gt;http://www.ibex-lib.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;installing-ibex&#34;&gt;Installing Ibex&lt;/h3&gt;
+&lt;p&gt;See the &lt;a href=&#34;http://www.ibex-lib.org/doc/install.html&#34;&gt;installation instructions&lt;/a&gt; of Ibex to complied Ibex on your system.
+More specially, take a look at &lt;a href=&#34;http://www.ibex-lib.org/doc/install.html#installation-as-a-dynamic-library&#34;&gt;Installation as a dynamic library&lt;/a&gt;
+Do not forget to add the &lt;code&gt;--with-java-package=org.chocosolver.solver.constraints.real&lt;/code&gt; configuration option.&lt;/p&gt;
+&lt;h3 id=&#34;using-ibex&#34;&gt;Using Ibex&lt;/h3&gt;
+&lt;p&gt;Once the installation is completed, the JVM needs to know where Ibex is installed to fully benefit from the Choco-Ibex bridge and declare real variables and constraints.
+This can be done either with an environment variable of by adding &lt;code&gt;-Djava.library.path=path/to/ibex/lib&lt;/code&gt; to the JVM arguments.
+The path /path/to/ibex/lib points to the lib directory of the Ibex installation directory.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
