@@ -24,10 +24,10 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/index.json" />
-<meta property="article:modified_time" content="2020-01-30T16:48:45+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-01-30T21:50:46+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="">
-<meta itemprop="dateModified" content="2020-01-30T16:48:45&#43;01:00" />
+<meta itemprop="dateModified" content="2020-01-30T21:50:46&#43;01:00" />
 <meta itemprop="wordCount" content="0">
 
 
@@ -89,6 +89,7 @@
 	</div>
 	<div class="navbar-nav d-none d-lg-block">
 <input type="search" class="form-control td-search-input" placeholder="&#xf002 Search this site…" aria-label="Search this site…" autocomplete="off">
+
 </div>
 </nav>
 
