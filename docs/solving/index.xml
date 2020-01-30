@@ -1,0 +1,859 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Choco-solver – Solving</title>
+    <link>/docs/solving/</link>
+    <description>Recent content in Solving on Choco-solver</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 07 Jan 2020 16:08:22 +0100</lastBuildDate>
+    
+	  <atom:link href="/docs/solving/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Exploring search space</title>
+      <link>/docs/solving/strategies/</link>
+      <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
+      
+      <guid>/docs/solving/strategies/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Looking for solutions</title>
+      <link>/docs/solving/solving/</link>
+      <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
+      
+      <guid>/docs/solving/solving/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Up to here, we have seen how to model a problem with the &lt;code&gt;Model&lt;/code&gt; object. To solve it, we need to use
+the &lt;code&gt;Solver&lt;/code&gt; object that is obtained from the model as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver solver = model.getSolver();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;Solver&lt;/code&gt; is in charge of alternating constraint-propagation with search, and possibly learning,
+in order to compute solutions. This object may be configured in various ways.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: </title>
+      <link>/docs/solving/to-remove/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/solving/to-remove/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;solving&#34;&gt;Solving&lt;/h1&gt;
+&lt;h2 id=&#34;core-solving-methods&#34;&gt;Core solving methods&lt;/h2&gt;
+&lt;h3 id=&#34;solution-computation&#34;&gt;Solution computation&lt;/h3&gt;
+&lt;h4 id=&#34;finding-one-solution&#34;&gt;Finding one solution&lt;/h4&gt;
+&lt;p&gt;A call to &lt;code&gt;solver.solve()&lt;/code&gt; launches a resolution which stops on the first solution found, if any:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(solver.solve()){
+    // do something, e.g. print out variable values
+}else if(solver.hasReachedLimit()){
+    System.out.println(&amp;quot;The solver could not find a solution
+                        nor prove that none exists in the given limits&amp;quot;);
+}else {
+    System.out.println(&amp;quot;The solver has proved the problem has no solution&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If &lt;code&gt;solver.solve()&lt;/code&gt; returns &lt;code&gt;true&lt;/code&gt;, then a solution has been found and each variable is instantiated to a value.
+Otherwise, two cases must be considered:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A limit has been declared and reached (&lt;code&gt;solver.hasReachedLimit()&lt;/code&gt; returns true).
+There may be a solution, but the solver has not been able to find it in the given limit
+or there is no solution but the solver has not been able to prove it (i.e., to close to search tree) in the given limit.
+The resolution process stops in no particular place in the search tree.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No limit has been declared or reached: The problem has no solution and the solver has proved it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;enumerating-all-solutions&#34;&gt;Enumerating all solutions&lt;/h4&gt;
+&lt;p&gt;You can enumerate all solutions of a problem with a simple while loop as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while(solver.solve()){
+    // do something, e.g. print out variable values
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After the enumeration, the solver closes the search tree and variables are no longer instantiated to a value.&lt;/p&gt;
+&lt;h3 id=&#34;optimization&#34;&gt;Optimization&lt;/h3&gt;
+&lt;p&gt;In Constraint-Programming, optimization is done by computing improving solutions, until reaching an optimum.
+Therefore, it can be seen as solving multiple times the model while adding constraints on the fly to prevent the solver from computing dominated solutions.&lt;/p&gt;
+&lt;h4 id=&#34;mono-objective-optimization&#34;&gt;Mono-objective optimization&lt;/h4&gt;
+&lt;p&gt;The optimization process is the following: anytime a solution is found, the value of the objective variable is stored and a &lt;em&gt;cut&lt;/em&gt; is posted.
+The cut is an additional constraint which states that the next solution must be (strictly) better than the current one.
+To solve an optimization problem, you must specify which variable to optimize and in which direction:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// to maximize X
+model.setObjective(Model.MAXIMIZE, X);
+// or model.setObjective(Model.MINIMIZE, X); to minimize X
+while(solver.solve()){
+    // an improving solution has been found
+}
+// the last solution found was optimal (if search completed)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can use custom cuts by overriding the default cut behavior.
+The &lt;em&gt;cut computer&lt;/em&gt; function defines how the cut should bound the objective variable.
+The input &lt;em&gt;number&lt;/em&gt; is the best solution value found so far, the output &lt;em&gt;number&lt;/em&gt; define the new bound.
+When maximizing (resp. minimizing) a problem, the cut limits the lower bound (resp. upper bound) of the objective variable.
+For instance, one may want to indicate that the value of the objective variable is the next solution should be
+greater than or equal to the best value + 10&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ObjectiveManager&amp;lt;IntVar, Integer&amp;gt; oman = solver.getObjectiveManager();
+oman.setCutComputer(n -&amp;gt; n - 10);
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;multi-objective-optimization&#34;&gt;Multi-objective optimization&lt;/h4&gt;
+&lt;p&gt;If you have multiple objective to optimize, you have several options. First, you may aggregate them in a function so that you end up with only one objective variable. Second, you can solve the problem multiple times, each one optimizing one variable and possibly fixing some bounds on the other. Third, you can enumerate solutions (without defining any objective) and add constraints on the fly to prevent search from finding dominated solutions. This is done by the ParetoOptimizer object which does the following:
+Anytime a solution is found, a constraint is posted which states that at least one of the objective variables must be strictly better:
+Such as $(X_0 &amp;lt; b_0 \lor X_1 &amp;lt; b_1 \lor \ldots \lor X_n &amp;lt; b_n)$ where $X_i$ is the ith objective variable and $b_i$ its value.&lt;/p&gt;
+&lt;p&gt;Here is a simple example on how to use the ParetoOptimizer to optimize two variables (a and b):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// simple model
+Model model = new Model();
+IntVar a = model.intVar(&amp;quot;a&amp;quot;, 0, 2, false);
+IntVar b = model.intVar(&amp;quot;b&amp;quot;, 0, 2, false);
+IntVar c = model.intVar(&amp;quot;c&amp;quot;, 0, 2, false);
+model.arithm(a, &amp;quot;+&amp;quot;, b, &amp;quot;=&amp;quot;, c).post();
+
+// create an object that will store the best solutions and remove dominated ones
+ParetoOptimizer po = new ParetoOptimizer(Model.MAXIMIZE,new IntVar[]{a,b});
+Solver solver = model.getSolver();
+solver.plugMonitor(po);
+
+// optimization
+while(solver.solve());
+
+// retrieve the pareto front
+List&amp;lt;Solution&amp;gt; paretoFront = po.getParetoFront();
+System.out.println(&amp;quot;The pareto front has &amp;quot;+paretoFront.size()+&amp;quot; solutions : &amp;quot;);
+for(Solution s:paretoFront){
+        System.out.println(&amp;quot;a = &amp;quot;+s.getIntVal(a)+&amp;quot; and b = &amp;quot;+s.getIntVal(b));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: All objectives must be optimized on the same direction (either minimization or maximization).&lt;/p&gt;
+&lt;h3 id=&#34;constraint-propagation&#34;&gt;Constraint propagation&lt;/h3&gt;
+&lt;p&gt;One may want to propagate all constraints without search for a solution.
+This can be achieved by calling &lt;code&gt;solver.propagate()&lt;/code&gt;.
+This method runs, in turn, the domain reduction algorithms of the constraints until it reaches a fix point.
+It may throw a &lt;code&gt;ContradictionException&lt;/code&gt; if a contradiction occurs.
+In that case, the propagation engine must be flushed calling &lt;code&gt;solver.getEngine().flush()&lt;/code&gt;
+to ensure there is no pending events.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;: If there are still pending events in the propagation engine, the propagation may results in unexpected results.&lt;/p&gt;
+&lt;h3 id=&#34;accessing-variable-values&#34;&gt;Accessing variable values&lt;/h3&gt;
+&lt;p&gt;The value of a variable can be accessed directly through the &lt;code&gt;getValue()&lt;/code&gt; method only once the variable is instantiated, i.e. the value has been computed
+(call &lt;code&gt;isInstantiated()&lt;/code&gt; to check it). Otherwise, the lower bound is returned (and an exception is thrown if &lt;code&gt;-ea&lt;/code&gt; is on).&lt;/p&gt;
+&lt;p&gt;For instance, the following code may throw an exception because the solution has not been computed yet:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int v = variable.getValue();
+solver.solve();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The following code may throw an exception in case no solution could be found (unsat problem or time limit reached):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.solve();
+int v = variable.getValue();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The correct approach is the following :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(solver.solve()){
+    int v = variable.getValue();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In optimization, you can print every solution as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while(solver.solve()){
+    System.out.println(variable.getValue());
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The last print correspond to the best solution found.&lt;/p&gt;
+&lt;p&gt;However, the following code does &lt;em&gt;NOT&lt;/em&gt; display the best solution found:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while(solver.solve()){
+    System.out.println(variable.getValue());
+}
+System.out.println(&amp;quot;best solution found: &amp;quot;+variable.getValue());
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Because it is outside the while loop, this code is reached once the search tree has been closed.
+It does not correspond to a solution state and therefore variable is no longer instantiated at this stage.
+To use solutions afterward, you need to record them using &lt;code&gt;Solution&lt;/code&gt; objects.&lt;/p&gt;
+&lt;h3 id=&#34;recording-solutions&#34;&gt;Recording solutions&lt;/h3&gt;
+&lt;p&gt;A solution can be stored through a &lt;code&gt;Solution&lt;/code&gt; object which maps every variable with its current value.
+It can be created as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solution solution = new Solution(model);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;By default, a solution records the value of every variable, but you can specify a smaller scope in the &lt;code&gt;Solution&lt;/code&gt; constructor.&lt;/p&gt;
+&lt;p&gt;Let &lt;code&gt;X&lt;/code&gt; be the set of decision variables and &lt;code&gt;Y&lt;/code&gt; another variable set that you need to store.
+To record other variables (e.g. an objective variables) you have two options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Declare them in the search strategy using a complementary strategy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;solver.set(strategy(X),strategy(Y)).
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Specify which variables to store in the solution constructor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Solution solution = new Solution(model(), ArrayUtils.append(X,Y));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can record the last solution found as follows :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solution solution = new Solution(model);
+while (solver.solve()) {
+    solution.record();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can also use a monitor as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solution solution = new Solution(model);
+solver.plugMonitor(new IMonitorSolution() {
+      @Override
+      public void onSolution() {
+          s.record();
+      }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Or with lambdas:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solution solution = new Solution(model);
+solver.plugMonitor((IMonitorSolution) () -&amp;gt; s.record());
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note that the solution is erased on each new recording.
+To store all solutions, you need to create one new solution object for each solution.&lt;/p&gt;
+&lt;p&gt;You can then access the value of a variable in a solution as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int val = s.getIntVal(Y[0])
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The solution object can be used to store all variables in Choco Solver (binaries, integers, sets and reals)&lt;/p&gt;
+&lt;h3 id=&#34;search-monitors&#34;&gt;Search monitors&lt;/h3&gt;
+&lt;h4 id=&#34;principle&#34;&gt;Principle&lt;/h4&gt;
+&lt;p&gt;A search monitor is an observer of the resolver.
+It gives user access before and after executing each main step of the solving process:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;initialize: when the solving process starts and the initial propagation is run,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;open node: when a decision is computed,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;down branch: on going down in the tree search applying or refuting a decision,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;up branch: on going up in the tree search to reconsider a decision,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;solution: when a solution is got,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;restart search: when the search is restarted to a previous node, commonly the root node,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;close: when the solving process ends,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;contradiction: on a failure,&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With the accurate search monitor, one can easily observe with the resolver, from pretty printing of a solution to learning nogoods from restart, or many other actions.&lt;/p&gt;
+&lt;p&gt;The interfaces to implement are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorInitialize&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorOpenNode&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorDownBranch&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorUpBranch&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorSolution&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorRestart&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorContradiction&lt;/code&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IMonitorClose&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Most of them gives the opportunity to do something before and after a step. The other ones are called after a step.&lt;/p&gt;
+&lt;p&gt;Simple example to print every solution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.plugMonitor(new IMonitorSolution() {
+    @Override
+    public void onSolution() {
+        System.out.println(&amp;quot;x = &amp;quot;+x.getValue());
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In Java 8 style:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.plugMonitor((IMonitorSolution) () -&amp;gt; {System.out.println(&amp;quot;x = &amp;quot;+x.getValue());});
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;search-limits&#34;&gt;Search limits&lt;/h3&gt;
+&lt;h4 id=&#34;built-in-search-limits&#34;&gt;Built-in search limits&lt;/h4&gt;
+&lt;p&gt;Search can be limited in various ways using the &lt;code&gt;Solver&lt;/code&gt; (from &lt;code&gt;model.getSolver()&lt;/code&gt;).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;limitTime&lt;/code&gt; stops the search when the given time limit has been reached. This is the most common limit, as many applications have a limited available runtime.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: The potential search interruption occurs at the end of a propagation, i.e. it will not interrupt a propagation algorithm, so the overall runtime of the solver might exceed the time limit.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;limitSolution&lt;/code&gt; stops the search when the given solution limit has been reached.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;limitNode&lt;/code&gt; stops the search when the given search node limit has been reached.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;limitFail&lt;/code&gt; stops the search when the given fail limit has been reached.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;limitBacktrack&lt;/code&gt; stops the search when the given backtrack limit has been reached.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For instance, to interrupt search after 10 seconds:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.limitTime(&amp;quot;10s&amp;quot;);
+model.getSolver().solve();
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;custom-search-limits&#34;&gt;Custom search limits&lt;/h4&gt;
+&lt;p&gt;You can design you own search limit by implementing a &lt;code&gt;Criterion&lt;/code&gt; and using &lt;code&gt;resolver.limitSearch(Criterion c)&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.limitSearch(new Criterion() {
+    @Override
+    public boolean isMet() {
+        // todo return true if you want to stop search
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In Java 8, this can be shortened using lambda expressions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.limitSearch(() -&amp;gt; { /*todo return true if you want to stop search*/ });
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;using-resolution-statistics&#34;&gt;Using resolution statistics&lt;/h3&gt;
+&lt;p&gt;Resolution data are available in the &lt;code&gt;Solver&lt;/code&gt; object, whose default output is &lt;code&gt;System.out&lt;/code&gt;.
+It centralises widely used methods to have comprehensive feedback about the resolution process.
+There are two types of methods: those who need to be called &lt;strong&gt;before&lt;/strong&gt; the resolution, with a prefix show, and those who need to called &lt;strong&gt;after&lt;/strong&gt; the resolution, with a prefix print.&lt;/p&gt;
+&lt;p&gt;For instance, one can indicate to print the solutions all resolution long:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.showSolutions();
+solver.findAllSolutions();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Or to print the search statistics once the search ends:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.solve();
+solver.printStatistics();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;On a call to &lt;code&gt;solver.printVersion()&lt;/code&gt;, the following message will be printed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-none&#34; data-lang=&#34;none&#34;&gt;** Choco 4.10.2 (2019-10) : Constraint Programming Solver, Copyright (c) 2010-2019
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;On a call to &lt;code&gt;solver.printStatistics()&lt;/code&gt;, the following message will be printed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-none&#34; data-lang=&#34;none&#34;&gt;- [ Search complete - [ No solution | {0} solution(s) found ]
+  | Incomplete search - [ Limit reached | Unexpected interruption ] ].
+   Solutions: {0}
+[  Maximize = {1}  ]
+[  Minimize = {2}  ]
+   Building time : {3}s
+   Resolution : {6}s
+   Nodes: {7} ({7}/{6} n/s)
+   Backtracks: {8}
+   Fails: {9}
+   Restarts: {10}
+   Max depth: {11}
+   Variables: {12}
+   Constraints: {13}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Curly brackets &lt;em&gt;{instruction | }&lt;/em&gt; indicate alternative instructions&lt;/p&gt;
+&lt;p&gt;Brackets &lt;em&gt;[instruction]&lt;/em&gt; indicate an optional instruction.&lt;/p&gt;
+&lt;p&gt;If the search terminates, the message “Search complete” appears on the first line, followed with either the number of solutions found or the message “No solution”.
+&lt;code&gt;Maximize&lt;/code&gt; –resp. &lt;code&gt;Minimize&lt;/code&gt;– indicates the best known value for the objective variable before exiting when an (single) objective has been defined.&lt;/p&gt;
+&lt;p&gt;Curly braces &lt;em&gt;{value}&lt;/em&gt; indicate search statistics:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;number of solutions found&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;objective value in maximization&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;objective value in minimization&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;building time in second (from &lt;code&gt;new Model()&lt;/code&gt; to &lt;code&gt;solve()&lt;/code&gt; or equivalent)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;initialisation time in second (before initial propagation)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;initial propagation time in second&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;resolution time in second (from &lt;code&gt;new Model()&lt;/code&gt; till now)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number of nodes in the binary tree search : one for the root node and between one and two for each decision (two when the decision has been refuted)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number of backtracks achieved&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number of failures that occurred (conflict number)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number of restarts operated&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;maximum depth reached in the binary tree search&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number of variables in the model&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;number of constraints in the model&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If the resolution process reached a limit before ending &lt;em&gt;naturally&lt;/em&gt;, the title of the message is set to :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-none&#34; data-lang=&#34;none&#34;&gt;- Incomplete search - Limit reached.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The body of the message remains the same. The message is formatted thanks to the &lt;code&gt;IMeasureRecorder&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;On a call to &lt;code&gt;solver.showSolutions()&lt;/code&gt;, on each solution the following message will be printed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-none&#34; data-lang=&#34;none&#34;&gt;{0} Solutions, [Maximize = {1}][Minimize = {2}], Resolution {6}s, {7} Nodes, \\
+                                    {8} Backtracks, {9} Fails, {10} Restarts
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;followed by one line exposing the value of each decision variables (those involved in the search strategy).&lt;/p&gt;
+&lt;p&gt;On a call to &lt;code&gt;solver.showDecisions()&lt;/code&gt;, on each node of the search tree a message will be printed indicating which decision is applied.
+The message is prefixed by as many “.” as nodes in the current branch of the search tree.
+A decision is prefixed with &lt;code&gt;[R]&lt;/code&gt; and a refutation is prefixed by &lt;code&gt;[L]&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-none&#34; data-lang=&#34;none&#34;&gt;..[L]x  ==  1 (0) //X = [0,5] Y = [0,6] ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;: &lt;code&gt;solver.showDecisions()&lt;/code&gt; prints the tree search during the resolution.
+Printing the decisions slows down the search process.&lt;/p&gt;
+&lt;h2 id=&#34;search-strategies&#34;&gt;Search Strategies&lt;/h2&gt;
+&lt;p&gt;The search space induced by variable domains is equal to  $S=|d_1|&lt;em&gt;|d_2|&lt;/em&gt;&amp;hellip;*|d_n|$ where $d_i$ is the domain of the $i^{th}$ variable.
+Most of the time (not to say always), constraint propagation is not sufficient to build a solution, that is, to remove all values but one from variable domains.
+Thus, the search space needs to be explored using one or more &lt;em&gt;search strategies&lt;/em&gt;.
+A search strategy defines how to explore the search space by computing &lt;em&gt;decisions&lt;/em&gt;.
+A decision involves a variables, a value and an operator, e.g. $x = 5$, and triggers new constraint propagation.
+Decisions are computed and applied until all the variables are instantiated, that is, a solution has been found, or a failure has been detected (backtrack occurs).
+Choco 4.10.2 builds a binary search tree: each decision can be refuted (if $x = 5$ leads to no solution, then $x != 5$ is applied).
+The classical search is based on &lt;a href=&#34;http://en.wikipedia.org/wiki/Depth-first_search&#34;&gt;Depth First Search&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: There are many ways to explore the search space and this steps should not be overlooked.
+Search strategies or heuristics have a strong impact on resolution performances.
+Thus, it is strongly recommended to adapt the search space exploration to the problem treated.&lt;/p&gt;
+&lt;h3 id=&#34;default-search-strategy&#34;&gt;Default search strategy&lt;/h3&gt;
+&lt;p&gt;If no search strategy is specified to the resolver, Choco 4 will rely on the default one (defined by a &lt;code&gt;defaultSearch&lt;/code&gt; in &lt;code&gt;Search&lt;/code&gt;).
+In many cases, this strategy will not be sufficient to produce satisfying performances and it will be necessary to specify a dedicated strategy, using &lt;code&gt;solver.setSearch(...)&lt;/code&gt;.
+The default search strategy splits variables according to their type and defines specific search strategies for each type that are sequentially applied:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;integer variables and boolean variables : &lt;code&gt;intVarSearch(ivars)&lt;/code&gt; (calls &lt;code&gt;domOverWDegSearch&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;set variables: &lt;code&gt;setVarSearch(svars)&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;real variables &lt;code&gt;realVarSearch(rvars)&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;objective variable, if any: lower bound or upper bound, depending on the optimization direction&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note that lastConflict is also plugged-in.&lt;/p&gt;
+&lt;h3 id=&#34;specifying-a-search-strategy&#34;&gt;Specifying a search strategy&lt;/h3&gt;
+&lt;p&gt;You may specify a search strategy to the resolver by using &lt;code&gt;solver.setSearch(...)&lt;/code&gt; method as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import static org.chocosolver.solver.search.strategy.Search.*;
+
+// to use the default SetVar search on mySetVars
+Solver s = model.getSolver();
+s.setSearch(setVarSearch(mySetVars));
+
+// to use activity based search on myIntVars
+Solver s = model.getSolver();
+s.setSearch(activityBasedSearch(myIntVars));
+
+// to use activity based search on myIntVars
+// then the default SetValSelectorFactoryVar search on mySetVars
+Solver s = model.getSolver();
+s.setSearch(activityBasedSearch(myIntVars), setVarSearch(mySetVars));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Search strategies generally hold on some particular variable kinds only (e.g. integers, sets, etc.).&lt;/p&gt;
+&lt;h4 id=&#34;example&#34;&gt;Example&lt;/h4&gt;
+&lt;p&gt;Let us consider we have two integer variables &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; and we want our strategy to select
+the variable of smallest domain and assign it to its lower bound.
+There are several ways to achieve this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 1) verbose approach using usual imports
+
+import org.chocosolver.solver.search.strategy.Search;
+import org.chocosolver.solver.search.strategy.assignments.DecisionOperator;
+import org.chocosolver.solver.search.strategy.selectors.values.*;
+import org.chocosolver.solver.search.strategy.selectors.variables.*;
+
+
+    Solver s = model.getSolver();
+    s.setSearch(Search.intVarSearch(
+                    // selects the variable of smallest domain size
+                    new FirstFail(model),
+                    // selects the smallest domain value (lower bound)
+                    new IntDomainMin(),
+                    // apply equality (var = val)
+                    DecisionOperator.int_eq,
+                    // variables to branch on
+                    x, y
+    ));
+
+// 2) Shorter approach : Use a static import for Search
+// and do not specify the operator (equality by default)
+
+import static org.chocosolver.solver.search.strategy.Search.*;
+
+import org.chocosolver.solver.search.strategy.assignments.DecisionOperator;
+import org.chocosolver.solver.search.strategy.selectors.values.*;
+import org.chocosolver.solver.search.strategy.selectors.variables.*;
+
+
+    Solver s = model.getSolver();
+    s.setSearch(intVarSearch(
+                    // selects the variable of smallest domain size
+                    new FirstFail(model),
+                    // selects the smallest domain value (lower bound)
+                    new IntDomainMin(),
+                    // variables to branch on
+                    x, y
+    ));
+
+
+// 3) Shortest approach using built-in strategies imports
+
+import static org.chocosolver.solver.search.strategy.Search.*;
+
+    Solver s = model.getSolver();
+    s.setSearch(minDomLBSearch(x, y));
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;list-of-available-search-strategy&#34;&gt;List of available search strategy&lt;/h3&gt;
+&lt;p&gt;Most available search strategies are listed in &lt;code&gt;Search&lt;/code&gt;.
+This factory enables you to create search strategies using static methods.
+Most search strategies rely on :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;variable selectors (see package &lt;code&gt;org.chocosolver.solver.search.strategy.selectors.values&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;value selectors (see package &lt;code&gt;org.chocosolver.solver.search.strategy.selectors.variables&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;operators (see &lt;code&gt;DecisionOperator&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Search&lt;/code&gt; is not exhaustive, look at the selectors package to see learn more search possibilities.&lt;/p&gt;
+&lt;h3 id=&#34;designing-your-own-search-strategy&#34;&gt;Designing your own search strategy&lt;/h3&gt;
+&lt;h4 id=&#34;using-selectors&#34;&gt;Using selectors&lt;/h4&gt;
+&lt;p&gt;To design your own strategy using Search.intVarSearch, you simply have to implement
+your own variable and value selectors:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static IntStrategy intVarSearch(VariableSelector&amp;lt;IntVar&amp;gt; varSelector,
+                                    IntValueSelector valSelector,
+                                    IntVar... vars)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For instance, to select the first non instantiated variable and assign it to its lower bound:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.setSearch(intVarSearch(
+        // variable selector
+        (VariableSelector&amp;lt;IntVar&amp;gt;) variables -&amp;gt; {
+            for(IntVar v:variables){
+                if(!v.isInstantiated()){
+                    return v;
+                }
+            }
+            return null;
+        },
+        // value selector
+        (IntValueSelector) var -&amp;gt; var.getLB(),
+        // variables to branch on
+        x, y
+));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: When all variables are instantiated, a &lt;code&gt;VariableSelector&lt;/code&gt; must return &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;from-scratch&#34;&gt;From scratch&lt;/h4&gt;
+&lt;p&gt;You can design your own strategy by creating &lt;code&gt;Decision&lt;/code&gt; objects directly as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;s.setSearch(new AbstractStrategy&amp;lt;IntVar&amp;gt;(x,y) {
+    // enables to recycle decision objects (good practice)
+    PoolManager&amp;lt;IntDecision&amp;gt; pool = new PoolManager();
+    @Override
+    public Decision getDecision() {
+        IntDecision d = pool.getE();
+        if(d==null) d = new IntDecision(pool);
+        IntVar next = null;
+        for(IntVar v:vars){
+            if(!v.isInstantiated()){
+                next = v; break;
+            }
+        }
+        if(next == null){
+            return null;
+        }else {
+            // next decision is assigning nextVar to its lower bound
+            d.set(next,next.getLB(), DecisionOperator.int_eq);
+            return d;
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;making-a-decision-greedy&#34;&gt;Making a decision greedy&lt;/h3&gt;
+&lt;p&gt;You can make a decision non-refutable by using &lt;code&gt;decision.setRefutable(false)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To make an entire search strategy greedy, use:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Solver s = model.getSolver();
+s.setSearch(greedySearch(inputOrderLBSearch(x,y,z)));
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;restarts&#34;&gt;Restarts&lt;/h3&gt;
+&lt;p&gt;Restart means stopping the current tree search, then starting a new tree search from the root node.
+Restarting makes sense only when coupled with randomized dynamic branching strategies ensuring that the same enumeration tree is not constructed twice.
+The branching strategies based on the past experience of the search, such as adaptive search strategies, are more accurate in combination with a restart approach.&lt;/p&gt;
+&lt;p&gt;Unless the number of allowed restarts is limited, a tree search with restarts is not complete anymore. It is a good strategy, though, when optimizing an NP-hard problem in a limited time.&lt;/p&gt;
+&lt;p&gt;Some adaptive search strategies resolutions are improved by sometimes restarting the search exploration from the root node.
+Thus, the statistics computed on the bottom of the tree search can be applied on the top of it.&lt;/p&gt;
+&lt;p&gt;Several restart strategies are available in &lt;code&gt;Solver&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Restarts after after each new solution.
+solver.setRestartOnSolutions()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Geometrical restarts perform a search with restarts controlled by the resolution event  &lt;code&gt;counter&lt;/code&gt; which counts events occurring during the search.
+Parameter &lt;code&gt;base&lt;/code&gt; indicates the maximal number of events allowed in the first search tree.
+Once this limit is reached, a restart occurs and the search continues until &lt;code&gt;base\&lt;/code&gt;`*``grow&lt;code&gt;events are done, and so on. After each restart, the limit number of events is increased by the geometric factor&lt;/code&gt;grow&lt;code&gt;.&lt;/code&gt;limit` states the maximum number of restarts.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.setGeometricalRestart(int base, double grow, ICounter counter, int limit)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Some counters may required an argument on constructor that defines the limit to not overpass.
+Such an argument is ignored by a restart strategy which overrides that value with its own computed one.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.5558&#34;&gt;Luby&lt;/a&gt; ’s restart policy is an alternative to the geometric restart policy.
+It performs a search with restarts controlled by the number of resolution events  counted by &lt;code&gt;counter&lt;/code&gt;.
+The maximum number of events allowed at a given restart iteration is given by base multiplied by the Las Vegas coefficient at this iteration.
+The sequence of these coefficients is defined recursively on its prefix subsequences:
+starting from the first prefix $1$, the $(k+1)^th$ prefix is the $k^th$ prefix repeated &lt;code&gt;grow&lt;/code&gt; times and
+immediately followed by coefficient &lt;code&gt;grow&lt;/code&gt;$^k$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the first coefficients for &lt;code&gt;grow&lt;/code&gt; =2: [1,1,2,1,1,2,4,1,1,2,1,1,2,4,8,1,…]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the first coefficients for &lt;code&gt;grow&lt;/code&gt; =3 : [1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 9,…]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;solver.setLubyRestart(int base, int grow, ICounter counter, int limit)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can design your own restart strategies using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.setRestarts( LongCriterion restartCriterion,
+                    IRestartStrategy restartStrategy,
+                    int restartsLimit);
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;moves&#34;&gt;Moves&lt;/h2&gt;
+&lt;h3 id=&#34;large-neighborhood-search-lns&#34;&gt;Large Neighborhood Search (LNS)&lt;/h3&gt;
+&lt;p&gt;Local search techniques are very effective to solve hard optimization problems.
+Most of them are, by nature, incomplete.
+In the context of constraint programming (CP) for optimization problems, one of the most well-known and widely used local search techniques is the Large Neighborhood Search (LNS) algorithm .
+The basic idea is to iteratively relax a part of the problem, then to use constraint programming to evaluate and bound the new solution.&lt;/p&gt;
+&lt;h4 id=&#34;principle-1&#34;&gt;Principle&lt;/h4&gt;
+&lt;p&gt;LNS is a two-phase algorithm which partially relaxes a given solution and repairs it.
+Given a solution as input, the relaxation phase builds a partial solution (or neighborhood) by choosing a set of variables to reset to their initial domain;
+The remaining ones are assigned to their value in the solution.
+This phase is directly inspired from the classical Local Search techniques.
+Even though there are various ways to repair the partial solution, we focus on the technique in which Constraint Programming is used to bound the objective variable and
+to assign a value to variables not yet instantiated.
+These two phases are repeated until the search stops (optimality proven or limit reached).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;INeighborFactory&lt;/code&gt; provides pre-defined configurations.
+Here is the way to declare LNS to solve a problem:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.setLNS(INeighborFactory.random(ivars, new FailCounter(solver, 100));
+solver.findOptimalSolution(Model.MINIMIZE, objective);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It declares a &lt;em&gt;random&lt;/em&gt; LNS which, on a solution, computes a partial solution based on &lt;code&gt;ivars&lt;/code&gt;.
+If no solution are found within 100 fails (&lt;code&gt;FailCounter(solver, 100)&lt;/code&gt;), a restart is forced.&lt;/p&gt;
+&lt;p&gt;The factory provides other built-in neighbors.&lt;/p&gt;
+&lt;h4 id=&#34;neighbors&#34;&gt;Neighbors&lt;/h4&gt;
+&lt;p&gt;While the implementation of LNS is straightforward, the main difficulty lies in the design of neighborhoods able to move the search further.
+Indeed, the balance between diversification (i.e., evaluating unexplored sub-tree) and intensification (i.e., exploring them exhaustively) should be well-distributed.&lt;/p&gt;
+&lt;h5 id=&#34;generic-neighbors&#34;&gt;Generic neighbors&lt;/h5&gt;
+&lt;p&gt;One drawback of LNS is that the relaxation process is quite often problem dependent.
+Some works have been dedicated to the selection of variables to relax through general concept not related to the class of the problem treated [5,24].
+However, in conjunction with CP, only one generic approach, namely Propagation-Guided LNS [24], has been shown to be very competitive with dedicated ones on a variation of the Car Sequencing Problem.
+Nevertheless, such generic approaches have been evaluated on a single class of problem and need to be thoroughly parametrized at the instance level, which may be a tedious task to do.
+It must, in a way, automatically detect the problem structure in order to be efficient.&lt;/p&gt;
+&lt;h5 id=&#34;combining-neighborhoods&#34;&gt;Combining neighborhoods&lt;/h5&gt;
+&lt;p&gt;There are two ways to combine neighbors.&lt;/p&gt;
+&lt;h6 id=&#34;sequential&#34;&gt;Sequential&lt;/h6&gt;
+&lt;p&gt;Declare an instance of &lt;code&gt;SequenceNeighborhood(n1, n2, ..., nm)&lt;/code&gt;.
+Each neighbor ni is applied in a sequence until one of them leads to a solution.
+At step k, the $(k \mod m)^{th}$ neighbor is selected.
+The sequence stops if at least one of the neighbor is complete.&lt;/p&gt;
+&lt;h6 id=&#34;adaptive&#34;&gt;Adaptive&lt;/h6&gt;
+&lt;p&gt;Declare an instance of &lt;code&gt;AdaptiveNeighborhood(1L, n1, n2, ..., nm)&lt;/code&gt;.
+At the beginning a weight of 1 at assigned to each neighbor ni.
+Then, if a neighbor leads to solution, its weight $w_i$ is increased by 1.
+Any time a partial solution has to be computed, a value &lt;code&gt;W&lt;/code&gt; between 1 and $w_1+w_2+&amp;hellip;+w_n$ is randomly picked (&lt;code&gt;1L&lt;/code&gt; is the seed).
+Then the weight of each neighbor is subtracted from &lt;code&gt;W&lt;/code&gt;, as soon as &lt;code&gt;W&lt;/code&gt;$\leq 0$, the corresponding neighbor is selected.
+For instance, let’s consider three neighbors n1, n2 and n3, their respective weights w1=2, w2=4, w3=1.
+&lt;code&gt;W&lt;/code&gt; = 3  is randomly picked between 1 and 7.
+Then, the weight of n1 is subtracted, &lt;code&gt;W\&lt;/code&gt;`2-=1; the weight of n2 is subtracted, ``W&lt;code&gt;-4 = -3, &lt;/code&gt;W` is less than 0 and n2 is selected.&lt;/p&gt;
+&lt;h5 id=&#34;defining-its-own-neighborhoods&#34;&gt;Defining its own neighborhoods&lt;/h5&gt;
+&lt;p&gt;One can define its own neighbor by extending the abstract class &lt;code&gt;INeighbor&lt;/code&gt;.
+It forces to implements the following methods:&lt;/p&gt;
+&lt;p&gt;| &lt;strong&gt;Method&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;| &lt;strong&gt;Definition&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;|
+| &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; |  |  |
+|                                |                                                                                                                                                                                                 |
+| &lt;code&gt;void recordSolution()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      | Action to perform on a solution (typicallu, storing the current variables’ value).
+
+                                                                                                          |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;|                                |                                                                                                                                                                                                 |
+| &lt;code&gt;void fixSomeVariables()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    | Fix some variables to their value in the last solution.
+
+                                                                                                                                     |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;|                                |                                                                                                                                                                                                 |
+| &lt;code&gt;void restrictLess()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;        | Relax the number of variables fixed. Called when no solution was found during a LNS run (trapped into a local optimum).
+
+                                                                     |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;|                                |                                                                                                                                                                                                 |
+| &lt;code&gt;boolean isSearchComplete()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; | Indicates whether the neighbor is complete, that is, can end.
+
+                                                                                                                               |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;restarts-1&#34;&gt;Restarts&lt;/h4&gt;
+&lt;p&gt;A generic and common way to reinforce diversification of LNS is to introduce restart during the search process.
+This technique has proven to be very flexible and to be easily integrated within standard backtracking procedures .&lt;/p&gt;
+&lt;h4 id=&#34;walking&#34;&gt;Walking&lt;/h4&gt;
+&lt;p&gt;A complementary technique that appear to be efficient in practice is named Walking and consists in accepting equivalent intermediate solutions in a search iteration instead of requiring a strictly better one.
+This can be achieved by defining an &lt;code&gt;ObjectiveManager&lt;/code&gt; like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.setObjectiveManager(new ObjectiveManager(objective, ResolutionPolicy.MAXIMIZE, false));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where the last parameter, named &lt;code&gt;strict&lt;/code&gt; must be set to false to accept equivalent intermediate solutions.&lt;/p&gt;
+&lt;p&gt;Other optimization policies may be encoded by using either search monitors or a custom &lt;code&gt;ObjectiveManager&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;learning&#34;&gt;Learning&lt;/h2&gt;
+&lt;h3 id=&#34;explanations&#34;&gt;Explanations&lt;/h3&gt;
+&lt;p&gt;Choco 4 natively support explanations . However, no explanation engine is plugged-in by default.&lt;/p&gt;
+&lt;h4 id=&#34;principle-2&#34;&gt;Principle&lt;/h4&gt;
+&lt;p&gt;Nogoods and explanations have long been used in various paradigms for improving search.
+An explanation records some sufficient information to justify an inference made by the solver (domain reduction, contradiction, etc.).
+It is made of a subset of the original propagators of the problem and a subset of decisions applied during search.
+Explanations represent the logical chain of inferences made by the solver during propagation in an efficient and usable manner.
+In a way, they provide some kind of a trace of the behavior of the solver as any operation needs to be explained.&lt;/p&gt;
+&lt;p&gt;The implemented explanation framework is an adapation of the well-konw SAT &lt;a href=&#34;https://en.wikipedia.org/wiki/Conflict-driven_clause_learning&#34;&gt;CDCL algorithm&lt;/a&gt; to discrete constraint solver.
+By exploiting the implication graph (that records events, i.e. variables’ modifications), this algorithm is able to derive a new constraint from the events that led to a contradiction.
+Once added to the constraint network, this constraint makes possible to “backjump” (non-chronological backtrack) to the appropriate decision in the decision path.&lt;/p&gt;
+&lt;p&gt;In CP, learned constraints are denoted “signed-clauses” which is a disjunction of signed-literals, i.e. membership unary constraints : $\bigvee_{i=0}^{n}X_i \in D_i$
+where $X_i$ are variables and $D_i$ a set of values.
+A signed-clause is satisfied when at least one signed-literal is satisfied.&lt;/p&gt;
+&lt;p&gt;The current explanation engine is coded to be &lt;em&gt;Asynchronous, Reverse, Low-intrusive and Lazy&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;Asynchronous:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Explanations are not computed during the propagation.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Reverse:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Explanations are computed in a bottom-up way, from the conflict to the first event generated, *keeping* only relevant events to compute the explanation of the conflict.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Low-intrusive:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Basically, propagators need to implement only one method to furnish a convenient explanation schema.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Lazy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Explanations are computed on request.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To do so, all events are stored during the descent to a conflict/solution, and are then evaluated and kept if relevant, to get the explanation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: In CP, CDCL algorithm requires that each constraint of a problem can be explained. Even though a default explanation function for any constraint, dedicated functions offers better performances.
+In Choco 4 a few set of constraints is equipped with dedicated explanation function (unary constraints, binary and ternary, sum and scalar).&lt;/p&gt;
+&lt;h5 id=&#34;computing-explanations&#34;&gt;Computing explanations&lt;/h5&gt;
+&lt;p&gt;When a contradiction occurs during propagation, it can only be thrown by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;a propagator which detects unsatisfiability, based on the current domain of its variables;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;or a variable whom domain became empty.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Consequently, in addition to causes, variables can also explain the current state of their domain.
+Computing the explanation of a failure consists in going up in the stack of all events generated in the current branch of the search tree and filtering the one relative to the conflict.
+The entry point is either the not satisfiable propagator or the empty variable.&lt;/p&gt;
+&lt;p&gt;Each propagator embeds its own explanation algorithm which relies on the relation it defines over variables.&lt;/p&gt;
+&lt;h4 id=&#34;explanations-for-the-system&#34;&gt;Explanations for the system&lt;/h4&gt;
+&lt;p&gt;Explanations for the system, which try to reduce the search space, differ from the ones giving feedback to a user about the unsatisfiability of its model.
+Both rely on the capacity of the explanation engine to motivate a failure, during the search form system explanations and once the search is complete for user ones.&lt;/p&gt;
+&lt;h5 id=&#34;learning-signed-clauses&#34;&gt;Learning signed-clauses&lt;/h5&gt;
+&lt;p&gt;When learning is plugged-in, the search is hacked in the following way.
+On a failure, the implication graph is analyzed in order to build a signed-clause and to define the decision to jump back to it.
+Decisions from the current one to the return decision (excluded) are erased.
+Then, the signed-clause is added to the constraint network and automatically dominates decision refutation; then the search goes on.
+If the explanation jumps back to the root node, the problem is proven to have no solution and search stops.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;API&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;solver.setLearningSignedClauses();
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;solver&lt;/em&gt;: the solver to explain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See Settings to configure learning algorithm.&lt;/p&gt;
+&lt;h3 id=&#34;search-loop&#34;&gt;Search loop&lt;/h3&gt;
+&lt;p&gt;The search loop whichs drives the search is a freely-adapted version PLM .
+PLM stands for: Propagate, Learn and Move.
+Indeed, the search loop is composed of three parts, each of them with a specific goal.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Propagate: it aims at propagating information throughout the constraint network when a decision is made,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Learn: it aims at ensuring that the search mechanism will avoid (as much as possible) to get back to states that have been explored and proved to be solution-less,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move: it aims at, unlike the former ones, not pruning the search space but rather exploring it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Any component can be freely implemented and attached to the search loop in order to customize its behavior.
+There exists some pre-defined Move and Learn implementations.
+One can also define its own Move or Learn implementation.&lt;/p&gt;
+&lt;h3 id=&#34;implementing-a-search-loop-component&#34;&gt;Implementing a search loop component&lt;/h3&gt;
+&lt;p&gt;A search loop is made of three components, each of them dealing with a specific aspect of the search.
+Even if many Move and Learn implementation are already provided, it may be relevant to define its own component.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: The Propagate component is less prone to be modified, it will not be described here.
+However, its interface is minimalist and can be easily implemented.
+A look to org.chocosolver.solver.search.loop.propagate.PropagateBasic.java is a good starting point.&lt;/p&gt;
+&lt;p&gt;The two components can be easily set in the Solver search loop:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void setMove(Move m)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;The current Move component is replaced by m.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Move getMove()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;The current Move component is returned.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;void setLearn(Learn l) and Learn getLearn() are also avaiable.&lt;/p&gt;
+&lt;p&gt;Having access to the current Move (resp. Learn) component can be useful to combined it with another one.
+For instance, the MoveLNS is activated on a solution and creates a partial solution.
+It needs another Move to find the first solution and to complete the partial solution.&lt;/p&gt;
+&lt;h4 id=&#34;move&#34;&gt;Move&lt;/h4&gt;
+&lt;p&gt;Here is the API of Move:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;boolean extend(SearchLoop searchLoop)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Perform a move when the CSP associated to the current node of the search space is not proven to be not consistent.
+It returns true if an extension can be done, false when no more extension is possible.
+It has to maintain the correctness of the reversibility of the action by pushing a backup world when needed.
+An extension is commonly based on a decision, which may be made on one or many variables.
+If a decision is created (thanks to the search strategy), it has to be linked to the previous one.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;boolean repair(SearchLoop searchLoop)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Perform a move when the CSP associated to the current node of the search space is proven to be not consistent.
+It returns true if a reparation can be done, false when no more reparation is possible.
+It has to backtracking backup worlds when needed, and unlinked useless decisions.
+The depth and number of backtracks have to be updated too, and “up branch” search monitors of the search loop have to called
+(be careful, when many Move are combined).
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Move getChildMove()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;It returns the child Move or null.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;void setChildMove(Move aMove)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;It defined the child Move and erases the previously defined one, if any.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;boolean init()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Called before the search starts, it should initialize the search strategy, if any, and its child Move.
+It should return false if something goes wrong (the problem has trivially no solution), true otherwise.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;AbstractStrategy&amp;lt;V&amp;gt; getStrategy()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;It returns the search strategy in use, which may be null if none has been defined.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;void setStrategy(AbstractStrategy&amp;lt;V&amp;gt; aStrategy)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;It defines a search strategy and erases the previously defined one, that is, a service which computes and returns decisions.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;org.chocosolver.solver.search.loop.move.MoveBinaryDFS.java&lt;/code&gt; is good starting point to see how a Move is implemented.
+It defines a Depth-First Search with binary decisions.&lt;/p&gt;
+&lt;h4 id=&#34;learn&#34;&gt;Learn&lt;/h4&gt;
+&lt;p&gt;The aim of the component is to make sure that the search mechanism will avoid (as much as possible) to get back to states that have been explored and proved to be solution-less. Here is the API of Learn&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;void record(SearchLoop searchLoop)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;It validates and records a new piece of knowledge, that is, the current position is a dead-end.
+This is alwasy called *before* calling Move.repair(SearchLoop).
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;void forget(SearchLoop searchLoop)&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;It forgets some pieces of knowledge.
+This is alwasy called *after* calling Move.repair(SearchLoop).
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;org.chocosolver.solver.search.loop.learn.LearnCBJ&lt;/code&gt; is good, yet not trivial, example of Learn.&lt;/p&gt;
+&lt;h2 id=&#34;multi-thread-resolution&#34;&gt;Multi-thread resolution&lt;/h2&gt;
+&lt;p&gt;Choco 4 provides a simple way to use several threads to treat a problem. The main idea of that driver is to solve the &lt;em&gt;same&lt;/em&gt; model with different search strategies and to share few information to make these threads help each others.&lt;/p&gt;
+&lt;p&gt;To use a portfolio of solvers in parallel, use &lt;code&gt;ParallelPortfolio&lt;/code&gt; as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ParallelPortfolio portfolio = new ParallelPortfolio();
+int nbModels = 5;
+for(int s=0;s&amp;lt;nbModels;s++){
+    portfolio.addModel(makeModel());
+}
+portfolio.solve();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this example, &lt;code&gt;makeModel()&lt;/code&gt; is a method you have to implement to create a &lt;code&gt;Model&lt;/code&gt; of the problem.
+Here all models are the same and the portfolio will change the search heuristics of all models but the first one.
+This means that the first thread will run according to your settings whereas the others will have a different configuration.&lt;/p&gt;
+&lt;p&gt;In order to specify yourself the configuration of each thread, you need to create the portfolio by setting the optional
+boolean argument &lt;code&gt;searchAutoConf&lt;/code&gt; to false as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ParallelPortfolio portfolio = new ParallelPortfolio(false);
+int nbModels = 5;
+for(int s=0;s&amp;lt;nbModels;s++){
+    portfolio.addModel(makeModel(s));
+}
+portfolio.solve();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this second example, the parameter &lt;code&gt;s&lt;/code&gt; enables you to change the search strategy within the &lt;code&gt;makeModel&lt;/code&gt; method (e.g. using a &lt;code&gt;switch(s)&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;When dealing with multithreading resolution, very few data is shared between threads:
+everytime a solution has been found its value is shared among solvers. Moreover,
+when a solver ends, it communicates an interruption instruction to the others.
+This enables to explore the search space in various way, using different model settings such as search strategies
+(this should be done in the dedicated method which builds the model, though).&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
