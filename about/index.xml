@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Choco-solver – About Choco-solver</title>
+    <link>/about/</link>
+    <description>Recent content in About Choco-solver on Choco-solver</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 Jan 2020 10:50:21 +0100</lastBuildDate>
+    
+	  <atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

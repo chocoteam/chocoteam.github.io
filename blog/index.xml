@@ -1,0 +1,36 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Choco-solver – Blog</title>
+    <link>/blog/</link>
+    <description>Recent content in Blog on Choco-solver</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 Jan 2020 10:43:40 +0100</lastBuildDate>
+    
+	  <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: Revamping documentation</title>
+      <link>/blog/2020/01/31/revamping-documentation/</link>
+      <pubDate>Fri, 31 Jan 2020 10:26:28 +0100</pubDate>
+      
+      <guid>/blog/2020/01/31/revamping-documentation/</guid>
+      <description>
+        
+        
+        &lt;p&gt;We are pleased to announce that the Choco-solver site is getting a fresh start. We wish to gather under the same banner the technical documentation and the tutorials.&lt;/p&gt;
+&lt;p&gt;For this, we chose &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo, a static site generator&lt;/a&gt; and &lt;a href=&#34;https://www.docsy.dev/&#34;&gt;Docsy, a pretty Hugo theme&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The update of the documentation is just starting, you can check the status, report errors or contribute by going to the &lt;a href=&#34;/docs/&#34;&gt;Documentation&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;We will also transfer the tutorials to a separate page as soon as possible.&lt;/p&gt;
+&lt;p&gt;The motivated team !&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

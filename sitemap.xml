@@ -28,8 +28,33 @@
   </url>
   
   <url>
+    <loc>/tutos/first-example/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/first-example/first-model/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/first-example/follow-up/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/verbal-arithmetic/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/verbal-arithmetic/description/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url>
   
   <url>
@@ -38,8 +63,18 @@
   </url>
   
   <url>
+    <loc>/tutos/verbal-arithmetic/math/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/modeling/constraints/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/verbal-arithmetic/code/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url>
   
   <url>
@@ -63,6 +98,11 @@
   </url>
   
   <url>
+    <loc>/tutos/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/solving/strategies/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
   </url>
@@ -75,6 +115,21 @@
   <url>
     <loc>/docs/advanced-usages/propagator/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2020/01/31/revamping-documentation/</loc>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url>
   
   <url>
@@ -99,12 +154,12 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url>
   
   <url>
     <loc>/community/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url>
   
   <url>
