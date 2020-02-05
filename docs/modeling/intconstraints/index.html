@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/modeling/intconstraints/" />
 <meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
-<meta property="article:modified_time" content="2020-01-30T21:50:46+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-02-03T20:00:02+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Constraints over integer variables">
 <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2020-01-30T21:50:46&#43;01:00" />
-<meta itemprop="wordCount" content="267">
+<meta itemprop="dateModified" content="2020-02-03T20:00:02&#43;01:00" />
+<meta itemprop="wordCount" content="698">
 
 
 
@@ -386,8 +386,19 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#arithmetical-constraints">Arithmetical constraints</a></li>
+    <li><a href="#other-mathematical-constraints">Other mathematical constraints</a>
+      <ul>
+        <li><a href="#binary-and-ternary-constraints">Binary and ternary constraints</a></li>
+        <li><a href="#global-constraints">Global constraints</a></li>
+      </ul>
+    </li>
     <li><a href="#cardinality-constraints">Cardinality constraints</a></li>
-    <li><a href="#scheduling-constraints">Scheduling constraints</a></li>
+    <li><a href="#scheduling-constraints">Scheduling constraints</a>
+      <ul>
+        <li><a href="#task-variables">Task variables</a></li>
+        <li><a href="#cumulative-constraint">cumulative constraint</a></li>
+      </ul>
+    </li>
     <li><a href="#table-constraints">Table constraints</a></li>
     <li><a href="#sat-constraints">SAT constraints</a></li>
     <li><a href="#automaton-based-constraints">Automaton-based Constraints</a></li>
@@ -437,8 +448,57 @@
 	<h1>Constraints over integer variables</h1>
 	<div class="lead">Overview of constraints based on boolean and integer variables.</div>
 	<h2 id="arithmetical-constraints">Arithmetical constraints</h2>
-<h2 id="cardinality-constraints">Cardinality constraints</h2>
+<p>These constraints are used to express arithmetical relationships between two or three variables, or between one or two variables and an integer constant.
+For instance, a threshold constraint can be posted as following:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Accepted mathematical operators for these constraints are <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>=</code> and <code>!=</code>. When more than one variable is constrained, one can use the following methods:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">String</span> <span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// with x an IntVar and y either an IntVar or an int
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#000">String</span> <span style="color:#000">op2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// either &#34;+&#34; or &#34;-&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// with x and y IntVar, and z is either an int or an IntVar
+</span></code></pre></div><h2 id="other-mathematical-constraints">Other mathematical constraints</h2>
+<p>Choco-solver also supports other mathematical constraints than arithmetical ones, such as <em>times</em>, <em>div</em>, <em>modulo</em>&hellip; In this section, we will consider <code>x</code>, <code>y</code> and <code>z</code> to be <code>IntVar</code> and <code>a</code> and <code>b</code> to be <code>int</code>.</p>
+<h3 id="binary-and-ternary-constraints">Binary and ternary constraints</h3>
+<p><em>times</em> constraints are posted as following:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x * a = z
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x * y = a
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x * y = z
+</span></code></pre></div>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Info</h4>
+For the first type of <em>times</em> constraint, one might prefer to use a view: <code>z = model.intOffsetView(x, a);</code>.
+</div>
+
+<p>A <em>div</em> constraint corresponds to a euclidean division. It is posted as following:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x / y = z
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#8f5902;font-style:italic">// it assures that y != 0, and z is rounding towards 0.
+</span></code></pre></div><p><em>modulo</em> constraints are of three types:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x % a = b
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x % a = z
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x % y = z
+</span></code></pre></div><p>An <em>absolute</em> constraint is posted like this:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">absolute</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// x = |y|
+</span></code></pre></div><h3 id="global-constraints">Global constraints</h3>
+<p>Let <code>min</code> and <code>max</code> be <code>IntVar</code> and let <code>vars</code> be an array of <code>IntVar</code>. One can post the following mathematical constraints to assure that <code>min</code> is the
+minimum of the variables in <code>vars</code> and <code>max</code> the maximum of them:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">min</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">min</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">max</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">max</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Similarly, one can want to sum some variables. For such an operation, one should use the <code>sum</code> constraint:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">String</span> <span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// here, it gives sum(vars) &gt;= x
+</span></code></pre></div><p>And, finally, for weighted sums, one should use the <code>scalar</code> constraint:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">String</span> <span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">coefs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// coefs being an array of int
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#8f5902;font-style:italic">// here, it gives sum(vars[i]*coefs[i]) &gt;= x
+</span></code></pre></div><h2 id="cardinality-constraints">Cardinality constraints</h2>
+<p>allDifferent, allEqual, nvalues, element</p>
 <h2 id="scheduling-constraints">Scheduling constraints</h2>
+<h3 id="task-variables"><code>Task</code> variables</h3>
+<h3 id="cumulative-constraint"><code>cumulative</code> constraint</h3>
 <h2 id="table-constraints">Table constraints</h2>
 <h2 id="sat-constraints">SAT constraints</h2>
 <p>A SAT solver is embedded in Choco-solver. It is not  designed to be accessed directly.
@@ -525,7 +585,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 30.01.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/7c55b811d5214e17ba073d2412c9201510992474">Removed submodule (7c55b81)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 03.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/57f7a26c934394a47acd6145c2e47fefdea15c00">remove info-alert on Absolute view (57f7a26)</a>
 </div>
 </div>
 

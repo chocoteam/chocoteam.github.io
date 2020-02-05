@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/modeling/variables/" />
 <meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
-<meta property="article:modified_time" content="2020-01-30T21:50:46+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-02-02T16:55:01+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Declaring variables">
 <meta itemprop="description" content="How to declare variables?
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
-<meta itemprop="dateModified" content="2020-01-30T21:50:46&#43;01:00" />
-<meta itemprop="wordCount" content="1115">
+<meta itemprop="dateModified" content="2020-02-02T16:55:01&#43;01:00" />
+<meta itemprop="wordCount" content="1149">
 
 
 
@@ -60,8 +60,8 @@
 <script>
 window.MathJax = {
   tex: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[','\]']],
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
     processEscapes: true,
     processEnvironments: true
   },
@@ -470,7 +470,7 @@ The <em>domain</em> of a variable –(super)set of values it may take– must be
 Variables are created using the <code>Model</code> object.
 When creating a variable, the user can specify a name to help reading the output.</p>
 <h2 id="integer-variables">Integer variables</h2>
-<p>An integer variable an unknown whose value should be an integer. Therefore, the domain of an integer variable is a set of integers (representing possible values).
+<p>An integer variable is an unknown whose value should be an integer. Therefore, the domain of an integer variable is a set of integers (representing possible values).
 To create an integer variable, the <code>Model</code> should be used:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Create a constant variable equal to 42
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">v0</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v0&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">42</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
@@ -483,13 +483,14 @@ To create an integer variable, the <code>Model</code> should be used:</p>
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;vs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 <span style="color:#8f5902;font-style:italic">// Create a matrix of 5x6 variables taking their value in [-1, 1]
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;vs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>There exists different ways to encode the domain of an integer variable.</p>
+</code></pre></div><p>There exists different ways to encode the domain of an integer variable: bounded domain or enumerated domain.</p>
 <h3 id="bounded-domain">Bounded domain</h3>
 <p>When the domain of an integer variable is said to be <em>bounded</em>, it is represented through
 an interval of the form $[\![a,b]\!]$ where $a$ and $b$ are integers such that $a \leq b$.
 This representation is pretty light in memory (it requires only two integers) but it cannot represent <em>holes</em> in the domain.
 For instance, if we have a variable whose domain is $[\![0,10]\!]$ and a constraint enables to detect that
-values 2, 3, 7 and 8 are infeasible, then this learning will be lost as it cannot be encoded in the domain (which remains the same).</p>
+values 2, 3, 7 and 8 are infeasible, then this learning will be lost as it cannot be encoded in the domain (which remains the same).
+However, whenever the values 9 and 10 are removed from the variable&rsquo;s domain, the upper bound of the variable will be set to 6 by such a constraint.</p>
 <p>To specify you want to use bounded domains, set the <code>boundedDomain</code> argument to <code>true</code> when creating variables:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div>
@@ -567,7 +568,7 @@ Otherwise, it is simply a modeling shortcut to create a variable and post a cons
 </code></pre></div><h4 id="x--3times-y-">$x = 3\times y$ :</h4>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intScaleView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><h3 id="logical-views">Logical views</h3>
-<p>A logical view is based on an integer variable, a basic arithmetical relation ($=,\neq,\leq,\geq$) and a constant. The resulting view states wether or not the relation holds.</p>
+<p>A logical view is based on an integer variable, a basic arithmetical relation ($=,\neq,\leq,\geq$) and a constant. The resulting view states whether or not the relation holds.</p>
 <h4 id="b-leftrightarrow-x--4-">$b \Leftrightarrow (x = 4)$ :</h4>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intEqView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><h4 id="b-leftrightarrow-x-neq-4-">$b \Leftrightarrow (x \neq 4)$ :</h4>
@@ -661,7 +662,7 @@ No additional variable is needed, a view based on the variable to refute is enou
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 30.01.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/7c55b811d5214e17ba073d2412c9201510992474">Removed submodule (7c55b81)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
 </div>
 </div>
 

@@ -4,12 +4,12 @@
   
   <url>
     <loc>/docs/getting-started/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-02-02T16:55:01+01:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/modeling/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-02-02T16:55:01+01:00</lastmod>
   </url>
   
   <url>
@@ -34,7 +34,7 @@
   
   <url>
     <loc>/tutos/first-example/first-model/</loc>
-    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url>
   
   <url>
@@ -44,7 +44,7 @@
   
   <url>
     <loc>/tutos/verbal-arithmetic/</loc>
-    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url>
   
   <url>
@@ -59,7 +59,7 @@
   
   <url>
     <loc>/docs/modeling/variables/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-02-02T16:55:01+01:00</lastmod>
   </url>
   
   <url>
@@ -69,7 +69,7 @@
   
   <url>
     <loc>/docs/modeling/constraints/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-02-02T16:55:01+01:00</lastmod>
   </url>
   
   <url>
@@ -79,7 +79,7 @@
   
   <url>
     <loc>/docs/modeling/intconstraints/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-02-03T20:00:02+01:00</lastmod>
   </url>
   
   <url>
@@ -98,8 +98,18 @@
   </url>
   
   <url>
+    <loc>/tutos/warehouse-location-problem/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tutos/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/warehouse-location-problem/description/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url>
   
   <url>
@@ -113,8 +123,83 @@
   </url>
   
   <url>
+    <loc>/tutos/warehouse-location-problem/math/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/warehouse-location-problem/code/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/aircraft-landing-problem/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/aircraft-landing-problem/description/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/aircraft-landing-problem/math/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/aircraft-landing-problem/code/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/nonogram/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/nonogram/description/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/nonogram/math/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/advanced-usages/propagator/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/nonogram/code/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/golomb-ruler/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/golomb-ruler/description/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/golomb-ruler/math/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/golomb-ruler/code/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tutos/constraints/</loc>
+    <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url>
   
   <url>

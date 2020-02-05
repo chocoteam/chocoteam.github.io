@@ -26,12 +26,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/modeling/constraints/" />
 <meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
-<meta property="article:modified_time" content="2020-01-30T21:50:46+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-02-02T16:55:01+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Handling constraints">
 <meta itemprop="description" content="How to handle constraints?
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2020-01-30T21:50:46&#43;01:00" />
+<meta itemprop="dateModified" content="2020-02-02T16:55:01&#43;01:00" />
 <meta itemprop="wordCount" content="639">
 
 
@@ -443,7 +443,7 @@
 i.e., restrictions over variables that must be respected in order to get a feasible solution.
 A constraint is equipped with a (set of) filtering algorithm(s), named <em>propagator(s)</em>.
 A propagator <strong>removes</strong>, from the domains of the target variables, values that cannot correspond to a valid combination of values.
-A solution of a problem is variable-value assignment verifying all the constraints.</p>
+A solution of a problem is a variable-value assignment verifying all the constraints.</p>
 <p>Constraint can be declared in <em>extension</em>, by defining the valid/invalid tuples, or in <em>intension</em>, by defining a relation between the variables.
 For a given requirement, there can be several constraints/propagators available.
 A widely used example is the AllDifferent constraint which ensures that all its variables take a distinct value in a solution.
@@ -482,7 +482,7 @@ Instead, each constraint is associated with a specific method in <code>Model</co
 a generic <code>Constraint</code> with the right list of propagators.
 Each propagator is associated with a unique java class.</p>
 <p>Note that it is not required to manipulate propagators, but only constraints.
-However, one can define specific constraints by defining combinations of existing and/or its own propagators.</p>
+However, one can define specific constraints by defining combinations of existing and/or home-made propagators.</p>
 <h3 id="solution-checking">Solution checking</h3>
 <p>The satisfaction of the constraints is done on each solution by calling the <code>isSatisfied()</code> method of every constraint.
 By default, this method checks the <code>isEntailed()</code> method of each of its propagators.</p>
@@ -600,7 +600,7 @@ However, the following call will associate <code>b1</code> with the constraint a
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 30.01.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/7c55b811d5214e17ba073d2412c9201510992474">Removed submodule (7c55b81)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
 </div>
 </div>
 

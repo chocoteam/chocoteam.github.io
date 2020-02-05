@@ -20,24 +20,24 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Mathematical model | Choco-solver</title><meta property="og:title" content="Mathematical model" />
+<title>Math | Choco-solver</title><meta property="og:title" content="Math" />
 <meta property="og:description" content="A mathematical model of the problem.
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/tutos/verbal-arithmetic/math/" />
-<meta property="article:published_time" content="2020-01-31T14:26:10+01:00" />
-<meta property="article:modified_time" content="2020-01-31T14:49:05+01:00" /><meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Mathematical model">
+<meta property="og:url" content="/tutos/golomb-ruler/math/" />
+<meta property="article:published_time" content="2020-02-05T16:01:10+01:00" />
+<meta property="article:modified_time" content="2020-02-05T17:42:22+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Math">
 <meta itemprop="description" content="A mathematical model of the problem.
 ">
-<meta itemprop="datePublished" content="2020-01-31T14:26:10&#43;01:00" />
-<meta itemprop="dateModified" content="2020-01-31T14:49:05&#43;01:00" />
-<meta itemprop="wordCount" content="193">
+<meta itemprop="datePublished" content="2020-02-05T16:01:10&#43;01:00" />
+<meta itemprop="dateModified" content="2020-02-05T17:42:22&#43;01:00" />
+<meta itemprop="wordCount" content="390">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mathematical model"/>
+<meta name="twitter:title" content="Math"/>
 <meta name="twitter:description" content="A mathematical model of the problem.
 "/>
 
@@ -72,7 +72,7 @@ window.MathJax = {
 </script>
 
 
-    <title>Mathematical model | Choco-solver</title>
+    <title>Math | Choco-solver</title>
   </head>
   <body class="td-page">
     <header>
@@ -219,10 +219,10 @@ window.MathJax = {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/tutos/verbal-arithmetic/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Verbal Arithmetic</a>
+    <a  href="/tutos/verbal-arithmetic/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Verbal Arithmetic</a>
   </li>
   <ul>
-    <li class="collapse show" id="tutosverbal-arithmetic">
+    <li class="collapse " id="tutosverbal-arithmetic">
       
       
       
@@ -235,7 +235,7 @@ window.MathJax = {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-tutosverbal-arithmeticmath" href="/tutos/verbal-arithmetic/math/">Mathematical model</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-tutosverbal-arithmeticmath" href="/tutos/verbal-arithmetic/math/">Mathematical model</a>
       
       
       
@@ -383,10 +383,10 @@ window.MathJax = {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/tutos/golomb-ruler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Golomb Ruler</a>
+    <a  href="/tutos/golomb-ruler/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Golomb Ruler</a>
   </li>
   <ul>
-    <li class="collapse " id="tutosgolomb-ruler">
+    <li class="collapse show" id="tutosgolomb-ruler">
       
       
       
@@ -399,7 +399,7 @@ window.MathJax = {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-tutosgolomb-rulermath" href="/tutos/golomb-ruler/math/">Math</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-tutosgolomb-rulermath" href="/tutos/golomb-ruler/math/">Math</a>
       
       
       
@@ -445,8 +445,8 @@ window.MathJax = {
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/tutos/Verbal%20arithmetic/Math.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Mathematical%20model" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/tutos/Golomb%20Ruler/Math.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Math" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -463,10 +463,11 @@ window.MathJax = {
     <li><a href="#variables">Variables</a></li>
     <li><a href="#constraints">Constraints</a>
       <ul>
-        <li><a href="#globally">Globally:</a></li>
-        <li><a href="#locally">Locally</a></li>
+        <li><a href="#redundant-constraints">Redundant constraints</a></li>
+        <li><a href="#symmetry-breaking-constraints">Symmetry-breaking constraints</a></li>
       </ul>
     </li>
+    <li><a href="#objective">Objective</a></li>
   </ul>
 </nav>
 
@@ -495,14 +496,14 @@ window.MathJax = {
 
 
 <li class="breadcrumb-item" >
-	<a href="/tutos/verbal-arithmetic/">Verbal Arithmetic</a>
+	<a href="/tutos/golomb-ruler/">Golomb Ruler</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/tutos/verbal-arithmetic/math/">Mathematical model</a>
+	<a href="/tutos/golomb-ruler/math/">Math</a>
 </li>
 
 	</ol>
@@ -510,35 +511,76 @@ window.MathJax = {
 
             
 <div class="td-content">
-	<h1>Mathematical model</h1>
+	<h1>Math</h1>
 	<div class="lead">A mathematical model of the problem.</div>
 	<h2 id="variables">Variables</h2>
-<p>We associate a variable to each letter: <em>s, e, n, d, m, o, r, y</em>:</p>
 <ul>
-<li><em>e, n, d, o, r, y</em> are defined wih a $[\![0-9]\!]$-domain,</li>
-<li><em>s, m</em> are defined with a $[\![1-9]\!]$-domain.</li>
+<li>
+<p>An integer variable $\text{tick}_i$ per mark <em>i</em> indicates its
+position.</p>
+<p>$$\forall i \in [1,m], \text{tick}_i = [\![0,9999]\!]$$</p>
+</li>
+<li>
+<p>An integer variable $\text{diff}_{i,j}$ per couple of marks $i,j$
+($i &lt; j$) indicates distance between the two marks.</p>
+<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} = [\![0,9999]\!]$$</p>
+</li>
 </ul>
 <h2 id="constraints">Constraints</h2>
-<p>The first constraint to satisfy is that no two letters are assigned to
-the same digit:</p>
 <ul>
-<li>$\forall i,j \in \{s, e, n, d, m, o, r, y\}, i\ne j$</li>
+<li>
+<p>Maks are ordered :</p>
+<p>$$\forall i \in [2,m], \text{tick}_{i-1} &lt; \text{tick}_i$$</p>
+</li>
+<li>
+<p>Distance between two distinct marks :</p>
+<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} = \text{tick}_j - \text{tick}_i$$</p>
+</li>
+<li>
+<p>No two pairs of marks are the same distance apart</p>
+<p>$$\forall i,j \in [1,m], i \ne j, \text{tick}_{i} \ne \text{tick}_{j}$$</p>
+<p>We saw this type of constraint before, it is an <em>alldifferent</em>
+constraint.</p>
+</li>
+<li>
+<p>The first mark can be set to <code>0</code>:
+$$\text{tick}_0 = 0$$</p>
+</li>
 </ul>
-<p>Since we handle the constraint &ldquo;<em>a word cannot start with à 0</em>&rdquo; directly
-in the variables domain, the other constraints deal with the equation
-itself. There are two options, either a unique scalar product, with no
-additional variables, or cut it up wrt columns.</p>
-<h3 id="globally">Globally:</h3>
-<p>$$1000\times s + 100\times e + 10\times n + 1\times d$$
-$$+ 1000\times m + 100\times o + 10\times r + 1\times e$$
-$$= 10000\times m + 1000\times o + 100\times n + 10\times e + 1\times y$$</p>
-<h3 id="locally">Locally</h3>
-<p>$$d + e = y + 10\times r_1$$</p>
-<p>$$r_1 + n + r = e +10\times r_2$$</p>
-<p>$$r_2 + e + o = n +10\times r_3$$</p>
-<p>$$r_3 + s + e = o + 10\times m$$</p>
-<p>where $r_1,r_2,r_3$ are $[\![0-1]\!]$-domain variables and express the
-carries.</p>
+<p>Those variables and constraints are sufficient to define the problem.
+However, this initial model can be improved by adding <em>redundant
+constraints</em> and by <em>breaking symmetries</em>.</p>
+<h3 id="redundant-constraints">Redundant constraints</h3>
+<p>These types of constraints are not required to find solutions, they are
+implied by the other constraints of the model. Thus, their role is to
+bring more filtering and to possibly detect infeasible combinations
+earlier in the search.</p>
+<p>The following reasoning is based on the fact that:</p>
+<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} = \text{diff}_{i,i+1} \ldots \text{diff}_{j-1,j}$$</p>
+<p>Because all distances must be different, we can estimate the minimal sum
+of distances as a sum of <em>j-i</em> different positive numbers.</p>
+<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} \geq \frac{(j-i) * (j-i+1)}{2}$$</p>
+<p>Moreover, remember that</p>
+<p>$$\text{diff}_{1,m} = \text{tick}_{m} - \text{tick}_1$$</p>
+<p>and</p>
+<p>$$\text{diff}_{1,m} = \text{diff}_{1,2} \ldots \text{diff}_{i,j} \ldots\text{diff}_{m-1,m}$$</p>
+<p>Thus, since $\text{tick}_1$ is equal to 0, we deduce that:</p>
+<p>$$\text{tick}_{m} = \text{diff}_{1,2} \ldots \text{diff}_{i,j} \ldots\text{diff}_{m-1,m}$$</p>
+<p>There are <em>m-1-j+i</em> different numbers so the upper for
+$\text{diff}_{i,j}$ can be defined as:</p>
+<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} \leq \text{tick}_m - \frac{(m - 1 - j + i) * (m - j + i)}{2}$$</p>
+<p>To go into details, please read <a href="https://www.researchgate.net/publication/221644589_Effective_Modeling_with_Constraints">Barták, &ldquo;Effective modeling with
+constraints&rdquo;</a>.</p>
+<h3 id="symmetry-breaking-constraints">Symmetry-breaking constraints</h3>
+<p>These types of constraints aims at breaking symmetries and reducing the
+search space size. Indeed, they avoid finding new solutions that are
+symmetric to previously found ones.</p>
+<p>In a Golomb ruler, an easy way to break symmetries is to define an order
+between the first and the last distances:</p>
+<p>$$\text{diff}_{0,1} &lt; \text{diff}_{m-1,m}$$</p>
+<h2 id="objective">Objective</h2>
+<p>The objective is to find a solution that minimizes the position of the
+last mark $\text{tick}_m$.</p>
 
 	
 		<style>
@@ -602,7 +644,7 @@ carries.</p>
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 31.01.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/71a7ad339b02cbdd2345dacc16f23315567e7528">Mise à jour du site (71a7ad3)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 05.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/688181e1836a6448d1e751b4ee718ad52c74a64c">Update tutorials (688181e)</a>
 </div>
 </div>
 
