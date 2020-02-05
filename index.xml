@@ -13,6 +13,22 @@
     
     
     <item>
+      <title>Blog: Tutorials migration</title>
+      <link>/blog/2020/02/05/tutorials-migration/</link>
+      <pubDate>Wed, 05 Feb 2020 17:44:29 +0100</pubDate>
+      
+      <guid>/blog/2020/02/05/tutorials-migration/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The updating of the site continues with the progressive migration of the tutorials.&lt;/p&gt;
+&lt;p&gt;We are now close to a release. It will be effective once the validation of the current version of the documentation and especially the update of the release scripts has been completed.
+We will try to keep you informed by publishing a post.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Blog: Revamping documentation</title>
       <link>/blog/2020/01/31/revamping-documentation/</link>
       <pubDate>Fri, 31 Jan 2020 10:26:28 +0100</pubDate>
