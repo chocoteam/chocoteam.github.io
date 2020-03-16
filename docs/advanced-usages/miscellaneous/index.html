@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,18 +20,35 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Modeling | Choco-solver</title><meta property="og:title" content="Modeling" />
-<meta property="og:description" content="What do you need to know to express a problem?
-" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/modeling/" />
-<meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Modeling">
-<meta itemprop="description" content="What do you need to know to express a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Modeling"/>
-<meta name="twitter:description" content="What do you need to know to express a problem?
-"/>
+<title>Miscellaneous | Choco-solver</title><meta property="og:title" content="Miscellaneous" />
+<meta property="og:description" content="Search monitors Principle A search monitor is an observer of the resolver. It gives user access before and after executing each main step of the solving process:
+  initialize: when the solving process starts and the initial propagation is run,
+  open node: when a decision is computed,
+  down branch: on going down in the tree search applying or refuting a decision,
+  up branch: on going up in the tree search to reconsider a decision," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/advanced-usages/miscellaneous/" />
+<meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
+<meta property="article:modified_time" content="2020-03-16T19:01:08+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Miscellaneous">
+<meta itemprop="description" content="Search monitors Principle A search monitor is an observer of the resolver. It gives user access before and after executing each main step of the solving process:
+  initialize: when the solving process starts and the initial propagation is run,
+  open node: when a decision is computed,
+  down branch: on going down in the tree search applying or refuting a decision,
+  up branch: on going up in the tree search to reconsider a decision,">
+<meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T19:01:08&#43;01:00" />
+<meta itemprop="wordCount" content="556">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Miscellaneous"/>
+<meta name="twitter:description" content="Search monitors Principle A search monitor is an observer of the resolver. It gives user access before and after executing each main step of the solving process:
+  initialize: when the solving process starts and the initial propagation is run,
+  open node: when a decision is computed,
+  down branch: on going down in the tree search applying or refuting a decision,
+  up branch: on going up in the tree search to reconsider a decision,"/>
 
 
 
@@ -48,10 +64,26 @@
   crossorigin="anonymous"></script>
 
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
 
-    <title>Modeling | Choco-solver</title>
+
+    <title>Miscellaneous | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -184,10 +216,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Modeling</a>
+    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Modeling</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsmodeling">
+    <li class="collapse " id="docsmodeling">
       
       
       
@@ -337,10 +369,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Advanced usages</a>
+    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Advanced usages</a>
   </li>
   <ul>
-    <li class="collapse " id="docsadvanced-usages">
+    <li class="collapse show" id="docsadvanced-usages">
       
       
       
@@ -377,7 +409,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesmiscellaneous" href="/docs/advanced-usages/miscellaneous/">Miscellaneous</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsadvanced-usagesmiscellaneous" href="/docs/advanced-usages/miscellaneous/">Miscellaneous</a>
       
       
     </li>
@@ -411,8 +443,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Modeling" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Advanced%20usages/Miscellaneous.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Miscellaneous" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -423,6 +455,24 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#search-monitors">Search monitors</a></li>
+      </ul>
+    </li>
+    <li><a href="#settings">Settings</a></li>
+    <li><a href="#extensions-of-choco">Extensions of Choco</a>
+      <ul>
+        <li><a href="#choco-parsers">choco-parsers</a></li>
+        <li><a href="#choco-graph">choco-graph</a></li>
+        <li><a href="#choco-gui">choco-gui</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -438,6 +488,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +498,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="/docs/advanced-usages/">Advanced usages</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/modeling/">Modeling</a>
+	<a href="/docs/advanced-usages/miscellaneous/">Miscellaneous</a>
 </li>
 
 	</ol>
@@ -454,126 +514,104 @@
 
             
 <div class="td-content">
-	<h1>Modeling</h1>
-	<div class="lead">What do you need to know to express a problem?</div>
-	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>or:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
-
-
-<div class="pageinfo pageinfo-primary">
-<p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
-</div>
-
-<p>Once the model is created, variables and constraints can be defined.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/variables/">Declaring variables</a>
-                    </h5>
-                    <p>How to declare variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/constraints/">Handling constraints</a>
-                    </h5>
-                    <p>How to handle constraints?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/intconstraints/">Constraints over integer variables</a>
-                    </h5>
-                    <p>Overview of constraints based on boolean and integer variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
-                    </h5>
-                    <p>Overview of constraints based on set variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
-                    </h5>
-                    <p>How to declare constraints based on real variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/expressions/">Building expressions</a>
-                    </h5>
-                    <p>How to build and use expressions?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+	<h1>Miscellaneous</h1>
+	
+	<h3 id="search-monitors">Search monitors</h3>
+<h4 id="principle">Principle</h4>
+<p>A search monitor is an observer of the resolver.
+It gives user access before and after executing each main step of the solving process:</p>
+<ul>
+<li>
+<p>initialize: when the solving process starts and the initial propagation is run,</p>
+</li>
+<li>
+<p>open node: when a decision is computed,</p>
+</li>
+<li>
+<p>down branch: on going down in the tree search applying or refuting a decision,</p>
+</li>
+<li>
+<p>up branch: on going up in the tree search to reconsider a decision,</p>
+</li>
+<li>
+<p>solution: when a solution is got,</p>
+</li>
+<li>
+<p>restart search: when the search is restarted to a previous node, commonly the root node,</p>
+</li>
+<li>
+<p>close: when the solving process ends,</p>
+</li>
+<li>
+<p>contradiction: on a failure,</p>
+</li>
+</ul>
+<p>With the accurate search monitor, one can easily observe with the resolver, from pretty printing of a solution to learning nogoods from restart, or many other actions.</p>
+<p>The interfaces to implement are:</p>
+<ul>
+<li>
+<p><code>IMonitorInitialize</code>,</p>
+</li>
+<li>
+<p><code>IMonitorOpenNode</code>,</p>
+</li>
+<li>
+<p><code>IMonitorDownBranch</code>,</p>
+</li>
+<li>
+<p><code>IMonitorUpBranch</code>,</p>
+</li>
+<li>
+<p><code>IMonitorSolution</code>,</p>
+</li>
+<li>
+<p><code>IMonitorRestart</code>,</p>
+</li>
+<li>
+<p><code>IMonitorContradiction</code>,</p>
+</li>
+<li>
+<p><code>IMonitorClose</code>.</p>
+</li>
+</ul>
+<p>Most of them gives the opportunity to do something before and after a step. The other ones are called after a step.</p>
+<p>Simple example to print every solution:</p>
+<pre><code>Solver s = model.getSolver();
+s.plugMonitor(new IMonitorSolution() {
+    @Override
+    public void onSolution() {
+        System.out.println(&quot;x = &quot;+x.getValue());
+    }
+});
+</code></pre><p>In Java 8 style:</p>
+<pre><code>Solver s = model.getSolver();
+s.plugMonitor((IMonitorSolution) () -&gt; {System.out.println(&quot;x = &quot;+x.getValue());});
+</code></pre><h2 id="settings">Settings</h2>
+<p>A <code>Settings</code> object is attached to each <code>Model</code>.
+It declares default behavior for various purposes: from general purpose (such as the welcome message), modelling purpose (such as enabling views) or solving purpose (such as the search binder).</p>
+<p>Default settings can be accessed through <code>DefaultSettings</code>.
+This class can be extended to provide more settings and set to modified the default values.</p>
+<p>Settings are declared in a <code>Model</code> constructor.
+Settings are not immutable but modifying value after <code>Model</code> construction can lead to unexpected behavior.</p>
+<h2 id="extensions-of-choco">Extensions of Choco</h2>
+<h3 id="choco-parsers">choco-parsers</h3>
+<p>choco-parsers is an extension of Choco 4. It provides a parser for the FlatZinc language, a low-level solver input language that is the target language for MiniZinc.
+This module follows the flatzinc standards that are used for the annual MiniZinc challenge. It only supports integer variables.
+You will find it at <a href="https://github.com/chocoteam/choco-parsers">https://github.com/chocoteam/choco-parsers</a></p>
+<h3 id="choco-graph">choco-graph</h3>
+<p>choco-graph is a Choco 4 module which allows to search for a graph, which may be subject to graph constraints.
+The domain of a graph variable G is a graph interval in the form [G_lb,G_ub].
+G_lb is the graph representing vertices and edges which must belong to any single solution whereas G_ub is the graph representing vertices and edges which may belong to one solution.
+Therefore, any value G_v must satisfy the graph inclusion “G_lb subgraph of G_v subgraph of  G_ub”.
+One may see a strong connection with set variables.
+A graph variable can be subject to graph constraints to ensure global graph properties (e.g. connectedness, acyclicity) and channeling constraints to link the graph variable with some other binary, integer or set variables.
+The solving process consists of removing nodes and edges from G_ub and adding some others to G_lb until having G_lb = G_ub, i.e. until G gets instantiated.
+These operations stem from both constraint propagation and search. The benefits of graph variables stem from modeling convenience and performance.</p>
+<p>This extension has documentation. You will find it at <a href="https://github.com/chocoteam/choco-graph">https://github.com/chocoteam/choco-graph</a></p>
+<h3 id="choco-gui">choco-gui</h3>
+<p>choco-gui is an extension of Choco 4.
+It provides a Graphical User Interface with various views which can be simply plugged on any Choco Model object.
+You will find it at <a href="https://github.com/chocoteam/choco-gui">https://github.com/chocoteam/choco-gui</a></p>
 
 	
 		<style>
@@ -637,9 +675,10 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/2a51b228c1b5eb0fd70fc70c2b3a7e3a14ec76bf">Update doc (2a51b22)</a>
 </div>
 </div>
+
 
           </main>
         </div>

@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Modeling | Choco-solver</title><meta property="og:title" content="Modeling" />
-<meta property="og:description" content="What do you need to know to express a problem?
+<title>Restarts | Choco-solver</title><meta property="og:title" content="Restarts" />
+<meta property="og:description" content="How to define restart policy?
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/modeling/" />
-<meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Modeling">
-<meta itemprop="description" content="What do you need to know to express a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Modeling"/>
-<meta name="twitter:description" content="What do you need to know to express a problem?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/solving/restarts/" />
+<meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
+<meta property="article:modified_time" content="2020-03-16T14:23:48+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Restarts">
+<meta itemprop="description" content="How to define restart policy?
+">
+<meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T14:23:48&#43;01:00" />
+<meta itemprop="wordCount" content="482">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Restarts"/>
+<meta name="twitter:description" content="How to define restart policy?
 "/>
 
 
@@ -48,10 +55,26 @@
   crossorigin="anonymous"></script>
 
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
 
-    <title>Modeling | Choco-solver</title>
+
+    <title>Restarts | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -184,10 +207,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Modeling</a>
+    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Modeling</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsmodeling">
+    <li class="collapse " id="docsmodeling">
       
       
       
@@ -243,10 +266,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/solving/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Solving</a>
+    <a  href="/docs/solving/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Solving</a>
   </li>
   <ul>
-    <li class="collapse " id="docssolving">
+    <li class="collapse show" id="docssolving">
       
       
       
@@ -289,7 +312,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingrestarts" href="/docs/solving/restarts/">Restarts</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docssolvingrestarts" href="/docs/solving/restarts/">Restarts</a>
       
       
       
@@ -411,8 +434,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Modeling" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Solving/Restarts.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Restarts" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -423,6 +446,19 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#on-solutions">On solutions</a></li>
+        <li><a href="#geometrical">Geometrical</a></li>
+        <li><a href="#luby">Luby</a></li>
+        <li><a href="#recording-no-goods-on-restart">Recording no-goods on restart</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -438,6 +474,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +484,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="/docs/solving/">Solving</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/modeling/">Modeling</a>
+	<a href="/docs/solving/restarts/">Restarts</a>
 </li>
 
 	</ol>
@@ -454,126 +500,61 @@
 
             
 <div class="td-content">
-	<h1>Modeling</h1>
-	<div class="lead">What do you need to know to express a problem?</div>
-	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>or:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
+	<h1>Restarts</h1>
+	<div class="lead">How to define restart policy?</div>
+	<p>Restart means stopping the current tree search, then starting a new tree search from the root node.
+Restarting makes sense only when coupled with randomized dynamic branching strategies ensuring that the same enumeration tree is not constructed twice.
+The branching strategies based on the past experience of the search, such as adaptive search strategies, are more accurate in combination with a restart approach.</p>
+<p>Unless the number of allowed restarts is limited, a tree search with restarts is not complete anymore. It is a good strategy, though, when optimizing an NP-hard problem in a limited time.</p>
+<p>Some adaptive search strategies resolutions are improved by sometimes restarting the search exploration from the root node.
+Thus, the statistics computed on the bottom of the tree search can be applied on the top of it.</p>
+<p>Several restart strategies are available in <code>Solver</code>.</p>
+<h3 id="on-solutions">On solutions</h3>
+<p>It may be relevant to restart after each solution.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Restarts after after each new solution.
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setRestartOnSolutions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><h3 id="geometrical">Geometrical</h3>
+<p>Geometrical restarts perform a search with restarts controlled by the resolution event  <code>counter</code> which counts events occurring during the search.
+Parameter <code>base</code> indicates the maximal number of events allowed in the first search tree.
+Once this limit is reached, a restart occurs and the search continues until <code>base</code>$\times$<code> grow</code> events are done, and so on.
+After each restart, the limit number of events is increased by the geometric factor <code>grow</code>.
+<code>limit</code> states the maximum number of restarts.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setGeometricalRestart</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">base</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">grow</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ICounter</span> <span style="color:#000">counter</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">limit</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div>
 
-
-<div class="pageinfo pageinfo-primary">
-<p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Info</h4>
+Some counters may required an argument on constructor that defines the limit to not overpass.
+Such an argument is ignored by a restart strategy which overrides that value with its own computed one.
 </div>
 
-<p>Once the model is created, variables and constraints can be defined.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/variables/">Declaring variables</a>
-                    </h5>
-                    <p>How to declare variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/constraints/">Handling constraints</a>
-                    </h5>
-                    <p>How to handle constraints?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/intconstraints/">Constraints over integer variables</a>
-                    </h5>
-                    <p>Overview of constraints based on boolean and integer variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
-                    </h5>
-                    <p>Overview of constraints based on set variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
-                    </h5>
-                    <p>How to declare constraints based on real variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/expressions/">Building expressions</a>
-                    </h5>
-                    <p>How to build and use expressions?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+<h3 id="luby">Luby</h3>
+<p>The <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.5558">Luby</a> ’s restart policy is an alternative to the geometric restart policy.
+It performs a search with restarts controlled by the number of resolution events  counted by <code>counter</code>.
+The maximum number of events allowed at a given restart iteration is given by base multiplied by the Las Vegas coefficient at this iteration.
+The sequence of these coefficients is defined recursively on its prefix subsequences:
+starting from the first prefix $1$, the $(k+1)^{th}$ prefix is the $k^{th}$ prefix repeated <code>grow</code> times and
+immediately followed by coefficient <code>grow</code>$^k$.</p>
+<ul>
+<li>
+<p>the first coefficients for <code>grow</code> = 2 :
+$$ [1,1,2,1,1,2,4,1,1,2,1,1,2,4,8,1,\cdots]$$</p>
+</li>
+<li>
+<p>the first coefficients for <code>grow</code> =3 :
+$$ [1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 9,\cdots] $$</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLubyRestart</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">base</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">grow</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ICounter</span> <span style="color:#000">counter</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">limit</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p>You can design your own restart strategies using:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setRestarts</span><span style="color:#ce5c00;font-weight:bold">(</span> <span style="color:#000">LongCriterion</span> <span style="color:#000">restartCriterion</span><span style="color:#ce5c00;font-weight:bold">,</span>
+                    <span style="color:#000">IRestartStrategy</span> <span style="color:#000">restartStrategy</span><span style="color:#ce5c00;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">restartsLimit</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><h3 id="recording-no-goods-on-restart">Recording no-goods on restart</h3>
+<p>When a restart occurs, one may want to prevent the search space explored before restarting to be discovered again in the future. This is achieved by recording <em>no-goods</em> on restart.</p>
+<p>By calling:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setNoGoodRecordingFromRestarts</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>anytime a restart occurs, a <em>no-good</em> is extracted from the decision path in order to prevent the same scanning the same sub-tree in the futur.</p>
 
 	
 		<style>
@@ -637,9 +618,10 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/9d077c61145b976c050f4f3b0fededdbeb662220">Update solving part (9d077c6)</a>
 </div>
 </div>
+
 
           </main>
         </div>

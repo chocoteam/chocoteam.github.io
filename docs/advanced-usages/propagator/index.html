@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/advanced-usages/propagator/" />
 <meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
-<meta property="article:modified_time" content="2020-01-30T21:50:46+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-03-16T19:01:08+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Designing a propagator">
 <meta itemprop="description" content="How to develop a propagator?
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2020-01-30T21:50:46&#43;01:00" />
-<meta itemprop="wordCount" content="926">
+<meta itemprop="dateModified" content="2020-03-16T19:01:08&#43;01:00" />
+<meta itemprop="wordCount" content="902">
 
 
 
@@ -250,12 +250,6 @@ window.MathJax = {
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsmodelingexpressions" href="/docs/modeling/expressions/">Building expressions</a>
       
       
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsmodelingto-remove" href="/docs/modeling/to-remove/"></a>
-      
-      
     </li>
   </ul>
 </ul>
@@ -282,19 +276,49 @@ window.MathJax = {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingstrategies" href="/docs/solving/strategies/">Exploring search space</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingsolving" href="/docs/solving/solving/">Lauching the resolution process</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingsolving" href="/docs/solving/solving/">Looking for solutions</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingsolutions" href="/docs/solving/solutions/">Dealing with solutions</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingto-remove" href="/docs/solving/to-remove/"></a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingstrategies" href="/docs/solving/strategies/">Search Strategies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingstatistics" href="/docs/solving/statistics/">Statistics</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvinglimits" href="/docs/solving/limits/">Limits</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvinglns" href="/docs/solving/lns/">Large Neighborhood Search</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingrestarts" href="/docs/solving/restarts/">Restarts</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingportfolio" href="/docs/solving/portfolio/">Multi-thread resolution</a>
       
       
     </li>
@@ -352,7 +376,31 @@ window.MathJax = {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesto-remove" href="/docs/advanced-usages/to-remove/"></a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesstrategies" href="/docs/advanced-usages/strategies/">Designing a search strategy</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagessearch-loop" href="/docs/advanced-usages/search-loop/">Search loop</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesexplanations" href="/docs/advanced-usages/explanations/">Explanations</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesibex" href="/docs/advanced-usages/ibex/">Ibex</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesmiscellaneous" href="/docs/advanced-usages/miscellaneous/">Miscellaneous</a>
       
       
     </li>
@@ -454,21 +502,22 @@ window.MathJax = {
 	<div class="lead">How to develop a propagator?</div>
 	<h3 id="designing-your-own-constraint">Designing your own constraint</h3>
 <p>You can create your own constraint by creating a generic <code>Constraint</code> object with the appropriate propagator:</p>
-<pre><code>Constraint c = new Constraint(&quot;MyConstraint&quot;, new MyPropagator(vars));
-</code></pre><p>The only tricky part relies in the propagator implementation.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Constraint</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Constraint</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;MyConstraint&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MyPropagator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>The only tricky part relies in the propagator implementation.
 Your propagator must extend the <code>Propagator</code> class but, at the begining, not all methods have to be overwritted.
 We will see two ways to implement a propagator ensuring that <code>X &gt;= Y</code>.</p>
+<p>A guided implementation of a scalar constraint is presented in the tutorial: <a href="/tutos/constraints/">Designing a constraint</a>.</p>
 <h4 id="basic-propagator">Basic propagator</h4>
 <p>You must at least call the super constructor to specifies the scope (set of variables) of the propagator.
 Then you must implement the two following methods:</p>
-<p><code>void propagate(int evtmask)</code></p>
-<blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><blockquote>
 <p>This method applies the global filtering algorithm of the propagator, that is, from <em>scratch</em>.
 It is called once during initial propagation (to propagate initial domains) and then during the solving process if
 the propagator is not incremental. It is the most important method of the propagator.</p>
 </blockquote>
-<p><code>isEntailed()</code></p>
-<blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">ESat</span> <span style="color:#000">isEntailed</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><blockquote>
 <p>This method checks the current state of the propagator. It is used for constraint reification.
 It checks whether the propagator will be always satisfied (<code>ESat.TRUE</code>), never satisfied (<code>ESat.FALSE</code>)
 or undefined (<code>ESat.UNDEFINED</code>) according to the current state of its domain variables. For instance,</p>
@@ -481,34 +530,34 @@ or undefined (<code>ESat.UNDEFINED</code>) according to the current state of its
 <p><code>ESat isEntailed()</code> implementation may be approximate
 but should at least cover the case where all variables are instantiated, in order to check solutions.</p>
 <p>Here is an example of how to implement a propagator for <code>X &gt;= Y</code>:</p>
-<pre><code>// Propagator to apply X &gt;= Y
-public class MySimplePropagator extends Propagator&lt;IntVar&gt; {
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Propagator to apply X &gt;= Y
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MySimplePropagator</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">Propagator</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
 
-    IntVar x, y;
+    <span style="color:#000">IntVar</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
-    public MySimplePropagator(IntVar x, IntVar y) {
-        super(new IntVar[]{x,y});
-        this.x = x;
-        this.y = y;
-    }
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MySimplePropagator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">IntVar</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public void propagate(int evtmask) throws ContradictionException {
-        x.updateLowerBound(y.getLB(), this);
-        y.updateUpperBound(x.getUB(), this);
-    }
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateLowerBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public ESat isEntailed() {
-        if (x.getUB() &lt; y.getLB())
-            return ESat.FALSE;
-        else if (x.getLB() &gt;= y.getUB())
-            return ESat.TRUE;
-        else
-            return ESat.UNDEFINED;
-    }
-}
-</code></pre><h4 id="elaborated-propagator">Elaborated propagator</h4>
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">ESat</span> <span style="color:#000">isEntailed</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">FALSE</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TRUE</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">else</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">UNDEFINED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h4 id="elaborated-propagator">Elaborated propagator</h4>
 <p>The super constructor <code>super(Variable[], PropagatorPriority, boolean);</code> brings more information.
 <code>PropagatorPriority</code> enables to optimize the propagation engine (low arity for fast propagators is better).
 The boolean argument allows to specifies the propagator is incremental.
@@ -521,78 +570,65 @@ It is called for every variable <code>vars[varIdx]</code> whose domain has chang
 The propagator is automatically reactivated upon backtrack.</p>
 <p>The method <code>why(...)</code> explains the filtering, to allow learning.</p>
 <p>Here is an example of how to implement a propagator for <code>X &gt;= Y</code>:</p>
-<pre><code>// Propagator to apply X &gt;= Y
-public final class MyIncrementalPropagator extends Propagator&lt;IntVar&gt; {
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Propagator to apply X &gt;= Y
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MyIncrementalPropagator</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">Propagator</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
 
-    IntVar x, y;
+    <span style="color:#000">IntVar</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
-    public MyIncrementalPropagator(IntVar x, IntVar y) {
-        super(new IntVar[]{x,y}, PropagatorPriority.BINARY, true);
-        this.x = x;
-        this.y = y;
-    }
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MyIncrementalPropagator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">IntVar</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">PropagatorPriority</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">BINARY</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public int getPropagationConditions(int vIdx) {
-        if (vIdx == 0) {
-            // awakes if x gets instantiated or if its upper bound decreases
-            return IntEventType.combine(IntEventType.INSTANTIATE, IntEventType.DECUPP);
-        } else {
-            // awakes if y gets instantiated or if its lower bound increases
-            return IntEventType.combine(IntEventType.INSTANTIATE, IntEventType.INCLOW);
-        }
-    }
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">getPropagationConditions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vIdx</span> <span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#8f5902;font-style:italic">// awakes if x gets instantiated or if its upper bound decreases
+</span><span style="color:#8f5902;font-style:italic"></span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">combine</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INSTANTIATE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">DECUPP</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#8f5902;font-style:italic">// awakes if y gets instantiated or if its lower bound increases
+</span><span style="color:#8f5902;font-style:italic"></span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">combine</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INSTANTIATE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INCLOW</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public void propagate(int evtmask) throws ContradictionException {
-        x.updateLowerBound(y.getLB(), this);
-        y.updateUpperBound(x.getUB(), this);
-        if (x.getLB() &gt;= y.getUB()) {
-            this.setPassive();
-        }
-    }
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateLowerBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPassive</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public void propagate(int varIdx, int mask) throws ContradictionException {
-        if (varIdx == 0) {
-            y.updateUpperBound(x.getUB(), this);
-        } else {
-            x.updateLowerBound(y.getLB(), this);
-        }
-        if (x.getLB() &gt;= y.getUB()) {
-            this.setPassive();
-        }
-    }
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">varIdx</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">mask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">varIdx</span> <span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateLowerBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPassive</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public ESat isEntailed() {
-        if (x.getUB() &lt; y.getLB())
-            return ESat.FALSE;
-        else if (x.getLB() &gt;= y.getUB())
-            return ESat.TRUE;
-        else
-            return ESat.UNDEFINED;
-    }
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">ESat</span> <span style="color:#000">isEntailed</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">FALSE</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TRUE</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">else</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">UNDEFINED</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    @Override
-    public boolean why(RuleStore ruleStore, IntVar var, IEventType evt, int value) {
-        boolean newrules = ruleStore.addPropagatorActivationRule(this);
-        if (var.equals(x)) {
-            newrules |=ruleStore.addLowerBoundRule(y);
-        } else if (var.equals(y)) {
-            newrules |=ruleStore.addUpperBoundRule(x);
-        } else {
-            newrules |=super.why(ruleStore, var, evt, value);
-        }
-        return newrules;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;prop(&quot; + vars[0].getName() + &quot;.GEQ.&quot; + vars[1].getName() + &quot;)&quot;;
-    }
-}
-</code></pre><h3 id="idempotency">Idempotency</h3>
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">toString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#4e9a06">&#34;prop(&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;.GEQ.&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;)&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h3 id="idempotency">Idempotency</h3>
 <p>We distinguish two kinds of propagators:</p>
 <blockquote>
 <p><em>Necessary</em> propagators, which ensure constraints to be satisfied.</p>
@@ -623,19 +659,19 @@ The propagator does not react to fine events.
 The coarse filtering algorithm should be surrounded like this:</p>
 </blockquote>
 <blockquote>
-<pre><code>// In the case of ``SetVar``, replace ``getDomSize()`` by ``getEnvSize()-getKerSize()``.
-long size;
-do{
-  size = 0;
-  for(IntVar v:vars){
-    size+=v.getDomSize();
-  }
-  // really update domain variables here
-  for(IntVar v:vars){
-    size-=v.getDomSize();
-  }
-}while(size&gt;0);
-</code></pre></blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// In the case of ``SetVar``, replace ``getDomSize()`` by ``getEnvSize()-getKerSize()``.
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">long</span> <span style="color:#000">size</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">do</span><span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#000">size</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">size</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getDomSize</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+  <span style="color:#ce5c00;font-weight:bold">}</span>
+  <span style="color:#8f5902;font-style:italic">// really update domain variables here
+</span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">size</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getDomSize</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+  <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">size</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div></blockquote>
 <p><strong>NOTE</strong>: Domain variable modifier returns a boolean valued to <code>true</code> if the domain variable has been modified.</p>
 
 	
@@ -700,7 +736,7 @@ do{
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 30.01.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/7c55b811d5214e17ba073d2412c9201510992474">Removed submodule (7c55b81)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/2a51b228c1b5eb0fd70fc70c2b3a7e3a14ec76bf">Update doc (2a51b22)</a>
 </div>
 </div>
 

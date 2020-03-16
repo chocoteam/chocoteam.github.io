@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Modeling | Choco-solver</title><meta property="og:title" content="Modeling" />
-<meta property="og:description" content="What do you need to know to express a problem?
+<title>Limits | Choco-solver</title><meta property="og:title" content="Limits" />
+<meta property="og:description" content="How to limit exploration?
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/modeling/" />
-<meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Modeling">
-<meta itemprop="description" content="What do you need to know to express a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Modeling"/>
-<meta name="twitter:description" content="What do you need to know to express a problem?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/solving/limits/" />
+<meta property="article:published_time" content="2020-03-06T17:54:10+01:00" />
+<meta property="article:modified_time" content="2020-03-16T14:23:48+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Limits">
+<meta itemprop="description" content="How to limit exploration?
+">
+<meta itemprop="datePublished" content="2020-03-06T17:54:10&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T14:23:48&#43;01:00" />
+<meta itemprop="wordCount" content="205">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Limits"/>
+<meta name="twitter:description" content="How to limit exploration?
 "/>
 
 
@@ -49,9 +56,9 @@
 
 
 
-    <title>Modeling | Choco-solver</title>
+    <title>Limits | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -184,10 +191,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Modeling</a>
+    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Modeling</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsmodeling">
+    <li class="collapse " id="docsmodeling">
       
       
       
@@ -243,10 +250,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/solving/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Solving</a>
+    <a  href="/docs/solving/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Solving</a>
   </li>
   <ul>
-    <li class="collapse " id="docssolving">
+    <li class="collapse show" id="docssolving">
       
       
       
@@ -277,7 +284,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvinglimits" href="/docs/solving/limits/">Limits</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docssolvinglimits" href="/docs/solving/limits/">Limits</a>
       
       
       
@@ -411,8 +418,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Modeling" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Solving/Limits.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Limits" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -423,6 +430,16 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#built-in-search-limits">Built-in search limits</a>
+      <ul>
+        <li><a href="#custom-search-limits">Custom search limits</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -438,6 +455,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +465,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="/docs/solving/">Solving</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/modeling/">Modeling</a>
+	<a href="/docs/solving/limits/">Limits</a>
 </li>
 
 	</ol>
@@ -454,127 +481,51 @@
 
             
 <div class="td-content">
-	<h1>Modeling</h1>
-	<div class="lead">What do you need to know to express a problem?</div>
-	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>or:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
+	<h1>Limits</h1>
+	<div class="lead">How to limit exploration?</div>
+	<h2 id="built-in-search-limits">Built-in search limits</h2>
+<p>Search can be limited in various ways using the <code>Solver</code> (from <code>model.getSolver()</code>).</p>
+<ul>
+<li>
+<p><code>limitTime</code> stops the search when the given time limit has been reached. This is the most common limit, as many applications have a limited available runtime.</p>
+</li>
+<li>
+<p><code>limitSolution</code> stops the search when the given solution limit has been reached.</p>
+</li>
+<li>
+<p><code>limitNode</code> stops the search when the given search node limit has been reached.</p>
+</li>
+<li>
+<p><code>limitFail</code> stops the search when the given fail limit has been reached.</p>
+</li>
+<li>
+<p><code>limitBacktrack</code> stops the search when the given backtrack limit has been reached.</p>
+</li>
+</ul>
 
 
-<div class="pageinfo pageinfo-primary">
-<p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Info</h4>
+The potential search interruption occurs at the end of a propagation, i.e. it will not interrupt a propagation algorithm, so the overall runtime of the solver might exceed the time limit.
 </div>
 
-<p>Once the model is created, variables and constraints can be defined.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/variables/">Declaring variables</a>
-                    </h5>
-                    <p>How to declare variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/constraints/">Handling constraints</a>
-                    </h5>
-                    <p>How to handle constraints?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/intconstraints/">Constraints over integer variables</a>
-                    </h5>
-                    <p>Overview of constraints based on boolean and integer variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
-                    </h5>
-                    <p>Overview of constraints based on set variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
-                    </h5>
-                    <p>How to declare constraints based on real variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/expressions/">Building expressions</a>
-                    </h5>
-                    <p>How to build and use expressions?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
-
+<p>For instance, to interrupt search after 10 seconds:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitTime</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;10s&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><h3 id="custom-search-limits">Custom search limits</h3>
+<p>You can design you own search limit by implementing a <code>Criterion</code> and using <code>resolver.limitSearch(Criterion c)</code>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Criterion</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#5c35cc;font-weight:bold">@Override</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isMet</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#8f5902;font-style:italic">// todo return true if you want to stop search
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>In Java 8, this can be shortened using lambda expressions:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span> <span style="color:#8f5902;font-style:italic">/*todo return true if you want to stop search*/</span> <span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div>
 	
 		<style>
   .feedback--answer {
@@ -637,9 +588,10 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/9d077c61145b976c050f4f3b0fededdbeb662220">Update solving part (9d077c6)</a>
 </div>
 </div>
+
 
           </main>
         </div>

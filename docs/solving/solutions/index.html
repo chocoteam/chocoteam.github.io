@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/solving/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Solving | Choco-solver</title><meta property="og:title" content="Solving" />
-<meta property="og:description" content="What does your user need to know to solve a problem?
+<title>Dealing with solutions | Choco-solver</title><meta property="og:title" content="Dealing with solutions" />
+<meta property="og:description" content="How to deal with `Solution`?
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/solving/" />
-<meta property="og:updated_time" content="2020-01-07T16:08:22+01:00" /><meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Solving">
-<meta itemprop="description" content="What does your user need to know to solve a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Solving"/>
-<meta name="twitter:description" content="What does your user need to know to solve a problem?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/solving/solutions/" />
+<meta property="article:published_time" content="2020-03-06T16:42:00+01:00" />
+<meta property="article:modified_time" content="2020-03-16T14:23:48+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Dealing with solutions">
+<meta itemprop="description" content="How to deal with `Solution`?
+">
+<meta itemprop="datePublished" content="2020-03-06T16:42:00&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T14:23:48&#43;01:00" />
+<meta itemprop="wordCount" content="454">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dealing with solutions"/>
+<meta name="twitter:description" content="How to deal with `Solution`?
 "/>
 
 
@@ -49,9 +56,9 @@
 
 
 
-    <title>Solving | Choco-solver</title>
+    <title>Dealing with solutions | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -259,7 +266,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingsolutions" href="/docs/solving/solutions/">Dealing with solutions</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docssolvingsolutions" href="/docs/solving/solutions/">Dealing with solutions</a>
       
       
       
@@ -411,8 +418,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Solving/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Solving" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Solving/Solutions.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Dealing%20with%20solutions" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -423,6 +430,17 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#recording-solutions">Recording solutions</a>
+      <ul>
+        <li><a href="#reducing-data-recorded">Reducing data recorded</a></li>
+      </ul>
+    </li>
+    <li><a href="#accessing-variable-value">Accessing variable value</a></li>
+  </ul>
+</nav>
 
 
 
@@ -438,6 +456,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +466,15 @@
 
 
 
-<li class="breadcrumb-item active" aria-current="page">
+<li class="breadcrumb-item" >
 	<a href="/docs/solving/">Solving</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/docs/solving/solutions/">Dealing with solutions</a>
 </li>
 
 	</ol>
@@ -454,131 +482,71 @@
 
             
 <div class="td-content">
-	<h1>Solving</h1>
-	<div class="lead">What does your user need to know to solve a problem?</div>
-	<p>Up to here, we have seen how to model a problem with the <code>Model</code> object. To solve it, we need to use
-the <code>Solver</code> object that is obtained from the model as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>The <code>Solver</code> is in charge of alternating constraint-propagation with search, and possibly learning,
-in order to compute solutions. This object may be configured in various ways.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/solving/">Lauching the resolution process</a>
-                    </h5>
-                    <p>How to look for solutions?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/solutions/">Dealing with solutions</a>
-                    </h5>
-                    <p>How to deal with <code>Solution</code>?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/strategies/">Search Strategies</a>
-                    </h5>
-                    <p>How to define search strategies?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/statistics/">Statistics</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/limits/">Limits</a>
-                    </h5>
-                    <p>How to limit exploration?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/lns/">Large Neighborhood Search</a>
-                    </h5>
-                    <p>Using LNS</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/restarts/">Restarts</a>
-                    </h5>
-                    <p>How to define restart policy?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/solving/portfolio/">Multi-thread resolution</a>
-                    </h5>
-                    <p>How to use several threads to solve a problem?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+	<h1>Dealing with solutions</h1>
+	<div class="lead">How to deal with <code>Solution</code>?</div>
+	<h2 id="recording-solutions">Recording solutions</h2>
+<p>A solution can be stored through a <code>Solution</code> object which maps every variable with its current value.
+It can be created as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><h3 id="reducing-data-recorded">Reducing data recorded</h3>
+<p>By default, a solution records the value of every variable, but you can specify a smaller scope in the <code>Solution</code> constructor.</p>
+<p>Let <code>X</code> be the set of decision variables and <code>Y</code> another variable set that you need to store.
+To record other variables (e.g. an objective variables) you have two options:</p>
+<ul>
+<li>Declare them in the search strategy using a complementary strategy</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">set</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">strategy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">strategy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span>
+</code></pre></div><ul>
+<li>Specify which variables to store in the solution constructor</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ArrayUtils</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>You can record the last solution found as follows :</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">while</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">solution</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>You can also use a monitor as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IMonitorSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#5c35cc;font-weight:bold">@Override</span>
+      <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+          <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+      <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Or with lambdas:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IMonitorSolution</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Note that the solution is erased on each new recording.
+To store all solutions, you need to create one new solution object for each solution.</p>
+<p>You can then access the value of a variable in a solution as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getIntVal</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p>The solution object can be used to store all variables in Choco Solver (binaries, integers, sets and reals)</p>
+<h2 id="accessing-variable-value">Accessing variable value</h2>
+<p>The value of a variable can be accessed directly through the <code>getValue()</code> method only once the variable is instantiated, i.e. the value has been computed
+(call <code>isInstantiated()</code> to check it). Otherwise, the lower bound is returned (or an exception is thrown if <code>-ea</code> is set as JVM argument).</p>
+<p>For instance, the following code will return the lower bound of <code>var</code> (or an assertion exception) since the resolution has not begun:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>On the other hand, the following code may return the lower bound of <code>var</code> (or an assertion exception) if no solution could be found (unsat problem or time limit reached):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>The correct approach to get the value of a variable <code>var</code> in a solution is :</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>In optimization, you can print its value in each solution:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">variable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>The last printed value corresponds to the one in the best solution found.</p>
+<p>However, the following code does <em>NOT</em> display the best solution found:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">variable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;best solution found: &#34;</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">variable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Because it is outside the while loop, this code is reached once the search tree has been closed.
+It does not correspond to a <em>solution state</em> and therefore variable is no longer instantiated at this stage.
+To use solutions afterward, you need to record them using <code>Solution</code> objects.</p>
 
 	
 		<style>
@@ -645,6 +613,7 @@ in order to compute solutions. This object may be configured in various ways.</p
 	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/9d077c61145b976c050f4f3b0fededdbeb662220">Update solving part (9d077c6)</a>
 </div>
 </div>
+
 
           </main>
         </div>

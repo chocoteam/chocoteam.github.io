@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Modeling | Choco-solver</title><meta property="og:title" content="Modeling" />
-<meta property="og:description" content="What do you need to know to express a problem?
+<title>Multi-thread resolution | Choco-solver</title><meta property="og:title" content="Multi-thread resolution" />
+<meta property="og:description" content="How to use several threads to solve a problem?
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/modeling/" />
-<meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Modeling">
-<meta itemprop="description" content="What do you need to know to express a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Modeling"/>
-<meta name="twitter:description" content="What do you need to know to express a problem?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/solving/portfolio/" />
+<meta property="article:published_time" content="2020-03-06T15:39:27+01:00" />
+<meta property="article:modified_time" content="2020-03-16T14:23:48+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Multi-thread resolution">
+<meta itemprop="description" content="How to use several threads to solve a problem?
+">
+<meta itemprop="datePublished" content="2020-03-06T15:39:27&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T14:23:48&#43;01:00" />
+<meta itemprop="wordCount" content="312">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Multi-thread resolution"/>
+<meta name="twitter:description" content="How to use several threads to solve a problem?
 "/>
 
 
@@ -49,9 +56,9 @@
 
 
 
-    <title>Modeling | Choco-solver</title>
+    <title>Multi-thread resolution | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -184,10 +191,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Modeling</a>
+    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Modeling</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsmodeling">
+    <li class="collapse " id="docsmodeling">
       
       
       
@@ -243,10 +250,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/solving/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Solving</a>
+    <a  href="/docs/solving/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Solving</a>
   </li>
   <ul>
-    <li class="collapse " id="docssolving">
+    <li class="collapse show" id="docssolving">
       
       
       
@@ -295,7 +302,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssolvingportfolio" href="/docs/solving/portfolio/">Multi-thread resolution</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docssolvingportfolio" href="/docs/solving/portfolio/">Multi-thread resolution</a>
       
       
     </li>
@@ -411,8 +418,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Modeling" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Solving/Portfolio.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Multi-thread%20resolution" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -423,6 +430,17 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#auto-configuration">Auto-configuration</a></li>
+        <li><a href="#sharing-no-goods">Sharing no-goods</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -438,6 +456,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +466,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="/docs/solving/">Solving</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/modeling/">Modeling</a>
+	<a href="/docs/solving/portfolio/">Multi-thread resolution</a>
 </li>
 
 	</ol>
@@ -454,126 +482,34 @@
 
             
 <div class="td-content">
-	<h1>Modeling</h1>
-	<div class="lead">What do you need to know to express a problem?</div>
-	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>or:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
-
-
-<div class="pageinfo pageinfo-primary">
-<p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
-</div>
-
-<p>Once the model is created, variables and constraints can be defined.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/variables/">Declaring variables</a>
-                    </h5>
-                    <p>How to declare variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/constraints/">Handling constraints</a>
-                    </h5>
-                    <p>How to handle constraints?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/intconstraints/">Constraints over integer variables</a>
-                    </h5>
-                    <p>Overview of constraints based on boolean and integer variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
-                    </h5>
-                    <p>Overview of constraints based on set variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
-                    </h5>
-                    <p>How to declare constraints based on real variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/expressions/">Building expressions</a>
-                    </h5>
-                    <p>How to build and use expressions?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+	<h1>Multi-thread resolution</h1>
+	<div class="lead">How to use several threads to solve a problem?</div>
+	<p>Choco 4 provides a simple way to use several threads to treat a problem. The main idea of that driver is to solve the <em>same</em> model with different search strategies and to share few information to make these threads help each others.</p>
+<p>To use a portfolio of solvers in parallel, use <code>ParallelPortfolio</code> as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">ParallelPortfolio</span> <span style="color:#000">portfolio</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ParallelPortfolio</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">nbModels</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">nbModels</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">portfolio</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addModel</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">makeModel</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#000">portfolio</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>In this example, <code>makeModel()</code> is a method you have to implement to create a <code>Model</code> of the problem.
+Here all models are the same and the portfolio will change the search heuristics of all models but the first one.
+This means that the first thread will run according to your settings whereas the others will have a different configuration.</p>
+<h3 id="auto-configuration">Auto-configuration</h3>
+<p>In order to specify yourself the configuration of each thread, you need to create the portfolio by setting the optional
+boolean argument <code>searchAutoConf</code> to false as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">ParallelPortfolio</span> <span style="color:#000">portfolio</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ParallelPortfolio</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>In this second example, the parameter <code>s</code> enables you to change the search strategy within the <code>makeModel</code> method (e.g. using a <code>switch(s)</code>).</p>
+<p>When dealing with multithreading resolution, very few data is shared between threads:
+everytime a solution has been found its value is shared among solvers. Moreover,
+when a solver ends, it communicates an interruption instruction to the others.
+This enables to explore the search space in various way, using different model settings such as search strategies
+(this should be done in the dedicated method which builds the model, though).</p>
+<h3 id="sharing-no-goods">Sharing no-goods</h3>
+<p>Some of the default search strategies are based on a restart policy.
+In such case, one can allow no-goods when those threads restart.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">portfolio</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stealNogoodsOnRestarts</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Doing so, anytime a thread restarts, it records not only no-goods based on the search space it has explored since last restart, but also ones of other threads (restricted to those equipepd with a restart policy).</p>
 
 	
 		<style>
@@ -637,9 +573,10 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/9d077c61145b976c050f4f3b0fededdbeb662220">Update solving part (9d077c6)</a>
 </div>
 </div>
+
 
           </main>
         </div>

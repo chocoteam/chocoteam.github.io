@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Modeling | Choco-solver</title><meta property="og:title" content="Modeling" />
-<meta property="og:description" content="What do you need to know to express a problem?
+<title>Search loop | Choco-solver</title><meta property="og:title" content="Search loop" />
+<meta property="og:description" content="Understanding the search loop.
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/modeling/" />
-<meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Modeling">
-<meta itemprop="description" content="What do you need to know to express a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Modeling"/>
-<meta name="twitter:description" content="What do you need to know to express a problem?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/advanced-usages/search-loop/" />
+<meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
+<meta property="article:modified_time" content="2020-03-16T19:01:08+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Search loop">
+<meta itemprop="description" content="Understanding the search loop.
+">
+<meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T19:01:08&#43;01:00" />
+<meta itemprop="wordCount" content="687">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Search loop"/>
+<meta name="twitter:description" content="Understanding the search loop.
 "/>
 
 
@@ -48,10 +55,26 @@
   crossorigin="anonymous"></script>
 
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
 
-    <title>Modeling | Choco-solver</title>
+
+    <title>Search loop | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -184,10 +207,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Modeling</a>
+    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Modeling</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsmodeling">
+    <li class="collapse " id="docsmodeling">
       
       
       
@@ -337,10 +360,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Advanced usages</a>
+    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Advanced usages</a>
   </li>
   <ul>
-    <li class="collapse " id="docsadvanced-usages">
+    <li class="collapse show" id="docsadvanced-usages">
       
       
       
@@ -359,7 +382,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagessearch-loop" href="/docs/advanced-usages/search-loop/">Search loop</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsadvanced-usagessearch-loop" href="/docs/advanced-usages/search-loop/">Search loop</a>
       
       
       
@@ -411,8 +434,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Modeling" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Advanced%20usages/Search%20Loop.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Search%20loop" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -438,6 +461,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +471,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="/docs/advanced-usages/">Advanced usages</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/modeling/">Modeling</a>
+	<a href="/docs/advanced-usages/search-loop/">Search loop</a>
 </li>
 
 	</ol>
@@ -454,126 +487,92 @@
 
             
 <div class="td-content">
-	<h1>Modeling</h1>
-	<div class="lead">What do you need to know to express a problem?</div>
-	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>or:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
+	<h1>Search loop</h1>
+	<div class="lead">Understanding the search loop.</div>
+	<p>The search loop whichs drives the search is a freely-adapted version PLM .
+PLM stands for: Propagate, Learn and Move.
+Indeed, the search loop is composed of three parts, each of them with a specific goal.</p>
+<ul>
+<li>
+<p>Propagate: it aims at propagating information throughout the constraint network when a decision is made,</p>
+</li>
+<li>
+<p>Learn: it aims at ensuring that the search mechanism will avoid (as much as possible) to get back to states that have been explored and proved to be solution-less,</p>
+</li>
+<li>
+<p>Move: it aims at, unlike the former ones, not pruning the search space but rather exploring it.</p>
+</li>
+</ul>
+<p>Any component can be freely implemented and attached to the search loop in order to customize its behavior.
+There exists some pre-defined Move and Learn implementations.
+One can also define its own Move or Learn implementation.</p>
+<h3 id="implementing-a-search-loop-component">Implementing a search loop component</h3>
+<p>A search loop is made of three components, each of them dealing with a specific aspect of the search.
+Even if many Move and Learn implementation are already provided, it may be relevant to define its own component.</p>
 
 
-<div class="pageinfo pageinfo-primary">
-<p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Info</h4>
+The Propagate component is less prone to be modified, it will not be described here.
+However, its interface is minimalist and can be easily implemented.
+A look to <code>org.chocosolver.solver.search.loop.propagate.PropagateBasic.java</code> is a good starting point.
 </div>
 
-<p>Once the model is created, variables and constraints can be defined.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/variables/">Declaring variables</a>
-                    </h5>
-                    <p>How to declare variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/constraints/">Handling constraints</a>
-                    </h5>
-                    <p>How to handle constraints?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/intconstraints/">Constraints over integer variables</a>
-                    </h5>
-                    <p>Overview of constraints based on boolean and integer variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
-                    </h5>
-                    <p>Overview of constraints based on set variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
-                    </h5>
-                    <p>How to declare constraints based on real variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/expressions/">Building expressions</a>
-                    </h5>
-                    <p>How to build and use expressions?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+<p>The two components can be easily set in the <code>Solver</code> search loop:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setMove</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Move</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>The current Move component is replaced by m.
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Move</span> <span style="color:#000">getMove</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>The current Move component is returned.
+</code></pre>
+<p><code>void setLearn(Learn l)</code> and <code>Learn getLearn()</code> are also avaiable.</p>
+<p>Having access to the current <code>Move</code> (resp. <code>Learn</code>) component can be useful to combined it with another one.
+For instance, the <code>MoveLNS</code> is activated on a solution and creates a partial solution.
+It needs another Move to find the first solution and to complete the partial solution.</p>
+<h4 id="move">Move</h4>
+<p>Here is the API of Move:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">extend</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">SearchLoop</span> <span style="color:#000">searchLoop</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>Perform a move when the CSP associated to the current node of the search space is not proven to be not consistent.
+It returns true if an extension can be done, false when no more extension is possible.
+It has to maintain the correctness of the reversibility of the action by pushing a backup world when needed.
+An extension is commonly based on a decision, which may be made on one or many variables.
+If a decision is created (thanks to the search strategy), it has to be linked to the previous one.
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">repair</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">SearchLoop</span> <span style="color:#000">searchLoop</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>Perform a move when the CSP associated to the current node of the search space is proven to be not consistent.
+It returns true if a reparation can be done, false when no more reparation is possible.
+It has to backtracking backup worlds when needed, and unlinked useless decisions.
+The depth and number of backtracks have to be updated too, and “up branch” search monitors of the search loop have to called
+(be careful, when many Move are combined).
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Move</span> <span style="color:#000">getChildMove</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>It returns the child Move or null.
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setChildMove</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Move</span> <span style="color:#000">aMove</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>It defined the child Move and erases the previously defined one, if any.
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">init</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>Called before the search starts, it should initialize the search strategy, if any, and its child Move.
+It should return false if something goes wrong (the problem has trivially no solution), true otherwise.
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">AbstractStrategy</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">V</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">getStrategy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>It returns the search strategy in use, which may be null if none has been defined.
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setStrategy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">AbstractStrategy</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">V</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">aStrategy</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>It defines a search strategy and erases the previously defined one, that is, a service which computes and returns decisions.
+</code></pre>
+<p><code>org.chocosolver.solver.search.loop.move.MoveBinaryDFS.java</code> is good starting point to see how a Move is implemented.
+It defines a Depth-First Search with binary decisions.</p>
+<h4 id="learn">Learn</h4>
+<p>The aim of the component is to make sure that the search mechanism will avoid (as much as possible) to get back to states that have been explored and proved to be solution-less. Here is the API of Learn</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">record</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">SearchLoop</span> <span style="color:#000">searchLoop</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>It validates and records a new piece of knowledge, that is, the current position is a dead-end.
+This is alwasy called *before* calling Move.repair(SearchLoop).
+</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">forget</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">SearchLoop</span> <span style="color:#000">searchLoop</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><pre><code>It forgets some pieces of knowledge.
+This is alwasy called *after* calling Move.repair(SearchLoop).
+</code></pre>
 
 	
 		<style>
@@ -637,9 +636,10 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/2a51b228c1b5eb0fd70fc70c2b3a7e3a14ec76bf">Update doc (2a51b22)</a>
 </div>
 </div>
+
 
           </main>
         </div>

@@ -14,7 +14,7 @@
   
   <url>
     <loc>/docs/solving/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
   </url>
   
   <url>
@@ -113,13 +113,13 @@
   </url>
   
   <url>
-    <loc>/docs/solving/strategies/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <loc>/docs/solving/solving/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/solving/solving/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <loc>/docs/solving/solutions/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
   </url>
   
   <url>
@@ -130,6 +130,36 @@
   <url>
     <loc>/tutos/warehouse-location-problem/code/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/strategies/</loc>
+    <lastmod>2020-03-16T14:24:37+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/statistics/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/limits/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/lns/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/restarts/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/solving/portfolio/</loc>
+    <lastmod>2020-03-16T14:23:48+01:00</lastmod>
   </url>
   
   <url>
@@ -169,12 +199,37 @@
   
   <url>
     <loc>/docs/advanced-usages/propagator/</loc>
-    <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
   </url>
   
   <url>
     <loc>/tutos/nonogram/code/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/strategies/</loc>
+    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/search-loop/</loc>
+    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/explanations/</loc>
+    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/ibex/</loc>
+    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/advanced-usages/miscellaneous/</loc>
+    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
   </url>
   
   <url>
@@ -220,21 +275,6 @@
   <url>
     <loc>/blog/2020/01/31/revamping-documentation/</loc>
     <lastmod>2020-02-05T17:48:46+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/advanced-usages/to-remove/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/docs/modeling/to-remove/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/docs/solving/to-remove/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

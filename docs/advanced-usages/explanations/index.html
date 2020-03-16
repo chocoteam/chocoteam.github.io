@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Modeling | Choco-solver</title><meta property="og:title" content="Modeling" />
-<meta property="og:description" content="What do you need to know to express a problem?
+<title>Explanations | Choco-solver</title><meta property="og:title" content="Explanations" />
+<meta property="og:description" content="Using explanations.
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/modeling/" />
-<meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Modeling">
-<meta itemprop="description" content="What do you need to know to express a problem?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Modeling"/>
-<meta name="twitter:description" content="What do you need to know to express a problem?
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/advanced-usages/explanations/" />
+<meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
+<meta property="article:modified_time" content="2020-03-16T19:01:08+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Explanations">
+<meta itemprop="description" content="Using explanations.
+">
+<meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
+<meta itemprop="dateModified" content="2020-03-16T19:01:08&#43;01:00" />
+<meta itemprop="wordCount" content="631">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Explanations"/>
+<meta name="twitter:description" content="Using explanations.
 "/>
 
 
@@ -48,10 +55,26 @@
   crossorigin="anonymous"></script>
 
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
 
-    <title>Modeling | Choco-solver</title>
+
+    <title>Explanations | Choco-solver</title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -184,10 +207,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Modeling</a>
+    <a  href="/docs/modeling/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Modeling</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsmodeling">
+    <li class="collapse " id="docsmodeling">
       
       
       
@@ -337,10 +360,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Advanced usages</a>
+    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Advanced usages</a>
   </li>
   <ul>
-    <li class="collapse " id="docsadvanced-usages">
+    <li class="collapse show" id="docsadvanced-usages">
       
       
       
@@ -365,7 +388,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesexplanations" href="/docs/advanced-usages/explanations/">Explanations</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsadvanced-usagesexplanations" href="/docs/advanced-usages/explanations/">Explanations</a>
       
       
       
@@ -411,8 +434,8 @@
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Modeling" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Advanced%20usages/Explanations.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Explanations" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -423,6 +446,18 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#principle">Principle</a></li>
+        <li><a href="#computing-explanations">Computing explanations</a></li>
+        <li><a href="#explanations-for-the-system">Explanations for the system</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -438,6 +473,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Documentation</a>
 </li>
@@ -445,8 +483,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="/docs/advanced-usages/">Advanced usages</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/modeling/">Modeling</a>
+	<a href="/docs/advanced-usages/explanations/">Explanations</a>
 </li>
 
 	</ol>
@@ -454,126 +499,73 @@
 
             
 <div class="td-content">
-	<h1>Modeling</h1>
-	<div class="lead">What do you need to know to express a problem?</div>
-	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p>or:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
+	<h1>Explanations</h1>
+	<div class="lead">Using explanations.</div>
+	<p>Choco-solver natively support explanations.
+However, no explanation engine is plugged-in by default.</p>
+<h3 id="principle">Principle</h3>
+<p>Nogoods and explanations have long been used in various paradigms for improving search.
+An explanation records some sufficient information to justify an inference made by the solver (domain reduction, contradiction, etc.).
+It is made of a subset of the original propagators of the problem and a subset of decisions applied during search.
+Explanations represent the logical chain of inferences made by the solver during propagation in an efficient and usable manner.
+In a way, they provide some kind of a trace of the behavior of the solver as any operation needs to be explained.</p>
+<p>The implemented explanation framework is an adapation of the well-konw SAT <a href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">CDCL algorithm</a> to discrete constraint solver.
+By exploiting the implication graph (that records events, i.e. variables’ modifications), this algorithm is able to derive a new constraint from the events that led to a contradiction.
+Once added to the constraint network, this constraint makes possible to “backjump” (non-chronological backtrack) to the appropriate decision in the decision path.</p>
+<p>In CP, learned constraints are denoted “signed-clauses” which is a disjunction of signed-literals, i.e. membership unary constraints : $\bigvee_{i=0}^{n}X_i \in D_i$
+where $X_i$ are variables and $D_i$ a set of values.
+A signed-clause is satisfied when at least one signed-literal is satisfied.</p>
+<p>The current explanation engine is coded to be <em>Asynchronous, Reverse, Low-intrusive and Lazy</em>:</p>
+<p>Asynchronous:</p>
+<pre><code>Explanations are not computed during the propagation.
+</code></pre>
+<p>Reverse:</p>
+<pre><code>Explanations are computed in a bottom-up way, from the conflict to the first event generated, *keeping* only relevant events to compute the explanation of the conflict.
+</code></pre>
+<p>Low-intrusive:</p>
+<pre><code>Basically, propagators need to implement only one method to furnish a convenient explanation schema.
+</code></pre>
+<p>Lazy:</p>
+<pre><code>Explanations are computed on request.
+</code></pre>
+<p>To do so, all events are stored during the descent to a conflict/solution, and are then evaluated and kept if relevant, to get the explanation.</p>
 
 
-<div class="pageinfo pageinfo-primary">
-<p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Info</h4>
+In CP, CDCL algorithm requires that each constraint of a problem can be explained. Even though a default explanation function for any constraint, dedicated functions offers better performances.
+In Choco-solver a few set of constraints is equipped with dedicated explanation function (unary constraints, binary and ternary, sum and scalar).
 </div>
 
-<p>Once the model is created, variables and constraints can be defined.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/variables/">Declaring variables</a>
-                    </h5>
-                    <p>How to declare variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/constraints/">Handling constraints</a>
-                    </h5>
-                    <p>How to handle constraints?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/intconstraints/">Constraints over integer variables</a>
-                    </h5>
-                    <p>Overview of constraints based on boolean and integer variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
-                    </h5>
-                    <p>Overview of constraints based on set variables.</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
-                    </h5>
-                    <p>How to declare constraints based on real variables?</p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/modeling/expressions/">Building expressions</a>
-                    </h5>
-                    <p>How to build and use expressions?</p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+<h3 id="computing-explanations">Computing explanations</h3>
+<p>When a contradiction occurs during propagation, it can only be thrown by:</p>
+<ul>
+<li>
+<p>a propagator which detects unsatisfiability, based on the current domain of its variables;</p>
+</li>
+<li>
+<p>or a variable whom domain became empty.</p>
+</li>
+</ul>
+<p>Consequently, in addition to causes, variables can also explain the current state of their domain.
+Computing the explanation of a failure consists in going up in the stack of all events generated in the current branch of the search tree and filtering the one relative to the conflict.
+The entry point is either the not satisfiable propagator or the empty variable.</p>
+<p>Each propagator embeds its own explanation algorithm which relies on the relation it defines over variables.</p>
+<h3 id="explanations-for-the-system">Explanations for the system</h3>
+<p>Explanations for the system, which try to reduce the search space, differ from the ones giving feedback to a user about the unsatisfiability of its model.
+Both rely on the capacity of the explanation engine to motivate a failure, during the search form system explanations and once the search is complete for user ones.</p>
+<h4 id="learning-signed-clauses">Learning signed-clauses</h4>
+<p>When learning is plugged-in, the search is hacked in the following way.
+On a failure, the implication graph is analyzed in order to build a signed-clause and to define the decision to jump back to it.
+Decisions from the current one to the return decision (excluded) are erased.
+Then, the signed-clause is added to the constraint network and automatically dominates decision refutation; then the search goes on.
+If the explanation jumps back to the root node, the problem is proven to have no solution and search stops.</p>
+<p><strong>API</strong>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLearningSignedClauses</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><ul>
+<li><em>solver</em>: the solver to explain.</li>
+</ul>
+<p>See Settings to configure learning algorithm.</p>
 
 	
 		<style>
@@ -637,9 +629,10 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/2a51b228c1b5eb0fd70fc70c2b3a7e3a14ec76bf">Update doc (2a51b22)</a>
 </div>
 </div>
+
 
           </main>
         </div>
