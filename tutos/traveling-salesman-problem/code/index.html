@@ -26,12 +26,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tutos/traveling-salesman-problem/code/" />
 <meta property="article:published_time" content="2020-06-03T11:18:39+02:00" />
-<meta property="article:modified_time" content="2020-06-03T15:47:56+02:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-06-04T09:16:21+02:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Code">
 <meta itemprop="description" content="A bunch of code.
 ">
 <meta itemprop="datePublished" content="2020-06-03T11:18:39&#43;02:00" />
-<meta itemprop="dateModified" content="2020-06-03T15:47:56&#43;02:00" />
+<meta itemprop="dateModified" content="2020-06-04T09:16:21&#43;02:00" />
 <meta itemprop="wordCount" content="1285">
 
 
@@ -597,10 +597,10 @@ window.MathJax = {
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">dist</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">totDist</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><p>The <code>table</code> constraints maintain the distance metric when the sub-set of cities to be visited from a given one is refined.
 In order to limit tuples, those expressing a loop over a city (when <code>i = j</code>) are not added to <code>tuples</code>.</p>
-<p>In this example, with declare a <code>table</code> constraint over two variables, but an API exists to input an array of variables. Obviously, the tuples declaration should be adapted.
+<p>In this example, we declare a <code>table</code> constraint over two variables, but another API exists to input an array of variables. Obviously, the tuples declaration should be adapted.
 The underlying algorithm used to filter inconsistent values in such constraint can also be defined manually but the default one should work well in any case. More details are available in the Javadoc.</p>
-<p>There exists some specific cases wherein one wants to define an <em>universal value</em>, meaning that some variables can take any values from their domain.
-This is achieved calling <code>tuples.setUniversalValue(star)</code>, where <code>star</code> is the universal vaue (for example, -1).</p>
+<p>There exists some specific cases wherein one wants to define a <em>universal value</em>, meaning that some variables can take any values from their domain.
+This is achieved calling <code>tuples.setUniversalValue(star)</code>, where <code>star</code> is the universal value (for example, -1).</p>
 <p>Alternatively in the TSP, table constraints can be replaced by element constraints:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">C</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">dist</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">D</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">succ</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
@@ -784,7 +784,7 @@ Total distance = 2085
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 03.06.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/13cc9481e00edf21e3ec670740a02504547c5c60">Add TSP (13cc948)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 04.06.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/f26a4fd75d9ec31eb10ff5a9c28d23f913db0256">Correction of TSP (f26a4fd)</a>
 </div>
 </div>
 
