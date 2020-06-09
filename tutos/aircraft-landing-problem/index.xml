@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Airplane Landing Problem</title>
-    <link>/tutos/aircraft-landing-problem/</link>
+    <link>https://choco-solver.org/tutos/aircraft-landing-problem/</link>
     <description>Recent content in Airplane Landing Problem on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 03 Feb 2020 13:41:10 +0100</lastBuildDate>
     
-	  <atom:link href="/tutos/aircraft-landing-problem/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/tutos/aircraft-landing-problem/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/aircraft-landing-problem/description/</link>
+      <link>https://choco-solver.org/tutos/aircraft-landing-problem/description/</link>
       <pubDate>Mon, 03 Feb 2020 13:41:20 +0100</pubDate>
       
-      <guid>/tutos/aircraft-landing-problem/description/</guid>
+      <guid>https://choco-solver.org/tutos/aircraft-landing-problem/description/</guid>
       <description>
         
         
@@ -83,10 +83,10 @@ for more details.&lt;/p&gt;
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/aircraft-landing-problem/math/</link>
+      <link>https://choco-solver.org/tutos/aircraft-landing-problem/math/</link>
       <pubDate>Mon, 03 Feb 2020 13:41:25 +0100</pubDate>
       
-      <guid>/tutos/aircraft-landing-problem/math/</guid>
+      <guid>https://choco-solver.org/tutos/aircraft-landing-problem/math/</guid>
       <description>
         
         
@@ -167,10 +167,10 @@ case a simple inequality constraint fits the need.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/aircraft-landing-problem/code/</link>
+      <link>https://choco-solver.org/tutos/aircraft-landing-problem/code/</link>
       <pubDate>Mon, 03 Feb 2020 13:41:29 +0100</pubDate>
       
-      <guid>/tutos/aircraft-landing-problem/code/</guid>
+      <guid>https://choco-solver.org/tutos/aircraft-landing-problem/code/</guid>
       <description>
         
         

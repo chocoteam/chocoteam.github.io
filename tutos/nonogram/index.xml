@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Nonogram</title>
-    <link>/tutos/nonogram/</link>
+    <link>https://choco-solver.org/tutos/nonogram/</link>
     <description>Recent content in Nonogram on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 05 Feb 2020 11:21:54 +0100</lastBuildDate>
     
-	  <atom:link href="/tutos/nonogram/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/tutos/nonogram/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/nonogram/description/</link>
+      <link>https://choco-solver.org/tutos/nonogram/description/</link>
       <pubDate>Wed, 05 Feb 2020 11:22:05 +0100</pubDate>
       
-      <guid>/tutos/nonogram/description/</guid>
+      <guid>https://choco-solver.org/tutos/nonogram/description/</guid>
       <description>
         
         
@@ -74,10 +74,10 @@ details.&lt;/p&gt;
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/nonogram/math/</link>
+      <link>https://choco-solver.org/tutos/nonogram/math/</link>
       <pubDate>Wed, 05 Feb 2020 11:22:10 +0100</pubDate>
       
-      <guid>/tutos/nonogram/math/</guid>
+      <guid>https://choco-solver.org/tutos/nonogram/math/</guid>
       <description>
         
         
@@ -113,10 +113,10 @@ describing all states and transitions.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/nonogram/code/</link>
+      <link>https://choco-solver.org/tutos/nonogram/code/</link>
       <pubDate>Wed, 05 Feb 2020 11:22:13 +0100</pubDate>
       
-      <guid>/tutos/nonogram/code/</guid>
+      <guid>https://choco-solver.org/tutos/nonogram/code/</guid>
       <description>
         
         
@@ -184,7 +184,7 @@ $i_4$ goes to $i_5$ (eighth transition) and produce 0. And so on.&lt;/p&gt;
 
 
 &lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
-&lt;p&gt;&lt;img src=&#34;/images/tutos/dfa.png&#34; alt=&#34;DFA for {1,2} sequence.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://choco-solver.org/images/tutos/dfa.png&#34; alt=&#34;DFA for {1,2} sequence.&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Graph illustrating the DFA for the sequence {1, 2}. Generated with &lt;a href=&#34;http://www.graphviz.org/&#34;&gt;Graphviz&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;/div&gt;

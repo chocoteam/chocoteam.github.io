@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Documentation</title>
-    <link>/docs/</link>
+    <link>https://choco-solver.org/docs/</link>
     <description>Recent content in Documentation on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/docs/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Tutos: First Model</title>
-      <link>/tutos/first-example/first-model/</link>
+      <link>https://choco-solver.org/tutos/first-example/first-model/</link>
       <pubDate>Fri, 31 Jan 2020 11:47:58 +0100</pubDate>
       
-      <guid>/tutos/first-example/first-model/</guid>
+      <guid>https://choco-solver.org/tutos/first-example/first-model/</guid>
       <description>
         
         
@@ -101,10 +101,10 @@ before, we will have a look at the different objects we can manipulate.&lt;/p&gt
     
     <item>
       <title>Tutos: Follow-Up</title>
-      <link>/tutos/first-example/follow-up/</link>
+      <link>https://choco-solver.org/tutos/first-example/follow-up/</link>
       <pubDate>Fri, 31 Jan 2020 11:48:29 +0100</pubDate>
       
-      <guid>/tutos/first-example/follow-up/</guid>
+      <guid>https://choco-solver.org/tutos/first-example/follow-up/</guid>
       <description>
         
         
@@ -260,10 +260,10 @@ wrong.&lt;/li&gt;
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/verbal-arithmetic/description/</link>
+      <link>https://choco-solver.org/tutos/verbal-arithmetic/description/</link>
       <pubDate>Fri, 31 Jan 2020 14:26:03 +0100</pubDate>
       
-      <guid>/tutos/verbal-arithmetic/description/</guid>
+      <guid>https://choco-solver.org/tutos/verbal-arithmetic/description/</guid>
       <description>
         
         
@@ -291,10 +291,10 @@ equation is satisfied. Note that:&lt;/p&gt;
     
     <item>
       <title>Docs: Declaring variables</title>
-      <link>/docs/modeling/variables/</link>
+      <link>https://choco-solver.org/docs/modeling/variables/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/modeling/variables/</guid>
+      <guid>https://choco-solver.org/docs/modeling/variables/</guid>
       <description>
         
         
@@ -440,10 +440,10 @@ No additional variable is needed, a view based on the variable to refute is enou
     
     <item>
       <title>Tutos: Mathematical model</title>
-      <link>/tutos/verbal-arithmetic/math/</link>
+      <link>https://choco-solver.org/tutos/verbal-arithmetic/math/</link>
       <pubDate>Fri, 31 Jan 2020 14:26:10 +0100</pubDate>
       
-      <guid>/tutos/verbal-arithmetic/math/</guid>
+      <guid>https://choco-solver.org/tutos/verbal-arithmetic/math/</guid>
       <description>
         
         
@@ -480,10 +480,10 @@ carries.&lt;/p&gt;
     
     <item>
       <title>Docs: Handling constraints</title>
-      <link>/docs/modeling/constraints/</link>
+      <link>https://choco-solver.org/docs/modeling/constraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/constraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/constraints/</guid>
       <description>
         
         
@@ -591,10 +591,10 @@ However, the following call will associate &lt;code&gt;b1&lt;/code&gt; with the 
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/verbal-arithmetic/code/</link>
+      <link>https://choco-solver.org/tutos/verbal-arithmetic/code/</link>
       <pubDate>Fri, 31 Jan 2020 14:26:13 +0100</pubDate>
       
-      <guid>/tutos/verbal-arithmetic/code/</guid>
+      <guid>https://choco-solver.org/tutos/verbal-arithmetic/code/</guid>
       <description>
         
         
@@ -714,10 +714,10 @@ solver exploring the search space.&lt;/li&gt;
     
     <item>
       <title>Docs: Constraints over integer variables</title>
-      <link>/docs/modeling/intconstraints/</link>
+      <link>https://choco-solver.org/docs/modeling/intconstraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/intconstraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/intconstraints/</guid>
       <description>
         
         
@@ -802,10 +802,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Docs: Constraints over set variables</title>
-      <link>/docs/modeling/setconstraints/</link>
+      <link>https://choco-solver.org/docs/modeling/setconstraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/setconstraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/setconstraints/</guid>
       <description>
         
         
@@ -816,10 +816,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Docs: Constraints over real variables</title>
-      <link>/docs/modeling/realconstraints/</link>
+      <link>https://choco-solver.org/docs/modeling/realconstraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/realconstraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/realconstraints/</guid>
       <description>
         
         
@@ -830,10 +830,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Docs: Building expressions</title>
-      <link>/docs/modeling/expressions/</link>
+      <link>https://choco-solver.org/docs/modeling/expressions/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:23 +0100</pubDate>
       
-      <guid>/docs/modeling/expressions/</guid>
+      <guid>https://choco-solver.org/docs/modeling/expressions/</guid>
       <description>
         
         
@@ -844,10 +844,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/warehouse-location-problem/description/</link>
+      <link>https://choco-solver.org/tutos/warehouse-location-problem/description/</link>
       <pubDate>Mon, 03 Feb 2020 13:26:51 +0100</pubDate>
       
-      <guid>/tutos/warehouse-location-problem/description/</guid>
+      <guid>https://choco-solver.org/tutos/warehouse-location-problem/description/</guid>
       <description>
         
         
@@ -890,10 +890,10 @@ the maintenance and supply costs is minimized.&lt;/p&gt;
     
     <item>
       <title>Docs: Lauching the resolution process</title>
-      <link>/docs/solving/solving/</link>
+      <link>https://choco-solver.org/docs/solving/solving/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/solving/</guid>
+      <guid>https://choco-solver.org/docs/solving/solving/</guid>
       <description>
         
         
@@ -989,10 +989,10 @@ to ensure there is no pending events.&lt;/p&gt;
     
     <item>
       <title>Docs: Dealing with solutions</title>
-      <link>/docs/solving/solutions/</link>
+      <link>https://choco-solver.org/docs/solving/solutions/</link>
       <pubDate>Fri, 06 Mar 2020 16:42:00 +0100</pubDate>
       
-      <guid>/docs/solving/solutions/</guid>
+      <guid>https://choco-solver.org/docs/solving/solutions/</guid>
       <description>
         
         
@@ -1065,10 +1065,10 @@ To use solutions afterward, you need to record them using &lt;code&gt;Solution&l
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/warehouse-location-problem/math/</link>
+      <link>https://choco-solver.org/tutos/warehouse-location-problem/math/</link>
       <pubDate>Mon, 03 Feb 2020 13:27:42 +0100</pubDate>
       
-      <guid>/tutos/warehouse-location-problem/math/</guid>
+      <guid>https://choco-solver.org/tutos/warehouse-location-problem/math/</guid>
       <description>
         
         
@@ -1137,10 +1137,10 @@ $tot_{cost}$.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/warehouse-location-problem/code/</link>
+      <link>https://choco-solver.org/tutos/warehouse-location-problem/code/</link>
       <pubDate>Mon, 03 Feb 2020 13:35:26 +0100</pubDate>
       
-      <guid>/tutos/warehouse-location-problem/code/</guid>
+      <guid>https://choco-solver.org/tutos/warehouse-location-problem/code/</guid>
       <description>
         
         
@@ -1371,10 +1371,10 @@ using the unfold resolution process.&lt;/li&gt;
     
     <item>
       <title>Docs: Search Strategies</title>
-      <link>/docs/solving/strategies/</link>
+      <link>https://choco-solver.org/docs/solving/strategies/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/strategies/</guid>
+      <guid>https://choco-solver.org/docs/solving/strategies/</guid>
       <description>
         
         
@@ -1489,7 +1489,7 @@ Most search strategies rely on :&lt;/p&gt;
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;Info&lt;/h4&gt;
-Note that some strategies are &lt;em&gt;dynamic&lt;/em&gt; and might work more efficiently when combined with a &lt;a href=&#34;/docs/solving/restarts/&#34;&gt;restart policy&lt;/a&gt;.
+Note that some strategies are &lt;em&gt;dynamic&lt;/em&gt; and might work more efficiently when combined with a &lt;a href=&#34;https://choco-solver.org/docs/solving/restarts/&#34;&gt;restart policy&lt;/a&gt;.
 &lt;/div&gt;
 
 
@@ -1498,10 +1498,10 @@ Note that some strategies are &lt;em&gt;dynamic&lt;/em&gt; and might work more e
     
     <item>
       <title>Docs: Statistics</title>
-      <link>/docs/solving/statistics/</link>
+      <link>https://choco-solver.org/docs/solving/statistics/</link>
       <pubDate>Fri, 06 Mar 2020 17:54:44 +0100</pubDate>
       
-      <guid>/docs/solving/statistics/</guid>
+      <guid>https://choco-solver.org/docs/solving/statistics/</guid>
       <description>
         
         
@@ -1580,10 +1580,10 @@ Printing the decisions slows down the search process.
     
     <item>
       <title>Docs: Limits</title>
-      <link>/docs/solving/limits/</link>
+      <link>https://choco-solver.org/docs/solving/limits/</link>
       <pubDate>Fri, 06 Mar 2020 17:54:10 +0100</pubDate>
       
-      <guid>/docs/solving/limits/</guid>
+      <guid>https://choco-solver.org/docs/solving/limits/</guid>
       <description>
         
         
@@ -1635,10 +1635,10 @@ The potential search interruption occurs at the end of a propagation, i.e. it wi
     
     <item>
       <title>Docs: Large Neighborhood Search</title>
-      <link>/docs/solving/lns/</link>
+      <link>https://choco-solver.org/docs/solving/lns/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/lns/</guid>
+      <guid>https://choco-solver.org/docs/solving/lns/</guid>
       <description>
         
         
@@ -1686,7 +1686,7 @@ Any time a partial solution has to be computed, a value &lt;code&gt;W&lt;/code&g
 &lt;p&gt;For instance, let’s consider three neighbors &lt;code&gt;n1&lt;/code&gt;, &lt;code&gt;n2&lt;/code&gt; and &lt;code&gt;n3&lt;/code&gt;, their respective weights $w1=2, w2=4, w3=1$. 3 is randomly assigned to &lt;code&gt;W&lt;/code&gt;.
 Then, the weight of &lt;code&gt;n1&lt;/code&gt; is subtracted, &lt;code&gt;W&lt;/code&gt;$- 2 = 1$ ; the weight of &lt;code&gt;n2&lt;/code&gt; is subtracted, &lt;code&gt;W&lt;/code&gt;$- 3 = -3$, &lt;code&gt;W&lt;/code&gt; is less than 0 and n2 is selected.&lt;/p&gt;
 &lt;h2 id=&#34;restarts&#34;&gt;Restarts&lt;/h2&gt;
-&lt;p&gt;A generic and common way to reinforce diversification of LNS is to introduce &lt;a href=&#34;/docs/solving/restarts/&#34;&gt;restarts&lt;/a&gt; during the search process.
+&lt;p&gt;A generic and common way to reinforce diversification of LNS is to introduce &lt;a href=&#34;https://choco-solver.org/docs/solving/restarts/&#34;&gt;restarts&lt;/a&gt; during the search process.
 This technique has proven to be very flexible and to be easily integrated within standard backtracking procedures .&lt;/p&gt;
 &lt;h2 id=&#34;walking&#34;&gt;Walking&lt;/h2&gt;
 &lt;p&gt;A complementary technique that appear to be efficient in practice is named &lt;code&gt;Walking&lt;/code&gt; and consists in accepting equivalent intermediate solutions in a search iteration instead of requiring a strictly better one.&lt;/p&gt;
@@ -1700,10 +1700,10 @@ This technique has proven to be very flexible and to be easily integrated within
     
     <item>
       <title>Docs: Restarts</title>
-      <link>/docs/solving/restarts/</link>
+      <link>https://choco-solver.org/docs/solving/restarts/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/restarts/</guid>
+      <guid>https://choco-solver.org/docs/solving/restarts/</guid>
       <description>
         
         
@@ -1766,10 +1766,10 @@ $$ [1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 9,\cdots] $$&lt;/p&gt;
     
     <item>
       <title>Docs: Multi-thread resolution</title>
-      <link>/docs/solving/portfolio/</link>
+      <link>https://choco-solver.org/docs/solving/portfolio/</link>
       <pubDate>Fri, 06 Mar 2020 15:39:27 +0100</pubDate>
       
-      <guid>/docs/solving/portfolio/</guid>
+      <guid>https://choco-solver.org/docs/solving/portfolio/</guid>
       <description>
         
         
@@ -1805,10 +1805,10 @@ In such case, one can allow no-goods when those threads restart.&lt;/p&gt;
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/aircraft-landing-problem/description/</link>
+      <link>https://choco-solver.org/tutos/aircraft-landing-problem/description/</link>
       <pubDate>Mon, 03 Feb 2020 13:41:20 +0100</pubDate>
       
-      <guid>/tutos/aircraft-landing-problem/description/</guid>
+      <guid>https://choco-solver.org/tutos/aircraft-landing-problem/description/</guid>
       <description>
         
         
@@ -1872,10 +1872,10 @@ for more details.&lt;/p&gt;
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/aircraft-landing-problem/math/</link>
+      <link>https://choco-solver.org/tutos/aircraft-landing-problem/math/</link>
       <pubDate>Mon, 03 Feb 2020 13:41:25 +0100</pubDate>
       
-      <guid>/tutos/aircraft-landing-problem/math/</guid>
+      <guid>https://choco-solver.org/tutos/aircraft-landing-problem/math/</guid>
       <description>
         
         
@@ -1956,10 +1956,10 @@ case a simple inequality constraint fits the need.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/aircraft-landing-problem/code/</link>
+      <link>https://choco-solver.org/tutos/aircraft-landing-problem/code/</link>
       <pubDate>Mon, 03 Feb 2020 13:41:29 +0100</pubDate>
       
-      <guid>/tutos/aircraft-landing-problem/code/</guid>
+      <guid>https://choco-solver.org/tutos/aircraft-landing-problem/code/</guid>
       <description>
         
         
@@ -2258,10 +2258,10 @@ specifically on solution.&lt;/li&gt;
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/nonogram/description/</link>
+      <link>https://choco-solver.org/tutos/nonogram/description/</link>
       <pubDate>Wed, 05 Feb 2020 11:22:05 +0100</pubDate>
       
-      <guid>/tutos/nonogram/description/</guid>
+      <guid>https://choco-solver.org/tutos/nonogram/description/</guid>
       <description>
         
         
@@ -2316,10 +2316,10 @@ details.&lt;/p&gt;
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/nonogram/math/</link>
+      <link>https://choco-solver.org/tutos/nonogram/math/</link>
       <pubDate>Wed, 05 Feb 2020 11:22:10 +0100</pubDate>
       
-      <guid>/tutos/nonogram/math/</guid>
+      <guid>https://choco-solver.org/tutos/nonogram/math/</guid>
       <description>
         
         
@@ -2355,10 +2355,10 @@ describing all states and transitions.&lt;/p&gt;
     
     <item>
       <title>Docs: Designing a propagator</title>
-      <link>/docs/advanced-usages/propagator/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/propagator/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/propagator/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/propagator/</guid>
       <description>
         
         
@@ -2368,7 +2368,7 @@ describing all states and transitions.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The only tricky part relies in the propagator implementation.
 Your propagator must extend the &lt;code&gt;Propagator&lt;/code&gt; class but, at the begining, not all methods have to be overwritted.
 We will see two ways to implement a propagator ensuring that &lt;code&gt;X &amp;gt;= Y&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;A guided implementation of a scalar constraint is presented in the tutorial: &lt;a href=&#34;/tutos/constraints/&#34;&gt;Designing a constraint&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A guided implementation of a scalar constraint is presented in the tutorial: &lt;a href=&#34;https://choco-solver.org/tutos/constraints/&#34;&gt;Designing a constraint&lt;/a&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;basic-propagator&#34;&gt;Basic propagator&lt;/h4&gt;
 &lt;p&gt;You must at least call the super constructor to specifies the scope (set of variables) of the propagator.
 Then you must implement the two following methods:&lt;/p&gt;
@@ -2541,10 +2541,10 @@ The coarse filtering algorithm should be surrounded like this:&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/nonogram/code/</link>
+      <link>https://choco-solver.org/tutos/nonogram/code/</link>
       <pubDate>Wed, 05 Feb 2020 11:22:13 +0100</pubDate>
       
-      <guid>/tutos/nonogram/code/</guid>
+      <guid>https://choco-solver.org/tutos/nonogram/code/</guid>
       <description>
         
         
@@ -2612,7 +2612,7 @@ $i_4$ goes to $i_5$ (eighth transition) and produce 0. And so on.&lt;/p&gt;
 
 
 &lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
-&lt;p&gt;&lt;img src=&#34;/images/tutos/dfa.png&#34; alt=&#34;DFA for {1,2} sequence.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://choco-solver.org/images/tutos/dfa.png&#34; alt=&#34;DFA for {1,2} sequence.&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Graph illustrating the DFA for the sequence {1, 2}. Generated with &lt;a href=&#34;http://www.graphviz.org/&#34;&gt;Graphviz&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;/div&gt;
@@ -2736,10 +2736,10 @@ shift followed by a day shift the next day&amp;rdquo;.&lt;/li&gt;
     
     <item>
       <title>Docs: Designing a search strategy</title>
-      <link>/docs/advanced-usages/strategies/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/strategies/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/strategies/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/strategies/</guid>
       <description>
         
         
@@ -2818,10 +2818,10 @@ It forces to implements the following methods:&lt;/p&gt;
     
     <item>
       <title>Docs: Search loop</title>
-      <link>/docs/advanced-usages/search-loop/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/search-loop/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/search-loop/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/search-loop/</guid>
       <description>
         
         
@@ -2915,10 +2915,10 @@ This is alwasy called *after* calling Move.repair(SearchLoop).
     
     <item>
       <title>Docs: Explanations</title>
-      <link>/docs/advanced-usages/explanations/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/explanations/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/explanations/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/explanations/</guid>
       <description>
         
         
@@ -2993,10 +2993,10 @@ If the explanation jumps back to the root node, the problem is proven to have no
     
     <item>
       <title>Docs: Ibex</title>
-      <link>/docs/advanced-usages/ibex/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/ibex/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/ibex/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/ibex/</guid>
       <description>
         
         
@@ -3023,10 +3023,10 @@ The path /path/to/ibex/lib points to the lib directory of the Ibex installation 
     
     <item>
       <title>Docs: Miscellaneous</title>
-      <link>/docs/advanced-usages/miscellaneous/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/miscellaneous/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/miscellaneous/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/miscellaneous/</guid>
       <description>
         
         
@@ -3132,10 +3132,10 @@ You will find it at &lt;a href=&#34;https://github.com/chocoteam/choco-gui&#34;&
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/golomb-ruler/description/</link>
+      <link>https://choco-solver.org/tutos/golomb-ruler/description/</link>
       <pubDate>Wed, 05 Feb 2020 16:01:05 +0100</pubDate>
       
-      <guid>/tutos/golomb-ruler/description/</guid>
+      <guid>https://choco-solver.org/tutos/golomb-ruler/description/</guid>
       <description>
         
         
@@ -3158,10 +3158,10 @@ two possible values.&lt;/p&gt;
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/golomb-ruler/math/</link>
+      <link>https://choco-solver.org/tutos/golomb-ruler/math/</link>
       <pubDate>Wed, 05 Feb 2020 16:01:10 +0100</pubDate>
       
-      <guid>/tutos/golomb-ruler/math/</guid>
+      <guid>https://choco-solver.org/tutos/golomb-ruler/math/</guid>
       <description>
         
         
@@ -3239,10 +3239,10 @@ last mark $\text{tick}_m$.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/golomb-ruler/code/</link>
+      <link>https://choco-solver.org/tutos/golomb-ruler/code/</link>
       <pubDate>Wed, 05 Feb 2020 16:01:13 +0100</pubDate>
       
-      <guid>/tutos/golomb-ruler/code/</guid>
+      <guid>https://choco-solver.org/tutos/golomb-ruler/code/</guid>
       <description>
         
         
@@ -3349,10 +3349,10 @@ are symmetric to previously found ones.&lt;/li&gt;
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/traveling-salesman-problem/description/</link>
+      <link>https://choco-solver.org/tutos/traveling-salesman-problem/description/</link>
       <pubDate>Wed, 03 Jun 2020 11:18:39 +0200</pubDate>
       
-      <guid>/tutos/traveling-salesman-problem/description/</guid>
+      <guid>https://choco-solver.org/tutos/traveling-salesman-problem/description/</guid>
       <description>
         
         
@@ -3391,10 +3391,10 @@ are symmetric to previously found ones.&lt;/li&gt;
     
     <item>
       <title>Tutos: Math</title>
-      <link>/tutos/traveling-salesman-problem/math/</link>
+      <link>https://choco-solver.org/tutos/traveling-salesman-problem/math/</link>
       <pubDate>Wed, 03 Jun 2020 11:18:39 +0200</pubDate>
       
-      <guid>/tutos/traveling-salesman-problem/math/</guid>
+      <guid>https://choco-solver.org/tutos/traveling-salesman-problem/math/</guid>
       <description>
         
         
@@ -3438,10 +3438,10 @@ $totDist$.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/traveling-salesman-problem/code/</link>
+      <link>https://choco-solver.org/tutos/traveling-salesman-problem/code/</link>
       <pubDate>Wed, 03 Jun 2020 11:18:39 +0200</pubDate>
       
-      <guid>/tutos/traveling-salesman-problem/code/</guid>
+      <guid>https://choco-solver.org/tutos/traveling-salesman-problem/code/</guid>
       <description>
         
         
@@ -3612,10 +3612,10 @@ Total distance = 2085
     
     <item>
       <title>Tutos: Designing a constraint</title>
-      <link>/tutos/constraints/</link>
+      <link>https://choco-solver.org/tutos/constraints/</link>
       <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tutos/constraints/</guid>
+      <guid>https://choco-solver.org/tutos/constraints/</guid>
       <description>
         
         

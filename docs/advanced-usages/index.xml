@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Advanced usages</title>
-    <link>/docs/advanced-usages/</link>
+    <link>https://choco-solver.org/docs/advanced-usages/</link>
     <description>Recent content in Advanced usages on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 07 Jan 2020 16:08:22 +0100</lastBuildDate>
     
-	  <atom:link href="/docs/advanced-usages/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/docs/advanced-usages/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Designing a propagator</title>
-      <link>/docs/advanced-usages/propagator/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/propagator/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/propagator/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/propagator/</guid>
       <description>
         
         
@@ -29,7 +29,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The only tricky part relies in the propagator implementation.
 Your propagator must extend the &lt;code&gt;Propagator&lt;/code&gt; class but, at the begining, not all methods have to be overwritted.
 We will see two ways to implement a propagator ensuring that &lt;code&gt;X &amp;gt;= Y&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;A guided implementation of a scalar constraint is presented in the tutorial: &lt;a href=&#34;/tutos/constraints/&#34;&gt;Designing a constraint&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A guided implementation of a scalar constraint is presented in the tutorial: &lt;a href=&#34;https://choco-solver.org/tutos/constraints/&#34;&gt;Designing a constraint&lt;/a&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;basic-propagator&#34;&gt;Basic propagator&lt;/h4&gt;
 &lt;p&gt;You must at least call the super constructor to specifies the scope (set of variables) of the propagator.
 Then you must implement the two following methods:&lt;/p&gt;
@@ -202,10 +202,10 @@ The coarse filtering algorithm should be surrounded like this:&lt;/p&gt;
     
     <item>
       <title>Docs: Designing a search strategy</title>
-      <link>/docs/advanced-usages/strategies/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/strategies/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/strategies/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/strategies/</guid>
       <description>
         
         
@@ -284,10 +284,10 @@ It forces to implements the following methods:&lt;/p&gt;
     
     <item>
       <title>Docs: Search loop</title>
-      <link>/docs/advanced-usages/search-loop/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/search-loop/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/search-loop/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/search-loop/</guid>
       <description>
         
         
@@ -381,10 +381,10 @@ This is alwasy called *after* calling Move.repair(SearchLoop).
     
     <item>
       <title>Docs: Explanations</title>
-      <link>/docs/advanced-usages/explanations/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/explanations/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/explanations/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/explanations/</guid>
       <description>
         
         
@@ -459,10 +459,10 @@ If the explanation jumps back to the root node, the problem is proven to have no
     
     <item>
       <title>Docs: Ibex</title>
-      <link>/docs/advanced-usages/ibex/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/ibex/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/ibex/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/ibex/</guid>
       <description>
         
         
@@ -489,10 +489,10 @@ The path /path/to/ibex/lib points to the lib directory of the Ibex installation 
     
     <item>
       <title>Docs: Miscellaneous</title>
-      <link>/docs/advanced-usages/miscellaneous/</link>
+      <link>https://choco-solver.org/docs/advanced-usages/miscellaneous/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/advanced-usages/miscellaneous/</guid>
+      <guid>https://choco-solver.org/docs/advanced-usages/miscellaneous/</guid>
       <description>
         
         

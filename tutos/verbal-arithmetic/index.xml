@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Verbal Arithmetic</title>
-    <link>/tutos/verbal-arithmetic/</link>
+    <link>https://choco-solver.org/tutos/verbal-arithmetic/</link>
     <description>Recent content in Verbal Arithmetic on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 31 Jan 2020 14:24:15 +0100</lastBuildDate>
     
-	  <atom:link href="/tutos/verbal-arithmetic/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/tutos/verbal-arithmetic/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Tutos: Description</title>
-      <link>/tutos/verbal-arithmetic/description/</link>
+      <link>https://choco-solver.org/tutos/verbal-arithmetic/description/</link>
       <pubDate>Fri, 31 Jan 2020 14:26:03 +0100</pubDate>
       
-      <guid>/tutos/verbal-arithmetic/description/</guid>
+      <guid>https://choco-solver.org/tutos/verbal-arithmetic/description/</guid>
       <description>
         
         
@@ -47,10 +47,10 @@ equation is satisfied. Note that:&lt;/p&gt;
     
     <item>
       <title>Tutos: Mathematical model</title>
-      <link>/tutos/verbal-arithmetic/math/</link>
+      <link>https://choco-solver.org/tutos/verbal-arithmetic/math/</link>
       <pubDate>Fri, 31 Jan 2020 14:26:10 +0100</pubDate>
       
-      <guid>/tutos/verbal-arithmetic/math/</guid>
+      <guid>https://choco-solver.org/tutos/verbal-arithmetic/math/</guid>
       <description>
         
         
@@ -87,10 +87,10 @@ carries.&lt;/p&gt;
     
     <item>
       <title>Tutos: Code</title>
-      <link>/tutos/verbal-arithmetic/code/</link>
+      <link>https://choco-solver.org/tutos/verbal-arithmetic/code/</link>
       <pubDate>Fri, 31 Jan 2020 14:26:13 +0100</pubDate>
       
-      <guid>/tutos/verbal-arithmetic/code/</guid>
+      <guid>https://choco-solver.org/tutos/verbal-arithmetic/code/</guid>
       <description>
         
         

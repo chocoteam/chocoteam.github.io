@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – First Example</title>
-    <link>/tutos/first-example/</link>
+    <link>https://choco-solver.org/tutos/first-example/</link>
     <description>Recent content in First Example on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 31 Jan 2020 13:17:22 +0100</lastBuildDate>
     
-	  <atom:link href="/tutos/first-example/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/tutos/first-example/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Tutos: First Model</title>
-      <link>/tutos/first-example/first-model/</link>
+      <link>https://choco-solver.org/tutos/first-example/first-model/</link>
       <pubDate>Fri, 31 Jan 2020 11:47:58 +0100</pubDate>
       
-      <guid>/tutos/first-example/first-model/</guid>
+      <guid>https://choco-solver.org/tutos/first-example/first-model/</guid>
       <description>
         
         
@@ -102,10 +102,10 @@ before, we will have a look at the different objects we can manipulate.&lt;/p&gt
     
     <item>
       <title>Tutos: Follow-Up</title>
-      <link>/tutos/first-example/follow-up/</link>
+      <link>https://choco-solver.org/tutos/first-example/follow-up/</link>
       <pubDate>Fri, 31 Jan 2020 11:48:29 +0100</pubDate>
       
-      <guid>/tutos/first-example/follow-up/</guid>
+      <guid>https://choco-solver.org/tutos/first-example/follow-up/</guid>
       <description>
         
         

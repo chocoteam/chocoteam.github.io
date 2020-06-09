@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Solving</title>
-    <link>/docs/solving/</link>
+    <link>https://choco-solver.org/docs/solving/</link>
     <description>Recent content in Solving on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 07 Jan 2020 16:08:22 +0100</lastBuildDate>
     
-	  <atom:link href="/docs/solving/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/docs/solving/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Docs: Lauching the resolution process</title>
-      <link>/docs/solving/solving/</link>
+      <link>https://choco-solver.org/docs/solving/solving/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/solving/</guid>
+      <guid>https://choco-solver.org/docs/solving/solving/</guid>
       <description>
         
         
@@ -115,10 +115,10 @@ to ensure there is no pending events.&lt;/p&gt;
     
     <item>
       <title>Docs: Dealing with solutions</title>
-      <link>/docs/solving/solutions/</link>
+      <link>https://choco-solver.org/docs/solving/solutions/</link>
       <pubDate>Fri, 06 Mar 2020 16:42:00 +0100</pubDate>
       
-      <guid>/docs/solving/solutions/</guid>
+      <guid>https://choco-solver.org/docs/solving/solutions/</guid>
       <description>
         
         
@@ -191,10 +191,10 @@ To use solutions afterward, you need to record them using &lt;code&gt;Solution&l
     
     <item>
       <title>Docs: Search Strategies</title>
-      <link>/docs/solving/strategies/</link>
+      <link>https://choco-solver.org/docs/solving/strategies/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/strategies/</guid>
+      <guid>https://choco-solver.org/docs/solving/strategies/</guid>
       <description>
         
         
@@ -309,7 +309,7 @@ Most search strategies rely on :&lt;/p&gt;
 
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;Info&lt;/h4&gt;
-Note that some strategies are &lt;em&gt;dynamic&lt;/em&gt; and might work more efficiently when combined with a &lt;a href=&#34;/docs/solving/restarts/&#34;&gt;restart policy&lt;/a&gt;.
+Note that some strategies are &lt;em&gt;dynamic&lt;/em&gt; and might work more efficiently when combined with a &lt;a href=&#34;https://choco-solver.org/docs/solving/restarts/&#34;&gt;restart policy&lt;/a&gt;.
 &lt;/div&gt;
 
 
@@ -318,10 +318,10 @@ Note that some strategies are &lt;em&gt;dynamic&lt;/em&gt; and might work more e
     
     <item>
       <title>Docs: Statistics</title>
-      <link>/docs/solving/statistics/</link>
+      <link>https://choco-solver.org/docs/solving/statistics/</link>
       <pubDate>Fri, 06 Mar 2020 17:54:44 +0100</pubDate>
       
-      <guid>/docs/solving/statistics/</guid>
+      <guid>https://choco-solver.org/docs/solving/statistics/</guid>
       <description>
         
         
@@ -400,10 +400,10 @@ Printing the decisions slows down the search process.
     
     <item>
       <title>Docs: Limits</title>
-      <link>/docs/solving/limits/</link>
+      <link>https://choco-solver.org/docs/solving/limits/</link>
       <pubDate>Fri, 06 Mar 2020 17:54:10 +0100</pubDate>
       
-      <guid>/docs/solving/limits/</guid>
+      <guid>https://choco-solver.org/docs/solving/limits/</guid>
       <description>
         
         
@@ -455,10 +455,10 @@ The potential search interruption occurs at the end of a propagation, i.e. it wi
     
     <item>
       <title>Docs: Large Neighborhood Search</title>
-      <link>/docs/solving/lns/</link>
+      <link>https://choco-solver.org/docs/solving/lns/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/lns/</guid>
+      <guid>https://choco-solver.org/docs/solving/lns/</guid>
       <description>
         
         
@@ -506,7 +506,7 @@ Any time a partial solution has to be computed, a value &lt;code&gt;W&lt;/code&g
 &lt;p&gt;For instance, let’s consider three neighbors &lt;code&gt;n1&lt;/code&gt;, &lt;code&gt;n2&lt;/code&gt; and &lt;code&gt;n3&lt;/code&gt;, their respective weights $w1=2, w2=4, w3=1$. 3 is randomly assigned to &lt;code&gt;W&lt;/code&gt;.
 Then, the weight of &lt;code&gt;n1&lt;/code&gt; is subtracted, &lt;code&gt;W&lt;/code&gt;$- 2 = 1$ ; the weight of &lt;code&gt;n2&lt;/code&gt; is subtracted, &lt;code&gt;W&lt;/code&gt;$- 3 = -3$, &lt;code&gt;W&lt;/code&gt; is less than 0 and n2 is selected.&lt;/p&gt;
 &lt;h2 id=&#34;restarts&#34;&gt;Restarts&lt;/h2&gt;
-&lt;p&gt;A generic and common way to reinforce diversification of LNS is to introduce &lt;a href=&#34;/docs/solving/restarts/&#34;&gt;restarts&lt;/a&gt; during the search process.
+&lt;p&gt;A generic and common way to reinforce diversification of LNS is to introduce &lt;a href=&#34;https://choco-solver.org/docs/solving/restarts/&#34;&gt;restarts&lt;/a&gt; during the search process.
 This technique has proven to be very flexible and to be easily integrated within standard backtracking procedures .&lt;/p&gt;
 &lt;h2 id=&#34;walking&#34;&gt;Walking&lt;/h2&gt;
 &lt;p&gt;A complementary technique that appear to be efficient in practice is named &lt;code&gt;Walking&lt;/code&gt; and consists in accepting equivalent intermediate solutions in a search iteration instead of requiring a strictly better one.&lt;/p&gt;
@@ -520,10 +520,10 @@ This technique has proven to be very flexible and to be easily integrated within
     
     <item>
       <title>Docs: Restarts</title>
-      <link>/docs/solving/restarts/</link>
+      <link>https://choco-solver.org/docs/solving/restarts/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/solving/restarts/</guid>
+      <guid>https://choco-solver.org/docs/solving/restarts/</guid>
       <description>
         
         
@@ -586,10 +586,10 @@ $$ [1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 9,\cdots] $$&lt;/p&gt;
     
     <item>
       <title>Docs: Multi-thread resolution</title>
-      <link>/docs/solving/portfolio/</link>
+      <link>https://choco-solver.org/docs/solving/portfolio/</link>
       <pubDate>Fri, 06 Mar 2020 15:39:27 +0100</pubDate>
       
-      <guid>/docs/solving/portfolio/</guid>
+      <guid>https://choco-solver.org/docs/solving/portfolio/</guid>
       <description>
         
         

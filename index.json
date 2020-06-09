@@ -23,7 +23,7 @@
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/index.json" />
+<meta property="og:url" content="https://choco-solver.org/index.json" />
 <meta property="article:modified_time" content="2020-01-30T21:50:46+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="">
@@ -220,7 +220,7 @@ if (!doNotTrack) {
 
 
 
-<script src="/js/main.min.29b0315468c00226fa6f4556a9cebc0ac4fe1ce1457a01b22c0a06b329877383.js" integrity="sha256-KbAxVGjAAib6b0VWqc68CsT&#43;HOFFegGyLAoGsymHc4M=" crossorigin="anonymous"></script>
+<script src="/js/main.min.ba317941e1bd245af128b385590d8959497298f465a76927015048fafd67cc18.js" integrity="sha256-ujF5QeG9JFrxKLOFWQ2JWUlymPRlp2knAVBI&#43;v1nzBg=" crossorigin="anonymous"></script>
 
 
 

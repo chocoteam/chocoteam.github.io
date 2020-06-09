@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Blog</title>
-    <link>/blog/</link>
+    <link>https://choco-solver.org/blog/</link>
     <description>Recent content in Blog on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 31 Jan 2020 10:43:40 +0100</lastBuildDate>
     
-	  <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Blog: A book in french about CP</title>
-      <link>/blog/2020/03/02/a-book-in-french-about-cp/</link>
+      <link>https://choco-solver.org/blog/2020/03/02/a-book-in-french-about-cp/</link>
       <pubDate>Mon, 02 Mar 2020 11:47:17 +0100</pubDate>
       
-      <guid>/blog/2020/03/02/a-book-in-french-about-cp/</guid>
+      <guid>https://choco-solver.org/blog/2020/03/02/a-book-in-french-about-cp/</guid>
       <description>
         
         
@@ -33,10 +33,10 @@
     
     <item>
       <title>Blog: Tutorials migration</title>
-      <link>/blog/2020/02/05/tutorials-migration/</link>
+      <link>https://choco-solver.org/blog/2020/02/05/tutorials-migration/</link>
       <pubDate>Wed, 05 Feb 2020 17:44:29 +0100</pubDate>
       
-      <guid>/blog/2020/02/05/tutorials-migration/</guid>
+      <guid>https://choco-solver.org/blog/2020/02/05/tutorials-migration/</guid>
       <description>
         
         
@@ -49,16 +49,16 @@ We will try to keep you informed by publishing a post.&lt;/p&gt;
     
     <item>
       <title>Blog: Revamping documentation</title>
-      <link>/blog/2020/01/31/revamping-documentation/</link>
+      <link>https://choco-solver.org/blog/2020/01/31/revamping-documentation/</link>
       <pubDate>Fri, 31 Jan 2020 10:26:28 +0100</pubDate>
       
-      <guid>/blog/2020/01/31/revamping-documentation/</guid>
+      <guid>https://choco-solver.org/blog/2020/01/31/revamping-documentation/</guid>
       <description>
         
         
         &lt;p&gt;We are pleased to announce that the Choco-solver site is getting a fresh start. We wish to gather under the same banner the technical documentation and the tutorials.&lt;/p&gt;
 &lt;p&gt;For this, we chose &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo, a static site generator&lt;/a&gt; and &lt;a href=&#34;https://www.docsy.dev/&#34;&gt;Docsy, a pretty Hugo theme&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The update of the documentation is just starting, you can check the status, report errors or contribute by going to the &lt;a href=&#34;/docs/&#34;&gt;Documentation&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;The update of the documentation is just starting, you can check the status, report errors or contribute by going to the &lt;a href=&#34;https://choco-solver.org/docs/&#34;&gt;Documentation&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;We will also transfer the tutorials to a separate page as soon as possible.&lt;/p&gt;
 &lt;p&gt;The motivated team !&lt;/p&gt;
 

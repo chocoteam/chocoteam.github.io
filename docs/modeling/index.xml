@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Choco-solver – Modeling</title>
-    <link>/docs/modeling/</link>
+    <link>https://choco-solver.org/docs/modeling/</link>
     <description>Recent content in Modeling on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="/docs/modeling/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://choco-solver.org/docs/modeling/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Declaring variables</title>
-      <link>/docs/modeling/variables/</link>
+      <link>https://choco-solver.org/docs/modeling/variables/</link>
       <pubDate>Tue, 07 Jan 2020 16:06:55 +0100</pubDate>
       
-      <guid>/docs/modeling/variables/</guid>
+      <guid>https://choco-solver.org/docs/modeling/variables/</guid>
       <description>
         
         
@@ -164,10 +164,10 @@ No additional variable is needed, a view based on the variable to refute is enou
     
     <item>
       <title>Docs: Handling constraints</title>
-      <link>/docs/modeling/constraints/</link>
+      <link>https://choco-solver.org/docs/modeling/constraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/constraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/constraints/</guid>
       <description>
         
         
@@ -275,10 +275,10 @@ However, the following call will associate &lt;code&gt;b1&lt;/code&gt; with the 
     
     <item>
       <title>Docs: Constraints over integer variables</title>
-      <link>/docs/modeling/intconstraints/</link>
+      <link>https://choco-solver.org/docs/modeling/intconstraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/intconstraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/intconstraints/</guid>
       <description>
         
         
@@ -363,10 +363,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Docs: Constraints over set variables</title>
-      <link>/docs/modeling/setconstraints/</link>
+      <link>https://choco-solver.org/docs/modeling/setconstraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/setconstraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/setconstraints/</guid>
       <description>
         
         
@@ -377,10 +377,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Docs: Constraints over real variables</title>
-      <link>/docs/modeling/realconstraints/</link>
+      <link>https://choco-solver.org/docs/modeling/realconstraints/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:15 +0100</pubDate>
       
-      <guid>/docs/modeling/realconstraints/</guid>
+      <guid>https://choco-solver.org/docs/modeling/realconstraints/</guid>
       <description>
         
         
@@ -391,10 +391,10 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
     
     <item>
       <title>Docs: Building expressions</title>
-      <link>/docs/modeling/expressions/</link>
+      <link>https://choco-solver.org/docs/modeling/expressions/</link>
       <pubDate>Tue, 07 Jan 2020 16:07:23 +0100</pubDate>
       
-      <guid>/docs/modeling/expressions/</guid>
+      <guid>https://choco-solver.org/docs/modeling/expressions/</guid>
       <description>
         
         
