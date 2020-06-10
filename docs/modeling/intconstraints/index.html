@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/modeling/intconstraints/" />
 <meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
-<meta property="article:modified_time" content="2020-02-03T20:00:02+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-06-10T18:48:10+02:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Constraints over integer variables">
 <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2020-02-03T20:00:02&#43;01:00" />
-<meta itemprop="wordCount" content="698">
+<meta itemprop="dateModified" content="2020-06-10T18:48:10&#43;02:00" />
+<meta itemprop="wordCount" content="1067">
 
 
 
@@ -67,6 +67,22 @@ if (!doNotTrack) {
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
 
 
     <title>Constraints over integer variables | Choco-solver</title>
@@ -468,7 +484,13 @@ if (!doNotTrack) {
         <li><a href="#cumulative-constraint">cumulative constraint</a></li>
       </ul>
     </li>
-    <li><a href="#table-constraints">Table constraints</a></li>
+    <li><a href="#table-constraints">Table constraints</a>
+      <ul>
+        <li><a href="#allowed-combinations">Allowed combinations</a></li>
+        <li><a href="#forbidden-combinations">Forbidden combinations</a></li>
+        <li><a href="#universal-value">Universal value</a></li>
+      </ul>
+    </li>
     <li><a href="#sat-constraints">SAT constraints</a></li>
     <li><a href="#automaton-based-constraints">Automaton-based Constraints</a></li>
   </ul>
@@ -569,6 +591,54 @@ minimum of the variables in <code>vars</code> and <code>max</code> the maximum o
 <h3 id="task-variables"><code>Task</code> variables</h3>
 <h3 id="cumulative-constraint"><code>cumulative</code> constraint</h3>
 <h2 id="table-constraints">Table constraints</h2>
+<p>Table constraints are really useful and make it possible to encode any relationships.
+Table constraints expect an array of variables as input and a <code>Tuples</code> object.
+The latter stores a list of allowed (resp. forbidden) tuples, each of them expresses an allowed (resp. forbidden) combination  for the variables.
+Table constraints are also known as constraints <em>in extension</em> since all possible (or impossible) combinations are needed as input.</p>
+<p>Table constraints usually provide domain consistency filtering algorithm, with diverse spatial and temporal complexities which depend on the number of variables involved and the number of tuples.</p>
+<h3 id="allowed-combinations">Allowed combinations</h3>
+<p>Let&rsquo;s take the example of four variables $X_i = [\![0,3]\!], i \in [1,4]$, that <strong>must</strong> all be equal. This relationship can be expressed with a Table constraint as follow:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Tuples</span> <span style="color:#000">allEqual</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// true stands for &#39;allowed&#39; combinations
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Only defined combinations are solutions.</p>
+<p>The parameter <code>&quot;CT+&quot;</code> is optional and defines the filtering algorithm to use. <code>&quot;CT+&quot;</code> is a really good default choice.</p>
+<h3 id="forbidden-combinations">Forbidden combinations</h3>
+<p>Let&rsquo;s take the previous example but in that case, all variables <strong>must not</strong> be all be equal. This relationship can be expressed with a Table constraint as follow, with a little difference in the <code>Tuples</code> declaration:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Tuples</span> <span style="color:#000">allEqual</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// false stands for &#39;forbidden&#39; combinations
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>All undefined combinations are solution, for example <code>{0,0,0,1}</code> or <code>{0,1,2,3}</code>.</p>
+<h3 id="universal-value">Universal value</h3>
+<p>Under certain conditions, the number of tuples can be reduced by introducing a <em>universal value</em>.
+Consider $X_i = [\![0,99]\!], i \in [1,3]$, and the following relationship:</p>
+<ol>
+<li><em>if $X_1 = 0$ then $X_2 = 0$ and $X_3$ can take any value;</em></li>
+<li><em>else if $X_1 = 3$ then $X_2 = 2$ and $X_3 = 1$.</em></li>
+</ol>
+<p>The allowed tuples are:</p>
+<pre><code>{0, 0, 0}
+{0, 0, 1}
+...
+{0, 0, 98}
+{0, 0, 99}
+{3, 2, 1}
+</code></pre><p>We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture <em>$X_3$ can take any value</em>.
+It&rsquo;s a use case of universal value.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">STAR</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">Tuples</span> <span style="color:#000">rel</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span> 
+<span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setUniversalValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">STAR</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">STAR</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p><code>STAR</code> represents the universal value, here $-1$.
+The value must be taken outside variables domain.</p>
 <h2 id="sat-constraints">SAT constraints</h2>
 <p>A SAT solver is embedded in Choco-solver. It is not  designed to be accessed directly.
 The SAT solver is internally managed as a constraint (and a propagator), that’s why it is referred to as SAT constraint in the following.</p>
@@ -654,7 +724,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 03.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/57f7a26c934394a47acd6145c2e47fefdea15c00">remove info-alert on Absolute view (57f7a26)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 10.06.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/b0c2180ee2cdb6311678b7806704e669586ec224">Add expressions (b0c2180)</a>
 </div>
 </div>
 
