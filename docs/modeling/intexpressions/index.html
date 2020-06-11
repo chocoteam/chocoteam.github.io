@@ -20,25 +20,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Constraints over real variables | Choco-solver</title><meta property="og:title" content="Constraints over real variables" />
-<meta property="og:description" content="How to declare constraints based on real variables?
+<title>Building expressions on integer variables | Choco-solver</title><meta property="og:title" content="Building expressions on integer variables" />
+<meta property="og:description" content="How to build and use expressions?
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://choco-solver.org/docs/modeling/realconstraints/" />
-<meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
+<meta property="og:url" content="https://choco-solver.org/docs/modeling/intexpressions/" />
+<meta property="article:published_time" content="2020-01-07T16:07:23+01:00" />
 <meta property="article:modified_time" content="2020-06-11T15:53:23+02:00" /><meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Constraints over real variables">
-<meta itemprop="description" content="How to declare constraints based on real variables?
+<meta itemprop="name" content="Building expressions on integer variables">
+<meta itemprop="description" content="How to build and use expressions?
 ">
-<meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
+<meta itemprop="datePublished" content="2020-01-07T16:07:23&#43;01:00" />
 <meta itemprop="dateModified" content="2020-06-11T15:53:23&#43;02:00" />
-<meta itemprop="wordCount" content="703">
+<meta itemprop="wordCount" content="1059">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Constraints over real variables"/>
-<meta name="twitter:description" content="How to declare constraints based on real variables?
+<meta name="twitter:title" content="Building expressions on integer variables"/>
+<meta name="twitter:description" content="How to build and use expressions?
 "/>
 
 
@@ -68,8 +68,24 @@ if (!doNotTrack) {
   crossorigin="anonymous"></script>
 
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
 
-    <title>Constraints over real variables | Choco-solver</title>
+
+    <title>Building expressions on integer variables | Choco-solver</title>
   </head>
   <body class="td-page">
     <header>
@@ -240,7 +256,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsmodelingintexpressions" href="/docs/modeling/intexpressions/">Building expressions on integer variables</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsmodelingintexpressions" href="/docs/modeling/intexpressions/">Building expressions on integer variables</a>
       
       
       
@@ -252,7 +268,7 @@ if (!doNotTrack) {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsmodelingrealconstraints" href="/docs/modeling/realconstraints/">Constraints over real variables</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsmodelingrealconstraints" href="/docs/modeling/realconstraints/">Constraints over real variables</a>
       
       
     </li>
@@ -439,8 +455,8 @@ if (!doNotTrack) {
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/RealConstraints.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Constraints%20over%20real%20variables" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/IntExpressions.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Building%20expressions%20on%20integer%20variables" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -454,17 +470,17 @@ if (!doNotTrack) {
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#expressions-with-realvar">Expressions with RealVar</a>
+    <li><a href="#expressions-with-intvar">Expressions with IntVar</a>
       <ul>
         <li><a href="#arithmetic-expressions">Arithmetic expressions</a></li>
         <li><a href="#relational-expressions">Relational expressions</a></li>
+        <li><a href="#logical-expressions">Logical expressions</a></li>
       </ul>
     </li>
-    <li><a href="#other-constraints">Other constraints</a>
+    <li><a href="#expressions-with-realvar">Expressions with RealVar</a>
       <ul>
-        <li><a href="#equality-between-a-realvar-and-an-intvar">Equality between a RealVar and an IntVar</a></li>
-        <li><a href="#binding-a-real-value-from-an-array">Binding a real value from an array</a></li>
-        <li><a href="#scalar-product">Scalar product</a></li>
+        <li><a href="#arithmetic-expressions-1">Arithmetic expressions</a></li>
+        <li><a href="#relational-expressions-1">Relational expressions</a></li>
       </ul>
     </li>
   </ul>
@@ -502,7 +518,7 @@ if (!doNotTrack) {
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://choco-solver.org/docs/modeling/realconstraints/">Constraints over real variables</a>
+	<a href="https://choco-solver.org/docs/modeling/intexpressions/">Building expressions on integer variables</a>
 </li>
 
 	</ol>
@@ -510,13 +526,96 @@ if (!doNotTrack) {
 
             
 <div class="td-content">
-	<h1>Constraints over real variables</h1>
-	<div class="lead">How to declare constraints based on real variables?</div>
-	<p>Choco-solver offers the possibility to combine real variables together into an expression.
-This is the easiest way to declare constraints over real variables.</p>
-<h2 id="expressions-with-realvar">Expressions with <code>RealVar</code></h2>
-<p>Two types of expressions can be defined with <code>RealVar</code> : arithmetic and relational.</p>
+	<h1>Building expressions on integer variables</h1>
+	<div class="lead">How to build and use expressions?</div>
+	<p>Choco-solver offers the possibility to combine integer variables  into an expression.</p>
+<h2 id="expressions-with-intvar">Expressions with <code>IntVar</code></h2>
+<p>Three types of expressions can be defined with <code>IntVar</code> : arithmetic, logical and relational.</p>
 <h3 id="arithmetic-expressions">Arithmetic expressions</h3>
+<p>First, any <code>IntVar</code> is an arithmetic expression itself.</p>
+<p>Based on one variable <code>x</code>, an <strong>arithmetic expression</strong> can be built with the following operators :</p>
+<ul>
+<li><code>x.neg()</code>: returns $-x$,</li>
+<li><code>x.abs()</code>: returns $|x|$,</li>
+<li><code>x.sqr()</code>: returns $x^2$,</li>
+<li><code>x.add(y1, y2, ...)</code>: returns $x+y_1+y_2+\ldots$,</li>
+<li><code>x.sub(y)</code>returns $x - y$,</li>
+<li><code>x.mul(y1, y2, ...)</code>: returns $x\times y_1\times y_2\times \ldots$,</li>
+<li><code>x.div(y)</code>: returns $\frac{x}{y}$, as an Euclidean division, rounding towars $0$,</li>
+<li><code>x.mod(y)</code>: returns $x \mod y$,</li>
+<li><code>x.pow(y)</code>: returns $x^y$,</li>
+<li><code>x.min(y)</code>: returns $\min(x,y)$,</li>
+<li><code>x.max(y)</code>: returns $\max(x,y)$,</li>
+<li><code>x.dist(y)</code>: returns $|x - y|$.</li>
+</ul>
+<p>Note that <code>y</code> can be either an integer or an arithemic expression.</p>
+<p>An arithmetic expression can be turned into an <code>IntVar</code> by calling the <code>intVar()</code> method on it.
+If necessary, it creates intermediary variable and posts intermediary constraints then returns the resulting variable.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// z = min((x+5)%3, y^2);
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">z</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">min</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">pow</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><h3 id="relational-expressions">Relational expressions</h3>
+<p>Based on an <strong>arithmetic expression</strong> <code>x</code>, a relational expression can be built using the following operators:</p>
+<ul>
+<li><code>x.lt(y)</code>: states that $x &lt; y$,</li>
+<li><code>x.le(y)</code>: states that $x \leq y$,</li>
+<li><code>x.gt(y)</code>: states that $x &gt; y$,</li>
+<li><code>x.ge(y)</code>: states that $x \geq y$,</li>
+<li><code>x.ne(y)</code>: states that $x \neq y$,</li>
+<li><code>x.eq(y)</code>: states that $x = y$.</li>
+</ul>
+<p>Note that <code>y</code> can be either an integer or an arithemic expression.</p>
+<p>A relational expression can be posted into the model or be turned into a Boolean variable.</p>
+<h4 id="as-a-decomposition">As a decomposition</h4>
+<p>Calling <code>decompose()</code> on a relation expression will return a <code>Constraint</code> object. It must be then posted or reified.</p>
+<p>The expression forms a tree structure where nodes are either expressions (including variables) and branches are operators.
+Leaves are either an <code>int</code> or <code>IntVar</code>.
+When decomposed, an analysis of the tree structure is done, starting from leaves.
+A call to this method creates additional variables and posts additional constraints.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ge</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">decompose</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><p>Note that <code>post()</code> can be directly called from a relation expression and stands for <code>.decompose().post()</code>;</p>
+<h4 id="as-a-table-constraint">As a Table constraint</h4>
+<p>Alternatively, tuples can be extracted from a relation expression and a Table constraint be posted.
+This is achieved calling the <code>extension()</code> method which returns a <code>Constraint</code> object (that needs to be posted).</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ge</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">extension</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Info</h4>
+The allowed combinations are extracted from the expression by generating all possible combinations and filtering the valid ones (the ones that satisfy the relationship).
+</div>
+
+<h4 id="as-a-boolean-variable">As a Boolean variable</h4>
+<p>Any relation expression can be turned into a <code>BoolVar</code> by calling the <code>boolVar()</code> method.
+The resulting Boolean variable indicates whether or not the relationship holds.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">gt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><h3 id="logical-expressions">Logical expressions</h3>
+<p>First, any logical expression is a relation expression itself.</p>
+<p>Based on an <strong>relational expression</strong> <code>r</code>, a logical expression can be built using the following operators:</p>
+<ul>
+<li><code>r.and(p1,p2,...)</code> : returns $(r \land p_1 \land p_2 \land \dots)$,</li>
+<li><code>r.or(p1,p2,...)</code>: returns $(r \lor p_1 \lor p_2 \lor \dots)$,</li>
+<li><code>r.xor(p1,p2,...)</code>: returns $(r \oplus p_1 \oplus p_2 \oplus \dots)$,</li>
+<li><code>r.imp(p)</code>: returns $(r \Rightarrow p)$,</li>
+<li><code>r.iff(p1,p2,...)</code>: returns $(r \Leftrightarrow p_1 \Leftrightarrow p_2 \Leftrightarrow \dots)$,</li>
+<li><code>r.not()</code>: returns $(\neg r)$,</li>
+<li><code>r.ift(y1,y2)</code>: returns $y_1$ if $r$ is true, returns $y_2$ otherwise.</li>
+</ul>
+<p>Note that <code>pi</code> is relational expression and <code>yi</code> can be either an integer or an arithemic expression.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// (x = y + 1) ==&gt; (x + 2 &lt; 6)
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">imp</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">le</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+</code></pre></div><h2 id="expressions-with-realvar">Expressions with <code>RealVar</code></h2>
+<p>Two types of expressions can be defined with <code>RealVar</code> : arithmetic and relational.</p>
+<h3 id="arithmetic-expressions-1">Arithmetic expressions</h3>
 <p>First any <code>RealVar</code> is an arithmetic expression itself.</p>
 <p>Based on one variable <code>x</code>, an <strong>arithmetic expression</strong> can be built with the following operators :</p>
 <ul>
@@ -565,7 +664,7 @@ A call to this method requires <a href="https://choco-solver.org/docs/advanced-u
 <span style="color:#000">RealVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 <span style="color:#8f5902;font-style:italic">// z = x^(y-2)
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">RealVar</span> <span style="color:#000">z</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">pow</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><h3 id="relational-expressions">Relational expressions</h3>
+</code></pre></div><h3 id="relational-expressions-1">Relational expressions</h3>
 <p>Based on an <strong>arithmetic expression</strong> <code>x</code>, a relational expression can be built using the following operators:</p>
 <ul>
 <li><code>x.lt(y)</code>: states that $x &lt; y$,</li>
@@ -609,29 +708,7 @@ It must be then posted or reified.</p>
 A call to this method requires <a href="https://choco-solver.org/docs/advanced-usages/ibex/">Ibex</a> to be installed and configured.
 </div>
 
-<h2 id="other-constraints">Other constraints</h2>
-<h3 id="equality-between-a-realvar-and-an-intvar">Equality between a <code>RealVar</code> and an <code>IntVar</code></h3>
-<p>It is sometimes relevant to map a real variable to an integer variable.
-Doing so, the real variable is forced to take integer values but it can be declared in real constraints (either as an equation or in Ibex).
-This is achieved by posting an <code>eq</code> constraint like this:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">foo</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#000">RealVar</span> <span style="color:#000">bar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;bar&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1e</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">bar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">foo</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><h3 id="binding-a-real-value-from-an-array">Binding a real value from an array</h3>
-<p>It is possible to set the value of a real variable thanks to an array of double values and an integer variable as the position of the value in the array.
-This relation is also known as an <code>element</code> constraint.
-All double values in the array must be different and sorted in a increasing order.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">RealVar</span> <span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;V&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">e</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#000">IntVar</span> <span style="color:#000">index</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;I&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#000">values</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">8</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Math</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PI</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">index</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div><h3 id="scalar-product">Scalar product</h3>
-<p>A scalar product where coefficients are double values can be defined over a set of integer variables and/or real variables.
-Available operators are <code>&quot;=&quot;, &quot;&gt;=&quot;, &quot;&lt;=&quot;</code>.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#000">coeffs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#000">RealVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#000">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">1</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">coeffs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">35</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</code></pre></div>
+
 	
 		<style>
   .feedback--answer {
