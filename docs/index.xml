@@ -776,8 +776,11 @@ minimum of the variables in &lt;code&gt;vars&lt;/code&gt; and &lt;code&gt;max&lt
 &lt;h2 id=&#34;table-constraints&#34;&gt;Table constraints&lt;/h2&gt;
 &lt;p&gt;Table constraints are really useful and make it possible to encode any relationships.
 Table constraints expect an array of variables as input and a &lt;code&gt;Tuples&lt;/code&gt; object.
-The latter stores a list of allowed (resp. forbidden) tuples, each of them expresses an allowed (resp. forbidden) combination  for the variables.
-Table constraints are also known as constraints &lt;em&gt;in extension&lt;/em&gt; since all possible (or impossible) combinations are needed as input.&lt;/p&gt;
+The latter stores a list of allowed (resp. forbidden) tuples, each of them expresses an allowed (resp. forbidden) combination  for the variables.&lt;/p&gt;
+&lt;p&gt;Consider an ordered set of variables $X=\{X_i \mid i\in I\}$ and a set of allowed combinations $T=\{t_j \mid j\in J\}$ where a tuple $t_j$ is defined as an ordered set of integer values $t_j = \{v_i \mid i \in I\}$. The ith value in $t_j$ is denoted $t_j[i]$.&lt;/p&gt;
+&lt;p&gt;A Table constraint ensures that :
+$$Table(X,T)\equiv (\exists j \in J, t_j \in T, \forall i \in I, X_i = t_{j}[i])$$&lt;/p&gt;
+&lt;p&gt;Table constraints are also known as constraints &lt;em&gt;in extension&lt;/em&gt; since all possible (or impossible) combinations are needed as input.&lt;/p&gt;
 &lt;p&gt;Table constraints usually provide domain consistency filtering algorithm, with diverse spatial and temporal complexities which depend on the number of variables involved and the number of tuples.&lt;/p&gt;
 &lt;h3 id=&#34;allowed-combinations&#34;&gt;Allowed combinations&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s take the example of four variables $X_i = [\![0,3]\!], i \in [1,4]$, that &lt;strong&gt;must&lt;/strong&gt; all be equal. This relationship can be expressed with a Table constraint as follow:&lt;/p&gt;

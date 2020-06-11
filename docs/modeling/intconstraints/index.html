@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/modeling/intconstraints/" />
 <meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
-<meta property="article:modified_time" content="2020-06-10T18:48:10+02:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2020-06-11T17:06:16+02:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Constraints over integer variables">
 <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2020-06-10T18:48:10&#43;02:00" />
-<meta itemprop="wordCount" content="1067">
+<meta itemprop="dateModified" content="2020-06-11T17:06:16&#43;02:00" />
+<meta itemprop="wordCount" content="1136">
 
 
 
@@ -593,8 +593,11 @@ minimum of the variables in <code>vars</code> and <code>max</code> the maximum o
 <h2 id="table-constraints">Table constraints</h2>
 <p>Table constraints are really useful and make it possible to encode any relationships.
 Table constraints expect an array of variables as input and a <code>Tuples</code> object.
-The latter stores a list of allowed (resp. forbidden) tuples, each of them expresses an allowed (resp. forbidden) combination  for the variables.
-Table constraints are also known as constraints <em>in extension</em> since all possible (or impossible) combinations are needed as input.</p>
+The latter stores a list of allowed (resp. forbidden) tuples, each of them expresses an allowed (resp. forbidden) combination  for the variables.</p>
+<p>Consider an ordered set of variables $X=\{X_i \mid i\in I\}$ and a set of allowed combinations $T=\{t_j \mid j\in J\}$ where a tuple $t_j$ is defined as an ordered set of integer values $t_j = \{v_i \mid i \in I\}$. The ith value in $t_j$ is denoted $t_j[i]$.</p>
+<p>A Table constraint ensures that :
+$$Table(X,T)\equiv (\exists j \in J, t_j \in T, \forall i \in I, X_i = t_{j}[i])$$</p>
+<p>Table constraints are also known as constraints <em>in extension</em> since all possible (or impossible) combinations are needed as input.</p>
 <p>Table constraints usually provide domain consistency filtering algorithm, with diverse spatial and temporal complexities which depend on the number of variables involved and the number of tuples.</p>
 <h3 id="allowed-combinations">Allowed combinations</h3>
 <p>Let&rsquo;s take the example of four variables $X_i = [\![0,3]\!], i \in [1,4]$, that <strong>must</strong> all be equal. This relationship can be expressed with a Table constraint as follow:</p>
@@ -724,7 +727,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 10.06.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/b0c2180ee2cdb6311678b7806704e669586ec224">Add expressions (b0c2180)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 11.06.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/4d4fc17e0075ba25f80b6f0d6ca776746a6fb2d8">Update table (4d4fc17)</a>
 </div>
 </div>
 
