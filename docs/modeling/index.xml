@@ -338,9 +338,10 @@ minimum of the variables in &lt;code&gt;vars&lt;/code&gt; and &lt;code&gt;max&lt
 &lt;p&gt;Table constraints are really useful and make it possible to encode any relationships.
 Table constraints expect an array of variables as input and a &lt;code&gt;Tuples&lt;/code&gt; object.
 The latter stores a list of allowed (resp. forbidden) tuples, each of them expresses an allowed (resp. forbidden) combination  for the variables.&lt;/p&gt;
-&lt;p&gt;Consider an ordered set of variables $X=\{X_i \mid i\in I\}$ and a set of allowed combinations $T=\{t_j \mid j\in J\}$ where a tuple $t_j$ is defined as an ordered set of integer values $t_j = \{v_i \mid i \in I\}$. The ith value in $t_j$ is denoted $t_j[i]$.&lt;/p&gt;
+&lt;p&gt;Consider an ordered set of variables $X=\{X_i \mid i\in I\}$ and an allowed combination $t\in T$, which defined an ordered set of integer values. The ith value in $t$ is denoted $t_i$.&lt;/p&gt;
 &lt;p&gt;A Table constraint ensures that :
-$$Table(X,T)\equiv (\exists j \in J, t_j \in T, \forall i \in I, X_i = t_{j}[i])$$&lt;/p&gt;
+$$Table(X,T)\equiv \bigvee_{t \in T}\bigwedge_{i \in I}(X_i = t_i)$$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;When dealing with forbidden combinations, the &lt;code&gt;$=$&lt;/code&gt; operator below is replaced by a &lt;code&gt;$\neq$&lt;/code&gt; operator.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Table constraints are also known as constraints &lt;em&gt;in extension&lt;/em&gt; since all possible (or impossible) combinations are needed as input.&lt;/p&gt;
 &lt;p&gt;Table constraints usually provide domain consistency filtering algorithm, with diverse spatial and temporal complexities which depend on the number of variables involved and the number of tuples.&lt;/p&gt;
 &lt;h3 id=&#34;allowed-combinations&#34;&gt;Allowed combinations&lt;/h3&gt;
