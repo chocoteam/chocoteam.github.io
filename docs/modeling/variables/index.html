@@ -26,12 +26,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/modeling/variables/" />
 <meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
-<meta property="article:modified_time" content="2020-02-02T16:55:01+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2021-02-02T09:09:42+01:00" /><meta property="og:site_name" content="Choco-solver" />
 <meta itemprop="name" content="Declaring variables">
 <meta itemprop="description" content="How to declare variables?
 ">
 <meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
-<meta itemprop="dateModified" content="2020-02-02T16:55:01&#43;01:00" />
+<meta itemprop="dateModified" content="2021-02-02T09:09:42&#43;01:00" />
 <meta itemprop="wordCount" content="1149">
 
 
@@ -455,8 +455,8 @@ window.MathJax = {
 
 
 
-<a href="https://github.com/chocoteam/choco-solver/edit/master/site/content/en/docs/Modeling/Variables.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/choco-solver/issues/new?title=Declaring%20variables" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/website/edit/master/site/content/en/docs/Modeling/Variables.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/website/issues/new?title=Declaring%20variables" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -639,13 +639,13 @@ Otherwise, it is simply a modeling shortcut to create a variable and post a cons
 </code></pre></div><h3 id="logical-views">Logical views</h3>
 <p>A logical view is based on an integer variable, a basic arithmetical relation ($=,\neq,\leq,\geq$) and a constant. The resulting view states whether or not the relation holds.</p>
 <h4 id="b-leftrightarrow-x--4-">$b \Leftrightarrow (x = 4)$ :</h4>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intEqView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intEqView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><h4 id="b-leftrightarrow-x-neq-4-">$b \Leftrightarrow (x \neq 4)$ :</h4>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intNeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intNeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><h4 id="b-leftrightarrow-x-leq-4-">$b \Leftrightarrow (x \leq 4)$ :</h4>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intLeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intLeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><h4 id="b-leftrightarrow-x-geq-4-">$b \Leftrightarrow (x \geq 4)$ :</h4>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intGeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intGeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><h4 id="d-leftrightarrow-neg-b">$d \Leftrightarrow \neg b$</h4>
 <p>This is a specific case, related to the negation of a <code>BoolVar</code>.
 No additional variable is needed, a view based on the variable to refute is enough.</p>
@@ -731,7 +731,7 @@ No additional variable is needed, a view based on the variable to refute is enou
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2020: <a  href="https://github.com/chocoteam/choco-solver/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 02.02.2021: <a  href="https://github.com/chocoteam/website/commit/37bcf538f37fa7e2e3136436b7b634c308aa335c">Fix issues (37bcf53)</a>
 </div>
 </div>
 
@@ -796,7 +796,7 @@ No additional variable is needed, a view based on the variable to refute is enou
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2020 The Choco-solver Authors All Rights Reserved</small>
+        <small class="text-white">&copy; 2021 The Choco-solver Authors All Rights Reserved</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></small>
 	
 		
