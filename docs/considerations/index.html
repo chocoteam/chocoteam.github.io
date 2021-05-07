@@ -7,6 +7,7 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
+<link rel="alternate" type="application/rss&#43;xml" href="https://choco-solver.org/docs/considerations/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -20,25 +21,17 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Ibex | Choco-solver</title><meta property="og:title" content="Ibex" />
-<meta property="og:description" content="Using Ibex.
+<title>Considerations | Choco-solver</title><meta property="og:title" content="Considerations" />
+<meta property="og:description" content="Considerations when using Choco-solver.
 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://choco-solver.org/docs/advanced-usages/ibex/" />
-<meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
-<meta property="article:modified_time" content="2020-03-16T19:01:08+01:00" /><meta property="og:site_name" content="Choco-solver" />
-<meta itemprop="name" content="Ibex">
-<meta itemprop="description" content="Using Ibex.
-">
-<meta itemprop="datePublished" content="2020-01-07T16:06:55&#43;01:00" />
-<meta itemprop="dateModified" content="2020-03-16T19:01:08&#43;01:00" />
-<meta itemprop="wordCount" content="156">
-
-
-
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ibex"/>
-<meta name="twitter:description" content="Using Ibex.
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://choco-solver.org/docs/considerations/" />
+<meta property="og:site_name" content="Choco-solver" />
+<meta itemprop="name" content="Considerations">
+<meta itemprop="description" content="Considerations when using Choco-solver.
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Considerations"/>
+<meta name="twitter:description" content="Considerations when using Choco-solver.
 "/>
 
 
@@ -68,26 +61,10 @@ if (!doNotTrack) {
   crossorigin="anonymous"></script>
 
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-window.MathJax = {
-  tex: {
-    inlineMath: [['$','$']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true
-  },
-  options: {
-    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-  }
-};
-</script>
 
-
-    <title>Ibex | Choco-solver</title>
+    <title>Considerations | Choco-solver</title>
   </head>
-  <body class="td-page">
+  <body class="td-section">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -205,10 +182,10 @@ window.MathJax = {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/considerations/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Considerations</a>
+    <a  href="/docs/considerations/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Considerations</a>
   </li>
   <ul>
-    <li class="collapse " id="docsconsiderations">
+    <li class="collapse show" id="docsconsiderations">
       
       
       
@@ -404,10 +381,10 @@ window.MathJax = {
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Advanced usages</a>
+    <a  href="/docs/advanced-usages/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Advanced usages</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsadvanced-usages">
+    <li class="collapse " id="docsadvanced-usages">
       
       
       
@@ -438,7 +415,7 @@ window.MathJax = {
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsadvanced-usagesibex" href="/docs/advanced-usages/ibex/">Ibex</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsadvanced-usagesibex" href="/docs/advanced-usages/ibex/">Ibex</a>
       
       
       
@@ -484,8 +461,8 @@ window.MathJax = {
 
 
 
-<a href="https://github.com/chocoteam/website/edit/master/site/content/en/docs/Advanced%20usages/Ibex.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/chocoteam/website/issues/new?title=Ibex" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/website/edit/master/site/content/en/docs/Considerations/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/chocoteam/website/issues/new?title=Considerations" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/chocoteam/choco-solver/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -499,10 +476,13 @@ window.MathJax = {
 
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#in-research">In Research</a></li>
+    <li><a href="#in-production">In Production</a>
       <ul>
-        <li><a href="#installing-ibex">Installing Ibex</a></li>
-        <li><a href="#using-ibex">Using Ibex</a></li>
+        <li><a href="#licence">Licence</a></li>
+        <li><a href="#the-project">The project</a></li>
+        <li><a href="#test-coverage">Test coverage</a></li>
+        <li><a href="#support">Support</a></li>
       </ul>
     </li>
   </ul>
@@ -522,9 +502,6 @@ window.MathJax = {
 
 
 
-
-
-
 <li class="breadcrumb-item" >
 	<a href="https://choco-solver.org/docs/">Documentation</a>
 </li>
@@ -532,15 +509,8 @@ window.MathJax = {
 
 
 
-<li class="breadcrumb-item" >
-	<a href="https://choco-solver.org/docs/advanced-usages/">Advanced usages</a>
-</li>
-
-
-
-
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://choco-solver.org/docs/advanced-usages/ibex/">Ibex</a>
+	<a href="https://choco-solver.org/docs/considerations/">Considerations</a>
 </li>
 
 	</ol>
@@ -548,25 +518,106 @@ window.MathJax = {
 
             
 <div class="td-content">
-	<h1>Ibex</h1>
-	<div class="lead">Using Ibex.</div>
-	<p>To manage continuous constraints with Choco, an interface with <a href="http://www.ibex-lib.org/">Ibex</a> has been done.
-It needs this library to be installed on your system.</p>
-<blockquote>
-<p>“IBEX is a C++ library for constraint processing over real numbers.
-It provides reliable algorithms for handling non-linear constraints.
-In particular, round off errors are also taken into account.
-It is based on interval arithmetic and affine arithmetic.”
-– <a href="http://www.ibex-lib.org/">http://www.ibex-lib.org/</a></p>
-</blockquote>
-<h3 id="installing-ibex">Installing Ibex</h3>
-<p>See the <a href="http://www.ibex-lib.org/doc/install.html">installation instructions</a> of Ibex to complied Ibex on your system.
-More specially, take a look at <a href="http://www.ibex-lib.org/doc/install.html#installation-as-a-dynamic-library">Installation as a dynamic library</a>
-Do not forget to add the <code>--with-java-package=org.chocosolver.solver.constraints.real</code> configuration option.</p>
-<h3 id="using-ibex">Using Ibex</h3>
-<p>Once the installation is completed, the JVM needs to know where Ibex is installed to fully benefit from the Choco-Ibex bridge and declare real variables and constraints.
-This can be done either with an environment variable of by adding <code>-Djava.library.path=path/to/ibex/lib</code> to the JVM arguments.
-The path /path/to/ibex/lib points to the lib directory of the Ibex installation directory.</p>
+	<h1>Considerations</h1>
+	<div class="lead">Considerations when using Choco-solver.</div>
+	<p>First of all we would ❤ to hear about your use of Choco-solver :
+<a href="mailto:choco-solver@imt-atlantique.fr?subject=Contact">so please take 5 minutes to tell us about yourself and your project</a>, we would really appreciate 🤘!</p>
+<h2 id="in-research">In Research</h2>
+<p>If you use Choco-solver for your research, you may want to know the right way to cite the library:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article<span style="color:#204a87">{</span>choco2016,
+  title=<span style="color:#204a87">{</span>Choco solver documentation<span style="color:#204a87">}</span>,
+  author=<span style="color:#204a87">{</span>Prud’homme, Charles and Fages, Jean-Guillaume and Lorca, Xavier<span style="color:#204a87">}</span>,
+  journal=<span style="color:#204a87">{</span>TASC, INRIA Rennes, LINA CNRS UMR<span style="color:#204a87">}</span>,
+  volume=<span style="color:#204a87">{</span>6241<span style="color:#204a87">}</span>,
+  year=<span style="color:#204a87">{</span>2016<span style="color:#204a87">}</span>
+<span style="color:#204a87">}</span>
+</code></pre></div><p>And add your article to <a href="https://scholar.google.com/scholar?oi=bibs&amp;hl=fr&amp;cites=4714165071276482389,1869564298759279370,7119725863983437084,531556205983498199">➡ this list</a> ✅.</p>
+<h2 id="in-production">In Production</h2>
+<p>Technical considerations aside, if you are going to evaluate Choco-solver for production use, it is important to keep the following in mind.</p>
+
+
+<div class="pageinfo pageinfo-primary">
+<p><a href="https://www.imt-atlantique.fr/">IMT Atlantique</a>, holder of the economic rights of Choco-solver, offers dedicated services, ranging from support to expertise.</p>
+<p>For more information, <a href="mailto:choco-solver@imt-atlantique.fr?subject=Contact">please contact us</a>.</p>
+
+</div>
+
+<h3 id="licence">Licence</h3>
+<p>Choco is a Free Open-Source Java library distributed under BSD 4-Clause license. It is therefore important to know the different aspects that make up this licence. It is of course necessary to contact a legal department, but consulting the <a href="https://en.wikipedia.org/wiki/BSD_licenses">Wikipedia page of the licence</a> is a good start.</p>
+<h3 id="the-project">The project</h3>
+<p>The first version of Choco-solver in Java was released in 2003. Since then, it has undergone several major redesigns, the last of which was in 2013. Since then, the modelling API has been stabilised (i.e. what concerns the declaration of variables and constraints). Occasionally, the signature of certain methods change but rarely without first deprecating the old usages. However, Choco-solver is an active library.</p>
+<p>Most bugs are fixed within a few days and patches included in the next release. On average, there are 2 releases per year and the changes made are reported in a file called <code>CHANGES.md</code> (which can be found on GitHub).</p>
+<p>There are few regular contributors but there are several thousand downloads per month from Maven Central Repository.</p>
+<h3 id="test-coverage">Test coverage</h3>
+<p>We pay particular attention to testing. They come in two forms: unit and regression tests and performance tests. The latter evaluate the performance of Choco-solver on MiniZinc, XCSP3, MPS and DIMACS instances and evaluate different statistics (time, failures, &hellip;). The tests are executed at each commit and the results are available from GitHub. Regularly, performance is evaluated on a larger set of instances (MiniZinc and XCSP3 mainly), but because of the time consuming nature of this, they have not been automated.</p>
+<h3 id="support">Support</h3>
+<p>There are different ways to get help. Firstly, you should visit the <a href="/community/">Community</a> page, which lists the different entry points. Of course, this does not guarantee the response time.</p>
+
+        <div class="section-index">
+    
+    
+    
+    
+    <hr class="panel-line">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    
+</div>
 
 	
 		<style>
@@ -630,10 +681,9 @@ The path /path/to/ibex/lib points to the lib directory of the Ibex installation 
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 16.03.2020: <a  href="https://github.com/chocoteam/website/commit/2a51b228c1b5eb0fd70fc70c2b3a7e3a14ec76bf">Update doc (2a51b22)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 07.05.2021: <a  href="https://github.com/chocoteam/website/commit/ca54b3625ad6a02e53f5d756da28cd3adc0c5d9a">Update doc (ca54b36)</a>
 </div>
 </div>
-
 
           </main>
         </div>
