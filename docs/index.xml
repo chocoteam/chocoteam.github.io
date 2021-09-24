@@ -14,6 +14,81 @@
     
     
     <item>
+      <title>Docs: Optimization benchmarks 2</title>
+      <link>https://choco-solver.org/docs/benchmarks/out/</link>
+      <pubDate>Thu, 17 Jun 2021 12:10:06 +0000</pubDate>
+      
+      <guid>https://choco-solver.org/docs/benchmarks/out/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;lorem&#34;&gt;lorem&lt;/h2&gt;
+&lt;h3 id=&#34;ipsum&#34;&gt;ipsum&lt;/h3&gt;
+&lt;h4 id=&#34;1&#34;&gt;1&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Exit value:&lt;/strong&gt; &lt;code&gt;8&lt;/code&gt; &lt;span style=&#34;color: red&#34;&gt;↗︎ &lt;code&gt;+2&lt;/code&gt; (&lt;code&gt;+33.33%&lt;/code&gt;)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Evolution of last results:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Measure&lt;/th&gt;
+&lt;th&gt;Reference&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Variation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bound&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;14&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;14&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span style=&#34;color: #005C94&#34;&gt;=&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;time&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;7&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;7&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span style=&#34;color: #005C94&#34;&gt;=&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;3&#34;&gt;3&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Exit value:&lt;/strong&gt; &lt;code&gt;4&lt;/code&gt; &lt;span style=&#34;color: #005C94&#34;&gt;=&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Evolution of last results:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Measure&lt;/th&gt;
+&lt;th&gt;Reference&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Variation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bound&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;17&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;17&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span style=&#34;color: #005C94&#34;&gt;=&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;time&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;4&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;4&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span style=&#34;color: #005C94&#34;&gt;=&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;2&#34;&gt;2&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Exit value:&lt;/strong&gt; &lt;code&gt;-1&lt;/code&gt; &lt;span style=&#34;color: red&#34;&gt;⨯ (was &lt;code&gt;-1&lt;/code&gt;)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The test generated no result.&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;4&#34;&gt;4&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Exit value:&lt;/strong&gt; &lt;code&gt;-1&lt;/code&gt; &lt;span style=&#34;color: red&#34;&gt;⨯ (was &lt;code&gt;-1&lt;/code&gt;)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The test generated no result.&lt;/em&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tutos: First Model</title>
       <link>https://choco-solver.org/tutos/first-example/first-model/</link>
       <pubDate>Fri, 31 Jan 2020 11:47:58 +0100</pubDate>
@@ -3693,8 +3768,7 @@ s.plugMonitor((IMonitorSolution) () -&amp;gt; {System.out.println(&amp;quot;x = 
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;settings&#34;&gt;Settings&lt;/h2&gt;
 &lt;p&gt;A &lt;code&gt;Settings&lt;/code&gt; object is attached to each &lt;code&gt;Model&lt;/code&gt;.
 It declares default behavior for various purposes: from general purpose (such as the welcome message), modelling purpose (such as enabling views) or solving purpose (such as the search binder).&lt;/p&gt;
-&lt;p&gt;Default settings can be accessed through &lt;code&gt;DefaultSettings&lt;/code&gt;.
-This class can be extended to provide more settings and set to modified the default values.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Settings&lt;/code&gt; is a &lt;em&gt;factory design pattern&lt;/em&gt; and provides two default settings: &lt;code&gt;Settings.dev()&lt;/code&gt; and &lt;code&gt;Settings.prod()&lt;/code&gt; which offers configurations adapted to a development or production environment. These can then be modified via setters.&lt;/p&gt;
 &lt;p&gt;Settings are declared in a &lt;code&gt;Model&lt;/code&gt; constructor.
 Settings are not immutable but modifying value after &lt;code&gt;Model&lt;/code&gt; construction can lead to unexpected behavior.&lt;/p&gt;
 &lt;h2 id=&#34;extensions-of-choco&#34;&gt;Extensions of Choco&lt;/h2&gt;

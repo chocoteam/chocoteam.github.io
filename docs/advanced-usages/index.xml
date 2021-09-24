@@ -777,8 +777,7 @@ s.plugMonitor((IMonitorSolution) () -&amp;gt; {System.out.println(&amp;quot;x = 
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;settings&#34;&gt;Settings&lt;/h2&gt;
 &lt;p&gt;A &lt;code&gt;Settings&lt;/code&gt; object is attached to each &lt;code&gt;Model&lt;/code&gt;.
 It declares default behavior for various purposes: from general purpose (such as the welcome message), modelling purpose (such as enabling views) or solving purpose (such as the search binder).&lt;/p&gt;
-&lt;p&gt;Default settings can be accessed through &lt;code&gt;DefaultSettings&lt;/code&gt;.
-This class can be extended to provide more settings and set to modified the default values.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Settings&lt;/code&gt; is a &lt;em&gt;factory design pattern&lt;/em&gt; and provides two default settings: &lt;code&gt;Settings.dev()&lt;/code&gt; and &lt;code&gt;Settings.prod()&lt;/code&gt; which offers configurations adapted to a development or production environment. These can then be modified via setters.&lt;/p&gt;
 &lt;p&gt;Settings are declared in a &lt;code&gt;Model&lt;/code&gt; constructor.
 Settings are not immutable but modifying value after &lt;code&gt;Model&lt;/code&gt; construction can lead to unexpected behavior.&lt;/p&gt;
 &lt;h2 id=&#34;extensions-of-choco&#34;&gt;Extensions of Choco&lt;/h2&gt;

@@ -174,6 +174,12 @@ if (!doNotTrack) {
       
       
       
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsbenchmarksout" href="/docs/benchmarks/out/">Optimization benchmarks 2</a>
+      
+      
+      
+      
 
 
 
@@ -548,10 +554,15 @@ The only prerequisite for running Choco solver is to have Java (Oracle JRE 11 or
     <span style="color:#000">implementation</span> <span style="color:#4e9a06">&#39;org.choco-solver:choco-solver:4.10.3&#39;</span>
 <span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
 <h3 id="as-a-stand-alone-application">As a stand-alone application</h3>
-<p>First, download the last jar file from <a href="https://github.com/chocoteam/choco-solver/releases/latest">GitHub Release page</a>.
-This jar file contains all required dependencies, unlike the one hosted in <a href="https://maven-badges.herokuapp.com/maven-central/org.choco-solver/choco-solver">Maven Central Repository</a>.
-The next step is simply to add the jar file to the classpath of your application.
-In the case your program depends on dependencies used by Choco solver too, you should consider using a build automation tool.</p>
+<p>When one wants to manually adds choco-solver as a dependency of a project, it should pay attention to the following:</p>
+<ul>
+<li>the library is available in 2 versions.
+One is prefixed with <code>choco-solver</code> and defines what is necessary and sufficient to model and solve problems programmatically.
+The other, prefixed with <code>choco-parsers</code>, includes additionnal functions to parse FlatZinc, XCSP3, DIMACS or MPS files directly.</li>
+<li>Each version is presented in 2 formats: with dependencies (suffixed with <code>-jar-with-dependencies</code>) or  without. It is likely tha the former is the needed one.</li>
+<li>Finally, the <a href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html">javadoc</a> of each version is also available on line.</li>
+</ul>
+<p>The next step is simply to add the jar file to the classpath of your application and eventually the javadoc.</p>
 <h2 id="community">Community</h2>
 <p>Stay up to date on the development of Choco solver and reach out to the community with these helpful resources.</p>
 <ul>
@@ -568,6 +579,8 @@ In the case your program depends on dependencies used by Choco solver too, you s
     
     
     <hr class="panel-line">
+        
+            
         
             
         
@@ -690,7 +703,7 @@ In the case your program depends on dependencies used by Choco solver too, you s
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified 07.05.2021: <a  href="https://github.com/chocoteam/website/commit/ca54b3625ad6a02e53f5d756da28cd3adc0c5d9a">Update doc (ca54b36)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified 24.09.2021: <a  href="https://github.com/chocoteam/website/commit/9e740910ae38a30baadee953290c0c57947eeef4">update docs (9e74091)</a>
 </div>
 </div>
 
