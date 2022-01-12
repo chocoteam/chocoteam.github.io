@@ -23,6 +23,9 @@
     <loc>https://choco-solver.org/tutos/first-example/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/spoilers/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tutos/first-example/first-model/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
@@ -31,6 +34,9 @@
   </url><url>
     <loc>https://choco-solver.org/tutos/verbal-arithmetic/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/theory/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
@@ -64,6 +70,9 @@
   </url><url>
     <loc>https://choco-solver.org/tutos/warehouse-location-problem/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/variables/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
@@ -104,6 +113,9 @@
     <loc>https://choco-solver.org/tutos/aircraft-landing-problem/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/constraints/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tutos/aircraft-landing-problem/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
@@ -115,6 +127,9 @@
   </url><url>
     <loc>https://choco-solver.org/tutos/nonogram/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/filtering/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/nonogram/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
@@ -149,6 +164,9 @@
     <loc>https://choco-solver.org/tutos/golomb-ruler/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/limitations/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tutos/golomb-ruler/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
@@ -161,6 +179,9 @@
     <loc>https://choco-solver.org/tutos/traveling-salesman-problem/</loc>
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/failures/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tutos/traveling-salesman-problem/description/</loc>
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
   </url><url>
@@ -172,6 +193,24 @@
   </url><url>
     <loc>https://choco-solver.org/tutos/constraints/</loc>
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/fixpoint/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/notequal/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/nqueens/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/sudoku/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/globals/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/stateoftheart/</loc>
+    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/blog/2021/02/02/project-euler-problem-103/</loc>
     <lastmod>2021-02-02T10:32:35+01:00</lastmod>
@@ -199,5 +238,8 @@
   </url><url>
     <loc>https://choco-solver.org/search/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/</loc>
+    <lastmod>2022-01-12T14:40:37+01:00</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Tiny Tiny Constraint Solver</title>
+<meta name="description" content="A Java library for Constraint Programming">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reset.css">
+<link rel="stylesheet" href="/reveal-js/css/reveal.css"><link rel="stylesheet" href="/reveal-js/css/theme/league.css" id="theme">
+<link rel="stylesheet" href="/highlight-js/github.min.css">
+    
+  </head>
+  <body>
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section><h1 id="the-very-tiny-br-constraint-solver">The Very Tiny </br> Constraint Solver</h1>
+</br>
+Charles Prud'homme, Jan. 2022
+<p>IMT Atlantique, LS2N, TASC</p>
+<p><span style="color:darkred;">Work in progress</span></p>
+</section><section>
+<p>In this presentation, we are going to code <span class='fragment highlight-blue'
+  >
+  from scratch
+</span> a minimalist constraint solver.</p>
+<p>The aim is nothing but <span class='fragment highlight-blue'
+  >
+  understanding
+</span> the internal mechanics.</p>
+</section>
+
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h1 id="spoiler-alerts">Spoiler alerts</h1>
+</section><section>
+<p>There are already plenty of great open source constraint solvers:</p>
+<p><a href="www">choco-solver🐙</a>, <a href="www">or-tools</a>, <a href="www">gecode</a>,
+<a href="www">ACE</a>, <a href="www">JaCoP</a>, <a href="www">Mistral</a>, <a href="www">Sicstus</a>,
+<a href="www">Chuffed</a>, &hellip;</p>
+</br>
+<small>🐙 My favourite.... but I am biased</small>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="https://choco-solver.org/">
+</section><section>
+<p>And several excellent constraint modeling languages:</p>
+<p><a href="www">MiniZinc</a>, <a href="www">XCSP3</a>, <a href="www">PyCSP3</a>, <a href="www">Essence</a>, <a href="www">CPMpy</a>, &hellip;</p>
+</section><section>
+<p>So basically here</br>
+we are</p>
+<div class="alert alert-primary" role="alert">
+<pre><code>&lt;p&gt;the wheel &lt;/br&gt;
+</code></pre>
+<p>or break the paradigm </br>
+but just</p></p>
+<h3 id="understand-by-doing">understand by doing</h3>
+</div>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="a-little-bit-of-theory">A little bit of theory</h1>
+</section><section>
+<p>We are talking about <span style="color:deepskyblue;">Constraint Satisfaction Problem</span>
+.</p>
+<p>A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{C},\mathcal{D}\right&gt;$
+where:</p>
+<ul>
+<li>$\mathcal{X} = {X_1, \ldots, X_n}$ is a set of variables,</li>
+<li>$\mathcal{D}$ is a function associating a domain to each variable,</li>
+<li>$\mathcal{C}$ is a set of constraints.</li>
+</ul>
+<p><em>It can be turn into a COP quite easily</em></p>
+</section><section>
+<p>A constraint defines a <span style="color:deepskyblue;">relation between variables.</span></p>
+<p>It is said to be <span style="color:deepskyblue;">satisfied</span>
+if :</p>
+<ul>
+<li>its variables are <em>instantiated</em> to a single value*</li>
+<li>and the relation holds</li>
+</ul>
+</br>
+</br>
+*: $x_{i_k} \in \mathcal{D}(X_{i_k})$
+</section><section>
+<p>The constraints can be defined in <span style="color:deepskyblue;">intension</span>
+or in <span style="color:deepskyblue;">extension</span>
+.</p>
+<p>For $X_1$, $X_2$ on domains $\{1,2\}$:</p>
+<ul>
+<li>intension:
+<ul>
+<li>expression in a higher level language</li>
+<li><em>e.g.</em>, $X_1+X_2\le3$</li>
+</ul>
+</li>
+<li>extension:
+<ul>
+<li>allowed combinations</li>
+<li><em>e.g.</em>, ${(1,1),(1,2),(2,1)}$</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="less-formally">Less formally</h2>
+</section><section>
+<p>What we know about a <span style="color:deepskyblue;">variable</span>
+is that :</p>
+<ul>
+<li>it takes its values from a <span style="color:deepskyblue;">domain</span>
+*, <em>e.g.</em>, <code>{1,2,3,5}</code>,</li>
+<li>it is linked to other variables using <span style="color:deepskyblue;">constraints</span>
+,</li>
+<li>and it must be <em>instantiated</em> in a <span style="color:deepskyblue;">solution</span>
+.</li>
+</ul>
+</br>
+</br>
+*: discrete domain in our case.
+</section><section>
+<p>On the other hand, a <span style="color:deepskyblue;">constraint</span>
+:</p>
+<ul>
+<li>defines a <span style="color:deepskyblue;">contract</span>
+between its variables,</li>
+<li>must be <span style="color:deepskyblue;">satisfied</span>
+in every solutions,</li>
+<li>and is more than just a checker.</li>
+</ul>
+</section><section>
+<p>Choose your favourite programming language</p>
+<p>(I chose <a href="https://www.python.org/">Python</a>)</p>
+<h1 id="and-lets-get-started">and let&rsquo;s get started</h1>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="variables-and-domains">Variables and domains</h1>
+</section><section>
+<p>Let&rsquo;s make it simple.</br>
+</br>
+A variable will be referenced by a key, its name.</p>
+</section><section>
+<p>A domain will be associated to it.</br>
+<span style="color:darkred;">Beware:</span>  each value can appear only once.</p>
+</section><section>
+<p>A dictionary and sets will do :</p>
+<pre><code class="language-python" data-line-numbers>variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+</code></pre>
+<h3 id="and-thats-enough">and that&rsquo;s enough.</h3>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="constraints">Constraints</h1>
+<p>Let&rsquo;s roll up our sleeves and tackle the case of a first constraint : the binary <em>&ldquo;strictly less&rdquo;</em> one ($x_1 &lt; x_2$).</p>
+</section><section>
+<p>Such a constraint will take <span style="color:deepskyblue;">two variables</span>
+as argument and makes sure that the former one takes a value less than the latter one in any solution.</p>
+</section><section>
+<p>We will first create a class to declare the behaviour of this constraint:</p>
+<pre><code class="language-python" data-line-numbers="1|2-4">class LessThan:
+    def __init__(self, v1, v2):
+        self.v1 = v1
+        self.v2 = v2
+</code></pre>
+</section><section>
+<p>We can impose that &ldquo;x1&rdquo; is strictly less than &ldquo;x2&rdquo;:</p>
+<pre><code class="language-python">c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
+</code></pre>
+<p>After doing that we didn&rsquo;t do much&hellip;</p>
+</section><section>
+<h3 id="in-cp-we-remove">In CP, we remove</h3>
+<p>The basic behaviour of a constraint is to remove from the variable domain those values <span style="color:deepskyblue;">that cannot be extended</span>
+to any solution</p>
+<p>(<em>according to its own contract</em>)</p>
+</section><section>
+<p>We will create an empty function called <code>filter</code> as follow:</p>
+<pre><code class="language-python">def filter(self,variables):
+	pass 
+</code></pre>
+</section>
+<section data-noprocess>
+<h2>The 2 rules of "x1 < x2"</h2>
+<p class="fragment">1. removing from "x1" values <span style="color:deepskyblue;">greater or equal to the largest value</span> in "x2",</p>
+<p class="fragment">2. removing from "x2" values <span style="color:deepskyblue;">smaller or equal to the smallest value</span> in "x1".</p>
+<p class="fragment">Otherwise, in both cases, we could break the contract established between the 2 variables.</p> 
+<!--</section> to bind to the next section tag-->
+</section><section>
+<h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
+<pre><code class="language-python" data-line-numbers="1|2-3|4-5|6-7|8-9|1-9">def filter(self, variables):
+    d1 = variables[self.v1] # get current domain of &quot;x1&quot;
+    d2 = variables[self.v2] # get current domain of &quot;x2&quot;
+    # filtering according to the 1st rule
+    d1 = [v for v in d1 if v &lt; max(d2)] 
+    # filtering according to the 2nd rule
+    d2 = [v for v in d2 if v &gt; min(d1)]
+    variables[self.v1] = d1 # update the domain of &quot;x1&quot;
+    variables[self.v2] = d2 # update the domain of &quot;x2&quot;	
+</code></pre>
+</section><section>
+<h3 id="does-that-work">Does that work?</h3>
+<pre><code class="language-python" data-line-numbers="1-9|1-4|5-6|7-9"># declare a CSP
+variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+# call the filtering algorithm
+c1.filter(variables)
+# check everything works fine
+assert variables[&quot;x1&quot;] == [1, 2]
+assert variables[&quot;x2&quot;] == [2, 3]
+</code></pre>
+</section><section>
+<h3 id="yes-it-does-">Yes, it does !</h3>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="filtering-is-not-enough">Filtering is not enough</h1>
+</section><section>
+<p>Indeed, we remove impossible values</p>
+<p><span class='fragment ' >but no variable is <u>instantiated</u>.</span></p>
+<p><span class='fragment ' >And we can’t do more filtering.</span></p>
+</section><section>
+<p>It seems that we need to dive into the</p>
+<h3 id="search-space-">search space 🤿</h3>
+</section><section>
+<p>Since we need variables to take <u>single value</u>, we can:</p>
+<pre><code class="language-AsciiDoc" data-line-numbers="1|2|3|4|5">select an uninstantiated variable (e.g., the first)
+pick a value in its domain (e.g., the lowest bound)
+fix the selected variable to the selected value
+and see what is going on !
+</code></pre>
+</section><section>
+<p>We created our first <strong>decision</strong>!</p>
+<p><span class='fragment ' >Wait, one decision may not be enough…</span></p>
+<p><span class='fragment ' >… but still, we defined an <em>enumeration strategy</em> 🥳</span></p>
+</section><section>
+<pre><code class="language-python" data-line-numbers="3-9|3|4-5|5-7|8-9|10-12"># ...
+c1.filter(variables)
+for v, d in variables.items():
+    # if one variable is not *instantiated* yet
+    if len(d) &gt; 1:
+    	# then fix it to its lower bound
+        variables[v] = {min(d)}
+        # and filter
+        c1.filter(variables)
+# check everything is fine        
+assert variables[&quot;x1&quot;] == [1]
+assert variables[&quot;x2&quot;] == [2]
+</code></pre>
+</section><section>
+<h2 id="what-if">What if&hellip;</h2>
+<p>we want to find another solution?</p>
+<p>Or enumerate all solutions?</p>
+</section>
+<section data-noprocess>
+<p>For this, we need <span style="color:deepskyblue;">to retrieve the state of the domains</span> before a decision is applied.</p>
+<p><span class="fragment">And therefore it must have been registered beforehand.</span></p>
+<p><span class="fragment">And we must be able to rebut a decision.</span></p>
+</section><section>
+<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+</section><section>
+<h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
+<p>Let&rsquo;s break down the needs into 4 functions.</p>
+</section><section>
+<pre><code class="language-python" data-line-numbers="1|2-4|5-7|9-10|1-10">def create_decision(variables):
+    # find a variable with at least two values in its domain
+    var, dom = next(filter(lambda x: len(x[1]) &gt; 1, \
+			variables.items()), (None, None))
+    if var is not None:
+        # it true, returns the decision
+        return var, min(dom)
+    else:
+        # otherwise, all variables are instantiated
+        return None, None
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers>def copy_domains(variables):
+    # returns a deep copy of the dictionnary
+    return {var: dom.copy() for var, dom in variables.items()}
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers="1|2-3|4-6|7|">def propagate(variables, var, val, apply, constraint):
+    # makes a backup of the variables
+    c_variables = copy_domains(variables)
+    # applies the decision or rebuts is
+    c_variables[var] = [x for x in c_variables[var] \
+				if apply is (x == val)]
+    return enumerate(c_variables, constraint)
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers="1|2|3|4-6|7-10|">def enumerate(variables, constraint):
+    constraint.filter(variables)
+    var, val = create_decision(variables)
+    if var is None:
+        print(variables) # prints the solution
+        return 1
+    else:
+        n = propagate(variables, var, val, True, constraint)
+        n += propagate(variables, var, val, False, constraint)
+    return n
+</code></pre>
+</section><section>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+
+print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<p>should output:</p>
+<pre><code>{'x1': [1], 'x2': [2]}
+{'x1': [1], 'x2': [3]}
+{'x1': [2], 'x2': [3]}
+it finds 3 solutions
+</code></pre>
+</section><section>
+<h1 id="we-did-it-">We did it !</h1>
+<p>Well almost, but still you can pat yourself back !</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="what-are-the-_obvious_-limitations">What are the <em>obvious</em> limitations?</h1>
+<p>(of what we&rsquo;ve done so far)</p>
+</section><section>
+<p>It panics when the problem has no solution.</p>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
+             &quot;x2&quot;: {2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<pre><code class="language-python" data-line-numbers>Traceback (most recent call last):
+  File &quot;sandbox.py&quot;, line 54, in &lt;module&gt;
+    print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
+  File &quot;sandbox.py&quot;, line 40, in enumerate
+    constraint.filter(variables)
+  File &quot;sandbox.py&quot;, line 10, in filter
+    d2 = [v for v in d2 if v &gt; min(d1)]
+  File &quot;sandbox.py&quot;, line 10, in &lt;listcomp&gt;
+    d2 = [v for v in d2 if v &gt; min(d1)]
+ValueError: min() arg is an empty sequence
+</code></pre>
+</section><section>
+<p>It deals with a single constraint.</p>
+<p>And 2 variables.</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="dont-panic">Don&rsquo;t panic</h1>
+<h2 id="and-tell-whats-going-on">and tell what&rsquo;s going on</h2>
+</section><section>
+<p>We can tell that the constraint should return :</p>
+<ul>
+<li><code>None</code> : if nothing was filtered</li>
+<li><code>True</code> : if some values were filtered</li>
+<li><code>False</code> : if a domain becomes empty</li>
+</ul>
+</section><section>
+<h3 id="lets-fix-the-code-12">Let&rsquo;s fix the code (1/2)</h3>
+<pre><code class="language-python" data-line-numbers="4,11,14|6-7,9-10|">def filter(self, vars):
+    d1 = vars[self.v1]
+    d2 = vars[self.v2]			
+    diff = len(d1) + len(d2) # stores current length
+    d1 = [v for v in d1 if v &lt; max(d2)]
+    if len(d1) == 0: # &quot;x1&quot; becomes empty...
+        return False
+    d2 = [v for v in d2 if v &gt; min(d1)]
+    if len(d2) == 0: # &quot;x2&quot; becomes empty...
+        return False
+    diff -= len(d1) + len(d2) # difference in length
+    vars[self.v1] = d1
+    vars[self.v2] = d2	
+    return diff &gt; 0 or None # reduction of a domain or ...
+</code></pre>
+</section><section>
+<h3 id="lets-fix-the-code-22">Let&rsquo;s fix the code (2/2)</h3>
+<pre><code class="language-python" data-line-numbers="2-3|">def enumerate(variables, constraint):
+    if constraint.filter(variables) is False:
+        return 0
+    var, val = select_decision(variables)
+    if var is None:
+        print(variables)
+        return 1
+    else:
+        n = propagate(variables, var, val, True, constraint)
+        n += propagate(variables, var, val, False, constraint)
+        return n
+
+</code></pre>
+<p><code>None</code> and <code>True</code> will be used later.</p>
+</section><section>
+<h3 id="its-fine">It&rsquo;s fine</h3>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
+             &quot;x2&quot;: {2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+
+print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<p>outputs:</p>
+<pre><code>it finds 0 solutions
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="many-constraints">Many constraints</h1>
+<p>of the same type</p>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+</code></pre>
+</section><section>
+<p>We will create a method to iterate on the constraints:</p>
+<pre><code class="language-python">def fix_point(variables, constraints):
+    for c in constraints:
+        if c.filter(variables) is False:
+            return False
+    return True
+</code></pre>
+</section><section>
+<p>A call to this method will replace the first line of the <code>enumerate(_,_)</code> function:</p>
+<pre><code class="language-python">def enumerate(variables, constraints):
+    # if constraint.filter(variables) is False:
+    if not fix_point(variables, constraints):
+        return 0 # at least one constraint is not satisfied
+    # ...        
+</code></pre>
+</section><section>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+print(&quot;it finds&quot;, enumerate(variables, {c1, c2}), &quot;solutions&quot;)
+</code></pre>
+<p>outputs:</p>
+<pre><code>{'x1': [1], 'x2': [2], 'x3': [3]}
+it finds 1 solutions
+</code></pre>
+</section><section>
+<h3 id="does-fix_point__-work-properly">Does <code>fix_point(_,_)</code> work properly?</h3>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+fix_point(variables, {c1, c2})
+print(variables)
+</code></pre>
+<p>goes:</p>
+<pre><code>{'x1': [1, 2], 'x2': [2], 'x3': [3]}
+</code></pre>
+<h3 id="p-classfragmentno-it-doesntp"><p class="fragment">No, it doesn&rsquo;t</p></h3>
+</section><section>
+<p>Indeed:</p>
+<ol>
+<li><code>c1</code> is called first and bounds <code>&quot;x1&quot;</code> and <code>&quot;x2&quot;</code>,</li>
+<li><code>c2</code> is called and bounds <code>&quot;x2&quot;</code> and  <code>&quot;x3&quot;</code>,</li>
+<li>and the loops ends.</li>
+</ol>
+<p>But <code>c1</code> wasn&rsquo;t <em>informed</em> that <code>&quot;x2&quot;</code> was modified by <code>c2</code>.</p>
+</section><section>
+<p>So, as long as a constraint filters values,</br>
+<b><u>all</u></b> the other ones must be checked.</p>
+</br>
+<p class="fragment">
+<small>💡 This could be refined.</small>
+</p>
+</section><section>
+<pre><code class="language-python">def fix_point(variables, constraints):
+    while True:
+        fltrs = False
+        for c in constraints:
+            flt = c.filter(variables)
+            if flt is False: # in case of failure
+                return False
+            elif flt is True: # in case of filtering
+                fltrs |= True # keep on looping 
+        if not fltrs : # to break the while-loop
+            return True
+</code></pre>
+</section><section>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+fix_point(variables, {c1, c2})
+print(variables)
+</code></pre>
+<p>now prints:</p>
+<pre><code>{'x1': [1], 'x2': [2], 'x3': [3]}
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="many-constraints">Many constraints</h1>
+<p>of the different type</p>
+</section><section>
+<h2 id="adding-the-constraint">Adding the constraint</h2>
+<h3 id="x_1neq-x_2--c">$x_1\neq x_2 + c$</h3>
+<p>where $c$ is a constant</p>
+<h2 id="should-be-quite-easy">should be quite easy</h2>
+<p><span class='fragment ' >It requires to define the <code>filter</code> function.</span></p>
+</section>
+<section data-noprocess>
+<h2>The 2 rules of $x_1\neq x_2 + c$</h2>
+<p class="fragment">1. if $x_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $x_1$ values,</p>
+<p class="fragment">2. if $x_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $x_1$ values.</p>
+<!--</section> to bind to the next section tag-->
+</section><section>
+<h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
+<pre><code class="language-python" data-line-numbers="1-5|7-9|11-13|14-16|18,19|10,17,20">class NotEqual:
+    def __init__(self, v1, v2, c=0):
+        self.v1 = v1
+        self.v2 = v2
+        self.c = c
+
+    def filter(self, vars):
+        d1 = vars[self.v1]
+        d2 = vars[self.v2]
+        size = len(d1) + len(d2)
+        if len(d2) == 1:
+            d1 = [v for v in d1 if v != (d2[0] + self.c)]
+            if len(d1) == 0: return False
+        if len(d1) == 1:
+            d2 = [v for v in d2 if v != (d1[0] - self.c)]
+            if len(d2) == 0: return False
+        size -= (len(d1) + len(d2))
+        vars[self.v1] = d1
+        vars[self.v2] = d2
+        return size &gt; 0 or None
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<p>Now, we are able to</p>
+<h1 id="solve-a-basic-problem">solve a basic problem</h1>
+</section><section>
+<h1>The 6 queens puzzle</h1>
+<blockquote>The six queens puzzle is the problem of placing six chess queens on an 6×6 chessboard so that no two queens threaten each other;  thus, a solution requires that no two queens share the same row, column, or diagonal.</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle">Wikipedia</a></p>
+</section><section>
+<p>TODO: image</p>
+</section><section>
+<p>A first idea is to indicate by a <span style="color:deepskyblue;">boolean</span> variable if a cell is occupied by a queen or not.</p>
+<p><span class='fragment ' >But we wouldn’t be able to use our constraints.</span></p>
+<p><span class='fragment ' >Also, it is very MILP or SAT.</span></p>
+</section><section>
+<h2 id="a-more-cp-way-to-model-it">A more CP way to model it</h2>
+<p>A <span style="color:deepskyblue;">variable</span> per column.</p>
+<p>Each <span style="color:deepskyblue;">domain</span> encodes the row where the queen is set.</p>
+<p>Four groups of inequality <span style="color:deepskyblue;">constraints</span> are posed:</p>
+<ol>
+<li>no two queens share the same row</li>
+<li>no two queens share the same column (➡️ <em>handled by the model</em> 🤘)</li>
+<li>no two queens share the same upward diagonal</li>
+<li>no two queens share the same downward diagonal</li>
+</ol>
+</section><section>
+<h2 id="6-queens-puzzle-in-python">6 Queens puzzle in Python</h2>
+<pre><code class="language-python" data-line-numbers="2-4|6-11|13-15|17">n = 6
+variables = {}
+for i in range(1, n + 1):
+    variables[&quot;x&quot; + str(i)] = {k for k in range(1, n + 1)}
+
+cs = []
+for i in range(1, n):
+    for j in range(i + 1, n + 1):
+        cs.append(NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j)))
+        cs.append(NotEqual(&quot;x&quot;+str(i),&quot;x&quot;+str(j), c=(j-i)))
+        cs.append(NotEqual(&quot;x&quot;+str(i),&quot;x&quot;+str(j), c=-(j-i)))
+
+# mirror symm. breaking
+variables[&quot;cst&quot;] = {int(n / 2) + 1}
+cs.append(LessThan(&quot;x1&quot;, &quot;cst&quot;))
+
+print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
+</code></pre>
+</section><section>
+<h3 id="2-solutions">2 solutions</h3>
+<pre><code class="language-python">{'x1': [2], 'x2': [4], 'x3': [6], 'x4': [1], 'x5': [3], 'x6': [5], 'cst': {4}}
+{'x1': [3], 'x2': [6], 'x3': [2], 'x4': [5], 'x5': [1], 'x6': [4], 'cst': {4}}
+it finds 2 solutions
+</code></pre>
+<p>There are 4 solutions without the symmetry breaking constraint, 2 otherwise.</p>
+</section><section>
+<h2 id="we-did-it-">We did it 🍾</h2>
+<p>We build a minimalist CP solver :</p>
+<ul>
+<li>based on integer variables,</li>
+<li>using two different types of constraints,
+<ul>
+<li>each equipped with a filtering algorithm,</li>
+</ul>
+</li>
+<li>exploring the search space in DFS way.</li>
+</ul>
+<p>And we were able to enumerate solutions</br>
+on a basic problem !</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="analogy-with-sudoku">Analogy with Sudoku</h1>
+</section><section>
+<h2 id="we-reached-the-sudoku-point">We reached the Sudoku point</h2>
+<p>When trying to explain how constraint programming works,
+it is common to draw a parallel with sudoku.</p>
+</section><section>
+<h3 id="modelling">Modelling</h3>
+<ul>
+<li>
+<p>A cell takes its values in $[1,9]$</p>
+<ul>
+<li>➡️ a variable and a domain</li>
+</ul>
+</li>
+<li>
+<p>Each digit shoudl be used exactly once per <span style="color:deepskyblue;">row</span>
+, per <span style="color:deepskyblue;">column</span>
+and per <span style="color:deepskyblue;">square</span></p>
+<ul>
+<li>➡️ sets of $\neq$ constraints</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h3 id="solving">Solving</h3>
+</section><section>
+<h3 id="a-4x4-sudoku-example">A 4x4 sudoku example</h3>
+<pre><code class="language-python">n = 4
+variables = {}
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        variables[&quot;x&quot; + str(i) + str(j)] = {k for k in range(1, n + 1)}
+# fix values
+variables[&quot;x12&quot;] = [2]
+variables[&quot;x21&quot;] = [3]
+variables[&quot;x31&quot;] = [2]
+variables[&quot;x32&quot;] = [1]
+variables[&quot;x33&quot;] = [3]
+variables[&quot;x41&quot;] = [4]
+variables[&quot;x43&quot;] = [2]
+
+zones = []
+# rows
+zones.append([&quot;x11&quot;, &quot;x12&quot;, &quot;x13&quot;, &quot;x14&quot;])
+zones.append([&quot;x21&quot;, &quot;x22&quot;, &quot;x23&quot;, &quot;x24&quot;])
+zones.append([&quot;x31&quot;, &quot;x32&quot;, &quot;x33&quot;, &quot;x34&quot;])
+zones.append([&quot;x41&quot;, &quot;x42&quot;, &quot;x43&quot;, &quot;x44&quot;])
+# columns
+zones.append([&quot;x11&quot;, &quot;x21&quot;, &quot;x31&quot;, &quot;x41&quot;])
+zones.append([&quot;x12&quot;, &quot;x22&quot;, &quot;x32&quot;, &quot;x42&quot;])
+zones.append([&quot;x13&quot;, &quot;x23&quot;, &quot;x33&quot;, &quot;x43&quot;])
+zones.append([&quot;x14&quot;, &quot;x24&quot;, &quot;x34&quot;, &quot;x44&quot;])
+# square
+zones.append([&quot;x11&quot;, &quot;x12&quot;, &quot;x21&quot;, &quot;x22&quot;])
+zones.append([&quot;x13&quot;, &quot;x14&quot;, &quot;x23&quot;, &quot;x24&quot;])
+zones.append([&quot;x31&quot;, &quot;x32&quot;, &quot;x41&quot;, &quot;x42&quot;])
+zones.append([&quot;x33&quot;, &quot;x34&quot;, &quot;x43&quot;, &quot;x44&quot;])
+
+cs = []
+for z in zones:
+    for j in range(0, n):
+        for k in range(j + 1, n):
+            cs.append(NotEqual(z[j], z[k]))
+
+print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="its-all-about-constraints">It&rsquo;s all about constraints</h1>
+</section><section>
+<p>The <span style="color:deepskyblue;">value</span>
+of CP lies</p>
+<h3 id="in-the-constraints">in the constraints</h3>
+<p><span class='fragment ' >We only saw two basic binary constraints</span></p>
+<p><span class='fragment ' >But there are hundreds of them</span></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="http://sofdem.github.io/gccat/gccat/sec5.html"
+      id="gccat">
+</section><section>
+<h2 id="why-are-there-so-many-of-them">Why are there so many of them?</h2>
+<p>Is it not possible to do with less?</p>
+<p><span class='fragment ' >MILP and SAT are doing very well with <strong>one</strong> type of constraint</span></p>
+</section><section>
+<h2 id="two-main-reasons">Two main reasons</h2>
+<ol>
+<li><span style="color:deepskyblue;">Modeling</span>
+: stronger expressive power</li>
+<li><span style="color:deepskyblue;">Solving</span>
+: increased filter quality</li>
+</ol>
+</section><section>
+<h3 id="at-the-modeling-stage">At the modeling stage</h3>
+<ul>
+<li>each constraint is semantically defined</li>
+<li>which also indicates the contract it guarantees</li>
+</ul>
+</section><section>
+<h3 id="examples">Examples</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alldifferent</code></td>
+<td>enforces all variables in its scope to take distinct values</td>
+</tr>
+<tr>
+<td><code>increasing</code></td>
+<td>the variables in its scope are increasing</td>
+</tr>
+<tr>
+<td><code>maximum</code></td>
+<td>a variable is the maximum value of a collection of variables</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section><section>
+<h3 id="others-are-less-obvious-">Others are less obvious 😇</h3>
+<p><code>subgraph_isomorphism</code>, <code>path</code>, <code>diffn</code>, <code>geost</code>, &hellip;</p>
+<p>but are documented</p>
+</section><section>
+<h3 id="at-the-modeling-stage-22">At the modeling stage (2/2)</h3>
+<ul>
+<li>A CSP model is a conjunction of constraints</li>
+<li>The model can be very compact</li>
+<li>It is easy to understand and modify a model</li>
+</ul>
+<p><span class='fragment ' >Recall that there are modelling languages to do this</span></p>
+</section><section>
+<h3 id="at-solving-stage">At solving stage</h3>
+<p>But it is rather here that one can measure the interest of the constraints</p>
+</section><section>
+<p>A constraint captures a sub-problem</p>
+<h3 id="and-provides-an-efficient-way-to-deal-with-it">and provides an efficient way to deal with it</h3>
+<p>thanks to an adapted filtering algorithm</p>
+</section><section>
+<h2 id="on-one-example">On one example</h2>
+</section><section>
+<h3 id="bigwedge_x_ix_j-in-x-ineq-j-x_i-neq-x_j">$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</h3>
+<h3 id="-vs-">-vs-</h3>
+<h3 id="textttalldifferentx">$\texttt{allDifferent}(X)$</h3>
+<p><span class='fragment ' >Both modelings find the same solutions</span></p>
+<p><span class='fragment ' >but the 2nd filters more</span></p>
+</section><section>
+<h3 id="with-binary-constraints">With binary constraints</h3>
+<p><img src="/images/constraints/alldiff1.svg" alt="Alt text."></p>
+<p>What can be deduced?</p>
+<p><span class='fragment ' >Nothing until a variable is set</span></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="fade-in none">
+<h3 id="with-a-global-constraint">With a global constraint</h3>
+<p><img src="/images/constraints/alldiff1.svg" alt="Alt text."></p>
+<p>Rely on graph theory&hellip;</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="fade-in none">
+<h3 id="with-a-global-constraint-1">With a global constraint</h3>
+<p><img src="/images/constraints/alldiff2.svg" alt="Alt text."></p>
+<p>pair variables and values in a bipartite graph&hellip;</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="none"
+      data-transition-speed="fast">
+<h3 id="with-a-global-constraint-2">With a global constraint</h3>
+<p><img src="/images/constraints/alldiff3.svg" alt="Alt text."></p>
+<p>find maximum cardinality matchings&hellip;</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="none"
+      data-transition-speed="fast">
+<h3 id="with-a-global-constraint-3">With a global constraint</h3>
+<p><img src="/images/constraints/alldiff4.svg" alt="Alt text."></p>
+<p>remove values which belong to none of them.</p>
+</section><section>
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</th>
+<th>$\texttt{allDifferent}(X)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#cstrs</td>
+<td>$\frac{\vert X \vert \times \vert X\vert -1}{2}$</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td>weak and late</td>
+<td><em>arc-consistency</em> in polynomial time and space</td>
+</tr>
+<tr>
+<td>Algorithm</td>
+<td>straightforward</td>
+<td>tricky*</td>
+</tr>
+</tbody>
+</table>
+<p><small>*: but already done for you in libraries</small></p>
+<aside class="notes"><p>fix-point might be long</p>
+<p>$$O(n\sqrt{\sum d})$$</p>
+</aside>
+</section><section>
+<h2 id="remarks-about-global-constraints">Remarks about global constraints</h2>
+<p>Many model <span style="color:deepskyblue;">highly combinatorial problems</span></p>
+<p>It is likely that:</p>
+<ul>
+<li>arc-consistency is not reached (<em>i.e., weaker filtering</em>)</li>
+<li>filtering is complex to achieve</li>
+</ul>
+<p>Their expressive power remains strong</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="how-to-become">How to become</h1>
+<h1 id="state-of-the-art">state-of-the-art?</h1>
+
+</section>
+</section>
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+<a href="/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">null</script>
+<script type="application/json" id="reveal-hugo-page-params">{"highlight_theme":"github","slide_number":true,"theme":"league"}</script>
+
+<script src="/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/marked.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom-js/zoom.js"></script>
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+    
+  </body>
+</html>
