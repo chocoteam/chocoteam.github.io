@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tutos/golomb-ruler/math/" /><meta property="article:section" content="tutos" />
 <meta property="article:published_time" content="2020-02-05T16:01:10&#43;01:00" />
-<meta property="article:modified_time" content="2020-02-05T17:42:22&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-01-19T15:41:57&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="Math">
 <meta itemprop="description" content="A mathematical model of the problem.
 "><meta itemprop="datePublished" content="2020-02-05T16:01:10&#43;01:00" />
-<meta itemprop="dateModified" content="2020-02-05T17:42:22&#43;01:00" />
-<meta itemprop="wordCount" content="390">
+<meta itemprop="dateModified" content="2022-01-19T15:41:57&#43;01:00" />
+<meta itemprop="wordCount" content="402">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Math"/>
 <meta name="twitter:description" content="A mathematical model of the problem.
@@ -392,16 +392,16 @@ implied by the other constraints of the model. Thus, their role is to
 bring more filtering and to possibly detect infeasible combinations
 earlier in the search.</p>
 <p>The following reasoning is based on the fact that:</p>
-<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} = \text{diff}_{i,i+1} \ldots \text{diff}_{j-1,j}$$</p>
+<p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} = \text{diff}_{i,i+1} + \ldots + \text{diff}_{j-1,j}$$</p>
 <p>Because all distances must be different, we can estimate the minimal sum
 of distances as a sum of <em>j-i</em> different positive numbers.</p>
 <p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} \geq \frac{(j-i) * (j-i+1)}{2}$$</p>
 <p>Moreover, remember that</p>
 <p>$$\text{diff}_{1,m} = \text{tick}_{m} - \text{tick}_1$$</p>
 <p>and</p>
-<p>$$\text{diff}_{1,m} = \text{diff}_{1,2} \ldots \text{diff}_{i,j} \ldots\text{diff}_{m-1,m}$$</p>
+<p>$$\text{diff}_{1,m} = \text{diff}_{1,2} + \ldots + \text{diff}_{i,i+1} + \ldots + \text{diff}_{m-1,m}$$</p>
 <p>Thus, since $\text{tick}_1$ is equal to 0, we deduce that:</p>
-<p>$$\text{tick}_{m} = \text{diff}_{1,2} \ldots \text{diff}_{i,j} \ldots\text{diff}_{m-1,m}$$</p>
+<p>$$\text{tick}_{m} = \text{diff}_{1,2} + \ldots + \text{diff}_{i,i+1} + \ldots + \text{diff}_{m-1,m}$$</p>
 <p>There are <em>m-1-j+i</em> different numbers so the upper for
 $\text{diff}_{i,j}$ can be defined as:</p>
 <p>$$\forall i,j \in [1,m], i &lt; j, \text{diff}_{i,j} \leq \text{tick}_m - \frac{(m - 1 - j + i) * (m - j + i)}{2}$$</p>
@@ -483,7 +483,7 @@ last mark $\text{tick}_m$.</p>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 05.02.2020: <a href="https://github.com/chocoteam/website/commit/688181e1836a6448d1e751b4ee718ad52c74a64c">Update tutorials (688181e)</a>
+  Last modified 19.01.2022: <a href="https://github.com/chocoteam/website/commit/1912238ff4605c93cd86e83ee692cd3db2ca80c7">Fix #8 (1912238)</a>
 </div>
 
 </div>

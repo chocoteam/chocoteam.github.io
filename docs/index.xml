@@ -4022,16 +4022,16 @@ implied by the other constraints of the model. Thus, their role is to
 bring more filtering and to possibly detect infeasible combinations
 earlier in the search.&lt;/p&gt;
 &lt;p&gt;The following reasoning is based on the fact that:&lt;/p&gt;
-&lt;p&gt;$$\forall i,j \in [1,m], i &amp;lt; j, \text{diff}_{i,j} = \text{diff}_{i,i+1} \ldots \text{diff}_{j-1,j}$$&lt;/p&gt;
+&lt;p&gt;$$\forall i,j \in [1,m], i &amp;lt; j, \text{diff}_{i,j} = \text{diff}_{i,i+1} + \ldots + \text{diff}_{j-1,j}$$&lt;/p&gt;
 &lt;p&gt;Because all distances must be different, we can estimate the minimal sum
 of distances as a sum of &lt;em&gt;j-i&lt;/em&gt; different positive numbers.&lt;/p&gt;
 &lt;p&gt;$$\forall i,j \in [1,m], i &amp;lt; j, \text{diff}_{i,j} \geq \frac{(j-i) * (j-i+1)}{2}$$&lt;/p&gt;
 &lt;p&gt;Moreover, remember that&lt;/p&gt;
 &lt;p&gt;$$\text{diff}_{1,m} = \text{tick}_{m} - \text{tick}_1$$&lt;/p&gt;
 &lt;p&gt;and&lt;/p&gt;
-&lt;p&gt;$$\text{diff}_{1,m} = \text{diff}_{1,2} \ldots \text{diff}_{i,j} \ldots\text{diff}_{m-1,m}$$&lt;/p&gt;
+&lt;p&gt;$$\text{diff}_{1,m} = \text{diff}_{1,2} + \ldots + \text{diff}_{i,i+1} + \ldots + \text{diff}_{m-1,m}$$&lt;/p&gt;
 &lt;p&gt;Thus, since $\text{tick}_1$ is equal to 0, we deduce that:&lt;/p&gt;
-&lt;p&gt;$$\text{tick}_{m} = \text{diff}_{1,2} \ldots \text{diff}_{i,j} \ldots\text{diff}_{m-1,m}$$&lt;/p&gt;
+&lt;p&gt;$$\text{tick}_{m} = \text{diff}_{1,2} + \ldots + \text{diff}_{i,i+1} + \ldots + \text{diff}_{m-1,m}$$&lt;/p&gt;
 &lt;p&gt;There are &lt;em&gt;m-1-j+i&lt;/em&gt; different numbers so the upper for
 $\text{diff}_{i,j}$ can be defined as:&lt;/p&gt;
 &lt;p&gt;$$\forall i,j \in [1,m], i &amp;lt; j, \text{diff}_{i,j} \leq \text{tick}_m - \frac{(m - 1 - j + i) * (m - j + i)}{2}$$&lt;/p&gt;
