@@ -22,30 +22,30 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="A little bit of theory  We are talking about Constraint Satisfaction Problem .
-A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{C},\mathcal{D}\right&gt;$ where:
- $\mathcal{X} = {X_1, \ldots, X_n}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints.  It can be turn into a COP quite easily
- A constraint defines a relation between variables.
-It is said to be satisfied if :" />
+A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{D},\mathcal{C}\right&gt;$ where:
+ $\mathcal{X} = \{X_1, \ldots, X_n\}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints.  It can be turn into a COP quite easily
+ Let&rsquo;s consider the following CSP $\mathcal{P}$:
+ $\mathcal{X} = \{X_1, X_2, X_3\}$ $\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[1,3]\}$ $\mathcal{C} = \{X_1\leq X_2,X_2\leq X_3,AtMost(1,[X_1, X_2, X_3],2)\}$   A constraint defines a relation between variables." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/theory/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2022-01-12T14:00:25&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-03-11T13:44:43&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="A little bit of theory  We are talking about Constraint Satisfaction Problem .
-A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{C},\mathcal{D}\right&gt;$ where:
- $\mathcal{X} = {X_1, \ldots, X_n}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints.  It can be turn into a COP quite easily
- A constraint defines a relation between variables.
-It is said to be satisfied if :">
-<meta itemprop="dateModified" content="2022-01-12T14:00:25&#43;01:00" />
-<meta itemprop="wordCount" content="201">
+A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{D},\mathcal{C}\right&gt;$ where:
+ $\mathcal{X} = \{X_1, \ldots, X_n\}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints.  It can be turn into a COP quite easily
+ Let&rsquo;s consider the following CSP $\mathcal{P}$:
+ $\mathcal{X} = \{X_1, X_2, X_3\}$ $\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[1,3]\}$ $\mathcal{C} = \{X_1\leq X_2,X_2\leq X_3,AtMost(1,[X_1, X_2, X_3],2)\}$   A constraint defines a relation between variables.">
+<meta itemprop="dateModified" content="2022-03-11T13:44:43&#43;01:00" />
+<meta itemprop="wordCount" content="255">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="A little bit of theory  We are talking about Constraint Satisfaction Problem .
-A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{C},\mathcal{D}\right&gt;$ where:
- $\mathcal{X} = {X_1, \ldots, X_n}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints.  It can be turn into a COP quite easily
- A constraint defines a relation between variables.
-It is said to be satisfied if :"/>
+A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{D},\mathcal{C}\right&gt;$ where:
+ $\mathcal{X} = \{X_1, \ldots, X_n\}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints.  It can be turn into a COP quite easily
+ Let&rsquo;s consider the following CSP $\mathcal{P}$:
+ $\mathcal{X} = \{X_1, X_2, X_3\}$ $\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[1,3]\}$ $\mathcal{C} = \{X_1\leq X_2,X_2\leq X_3,AtMost(1,[X_1, X_2, X_3],2)\}$   A constraint defines a relation between variables."/>
 
 
 <script type="application/javascript">
@@ -163,19 +163,29 @@ if (!doNotTrack) {
 <section data-shortcode-section>
 <h1 id="a-little-bit-of-theory">A little bit of theory</h1>
 <hr>
-<p>We are talking about <span style="color:deepskyblue;">Constraint Satisfaction Problem</span>
+<p>We are talking about <span style="color:#3BAFDA">Constraint Satisfaction Problem</span>
 .</p>
-<p>A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{C},\mathcal{D}\right&gt;$
+<p>A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{D},\mathcal{C}\right&gt;$
 where:</p>
 <ul>
-<li>$\mathcal{X} = {X_1, \ldots, X_n}$ is a set of variables,</li>
+<li>$\mathcal{X} = \{X_1, \ldots, X_n\}$ is a set of variables,</li>
 <li>$\mathcal{D}$ is a function associating a domain to each variable,</li>
 <li>$\mathcal{C}$ is a set of constraints.</li>
 </ul>
 <p><em>It can be turn into a COP quite easily</em></p>
 <hr>
-<p>A constraint defines a <span style="color:deepskyblue;">relation between variables.</span></p>
-<p>It is said to be <span style="color:deepskyblue;">satisfied</span>
+<section data-noprocess data-shortcode-slide
+      data-background="#8CC152"
+      id="ex1">
+<p>Let&rsquo;s consider the following CSP $\mathcal{P}$:</p>
+<ul>
+<li>$\mathcal{X} = \{X_1, X_2, X_3\}$</li>
+<li>$\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[1,3]\}$</li>
+<li>$\mathcal{C} = \{X_1\leq X_2,X_2\leq X_3,AtMost(1,[X_1, X_2, X_3],2)\}$</li>
+</ul>
+<hr>
+<p>A constraint defines a <span style="color:#3BAFDA">relation between variables.</span></p>
+<p>It is said to be <span style="color:#3BAFDA">satisfied</span>
 if :</p>
 <ul>
 <li>its variables are <em>instantiated</em> to a single value*</li>
@@ -185,8 +195,17 @@ if :</p>
 </br>
 *: $x_{i_k} \in \mathcal{D}(X_{i_k})$
 <hr>
-<p>The constraints can be defined in <span style="color:deepskyblue;">intension</span>
-or in <span style="color:deepskyblue;">extension</span>
+<section data-noprocess data-shortcode-slide
+      data-background="#8CC152"
+      id="ex2">
+<p>In $\mathcal{P}$, the constraint $AtMost(1,[X_1, X_2, X_3],2)$ holds iff <u>at most</u> 1 variable among $X_1, X_2, X_3$ is assigned to the value 2.</p>
+<ul>
+<li>$(1,1,1)$ and $(1,2,3)$ satisfy the constraint,</li>
+<li>$(2,2,1)$ does not.</li>
+</ul>
+<hr>
+<p>The constraints can be defined in <span style="color:#3BAFDA">intension</span>
+or in <span style="color:#3BAFDA">extension</span>
 .</p>
 <p>For $X_1$, $X_2$ on domains $\{1,2\}$:</p>
 <ul>
@@ -206,26 +225,26 @@ or in <span style="color:deepskyblue;">extension</span>
 <hr>
 <h2 id="less-formally">Less formally</h2>
 <hr>
-<p>What we know about a <span style="color:deepskyblue;">variable</span>
+<p>What we know about a <span style="color:#3BAFDA">variable</span>
 is that :</p>
 <ul>
-<li>it takes its values from a <span style="color:deepskyblue;">domain</span>
+<li>it takes its values from a <span style="color:#3BAFDA">domain</span>
 *, <em>e.g.</em>, <code>{1,2,3,5}</code>,</li>
-<li>it is linked to other variables using <span style="color:deepskyblue;">constraints</span>
+<li>it is linked to other variables using <span style="color:#3BAFDA">constraints</span>
 ,</li>
-<li>and it must be <em>instantiated</em> in a <span style="color:deepskyblue;">solution</span>
+<li>and it must be <em>instantiated</em> in a <span style="color:#3BAFDA">solution</span>
 .</li>
 </ul>
 </br>
 </br>
 *: discrete domain in our case.
 <hr>
-<p>On the other hand, a <span style="color:deepskyblue;">constraint</span>
+<p>On the other hand, a <span style="color:#3BAFDA">constraint</span>
 :</p>
 <ul>
-<li>defines a <span style="color:deepskyblue;">contract</span>
+<li>defines a <span style="color:#3BAFDA">contract</span>
 between its variables,</li>
-<li>must be <span style="color:deepskyblue;">satisfied</span>
+<li>must be <span style="color:#3BAFDA">satisfied</span>
 in every solutions,</li>
 <li>and is more than just a checker.</li>
 </ul>

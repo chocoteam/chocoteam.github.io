@@ -21,28 +21,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of a first constraint : the binary &ldquo;strictly less&rdquo; one ($x_1 &lt; x_2$).
- Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
- We will first create a class to declare the behaviour of this constraint:
-class LessThan: def __init__(self, v1, v2): self." />
+<meta property="og:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
+$x_1 &lt; x_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not.   We will first create a class to declare the behaviour of this constraint:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/constraints/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2022-01-12T14:00:25&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-03-11T13:44:43&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of a first constraint : the binary &ldquo;strictly less&rdquo; one ($x_1 &lt; x_2$).
- Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
- We will first create a class to declare the behaviour of this constraint:
-class LessThan: def __init__(self, v1, v2): self.">
-<meta itemprop="dateModified" content="2022-01-12T14:00:25&#43;01:00" />
-<meta itemprop="wordCount" content="326">
+<meta itemprop="description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
+$x_1 &lt; x_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not.   We will first create a class to declare the behaviour of this constraint:">
+<meta itemprop="dateModified" content="2022-03-11T13:44:43&#43;01:00" />
+<meta itemprop="wordCount" content="372">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of a first constraint : the binary &ldquo;strictly less&rdquo; one ($x_1 &lt; x_2$).
- Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
- We will first create a class to declare the behaviour of this constraint:
-class LessThan: def __init__(self, v1, v2): self."/>
+<meta name="twitter:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
+$x_1 &lt; x_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not.   We will first create a class to declare the behaviour of this constraint:"/>
 
 
 <script type="application/javascript">
@@ -159,10 +156,18 @@ if (!doNotTrack) {
 
 <section data-shortcode-section>
 <h1 id="constraints">Constraints</h1>
-<p>Let&rsquo;s roll up our sleeves and tackle the case of a first constraint : the binary <em>&ldquo;strictly less&rdquo;</em> one ($x_1 &lt; x_2$).</p>
+<p>Let&rsquo;s roll up our sleeves and tackle the case of the binary <em>&ldquo;strictly less&rdquo;</em> constraint:</p>
+<h3 id="x_1--x_2">$x_1 &lt; x_2$</h3>
 <hr>
-<p>Such a constraint will take <span style="color:deepskyblue;">two variables</span>
+<section data-noprocess data-shortcode-slide
+      data-background="#8CC152"
+      id="ex3">
+<p>Such a constraint will take <span style="color:#3BAFDA">two variables</span>
 as argument and makes sure that the former one takes a value less than the latter one in any solution.</p>
+<ul>
+<li>$(1,2)$ and $(2,5)$ satisfy the constraint,</li>
+<li>$(2,2)$ and $(5,3)$ do not.</li>
+</ul>
 <hr>
 <p>We will first create a class to declare the behaviour of this constraint:</p>
 <pre><code class="language-python{1|2-4}">class LessThan:
@@ -172,12 +177,16 @@ as argument and makes sure that the former one takes a value less than the latte
 </code></pre>
 <hr>
 <p>We can impose that &ldquo;x1&rdquo; is strictly less than &ldquo;x2&rdquo;:</p>
-<pre><code class="language-python">c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
+<pre><code class="language-python{3}">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
 </code></pre>
 <p>After doing that we didn&rsquo;t do much&hellip;</p>
 <hr>
+<h2 id="what-can-such-a-constraint-do">What can such a constraint do?</h2>
+<hr>
 <h3 id="in-cp-we-remove">In CP, we remove</h3>
-<p>The basic behaviour of a constraint is to remove from the variable domain those values <span style="color:deepskyblue;">that cannot be extended</span>
+<p>The basic behaviour of a constraint is to remove from the variable domain those values <span style="color:#3BAFDA">that cannot be extended</span>
 to any solution</p>
 <p>(<em>according to its own contract</em>)</p>
 <hr>
@@ -187,11 +196,21 @@ to any solution</p>
 </code></pre>
 <hr>
 <section data-noprocess>
-<h2>The 2 rules of "x1 < x2"</h2>
-<p class="fragment">1. removing from "x1" values <span style="color:deepskyblue;">greater or equal to the largest value</span> in "x2",</p>
-<p class="fragment">2. removing from "x2" values <span style="color:deepskyblue;">smaller or equal to the smallest value</span> in "x1".</p>
+<h2>The 2 rules of $X_1 < X_2$</h2>
+<p class="fragment">1. removing from $X_1$ values <span style="color:deepskyblue;">greater or equal to the largest value</span> in $X_2$,</p>
+<p class="fragment">2. removing from $X_2$ values <span style="color:deepskyblue;">smaller or equal to the smallest value</span> in $X_1$.</p>
 <p class="fragment">Otherwise, in both cases, we could break the contract established between the 2 variables.</p> 
 <!--</section> to bind to the next section tag-->
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#8CC152"
+      id="ex4">
+<p>$X_1 = \{1,2,3,4\}$, $X_2 = \{1,2,3,4\}$ and $X_1 &lt; X_2$</p>
+<p>Then</p>
+<ul>
+<li>4 is removed from $X_1$</li>
+<li>1 is removed from $X_2$</li>
+</ul>
 <hr>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
 <pre><code class="language-python{1|2-3|4-5|6-7|8-9|1-9}">def filter(self, variables):
@@ -216,6 +235,7 @@ c1.filter(variables)
 assert variables[&quot;x1&quot;] == [1, 2]
 assert variables[&quot;x2&quot;] == [2, 3]
 </code></pre>
+<p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=h6zZB5EIbytb&line=9&uniqifier=1" target="_blank">Run it</a></p>
 <hr>
 <h3 id="yes-it-does-">Yes, it does !</h3>
 

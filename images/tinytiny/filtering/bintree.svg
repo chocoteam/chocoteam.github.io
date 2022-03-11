@@ -15,7 +15,22 @@
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
    sodipodi:docname="bintree.svg">
   <defs
-     id="defs2" />
+     id="defs2">
+    <inkscape:path-effect
+       effect="powerstroke"
+       id="path-effect1008"
+       is_visible="true"
+       lpeversion="1"
+       offset_points="0,0.1322915"
+       sort_points="true"
+       interpolator_type="CubicBezierJohan"
+       interpolator_beta="0.2"
+       start_linecap_type="zerowidth"
+       linejoin_type="extrp_arc"
+       miter_limit="4"
+       scale_width="1"
+       end_linecap_type="zerowidth" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,15 +38,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0884171"
-     inkscape:cx="340.50864"
-     inkscape:cy="194.07669"
+     inkscape:zoom="2.0340119"
+     inkscape:cx="205.46394"
+     inkscape:cy="161.52282"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1698"
-     inkscape:window-height="884"
+     inkscape:window-width="1907"
+     inkscape:window-height="1078"
      inkscape:window-x="43"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
@@ -47,7 +62,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,92 +72,185 @@
      id="layer1"
      transform="translate(-18.222247,-66.761491)">
     <g
-       id="g906">
-      <circle
-         style="fill:#90b4bc;stroke:#000000;stroke-width:1.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="g1441"
+       transform="matrix(1.408692,0,0,1.3758745,-27.78035,-26.184411)">
+      <ellipse
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.746865;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path10"
-         cx="32.589863"
-         cy="88.302177"
-         r="8.8351154">
+         cx="71.929955"
+         cy="76.411186"
+         rx="6.0370741"
+         ry="6.3589082">
         <title
            id="title835">X1</title>
-      </circle>
-      <g
-         id="g898">
-        <g
-           id="g893">
-          <text
-             xml:space="preserve"
-             style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-             x="25.985636"
-             y="92.162392"
-             id="text839"><tspan
-               sodipodi:role="line"
-               id="tspan837"
-               x="25.985636"
-               y="92.162392"
-               style="stroke-width:0.264583">X1</tspan></text>
-        </g>
-      </g>
-    </g>
-    <g
-       id="g912"
-       transform="translate(71.125966,0.91533605)">
-      <circle
-         style="fill:#90b4bc;stroke:#000000;stroke-width:1.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      </ellipse>
+      <ellipse
+         style="fill:#90b4bc;stroke:#000000;stroke-width:0.746865;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path10-2"
-         cx="32.809486"
-         cy="116.00199"
-         r="8.8351154">
+         cx="56.023361"
+         cy="103.48653"
+         rx="6.0370741"
+         ry="6.3589082">
         <title
            id="title835-5">X1</title>
-      </circle>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="25.985636"
-         y="119.92939"
-         id="text839-5"><tspan
-           sodipodi:role="line"
-           id="tspan837-1"
-           x="25.985636"
-           y="119.92939"
-           style="stroke-width:0.264583">X2</tspan></text>
-    </g>
-    <g
-       id="g918"
-       transform="translate(-0.16536331)">
-      <circle
-         style="fill:#90b4bc;stroke:#000000;stroke-width:1.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      </ellipse>
+      <ellipse
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.747;stroke-miterlimit:4;stroke-dasharray:0.747, 0.747;stroke-dashoffset:0;stroke-opacity:1"
          id="path10-0"
-         cx="32.755226"
-         cy="145.53247"
-         r="8.8351154">
+         cx="87.83654"
+         cy="103.48653"
+         rx="6.0370741"
+         ry="6.3589082">
         <title
            id="title835-4">X1</title>
-      </circle>
+      </ellipse>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="25.985636"
-         y="149.37978"
-         id="text839-3"><tspan
+         style="font-style:normal;font-weight:normal;font-size:7.42187px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.185547"
+         x="75.906586"
+         y="87.877647"
+         id="text1259"
+         transform="scale(0.9743657,1.0263087)"><tspan
            sodipodi:role="line"
-           id="tspan837-11"
-           x="25.985636"
-           y="149.37978"
-           style="stroke-width:0.264583">X3</tspan></text>
+           id="tspan1257"
+           x="75.906586"
+           y="87.877647"
+           style="stroke-width:0.185547"> </tspan></text>
+      <ellipse
+         style="fill:#90bc97;fill-opacity:1;stroke:#000000;stroke-width:0.746865;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path10-0-3"
+         cx="48.110832"
+         cy="132.12843"
+         rx="6.0370741"
+         ry="6.3589082">
+        <title
+           id="title835-4-8">X1</title>
+      </ellipse>
+      <ellipse
+         style="fill:#90bc97;fill-opacity:1;stroke:#000000;stroke-width:0.746865;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path10-0-3-8"
+         cx="63.93589"
+         cy="131.7496"
+         rx="6.0370741"
+         ry="6.3589082">
+        <title
+           id="title835-4-8-3">X1</title>
+      </ellipse>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.701281;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 56.035601,97.090913 71.892475,82.70578 87.841008,96.897823 v 0"
+         id="path1182" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.701281;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 48.519626,125.76462 7.424317,-15.83329 7.974267,15.35057"
+         id="path1184" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.701281;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.701281, 0.701281;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 88.115982,109.93133 -6.874367,15.15748"
+         id="path1186" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.94793px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.185547"
+         x="-18.301733"
+         y="107.46821"
+         id="text1190"
+         transform="matrix(0.73231269,-0.67699757,0.64273368,0.77135201,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan1188"
+           x="-18.301733"
+           y="107.46821"
+           style="font-size:4.94793px;stroke-width:0.185547">X1 = 1</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.94793px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.185547"
+         x="112.61974"
+         y="12.027575"
+         id="text1190-5"
+         transform="matrix(0.74160625,0.66567887,-0.63198784,0.781141,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan1188-9"
+           x="112.61974"
+           y="12.027575"
+           style="font-size:4.94793px;stroke-width:0.185547">X1 ≠ 1</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.94793px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.185547"
+         x="-87.633102"
+         y="97.81308"
+         id="text1190-7"
+         transform="matrix(0.44459165,-0.91324236,0.86702175,0.46829266,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan1188-4"
+           x="-87.633102"
+           y="97.81308"
+           style="font-size:4.94793px;stroke-width:0.185547">X2 = 2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.94793px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.185547"
+         x="122.86948"
+         y="2.8746486"
+         id="text1190-5-8"
+         transform="matrix(0.49420811,0.8844959,-0.83973019,0.52055416,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan1188-9-5"
+           x="122.86948"
+           y="2.8746486"
+           style="font-size:4.94793px;stroke-width:0.185547">X2 ≠ 2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="69.683754"
+         y="78.974342"
+         id="text1334"><tspan
+           sodipodi:role="line"
+           id="tspan1332"
+           x="69.683754"
+           y="78.974342"
+           style="font-size:7.05556px;stroke-width:0.264583">0</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="53.67725"
+         y="106.06001"
+         id="text1334-6"><tspan
+           sodipodi:role="line"
+           id="tspan1332-2"
+           x="53.67725"
+           y="106.06001"
+           style="font-size:7.05556px;stroke-width:0.264583">1</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="45.819843"
+         y="134.7467"
+         id="text1334-8"><tspan
+           sodipodi:role="line"
+           id="tspan1332-5"
+           x="45.819843"
+           y="134.7467"
+           style="font-size:7.05556px;stroke-width:0.264583">2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="61.670738"
+         y="134.31448"
+         id="text1334-9"><tspan
+           sodipodi:role="line"
+           id="tspan1332-4"
+           x="61.670738"
+           y="134.31448"
+           style="font-size:7.05556px;stroke-width:0.264583">3</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="85.631805"
+         y="106.05178"
+         id="text1334-9-3"><tspan
+           sodipodi:role="line"
+           id="tspan1332-4-9"
+           x="85.631805"
+           y="106.05178"
+           style="font-size:7.05556px;stroke-width:0.264583">4</tspan></text>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="64.918465"
-       y="99.02433"
-       id="text1259"><tspan
-         sodipodi:role="line"
-         id="tspan1257"
-         x="64.918465"
-         y="99.02433"
-         style="stroke-width:0.264583"> </tspan></text>
   </g>
 </svg>
