@@ -22,27 +22,27 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="Analogy with Sudoku  We reached the Sudoku point When trying to explain how constraint programming works, it is common to draw a parallel with sudoku.
- Modelling   A cell takes its values in $[1,9]$
- ➡️ a variable and a domain    Each digit shoudl be used exactly once per row , per column and per square
- ➡️ sets of $\neq$ constraints     Solving  A 4x4 sudoku example n = 4 variables = {} for i in range(1, n &#43; 1): for j in range(1, n &#43; 1): variables[&quot;x&quot; &#43; str(i) &#43; str(j)] = {k for k in range(1, n &#43; 1)} # fix values variables[&quot;x12&quot;] = [2] variables[&quot;x21&quot;] = [3] variables[&quot;x31&quot;] = [2] variables[&quot;x32&quot;] = [1] variables[&quot;x33&quot;] = [3] variables[&quot;x41&quot;] = [4] variables[&quot;x43&quot;] = [2] zones = [] # rows zones." />
+ At modelling step   One must write a value in $[1,9]$ in each cell
+ ➡️ a variable and a domain    Such that each digit is used exactly once per row , per column and per square
+ ➡️ sets of $\neq$ constraints     At solving step  Local reasonning  Each constraint infers on a local view." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/sudoku/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2022-01-12T14:00:25&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-03-18T16:23:24&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Analogy with Sudoku  We reached the Sudoku point When trying to explain how constraint programming works, it is common to draw a parallel with sudoku.
- Modelling   A cell takes its values in $[1,9]$
- ➡️ a variable and a domain    Each digit shoudl be used exactly once per row , per column and per square
- ➡️ sets of $\neq$ constraints     Solving  A 4x4 sudoku example n = 4 variables = {} for i in range(1, n &#43; 1): for j in range(1, n &#43; 1): variables[&quot;x&quot; &#43; str(i) &#43; str(j)] = {k for k in range(1, n &#43; 1)} # fix values variables[&quot;x12&quot;] = [2] variables[&quot;x21&quot;] = [3] variables[&quot;x31&quot;] = [2] variables[&quot;x32&quot;] = [1] variables[&quot;x33&quot;] = [3] variables[&quot;x41&quot;] = [4] variables[&quot;x43&quot;] = [2] zones = [] # rows zones.">
-<meta itemprop="dateModified" content="2022-01-12T14:00:25&#43;01:00" />
-<meta itemprop="wordCount" content="205">
+ At modelling step   One must write a value in $[1,9]$ in each cell
+ ➡️ a variable and a domain    Such that each digit is used exactly once per row , per column and per square
+ ➡️ sets of $\neq$ constraints     At solving step  Local reasonning  Each constraint infers on a local view.">
+<meta itemprop="dateModified" content="2022-03-18T16:23:24&#43;01:00" />
+<meta itemprop="wordCount" content="256">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Analogy with Sudoku  We reached the Sudoku point When trying to explain how constraint programming works, it is common to draw a parallel with sudoku.
- Modelling   A cell takes its values in $[1,9]$
- ➡️ a variable and a domain    Each digit shoudl be used exactly once per row , per column and per square
- ➡️ sets of $\neq$ constraints     Solving  A 4x4 sudoku example n = 4 variables = {} for i in range(1, n &#43; 1): for j in range(1, n &#43; 1): variables[&quot;x&quot; &#43; str(i) &#43; str(j)] = {k for k in range(1, n &#43; 1)} # fix values variables[&quot;x12&quot;] = [2] variables[&quot;x21&quot;] = [3] variables[&quot;x31&quot;] = [2] variables[&quot;x32&quot;] = [1] variables[&quot;x33&quot;] = [3] variables[&quot;x41&quot;] = [4] variables[&quot;x43&quot;] = [2] zones = [] # rows zones."/>
+ At modelling step   One must write a value in $[1,9]$ in each cell
+ ➡️ a variable and a domain    Such that each digit is used exactly once per row , per column and per square
+ ➡️ sets of $\neq$ constraints     At solving step  Local reasonning  Each constraint infers on a local view."/>
 
 
 <script type="application/javascript">
@@ -164,16 +164,16 @@ if (!doNotTrack) {
 <p>When trying to explain how constraint programming works,
 it is common to draw a parallel with sudoku.</p>
 <hr>
-<h3 id="modelling">Modelling</h3>
+<h2 id="at-modelling-step">At modelling step</h2>
 <ul>
 <li>
-<p>A cell takes its values in $[1,9]$</p>
+<p>One must write a value in $[1,9]$ in each cell</p>
 <ul>
 <li>➡️ a variable and a domain</li>
 </ul>
 </li>
 <li>
-<p>Each digit shoudl be used exactly once per <span style="color:#3BAFDA">row</span>
+<p>Such that each digit is used exactly once per <span style="color:#3BAFDA">row</span>
 , per <span style="color:#3BAFDA">column</span>
 and per <span style="color:#3BAFDA">square</span></p>
 <ul>
@@ -182,9 +182,35 @@ and per <span style="color:#3BAFDA">square</span></p>
 </li>
 </ul>
 <hr>
-<h3 id="solving">Solving</h3>
+<h2 id="at-solving-step">At solving step</h2>
+<hr>
+<h3 id="local-reasonning">Local reasonning</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/local.png" alt="This is an alt" width="40%" >
+    <figcaption>Each constraint infers on a local view. </figcaption>
+</figure>
+<hr>
+<h3 id="filtering">Filtering</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/filtering.png" alt="This is an alt" width="40%" >
+    <figcaption>Impossible values are removed </br> from a variable's domain</figcaption>
+</figure>
+<hr>
+<h3 id="propagation">Propagation</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/propagations.png" alt="This is an alt" width="40%" >
+    <figcaption>The information is shared between the constraints through the variables</figcaption>
+</figure>
+<hr>
+<h3 id="search">Search</h3>
+<p>On <strong>devil sudoku</strong>, one has to make assumptions.</p>
+<p>And validate them by propagation.</p>
 <hr>
 <h3 id="a-4x4-sudoku-example">A 4x4 sudoku example</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/4x4sudoku.png" alt="This is an alt" width="20%" >
+</figure>
+<hr>
 <pre><code class="language-python">n = 4
 variables = {}
 for i in range(1, n + 1):

@@ -22,23 +22,23 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
-$x_1 &lt; x_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+$X_1 &lt; X_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
  $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not.   We will first create a class to declare the behaviour of this constraint:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/constraints/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2022-03-11T13:44:43&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-03-18T16:23:24&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
-$x_1 &lt; x_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+$X_1 &lt; X_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
  $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not.   We will first create a class to declare the behaviour of this constraint:">
-<meta itemprop="dateModified" content="2022-03-11T13:44:43&#43;01:00" />
-<meta itemprop="wordCount" content="372">
+<meta itemprop="dateModified" content="2022-03-18T16:23:24&#43;01:00" />
+<meta itemprop="wordCount" content="385">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
-$x_1 &lt; x_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+$X_1 &lt; X_2$  Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
  $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not.   We will first create a class to declare the behaviour of this constraint:"/>
 
 
@@ -157,7 +157,7 @@ if (!doNotTrack) {
 <section data-shortcode-section>
 <h1 id="constraints">Constraints</h1>
 <p>Let&rsquo;s roll up our sleeves and tackle the case of the binary <em>&ldquo;strictly less&rdquo;</em> constraint:</p>
-<h3 id="x_1--x_2">$x_1 &lt; x_2$</h3>
+<h3 id="x_1--x_2">$X_1 &lt; X_2$</h3>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background="#8CC152"
@@ -176,7 +176,7 @@ as argument and makes sure that the former one takes a value less than the latte
         self.v2 = v2
 </code></pre>
 <hr>
-<p>We can impose that &ldquo;x1&rdquo; is strictly less than &ldquo;x2&rdquo;:</p>
+<p>We can impose that $X_1$ is strictly less than $X_2$:</p>
 <pre><code class="language-python{3}">variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
 c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
@@ -210,6 +210,15 @@ to any solution</p>
 <ul>
 <li>4 is removed from $X_1$</li>
 <li>1 is removed from $X_2$</li>
+</ul>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#8CC152"
+      id="ex4">
+<p>In other words:</p>
+<ul>
+<li>$max(X_2)$ is removed from $X_1$</li>
+<li>$min(X_1)$ is removed from $X_2$</li>
 </ul>
 <hr>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>

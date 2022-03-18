@@ -21,33 +21,33 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="It&rsquo;s all about constraints  The value of CP lies
-in the constraints We only saw two basic binary constraints
-But there are hundreds of them
+<meta property="og:description" content="The value of CP lies
+in the constraints We only saw two basic binary constraints.
+But there are hundreds of them.
   Why are there so many of them? Is it not possible to do with less?
-MILP and SAT are doing very well with one type of constraint
+Indeed, MILP and SAT are doing very well with one type of constraint !
  Two main reasons  Modeling : stronger expressive power Solving : increased filter quality   At the modeling stage  each constraint is semantically defined which also indicates the contract it guarantees   Examples    Name Purpose     alldifferent enforces all variables in its scope to take distinct values   increasing the variables in its scope are increasing   maximum a variable is the maximum value of a collection of variables   &hellip;          Others are less obvious 😇 subgraph_isomorphism, path, diffn, geost, &hellip;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/globals/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2022-01-12T14:00:25&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-03-18T16:23:24&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="It&rsquo;s all about constraints  The value of CP lies
-in the constraints We only saw two basic binary constraints
-But there are hundreds of them
+<meta itemprop="description" content="The value of CP lies
+in the constraints We only saw two basic binary constraints.
+But there are hundreds of them.
   Why are there so many of them? Is it not possible to do with less?
-MILP and SAT are doing very well with one type of constraint
+Indeed, MILP and SAT are doing very well with one type of constraint !
  Two main reasons  Modeling : stronger expressive power Solving : increased filter quality   At the modeling stage  each constraint is semantically defined which also indicates the contract it guarantees   Examples    Name Purpose     alldifferent enforces all variables in its scope to take distinct values   increasing the variables in its scope are increasing   maximum a variable is the maximum value of a collection of variables   &hellip;          Others are less obvious 😇 subgraph_isomorphism, path, diffn, geost, &hellip;">
-<meta itemprop="dateModified" content="2022-01-12T14:00:25&#43;01:00" />
-<meta itemprop="wordCount" content="356">
+<meta itemprop="dateModified" content="2022-03-18T16:23:24&#43;01:00" />
+<meta itemprop="wordCount" content="354">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="It&rsquo;s all about constraints  The value of CP lies
-in the constraints We only saw two basic binary constraints
-But there are hundreds of them
+<meta name="twitter:description" content="The value of CP lies
+in the constraints We only saw two basic binary constraints.
+But there are hundreds of them.
   Why are there so many of them? Is it not possible to do with less?
-MILP and SAT are doing very well with one type of constraint
+Indeed, MILP and SAT are doing very well with one type of constraint !
  Two main reasons  Modeling : stronger expressive power Solving : increased filter quality   At the modeling stage  each constraint is semantically defined which also indicates the contract it guarantees   Examples    Name Purpose     alldifferent enforces all variables in its scope to take distinct values   increasing the variables in its scope are increasing   maximum a variable is the maximum value of a collection of variables   &hellip;          Others are less obvious 😇 subgraph_isomorphism, path, diffn, geost, &hellip;"/>
 
 
@@ -164,13 +164,11 @@ if (!doNotTrack) {
 
 
 <section data-shortcode-section>
-<h1 id="its-all-about-constraints">It&rsquo;s all about constraints</h1>
-<hr>
 <p>The <span style="color:#3BAFDA">value</span>
 of CP lies</p>
-<h3 id="in-the-constraints">in the constraints</h3>
-<p><span class='fragment ' >We only saw two basic binary constraints</span></p>
-<p><span class='fragment ' >But there are hundreds of them</span></p>
+<h2 id="in-the-constraints">in the constraints</h2>
+<p><span class='fragment ' >We only saw two basic binary constraints.</span></p>
+<p><span class='fragment ' >But there are hundreds of them.</span></p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background-iframe="http://sofdem.github.io/gccat/gccat/sec5.html"
@@ -178,7 +176,7 @@ of CP lies</p>
 <hr>
 <h2 id="why-are-there-so-many-of-them">Why are there so many of them?</h2>
 <p>Is it not possible to do with less?</p>
-<p><span class='fragment ' >MILP and SAT are doing very well with <strong>one</strong> type of constraint</span></p>
+<p><span class='fragment ' >Indeed, MILP and SAT are doing very well with <strong>one</strong> type of constraint !</span></p>
 <hr>
 <h2 id="two-main-reasons">Two main reasons</h2>
 <ol>
@@ -247,41 +245,41 @@ of CP lies</p>
 <hr>
 <h2 id="on-one-example">On one example</h2>
 <hr>
-<h3 id="bigwedge_x_ix_j-in-x-ineq-j-x_i-neq-x_j">$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</h3>
+<h3 id="bigwedge_x_ix_j-in-x-ineq-j-x_i-neq-x_j">$\bigwedge_{X_i,X_j \in X, i\neq j} X_i \neq X_j$</h3>
 <h3 id="-vs-">-vs-</h3>
 <h3 id="textttalldifferentx">$\texttt{allDifferent}(X)$</h3>
-<p><span class='fragment ' >Both modelings find the same solutions</span></p>
+<p><span class='fragment ' >Both version find the same solutions</span></p>
 <p><span class='fragment ' >but the 2nd filters more</span></p>
 <hr>
 <h3 id="with-binary-constraints">With binary constraints</h3>
-<p><img src="/images/constraints/alldiff1.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff1.svg" alt="Alt text."></p>
 <p>What can be deduced?</p>
 <p><span class='fragment ' >Nothing until a variable is set</span></p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-transition="fade-in none">
 <h3 id="with-a-global-constraint">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff1.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff1.svg" alt="Alt text."></p>
 <p>Rely on graph theory&hellip;</p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-transition="fade-in none">
 <h3 id="with-a-global-constraint-1">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff2.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff2.svg" alt="Alt text."></p>
 <p>pair variables and values in a bipartite graph&hellip;</p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-transition="none"
       data-transition-speed="fast">
 <h3 id="with-a-global-constraint-2">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff3.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff3.svg" alt="Alt text."></p>
 <p>find maximum cardinality matchings&hellip;</p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-transition="none"
       data-transition-speed="fast">
 <h3 id="with-a-global-constraint-3">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff4.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff4.svg" alt="Alt text."></p>
 <p>remove values which belong to none of them.</p>
 <hr>
 <h2 id="summary">Summary</h2>

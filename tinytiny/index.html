@@ -43,9 +43,8 @@ Charles Prud'homme, Jan. 2022
 <h1 id="spoiler-alerts">Spoiler alerts</h1>
 </section><section>
 <p>There are already plenty of great open source constraint solvers:</p>
-<p><a href="www">choco-solver🐙</a>, <a href="www">or-tools</a>, <a href="www">gecode</a>,
-<a href="www">ACE</a>, <a href="www">JaCoP</a>, <a href="www">Mistral</a>, <a href="www">Sicstus</a>,
-<a href="www">Chuffed</a>, &hellip;</p>
+<p><a href="https://choco-solver.org/">choco-solver🐙</a>, <a href="https://developers.google.com/optimization/">or-tools</a>, <a href="https://www.gecode.org/">gecode</a>,
+<a href="http://www.cril.univ-artois.fr/en/software/ace.en.html">ACE</a>, <a href="https://github.com/radsz/jacop">JaCoP</a>, <a href="https://homepages.laas.fr/ehebrard/mistral.html">Mistral</a>, <a href="https://github.com/chuffed/chuffed">Chuffed</a>, &hellip;</p>
 </br>
 <small>🐙 My favourite.... but I am biased</small>
 </section>
@@ -53,7 +52,7 @@ Charles Prud'homme, Jan. 2022
       data-background-iframe="https://choco-solver.org/">
 </section><section>
 <p>And several excellent constraint modeling languages:</p>
-<p><a href="www">MiniZinc</a>, <a href="www">XCSP3</a>, <a href="www">PyCSP3</a>, <a href="www">Essence</a>, <a href="www">CPMpy</a>, &hellip;</p>
+<p><a href="https://www.minizinc.org/index.html">MiniZinc</a>, <a href="http://xcsp.org/">XCSP3 / PyCSP3</a>, <a href="https://cpmpy.readthedocs.io/en/latest/">CPMpy</a>, &hellip;</p>
 </section><section>
 <p>So basically here</br>
 we are <span style="color:#3BAFDA">not going to reinvent</span>
@@ -186,7 +185,7 @@ A variable will be referenced by a key, its name.</p>
 <section data-shortcode-section>
 <h1 id="constraints">Constraints</h1>
 <p>Let&rsquo;s roll up our sleeves and tackle the case of the binary <em>&ldquo;strictly less&rdquo;</em> constraint:</p>
-<h3 id="x_1--x_2">$x_1 &lt; x_2$</h3>
+<h3 id="x_1--x_2">$X_1 &lt; X_2$</h3>
 </section>
 <section data-noprocess data-shortcode-slide
       data-background="#8CC152"
@@ -205,7 +204,7 @@ as argument and makes sure that the former one takes a value less than the latte
         self.v2 = v2
 </code></pre>
 </section><section>
-<p>We can impose that &ldquo;x1&rdquo; is strictly less than &ldquo;x2&rdquo;:</p>
+<p>We can impose that $X_1$ is strictly less than $X_2$:</p>
 <pre><code class="language-python" data-line-numbers="3">variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
 c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
@@ -239,6 +238,15 @@ to any solution</p>
 <ul>
 <li>4 is removed from $X_1$</li>
 <li>1 is removed from $X_2$</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#8CC152"
+      id="ex4">
+<p>In other words:</p>
+<ul>
+<li>$max(X_2)$ is removed from $X_1$</li>
+<li>$min(X_1)$ is removed from $X_2$</li>
 </ul>
 </section><section>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
@@ -569,15 +577,15 @@ print(variables)
 <p>of the different type</p>
 </section><section>
 <h2 id="adding-the-constraint">Adding the constraint</h2>
-<h3 id="x_1neq-x_2--c">$x_1\neq x_2 + c$</h3>
+<h3 id="x_1neq-x_2--c">$X_1\neq X_2 + c$</h3>
 <p>where $c$ is a constant</p>
 <h2 id="should-be-quite-easy">should be quite easy</h2>
 <p><span class='fragment ' >It requires to define the <code>filter</code> function.</span></p>
 </section>
 <section data-noprocess>
-<h2>The 2 rules of $x_1\neq x_2 + c$</h2>
-<p class="fragment">1. if $x_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $x_1$ values,</p>
-<p class="fragment">2. if $x_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $x_1$ values.</p>
+<h2>The 2 rules of $X_1\neq X_2 + c$</h2>
+<p class="fragment">1. if $X_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $X_1$ values,</p>
+<p class="fragment">2. if $X_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $X_1$ values.</p>
 <!--</section> to bind to the next section tag-->
 </section><section>
 <h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
@@ -611,15 +619,18 @@ print(variables)
 <p>Now, we are able to</p>
 <h1 id="solve-a-basic-problem">solve a basic problem</h1>
 </section><section>
-<h1>The 6 queens puzzle</h1>
-<blockquote>The six queens puzzle is the problem of placing six chess queens on an 6×6 chessboard so that no two queens threaten each other;  thus, a solution requires that no two queens share the same row, column, or diagonal.</blockquote>
+<h1>The 8 queens puzzle</h1>
+<blockquote>The eight queens puzzle is the problem of placing eight chess queens on an 8×8  chessboard so that no two queens threaten each other;  thus, a solution requires that no two queens share the same row, column, or diagonal.</blockquote>
 <p><a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle">Wikipedia</a></p>
 </section><section>
-<p>TODO: image</p>
+<figure>
+    <img src="/images/tinytiny/nqueens/8queens.png" alt="This is an alt" width="40%" >
+    <figcaption>Src: <a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle">Wikipedia</a></figcaption>
+</figure>
 </section><section>
-<p>A first idea is to indicate by a <span style="color:deepskyblue;">boolean</span> variable if a cell is occupied by a queen or not.</p>
+<p>A first idea is to indicate by a <span style="color:deepskyblue;">Boolean</span> variable if a cell is occupied by a queen or not.</p>
 <p><span class='fragment ' >But we wouldn’t be able to use our constraints.</span></p>
-<p><span class='fragment ' >Also, it is very MILP or SAT.</span></p>
+<p><span class='fragment ' >Also, it is very MILP-like or SAT-like.</span></p>
 </section><section>
 <h2 id="a-more-cp-way-to-model-it">A more CP way to model it</h2>
 <p>A <span style="color:deepskyblue;">variable</span> per column.</p>
@@ -633,7 +644,7 @@ print(variables)
 </ol>
 </section><section>
 <h2 id="6-queens-puzzle-in-python">6 Queens puzzle in Python</h2>
-<pre><code class="language-python" data-line-numbers="2-4|6-11|13-15|17">n = 6
+<pre><code class="language-python" data-line-numbers="2-4|6-11|13-15|17">n = 8
 variables = {}
 for i in range(1, n + 1):
     variables[&quot;x&quot; + str(i)] = {k for k in range(1, n + 1)}
@@ -652,12 +663,15 @@ cs.append(LessThan(&quot;x1&quot;, &quot;cst&quot;))
 print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
 </code></pre>
 </section><section>
-<h3 id="2-solutions">2 solutions</h3>
-<pre><code class="language-python">{'x1': [2], 'x2': [4], 'x3': [6], 'x4': [1], 'x5': [3], 'x6': [5], 'cst': {4}}
-{'x1': [3], 'x2': [6], 'x3': [2], 'x4': [5], 'x5': [1], 'x6': [4], 'cst': {4}}
-it finds 2 solutions
+<h3 id="46-solutions">46 solutions</h3>
+<pre><code class="language-python">{'x1': [1], 'x2': [5], 'x3': [8], 'x4': [6], 'x5': [3], 'x6': [7], 'x7': [2], 'x8': [4], 'cst': [5]}
+{'x1': [1], 'x2': [6], 'x3': [8], 'x4': [3], 'x5': [7], 'x6': [4], 'x7': [2], 'x8': [5], 'cst': [5]}
+...
+{'x1': [4], 'x2': [8], 'x3': [1], 'x4': [5], 'x5': [7], 'x6': [2], 'x7': [6], 'x8': [3], 'cst': [5]}
+{'x1': [4], 'x2': [8], 'x3': [5], 'x4': [3], 'x5': [1], 'x6': [7], 'x7': [2], 'x8': [6], 'cst': [5]}
+it finds 46 solutions
 </code></pre>
-<p>There are 4 solutions without the symmetry breaking constraint, 2 otherwise.</p>
+<p>There are 92 solutions without the (simple) symmetry breaking constraint, 46 otherwise.</p>
 </section><section>
 <h2 id="we-did-it-">We did it 🍾</h2>
 <p>We build a minimalist CP solver :</p>
@@ -671,7 +685,7 @@ it finds 2 solutions
 <li>exploring the search space in DFS way.</li>
 </ul>
 <p>And we were able to enumerate solutions</br>
-on a basic problem !</p>
+on a puzzle !</p>
 
 </section>
 </section>
@@ -684,16 +698,16 @@ on a basic problem !</p>
 <p>When trying to explain how constraint programming works,
 it is common to draw a parallel with sudoku.</p>
 </section><section>
-<h3 id="modelling">Modelling</h3>
+<h2 id="at-modelling-step">At modelling step</h2>
 <ul>
 <li>
-<p>A cell takes its values in $[1,9]$</p>
+<p>One must write a value in $[1,9]$ in each cell</p>
 <ul>
 <li>➡️ a variable and a domain</li>
 </ul>
 </li>
 <li>
-<p>Each digit shoudl be used exactly once per <span style="color:#3BAFDA">row</span>
+<p>Such that each digit is used exactly once per <span style="color:#3BAFDA">row</span>
 , per <span style="color:#3BAFDA">column</span>
 and per <span style="color:#3BAFDA">square</span></p>
 <ul>
@@ -702,9 +716,35 @@ and per <span style="color:#3BAFDA">square</span></p>
 </li>
 </ul>
 </section><section>
-<h3 id="solving">Solving</h3>
+<h2 id="at-solving-step">At solving step</h2>
+</section><section>
+<h3 id="local-reasonning">Local reasonning</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/local.png" alt="This is an alt" width="40%" >
+    <figcaption>Each constraint infers on a local view. </figcaption>
+</figure>
+</section><section>
+<h3 id="filtering">Filtering</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/filtering.png" alt="This is an alt" width="40%" >
+    <figcaption>Impossible values are removed </br> from a variable's domain</figcaption>
+</figure>
+</section><section>
+<h3 id="propagation">Propagation</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/propagations.png" alt="This is an alt" width="40%" >
+    <figcaption>The information is shared between the constraints through the variables</figcaption>
+</figure>
+</section><section>
+<h3 id="search">Search</h3>
+<p>On <strong>devil sudoku</strong>, one has to make assumptions.</p>
+<p>And validate them by propagation.</p>
 </section><section>
 <h3 id="a-4x4-sudoku-example">A 4x4 sudoku example</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/4x4sudoku.png" alt="This is an alt" width="20%" >
+</figure>
+</section><section>
 <pre><code class="language-python">n = 4
 variables = {}
 for i in range(1, n + 1):
@@ -750,13 +790,11 @@ print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
     <section>
 
 <section data-shortcode-section>
-<h1 id="its-all-about-constraints">It&rsquo;s all about constraints</h1>
-</section><section>
 <p>The <span style="color:#3BAFDA">value</span>
 of CP lies</p>
-<h3 id="in-the-constraints">in the constraints</h3>
-<p><span class='fragment ' >We only saw two basic binary constraints</span></p>
-<p><span class='fragment ' >But there are hundreds of them</span></p>
+<h2 id="in-the-constraints">in the constraints</h2>
+<p><span class='fragment ' >We only saw two basic binary constraints.</span></p>
+<p><span class='fragment ' >But there are hundreds of them.</span></p>
 </section>
 <section data-noprocess data-shortcode-slide
       data-background-iframe="http://sofdem.github.io/gccat/gccat/sec5.html"
@@ -764,7 +802,7 @@ of CP lies</p>
 </section><section>
 <h2 id="why-are-there-so-many-of-them">Why are there so many of them?</h2>
 <p>Is it not possible to do with less?</p>
-<p><span class='fragment ' >MILP and SAT are doing very well with <strong>one</strong> type of constraint</span></p>
+<p><span class='fragment ' >Indeed, MILP and SAT are doing very well with <strong>one</strong> type of constraint !</span></p>
 </section><section>
 <h2 id="two-main-reasons">Two main reasons</h2>
 <ol>
@@ -833,41 +871,41 @@ of CP lies</p>
 </section><section>
 <h2 id="on-one-example">On one example</h2>
 </section><section>
-<h3 id="bigwedge_x_ix_j-in-x-ineq-j-x_i-neq-x_j">$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</h3>
+<h3 id="bigwedge_x_ix_j-in-x-ineq-j-x_i-neq-x_j">$\bigwedge_{X_i,X_j \in X, i\neq j} X_i \neq X_j$</h3>
 <h3 id="-vs-">-vs-</h3>
 <h3 id="textttalldifferentx">$\texttt{allDifferent}(X)$</h3>
-<p><span class='fragment ' >Both modelings find the same solutions</span></p>
+<p><span class='fragment ' >Both version find the same solutions</span></p>
 <p><span class='fragment ' >but the 2nd filters more</span></p>
 </section><section>
 <h3 id="with-binary-constraints">With binary constraints</h3>
-<p><img src="/images/constraints/alldiff1.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff1.svg" alt="Alt text."></p>
 <p>What can be deduced?</p>
 <p><span class='fragment ' >Nothing until a variable is set</span></p>
 </section>
 <section data-noprocess data-shortcode-slide
       data-transition="fade-in none">
 <h3 id="with-a-global-constraint">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff1.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff1.svg" alt="Alt text."></p>
 <p>Rely on graph theory&hellip;</p>
 </section>
 <section data-noprocess data-shortcode-slide
       data-transition="fade-in none">
 <h3 id="with-a-global-constraint-1">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff2.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff2.svg" alt="Alt text."></p>
 <p>pair variables and values in a bipartite graph&hellip;</p>
 </section>
 <section data-noprocess data-shortcode-slide
       data-transition="none"
       data-transition-speed="fast">
 <h3 id="with-a-global-constraint-2">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff3.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff3.svg" alt="Alt text."></p>
 <p>find maximum cardinality matchings&hellip;</p>
 </section>
 <section data-noprocess data-shortcode-slide
       data-transition="none"
       data-transition-speed="fast">
 <h3 id="with-a-global-constraint-3">With a global constraint</h3>
-<p><img src="/images/constraints/alldiff4.svg" alt="Alt text."></p>
+<p><img src="/images/tinytiny/constraints/alldiff4.svg" alt="Alt text."></p>
 <p>remove values which belong to none of them.</p>
 </section><section>
 <h2 id="summary">Summary</h2>
@@ -916,8 +954,33 @@ of CP lies</p>
     <section>
 
 <section data-shortcode-section>
-<h1 id="how-to-become">How to become</h1>
-<h1 id="state-of-the-art">state-of-the-art?</h1>
+<h1 id="improvements">Improvements</h1>
+<p>that we do not develop</p>
+</section><section>
+<h2 id="at-the-modelling-level">At the modelling level</h2>
+<ul>
+<li>Other kinds of variables</li>
+<li>Other constraints or way to express rules</li>
+<li>Search space exploration
+<ul>
+<li>Black-box strategies,</li>
+<li>Restarting,</li>
+<li>Alternatives to DFS</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="at-the-solving-step">At the solving step</h2>
+<ul>
+<li>Refine the way constraints are propagated</li>
+<li>Fine response of propagators to variables' changes</li>
+<li>Restore by copy or trail</li>
+<li>Conflict-driven Clause-learning</li>
+<li>&hellip;</li>
+</ul>
+</section><section>
+<p>And so many other things !</p>
+<h1 id="thank-you">Thank you</h1>
 
 </section>
 </section>

@@ -22,30 +22,30 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="Many constraints of the different type
- Adding the constraint $x_1\neq x_2 &#43; c$ where $c$ is a constant
+ Adding the constraint $X_1\neq X_2 &#43; c$ where $c$ is a constant
 should be quite easy It requires to define the filter function.
- The 2 rules of $x_1\neq x_2 &#43; c$ 1. if $x_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $x_1$ values,
-2. if $x_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $x_1$ values." />
+ The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
+2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_1$ values." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/notequal/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2022-01-12T14:00:25&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-03-18T16:23:24&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Many constraints of the different type
- Adding the constraint $x_1\neq x_2 &#43; c$ where $c$ is a constant
+ Adding the constraint $X_1\neq X_2 &#43; c$ where $c$ is a constant
 should be quite easy It requires to define the filter function.
- The 2 rules of $x_1\neq x_2 &#43; c$ 1. if $x_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $x_1$ values,
-2. if $x_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $x_1$ values.">
-<meta itemprop="dateModified" content="2022-01-12T14:00:25&#43;01:00" />
+ The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
+2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_1$ values.">
+<meta itemprop="dateModified" content="2022-03-18T16:23:24&#43;01:00" />
 <meta itemprop="wordCount" content="170">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Many constraints of the different type
- Adding the constraint $x_1\neq x_2 &#43; c$ where $c$ is a constant
+ Adding the constraint $X_1\neq X_2 &#43; c$ where $c$ is a constant
 should be quite easy It requires to define the filter function.
- The 2 rules of $x_1\neq x_2 &#43; c$ 1. if $x_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $x_1$ values,
-2. if $x_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $x_1$ values."/>
+ The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
+2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_1$ values."/>
 
 
 <script type="application/javascript">
@@ -165,15 +165,15 @@ if (!doNotTrack) {
 <p>of the different type</p>
 <hr>
 <h2 id="adding-the-constraint">Adding the constraint</h2>
-<h3 id="x_1neq-x_2--c">$x_1\neq x_2 + c$</h3>
+<h3 id="x_1neq-x_2--c">$X_1\neq X_2 + c$</h3>
 <p>where $c$ is a constant</p>
 <h2 id="should-be-quite-easy">should be quite easy</h2>
 <p><span class='fragment ' >It requires to define the <code>filter</code> function.</span></p>
 <hr>
 <section data-noprocess>
-<h2>The 2 rules of $x_1\neq x_2 + c$</h2>
-<p class="fragment">1. if $x_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $x_1$ values,</p>
-<p class="fragment">2. if $x_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $x_1$ values.</p>
+<h2>The 2 rules of $X_1\neq X_2 + c$</h2>
+<p class="fragment">1. if $X_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $X_1$ values,</p>
+<p class="fragment">2. if $X_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $X_1$ values.</p>
 <!--</section> to bind to the next section tag-->
 <hr>
 <h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
