@@ -383,19 +383,18 @@ For example: <code>&quot;0*&lt;11&gt;&lt;22&gt;0*&quot;</code> will accept words
 
 </div>
 
-<pre><code class="language-java">private void dfa(BoolVar[] cells, int[] rest, Model model) {
-    StringBuilder regexp = new StringBuilder(&quot;0*&quot;);
-    int m = rest.length;
-    for (int i = 0; i &lt; m; i++) {
-        regexp.append('1').append('{').append(rest[i]).append('}');
-        regexp.append('0');
-        regexp.append(i == m - 1 ? '*' : '+');
-    }
-    IAutomaton auto = new FiniteAutomaton(regexp.toString());
-    model.regular(cells, auto).post();
-}
-</code></pre>
-<h3 id="constructive-way">Constructive way</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">dfa</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">rest</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">StringBuilder</span> <span style="color:#000">regexp</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">StringBuilder</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;0*&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">rest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">regexp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#39;1&#39;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#39;{&#39;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">rest</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]).</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#39;}&#39;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#000">regexp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#39;0&#39;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#000">regexp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">1</span> <span style="color:#ce5c00;font-weight:bold">?</span> <span style="color:#4e9a06">&#39;*&#39;</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;+&#39;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#000">IAutomaton</span> <span style="color:#000">auto</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FiniteAutomaton</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">regexp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+    <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">regular</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h3 id="constructive-way">Constructive way</h3>
 <p>The constructive way requires to declare all states of the automaton and
 links together with transitions. A transition corresponds to a character
 in the word, and a state is <em>between</em> two characters of the word.</p>
@@ -422,41 +421,40 @@ $i_4$ goes to $i_5$ (eighth transition) and produce 0. And so on.</p>
 </div>
 
 <p>And here the code for building such a DFA for any sequence:</p>
-<pre><code class="language-java">private void dfa2(BoolVar[] cells, int[] seq, Model model) {
-    FiniteAutomaton auto = new FiniteAutomaton();
-    int si = auto.addState();
-    auto.setInitialState(si); // declare it as initial state
-    int i0 = auto.addState();
-    auto.addTransition(si, i0, 0); // first transition
-    auto.addTransition(i0, i0, 0); // second transition
-    int from = i0;
-    int m = seq.length;
-    for (int i = 0; i &lt; m; i++) {
-        int ii = auto.addState();
-        // word can start with '1'
-        if(i == 0){
-            auto.addTransition(si, ii, 1);
-        }
-        auto.addTransition(from, ii, 1);
-        from = ii;
-        for(int j = 1; j &lt; seq[i]; j++){
-            int jj = auto.addState();
-            auto.addTransition(from, jj, 1);
-            from = jj;
-        }
-        int ii0 = auto.addState();
-        auto.addTransition(from, ii0, 0);
-        auto.addTransition(ii0, ii0, 0);
-        // the word can end with '1' or '0'
-        if(i == m - 1){
-            auto.setFinal(from, ii0);
-        }
-        from = ii0;
-    }
-    model.regular(cells, auto).post();
-}
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">dfa2</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">seq</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">FiniteAutomaton</span> <span style="color:#000">auto</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FiniteAutomaton</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">si</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addState</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setInitialState</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">si</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// declare it as initial state
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i0</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addState</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">si</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">i0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// first transition
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">i0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// second transition
+</span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">from</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">i0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">seq</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">ii</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addState</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#8f5902;font-style:italic">// word can start with &#39;1&#39;
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">){</span>
+            <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">si</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ii</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">from</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ii</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#000">from</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">ii</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">seq</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">];</span> <span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++){</span>
+            <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">jj</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addState</span><span style="color:#ce5c00;font-weight:bold">();</span>
+            <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">from</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">jj</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+            <span style="color:#000">from</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">jj</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">ii0</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addState</span><span style="color:#ce5c00;font-weight:bold">();</span>
+        <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">from</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ii0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTransition</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ii0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ii0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#8f5902;font-style:italic">// the word can end with &#39;1&#39; or &#39;0&#39;
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">){</span>
+            <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setFinal</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">from</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ii0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#000">from</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">ii0</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">regular</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">auto</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div>
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -467,67 +465,66 @@ But, most of the time the constructive way is more convenient.
 </div>
 
 <h2 id="the-entire-code">The entire code</h2>
-<pre><code class="language-java">// number of columns
-int N = 15;
-// number of rows
-int M = 15;
-// sequence of shaded blocks
-int[][][] BLOCKS =
-        new int[][][]{{
-                {2},
-                {4, 2},
-                {1, 1, 4},
-                {1, 1, 1, 1},
-                {1, 1, 1, 1},
-                {1, 1, 1, 1},
-                {1, 1, 1, 1},
-                {1, 1, 1, 1},
-                {1, 2, 2, 1},
-                {1, 3, 1},
-                {2, 1},
-                {1, 1, 1, 2},
-                {2, 1, 1, 1},
-                {1, 2},
-                {1, 2, 1},
-        }, {
-                {3},
-                {3},
-                {10},
-                {2},
-                {2},
-                {8, 2},
-                {2},
-                {1, 2, 1},
-                {2, 1},
-                {7},
-                {2},
-                {2},
-                {10},
-                {3},
-                {2}}};
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// number of columns
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">N</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// number of rows
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">M</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// sequence of shaded blocks
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[][][]</span> <span style="color:#000">BLOCKS</span> <span style="color:#ce5c00;font-weight:bold">=</span>
+        <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[][][]{{</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+        <span style="color:#ce5c00;font-weight:bold">},</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">},</span>
+                <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">}}};</span>
 
-Model model = new Model(&quot;Nonogram&quot;);
-// Variables declaration
-BoolVar[][] cells = model.boolVarMatrix(&quot;c&quot;, N, M);
-// Constraint declaration
-// one regular per row
-for (int i = 0; i &lt; M; i++) {
-    dfa(cells[i], BLOCKS[0][i], model);
-}
-for (int j = 0; j &lt; N; j++) {
-    dfa(ArrayUtils.getColumn(cells, j), BLOCKS[1][j], model);
-}
-if(model.getSolver().solve()){
-    for (int i = 0; i &lt; cells.length; i++) {
-        System.out.printf(&quot;\t&quot;);
-        for (int j = 0; j &lt; cells[i].length; j++) {
-            System.out.printf(cells[i][j].getValue() == 1 ? &quot;#&quot; : &quot; &quot;);
-        }
-        System.out.printf(&quot;\n&quot;);
-    }
-}
-</code></pre>
-<h2 id="things-to-remember">Things to remember</h2>
+<span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Nonogram&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// Variables declaration
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">cells</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">N</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">M</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// Constraint declaration
+</span><span style="color:#8f5902;font-style:italic">// one regular per row
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">M</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">dfa</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#000">BLOCKS</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">][</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">N</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">dfa</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ArrayUtils</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getColumn</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">BLOCKS</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">][</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\t&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cells</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">][</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">1</span> <span style="color:#ce5c00;font-weight:bold">?</span> <span style="color:#4e9a06">&#34;#&#34;</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h2 id="things-to-remember">Things to remember</h2>
 <ul>
 <li>Regular constraint constructs valid fix-sized words on the basis of
 a vocabulary and a grammar.</li>

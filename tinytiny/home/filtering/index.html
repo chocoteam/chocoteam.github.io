@@ -174,17 +174,16 @@ if (!doNotTrack) {
 <h3 id="search-space-">search space 🤿</h3>
 <hr>
 <p>Since we need variables to take <u>single value</u>, we can:</p>
-<pre><code class="language-AsciiDoc{1|2|3|4|5}">select an uninstantiated variable (e.g., the first)
+<pre><code class="language-AsciiDoc{1|2|3|4|5}" data-lang="AsciiDoc{1|2|3|4|5}">select an uninstantiated variable (e.g., the first)
 pick a value in its domain (e.g., the lowest bound)
 fix the selected variable to the selected value
 and see what is going on !
-</code></pre>
-<hr>
+</code></pre><hr>
 <p>We created our first <strong>decision</strong>!</p>
 <p><span class='fragment ' >Wait, one decision may not be enough…</span></p>
 <p><span class='fragment ' >… but still, we defined an <em>enumeration strategy</em> 🥳</span></p>
 <hr>
-<pre><code class="language-python{3-9|3|4-5|5-7|8-9|10-12}"># ...
+<pre><code class="language-python{3-9|3|4-5|5-7|8-9|10-12}" data-lang="python{3-9|3|4-5|5-7|8-9|10-12}"># ...
 c1.filter(variables)
 for v, d in variables.items():
     # if one variable is not *instantiated* yet
@@ -196,8 +195,7 @@ for v, d in variables.items():
 # check everything is fine        
 assert variables[&quot;x1&quot;] == [1]
 assert variables[&quot;x2&quot;] == [2]
-</code></pre>
-<p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=GFCDk4qtcfAB&line=18&uniqifier=1" target="_blank">Run it</a></p>
+</code></pre><p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=GFCDk4qtcfAB&line=18&uniqifier=1" target="_blank">Run it</a></p>
 <hr>
 <h2 id="what-if">What if&hellip;</h2>
 <p>we want to find another solution?</p>
@@ -213,7 +211,7 @@ assert variables[&quot;x2&quot;] == [2]
 <h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
 <p>Let&rsquo;s break down the needs into 4 functions.</p>
 <hr>
-<pre><code class="language-python{1|2-4|5-7|9-10|1-10}">def create_decision(variables):
+<pre><code class="language-python{1|2-4|5-7|9-10|1-10}" data-lang="python{1|2-4|5-7|9-10|1-10}">def create_decision(variables):
     # find a variable with at least two values in its domain
     var, dom = next(filter(lambda x: len(x[1]) &gt; 1, \
 			variables.items()), (None, None))
@@ -223,23 +221,20 @@ assert variables[&quot;x2&quot;] == [2]
     else:
         # otherwise, all variables are instantiated
         return None, None
-</code></pre>
-<hr>
-<pre><code class="language-python{}">def copy_domains(variables):
+</code></pre><hr>
+<pre><code class="language-python{}" data-lang="python{}">def copy_domains(variables):
     # returns a deep copy of the dictionnary
     return {var: dom.copy() for var, dom in variables.items()}
-</code></pre>
-<hr>
-<pre><code class="language-python{1|2-3|4-6|7|}">def propagate(variables, var, val, apply, constraint):
+</code></pre><hr>
+<pre><code class="language-python{1|2-3|4-6|7|}" data-lang="python{1|2-3|4-6|7|}">def propagate(variables, var, val, apply, constraint):
     # makes a backup of the variables
     c_variables = copy_domains(variables)
     # applies the decision or rebuts is
     c_variables[var] = [x for x in c_variables[var] \
 				if apply is (x == val)]
     return enumerate(c_variables, constraint)
-</code></pre>
-<hr>
-<pre><code class="language-python{1|2|3|4-6|7-10|}">def enumerate(variables, constraint):
+</code></pre><hr>
+<pre><code class="language-python{1|2|3|4-6|7-10|}" data-lang="python{1|2|3|4-6|7-10|}">def enumerate(variables, constraint):
     constraint.filter(variables)
     var, val = create_decision(variables)
     if var is None:
@@ -249,21 +244,18 @@ assert variables[&quot;x2&quot;] == [2]
         n = propagate(variables, var, val, True, constraint)
         n += propagate(variables, var, val, False, constraint)
     return n
-</code></pre>
-<hr>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
-             &quot;x2&quot;: {1, 2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+</code></pre><hr>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
 
-print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
-</code></pre>
-<p>should output:</p>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>should output:</p>
 <pre><code>{'x1': [1], 'x2': [2]}
 {'x1': [1], 'x2': [3]}
 {'x1': [2], 'x2': [3]}
 it finds 3 solutions
-</code></pre>
-<hr>
+</code></pre><hr>
 <h1 id="we-did-it-">We did it !</h1>
 <p>Well almost, but still you can pat yourself back !</p>
 

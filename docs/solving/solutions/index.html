@@ -320,76 +320,64 @@ if (!doNotTrack) {
 	<h2 id="recording-solutions">Recording solutions</h2>
 <p>A solution can be stored through a <code>Solution</code> object which maps every variable with its current value.
 It can be created as follows:</p>
-<pre><code class="language-java">Solution solution = new Solution(model);
-</code></pre>
-<h3 id="reducing-data-recorded">Reducing data recorded</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h3 id="reducing-data-recorded">Reducing data recorded</h3>
 <p>By default, a solution records the value of every variable, but you can specify a smaller scope in the <code>Solution</code> constructor.</p>
 <p>Let <code>X</code> be the set of decision variables and <code>Y</code> another variable set that you need to store.
 To record other variables (e.g. an objective variables) you have two options:</p>
 <ul>
 <li>Declare them in the search strategy using a complementary strategy</li>
 </ul>
-<pre><code class="language-java">solver.set(strategy(X),strategy(Y)).
-</code></pre>
-<ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">set</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">strategy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">),</span><span style="color:#000">strategy</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">)).</span>
+</code></pre></div><ul>
 <li>Specify which variables to store in the solution constructor</li>
 </ul>
-<pre><code class="language-java">Solution solution = new Solution(model(), ArrayUtils.append(X,Y));
-</code></pre>
-<p>You can record the last solution found as follows :</p>
-<pre><code class="language-java">Solution solution = new Solution(model);
-while (solver.solve()) {
-    solution.record();
-}
-</code></pre>
-<p>You can also use a monitor as follows:</p>
-<pre><code class="language-java">Solution solution = new Solution(model);
-solver.plugMonitor(new IMonitorSolution() {
-      @Override
-      public void onSolution() {
-          s.record();
-      }
-});
-</code></pre>
-<p>Or with lambdas:</p>
-<pre><code class="language-java">Solution solution = new Solution(model);
-solver.plugMonitor((IMonitorSolution) () -&gt; s.record());
-</code></pre>
-<p>Note that the solution is erased on each new recording.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">ArrayUtils</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">));</span>
+</code></pre></div><p>You can record the last solution found as follows :</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#204a87;font-weight:bold">while</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">solution</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>You can also use a monitor as follows:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IMonitorSolution</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#5c35cc;font-weight:bold">@Override</span>
+      <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onSolution</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+          <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">});</span>
+</code></pre></div><p>Or with lambdas:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">((</span><span style="color:#000">IMonitorSolution</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">());</span>
+</code></pre></div><p>Note that the solution is erased on each new recording.
 To store all solutions, you need to create one new solution object for each solution.</p>
 <p>You can then access the value of a variable in a solution as follows:</p>
-<pre><code class="language-java">int val = s.getIntVal(Y[0])
-</code></pre>
-<p>The solution object can be used to store all variables in Choco Solver (binaries, integers, sets and reals)</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getIntVal</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Y</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">])</span>
+</code></pre></div><p>The solution object can be used to store all variables in Choco Solver (binaries, integers, sets and reals)</p>
 <h2 id="accessing-variable-value">Accessing variable value</h2>
 <p>The value of a variable can be accessed directly through the <code>getValue()</code> method only once the variable is instantiated, i.e. the value has been computed
 (call <code>isInstantiated()</code> to check it). Otherwise, the lower bound is returned (or an exception is thrown if <code>-ea</code> is set as JVM argument).</p>
 <p>For instance, the following code will return the lower bound of <code>var</code> (or an assertion exception) since the resolution has not begun:</p>
-<pre><code class="language-java">int val = var.getValue();
-solver.solve();
-</code></pre>
-<p>On the other hand, the following code may return the lower bound of <code>var</code> (or an assertion exception) if no solution could be found (unsat problem or time limit reached):</p>
-<pre><code class="language-java">solver.solve();
-int val = var.getValue();
-</code></pre>
-<p>The correct approach to get the value of a variable <code>var</code> in a solution is :</p>
-<pre><code class="language-java">if(solver.solve()){
-    int val = var.getValue();
-}
-</code></pre>
-<p>In optimization, you can print its value in each solution:</p>
-<pre><code class="language-java">while(solver.solve()){
-    System.out.println(variable.getValue());
-}
-</code></pre>
-<p>The last printed value corresponds to the one in the best solution found.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>On the other hand, the following code may return the lower bound of <code>var</code> (or an assertion exception) if no solution could be found (unsat problem or time limit reached):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>The correct approach to get the value of a variable <code>var</code> in a solution is :</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>In optimization, you can print its value in each solution:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">variable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>The last printed value corresponds to the one in the best solution found.</p>
 <p>However, the following code does <em>NOT</em> display the best solution found:</p>
-<pre><code class="language-java">while(solver.solve()){
-    System.out.println(variable.getValue());
-}
-System.out.println(&quot;best solution found: &quot;+variable.getValue());
-</code></pre>
-<p>Because it is outside the while loop, this code is reached once the search tree has been closed.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">variable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;best solution found: &#34;</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">variable</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
+</code></pre></div><p>Because it is outside the while loop, this code is reached once the search tree has been closed.
 It does not correspond to a <em>solution state</em> and therefore variable is no longer instantiated at this stage.
 To use solutions afterward, you need to record them using <code>Solution</code> objects.</p>
 

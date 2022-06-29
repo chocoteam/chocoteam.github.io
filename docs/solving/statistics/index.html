@@ -322,19 +322,16 @@ if (!doNotTrack) {
 It centralises widely used methods to have comprehensive feedback about the resolution process.
 There are two types of methods: those who need to be called <strong>before</strong> the resolution, with a prefix show, and those who need to called <strong>after</strong> the resolution, with a prefix print.</p>
 <p>For instance, one can indicate to print the solutions all resolution long:</p>
-<pre><code class="language-java">solver.showSolutions();
-solver.findAllSolutions();
-</code></pre>
-<p>Or to print the search statistics once the search ends:</p>
-<pre><code class="language-java">solver.solve();
-solver.printStatistics();
-</code></pre>
-<p>On a call to <code>solver.printVersion()</code>, the following message will be printed:</p>
-<pre><code class="language-none">** Choco 4.10.2 (2019-10) : Constraint Programming Solver, Copyright (c) 2010-2019
-</code></pre>
-<h3 id="resolution-measures">Resolution measures</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">showSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Or to print the search statistics once the search ends:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printStatistics</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>On a call to <code>solver.printVersion()</code>, the following message will be printed:</p>
+<pre><code class="language-none" data-lang="none">** Choco 4.10.2 (2019-10) : Constraint Programming Solver, Copyright (c) 2010-2019
+</code></pre><h3 id="resolution-measures">Resolution measures</h3>
 <p>On a call to <code>solver.printStatistics()</code>, the following message will be printed:</p>
-<pre><code class="language-none">- [ Search complete - [ No solution | {0} solution(s) found ]
+<pre><code class="language-none" data-lang="none">- [ Search complete - [ No solution | {0} solution(s) found ]
   | Incomplete search - [ Limit reached | Unexpected interruption ] ].
    Solutions: {0}
 [  Maximize = {1}  ]
@@ -348,8 +345,7 @@ solver.printStatistics();
    Max depth: {11}
    Variables: {12}
    Constraints: {13}
-</code></pre>
-<p>Curly brackets <em>{instruction | }</em> indicate alternative instructions</p>
+</code></pre><p>Curly brackets <em>{instruction | }</em> indicate alternative instructions</p>
 <p>Brackets <em>[instruction]</em> indicate an optional instruction.</p>
 <p>If the search terminates, the message “Search complete” appears on the first line, followed with either the number of solutions found or the message “No solution”.
 <code>Maximize</code> –resp. <code>Minimize</code>– indicates the best known value for the objective variable before exiting when an (single) objective has been defined.</p>
@@ -371,22 +367,19 @@ solver.printStatistics();
 <li>number of constraints in the model</li>
 </ol>
 <p>If the resolution process reached a limit before ending <em>naturally</em>, the title of the message is set to:</p>
-<pre><code class="language-none">- Incomplete search - Limit reached.
-</code></pre>
-<p>The body of the message remains the same. The message is formatted thanks to the <code>IMeasureRecorder</code>.</p>
+<pre><code class="language-none" data-lang="none">- Incomplete search - Limit reached.
+</code></pre><p>The body of the message remains the same. The message is formatted thanks to the <code>IMeasureRecorder</code>.</p>
 <h3 id="showing-solutions">Showing solutions</h3>
 <p>On a call to <code>solver.showSolutions()</code>, on each solution the following message will be printed:</p>
-<pre><code class="language-none">{0} Solutions, [Maximize = {1}][Minimize = {2}], Resolution {6}s, {7} Nodes, \\
+<pre><code class="language-none" data-lang="none">{0} Solutions, [Maximize = {1}][Minimize = {2}], Resolution {6}s, {7} Nodes, \\
                                     {8} Backtracks, {9} Fails, {10} Restarts
-</code></pre>
-<p>followed by one line exposing the value of each decision variables (those involved in the search strategy).</p>
+</code></pre><p>followed by one line exposing the value of each decision variables (those involved in the search strategy).</p>
 <h3 id="showing-decisions">Showing decisions</h3>
 <p>On a call to <code>solver.showDecisions()</code>, on each node of the search tree a message will be printed indicating which decision is applied.
 The message is prefixed by as many “.” as nodes in the current branch of the search tree.
 A decision is prefixed with <code>[R]</code> and a refutation is prefixed by <code>[L]</code>.</p>
-<pre><code class="language-none">..[L]x  ==  1 (0) //X = [0,5] Y = [0,6] ...
+<pre><code class="language-none" data-lang="none">..[L]x  ==  1 (0) //X = [0,5] Y = [0,6] ...
 </code></pre>
-
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Warning</h4>

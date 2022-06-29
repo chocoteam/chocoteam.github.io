@@ -416,12 +416,10 @@ s.plugMonitor(new IMonitorSolution() {
         System.out.println(&quot;x = &quot;+x.getValue());
     }
 });
-</code></pre>
-<p>In Java 8 style:</p>
+</code></pre><p>In Java 8 style:</p>
 <pre><code>Solver s = model.getSolver();
 s.plugMonitor((IMonitorSolution) () -&gt; {System.out.println(&quot;x = &quot;+x.getValue());});
-</code></pre>
-<h2 id="settings">Settings</h2>
+</code></pre><h2 id="settings">Settings</h2>
 <p>A <code>Settings</code> object is attached to each <code>Model</code>.
 It declares default behavior for various purposes: from general purpose (such as the welcome message), modelling purpose (such as enabling views) or solving purpose (such as the search binder).</p>
 <p><code>Settings</code> is a <em>factory design pattern</em> and provides two default settings: <code>Settings.dev()</code> and <code>Settings.prod()</code> which offers configurations adapted to a development or production environment. These can then be modified via setters.</p>

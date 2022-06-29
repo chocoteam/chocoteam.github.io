@@ -319,22 +319,20 @@ if (!doNotTrack) {
 	</header>    
 	<p>Choco 4 provides a simple way to use several threads to treat a problem. The main idea of that driver is to solve the <em>same</em> model with different search strategies and to share few information to make these threads help each others.</p>
 <p>To use a portfolio of solvers in parallel, use <code>ParallelPortfolio</code> as follows:</p>
-<pre><code class="language-java">ParallelPortfolio portfolio = new ParallelPortfolio();
-int nbModels = 5;
-for(int s=0;s&lt;nbModels;s++){
-    portfolio.addModel(makeModel());
-}
-portfolio.solve();
-</code></pre>
-<p>In this example, <code>makeModel()</code> is a method you have to implement to create a <code>Model</code> of the problem.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">ParallelPortfolio</span> <span style="color:#000">portfolio</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ParallelPortfolio</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">nbModels</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">nbModels</span><span style="color:#ce5c00;font-weight:bold">;</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">++){</span>
+    <span style="color:#000">portfolio</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addModel</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">makeModel</span><span style="color:#ce5c00;font-weight:bold">());</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#000">portfolio</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>In this example, <code>makeModel()</code> is a method you have to implement to create a <code>Model</code> of the problem.
 Here all models are the same and the portfolio will change the search heuristics of all models but the first one.
 This means that the first thread will run according to your settings whereas the others will have a different configuration.</p>
 <h3 id="auto-configuration">Auto-configuration</h3>
 <p>In order to specify yourself the configuration of each thread, you need to create the portfolio by setting the optional
 boolean argument <code>searchAutoConf</code> to false as follows:</p>
-<pre><code class="language-java">ParallelPortfolio portfolio = new ParallelPortfolio(false);
-</code></pre>
-<p>In this second example, the parameter <code>s</code> enables you to change the search strategy within the <code>makeModel</code> method (e.g. using a <code>switch(s)</code>).</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">ParallelPortfolio</span> <span style="color:#000">portfolio</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ParallelPortfolio</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>In this second example, the parameter <code>s</code> enables you to change the search strategy within the <code>makeModel</code> method (e.g. using a <code>switch(s)</code>).</p>
 <p>When dealing with multithreading resolution, very few data is shared between threads:
 everytime a solution has been found its value is shared among solvers. Moreover,
 when a solver ends, it communicates an interruption instruction to the others.
@@ -343,9 +341,8 @@ This enables to explore the search space in various way, using different model s
 <h3 id="sharing-no-goods">Sharing no-goods</h3>
 <p>Some of the default search strategies are based on a restart policy.
 In such case, one can allow no-goods when those threads restart.</p>
-<pre><code class="language-java">portfolio.stealNogoodsOnRestarts();
-</code></pre>
-<p>Doing so, anytime a thread restarts, it records not only no-goods based on the search space it has explored since last restart, but also ones of other threads (restricted to those equipepd with a restart policy).</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">portfolio</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stealNogoodsOnRestarts</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Doing so, anytime a thread restarts, it records not only no-goods based on the search space it has explored since last restart, but also ones of other threads (restricted to those equipepd with a restart policy).</p>
 
 	
 		<style>

@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/modeling/intconstraints/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-07T16:07:15&#43;01:00" />
-<meta property="article:modified_time" content="2021-03-18T13:27:42&#43;01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-06-29T16:40:23&#43;02:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="Constraints over integer variables">
 <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.
 "><meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2021-03-18T13:27:42&#43;01:00" />
-<meta itemprop="wordCount" content="1544">
+<meta itemprop="dateModified" content="2022-06-29T16:40:23&#43;02:00" />
+<meta itemprop="wordCount" content="1745">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Constraints over integer variables"/>
 <meta name="twitter:description" content="Overview of constraints based on boolean and integer variables.
@@ -272,7 +272,13 @@ window.MathJax = {
         <li><a href="#global-constraints">Global constraints</a></li>
       </ul>
     </li>
-    <li><a href="#cardinality-constraints">Cardinality constraints</a></li>
+    <li><a href="#remarkable-global-constraints">Remarkable global constraints</a>
+      <ul>
+        <li><a href="#alldifferent">AllDifferent</a></li>
+        <li><a href="#count">Count</a></li>
+        <li><a href="#element">Element</a></li>
+      </ul>
+    </li>
     <li><a href="#scheduling-constraints">Scheduling constraints</a>
       <ul>
         <li><a href="#task-variables"><code>Task</code> variables</a></li>
@@ -353,26 +359,23 @@ window.MathJax = {
 	<h2 id="arithmetical-constraints">Arithmetical constraints</h2>
 <p>These constraints are used to express arithmetical relationships between two or three variables, or between one or two variables and an integer constant.
 For instance, a threshold constraint can be posted as following:</p>
-<pre><code class="language-java">model.arithm(x, &quot;&gt;=&quot;, 3).post();
-</code></pre>
-<p>Accepted mathematical operators for these constraints are <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>=</code> and <code>!=</code>. When more than one variable is constrained, one can use the following methods:</p>
-<pre><code class="language-java">String op = &quot;&gt;=&quot;; // among &quot;&gt;=&quot;, &quot;&gt;&quot;, &quot;&lt;=&quot;, &quot;&lt;&quot;, &quot;=&quot; and &quot;!=&quot;
-model.arithm(x, op, y).post();
-// with x an IntVar and y either an IntVar or an int
-
-String op2 = &quot;+&quot;; // either &quot;+&quot; or &quot;-&quot;
-model.arithm(x, op2, y, op, z).post();
-// with x and y IntVar, and z is either an int or an IntVar
-</code></pre>
-<h2 id="other-mathematical-constraints">Other mathematical constraints</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Accepted mathematical operators for these constraints are <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>=</code> and <code>!=</code>. When more than one variable is constrained, one can use the following methods:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">String</span> <span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#8f5902;font-style:italic">// with x an IntVar and y either an IntVar or an int
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#000">String</span> <span style="color:#000">op2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// either &#34;+&#34; or &#34;-&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#8f5902;font-style:italic">// with x and y IntVar, and z is either an int or an IntVar
+</span></code></pre></div><h2 id="other-mathematical-constraints">Other mathematical constraints</h2>
 <p>Choco-solver also supports other mathematical constraints than arithmetical ones, such as <em>times</em>, <em>div</em>, <em>modulo</em>&hellip; In this section, we will consider <code>x</code>, <code>y</code> and <code>z</code> to be <code>IntVar</code> and <code>a</code> and <code>b</code> to be <code>int</code>.</p>
 <h3 id="binary-and-ternary-constraints">Binary and ternary constraints</h3>
 <p><em>times</em> constraints are posted as following:</p>
-<pre><code class="language-java">model.times(x, a, z).post(); // x * a = z
-model.times(x, y, a).post(); // x * y = a
-model.times(x, y, z).post(); // x * y = z
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x * a = z
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x * y = a
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x * y = z
+</span></code></pre></div>
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -382,73 +385,82 @@ model.times(x, y, z).post(); // x * y = z
 </div>
 
 <p>A <em>div</em> constraint corresponds to a euclidean division. It is posted as following:</p>
-<pre><code class="language-java">model.div(x, y, z).post(); // x / y = z
-// it assures that y != 0, and z is rounding towards 0.
-</code></pre>
-<p><em>modulo</em> constraints are of three types:</p>
-<pre><code class="language-java">model.mod(x, a, b).post(); // x % a = b
-model.mod(x, a, z).post(); // x % a = z
-model.mod(x, y, z).post(); // x % y = z
-</code></pre>
-<p>An <em>absolute</em> constraint is posted like this:</p>
-<pre><code class="language-java">model.absolute(x, y).post(); // x = |y|
-</code></pre>
-<h3 id="global-constraints">Global constraints</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x / y = z
+</span><span style="color:#8f5902;font-style:italic">// it assures that y != 0, and z is rounding towards 0.
+</span></code></pre></div><p><em>modulo</em> constraints are of three types:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x % a = b
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x % a = z
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x % y = z
+</span></code></pre></div><p>An <em>absolute</em> constraint is posted like this:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">absolute</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// x = |y|
+</span></code></pre></div><h3 id="global-constraints">Global constraints</h3>
+<h4 id="minimum-and-maximum">Minimum and maximum</h4>
 <p>Let <code>min</code> and <code>max</code> be <code>IntVar</code> and let <code>vars</code> be an array of <code>IntVar</code>. One can post the following mathematical constraints to assure that <code>min</code> is the
 minimum of the variables in <code>vars</code> and <code>max</code> the maximum of them:</p>
-<pre><code class="language-java">model.min(min, vars).post();
-model.max(max, vars).post();
-</code></pre>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">min</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">min</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">max</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">max</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><h4 id="sum-and-scalar">Sum and scalar</h4>
 <p>Similarly, one can want to sum some variables. For such an operation, one should use the <code>sum</code> constraint:</p>
-<pre><code class="language-java">String op = &quot;&gt;=&quot;; // among &quot;&gt;=&quot;, &quot;&gt;&quot;, &quot;&lt;=&quot;, &quot;&lt;&quot;, &quot;=&quot; and &quot;!=&quot;
-model.sum(vars, op, x).post(); // here, it gives sum(vars) &gt;= x
-</code></pre>
-<p>And, finally, for weighted sums, one should use the <code>scalar</code> constraint:</p>
-<pre><code class="language-java">String op = &quot;&gt;=&quot;; // among &quot;&gt;=&quot;, &quot;&gt;&quot;, &quot;&lt;=&quot;, &quot;&lt;&quot;, &quot;=&quot; and &quot;!=&quot;
-model.sum(vars, coefs, op, x).post(); // coefs being an array of int
-// here, it gives sum(vars[i]*coefs[i]) &gt;= x
-</code></pre>
-<h2 id="cardinality-constraints">Cardinality constraints</h2>
-<p>allDifferent, allEqual, nvalues, element</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">String</span> <span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sum</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// here, it gives sum(vars) &gt;= x
+</span></code></pre></div><p>And, finally, for weighted sums, one should use the <code>scalar</code> constraint:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">String</span> <span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">coefs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// coefs being an array of int
+</span><span style="color:#8f5902;font-style:italic">// here, it gives sum(vars[i]*coefs[i]) &gt;= x
+</span></code></pre></div><h2 id="remarkable-global-constraints">Remarkable global constraints</h2>
+<p>There exists a wide range of global constraints. In this section, we only list some of them. All of them are accessible through the <code>model</code> API.
+One can consult the complete list of constraints in the <a href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html">JavaDoc</a>.</p>
+<h3 id="alldifferent">AllDifferent</h3>
+<p>The <code>alldifferent</code> constraint is probably the most famous one. It ensures that all variables in its scope take a distinct value in any solution.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">allDifferent</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>An instantiation that satisfies this constraint is
+<code>[1,5,2,3]</code>.</p>
+<h3 id="count">Count</h3>
+<p>This constraint is very helpful to count the number of occurences of a value in an array of variables.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">occ0</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;occ0&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">count</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">occ0</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>A solution to this constraint is <code>vars = [0, 1, 0, 1, 5, 5, 5]</code>, <code>occ0 = 2</code>.</p>
+<h3 id="element">Element</h3>
+<p>The <code>element</code> constraint is very convenient. It permits to dynamically assign a variable to a value based on an array and an index variable.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">idx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;I&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">rst</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;R&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">rst</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">},</span> <span style="color:#000">idx</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>An assignment of <code>idx</code> and <code>rst</code> that satisfies this <code>element</code> constraint is: <code>idx = 3</code> and <code>rst = 6</code>.</p>
 <h2 id="scheduling-constraints">Scheduling constraints</h2>
 <p>Scheduling problems can be modelled using Task variables and the cumulative constraint.<br>
 A task represents the entity that should be scheduled, where it is unknown when the task starts and optionally how long it lasts.<br>
 The cumulative constraint limits the number of concurrent tasks.</p>
 <h3 id="task-variables"><code>Task</code> variables</h3>
 <p>A task needs a start <code>IntVar</code> and a duration <code>int</code>.</p>
-<pre><code class="language-java">Task task = new Task(start, duration);
-</code></pre>
-<p>Optionally an end <code>IntVar</code> can be supplied. Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
-<pre><code class="language-java">Task task = new Task(start, duration, end);
-</code></pre>
-<p>A task can have an unknown duration. In this case create the task with 3 <code>IntVar</code>: start, varDuration and end. Task will ensure that <em>start + varDuration = end</em>, end being an offset view of <em>start + varDuration</em>.</p>
-<pre><code class="language-java">Task task = new Task(start, varDuration, end);
-</code></pre>
-<p>Finally, a task can be created based on the <code>Model</code> and 5 <code>int</code>: earliestStart, latestStart, duration, earliestEnd, latestEnd.<br>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Task</span> <span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">duration</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>Optionally an end <code>IntVar</code> can be supplied. Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Task</span> <span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">duration</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">end</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>A task can have an unknown duration. In this case create the task with 3 <code>IntVar</code>: start, varDuration and end. Task will ensure that <em>start + varDuration = end</em>, end being an offset view of <em>start + varDuration</em>.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Task</span> <span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">varDuration</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">end</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>Finally, a task can be created based on the <code>Model</code> and 5 <code>int</code>: earliestStart, latestStart, duration, earliestEnd, latestEnd.<br>
 A start <code>IntVar</code> will be created with a domain of <em>[earliestStart, latestStart]</em>.<br>
 An end <code>IntVar</code> will be created with a domain of <em>[earliestEnd, latestEnd]</em>.<br>
 Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
-<pre><code class="language-java">Task task = new Task(model, earliestStart, latestStart, duration, earliestEnd, latestEnd);
-</code></pre>
-<h3 id="cumulative-constraint"><code>Cumulative</code> constraint</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Task</span> <span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">earliestStart</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">latestStart</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">duration</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">earliestEnd</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">latestEnd</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h3 id="cumulative-constraint"><code>Cumulative</code> constraint</h3>
 <p>The cumulative constraint ensures that at any point in time, the cumulated heights of a set of overlapping <code>Tasks</code> does not exceed a given capacity.<br>
 Let tasks be an array of <code>Task</code>, heights an array of <code>IntVar</code> and capacity an <code>IntVar</code>, where <em>heights[i]</em> is the height for <em>tasks[i]</em>.<br>
 Make sure $|tasks| = |heights|$<br>
 Task duration and height should be $\geq$ 0. Tasks with duration or height equal to 0 will be discarded.</p>
-<pre><code class="language-java">model.cumulative(tasks, heights, capacity).post();
-</code></pre>
-<p>If only one task can happen concurrently, set the heights fixed equal to the capacity, either by setting fixed values or posting constraints between the variables.<br>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">cumulative</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">heights</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">capacity</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>If only one task can happen concurrently, set the heights fixed equal to the capacity, either by setting fixed values or posting constraints between the variables.<br>
 Other combinations of concurrently (or not) planned tasks can be modelled by setting different values for the heights and the capacity, or by defining different constraints between these variables.</p>
 <p>Example: 4 tasks with a set height that cannot happen at the same time by setting a fixed capacity:</p>
-<pre><code class="language-java">Task[] tasks = new Task[4];
-Arrays.fill(tasks, new Task(start, duration));
-IntVar[] heights = new IntVar[4];
-Arrays.fill(heights, model.intVar(1));
-IntVar capacity = model.intVar(1);
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">tasks</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">];</span>
+<span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">fill</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">duration</span><span style="color:#ce5c00;font-weight:bold">));</span>
+<span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">heights</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">];</span>
+<span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">fill</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">heights</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">));</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">capacity</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
-model.cumulative(tasks, heights, capacity).post();
-</code></pre>
-<p>Solving this will result in all 4 tasks happening consecutively so:
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">cumulative</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">heights</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">capacity</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Solving this will result in all 4 tasks happening consecutively so:
 $start[i] + duration[i] \lt start[j]$</p>
 <p>The cumulative constraint does not enforce a specific order of tasks. Define additional constraints between the variables for this if needed.</p>
 <h2 id="table-constraints">Table constraints</h2>
@@ -463,25 +475,23 @@ $$Table(X,T)\equiv \bigvee_{t \in T}\bigwedge_{i \in I}(X_i = t_i)$$</p>
 <p>Table constraints usually provide domain consistency filtering algorithm, with diverse spatial and temporal complexities which depend on the number of variables involved and the number of tuples.</p>
 <h3 id="allowed-combinations">Allowed combinations</h3>
 <p>Let&rsquo;s take the example of four variables $X_i = [\![0,3]\!], i \in [1,4]$, that <strong>must</strong> all be equal. This relationship can be expressed with a Table constraint as follow:</p>
-<pre><code class="language-java">Tuples allEqual = new Tuples(true); // true stands for 'allowed' combinations
-allEqual.add({0,0,0,0});
-allEqual.add({1,1,1,1});
-allEqual.add({2,2,2,2});
-allEqual.add({3,3,3,3});
-model.table(X, allEqual, &quot;CT+&quot;).post();
-</code></pre>
-<p>Only defined combinations are solutions.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Tuples</span> <span style="color:#000">allEqual</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// true stands for &#39;allowed&#39; combinations
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Only defined combinations are solutions.</p>
 <p>The parameter <code>&quot;CT+&quot;</code> is optional and defines the filtering algorithm to use. <code>&quot;CT+&quot;</code> is a really good default choice.</p>
 <h3 id="forbidden-combinations">Forbidden combinations</h3>
 <p>Let&rsquo;s take the previous example but in that case, all variables <strong>must not</strong> be all be equal. This relationship can be expressed with a Table constraint as follow, with a little difference in the <code>Tuples</code> declaration:</p>
-<pre><code class="language-java">Tuples allEqual = new Tuples(false); // false stands for 'forbidden' combinations
-allEqual.add({0,0,0,0});
-allEqual.add({1,1,1,1});
-allEqual.add({2,2,2,2});
-allEqual.add({3,3,3,3});
-model.table(X, allEqual, &quot;CT+&quot;).post();
-</code></pre>
-<p>All undefined combinations are solution, for example <code>{0,0,0,1}</code> or <code>{0,1,2,3}</code>.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Tuples</span> <span style="color:#000">allEqual</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// false stands for &#39;forbidden&#39; combinations
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>All undefined combinations are solution, for example <code>{0,0,0,1}</code> or <code>{0,1,2,3}</code>.</p>
 <h3 id="universal-value">Universal value</h3>
 <p>Under certain conditions, the number of tuples can be reduced by introducing a <em>universal value</em>.
 Consider $X_i = [\![0,99]\!], i \in [1,3]$, and the following relationship:</p>
@@ -496,28 +506,25 @@ Consider $X_i = [\![0,99]\!], i \in [1,3]$, and the following relationship:</p>
 {0, 0, 98}
 {0, 0, 99}
 {3, 2, 1}
-</code></pre>
-<p>We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture <em>$X_3$ can take any value</em>.
+</code></pre><p>We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture <em>$X_3$ can take any value</em>.
 It&rsquo;s a use case of universal value.</p>
-<pre><code class="language-java">int STAR = -1;
-Tuples rel = new Tuples(true); 
-rel.setUniversalValue(STAR);
-rel.add({0,0,STAR});
-rel.add({3,2,1});
-model.table(X, rel).post();
-</code></pre>
-<p><code>STAR</code> represents the universal value, here $-1$.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">STAR</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">Tuples</span> <span style="color:#000">rel</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">);</span> 
+<span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setUniversalValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">STAR</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">STAR</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">({</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">rel</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p><code>STAR</code> represents the universal value, here $-1$.
 The value must be taken outside variables domain.</p>
 <h2 id="sat-constraints">SAT constraints</h2>
 <p>A SAT solver is embedded in Choco-solver. It is not  designed to be accessed directly.
 The SAT solver is internally managed as a constraint (and a propagator), that’s why it is referred to as SAT constraint in the following.</p>
 <p>Clauses can be added with the <code>Model</code> thanks to methods whose name begins with <code>addClause*</code>.
 There exists two type of clauses declaration: pre-defined ones (such as <code>addClausesBoolLt</code> or <code>addClausesAtMostNMinusOne</code>) or more free ones by specifying a <code>LogOp</code> that represents a clause expression:</p>
-<pre><code class="language-java">model.addClauses(LogOp.and(LogOp.nand(LogOp.nor(a, b), LogOp.or(c, d)), e));
-// with static import of LogOp
-model.addClauses(and(nand(nor(a, b), or(c, d)), e));
-</code></pre>
-<h2 id="automaton-based-constraints">Automaton-based Constraints</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addClauses</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">LogOp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">and</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">LogOp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nand</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">LogOp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nor</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">LogOp</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">or</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">)),</span> <span style="color:#000">e</span><span style="color:#ce5c00;font-weight:bold">));</span>
+<span style="color:#8f5902;font-style:italic">// with static import of LogOp
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addClauses</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">and</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nand</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nor</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">or</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">)),</span> <span style="color:#000">e</span><span style="color:#ce5c00;font-weight:bold">));</span>
+</code></pre></div><h2 id="automaton-based-constraints">Automaton-based Constraints</h2>
 <p><code>regular</code>, <code>costRegular</code> and <code>multiCostRegular</code> rely on an automaton, declared either implicitly or explicitly.
 There are two kinds of <code>IAutomaton</code> :</p>
 <ul>
@@ -597,7 +604,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 18.03.2021: <a href="https://github.com/chocoteam/website/commit/eacff0613442cb5cca814fb5758e8fe57d4b48c8">update IntConstraints scheduling (eacff06)</a>
+  Last modified 29.06.2022: <a href="https://github.com/chocoteam/website/commit/e2738494fbfe446bc70e3e0ec37090af91f263f1">Update doc (e273849)</a>
 </div>
 
 </div>

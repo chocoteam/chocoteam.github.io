@@ -301,9 +301,8 @@ if (!doNotTrack) {
 	</header>
 	<p>Up to here, we have seen how to model a problem with the <code>Model</code> object. To solve it, we need to use
 the <code>Solver</code> object that is obtained from the model as follows:</p>
-<pre><code class="language-java">Solver solver = model.getSolver();
-</code></pre>
-<p>The <code>Solver</code> is in charge of alternating constraint-propagation with search, and possibly learning,
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>The <code>Solver</code> is in charge of alternating constraint-propagation with search, and possibly learning,
 in order to compute solutions. This object may be configured in various ways.</p>
 
         <div class="section-index">

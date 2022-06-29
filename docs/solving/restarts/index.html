@@ -344,18 +344,16 @@ Thus, the statistics computed on the bottom of the tree search can be applied on
 <p>Several restart strategies are available in <code>Solver</code>.</p>
 <h3 id="on-solutions">On solutions</h3>
 <p>It may be relevant to restart after each solution.</p>
-<pre><code class="language-java">// Restarts after after each new solution.
-solver.setRestartOnSolutions()
-</code></pre>
-<h3 id="geometrical">Geometrical</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Restarts after after each new solution.
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setRestartOnSolutions</span><span style="color:#ce5c00;font-weight:bold">()</span>
+</code></pre></div><h3 id="geometrical">Geometrical</h3>
 <p>Geometrical restarts perform a search with restarts controlled by the resolution event  <code>counter</code> which counts events occurring during the search.
 Parameter <code>base</code> indicates the maximal number of events allowed in the first search tree.
 Once this limit is reached, a restart occurs and the search continues until <code>base</code>$\times$<code> grow</code> events are done, and so on.
 After each restart, the limit number of events is increased by the geometric factor <code>grow</code>.
 <code>limit</code> states the maximum number of restarts.</p>
-<pre><code class="language-java">solver.setGeometricalRestart(int base, double grow, ICounter counter, int limit)
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setGeometricalRestart</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">base</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">grow</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ICounter</span> <span style="color:#000">counter</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">limit</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div>
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -382,19 +380,16 @@ $$ [1,1,2,1,1,2,4,1,1,2,1,1,2,4,8,1,\cdots]$$</p>
 $$ [1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 9,\cdots] $$</p>
 </li>
 </ul>
-<pre><code class="language-java">solver.setLubyRestart(int base, int grow, ICounter counter, int limit)
-</code></pre>
-<p>You can design your own restart strategies using:</p>
-<pre><code class="language-java">solver.setRestarts( LongCriterion restartCriterion,
-                    IRestartStrategy restartStrategy,
-                    int restartsLimit);
-</code></pre>
-<h3 id="recording-no-goods-on-restart">Recording no-goods on restart</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLubyRestart</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">base</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">grow</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ICounter</span> <span style="color:#000">counter</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">limit</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p>You can design your own restart strategies using:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setRestarts</span><span style="color:#ce5c00;font-weight:bold">(</span> <span style="color:#000">LongCriterion</span> <span style="color:#000">restartCriterion</span><span style="color:#ce5c00;font-weight:bold">,</span>
+                    <span style="color:#000">IRestartStrategy</span> <span style="color:#000">restartStrategy</span><span style="color:#ce5c00;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">restartsLimit</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h3 id="recording-no-goods-on-restart">Recording no-goods on restart</h3>
 <p>When a restart occurs, one may want to prevent the search space explored before restarting to be discovered again in the future. This is achieved by recording <em>no-goods</em> on restart.</p>
 <p>By calling:</p>
-<pre><code class="language-java">solver.setNoGoodRecordingFromRestarts();
-</code></pre>
-<p>anytime a restart occurs, a <em>no-good</em> is extracted from the decision path in order to prevent the same scanning the same sub-tree in the futur.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setNoGoodRecordingFromRestarts</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>anytime a restart occurs, a <em>no-good</em> is extracted from the decision path in order to prevent the same scanning the same sub-tree in the futur.</p>
 
 	
 		<style>

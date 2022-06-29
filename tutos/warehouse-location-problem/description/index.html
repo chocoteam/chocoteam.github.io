@@ -333,28 +333,27 @@ the maintenance and supply costs is minimized.</p>
 <p>See <a href="http://csplib.org/Problems/prob034/">this page</a> for more details.</p>
 <h2 id="input-data">Input data</h2>
 <p>We consider here the following input (in java):</p>
-<pre><code class="language-java">// number of warehouses
-int W = 5;
-// number of stores
-int S = 10;
-// maintenance cost
-int C = 30;
-// capacity of each warehouse
-int[] K = new int[]{1, 4, 2, 1, 3};
-// matrix of supply costs, store x warehouse
-int[][] P = new int[][]{
-    {20, 24, 11, 25, 30},
-    {28, 27, 82, 83, 74},
-    {74, 97, 71, 96, 70},
-    {2, 55, 73, 69, 61},
-    {46, 96, 59, 83, 4},
-    {42, 22, 29, 67, 59},
-    {1, 5, 73, 59, 56},
-    {10, 73, 13, 43, 96},
-    {93, 35, 63, 85, 46},
-    {47, 65, 55, 71, 95}};
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// number of warehouses
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">W</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// number of stores
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">S</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// maintenance cost
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">C</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">30</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#8f5902;font-style:italic">// capacity of each warehouse
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">K</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">};</span>
+<span style="color:#8f5902;font-style:italic">// matrix of supply costs, store x warehouse
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">P</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[][]{</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">24</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">11</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">25</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">30</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">28</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">27</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">82</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">83</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">74</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">74</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">97</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">71</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">96</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">70</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">55</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">73</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">69</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">61</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">46</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">96</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">59</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">83</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">42</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">22</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">29</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">67</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">59</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">73</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">59</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">56</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">73</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">13</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">43</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">96</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">93</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">35</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">63</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">85</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">46</span><span style="color:#ce5c00;font-weight:bold">},</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">47</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">65</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">55</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">71</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">95</span><span style="color:#ce5c00;font-weight:bold">}};</span>
+</code></pre></div>
 	
 		<style>
   .feedback--answer {

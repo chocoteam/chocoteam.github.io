@@ -322,16 +322,15 @@ if (!doNotTrack) {
 	</header>    
 	<h2 id="finding-one-solution">Finding one solution</h2>
 <p>A call to <code>solver.solve()</code> launches a resolution which stops on the first solution found, if any:</p>
-<pre><code class="language-java">if(solver.solve()){
-    // do something, e.g. print out variable values
-}else if(solver.hasReachedLimit()){
-    System.out.println(&quot;The solver could not find a solution
-                        nor prove that none exists in the given limits&quot;);
-}else {
-    System.out.println(&quot;The solver has proved the problem has no solution&quot;);
-}
-</code></pre>
-<p>If <code>solver.solve()</code> returns <code>true</code>, then a solution has been found and each variable is instantiated to a value.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#8f5902;font-style:italic">// do something, e.g. print out variable values
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">hasReachedLimit</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;The solver could not find a solution
+</span><span style="color:#4e9a06">                        nor prove that none exists in the given limits&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;The solver has proved the problem has no solution&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>If <code>solver.solve()</code> returns <code>true</code>, then a solution has been found and each variable is instantiated to a value.
 Otherwise, two cases must be considered:</p>
 <ul>
 <li>
@@ -346,11 +345,10 @@ The resolution process stops in no particular place in the search tree.</p>
 </ul>
 <h2 id="enumerating-all-solutions">Enumerating all solutions</h2>
 <p>You can enumerate all solutions of a problem with a simple while loop as follows:</p>
-<pre><code class="language-java">while(solver.solve()){
-    // do something, e.g. print out variable values
-}
-</code></pre>
-<p>After the enumeration, the solver closes the search tree and variables are no longer instantiated to a value.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#8f5902;font-style:italic">// do something, e.g. print out variable values
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>After the enumeration, the solver closes the search tree and variables are no longer instantiated to a value.</p>
 <h2 id="optimization">Optimization</h2>
 <p>In Constraint-Programming, optimization is done by computing improving solutions, until reaching an optimum.
 Therefore, it can be seen as solving multiple times the model while adding constraints on the fly to prevent the solver from computing dominated solutions.</p>
@@ -358,51 +356,48 @@ Therefore, it can be seen as solving multiple times the model while adding const
 <p>The optimization process is the following: anytime a solution is found, the value of the objective variable is stored and a <em>cut</em> is posted.
 The cut is an additional constraint which states that the next solution must be (strictly) better than the current one.
 To solve an optimization problem, you must specify which variable to optimize and in which direction:</p>
-<pre><code class="language-java">// to maximize X
-model.setObjective(Model.MAXIMIZE, X);
-// or model.setObjective(Model.MINIMIZE, X); to minimize X
-while(solver.solve()){
-    // an improving solution has been found
-}
-// the last solution found was optimal (if search completed)
-</code></pre>
-<p>You can use custom cuts by overriding the default cut behavior.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// to maximize X
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setObjective</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// or model.setObjective(Model.MINIMIZE, X); to minimize X
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
+    <span style="color:#8f5902;font-style:italic">// an improving solution has been found
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#8f5902;font-style:italic">// the last solution found was optimal (if search completed)
+</span></code></pre></div><p>You can use custom cuts by overriding the default cut behavior.
 The <em>cut computer</em> function defines how the cut should bound the objective variable.
 The input <em>number</em> is the best solution value found so far, the output <em>number</em> define the new bound.
 When maximizing (resp. minimizing) a problem, the cut limits the lower bound (resp. upper bound) of the objective variable.
 For instance, one may want to indicate that the value of the objective variable is the next solution should be
 greater than or equal to the best value + 10</p>
-<pre><code class="language-java">ObjectiveManager&lt;IntVar, Integer&gt; oman = solver.getObjectiveManager();
-oman.setCutComputer(n -&gt; n - 10);
-</code></pre>
-<h3 id="multi-objective-optimization">Multi-objective optimization</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">ObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">oman</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">oman</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setCutComputer</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h3 id="multi-objective-optimization">Multi-objective optimization</h3>
 <p>If you have multiple objective to optimize, you have several options. First, you may aggregate them in a function so that you end up with only one objective variable. Second, you can solve the problem multiple times, each one optimizing one variable and possibly fixing some bounds on the other. Third, you can enumerate solutions (without defining any objective) and add constraints on the fly to prevent search from finding dominated solutions. This is done by the ParetoOptimizer object which does the following:
 Anytime a solution is found, a constraint is posted which states that at least one of the objective variables must be strictly better:
 Such as $(X_0 &lt; b_0 \lor X_1 &lt; b_1 \lor \ldots \lor X_n &lt; b_n)$ where $X_i$ is the ith objective variable and $b_i$ its value.</p>
 <p>Here is a simple example on how to use the ParetoOptimizer to optimize two variables (a and b):</p>
-<pre><code class="language-java">// simple model
-Model model = new Model();
-IntVar a = model.intVar(&quot;a&quot;, 0, 2, false);
-IntVar b = model.intVar(&quot;b&quot;, 0, 2, false);
-IntVar c = model.intVar(&quot;c&quot;, 0, 2, false);
-model.arithm(a, &quot;+&quot;, b, &quot;=&quot;, c).post();
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// simple model
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">a</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
 
-// create an object that will store the best solutions and remove dominated ones
-ParetoOptimizer po = new ParetoOptimizer(Model.MAXIMIZE,new IntVar[]{a,b});
-Solver solver = model.getSolver();
-solver.plugMonitor(po);
+<span style="color:#8f5902;font-style:italic">// create an object that will store the best solutions and remove dominated ones
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">ParetoOptimizer</span> <span style="color:#000">po</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ParetoOptimizer</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">po</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
-// optimization
-while(solver.solve());
+<span style="color:#8f5902;font-style:italic">// optimization
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">());</span>
 
-// retrieve the pareto front
-List&lt;Solution&gt; paretoFront = po.getParetoFront();
-System.out.println(&quot;The pareto front has &quot;+paretoFront.size()+&quot; solutions : &quot;);
-for(Solution s:paretoFront){
-        System.out.println(&quot;a = &quot;+s.getIntVal(a)+&quot; and b = &quot;+s.getIntVal(b));
-}
-</code></pre>
-<p><strong>NOTE</strong>: All objectives must be optimized on the same direction (either minimization or maximization).</p>
+<span style="color:#8f5902;font-style:italic">// retrieve the pareto front
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">paretoFront</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">po</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getParetoFront</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;The pareto front has &#34;</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">paretoFront</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">()+</span><span style="color:#4e9a06">&#34; solutions : &#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Solution</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">paretoFront</span><span style="color:#ce5c00;font-weight:bold">){</span>
+        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;a = &#34;</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getIntVal</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">)+</span><span style="color:#4e9a06">&#34; and b = &#34;</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getIntVal</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">));</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p><strong>NOTE</strong>: All objectives must be optimized on the same direction (either minimization or maximization).</p>
 <h2 id="propagation">Propagation</h2>
 <p>One may want to propagate all constraints without search for a solution.
 This can be achieved by calling <code>solver.propagate()</code>.

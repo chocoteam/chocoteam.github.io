@@ -381,28 +381,24 @@ This is useful when debugging a program.
 <p>Please refer to the javadoc of <code>Model</code> to have the complete list of available constraints.</p>
 <h2 id="posting-constraints">Posting constraints</h2>
 <p>To be effective, a constraint must be posted to the solver. This is achieved using the <code>post()</code> method:</p>
-<pre><code class="language-java">model.allDifferent(vars).post();
-</code></pre>
-<p>Otherwise, if the <code>post()</code> method is not called, the constraint will not be taken into account during the solution process :
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">allDifferent</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Otherwise, if the <code>post()</code> method is not called, the constraint will not be taken into account during the solution process :
 it may not be satisfied in solutions.</p>
 <h2 id="reifying-constraints">Reifying constraints</h2>
 <p>In Choco-solver, it is possible to reify any constraint. Reifying a constraint means associating it with a <code>BoolVar</code>
 to represent whether or not the constraint is satisfied :</p>
-<pre><code class="language-java">BoolVar b = constraint.reify();
-</code></pre>
-<p>Or:</p>
-<pre><code class="language-java">BoolVar b = model.boolVar();
-constraint.reifyWith(b);
-</code></pre>
-<p>Reifying a constraint means that we allow the constraint not to be satisfied.
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reify</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div><p>Or:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reifyWith</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>Reifying a constraint means that we allow the constraint not to be satisfied.
 Therefore, the reified constraint <strong>should not</strong> be posted.
 For instance, let us consider “if <code>x&lt;0</code> then <code>y&gt;42</code>”:</p>
-<pre><code class="language-java">model.ifThen(
-   model.arithm(x,&quot;&lt;&quot;,0),
-   model.arithm(y,&quot;&gt;&quot;,42)
-);
-</code></pre>
-<p>Such constraint states that <em>if</em> <code>x</code> takes a value strictly less than <code>0</code> <em>then</em> <code>y</code> should take a value stritctly greater than <code>42</code>. Conversely, <em>if</em> <code>x</code> takes a value greater or equal to <code>0</code> <em>then</em> <code>y</code> is not restricted.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ifThen</span><span style="color:#ce5c00;font-weight:bold">(</span>
+   <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">),</span>
+   <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#4e9a06">&#34;&gt;&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">42</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>Such constraint states that <em>if</em> <code>x</code> takes a value strictly less than <code>0</code> <em>then</em> <code>y</code> should take a value stritctly greater than <code>42</code>. Conversely, <em>if</em> <code>x</code> takes a value greater or equal to <code>0</code> <em>then</em> <code>y</code> is not restricted.</p>
 
 
 <div class="alert alert-primary" role="alert">
@@ -420,12 +416,11 @@ This is why <code>ifThen</code>, <code>ifThenElse</code>, <code>ifOnlyIf</code> 
 
     <p>A constraint is reified with only one boolean variable. Multiple calls to <code>constraint.reify()</code> will return the same variable.
 However, the following call will associate <code>b1</code> with the constraint and then post <code>b1 = b2</code>:</p>
-<pre><code class="language-java">BoolVar b1 = model.boolVar();
-BoolVar b2 = model.boolVar();
-constraint.reifyWith(b1);
-constraint.reifyWith(b2);
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">BoolVar</span> <span style="color:#000">b2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reifyWith</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reifyWith</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b2</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div>
 
 </div>
 

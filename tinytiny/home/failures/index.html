@@ -163,7 +163,7 @@ if (!doNotTrack) {
 </ul>
 <hr>
 <h3 id="lets-fix-the-code-12">Let&rsquo;s fix the code (1/2)</h3>
-<pre><code class="language-python{4,11,14|6-7,9-10|}">def filter(self, vars):
+<pre><code class="language-python{4,11,14|6-7,9-10|}" data-lang="python{4,11,14|6-7,9-10|}">def filter(self, vars):
     d1 = vars[self.v1]
     d2 = vars[self.v2]			
     diff = len(d1) + len(d2) # stores current length
@@ -177,10 +177,9 @@ if (!doNotTrack) {
     vars[self.v1] = d1
     vars[self.v2] = d2	
     return diff &gt; 0 or None # reduction of a domain or ...
-</code></pre>
-<hr>
+</code></pre><hr>
 <h3 id="lets-fix-the-code-22">Let&rsquo;s fix the code (2/2)</h3>
-<pre><code class="language-python{2-3|}">def enumerate(variables, constraint):
+<pre><code class="language-python{2-3|}" data-lang="python{2-3|}">def enumerate(variables, constraint):
     if constraint.filter(variables) is False:
         return 0
     var, val = select_decision(variables)
@@ -192,20 +191,17 @@ if (!doNotTrack) {
         n += propagate(variables, var, val, False, constraint)
         return n
 
-</code></pre>
-<p><code>None</code> and <code>True</code> will be used later.</p>
+</code></pre><p><code>None</code> and <code>True</code> will be used later.</p>
 <hr>
 <h3 id="its-fine">It&rsquo;s fine</h3>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
-             &quot;x2&quot;: {2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
 
-print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
-</code></pre>
-<p>outputs:</p>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>outputs:</p>
 <pre><code>it finds 0 solutions
 </code></pre>
-
 </section>
 
 

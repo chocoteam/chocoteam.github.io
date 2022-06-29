@@ -173,10 +173,9 @@ A variable will be referenced by a key, its name.</p>
 <span style="color:#ED5565">Beware:</span>  each value can appear only once.</p>
 </section><section>
 <p>A dictionary and sets will do :</p>
-<pre><code class="language-python" data-line-numbers>variables = {&quot;x1&quot;: {1, 2, 3},
+<pre><code class="language-python{}" data-lang="python{}">variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
-</code></pre>
-<h3 id="and-thats-enough">and that&rsquo;s enough.</h3>
+</code></pre><h3 id="and-thats-enough">and that&rsquo;s enough.</h3>
 
 </section>
 </section>
@@ -198,18 +197,16 @@ as argument and makes sure that the former one takes a value less than the latte
 </ul>
 </section><section>
 <p>We will first create a class to declare the behaviour of this constraint:</p>
-<pre><code class="language-python" data-line-numbers="1|2-4">class LessThan:
+<pre><code class="language-python{1|2-4}" data-lang="python{1|2-4}">class LessThan:
     def __init__(self, v1, v2):
         self.v1 = v1
         self.v2 = v2
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <p>We can impose that $X_1$ is strictly less than $X_2$:</p>
-<pre><code class="language-python" data-line-numbers="3">variables = {&quot;x1&quot;: {1, 2, 3},
+<pre><code class="language-python{3}" data-lang="python{3}">variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
 c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
-</code></pre>
-<p>After doing that we didn&rsquo;t do much&hellip;</p>
+</code></pre><p>After doing that we didn&rsquo;t do much&hellip;</p>
 </section><section>
 <h2 id="what-can-such-a-constraint-do">What can such a constraint do?</h2>
 </section><section>
@@ -219,10 +216,9 @@ to any solution</p>
 <p>(<em>according to its own contract</em>)</p>
 </section><section>
 <p>We will create an empty function called <code>filter</code> as follow:</p>
-<pre><code class="language-python">def filter(self,variables):
-	pass 
-</code></pre>
-</section>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
+	<span style="color:#204a87;font-weight:bold">pass</span> 
+</code></pre></div></section>
 <section data-noprocess>
 <h2>The 2 rules of $X_1 < X_2$</h2>
 <p class="fragment">1. removing from $X_1$ values <span style="color:deepskyblue;">greater or equal to the largest value</span> in $X_2$,</p>
@@ -250,7 +246,7 @@ to any solution</p>
 </ul>
 </section><section>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
-<pre><code class="language-python" data-line-numbers="1|2-3|4-5|6-7|8-9|1-9">def filter(self, variables):
+<pre><code class="language-python{1|2-3|4-5|6-7|8-9|1-9}" data-lang="python{1|2-3|4-5|6-7|8-9|1-9}">def filter(self, variables):
     d1 = variables[self.v1] # get current domain of &quot;x1&quot;
     d2 = variables[self.v2] # get current domain of &quot;x2&quot;
     # filtering according to the 1st rule
@@ -259,10 +255,9 @@ to any solution</p>
     d2 = [v for v in d2 if v &gt; min(d1)]
     variables[self.v1] = d1 # update the domain of &quot;x1&quot;
     variables[self.v2] = d2 # update the domain of &quot;x2&quot;	
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <h3 id="does-that-work">Does that work?</h3>
-<pre><code class="language-python" data-line-numbers="1-9|1-4|5-6|7-9"># declare a CSP
+<pre><code class="language-python{1-9|1-4|5-6|7-9}" data-lang="python{1-9|1-4|5-6|7-9}"># declare a CSP
 variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
 c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
@@ -271,8 +266,7 @@ c1.filter(variables)
 # check everything works fine
 assert variables[&quot;x1&quot;] == [1, 2]
 assert variables[&quot;x2&quot;] == [2, 3]
-</code></pre>
-<p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=h6zZB5EIbytb&line=9&uniqifier=1" target="_blank">Run it</a></p>
+</code></pre><p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=h6zZB5EIbytb&line=9&uniqifier=1" target="_blank">Run it</a></p>
 </section><section>
 <h3 id="yes-it-does-">Yes, it does !</h3>
 
@@ -291,17 +285,16 @@ assert variables[&quot;x2&quot;] == [2, 3]
 <h3 id="search-space-">search space 🤿</h3>
 </section><section>
 <p>Since we need variables to take <u>single value</u>, we can:</p>
-<pre><code class="language-AsciiDoc" data-line-numbers="1|2|3|4|5">select an uninstantiated variable (e.g., the first)
+<pre><code class="language-AsciiDoc{1|2|3|4|5}" data-lang="AsciiDoc{1|2|3|4|5}">select an uninstantiated variable (e.g., the first)
 pick a value in its domain (e.g., the lowest bound)
 fix the selected variable to the selected value
 and see what is going on !
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <p>We created our first <strong>decision</strong>!</p>
 <p><span class='fragment ' >Wait, one decision may not be enough…</span></p>
 <p><span class='fragment ' >… but still, we defined an <em>enumeration strategy</em> 🥳</span></p>
 </section><section>
-<pre><code class="language-python" data-line-numbers="3-9|3|4-5|5-7|8-9|10-12"># ...
+<pre><code class="language-python{3-9|3|4-5|5-7|8-9|10-12}" data-lang="python{3-9|3|4-5|5-7|8-9|10-12}"># ...
 c1.filter(variables)
 for v, d in variables.items():
     # if one variable is not *instantiated* yet
@@ -313,8 +306,7 @@ for v, d in variables.items():
 # check everything is fine        
 assert variables[&quot;x1&quot;] == [1]
 assert variables[&quot;x2&quot;] == [2]
-</code></pre>
-<p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=GFCDk4qtcfAB&line=18&uniqifier=1" target="_blank">Run it</a></p>
+</code></pre><p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=GFCDk4qtcfAB&line=18&uniqifier=1" target="_blank">Run it</a></p>
 </section><section>
 <h2 id="what-if">What if&hellip;</h2>
 <p>we want to find another solution?</p>
@@ -330,7 +322,7 @@ assert variables[&quot;x2&quot;] == [2]
 <h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
 <p>Let&rsquo;s break down the needs into 4 functions.</p>
 </section><section>
-<pre><code class="language-python" data-line-numbers="1|2-4|5-7|9-10|1-10">def create_decision(variables):
+<pre><code class="language-python{1|2-4|5-7|9-10|1-10}" data-lang="python{1|2-4|5-7|9-10|1-10}">def create_decision(variables):
     # find a variable with at least two values in its domain
     var, dom = next(filter(lambda x: len(x[1]) &gt; 1, \
 			variables.items()), (None, None))
@@ -340,23 +332,20 @@ assert variables[&quot;x2&quot;] == [2]
     else:
         # otherwise, all variables are instantiated
         return None, None
-</code></pre>
-</section><section>
-<pre><code class="language-python" data-line-numbers>def copy_domains(variables):
+</code></pre></section><section>
+<pre><code class="language-python{}" data-lang="python{}">def copy_domains(variables):
     # returns a deep copy of the dictionnary
     return {var: dom.copy() for var, dom in variables.items()}
-</code></pre>
-</section><section>
-<pre><code class="language-python" data-line-numbers="1|2-3|4-6|7|">def propagate(variables, var, val, apply, constraint):
+</code></pre></section><section>
+<pre><code class="language-python{1|2-3|4-6|7|}" data-lang="python{1|2-3|4-6|7|}">def propagate(variables, var, val, apply, constraint):
     # makes a backup of the variables
     c_variables = copy_domains(variables)
     # applies the decision or rebuts is
     c_variables[var] = [x for x in c_variables[var] \
 				if apply is (x == val)]
     return enumerate(c_variables, constraint)
-</code></pre>
-</section><section>
-<pre><code class="language-python" data-line-numbers="1|2|3|4-6|7-10|">def enumerate(variables, constraint):
+</code></pre></section><section>
+<pre><code class="language-python{1|2|3|4-6|7-10|}" data-lang="python{1|2|3|4-6|7-10|}">def enumerate(variables, constraint):
     constraint.filter(variables)
     var, val = create_decision(variables)
     if var is None:
@@ -366,21 +355,18 @@ assert variables[&quot;x2&quot;] == [2]
         n = propagate(variables, var, val, True, constraint)
         n += propagate(variables, var, val, False, constraint)
     return n
-</code></pre>
-</section><section>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
-             &quot;x2&quot;: {1, 2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+</code></pre></section><section>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
 
-print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
-</code></pre>
-<p>should output:</p>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>should output:</p>
 <pre><code>{'x1': [1], 'x2': [2]}
 {'x1': [1], 'x2': [3]}
 {'x1': [2], 'x2': [3]}
 it finds 3 solutions
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <h1 id="we-did-it-">We did it !</h1>
 <p>Well almost, but still you can pat yourself back !</p>
 
@@ -393,12 +379,11 @@ it finds 3 solutions
 <p>(of what we&rsquo;ve done so far)</p>
 </section><section>
 <p>It panics when the problem has no solution.</p>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
-             &quot;x2&quot;: {2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
-print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
-</code></pre>
-<pre><code class="language-python" data-line-numbers>Traceback (most recent call last):
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><pre><code class="language-python{}" data-lang="python{}">Traceback (most recent call last):
   File &quot;sandbox.py&quot;, line 54, in &lt;module&gt;
     print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
   File &quot;sandbox.py&quot;, line 40, in enumerate
@@ -408,8 +393,7 @@ print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
   File &quot;sandbox.py&quot;, line 10, in &lt;listcomp&gt;
     d2 = [v for v in d2 if v &gt; min(d1)]
 ValueError: min() arg is an empty sequence
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <p>It deals with a single constraint.</p>
 <p>And 2 variables.</p>
 
@@ -429,7 +413,7 @@ ValueError: min() arg is an empty sequence
 </ul>
 </section><section>
 <h3 id="lets-fix-the-code-12">Let&rsquo;s fix the code (1/2)</h3>
-<pre><code class="language-python" data-line-numbers="4,11,14|6-7,9-10|">def filter(self, vars):
+<pre><code class="language-python{4,11,14|6-7,9-10|}" data-lang="python{4,11,14|6-7,9-10|}">def filter(self, vars):
     d1 = vars[self.v1]
     d2 = vars[self.v2]			
     diff = len(d1) + len(d2) # stores current length
@@ -443,10 +427,9 @@ ValueError: min() arg is an empty sequence
     vars[self.v1] = d1
     vars[self.v2] = d2	
     return diff &gt; 0 or None # reduction of a domain or ...
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <h3 id="lets-fix-the-code-22">Let&rsquo;s fix the code (2/2)</h3>
-<pre><code class="language-python" data-line-numbers="2-3|">def enumerate(variables, constraint):
+<pre><code class="language-python{2-3|}" data-lang="python{2-3|}">def enumerate(variables, constraint):
     if constraint.filter(variables) is False:
         return 0
     var, val = select_decision(variables)
@@ -458,20 +441,17 @@ ValueError: min() arg is an empty sequence
         n += propagate(variables, var, val, False, constraint)
         return n
 
-</code></pre>
-<p><code>None</code> and <code>True</code> will be used later.</p>
+</code></pre><p><code>None</code> and <code>True</code> will be used later.</p>
 </section><section>
 <h3 id="its-fine">It&rsquo;s fine</h3>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
-             &quot;x2&quot;: {2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
 
-print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
-</code></pre>
-<p>outputs:</p>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>outputs:</p>
 <pre><code>it finds 0 solutions
 </code></pre>
-
 </section>
 </section>
     <section>
@@ -479,54 +459,47 @@ print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
 <section data-shortcode-section>
 <h1 id="many-constraints">Many constraints</h1>
 <p>of the same type</p>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
-             &quot;x2&quot;: {1, 2, 3},
-             &quot;x3&quot;: {1, 2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
-c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
-</code></pre>
-</section><section>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div></section><section>
 <p>We will create a method to iterate on the constraints:</p>
-<pre><code class="language-python">def fix_point(variables, constraints):
-    for c in constraints:
-        if c.filter(variables) is False:
-            return False
-    return True
-</code></pre>
-</section><section>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">:</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#3465a4">False</span><span style="color:#000;font-weight:bold">:</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#3465a4">False</span>
+    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#3465a4">True</span>
+</code></pre></div></section><section>
 <p>A call to this method will replace the first line of the <code>enumerate(_,_)</code> function:</p>
-<pre><code class="language-python">def enumerate(variables, constraints):
-    # if constraint.filter(variables) is False:
-    if not fix_point(variables, constraints):
-        return 0 # at least one constraint is not satisfied
-    # ...        
-</code></pre>
-</section><section>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
-             &quot;x2&quot;: {1, 2, 3},
-             &quot;x3&quot;: {1, 2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
-c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
-print(&quot;it finds&quot;, enumerate(variables, {c1, c2}), &quot;solutions&quot;)
-</code></pre>
-<p>outputs:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
+    <span style="color:#8f5902;font-style:italic"># if constraint.filter(variables) is False:</span>
+    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#8f5902;font-style:italic"># at least one constraint is not satisfied</span>
+    <span style="color:#8f5902;font-style:italic"># ...        </span>
+</code></pre></div></section><section>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#000;font-weight:bold">}),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>outputs:</p>
 <pre><code>{'x1': [1], 'x2': [2], 'x3': [3]}
 it finds 1 solutions
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <h3 id="does-fix_point__-work-properly">Does <code>fix_point(_,_)</code> work properly?</h3>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
-             &quot;x2&quot;: {1, 2, 3},
-             &quot;x3&quot;: {1, 2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
-c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
-fix_point(variables, {c1, c2})
-print(variables)
-</code></pre>
-<p>goes:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#000;font-weight:bold">})</span>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>goes:</p>
 <pre><code>{'x1': [1, 2], 'x2': [2], 'x3': [3]}
-</code></pre>
-<h3 id="p-classfragmentno-it-doesntp"><p class="fragment">No, it doesn&rsquo;t</p></h3>
+</code></pre><h3 id="p-classfragmentno-it-doesntp"><p class="fragment">No, it doesn&rsquo;t</p></h3>
 </section><section>
 <p>Indeed:</p>
 <ol>
@@ -543,31 +516,28 @@ print(variables)
 <small>💡 This could be refined.</small>
 </p>
 </section><section>
-<pre><code class="language-python">def fix_point(variables, constraints):
-    while True:
-        fltrs = False
-        for c in constraints:
-            flt = c.filter(variables)
-            if flt is False: # in case of failure
-                return False
-            elif flt is True: # in case of filtering
-                fltrs |= True # keep on looping 
-        if not fltrs : # to break the while-loop
-            return True
-</code></pre>
-</section><section>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
-             &quot;x2&quot;: {1, 2, 3},
-             &quot;x3&quot;: {1, 2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
-c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
-fix_point(variables, {c1, c2})
-print(variables)
-</code></pre>
-<p>now prints:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
+    <span style="color:#204a87;font-weight:bold">while</span> <span style="color:#3465a4">True</span><span style="color:#000;font-weight:bold">:</span>
+        <span style="color:#000">fltrs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#3465a4">False</span>
+        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">:</span>
+            <span style="color:#000">flt</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
+            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">flt</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#3465a4">False</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># in case of failure</span>
+                <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#3465a4">False</span>
+            <span style="color:#204a87;font-weight:bold">elif</span> <span style="color:#000">flt</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#3465a4">True</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># in case of filtering</span>
+                <span style="color:#000">fltrs</span> <span style="color:#ce5c00;font-weight:bold">|=</span> <span style="color:#3465a4">True</span> <span style="color:#8f5902;font-style:italic"># keep on looping </span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#000">fltrs</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># to break the while-loop</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#3465a4">True</span>
+</code></pre></div></section><section>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#000;font-weight:bold">})</span>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><p>now prints:</p>
 <pre><code>{'x1': [1], 'x2': [2], 'x3': [3]}
 </code></pre>
-
 </section>
 </section>
     <section>
@@ -589,7 +559,7 @@ print(variables)
 <!--</section> to bind to the next section tag-->
 </section><section>
 <h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
-<pre><code class="language-python" data-line-numbers="1-5|7-9|11-13|14-16|18,19|10,17,20">class NotEqual:
+<pre><code class="language-python{1-5|7-9|11-13|14-16|18,19|10,17,20}" data-lang="python{1-5|7-9|11-13|14-16|18,19|10,17,20}">class NotEqual:
     def __init__(self, v1, v2, c=0):
         self.v1 = v1
         self.v2 = v2
@@ -610,7 +580,6 @@ print(variables)
         vars[self.v2] = d2
         return size &gt; 0 or None
 </code></pre>
-
 </section>
 </section>
     <section>
@@ -644,7 +613,7 @@ print(variables)
 </ol>
 </section><section>
 <h2 id="6-queens-puzzle-in-python">6 Queens puzzle in Python</h2>
-<pre><code class="language-python" data-line-numbers="2-4|6-11|13-15|17">n = 8
+<pre><code class="language-python{2-4|6-11|13-15|17}" data-lang="python{2-4|6-11|13-15|17}">n = 8
 variables = {}
 for i in range(1, n + 1):
     variables[&quot;x&quot; + str(i)] = {k for k in range(1, n + 1)}
@@ -661,17 +630,15 @@ variables[&quot;cst&quot;] = {int(n / 2) + 1}
 cs.append(LessThan(&quot;x1&quot;, &quot;cst&quot;))
 
 print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
-</code></pre>
-</section><section>
+</code></pre></section><section>
 <h3 id="46-solutions">46 solutions</h3>
-<pre><code class="language-python">{'x1': [1], 'x2': [5], 'x3': [8], 'x4': [6], 'x5': [3], 'x6': [7], 'x7': [2], 'x8': [4], 'cst': [5]}
-{'x1': [1], 'x2': [6], 'x3': [8], 'x4': [3], 'x5': [7], 'x6': [4], 'x7': [2], 'x8': [5], 'cst': [5]}
-...
-{'x1': [4], 'x2': [8], 'x3': [1], 'x4': [5], 'x5': [7], 'x6': [2], 'x7': [6], 'x8': [3], 'cst': [5]}
-{'x1': [4], 'x2': [8], 'x3': [5], 'x4': [3], 'x5': [1], 'x6': [7], 'x7': [2], 'x8': [6], 'cst': [5]}
-it finds 46 solutions
-</code></pre>
-<p>There are 92 solutions without the (simple) symmetry breaking constraint, 46 otherwise.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;x1&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x2&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x3&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x4&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x5&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x6&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x7&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x8&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;cst&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]}</span>
+<span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;x1&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x2&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x3&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x4&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x5&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x6&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x7&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x8&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;cst&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]}</span>
+<span style="color:#ce5c00;font-weight:bold">...</span>
+<span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;x1&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x2&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x3&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x4&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x5&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x6&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x7&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x8&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;cst&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]}</span>
+<span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;x1&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x2&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x3&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x4&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x5&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x6&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x7&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;x8&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#39;cst&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]}</span>
+<span style="color:#000">it</span> <span style="color:#000">finds</span> <span style="color:#0000cf;font-weight:bold">46</span> <span style="color:#000">solutions</span>
+</code></pre></div><p>There are 92 solutions without the (simple) symmetry breaking constraint, 46 otherwise.</p>
 </section><section>
 <h2 id="we-did-it-">We did it 🍾</h2>
 <p>We build a minimalist CP solver :</p>
@@ -745,46 +712,45 @@ and per <span style="color:#3BAFDA">square</span></p>
     <img src="/images/tinytiny/sudoku/4x4sudoku.png" alt="This is an alt" width="20%" >
 </figure>
 </section><section>
-<pre><code class="language-python">n = 4
-variables = {}
-for i in range(1, n + 1):
-    for j in range(1, n + 1):
-        variables[&quot;x&quot; + str(i) + str(j)] = {k for k in range(1, n + 1)}
-# fix values
-variables[&quot;x12&quot;] = [2]
-variables[&quot;x21&quot;] = [3]
-variables[&quot;x31&quot;] = [2]
-variables[&quot;x32&quot;] = [1]
-variables[&quot;x33&quot;] = [3]
-variables[&quot;x41&quot;] = [4]
-variables[&quot;x43&quot;] = [2]
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="nohighlight" data-noescape><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">4</span>
+<span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{}</span>
+<span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">i</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">):</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">j</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">):</span>
+        <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">str</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">str</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">j</span><span style="color:#000;font-weight:bold">)]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">k</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">k</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)}</span>
+<span style="color:#8f5902;font-style:italic"># fix values</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x12&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x21&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x31&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x32&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x33&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x41&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x43&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
 
-zones = []
-# rows
-zones.append([&quot;x11&quot;, &quot;x12&quot;, &quot;x13&quot;, &quot;x14&quot;])
-zones.append([&quot;x21&quot;, &quot;x22&quot;, &quot;x23&quot;, &quot;x24&quot;])
-zones.append([&quot;x31&quot;, &quot;x32&quot;, &quot;x33&quot;, &quot;x34&quot;])
-zones.append([&quot;x41&quot;, &quot;x42&quot;, &quot;x43&quot;, &quot;x44&quot;])
-# columns
-zones.append([&quot;x11&quot;, &quot;x21&quot;, &quot;x31&quot;, &quot;x41&quot;])
-zones.append([&quot;x12&quot;, &quot;x22&quot;, &quot;x32&quot;, &quot;x42&quot;])
-zones.append([&quot;x13&quot;, &quot;x23&quot;, &quot;x33&quot;, &quot;x43&quot;])
-zones.append([&quot;x14&quot;, &quot;x24&quot;, &quot;x34&quot;, &quot;x44&quot;])
-# square
-zones.append([&quot;x11&quot;, &quot;x12&quot;, &quot;x21&quot;, &quot;x22&quot;])
-zones.append([&quot;x13&quot;, &quot;x14&quot;, &quot;x23&quot;, &quot;x24&quot;])
-zones.append([&quot;x31&quot;, &quot;x32&quot;, &quot;x41&quot;, &quot;x42&quot;])
-zones.append([&quot;x33&quot;, &quot;x34&quot;, &quot;x43&quot;, &quot;x44&quot;])
+<span style="color:#000">zones</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
+<span style="color:#8f5902;font-style:italic"># rows</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x11&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x12&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x13&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x14&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x21&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x22&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x23&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x24&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x31&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x32&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x33&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x34&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x41&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x42&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x43&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x44&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#8f5902;font-style:italic"># columns</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x11&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x21&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x31&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x41&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x12&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x22&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x32&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x42&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x13&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x23&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x33&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x43&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x14&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x24&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x34&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x44&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#8f5902;font-style:italic"># square</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x11&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x12&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x21&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x22&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x13&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x14&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x23&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x24&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x31&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x32&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x41&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x42&#34;</span><span style="color:#000;font-weight:bold">])</span>
+<span style="color:#000">zones</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;x33&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x34&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x43&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x44&#34;</span><span style="color:#000;font-weight:bold">])</span>
 
-cs = []
-for z in zones:
-    for j in range(0, n):
-        for k in range(j + 1, n):
-            cs.append(NotEqual(z[j], z[k]))
+<span style="color:#000">cs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
+<span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">z</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">zones</span><span style="color:#000;font-weight:bold">:</span>
+    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">j</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#000;font-weight:bold">):</span>
+        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">k</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#000;font-weight:bold">):</span>
+            <span style="color:#000">cs</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">NotEqual</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">k</span><span style="color:#000;font-weight:bold">]))</span>
 
-print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
-</code></pre>
-
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">cs</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div>
 </section>
 </section>
     <section>

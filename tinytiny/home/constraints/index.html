@@ -170,18 +170,16 @@ as argument and makes sure that the former one takes a value less than the latte
 </ul>
 <hr>
 <p>We will first create a class to declare the behaviour of this constraint:</p>
-<pre><code class="language-python{1|2-4}">class LessThan:
+<pre><code class="language-python{1|2-4}" data-lang="python{1|2-4}">class LessThan:
     def __init__(self, v1, v2):
         self.v1 = v1
         self.v2 = v2
-</code></pre>
-<hr>
+</code></pre><hr>
 <p>We can impose that $X_1$ is strictly less than $X_2$:</p>
-<pre><code class="language-python{3}">variables = {&quot;x1&quot;: {1, 2, 3},
+<pre><code class="language-python{3}" data-lang="python{3}">variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
 c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
-</code></pre>
-<p>After doing that we didn&rsquo;t do much&hellip;</p>
+</code></pre><p>After doing that we didn&rsquo;t do much&hellip;</p>
 <hr>
 <h2 id="what-can-such-a-constraint-do">What can such a constraint do?</h2>
 <hr>
@@ -191,10 +189,9 @@ to any solution</p>
 <p>(<em>according to its own contract</em>)</p>
 <hr>
 <p>We will create an empty function called <code>filter</code> as follow:</p>
-<pre><code class="language-python">def filter(self,variables):
-	pass 
-</code></pre>
-<hr>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
+	<span style="color:#204a87;font-weight:bold">pass</span> 
+</code></pre></div><hr>
 <section data-noprocess>
 <h2>The 2 rules of $X_1 < X_2$</h2>
 <p class="fragment">1. removing from $X_1$ values <span style="color:deepskyblue;">greater or equal to the largest value</span> in $X_2$,</p>
@@ -222,7 +219,7 @@ to any solution</p>
 </ul>
 <hr>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
-<pre><code class="language-python{1|2-3|4-5|6-7|8-9|1-9}">def filter(self, variables):
+<pre><code class="language-python{1|2-3|4-5|6-7|8-9|1-9}" data-lang="python{1|2-3|4-5|6-7|8-9|1-9}">def filter(self, variables):
     d1 = variables[self.v1] # get current domain of &quot;x1&quot;
     d2 = variables[self.v2] # get current domain of &quot;x2&quot;
     # filtering according to the 1st rule
@@ -231,10 +228,9 @@ to any solution</p>
     d2 = [v for v in d2 if v &gt; min(d1)]
     variables[self.v1] = d1 # update the domain of &quot;x1&quot;
     variables[self.v2] = d2 # update the domain of &quot;x2&quot;	
-</code></pre>
-<hr>
+</code></pre><hr>
 <h3 id="does-that-work">Does that work?</h3>
-<pre><code class="language-python{1-9|1-4|5-6|7-9}"># declare a CSP
+<pre><code class="language-python{1-9|1-4|5-6|7-9}" data-lang="python{1-9|1-4|5-6|7-9}"># declare a CSP
 variables = {&quot;x1&quot;: {1, 2, 3},
              &quot;x2&quot;: {1, 2, 3}}
 c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
@@ -243,8 +239,7 @@ c1.filter(variables)
 # check everything works fine
 assert variables[&quot;x1&quot;] == [1, 2]
 assert variables[&quot;x2&quot;] == [2, 3]
-</code></pre>
-<p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=h6zZB5EIbytb&line=9&uniqifier=1" target="_blank">Run it</a></p>
+</code></pre><p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=h6zZB5EIbytb&line=9&uniqifier=1" target="_blank">Run it</a></p>
 <hr>
 <h3 id="yes-it-does-">Yes, it does !</h3>
 

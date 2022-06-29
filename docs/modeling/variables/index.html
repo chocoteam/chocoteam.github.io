@@ -353,20 +353,18 @@ When creating a variable, the user can specify a name to help reading the output
 <h2 id="integer-variables">Integer variables</h2>
 <p>An integer variable is an unknown whose value should be an integer. Therefore, the domain of an integer variable is a set of integers (representing possible values).
 To create an integer variable, the <code>Model</code> should be used:</p>
-<pre><code class="language-java">// Create a constant variable equal to 42
-IntVar v0 = model.intVar(&quot;v0&quot;, 42);
-// Create a variable taking its value in [1, 3] (the value is 1, 2 or 3)
-IntVar v1 = model.intVar(&quot;v1&quot;, 1, 3);
-// Create a variable taking its value in {1, 3} (the value is 1 or 3)
-IntVar v2 = model.intVar(&quot;v2&quot;, new int[]{1, 3});
-</code></pre>
-<p>It is then possible to build directly arrays and matrices of variables having the same initial domain with:</p>
-<pre><code class="language-java">// Create an array of 5 variables taking their value in [-1, 1]
-IntVar[] vs = model.intVarArray(&quot;vs&quot;, 5, -1, 1);
-// Create a matrix of 5x6 variables taking their value in [-1, 1]
-IntVar[][] vs = model.intVarMatrix(&quot;vs&quot;, 5, 6, -1, 1);
-</code></pre>
-<p>There exists different ways to encode the domain of an integer variable: bounded domain or enumerated domain.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Create a constant variable equal to 42
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">v0</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v0&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">42</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// Create a variable taking its value in [1, 3] (the value is 1, 2 or 3)
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">v1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v1&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// Create a variable taking its value in {1, 3} (the value is 1 or 3)
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">v2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v2&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">});</span>
+</code></pre></div><p>It is then possible to build directly arrays and matrices of variables having the same initial domain with:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Create an array of 5 variables taking their value in [-1, 1]
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;vs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// Create a matrix of 5x6 variables taking their value in [-1, 1]
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;vs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>There exists different ways to encode the domain of an integer variable: bounded domain or enumerated domain.</p>
 <h3 id="bounded-domain">Bounded domain</h3>
 <p>When the domain of an integer variable is said to be <em>bounded</em>, it is represented through
 an interval of the form $[\![a,b]\!]$ where $a$ and $b$ are integers such that $a \leq b$.
@@ -375,9 +373,8 @@ For instance, if we have a variable whose domain is $[\![0,10]\!]$ and a constra
 values 2, 3, 7 and 8 are infeasible, then this learning will be lost as it cannot be encoded in the domain (which remains the same).
 However, whenever the values 9 and 10 are removed from the variable&rsquo;s domain, the upper bound of the variable will be set to 6 by such a constraint.</p>
 <p>To specify you want to use bounded domains, set the <code>boundedDomain</code> argument to <code>true</code> when creating variables:</p>
-<pre><code class="language-java">IntVar v = model.intVar(&quot;v&quot;, 1, 12, true);
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div>
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -398,10 +395,9 @@ Enumerated domains provide more information than bounded domains but are heavier
 </ul>
 <p>To specify you want to use enumerated domains, either set the <code>boundedDomain</code> argument to <code>false</code> when creating variables by specifying two bounds
 or use the signature that specifies the array of possible values:</p>
-<pre><code class="language-java">IntVar v = model.intVar(&quot;v&quot;, 1, 4, false);
-IntVar v = model.intVar(&quot;v&quot;, new int[]{1,2,3,4});
-</code></pre>
-<h2 id="boolean-variable">Boolean variable</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">});</span>
+</code></pre></div><h2 id="boolean-variable">Boolean variable</h2>
 <p>Boolean variables, <code>BoolVar</code>, are specific <code>IntVar</code> that take their value in $[\![0,1]\!]$.
 The avantage of <code>BoolVar</code> is twofold:</p>
 <ul>
@@ -409,9 +405,8 @@ The avantage of <code>BoolVar</code> is twofold:</p>
 <li>Their domain, and some filtering algorithms, are optimized</li>
 </ul>
 <p>To create a new boolean variable:</p>
-<pre><code class="language-java">BoolVar b = model.boolVar(&quot;b&quot;);
-</code></pre>
-<h2 id="set-variables">Set variables</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h2 id="set-variables">Set variables</h2>
 <p>A set variable, <code>SetVar</code>, represents a set of integers, i.e. its value is a set of integers.
 Its domain is defined by a set interval $[\![m,o]\!]$ where:</p>
 <ul>
@@ -426,82 +421,69 @@ Its domain is defined by a set interval $[\![m,o]\!]$ where:</p>
 Then, decisions and filtering algorithms will remove integers from $o$ and add some others to $m$.
 A set variable is instantiated if and only if $m = o$.</p>
 <p>A set variable can be created as follows:</p>
-<pre><code class="language-java">// Constant SetVar equal to {2,3,12}
-SetVar x = model.setVar(&quot;x&quot;, new int[]{2,3,12});
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// Constant SetVar equal to {2,3,12}
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">SetVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">});</span>
 
-// SetVar representing a subset of {1,2,3,5,12}
-SetVar y = model.setVar(&quot;y&quot;, new int[]{}, new int[]{1,2,3,5,12});
-// possible values: {}, {2}, {1,3,5} ...
-
-// SetVar representing a superset of {2,3} and a subset of {1,2,3,5,12}
-SetVar z = model.setVar(&quot;z&quot;, new int[]{2,3}, new int[]{1,2,3,5,12});
-// possible values: {2,3}, {2,3,5}, {1,2,3,5} ...
-</code></pre>
-<h2 id="real-variables">Real variables</h2>
+<span style="color:#8f5902;font-style:italic">// SetVar representing a subset of {1,2,3,5,12}
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">SetVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;y&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{},</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#8f5902;font-style:italic">// possible values: {}, {2}, {1,3,5} ...
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#8f5902;font-style:italic">// SetVar representing a superset of {2,3} and a subset of {1,2,3,5,12}
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">SetVar</span> <span style="color:#000">z</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;z&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">},</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">});</span>
+<span style="color:#8f5902;font-style:italic">// possible values: {2,3}, {2,3,5}, {1,2,3,5} ...
+</span></code></pre></div><h2 id="real-variables">Real variables</h2>
 <p>The domain of a real variable is an interval of doubles. Conceptually, the value of a real variable is a double.
 However, it uses a precision parameter for floating number computation,
 so its actual value is generally an interval of doubles, whose size is constrained by the precision parameter.
 Real variables have a specific status in Choco 4, which uses <a href="http://www.ibex-lib.org/">Ibex solver</a> to define constraints.</p>
 <p>A real variable is declared with three doubles defining its bound and a precision:</p>
-<pre><code class="language-java">RealVar x = model.realVar(&quot;x&quot;, 0.2d, 3.4d, 0.001d);
-</code></pre>
-<h2 id="views-creating-variables-from-constraints">Views: Creating variables from constraints</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">RealVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">2d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">4d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">001d</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h2 id="views-creating-variables-from-constraints">Views: Creating variables from constraints</h2>
 <p>When a variable is defined as a function of another variable, views can be
 used to make the model shorter. In some cases, the view has a specific (optimized) domain representation.
 Otherwise, it is simply a modeling shortcut to create a variable and post a constraint at the same time.</p>
 <h3 id="arithmetical-views">Arithmetical views</h3>
 <p>An arithmetical view requires an integer variable.</p>
 <h4 id="x--y--2-">$x = y + 2$ :</h4>
-<pre><code class="language-java">IntVar x = model.intOffsetView(y, 2);
-</code></pre>
-<h4 id="x---y-">$x = -y$ :</h4>
-<pre><code class="language-java">IntVar x = model.intMinusView(y);
-</code></pre>
-<h4 id="x--3times-y-">$x = 3\times y$ :</h4>
-<pre><code class="language-java">IntVar x = model.intScaleView(y, 3);
-</code></pre>
-<h3 id="logical-views">Logical views</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intOffsetView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h4 id="x---y-">$x = -y$ :</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intMinusView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h4 id="x--3times-y-">$x = 3\times y$ :</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intScaleView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h3 id="logical-views">Logical views</h3>
 <p>A logical view is based on an integer variable, a basic arithmetical relation ($=,\neq,\leq,\geq$) and a constant. The resulting view states whether or not the relation holds.</p>
 <h4 id="b-leftrightarrow-x--4-">$b \Leftrightarrow (x = 4)$ :</h4>
-<pre><code class="language-java">BoolVar b = model.intEqView(x, 4);
-</code></pre>
-<h4 id="b-leftrightarrow-x-neq-4-">$b \Leftrightarrow (x \neq 4)$ :</h4>
-<pre><code class="language-java">BoolVar b = model.intNeView(x, 4);
-</code></pre>
-<h4 id="b-leftrightarrow-x-leq-4-">$b \Leftrightarrow (x \leq 4)$ :</h4>
-<pre><code class="language-java">BoolVar b = model.intLeView(x, 4);
-</code></pre>
-<h4 id="b-leftrightarrow-x-geq-4-">$b \Leftrightarrow (x \geq 4)$ :</h4>
-<pre><code class="language-java">BoolVar b = model.intGeView(x, 4);
-</code></pre>
-<h4 id="d-leftrightarrow-neg-b">$d \Leftrightarrow \neg b$</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intEqView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h4 id="b-leftrightarrow-x-neq-4-">$b \Leftrightarrow (x \neq 4)$ :</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intNeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h4 id="b-leftrightarrow-x-leq-4-">$b \Leftrightarrow (x \leq 4)$ :</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intLeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h4 id="b-leftrightarrow-x-geq-4-">$b \Leftrightarrow (x \geq 4)$ :</h4>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intGeView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h4 id="d-leftrightarrow-neg-b">$d \Leftrightarrow \neg b$</h4>
 <p>This is a specific case, related to the negation of a <code>BoolVar</code>.
 No additional variable is needed, a view based on the variable to refute is enough.</p>
-<pre><code class="language-java">BoolVar d = model.boolNotView(b);
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolNotView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div>
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
 
     <p>The same result can be obtained in shorted version:</p>
-<pre><code class="language-java">BoolVar d = b.not();
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">BoolVar</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">not</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</code></pre></div>
 
 </div>
 
 <h3 id="composition">Composition</h3>
 <p>Views can be combined together, e.g. $x = 2\times y + 5$ is:</p>
-<pre><code class="language-java">IntVar x = model.intOffsetView(model.intScaleView(y,2),5);
-</code></pre>
-<h3 id="view-over-real-variable">View over real variable</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intOffsetView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intScaleView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><h3 id="view-over-real-variable">View over real variable</h3>
 <p>We can also use a view mecanism to link an integer variable with a real variable.</p>
-<pre><code class="language-java">IntVar ivar = model.intVar(&quot;i&quot;, 0, 4);
-double precision = 0.001d;
-RealVar rvar = model.realIntView(ivar, precision);
-</code></pre>
-<p>This code enables to embed an integer variable in a constraint that is defined over real variables.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">ivar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;i&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">precision</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">001d</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#000">RealVar</span> <span style="color:#000">rvar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realIntView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ivar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">precision</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><p>This code enables to embed an integer variable in a constraint that is defined over real variables.</p>
 
 	
 		<style>

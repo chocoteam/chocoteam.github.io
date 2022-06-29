@@ -366,75 +366,72 @@ The default search strategy splits variables according to their type and defines
 <p>Note that lastConflict is also plugged-in.</p>
 <h3 id="specifying-a-search-strategy">Specifying a search strategy</h3>
 <p>You may specify a search strategy to the resolver by using <code>solver.setSearch(...)</code> method as follows:</p>
-<pre><code class="language-java">import static org.chocosolver.solver.search.strategy.Search.*;
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.solver.search.strategy.Search.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
-// to use the default SetVar search on mySetVars
-Solver s = model.getSolver();
-s.setSearch(setVarSearch(mySetVars));
+<span style="color:#8f5902;font-style:italic">// to use the default SetVar search on mySetVars
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">setVarSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">mySetVars</span><span style="color:#ce5c00;font-weight:bold">));</span>
 
-// to use activity based search on myIntVars
-Solver s = model.getSolver();
-s.setSearch(activityBasedSearch(myIntVars));
+<span style="color:#8f5902;font-style:italic">// to use activity based search on myIntVars
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">activityBasedSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">myIntVars</span><span style="color:#ce5c00;font-weight:bold">));</span>
 
-// to use activity based search on myIntVars
-// then the default SetValSelectorFactoryVar search on mySetVars
-Solver s = model.getSolver();
-s.setSearch(activityBasedSearch(myIntVars), setVarSearch(mySetVars));
-</code></pre>
-<p><strong>NOTE</strong>: Search strategies generally hold on some particular variable kinds only (e.g. integers, sets, etc.).</p>
+<span style="color:#8f5902;font-style:italic">// to use activity based search on myIntVars
+</span><span style="color:#8f5902;font-style:italic">// then the default SetValSelectorFactoryVar search on mySetVars
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">activityBasedSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">myIntVars</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">setVarSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">mySetVars</span><span style="color:#ce5c00;font-weight:bold">));</span>
+</code></pre></div><p><strong>NOTE</strong>: Search strategies generally hold on some particular variable kinds only (e.g. integers, sets, etc.).</p>
 <h4 id="example">Example</h4>
 <p>Let us consider we have two integer variables <code>x</code> and <code>y</code> and we want our strategy to select
 the variable of smallest domain and assign it to its lower bound.
 There are several ways to achieve this:</p>
-<pre><code class="language-java">// 1) verbose approach using usual imports
-
-import org.chocosolver.solver.search.strategy.Search;
-import org.chocosolver.solver.search.strategy.assignments.DecisionOperator;
-import org.chocosolver.solver.search.strategy.selectors.values.*;
-import org.chocosolver.solver.search.strategy.selectors.variables.*;
-
-
-    Solver s = model.getSolver();
-    s.setSearch(Search.intVarSearch(
-                    // selects the variable of smallest domain size
-                    new FirstFail(model),
-                    // selects the smallest domain value (lower bound)
-                    new IntDomainMin(),
-                    // apply equality (var = val)
-                    DecisionOperator.int_eq,
-                    // variables to branch on
-                    x, y
-    ));
-</code></pre>
-<pre><code class="language-java">// 2) Shorter approach : Use a static import for Search
-// and do not specify the operator (equality by default)
-
-import static org.chocosolver.solver.search.strategy.Search.*;
-
-import org.chocosolver.solver.search.strategy.assignments.DecisionOperator;
-import org.chocosolver.solver.search.strategy.selectors.values.*;
-import org.chocosolver.solver.search.strategy.selectors.variables.*;
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// 1) verbose approach using usual imports
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.Search</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.assignments.DecisionOperator</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.selectors.values.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.selectors.variables.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
 
-    Solver s = model.getSolver();
-    s.setSearch(intVarSearch(
-                    // selects the variable of smallest domain size
-                    new FirstFail(model),
-                    // selects the smallest domain value (lower bound)
-                    new IntDomainMin(),
-                    // variables to branch on
-                    x, y
-    ));
+    <span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Search</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarSearch</span><span style="color:#ce5c00;font-weight:bold">(</span>
+                    <span style="color:#8f5902;font-style:italic">// selects the variable of smallest domain size
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FirstFail</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">),</span>
+                    <span style="color:#8f5902;font-style:italic">// selects the smallest domain value (lower bound)
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntDomainMin</span><span style="color:#ce5c00;font-weight:bold">(),</span>
+                    <span style="color:#8f5902;font-style:italic">// apply equality (var = val)
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#000">DecisionOperator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">int_eq</span><span style="color:#ce5c00;font-weight:bold">,</span>
+                    <span style="color:#8f5902;font-style:italic">// variables to branch on
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span>
+    <span style="color:#ce5c00;font-weight:bold">));</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">// 2) Shorter approach : Use a static import for Search
+</span><span style="color:#8f5902;font-style:italic">// and do not specify the operator (equality by default)
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.solver.search.strategy.Search.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.assignments.DecisionOperator</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.selectors.values.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.search.strategy.selectors.variables.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
 
-// 3) Shortest approach using built-in strategies imports
+    <span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">intVarSearch</span><span style="color:#ce5c00;font-weight:bold">(</span>
+                    <span style="color:#8f5902;font-style:italic">// selects the variable of smallest domain size
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FirstFail</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">),</span>
+                    <span style="color:#8f5902;font-style:italic">// selects the smallest domain value (lower bound)
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntDomainMin</span><span style="color:#ce5c00;font-weight:bold">(),</span>
+                    <span style="color:#8f5902;font-style:italic">// variables to branch on
+</span><span style="color:#8f5902;font-style:italic"></span>                    <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span>
+    <span style="color:#ce5c00;font-weight:bold">));</span>
 
-import static org.chocosolver.solver.search.strategy.Search.*;
 
-    Solver s = model.getSolver();
-    s.setSearch(minDomLBSearch(x, y));
-</code></pre>
-<h3 id="list-of-available-search-strategy">List of available search strategy</h3>
+<span style="color:#8f5902;font-style:italic">// 3) Shortest approach using built-in strategies imports
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.solver.search.strategy.Search.*</span><span style="color:#ce5c00;font-weight:bold">;</span>
+
+    <span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">minDomLBSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">));</span>
+</code></pre></div><h3 id="list-of-available-search-strategy">List of available search strategy</h3>
 <p>Most available search strategies are listed in <code>Search</code>.
 This factory enables you to create search strategies using static methods.
 Most search strategies rely on :</p>

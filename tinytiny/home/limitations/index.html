@@ -23,7 +23,7 @@
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="What are the obvious limitations? (of what we&rsquo;ve done so far)
  It panics when the problem has no solution.
-variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)  Traceback (most recent call last): File &quot;sandbox.py&quot;, line 54, in &lt;module&gt; print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;) File &quot;sandbox.py&quot;, line 40, in enumerate constraint.filter(variables) File &quot;sandbox.py&quot;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &quot;sandbox." />
+variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) Traceback (most recent call last): File &quot;sandbox.py&quot;, line 54, in &lt;module&gt; print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;) File &quot;sandbox.py&quot;, line 40, in enumerate constraint.filter(variables) File &quot;sandbox.py&quot;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &quot;sandbox." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/limitations/" /><meta property="article:section" content="tinytiny" />
 
@@ -32,14 +32,14 @@ variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot
 <meta itemprop="name" content="">
 <meta itemprop="description" content="What are the obvious limitations? (of what we&rsquo;ve done so far)
  It panics when the problem has no solution.
-variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)  Traceback (most recent call last): File &quot;sandbox.py&quot;, line 54, in &lt;module&gt; print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;) File &quot;sandbox.py&quot;, line 40, in enumerate constraint.filter(variables) File &quot;sandbox.py&quot;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &quot;sandbox.">
+variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) Traceback (most recent call last): File &quot;sandbox.py&quot;, line 54, in &lt;module&gt; print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;) File &quot;sandbox.py&quot;, line 40, in enumerate constraint.filter(variables) File &quot;sandbox.py&quot;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &quot;sandbox.">
 <meta itemprop="dateModified" content="2022-01-12T14:00:25&#43;01:00" />
 <meta itemprop="wordCount" content="109">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="What are the obvious limitations? (of what we&rsquo;ve done so far)
  It panics when the problem has no solution.
-variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)  Traceback (most recent call last): File &quot;sandbox.py&quot;, line 54, in &lt;module&gt; print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;) File &quot;sandbox.py&quot;, line 40, in enumerate constraint.filter(variables) File &quot;sandbox.py&quot;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &quot;sandbox."/>
+variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) Traceback (most recent call last): File &quot;sandbox.py&quot;, line 54, in &lt;module&gt; print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;) File &quot;sandbox.py&quot;, line 40, in enumerate constraint.filter(variables) File &quot;sandbox.py&quot;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &quot;sandbox."/>
 
 
 <script type="application/javascript">
@@ -159,12 +159,11 @@ if (!doNotTrack) {
 <p>(of what we&rsquo;ve done so far)</p>
 <hr>
 <p>It panics when the problem has no solution.</p>
-<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
-             &quot;x2&quot;: {2, 3}}
-c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
-print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
-</code></pre>
-<pre><code class="language-python{}">Traceback (most recent call last):
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">},</span>
+             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
+<span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#204a87;font-weight:bold">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</code></pre></div><pre><code class="language-python{}" data-lang="python{}">Traceback (most recent call last):
   File &quot;sandbox.py&quot;, line 54, in &lt;module&gt;
     print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
   File &quot;sandbox.py&quot;, line 40, in enumerate
@@ -174,8 +173,7 @@ print(&quot;it finds&quot;, enumerate(variables, c1), &quot;solutions&quot;)
   File &quot;sandbox.py&quot;, line 10, in &lt;listcomp&gt;
     d2 = [v for v in d2 if v &gt; min(d1)]
 ValueError: min() arg is an empty sequence
-</code></pre>
-<hr>
+</code></pre><hr>
 <p>It deals with a single constraint.</p>
 <p>And 2 variables.</p>
 
