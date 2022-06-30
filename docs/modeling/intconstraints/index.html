@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/modeling/intconstraints/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-07T16:07:15&#43;01:00" />
-<meta property="article:modified_time" content="2022-06-29T16:40:23&#43;02:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2022-06-30T09:29:43&#43;02:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="Constraints over integer variables">
 <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.
 "><meta itemprop="datePublished" content="2020-01-07T16:07:15&#43;01:00" />
-<meta itemprop="dateModified" content="2022-06-29T16:40:23&#43;02:00" />
-<meta itemprop="wordCount" content="1745">
+<meta itemprop="dateModified" content="2022-06-30T09:29:43&#43;02:00" />
+<meta itemprop="wordCount" content="1744">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Constraints over integer variables"/>
 <meta name="twitter:description" content="Overview of constraints based on boolean and integer variables.
@@ -427,7 +427,7 @@ One can consult the complete list of constraints in the <a href="https://javadoc
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">IntVar</span> <span style="color:#000">idx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;I&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
 <span style="color:#000">IntVar</span> <span style="color:#000">rst</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;R&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
 <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">rst</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">},</span> <span style="color:#000">idx</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</code></pre></div><p>An assignment of <code>idx</code> and <code>rst</code> that satisfies this <code>element</code> constraint is: <code>idx = 3</code> and <code>rst = 6</code>.</p>
+</code></pre></div><p>An assignment of <code>idx</code> and <code>rst</code> that satisfies this constraint is: <code>idx = 3</code> and <code>rst = 6</code>.</p>
 <h2 id="scheduling-constraints">Scheduling constraints</h2>
 <p>Scheduling problems can be modelled using Task variables and the cumulative constraint.<br>
 A task represents the entity that should be scheduled, where it is unknown when the task starts and optionally how long it lasts.<br>
@@ -604,7 +604,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 29.06.2022: <a href="https://github.com/chocoteam/website/commit/e2738494fbfe446bc70e3e0ec37090af91f263f1">Update doc (e273849)</a>
+  Last modified 30.06.2022: <a href="https://github.com/chocoteam/website/commit/4b88648790f39be02dee9f3507d23a2a68a86376">Update (4b88648)</a>
 </div>
 
 </div>
