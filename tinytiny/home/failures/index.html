@@ -39,17 +39,6 @@
  None : if nothing was filtered True : if some values were filtered False : if a domain becomes empty   Let&rsquo;s fix the code (1/2) def filter(self, vars): d1 = vars[self.v1] d2 = vars[self.v2]	diff = len(d1) &#43; len(d2) # stores current length d1 = [v for v in d1 if v &lt; max(d2)] if len(d1) == 0: # &quot;x1&quot; becomes empty."/>
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-47407732-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
 
 
 
