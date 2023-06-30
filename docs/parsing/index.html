@@ -46,8 +46,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.74a0ed40fedd9b131fa9608f990ca1b70a8ee3400c7193454edb6f705d36d4ea.css" as="style">
-<link href="/scss/main.min.74a0ed40fedd9b131fa9608f990ca1b70a8ee3400c7193454edb6f705d36d4ea.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3b5ef8a63c84e3fd0bd5ed1b92c92fff9c5cc7e0a0902a110c143c1dd0e55ee9.css" as="style">
+<link href="/scss/main.min.3b5ef8a63c84e3fd0bd5ed1b92c92fff9c5cc7e0a0902a110c143c1dd0e55ee9.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -247,7 +247,15 @@
 
 		
 	</header>
-	
+	<p>In addition to the modelling language, Choco-solver can parse files in <a href="https://xcsp.org/competitions/">XCSP3</a>, <a href="https://www.minizinc.org/">MiniZinc (flatzinc)</a> and <a href="https://jix.github.io/varisat/manual/0.2.0/formats/dimacs.html">DIMACS</a> formats.</p>
+<p>The standard practice is to call the choco JAR directly with the instance as an argument, such as:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar choco-parsers-4.10.13-light.jar /path/to/the/instance
+</span></span></code></pre></div><p>XCSP3 and DIMACS files do not require any preliminary steps and can therefore be read and resolved directly.
+Instructions can be founds <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/XCSP3.md">here</a> and <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/DIMACS.md">here</a>.</p>
+<p>But MiniZinc models must be turned into Flatzinc models with the right set of constraints, the ones supported by Choco-solver.
+The easiest way, in that case, is to rely on MinizincIDE and add Choco-solver as additional solver.
+Instructions can be found on <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/MINIZINC.md">here</a>.</p>
+
         <div class="section-index">
     
     
@@ -263,7 +271,7 @@
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 30.01.2020: <a href="https://github.com/chocoteam/website/commit/7c55b811d5214e17ba073d2412c9201510992474">Removed submodule (7c55b81)</a>
+  Last modified 30.06.2023: <a href="https://github.com/chocoteam/website/commit/1ba3a90c8712e2f2b170bf464188ab04ef69c28e">Update doc (1ba3a90)</a>
 </div>
 
 </div>
