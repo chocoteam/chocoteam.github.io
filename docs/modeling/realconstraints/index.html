@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/modeling/realconstraints/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-07T16:07:15+01:00" />
-<meta property="article:modified_time" content="2023-06-22T13:24:43+02:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2023-10-02T13:14:41+02:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="Constraints over real variables">
 <meta itemprop="description" content="How to declare constraints based on real variables?
 "><meta itemprop="datePublished" content="2020-01-07T16:07:15+01:00" />
-<meta itemprop="dateModified" content="2023-06-22T13:24:43+02:00" />
-<meta itemprop="wordCount" content="707">
+<meta itemprop="dateModified" content="2023-10-02T13:14:41+02:00" />
+<meta itemprop="wordCount" content="713">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Constraints over real variables"/>
 <meta name="twitter:description" content="How to declare constraints based on real variables?
@@ -147,6 +147,8 @@ window.MathJax = {
   <a href="/docs/modeling/intexpressions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
   <a href="/docs/modeling/setconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
+  <a href="/docs/modeling/graphconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsmodelingrealconstraints-li">
   <a href="/docs/modeling/realconstraints/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="td-sidebar-nav-active-item">Constraints over real variables</span></a>
 </li>
@@ -339,12 +341,30 @@ If necessary, it creates intermediary variable and posts intermediary constraint
 
 </div>
 
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">01d</span><span style="color:#ce5c00;font-weight:bold">;</span>
+ 
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-01-00-tab" data-toggle="tab" href="#tabs-01-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-01-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">01d</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// z = x^(y-2)
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">RealVar</span> <span style="color:#000">z</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">pow</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><h3 id="relational-expressions">Relational expressions</h3>
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">RealVar</span> <span style="color:#000">z</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">pow</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="relational-expressions">Relational expressions</h3>
 <p>Based on an <strong>arithmetic expression</strong> <code>x</code>, a relational expression can be built using the following operators:</p>
 <ul>
 <li><code>x.lt(y)</code>: states that $x &lt; y$,</li>
@@ -358,12 +378,30 @@ If necessary, it creates intermediary variable and posts intermediary constraint
 <h4 id="as-an-equation">As an equation</h4>
 <p>Calling <code>equation()</code> on a relation expression will return a <code>Constraint</code> object that embeds a propagator using HC4 algorithm for filtering values based on the equation expressed. It must be then posted or reified. The constraint stores the expression as an internal variable.</p>
 <p>A call to this method <strong>does not</strong> create additional variables and returns a single constraint.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">01d</span><span style="color:#ce5c00;font-weight:bold">;</span>
+ 
+
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-03-00-tab" data-toggle="tab" href="#tabs-03-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-03-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-3-content">
+    <div class="tab-pane fade show active"
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">01d</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// x / (y-2) &lt;= 1.5
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">le</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">5</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">equation</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div>
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">le</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">5</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">equation</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+
+
 
 <div class="alert alert-secondary" role="alert">
 <h4 class="alert-heading">Alert</h4>
@@ -378,12 +416,30 @@ If necessary, it creates intermediary variable and posts intermediary constraint
 <p>Alternatively, an expression can be added <a href="https://choco-solver.org/docs/advanced-usages/ibex/">Ibex</a>.
 This is achieved calling the <code>ibex(prec)</code> method which returns a <code>Constraint</code> object where <code>prec</code> denotes the precision.
 It must be then posted or reified.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">01d</span><span style="color:#ce5c00;font-weight:bold">;</span>
+ 
+
+<ul class="nav nav-tabs" id="tabs-6" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-06-00-tab" data-toggle="tab" href="#tabs-06-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-06-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-6-content">
+    <div class="tab-pane fade show active"
+        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span> <span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">01d</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// x / (y-2) &gt;= 1.6
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">ge</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">6</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">ibex</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div>
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sub</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">ge</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">6</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">ibex</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+
+
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -396,29 +452,83 @@ It must be then posted or reified.</p>
 <h3 id="equality-between-a-realvar-and-an-intvar">Equality between a <code>RealVar</code> and an <code>IntVar</code></h3>
 <p>It is sometimes relevant to map a real variable to an integer variable.
 Doing so, the real variable is forced to take integer values but it can be declared in real constraints (either as an equation or in Ibex).
-This is achieved by posting an <code>eq</code> constraint like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">foo</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">});</span>
+This is achieved by posting an <code>eq</code> constraint like this:
+ 
+
+<ul class="nav nav-tabs" id="tabs-8" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-08-00-tab" data-toggle="tab" href="#tabs-08-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-08-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-8-content">
+    <div class="tab-pane fade show active"
+        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">foo</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;foo&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">});</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">bar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;bar&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1e</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">bar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">foo</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><h3 id="binding-a-real-value-from-an-array">Binding a real value from an array</h3>
+</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">bar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">foo</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+</p>
+<h3 id="binding-a-real-value-from-an-array">Binding a real value from an array</h3>
 <p>It is possible to set the value of a real variable thanks to an array of double values and an integer variable as the position of the value in the array.
 This relation is also known as an <code>element</code> constraint.
 All double values in the array must be different and sorted in a increasing order.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;V&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">e</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
+ 
+
+<ul class="nav nav-tabs" id="tabs-9" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-09-00-tab" data-toggle="tab" href="#tabs-09-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-09-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-9-content">
+    <div class="tab-pane fade show active"
+        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">RealVar</span> <span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;V&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">e</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">index</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;I&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">values</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[]{-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">8</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Math</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PI</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">.};</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">index</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><h3 id="scalar-product">Scalar product</h3>
+</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">index</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="scalar-product">Scalar product</h3>
 <p>A scalar product where coefficients are double values can be defined over a set of integer variables and/or real variables.
 Available operators are <code>&quot;=&quot;, &quot;&gt;=&quot;, &quot;&lt;=&quot;</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">coeffs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">};</span>
+ 
+
+<ul class="nav nav-tabs" id="tabs-10" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-10-00-tab" data-toggle="tab" href="#tabs-10-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-10-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-10-content">
+    <div class="tab-pane fade show active"
+        id="tabs-10-00" role="tabpanel" aria-labelled-by="tabs-10-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">coeffs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">double</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">7</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">};</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">RealVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">.,</span> <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">coeffs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">35</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">coeffs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">35</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 22.06.2023: <a href="https://github.com/chocoteam/website/commit/1fcd1341d07a9b99df1dd1aa14ed097aaed2d563">Fix #11 (1fcd134)</a>
+  Last modified 02.10.2023: <a href="https://github.com/chocoteam/website/commit/a7725699fa93f28f77cb2109d0d809c21ee2eba2">start doc for python (a772569)</a>
 </div>
 
 </div>

@@ -127,6 +127,8 @@
   <a href="/docs/modeling/intexpressions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
   <a href="/docs/modeling/setconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
+  <a href="/docs/modeling/graphconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
   <a href="/docs/modeling/realconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
 </li>
@@ -197,9 +199,8 @@
   <ul>
     <li><a href="#quick-start">Quick start</a>
       <ul>
-        <li><a href="#maven-3">Maven 3+</a></li>
-        <li><a href="#gradle-6">Gradle 6+</a></li>
-        <li><a href="#as-a-stand-alone-application">As a stand-alone application</a></li>
+        <li><a href="#java">Java</a></li>
+        <li><a href="#python">Python</a></li>
       </ul>
     </li>
     <li><a href="#community">Community</a></li>
@@ -262,10 +263,12 @@
 		
 	</header>
 	<h2 id="quick-start">Quick start</h2>
-<p>Interested in using Choco in your project?
-There are different ways to do this: either your project is based on a build automation tool or not.
-The only prerequisite for running Choco solver is to have Java (Oracle JRE 11 or OpenJDK 11) installed on your machine.</p>
-<h3 id="maven-3">Maven 3+</h3>
+<p>Interested in using Choco-solver in your project?
+Choco-solver is available as a Java library or a Python package.</p>
+<h3 id="java">Java</h3>
+<p>The only prerequisite for running Choco-solver is to have Java (Oracle JRE 11 or OpenJDK 11) installed on your machine.
+We strongly recommend to use a build automation tool, like Maven or Gradle, but adding manually the JAR file to the classpath is still an option.</p>
+<h4 id="maven-3">Maven 3+</h4>
 <p>Copy-paste the artifact description to your <code>pom.xml</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;dependency&gt;</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.choco-solver<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
@@ -280,7 +283,7 @@ The only prerequisite for running Choco solver is to have Java (Oracle JRE 11 or
 </span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;enabled&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/enabled&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/snapshots&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/repository&gt;</span></span></span></code></pre></div>
-<h3 id="gradle-6">Gradle 6+</h3>
+<h4 id="gradle-6">Gradle 6+</h4>
 <p>Copy-paste the dependency declaration in your <code>build.gradle</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span><span style="color:#000">repositories</span> <span style="color:#ce5c00;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">mavenCentral</span><span style="color:#ce5c00;font-weight:bold">()</span>
@@ -289,17 +292,18 @@ The only prerequisite for running Choco solver is to have Java (Oracle JRE 11 or
 </span></span><span style="display:flex;"><span><span style="color:#000">dependencies</span> <span style="color:#ce5c00;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">implementation</span> <span style="color:#4e9a06">&#39;org.choco-solver:choco-solver:4.10.10&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span></span></span></code></pre></div>
-<h3 id="as-a-stand-alone-application">As a stand-alone application</h3>
-<p>When one wants to manually adds choco-solver as a dependency of a project, it should pay attention to the following:</p>
+<h4 id="as-a-stand-alone-application">As a stand-alone application</h4>
+<p>When one wants to manually adds choco-solver as a dependency of a project, he should pay attention to the following:</p>
 <ul>
-<li>the library is available in 2 versions.
-One is prefixed with <code>choco-solver</code> and defines what is necessary and sufficient to model and solve problems programmatically.
-The other, prefixed with <code>choco-parsers</code>, includes additionnal functions to parse FlatZinc, XCSP3, DIMACS or MPS files directly.</li>
-<li>Each version is presented in 2 formats: with dependencies (suffixed with <code>-jar-with-dependencies</code>) or  without. It is likely tha the former is the needed one.</li>
+<li>In the latest version, the library is available as a single JAR file that defines what is necessary and sufficient to model and solve problems programmatically and includes additional functions to parse FlatZinc, XCSP3, DIMACS or MPS files directly.</li>
+<li>The archive is released with dependencies. If one wants an archive without any dependencies, it is recommended to use Maven or Gradle.</li>
 <li>Finally, the <a href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html">javadoc</a> of each version is also available on line.</li>
 </ul>
 <p>The next step is simply to add the jar file to the classpath of your application and eventually the javadoc.</p>
-<h2 id="community">Community</h2>
+<h3 id="python">Python</h3>
+<p>We automatically build 64-bit wheels for Python versions 3.6, 3.7, 3.8, 3.9, and 3.10 on Linux, Windows and MacOSX. They can be directly downloaded from PyPI:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install pychoco
+</span></span></code></pre></div><h2 id="community">Community</h2>
 <p>Stay up to date on the development of Choco solver and reach out to the community with these helpful resources.</p>
 <ul>
 <li>Join <a href="https://gitter.im/chocoteam/choco-solver#">the official Gitter room</a>.</li>
@@ -324,7 +328,7 @@ The other, prefixed with <code>choco-parsers</code>, includes additionnal functi
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 24.09.2021: <a href="https://github.com/chocoteam/website/commit/9e740910ae38a30baadee953290c0c57947eeef4">update docs (9e74091)</a>
+  Last modified 02.10.2023: <a href="https://github.com/chocoteam/website/commit/a7725699fa93f28f77cb2109d0d809c21ee2eba2">start doc for python (a772569)</a>
 </div>
 
 </div>

@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://choco-solver.org/docs/parsing/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,17 +20,22 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Parsing | Choco-solver</title><meta property="og:title" content="Parsing" />
-<meta property="og:description" content="What does your user need to know to parse a model?
+<title>Constraints over graph variables | Choco-solver</title><meta property="og:title" content="Constraints over graph variables" />
+<meta property="og:description" content="Overview of constraints based on graph variables.
 " />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://choco-solver.org/docs/parsing/" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://choco-solver.org/docs/modeling/graphconstraints/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-10-02T12:38:37+02:00" />
+<meta property="article:modified_time" content="2023-10-02T13:14:41+02:00" /><meta property="og:site_name" content="Choco-solver" />
 
-<meta itemprop="name" content="Parsing">
-<meta itemprop="description" content="What does your user need to know to parse a model?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Parsing"/>
-<meta name="twitter:description" content="What does your user need to know to parse a model?
+<meta itemprop="name" content="Constraints over graph variables">
+<meta itemprop="description" content="Overview of constraints based on graph variables.
+"><meta itemprop="datePublished" content="2023-10-02T12:38:37+02:00" />
+<meta itemprop="dateModified" content="2023-10-02T13:14:41+02:00" />
+<meta itemprop="wordCount" content="1">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Constraints over graph variables"/>
+<meta name="twitter:description" content="Overview of constraints based on graph variables.
 "/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
@@ -56,9 +60,25 @@
   crossorigin="anonymous"></script>
 
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+
 
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500" sodipodi:docname="logo.svg" inkscape:version="0.92.2 5c3e80d, 2017-08-06"><defs id="defs953"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1432" inkscape:window-height="773" id="namedview951" showgrid="false" inkscape:zoom=".472" inkscape:cx="365.4661" inkscape:cy="250" inkscape:window-x="10" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="Layer_1"/><path inkscape:export-ydpi="300" inkscape:export-xdpi="300" style="fill:#005c94;stroke:none;stroke-width:4.78758144" inkscape:connector-curvature="0" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
@@ -114,7 +134,7 @@
   <a href="/docs/considerations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
   <a href="/docs/getting-started/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsmodeling-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
   <a href="/docs/modeling/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="">Modeling</span></a>
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingvariables-li">
@@ -127,8 +147,8 @@
   <a href="/docs/modeling/intexpressions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
   <a href="/docs/modeling/setconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
-  <a href="/docs/modeling/graphconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsmodelinggraphconstraints-li">
+  <a href="/docs/modeling/graphconstraints/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="td-sidebar-nav-active-item">Constraints over graph variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
   <a href="/docs/modeling/realconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
 </li>
@@ -154,8 +174,8 @@
   <a href="/docs/solving/portfolio/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsparsing-li">
-  <a href="/docs/parsing/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="td-sidebar-nav-active-item">Parsing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsing-li">
+  <a href="/docs/parsing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Parsing</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
   <a href="/docs/advanced-usages/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
   <ul class="ul-2 foldable">
@@ -186,15 +206,22 @@
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Parsing/_index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Parsing/_index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Parsing/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/chocoteam/website/issues/new?title=Parsing" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Modeling/GraphConstraints.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Modeling/GraphConstraints.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling/GraphConstraints.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/issues/new?title=Constraints%20over%20graph%20variables" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
 
-            
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#todo">TODO</a></li>
+  </ul>
+</nav>
+      </div>
+    
             
 
 	
@@ -225,15 +252,18 @@
   <li class="breadcrumb-item">
     <a href="https://choco-solver.org/docs/">Documentation</a>
   </li>
+  <li class="breadcrumb-item">
+    <a href="https://choco-solver.org/docs/modeling/">Modeling</a>
+  </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="https://choco-solver.org/docs/parsing/" aria-disabled="true" class="btn-link disabled">Parsing</a>
+    <a href="https://choco-solver.org/docs/modeling/graphconstraints/" aria-disabled="true" class="btn-link disabled">Constraints over graph variables</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Parsing</h1>
-  <div class="lead">What does your user need to know to parse a model?</div>
+	<h1>Constraints over graph variables</h1>
+	<div class="lead">Overview of constraints based on graph variables.</div>
 	<header class="article-meta">
 		
 
@@ -248,35 +278,17 @@
   
 
 		
-	</header>
-	<p>In addition to the modelling language, Choco-solver can parse files in <a href="https://xcsp.org/competitions/">XCSP3</a>, <a href="https://www.minizinc.org/">MiniZinc (flatzinc)</a> and <a href="https://jix.github.io/varisat/manual/0.2.0/formats/dimacs.html">DIMACS</a> formats.</p>
-<p>The standard practice is to call the choco JAR directly with the instance as an argument, such as:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar choco-parsers-4.10.13-light.jar /path/to/the/instance
-</span></span></code></pre></div><p>XCSP3 and DIMACS files do not require any preliminary steps and can therefore be read and resolved directly.
-Instructions can be founds <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/XCSP3.md">here</a> and <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/DIMACS.md">here</a>.</p>
-<p>But MiniZinc models must be turned into Flatzinc models with the right set of constraints, the ones supported by Choco-solver.
-The easiest way, in that case, is to rely on MinizincIDE and add Choco-solver as additional solver.
-Instructions can be found on <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/MINIZINC.md">here</a>.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</div>
+	</header>    
+	<h2 id="todo">TODO</h2>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 30.06.2023: <a href="https://github.com/chocoteam/website/commit/1ba3a90c8712e2f2b170bf464188ab04ef69c28e">Update doc (1ba3a90)</a>
+  Last modified 02.10.2023: <a href="https://github.com/chocoteam/website/commit/a7725699fa93f28f77cb2109d0d809c21ee2eba2">start doc for python (a772569)</a>
 </div>
 
 </div>
+
 
           </main>
         </div>

@@ -127,6 +127,8 @@
   <a href="/docs/modeling/intexpressions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
   <a href="/docs/modeling/setconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
+  <a href="/docs/modeling/graphconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
   <a href="/docs/modeling/realconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
 </li>
@@ -255,11 +257,100 @@
 		
 	</header>
 	<h2 id="the-model">The Model</h2>
-<p>The object <code>Model</code> is the key component. It is built as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>or:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
+<p>The object <code>Model</code> is the key component. It should be imported :</p>
+ 
+ 
+ 
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-00-00-tab" data-toggle="tab" href="#tabs-00-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-00-00" aria-selected="false">
+        Java
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link persistLang-Python"
+          id="tabs-00-01-tab" data-toggle="tab" href="#tabs-00-01" role="tab"
+          onclick="persistLang(&#34;Python&#34;);"aria-controls="tabs-00-01" aria-selected="false">
+        Python
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.Model</span><span style="color:#ce5c00;font-weight:bold">;</span></span></span></code></pre></div>
+    </div>
+    <div class="tab-pane fade"
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">pychoco</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Model</span></span></span></code></pre></div>
+    </div>
+</div>
+
+<p>Then, an instance of a model is built as follows:</p>
+ 
+ 
+ 
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-01-00-tab" data-toggle="tab" href="#tabs-01-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-01-00" aria-selected="false">
+        Java
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link persistLang-Python"
+          id="tabs-01-01-tab" data-toggle="tab" href="#tabs-01-01" role="tab"
+          onclick="persistLang(&#34;Python&#34;);"aria-controls="tabs-01-01" aria-selected="false">
+        Python
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+    <div class="tab-pane fade"
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Model</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
+    </div>
+</div>
+
+<p>A name can be attached to an instance:</p>
+ 
+ 
+ 
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-02-00-tab" data-toggle="tab" href="#tabs-02-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-02-00" aria-selected="false">
+        Java
+      </a>
+    </li><li class="nav-item">
+      <a class="nav-link persistLang-Python"
+          id="tabs-02-01-tab" data-toggle="tab" href="#tabs-02-01" role="tab"
+          onclick="persistLang(&#34;Python&#34;);"aria-controls="tabs-02-01" aria-selected="false">
+        Python
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-2-content">
+    <div class="tab-pane fade show active"
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+    <div class="tab-pane fade"
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+</div>
+
+<p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
 
 
 <div class="pageinfo pageinfo-primary">
@@ -323,6 +414,14 @@
             
             <div class="entry">
                 <h5>
+                    <a href="/docs/modeling/graphconstraints/">Constraints over graph variables</a>
+                </h5>
+                <p>Overview of constraints based on graph variables.</p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
                     <a href="/docs/modeling/realconstraints/">Constraints over real variables</a>
                 </h5>
                 <p>How to declare constraints based on real variables?</p>
@@ -334,7 +433,7 @@
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 02.02.2020: <a href="https://github.com/chocoteam/website/commit/cafa1be7a85d937d2e9f4fafc254db7be89a8942">small modifs and correct some typo (cafa1be)</a>
+  Last modified 02.10.2023: <a href="https://github.com/chocoteam/website/commit/a7725699fa93f28f77cb2109d0d809c21ee2eba2">start doc for python (a772569)</a>
 </div>
 
 </div>
