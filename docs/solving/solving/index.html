@@ -26,13 +26,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/docs/solving/solving/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
-<meta property="article:modified_time" content="2023-06-30T13:57:38+02:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2023-12-22T16:25:09+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="Lauching the resolution process">
 <meta itemprop="description" content="How to look for solutions?
 "><meta itemprop="datePublished" content="2020-01-07T16:06:55+01:00" />
-<meta itemprop="dateModified" content="2023-06-30T13:57:38+02:00" />
-<meta itemprop="wordCount" content="851">
+<meta itemprop="dateModified" content="2023-12-22T16:25:09+01:00" />
+<meta itemprop="wordCount" content="1136">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Lauching the resolution process"/>
 <meta name="twitter:description" content="How to look for solutions?
@@ -299,13 +299,20 @@ The resolution process stops in no particular place in the search tree.</p>
 <p>No limit has been declared or reached: The problem has no solution and the solver has proved it.</p>
 </li>
 </ul>
+<p>An alternative API exists to search for a first <a href="/docs/solving/solutions/">solution</a> and return it.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</span></span></code></pre></div><p>The behaviour of <code>findSolution()</code> is equivalent to that of <code>solve()</code>: when a solution has been found a <code>Solution</code> is returned. Otherwise, <code>null</code> is returned, indicating that no solution has been found below the given limit (if any).</p>
 <h2 id="enumerating-all-solutions">Enumerating all solutions</h2>
 <p>You can enumerate all solutions of a problem with a simple while loop as follows:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// do something, e.g. print out variable values
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div><p>After the enumeration, the solver closes the search tree and variables are no longer instantiated to a value.</p>
-<h2 id="optimization">Optimization</h2>
+<p>An alternative API exists to search for all <a href="/docs/solving/solutions/">solutions</a> and return a list of them or an empty list if no solution was found.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</span></span></code></pre></div><p>It is also possible to stream solutions:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Stream</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutionsStream</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">streamSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
+</span></span></code></pre></div><h2 id="optimization">Optimization</h2>
 <p>In Constraint-Programming, optimization is done by computing improving solutions, until reaching an optimum.
 Therefore, it can be seen as solving multiple times the model while adding constraints on the fly to prevent the solver from computing dominated solutions.</p>
 <h3 id="mono-objective-optimization">Mono-objective optimization</h3>
@@ -319,7 +326,16 @@ To solve an optimization problem, you must specify which variable to optimize an
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// an improving solution has been found
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// the last solution found was optimal (if search completed)
-</span></span></span></code></pre></div><p>You can use custom cuts by overriding the default cut behavior.
+</span></span></span></code></pre></div><p>It also possible to use an alternative API to search for the optimal <a href="/docs/solving/solutions/">solution</a>.
+In that case, there is no need to declare the objective in the model, the paramters can directly be given as input of the methode:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</span></span></code></pre></div><p>Another API makes possible to find all optimal solutions.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllOptimalSolutions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// alterantively, get a stream of optimal solutions
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">//Stream&lt;Solution&gt; solutionsStream = solver.streamOptimalSolutions(X, Model.MAXIMIZE);
+</span></span></span></code></pre></div><p>This is a two-stage method that first searches for an optimal solution, then temporarily fixes the value of the objective and stores all the solutions with this additional constraint in a list.</p>
+<h4 id="adapting-the-cut">Adapting the cut</h4>
+<p>You can use custom cuts by overriding the default cut behavior.
 The <em>cut computer</em> function defines how the cut should bound the objective variable.
 The input <em>number</em> is the best solution value found so far, the output <em>number</em> define the new bound.
 When maximizing (resp. minimizing) a problem, the cut limits the lower bound (resp. upper bound) of the objective variable.
@@ -328,6 +344,7 @@ greater than or equal to the best value + 10</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">ObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">oman</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">();</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">oman</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setCutComputer</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </span></span></code></pre></div><h3 id="multi-objective-optimization">Multi-objective optimization</h3>
+<h4 id="pareto">Pareto</h4>
 <p>If you have multiple objective to optimize, you have several options. First, you may aggregate them in a function so that you end up with only one objective variable. Second, you can solve the problem multiple times, each one optimizing one variable and possibly fixing some bounds on the other. Third, you can enumerate solutions (without defining any objective) and add constraints on the fly to prevent search from finding dominated solutions. This is done by the ParetoOptimizer object which does the following:
 Anytime a solution is found, a constraint is posted which states that at least one of the objective variables must be strictly better:
 Such as $(X_0 &lt; b_0 \lor X_1 &lt; b_1 \lor \ldots \lor X_n &lt; b_n)$ where $X_i$ is the ith objective variable and $b_i$ its value.</p>
@@ -357,7 +374,13 @@ a = 1 and b = 1
 a = 2 and b = 0
 </code></pre>
 <p><strong>NOTE</strong>: All objectives must be optimized on the same direction (either minimization or maximization).</p>
-<h2 id="propagation">Propagation</h2>
+<h4 id="lexico">Lexico</h4>
+<p>It is also possible to consider several objectives $O_1, 02, &hellip;, O_n$ ordered lexicographically.
+Anytime a solution is found, a constraint is posted which states that the objective variables must be strictly better if the previous ones remain unchanged:
+$(X_1 &lt; b_1) \lor (X_1 = b_1 \land X_2 &lt; b_2) \lor \ldots \lor( \bigwedge_{1 &lt; i &lt; n} X_i = b_i \land X_n &lt; b_n)$
+where $X_i$ is the $i^{th}$ objective variable and $b_i$ its value in the solution.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findLexOptimalSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">objectives</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">);</span>
+</span></span></code></pre></div><h2 id="propagation">Propagation</h2>
 <p>One may want to propagate all constraints without search for a solution.
 This can be achieved by calling <code>solver.propagate()</code>.
 This method runs, in turn, the domain reduction algorithms of the constraints until it reaches a fix point.
@@ -365,11 +388,11 @@ It may throw a <code>ContradictionException</code> if a contradiction occurs.
 In that case, the propagation engine must be flushed calling <code>solver.getEngine().flush()</code>
 to ensure there is no pending events.</p>
 <p><strong>WARNING</strong>: If there are still pending events in the propagation engine, the propagation may results in unexpected results.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 30.06.2023: <a href="https://github.com/chocoteam/website/commit/1ba3a90c8712e2f2b170bf464188ab04ef69c28e">Update doc (1ba3a90)</a>
+  Last modified 22.12.2023: <a href="https://github.com/chocoteam/website/commit/d16ac6712141ee7702a3895d72ff9520768b933e">Update doc (d16ac67)</a>
 </div>
 
 </div>
