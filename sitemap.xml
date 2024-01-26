@@ -23,8 +23,11 @@
     <loc>https://choco-solver.org/tutos/first-example/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/spoilers/</loc>
-    <lastmod>2022-03-18T16:23:24+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/010_nutshell/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/010_spoilers/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/first-example/first-model/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
@@ -35,8 +38,11 @@
     <loc>https://choco-solver.org/tutos/verbal-arithmetic/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/theory/</loc>
-    <lastmod>2022-03-11T13:44:43+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/020_install/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/020_theory/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
@@ -74,8 +80,11 @@
     <loc>https://choco-solver.org/tutos/warehouse-location-problem/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/variables/</loc>
-    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/030_modelling/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/030_variables/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
@@ -116,8 +125,11 @@
     <loc>https://choco-solver.org/tutos/aircraft-landing-problem/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/constraints/</loc>
-    <lastmod>2022-03-18T16:23:24+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/040_variables/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/040_constraints/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/aircraft-landing-problem/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
@@ -131,8 +143,11 @@
     <loc>https://choco-solver.org/tutos/nonogram/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/filtering/</loc>
-    <lastmod>2022-03-11T13:44:43+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/050_constraints/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/050_filtering/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/nonogram/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
@@ -167,8 +182,11 @@
     <loc>https://choco-solver.org/tutos/golomb-ruler/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/limitations/</loc>
-    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/060_globals/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/060_limitations/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/golomb-ruler/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
@@ -182,8 +200,11 @@
     <loc>https://choco-solver.org/tutos/traveling-salesman-problem/</loc>
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/failures/</loc>
-    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/070_solving/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/070_failures/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/traveling-salesman-problem/description/</loc>
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
@@ -197,17 +218,20 @@
     <loc>https://choco-solver.org/tutos/constraints/</loc>
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/fixpoint/</loc>
-    <lastmod>2022-01-12T14:00:25+01:00</lastmod>
+    <loc>https://choco-solver.org/overview/home/080_conclusion/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/tinytiny/home/080_fixpoint/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/cdcl_overview/</loc>
     <lastmod>2023-06-30T13:57:38+02:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/notequal/</loc>
-    <lastmod>2022-05-17T09:44:08+02:00</lastmod>
+    <loc>https://choco-solver.org/tinytiny/home/090_notequal/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/nqueens/</loc>
-    <lastmod>2022-03-18T16:23:24+01:00</lastmod>
+    <loc>https://choco-solver.org/tinytiny/home/100_nqueens/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/other-examples/</loc>
     <lastmod>2022-08-24T16:00:06+02:00</lastmod>
@@ -221,14 +245,14 @@
     <loc>https://choco-solver.org/tutos/other-examples/the_knapsack_problem/</loc>
     <lastmod>2023-06-30T13:57:38+02:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/sudoku/</loc>
-    <lastmod>2022-03-18T16:23:24+01:00</lastmod>
+    <loc>https://choco-solver.org/tinytiny/home/110_sudoku/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/globals/</loc>
-    <lastmod>2022-03-18T16:23:24+01:00</lastmod>
+    <loc>https://choco-solver.org/tinytiny/home/120_globals/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tinytiny/home/stateoftheart/</loc>
-    <lastmod>2022-03-22T15:59:23+01:00</lastmod>
+    <loc>https://choco-solver.org/tinytiny/home/130_stateoftheart/</loc>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/blog/2021/02/02/project-euler-problem-103/</loc>
     <lastmod>2021-02-02T10:32:35+01:00</lastmod>
@@ -254,10 +278,13 @@
     <loc>https://choco-solver.org/community/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/overview/</loc>
+    <lastmod>2024-01-26T08:38:21+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/search/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tinytiny/</loc>
-    <lastmod>2022-01-19T15:05:37+01:00</lastmod>
+    <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url>
 </urlset>
