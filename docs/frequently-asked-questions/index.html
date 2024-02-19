@@ -266,7 +266,7 @@
 <p>First and foremost, it should be noted that choco-solver was not initially designed to safely manage the removal of constraints or variables.
 The standard scenario for using the library is as follows: declaration of the model, taht is adding variables and constraints then search for solutions (satisfaction or optimisation). It may be possible to declare variables and constraints during resolution, but this is not a problem since adding constraints simply reduces the search space.</p>
 <p>Before resolution has begun, it is possible to remove a constraint. This is done using the <code>unpost()</code> method for constraints that have been added explicitly using the <code>post()</code> command. For constraints that have been added implicitly, for example reified, deletion is not possible.</p>
-<p>Once the resolution has begun, removing/unposting a constraint is problematic.
+<p>Once the resolution begins, or more precisely as soon as the first propagation is triggered, removing/unposting a constraint becomes problematic.
 The search is Depth-First which implies the variable domains to be saved and restored. So removing a constraint potentially makes the variables&rsquo; domain inconsistent upon backtracks. In fact, for a constraint removal to be possible, it would have to be possible to restore the values that have been removed from the variable domain by its filtering algorithm</p>
 <p>One way around this problem is to save the branch of the search tree (i.e. the path of decisions leading to the current state), go back to the initial node of the search, remove the constraint, apply each decision in order, saving and propagating, until the desired state is reached.</p>
 <p>Note that during the resolution process, it is possible to add a constraint temporarily, using the <code>postTemp</code> method in the model.
@@ -287,7 +287,7 @@ Its lifetime is limited to the induced sub-tree, since it is automatically remov
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 19.02.2024: <a href="https://github.com/chocoteam/website/commit/26fbabf4ccd3496733a750bc9ce70e9167231c57">Add FAQ, remove blog (26fbabf)</a>
+  Last modified 19.02.2024: <a href="https://github.com/chocoteam/website/commit/7b5cc839d9ab7286c1a311935a6e7e78cb70e4b1">update faq (7b5cc83)</a>
 </div>
 
 </div>
