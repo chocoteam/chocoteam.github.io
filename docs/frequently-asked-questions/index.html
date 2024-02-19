@@ -7,6 +7,7 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
+<link rel="alternate" type="application/rss&#43;xml" href="https://choco-solver.org/docs/frequently-asked-questions/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -20,22 +21,17 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Large Neighborhood Search | Choco-solver</title><meta property="og:title" content="Large Neighborhood Search" />
-<meta property="og:description" content="Using LNS
+<title>FAQ | Choco-solver</title><meta property="og:title" content="FAQ" />
+<meta property="og:description" content="Frequently Asked Questions
 " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://choco-solver.org/docs/solving/lns/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-07T16:06:55+01:00" />
-<meta property="article:modified_time" content="2023-06-22T13:17:35+02:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://choco-solver.org/docs/frequently-asked-questions/" /><meta property="og:site_name" content="Choco-solver" />
 
-<meta itemprop="name" content="Large Neighborhood Search">
-<meta itemprop="description" content="Using LNS
-"><meta itemprop="datePublished" content="2020-01-07T16:06:55+01:00" />
-<meta itemprop="dateModified" content="2023-06-22T13:17:35+02:00" />
-<meta itemprop="wordCount" content="719">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Large Neighborhood Search"/>
-<meta name="twitter:description" content="Using LNS
+<meta itemprop="name" content="FAQ">
+<meta itemprop="description" content="Frequently Asked Questions
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FAQ"/>
+<meta name="twitter:description" content="Frequently Asked Questions
 "/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
@@ -60,25 +56,9 @@
   crossorigin="anonymous"></script>
 
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-window.MathJax = {
-  tex: {
-    inlineMath: [['$','$']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true
-  },
-  options: {
-    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-  }
-};
-</script>
-
 
   </head>
-  <body class="td-page">
+  <body class="td-section">
     <header>
       <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500" sodipodi:docname="logo.svg" inkscape:version="0.92.2 5c3e80d, 2017-08-06"><defs id="defs953"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1432" inkscape:window-height="773" id="namedview951" showgrid="false" inkscape:zoom=".472" inkscape:cx="365.4661" inkscape:cy="250" inkscape:window-x="10" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="Layer_1"/><path inkscape:export-ydpi="300" inkscape:export-xdpi="300" style="fill:#005c94;stroke:none;stroke-width:4.78758144" inkscape:connector-curvature="0" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
@@ -150,7 +130,7 @@ window.MathJax = {
   <a href="/docs/modeling/realconstraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docssolving-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
   <a href="/docs/solving/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
@@ -163,8 +143,8 @@ window.MathJax = {
   <a href="/docs/solving/statistics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
   <a href="/docs/solving/limits/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docssolvinglns-li">
-  <a href="/docs/solving/lns/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="td-sidebar-nav-active-item">Large Neighborhood Search</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
+  <a href="/docs/solving/lns/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
   <a href="/docs/solving/restarts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
@@ -192,8 +172,8 @@ window.MathJax = {
   <a href="/docs/advanced-usages/miscellaneous/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
-  <a href="/docs/frequently-asked-questions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsfrequently-asked-questions-li">
+  <a href="/docs/frequently-asked-questions/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="td-sidebar-nav-active-item">FAQ</span></a>
 </li>
   </ul>
 </li>
@@ -205,10 +185,10 @@ window.MathJax = {
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Solving/LNS.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Solving/LNS.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Solving/LNS.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/chocoteam/website/issues/new?title=Large%20Neighborhood%20Search" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Frequently%20Asked%20Questions/_index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Frequently%20Asked%20Questions/_index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Frequently%20Asked%20Questions/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/issues/new?title=FAQ" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -216,15 +196,12 @@ window.MathJax = {
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#principle">Principle</a></li>
-    <li><a href="#neighbors">Neighbors</a>
+    <li>
       <ul>
-        <li><a href="#generic-neighbors">Generic neighbors</a></li>
-        <li><a href="#combining-neighborhoods">Combining neighborhoods</a></li>
+        <li><a href="#how-can-i-cite-choco-solver">How can I cite Choco-solver?</a></li>
+        <li><a href="#can-a-constraint-be-removed-once-resolution-has-begun">Can a constraint be removed once resolution has begun?</a></li>
       </ul>
     </li>
-    <li><a href="#restarts">Restarts</a></li>
-    <li><a href="#walking">Walking</a></li>
   </ul>
 </nav>
       </div>
@@ -259,18 +236,15 @@ window.MathJax = {
   <li class="breadcrumb-item">
     <a href="https://choco-solver.org/docs/">Documentation</a>
   </li>
-  <li class="breadcrumb-item">
-    <a href="https://choco-solver.org/docs/solving/">Solving</a>
-  </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="https://choco-solver.org/docs/solving/lns/" aria-disabled="true" class="btn-link disabled">Large Neighborhood Search</a>
+    <a href="https://choco-solver.org/docs/frequently-asked-questions/" aria-disabled="true" class="btn-link disabled">FAQ</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Large Neighborhood Search</h1>
-	<div class="lead">Using LNS</div>
+	<h1>FAQ</h1>
+  <div class="lead">Frequently Asked Questions</div>
 	<header class="article-meta">
 		
 
@@ -285,69 +259,38 @@ window.MathJax = {
   
 
 		
-	</header>    
-	<p>Local search techniques are very effective to solve hard optimization problems.
-Most of them are, by nature, incomplete.
-In the context of constraint programming (CP) for optimization problems, one of the most well-known and widely used local search techniques is the Large Neighborhood Search (LNS) algorithm .
-The basic idea is to iteratively relax a part of the problem, then to use constraint programming to evaluate and bound the new solution.</p>
-<h2 id="principle">Principle</h2>
-<p>LNS is a two-phase algorithm which partially relaxes a given solution and repairs it.
-Given a solution as input, the relaxation phase builds a partial solution (or neighborhood) by choosing a set of variables to reset to their initial domain;
-The remaining ones are assigned to their value in the solution.
-This phase is directly inspired from the classical Local Search techniques.
-Even though there are various ways to repair the partial solution, we focus on the technique in which Constraint Programming is used to bound the objective variable and
-to assign a value to variables not yet instantiated.
-These two phases are repeated until the search stops (optimality proven or limit reached).</p>
-<p>The <code>INeighborFactory</code> provides pre-defined configurations.
-Here is the way to declare LNS to solve a problem:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLNS</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">INeighborFactory</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">random</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ivars</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FailCounter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">objective</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MINIMIZE</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>It declares a <em>random</em> LNS which, on a solution, computes a partial solution based on <code>ivars</code>.
-If no solution are found within 100 fails (<code>FailCounter(solver, 100)</code>), a restart is forced.</p>
-<p>The factory provides other built-in neighbors.</p>
-<h2 id="neighbors">Neighbors</h2>
-<p>While the implementation of LNS is straightforward, the main difficulty lies in the design of neighborhoods able to move the search further.
-Indeed, the balance between diversification (i.e., evaluating unexplored sub-tree) and intensification (i.e., exploring them exhaustively) should be well-distributed.</p>
-<h3 id="generic-neighbors">Generic neighbors</h3>
-<p>One drawback of LNS is that the relaxation process is quite often problem dependent.
-Some works have been dedicated to the selection of variables to relax through general concept not related to the class of the problem treated [5,24].
-However, in conjunction with CP, only one generic approach, namely Propagation-Guided LNS [24], has been shown to be very competitive with dedicated ones on a variation of the Car Sequencing Problem.
-Nevertheless, such generic approaches have been evaluated on a single class of problem and need to be thoroughly parametrized at the instance level, which may be a tedious task to do.
-It must, in a way, automatically detect the problem structure in order to be efficient.
-The details of the methods to be implemented are given in the <a href="https://choco-solver.org/docs/advanced-usages/strategies/#large-neighborhood-search-lns">Advanced section</a></p>
-<h3 id="combining-neighborhoods">Combining neighborhoods</h3>
-<p>There are two ways to combine neighbors.</p>
-<h4 id="sequential">Sequential</h4>
-<p>Declare an instance of <code>SequenceNeighborhood(n1, n2, ..., nm)</code>.
-Each neighbor <code>ni</code> is applied in a sequence until one of them leads to a solution.
-At step <code>k</code>, the $(k \mod m)^{th}$ neighbor is selected.
-The sequence stops if at least one of the neighbor is complete.</p>
-<h4 id="adaptive">Adaptive</h4>
-<p>Declare an instance of <code>AdaptiveNeighborhood(1L, n1, n2, ..., nm)</code>.
-At the beginning a weight $w_i = 1$ is assigned to each neighbor <code>ni</code>.</p>
-<p>If a neighbor leads to solution, its weight $w_i$ is increased by 1.
-Any time a partial solution has to be computed, a value <code>W</code> between 1 and $w_1+w_2+&hellip;+w_n$ is randomly picked (<code>1L</code> is the seed).</p>
-<p>Then the weight of each neighbor is subtracted from <code>W</code>, as soon as <code>W</code>$\leq 0$, the corresponding neighbor is selected.</p>
-<p>For instance, let’s consider three neighbors <code>n1</code>, <code>n2</code> and <code>n3</code>, their respective weights $w1=2, w2=4, w3=1$. 3 is randomly assigned to <code>W</code>.
-Then, the weight of <code>n1</code> is subtracted, <code>W</code>$- 2 = 1$ ; the weight of <code>n2</code> is subtracted, <code>W</code>$- 3 = -3$, <code>W</code> is less than 0 and n2 is selected.</p>
-<h2 id="restarts">Restarts</h2>
-<p>A generic and common way to reinforce diversification of LNS is to introduce <a href="https://choco-solver.org/docs/solving/restarts/">restarts</a> during the search process.
-This technique has proven to be very flexible and to be easily integrated within standard backtracking procedures .</p>
-<h2 id="walking">Walking</h2>
-<p>A complementary technique that appear to be efficient in practice is named <code>Walking</code> and consists in accepting equivalent intermediate solutions in a search iteration instead of requiring a strictly better one.</p>
-<p>This can be achieved by defining an <code>ObjectiveManager</code> like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">objective</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ResolutionPolicy</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span></code></pre></div><p>Where the last parameter, named <code>strict</code> must be set to false to accept equivalent intermediate solutions.</p>
-<p>Other optimization policies may be encoded by using either search monitors or a custom <code>ObjectiveManager</code>.</p>
+	</header>
+	<h3 id="how-can-i-cite-choco-solver">How can I cite Choco-solver?</h3>
+<p>The <a href="/docs/considerations">Considerations</a> page indicates the correct reference to use when quoting choco-solver in an article.</p>
+<h3 id="can-a-constraint-be-removed-once-resolution-has-begun">Can a constraint be removed once resolution has begun?</h3>
+<p>First and foremost, it should be noted that choco-solver was not initially designed to safely manage the removal of constraints or variables.
+The standard scenario for using the library is as follows: declaration of the model, taht is adding variables and constraints then search for solutions (satisfaction or optimisation). It may be possible to declare variables and constraints during resolution, but this is not a problem since adding constraints simply reduces the search space.</p>
+<p>Before resolution has begun, it is possible to remove a constraint. This is done using the <code>unpost()</code> method for constraints that have been added explicitly using the <code>post()</code> command. For constraints that have been added implicitly, for example reified, deletion is not possible.</p>
+<p>Once the resolution has begun, removing/unposting a constraint is problematic.
+The search is Depth-First which implies the variable domains to be saved and restored. So removing a constraint potentially makes the variables&rsquo; domain inconsistent upon backtracks. In fact, for a constraint removal to be possible, it would have to be possible to restore the values that have been removed from the variable domain by its filtering algorithm</p>
+<p>One way around this problem is to save the branch of the search tree (i.e. the path of decisions leading to the current state), go back to the initial node of the search, remove the constraint, apply each decision in order, saving and propagating, until the desired state is reached.</p>
+<p>Note that during the resolution process, it is possible to add a constraint temporarily, using the <code>postTemp</code> method in the model.
+Its lifetime is limited to the induced sub-tree, since it is automatically removed at the backtrack without any intervention.</p>
+
+        <div class="section-index">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 22.06.2023: <a href="https://github.com/chocoteam/website/commit/318a2abc370726eecb6ffe66a398e9c0b6b0e901">Fix #16 (318a2ab)</a>
+  Last modified 19.02.2024: <a href="https://github.com/chocoteam/website/commit/26fbabf4ccd3496733a750bc9ce70e9167231c57">Add FAQ, remove blog (26fbabf)</a>
 </div>
 
 </div>
-
 
           </main>
         </div>

@@ -34,7 +34,7 @@ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will 
 $X_1 &lt; X_2$ Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
 $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will first create a class to declare the behaviour of this constraint:">
 <meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="380">
+<meta itemprop="wordCount" content="417">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
@@ -76,9 +76,6 @@ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will 
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
-      </li>
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
-        <a class="nav-link" href="/blog/"><span>Blog</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
@@ -168,6 +165,21 @@ to any solution</p>
 </ul>
 <hr>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">__init__</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">v1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">v2</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">        Filter the domain of the variables declared in &#39;vars&#39;.
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">        The method directly modifies the entries of &#39;vars&#39;.
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69645"> >>🥛<<</a></h2>
+<hr>
+<h3 id="lessthan-filtering-algorithm-1"><code>LessThan</code> filtering algorithm</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#8f5902;font-style:italic"># get current domain of &#34;x1&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#8f5902;font-style:italic"># get current domain of &#34;x2&#34;</span>
@@ -186,10 +198,9 @@ to any solution</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># call the filtering algorithm</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">c1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># check everything works fine</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">]</span>
-</span></span></code></pre></div><p><a href="https://colab.research.google.com/drive/1nF0Rf58i4a2uHEIzbVjyWB94uIEUzLL9#scrollTo=h6zZB5EIbytb&line=9&uniqifier=1" target="_blank">Run it</a></p>
-<hr>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}</span> 
+</span></span></code></pre></div><hr>
 <h3 id="yes-it-does-">Yes, it does !</h3>
 
 </section>
@@ -245,18 +256,6 @@ to any solution</p>
   <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Discord" aria-label="Discord">
     <a class="text-white" target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
       <i class="fab fa-discord"></i>
-    </a>
-  </li>
-  
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
-    <a class="text-white" target="_blank" rel="noopener" href="https://choco-solver.slack.com/" aria-label="Slack">
-      <i class="fab fa-slack"></i>
-    </a>
-  </li>
-  
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Gitter" aria-label="Gitter">
-    <a class="text-white" target="_blank" rel="noopener" href="https://gitter.im/chocoteam/choco-solver" aria-label="Gitter">
-      <i class="fab fa-gitter"></i>
     </a>
   </li>
   

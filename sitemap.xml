@@ -20,6 +20,9 @@
     <loc>https://choco-solver.org/docs/advanced-usages/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/docs/frequently-asked-questions/</loc>
+    <lastmod>2024-02-19T15:27:16+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tutos/first-example/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
   </url><url>
@@ -254,26 +257,14 @@
     <loc>https://choco-solver.org/tinytiny/home/130_stateoftheart/</loc>
     <lastmod>2024-01-26T08:37:43+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/blog/2021/02/02/project-euler-problem-103/</loc>
-    <lastmod>2021-02-02T10:32:35+01:00</lastmod>
-  </url><url>
-    <loc>https://choco-solver.org/blog/2020/03/02/a-book-in-french-about-cp/</loc>
-    <lastmod>2020-03-02T13:11:21+01:00</lastmod>
-  </url><url>
-    <loc>https://choco-solver.org/blog/2020/02/05/tutorials-migration/</loc>
-    <lastmod>2020-02-05T17:48:46+01:00</lastmod>
-  </url><url>
-    <loc>https://choco-solver.org/blog/</loc>
-    <lastmod>2020-01-31T14:49:05+01:00</lastmod>
-  </url><url>
-    <loc>https://choco-solver.org/blog/2020/01/31/revamping-documentation/</loc>
-    <lastmod>2020-02-05T17:48:46+01:00</lastmod>
+    <loc>https://choco-solver.org/tutos/other-examples/euler-103/</loc>
+    <lastmod>2021-02-02T09:21:16+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/index.json</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/</loc>
-    <lastmod>2023-07-05T17:52:05+02:00</lastmod>
+    <lastmod>2024-02-19T15:27:16+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/community/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>
