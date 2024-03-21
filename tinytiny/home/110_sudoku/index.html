@@ -28,15 +28,15 @@ At modelling step One must write a value in $[1,9]$ in each cell
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/110_sudoku/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T16:19:03+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Analogy with Sudoku We reached the Sudoku point When trying to explain how constraint programming works, it is common to draw a parallel with sudoku.
 At modelling step One must write a value in $[1,9]$ in each cell
 ➡️ a variable and a domain Such that each digit is used exactly once per row , per column and per square
 ➡️ sets of $\neq$ constraints At solving step Local reasonning Each constraint infers on a local view.">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="256">
+<meta itemprop="dateModified" content="2024-03-21T16:19:03+01:00" />
+<meta itemprop="wordCount" content="300">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Analogy with Sudoku We reached the Sudoku point When trying to explain how constraint programming works, it is common to draw a parallel with sudoku.
@@ -160,7 +160,9 @@ and per <span style="color:#3BAFDA">square</span></p>
     <img src="/images/tinytiny/sudoku/4x4sudoku.png" alt="This is an alt" width="20%" >
 </figure>
 <hr>
-<pre><code class="language-python">n = 4
+<pre><code class="language-python">import model as m
+
+n = 4
 variables = {}
 for i in range(1, n + 1):
     for j in range(1, n + 1):
@@ -197,7 +199,20 @@ for z in zones:
         for k in range(j + 1, n):
             cs.append(NotEqual(z[j], z[k]))
 
-print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
+sols = []
+m.dfs(variables, cs, sols, nos=0)
+print(len(sols), &quot;solution(s) found&quot;)
+u_sol = sols[0]
+for i in range(4):
+		print(u_sol[i * 4:i * 4 + 4])
+</code></pre>
+<hr>
+<h3 id="1-solution">1 solution</h3>
+<pre><code class="language-bash">1 solution(s) found
+[1, 2, 4, 3]
+[3, 4, 1, 2]
+[2, 1, 3, 4]
+[4, 3, 2, 1]
 </code></pre>
 
 </section>

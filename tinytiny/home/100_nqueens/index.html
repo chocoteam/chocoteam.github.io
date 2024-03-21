@@ -27,14 +27,14 @@ Src: Wikipedia A first idea is to indicate by a Boolean variable if a cell is oc
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/100_nqueens/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T16:19:03+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Now, we are able to
 solve a basic problem The 8 queens puzzle The eight queens puzzle is the problem of placing eight chess queens on an 8×8 chessboard so that no two queens threaten each other; thus, a solution requires that no two queens share the same row, column, or diagonal. Wikipedia
 Src: Wikipedia A first idea is to indicate by a Boolean variable if a cell is occupied by a queen or not.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
-<meta itemprop="wordCount" content="367">
+<meta itemprop="dateModified" content="2024-03-21T16:19:03+01:00" />
+<meta itemprop="wordCount" content="341">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Now, we are able to
@@ -134,32 +134,34 @@ Src: Wikipedia A first idea is to indicate by a Boolean variable if a cell is oc
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69930" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 <hr>
 <h2 id="6-queens-puzzle-in-python">6 Queens puzzle in Python</h2>
-<pre><code class="language-python{2-4|6-11|13-15|17}">n = 8
-variables = {}
+<pre><code class="language-python{4-6|8-13|15-17|19-23}">import model as m
+
+n = 8
+vs = {}
 for i in range(1, n + 1):
-    variables[&quot;x&quot; + str(i)] = {k for k in range(1, n + 1)}
+    vs[&quot;x&quot; + str(i)] = {k for k in range(1, n + 1)}
 
 cs = []
 for i in range(1, n):
     for j in range(i + 1, n + 1):
-        cs.append(NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j)))
-        cs.append(NotEqual(&quot;x&quot;+str(i),&quot;x&quot;+str(j), c=(j-i)))
-        cs.append(NotEqual(&quot;x&quot;+str(i),&quot;x&quot;+str(j), c=-(j-i)))
+        cs.append(m.NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j)))
+        cs.append(m.NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j), c=(j - i)))
+        cs.append(m.NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j), c=-(j - i)))
 
 # mirror symm. breaking
-variables[&quot;cst&quot;] = {int(n / 2) + 1}
-cs.append(LessThan(&quot;x1&quot;, &quot;cst&quot;))
+vs[&quot;cst&quot;] = {int(n / 2) + 1}
+cs.append(m.LessThan(&quot;x1&quot;, &quot;cst&quot;))
 
-print(&quot;it finds&quot;, enumerate(variables, cs), &quot;solutions&quot;)
+# search for all solutions
+sols = []
+m.dfs(vs, cs, sols, nos=0)
+print(len(sols), &quot;solution(s) found&quot;)
+print(sols)
 </code></pre>
 <hr>
 <h3 id="46-solutions">46 solutions</h3>
-<pre><code class="language-python">{'x1': [1], 'x2': [5], 'x3': [8], 'x4': [6], 'x5': [3], 'x6': [7], 'x7': [2], 'x8': [4], 'cst': [5]}
-{'x1': [1], 'x2': [6], 'x3': [8], 'x4': [3], 'x5': [7], 'x6': [4], 'x7': [2], 'x8': [5], 'cst': [5]}
-...
-{'x1': [4], 'x2': [8], 'x3': [1], 'x4': [5], 'x5': [7], 'x6': [2], 'x7': [6], 'x8': [3], 'cst': [5]}
-{'x1': [4], 'x2': [8], 'x3': [5], 'x4': [3], 'x5': [1], 'x6': [7], 'x7': [2], 'x8': [6], 'cst': [5]}
-it finds 46 solutions
+<pre><code class="language-bash">46 solution(s) found
+[[1, 5, 8, 6, 3, 7, 2, 4, 5], ..., [4, 8, 5, 3, 1, 7, 2, 6, 5]]
 </code></pre>
 <p>There are 92 solutions without the (simple) symmetry breaking constraint, 46 otherwise.</p>
 <hr>

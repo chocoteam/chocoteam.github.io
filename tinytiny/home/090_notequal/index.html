@@ -30,7 +30,7 @@ Let&rsquo;s fix the code class NotEqual: def __init__(self, v1, v2, c=0): pass d
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/090_notequal/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T16:19:03+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Many constraints of the different type
@@ -39,7 +39,7 @@ should be quite easy It requires to define the filter function.
 The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
 2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_2$ values.
 Let&rsquo;s fix the code class NotEqual: def __init__(self, v1, v2, c=0): pass def filter(self, vars): pass &gt;&gt;🥛&lt;&lt; The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="dateModified" content="2024-03-21T16:19:03+01:00" />
 <meta itemprop="wordCount" content="196">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
@@ -140,26 +140,28 @@ Let&rsquo;s fix the code class NotEqual: def __init__(self, v1, v2, c=0): pass d
 <!--</section> to bind to the next section tag-->
 <hr>
 <h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
-<pre><code class="language-python{1-5|7-9|11-13|14-16|18,19|10,17,20}">class NotEqual:
+<pre><code class="language-python{1-5|6-8|9-14|15-20|21-22}">class NotEqual:
     def __init__(self, v1, v2, c=0):
         self.v1 = v1
         self.v2 = v2
         self.c = c
 
     def filter(self, vars):
-        d1 = vars[self.v1]
-        d2 = vars[self.v2]
-        size = len(d1) + len(d2)
-        if len(d2) == 1:
-            d1 = {v for v in d1 if v != (d2[0] + self.c)}
-            if len(d1) == 0: return False
-        if len(d1) == 1:
-            d2 = {v for v in d2 if v != (d1[0] - self.c)}
-            if len(d2) == 0: return False
-        size -= (len(d1) + len(d2))
-        vars[self.v1] = d1
-        vars[self.v2] = d2
-        return size &gt; 0 or None
+      size = len(vars[self.v1]) + len(vars[self.v2])
+      if len(vars[self.v2]) == 1:
+          f = min(vars[self.v2]) + self.c
+          nd1 = {v for v in vars[self.v1] if v != f}
+          if len(nd1) == 0:
+            return False
+          vars[self.v1] = nd1
+      if len(vars[self.v1]) == 1:
+          f = min(vars[self.v1]) - self.c
+          nd2 = {v for v in vars[self.v2] if v != f}
+          if len(nd2) == 0:
+            return False
+          vars[self.v2] = nd2
+      modif = size &gt; len(vars[self.v1]) + len(vars[self.v2])
+      return modif or None
 </code></pre>
 <hr>
 <section data-noprocess data-shortcode-slide
