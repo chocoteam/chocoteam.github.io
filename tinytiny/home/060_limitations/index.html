@@ -22,8 +22,9 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="What are the obvious limitations? (of what we&rsquo;ve done so far)
-It panics when the problem has no solution.
-variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) Traceback (most recent call last): File &#34;sandbox.py&#34;, line 54, in &lt;module&gt; print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) File &#34;sandbox.py&#34;, line 40, in enumerate constraint.filter(variables) File &#34;sandbox.py&#34;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &#34;sandbox." />
+It ignores dead-ends.
+It deals with a single constraint.
+And 2 variables." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/060_limitations/" /><meta property="article:section" content="tinytiny" />
 
@@ -31,15 +32,17 @@ variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="What are the obvious limitations? (of what we&rsquo;ve done so far)
-It panics when the problem has no solution.
-variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) Traceback (most recent call last): File &#34;sandbox.py&#34;, line 54, in &lt;module&gt; print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) File &#34;sandbox.py&#34;, line 40, in enumerate constraint.filter(variables) File &#34;sandbox.py&#34;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &#34;sandbox.">
+It ignores dead-ends.
+It deals with a single constraint.
+And 2 variables.">
 <meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="109">
+<meta itemprop="wordCount" content="23">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="What are the obvious limitations? (of what we&rsquo;ve done so far)
-It panics when the problem has no solution.
-variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) Traceback (most recent call last): File &#34;sandbox.py&#34;, line 54, in &lt;module&gt; print(&#34;it finds&#34;, enumerate(variables, c1), &#34;solutions&#34;) File &#34;sandbox.py&#34;, line 40, in enumerate constraint.filter(variables) File &#34;sandbox.py&#34;, line 10, in filter d2 = [v for v in d2 if v &gt; min(d1)] File &#34;sandbox."/>
+It ignores dead-ends.
+It deals with a single constraint.
+And 2 variables."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -78,6 +81,9 @@ variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -104,22 +110,7 @@ variables = {&#34;x1&#34;: {3, 4}, &#34;x2&#34;: {2, 3}} c1 = LessThan(&#34;x1&#
 <h1 id="what-are-the-_obvious_-limitations">What are the <em>obvious</em> limitations?</h1>
 <p>(of what we&rsquo;ve done so far)</p>
 <hr>
-<p>It panics when the problem has no solution.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">Traceback</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">most</span> <span style="color:#000">recent</span> <span style="color:#000">call</span> <span style="color:#000">last</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">File</span> <span style="color:#4e9a06">&#34;sandbox.py&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">line</span> <span style="color:#0000cf;font-weight:bold">54</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">File</span> <span style="color:#4e9a06">&#34;sandbox.py&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">line</span> <span style="color:#0000cf;font-weight:bold">40</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">enumerate</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">File</span> <span style="color:#4e9a06">&#34;sandbox.py&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">line</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">filter</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d2</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">File</span> <span style="color:#4e9a06">&#34;sandbox.py&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">line</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">listcomp</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d2</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span><span style="color:#c00;font-weight:bold">ValueError</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000">arg</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#000">an</span> <span style="color:#000">empty</span> <span style="color:#000">sequence</span>
-</span></span></code></pre></div><hr>
+<p>It ignores dead-ends.</p>
 <p>It deals with a single constraint.</p>
 <p>And 2 variables.</p>
 

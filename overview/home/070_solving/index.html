@@ -22,23 +22,23 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="Solving CSP The solving process is managed by a unique Solver instance attached to a model.
-Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&#34;%s is fixed to %d\n&#34;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
+Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&quot;%s is fixed to %d\n&quot;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
 CSP The solving process is managed by a unique Solver instance attached to a model." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/070_solving/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-01-26T08:38:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Solving CSP The solving process is managed by a unique Solver instance attached to a model.
-Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&#34;%s is fixed to %d\n&#34;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
+Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&quot;%s is fixed to %d\n&quot;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
 CSP The solving process is managed by a unique Solver instance attached to a model.">
-<meta itemprop="dateModified" content="2024-01-26T08:38:21+01:00" />
-<meta itemprop="wordCount" content="312">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="454">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Solving CSP The solving process is managed by a unique Solver instance attached to a model.
-Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&#34;%s is fixed to %d\n&#34;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
+Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&quot;%s is fixed to %d\n&quot;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
 CSP The solving process is managed by a unique Solver instance attached to a model."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
@@ -78,6 +78,9 @@ CSP The solving process is managed by a unique Solver instance attached to a mod
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -108,34 +111,36 @@ CSP The solving process is managed by a unique Solver instance attached to a mod
       data-transition="none-out">
 <h2 id="csp">CSP</h2>
 <p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ... problem description ...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// here you can read the variables&#39; value
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is fixed to %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>						<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>A call to <code style='font-family: monospace;color:#05507D;'>solver.solve()</code> returns <code style='font-family: monospace;color:#05507D;'>true</code> if a solution exists, <code style='font-family: monospace;color:#05507D;'>false</code> otherwise.</p>
+<pre><code class="language-java{|5-6}">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+if(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>A call to <code style='font-family: monospace;color:#05507D;'>solver.solve()</code> returns <code style='font-family: monospace;color:#05507D;'>true</code> if a solution exists, <code style='font-family: monospace;color:#05507D;'>false</code> otherwise.</p>
 <hr>
 <section data-noprocess data-shortcode-slide
       id="code4"
       data-transition="in-out">
 <h2 id="csp-1">CSP</h2>
 <p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ... problem description ...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// here you can read the variables&#39; value
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is fixed to %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>						<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Since the <code style='font-family: monospace;color:#05507D;'>solver</code> stops on a solution,
+<pre><code class="language-java{7-9}">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+if(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>Since the <code style='font-family: monospace;color:#05507D;'>solver</code> stops on a solution,
 <br/>
 all the variables are fixed and their value can be read.</p>
 <hr>
@@ -144,17 +149,18 @@ all the variables are fixed and their value can be read.</p>
       data-transition="none-in">
 <h2 id="csp-2">CSP</h2>
 <p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ... problem description ...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// here you can read the variables&#39; value
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is fixed to %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>						<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Enumerating solutions can be done in a <code style='font-family: monospace;color:#05507D;'>while-loop</code>.
+<pre><code class="language-java{6}">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+while(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>Enumerating solutions can be done in a <code style='font-family: monospace;color:#05507D;'>while-loop</code>.
 <br/>
 <br/></p>
 <hr>
@@ -163,55 +169,135 @@ all the variables are fixed and their value can be read.</p>
       data-transition="none-out">
 <h2 id="solution">Solution</h2>
 <p>We can capture the current state of variables in a <code style='font-family: monospace;color:#05507D;'>Solution</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">solutions</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">());</span>	
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><hr>
+<pre><code class="language-java{1,3}">List&lt;Solution&gt; solutions = new ArrayList&lt;&gt;();
+while(solver.solve()){
+	solutions.add(new Solution(model).record());
+}
+</code></pre>
+<hr>
 <section data-noprocess data-shortcode-slide
       id="code7"
       data-transition="none-in">
 <h2 id="solution-1">Solution</h2>
 <p>This can also be achieved in one line of code
 <br/></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><br/>
+<pre><code class="language-java">Solution solution = solver.findSolution();
+</code></pre>
+<pre><code class="language-java">List&lt;Solution&gt; solutions = solver.findAllSolutions();
+</code></pre>
+<br/>
+<hr>
+<h2 id="cop">COP</h2>
+<p>An <code style='font-family: monospace;color:#05507D;'>IntVar</code> to maximize/minimize    .</p>
+<pre><code class="language-java{1|2}">Solution bSol = solver.findOptimalSolution(obj, maximize);
+List&lt;Solution&gt; bSols = solver.findAllOptimalSolutions(obj, max);
+</code></pre>
+<hr>
+<h2 id="solving-is-reducing">Solving is reducing</h2>
+<hr>
+<h3 id="backtracking-algorithm">Backtracking algorithm</h3>
+<ul>
+<li>recursive traversal of the search tree</li>
+<li>make/cancel decisions</li>
+<li>backtrack on failure</li>
+<li>incremental construction of a solution</li>
+</ul>
+<p><em>Branch and Propagate</em></p>
+<hr>
+<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+<p>⚠️ 2-way branching</p>
+<hr>
+<h2 id="making-decisions">Making decisions</h2>
+<p class="fragment" data-fragment-index="1"><em>Can't we just leave it to the solver?</em></p>
+<p class="fragment" data-fragment-index="2">Bring business knowledge</p>
+<p class="fragment" data-fragment-index="3">Help moving towards a solution</p>
+<!--<p class="fragment" data-fragment-index="4">or proving unsat</p>-->
+<p><span class='fragment ' ><em>but Yes, we can</em></span></p>
+<hr>
+<h2 id="making-decisions-1">Making decisions</h2>
+<ul>
+<li>choose a free variable (how?)</li>
+<li>select an operator (very often $=$)</li>
+<li>determine a value (how?)</li>
+</ul>
+<p>Continue as as long as necessary</p>
+<aside class="notes"><p>A decision is validated through propagation</p>
+<aside class="notes"><hr>
+<h3 id="select-the-next-variable">Select the next variable</h3>
+<ul>
+<li><code>input_order</code>, <code>first_fail</code>, <code>smallest</code>,&hellip;</li>
+<li><code>dom/wdeg</code>, <code>FBA</code>, <code>CHS</code>, <code>ABS</code>, &hellip;</li>
+</ul>
+<br/>
+<br/>
+<h3 id="choose-a-value">Choose a value</h3>
+<ul>
+<li><code>min</code>, <code>max</code>, <code>med</code>, &hellip;</li>
+</ul>
+<hr>
+<h2 id="topping">Topping</h2>
+<ul>
+<li>Combining searches</li>
+<li>Restarting: <code>geo</code>, <code>luby</code></li>
+<li>Meta-strategy: <code>lc</code>, <code>cos</code></li>
+<li>Phase saving,</li>
+<li>Best</li>
+</ul>
+<hr>
+<h3 id="define-your-own">Define your own</h3>
+<pre><code class="language-java{}">solver.setSearch(Search.intVarSearch(
+    variables -&gt; Arrays.stream(variables)
+          .filter(v -&gt; !v.isInstantiated())
+          .min((v1, v2) -&gt; closest(v2, map) - closest(v1, map))
+          .orElse(null),
+    v -&gt; closest(v, map),
+    DecisionOperator.int_eq,
+    planes
+));
+</code></pre>
+<p><a href="https://choco-solver.org/tutos/aircraft-landing-problem/code/">[aircraft landing]</a></p>
 <hr>
 <h2 id="turnkey-enumeration-strategies">Turnkey enumeration strategies</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Override the default search strategy
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">Search</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lastConflict</span><span style="color:#ce5c00;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#000">Search</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">domOverWDegSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)));</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// possibly combined with restarts
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLubyRestart</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FailCounter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">25000</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>Have a look at the <code style='font-family: monospace;color:#05507D;'>Search</code> factory.</p>
+<pre><code class="language-java{2,4|3|5-6|7|}">// Override the default search strategy
+solver.setSearch(
+	Search.lastConflict(
+		Search.domOverWDegSearch(vars)));
+// possibly combined with restarts
+solver.setLubyRestart(2, new FailCounter(model, 2), 25000);
+solver.findSolution();
+</code></pre>
+<p>Have a look at the <code style='font-family: monospace;color:#05507D;'>Search</code> factory.</p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background-iframe="https://choco-solver.org/docs/solving/strategies/">
 <hr>
-<h2 id="cop">COP</h2>
-<p>An <code style='font-family: monospace;color:#05507D;'>IntVar</code> be maximized/minimized.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">bSol</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">obj</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">maximize</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">bSols</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllOptimalSolutions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">obj</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">max</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><hr>
+<h1 id="monitoring">Monitoring</h1>
+<hr>
 <h2 id="information-on-research">Information on research</h2>
 <p>It is possible to have insights on the search process</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">showShortStatistics</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){};</span>
-</span></span></code></pre></div><p>Or to execute code on solutions using <em>monitors</em>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">((</span><span style="color:#000">IMonitorSolution</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// do something here 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span></code></pre></div><hr>
+<pre><code class="language-java">solver.showShortStatistics();
+while(solver.solve()){};
+</code></pre>
+<p>Or to execute code on solutions using <em>monitors</em>:</p>
+<pre><code class="language-java">solver.plugMonitor((IMonitorSolution) () -&gt; {
+    // do something here
+});
+</code></pre>
+<hr>
 <h2 id="limits">Limits</h2>
 <p>The search space exploration can be limited.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitTime</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;10s&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span> 
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>The first limit reached stops the search.</p>
-
+<pre><code class="language-java">solver.limitTime(&quot;10s&quot;);
+solver.limitSolution(5);
+solver.findAllSolutions();
+</code></pre>
+<p>The first limit reached stops the search.</p>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h2 id="warehouse-location">Warehouse Location</h2>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=70539" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</aside>
+</aside>
 </section>
 
 

@@ -91,6 +91,9 @@ window.MathJax = {
         <a class="nav-link active" href="/tutos/"><span class="active">Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -307,40 +310,45 @@ window.MathJax = {
 	</header>    
 	<p><em>This file can be downloaded as a <a href="https://jupyter.org/">jupyter notebook</a> and executed with a <a href="https://github.com/SpencerPark/IJava">Java kernel</a>. The next cell is then used to add the dependency to choco and can be ignored otherwise.</em></p>
 <p><a href="/notebooks/content/en/tutos/Other%20examples/The_knapsack_problem.ipynb">&raquo; ipynb &laquo;</a></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Add maven dependencies at runtime 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#000">maven</span> <span style="color:#000">org</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">choco</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">choco</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">10</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">13</span>
-</span></span></code></pre></div><hr>
+<pre><code class="language-Java">// Add maven dependencies at runtime 
+%maven org.choco-solver:choco-solver:4.10.13
+</code></pre>
+<hr>
 <p><a href="http://en.wikipedia.org/wiki/Knapsack_problem">Wikipedia</a>:<br/></p>
 <blockquote>
 <p>Given a set of items, each with a weight and a value, determine the count of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most useful items.&quot;</p>
 </blockquote>
 <p>First manage imports.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.Model</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.Solver</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.exception.ContradictionException</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.variables.IntVar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">java.util.Arrays</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.solver.search.strategy.Search.inputOrderLBSearch</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.solver.search.strategy.Search.inputOrderUBSearch</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span></code></pre></div><h2 id="input-data">Input data</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// number of different items
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">W</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">67</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// a maximum weight capacity 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">w</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">23</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">26</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">18</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">32</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">27</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">29</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">26</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">30</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">27</span><span style="color:#ce5c00;font-weight:bold">};</span> <span style="color:#8f5902;font-style:italic">// weight of items
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">505</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">352</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">458</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">220</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">354</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">414</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">498</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">545</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">473</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">543</span><span style="color:#ce5c00;font-weight:bold">};</span> <span style="color:#8f5902;font-style:italic">// value of items
-</span></span></span></code></pre></div><h2 id="the-model">The model</h2>
+<pre><code class="language-Java">import org.chocosolver.solver.Model;
+import org.chocosolver.solver.Solver;
+import org.chocosolver.solver.exception.ContradictionException;
+import org.chocosolver.solver.variables.IntVar;
+
+import java.util.Arrays;
+
+import static org.chocosolver.solver.search.strategy.Search.inputOrderLBSearch;
+import static org.chocosolver.solver.search.strategy.Search.inputOrderUBSearch;
+</code></pre>
+<h2 id="input-data">Input data</h2>
+<pre><code class="language-Java">int n = 10; // number of different items
+int W = 67; // a maximum weight capacity 
+int[] w = new int[]{23, 26,20,18,32, 27, 29, 26, 30, 27}; // weight of items
+int[] v = new int[]{505, 352, 458, 220, 354, 414, 498, 545, 473, 543}; // value of items
+</code></pre>
+<h2 id="the-model">The model</h2>
 <p>Then, we can start modelling the problem with choco.
 The first step is to defined a <code>Model</code> instance.
 It is required to declare and store the variables and the constraints.
 For convenience, an instance can be declared with a name.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Knapsack&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>For each object, a variable is declared to count the number of times it appears in the knapsack.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">items</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">];</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;item_&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">Math</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ceil</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">W</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">.</span> <span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]));</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>The paramaters are:</p>
+<pre><code class="language-Java">Model model = new Model(&quot;Knapsack&quot;);
+</code></pre>
+<p>For each object, a variable is declared to count the number of times it appears in the knapsack.</p>
+<pre><code class="language-Java">IntVar[] items = new IntVar[n];
+for (int i = 0; i &lt; n; i++) {
+    items[i] = model.intVar(&quot;item_&quot; + (i + 1), 0, (int) Math.ceil(W*1. / w[i]));
+}
+</code></pre>
+<p>The paramaters are:</p>
 <ul>
 <li>the prefix for setting the variables&rsquo; name,</li>
 <li>the lower bound and the upper bound of each variable.</li>
@@ -349,32 +357,38 @@ For convenience, an instance can be declared with a name.</p>
 <em>To model 0-1 knapsack problem, the upper bound of each variable must be set to $1$.</em></p>
 <p>The problem is to maximize the sum of the values of the items in the knapsack.
 This amount is maintained in a variable:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;value&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">max</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">orElse</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">999</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">*</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>The sum of the weights is less than or equal to the knapsack&rsquo;s capacity:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">weight</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;weight&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">W</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>All variables are now declared, the <code>knapsack</code> constraint can be declared:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">knapsack</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">weight</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>The <code>value</code> variable has to be maximized:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setObjective</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><h2 id="finding-the-optimal-solution">Finding the optimal solution</h2>
+<pre><code class="language-Java">IntVar value = model.intVar(&quot;value&quot;, 0, Arrays.stream(v).max().orElse(999) * n);
+</code></pre>
+<p>The sum of the weights is less than or equal to the knapsack&rsquo;s capacity:</p>
+<pre><code class="language-Java">IntVar weight = model.intVar(&quot;weight&quot;, 0, W);
+</code></pre>
+<p>All variables are now declared, the <code>knapsack</code> constraint can be declared:</p>
+<pre><code class="language-Java">model.knapsack(items, weight, value, w, v).post();
+</code></pre>
+<p>The <code>value</code> variable has to be maximized:</p>
+<pre><code class="language-Java">model.setObjective(Model.MAXIMIZE, value);
+</code></pre>
+<h2 id="finding-the-optimal-solution">Finding the optimal solution</h2>
 <p>Now that the model is ready, the solving step can be set up.
 Here we define a top-down maximization:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">inputOrderUBSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">),</span> 
-</span></span><span style="display:flex;"><span>    <span style="color:#000">inputOrderLBSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span></code></pre></div><p>Let&rsquo;s execute the solving:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Knapsack -- %d items\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\tItem: Count&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\tItem #%d: %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n\tWeight: %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">weight</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n\tValue: %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reset</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// to solve the model several times
-</span></span></span></code></pre></div><pre><code>Knapsack -- 10 items
+<pre><code class="language-Java">Solver solver = model.getSolver();
+solver.setSearch(
+    inputOrderUBSearch(value), 
+    inputOrderLBSearch(items));
+</code></pre>
+<p>Let&rsquo;s execute the solving:</p>
+<pre><code class="language-Java">while (solver.solve()) {
+    System.out.printf(&quot;Knapsack -- %d items\n&quot;, n);
+    System.out.println(&quot;\tItem: Count&quot;);
+    for (int i = 0; i &lt; items.length; i++) {
+        System.out.printf(&quot;\tItem #%d: %d\n&quot;, (i+1), items[i].getValue());
+    }
+    System.out.printf(&quot;\n\tWeight: %d\n&quot;, weight.getValue());
+    System.out.printf(&quot;\n\tValue: %d\n&quot;, value.getValue());
+}
+solver.reset(); // to solve the model several times
+</code></pre>
+<pre><code>Knapsack -- 10 items
 	Item: Count
 	Item #1: 2
 	Item #2: 0

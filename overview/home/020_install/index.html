@@ -21,19 +21,19 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Getting Started JRE 11&#43; installed (Oracle or OpenJDK) Easier with: an IDE: IntelliJ IDEA, Eclipse IDE, Apache NetBeans or VSCode a build automation tool: Apache Maven 3&#43; or Gradle 6&#43; A first example int n = 8; Model model = new Model(n &#43; &#34;-queens problem&#34;); IntVar[] vs = model.intVarArray(&#34;Q&#34;, n, 1, n); model.allDifferent(vs).post(); for(int i = 0; i &lt; n-1; i&#43;&#43;){ for(int j = i &#43; 1; j &lt; n; j&#43;&#43;){ model." />
+<meta property="og:description" content="Getting Started JRE 11&#43; installed (Oracle or OpenJDK) Easier with: an IDE: IntelliJ IDEA, Eclipse IDE, Apache NetBeans or VSCode a build automation tool: Apache Maven 3&#43; or Gradle 6&#43; A first example int n = 8; Model model = new Model(n &#43; &quot;-queens problem&quot;); IntVar[] vs = model.intVarArray(&quot;Q&quot;, n, 1, n); model.allDifferent(vs).post(); for(int i = 0; i &lt; n-1; i&#43;&#43;){ for(int j = i &#43; 1; j &lt; n; j&#43;&#43;){ model." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/020_install/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-01-26T08:38:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Getting Started JRE 11&#43; installed (Oracle or OpenJDK) Easier with: an IDE: IntelliJ IDEA, Eclipse IDE, Apache NetBeans or VSCode a build automation tool: Apache Maven 3&#43; or Gradle 6&#43; A first example int n = 8; Model model = new Model(n &#43; &#34;-queens problem&#34;); IntVar[] vs = model.intVarArray(&#34;Q&#34;, n, 1, n); model.allDifferent(vs).post(); for(int i = 0; i &lt; n-1; i&#43;&#43;){ for(int j = i &#43; 1; j &lt; n; j&#43;&#43;){ model.">
-<meta itemprop="dateModified" content="2024-01-26T08:38:21+01:00" />
+<meta itemprop="description" content="Getting Started JRE 11&#43; installed (Oracle or OpenJDK) Easier with: an IDE: IntelliJ IDEA, Eclipse IDE, Apache NetBeans or VSCode a build automation tool: Apache Maven 3&#43; or Gradle 6&#43; A first example int n = 8; Model model = new Model(n &#43; &quot;-queens problem&quot;); IntVar[] vs = model.intVarArray(&quot;Q&quot;, n, 1, n); model.allDifferent(vs).post(); for(int i = 0; i &lt; n-1; i&#43;&#43;){ for(int j = i &#43; 1; j &lt; n; j&#43;&#43;){ model.">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
 <meta itemprop="wordCount" content="96">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Getting Started JRE 11&#43; installed (Oracle or OpenJDK) Easier with: an IDE: IntelliJ IDEA, Eclipse IDE, Apache NetBeans or VSCode a build automation tool: Apache Maven 3&#43; or Gradle 6&#43; A first example int n = 8; Model model = new Model(n &#43; &#34;-queens problem&#34;); IntVar[] vs = model.intVarArray(&#34;Q&#34;, n, 1, n); model.allDifferent(vs).post(); for(int i = 0; i &lt; n-1; i&#43;&#43;){ for(int j = i &#43; 1; j &lt; n; j&#43;&#43;){ model."/>
+<meta name="twitter:description" content="Getting Started JRE 11&#43; installed (Oracle or OpenJDK) Easier with: an IDE: IntelliJ IDEA, Eclipse IDE, Apache NetBeans or VSCode a build automation tool: Apache Maven 3&#43; or Gradle 6&#43; A first example int n = 8; Model model = new Model(n &#43; &quot;-queens problem&quot;); IntVar[] vs = model.intVarArray(&quot;Q&quot;, n, 1, n); model.allDifferent(vs).post(); for(int i = 0; i &lt; n-1; i&#43;&#43;){ for(int j = i &#43; 1; j &lt; n; j&#43;&#43;){ model."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -70,6 +70,9 @@
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
@@ -111,21 +114,22 @@
       data-background-iframe="https://choco-solver.org/docs/getting-started/">
 <hr>
 <h2 id="a-first-example">A first example</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;-queens problem&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Q&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">allDifferent</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++){</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;-&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solution</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div>
+<pre><code class="language-java{|2|3|4-10|11-14}">int n = 8;
+Model model = new Model(n + &quot;-queens problem&quot;);
+IntVar[] vs = model.intVarArray(&quot;Q&quot;, n, 1, n);
+model.allDifferent(vs).post();
+for(int i  = 0; i &lt; n-1; i++){
+    for(int j = i + 1; j &lt; n; j++){
+        model.arithm(vs[i], &quot;!=&quot;, vs[j], &quot;-&quot;, j - i).post();
+        model.arithm(vs[i], &quot;!=&quot;, vs[j], &quot;+&quot;, j - i).post();
+    }
+}
+Solution solution = model.getSolver().findSolution();
+if(solution != null){
+    System.out.println(solution.toString());
+}
+</code></pre>
+
 </section>
 
 

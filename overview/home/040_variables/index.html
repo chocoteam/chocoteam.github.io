@@ -21,19 +21,19 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain,	to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the start time of various tasks Domains : the set of possible start time slots Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar, like IntAffineView BoolVar (BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least one value interval." />
+<meta property="og:description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/040_variables/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-01-26T08:38:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain,	to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the start time of various tasks Domains : the set of possible start time slots Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar, like IntAffineView BoolVar (BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least one value interval.">
-<meta itemprop="dateModified" content="2024-01-26T08:38:21+01:00" />
-<meta itemprop="wordCount" content="335">
+<meta itemprop="description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval.">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="357">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain,	to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the start time of various tasks Domains : the set of possible start time slots Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar, like IntAffineView BoolVar (BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least one value interval."/>
+<meta name="twitter:description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -72,6 +72,9 @@
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -101,15 +104,17 @@
 <h2>A variable </h2>
 <ul>
 <li class="fragment">is a symbolic representation of an <span style="color:deepskyblue;">unknown</span> quantity/decision,</li>
-<li class="fragment">comes with potential values that the solver can assign to it, a.k.a. its <span style="color:deepskyblue;">domain</span>,</li>	
+<li class="fragment">comes with potential values that the solver can assign to it, a.k.a. its <span style="color:deepskyblue;">domain</span>,</li>
 <li class="fragment">to be determined/<span style="color:deepskyblue;">assigned</span> during the problem-solving process.</li>
 </ul>
 <!--</section> to bind to the next section tag-->
 <hr>
 <h3 id="in-a-scheduling-problem">In a scheduling problem</h3>
 <ul>
-<li>Variables :  the start time of various tasks</li>
-<li>Domains : the set of possible start time slots</li>
+<li><span style="color:#3BAFDA">Variables</span>
+:  the start time of various tasks</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the set of possible start time slots</li>
 </ul>
 <figure>
     <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
@@ -117,8 +122,10 @@
 <hr>
 <h3 id="in-a-packing-problem">In a packing problem</h3>
 <ul>
-<li>Variables : the assignment of items to bins</li>
-<li>Domains : the set of possible bins</li>
+<li><span style="color:#3BAFDA">Variables</span>
+: the assignment of items to bins</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the set of possible bins</li>
 </ul>
 <figure>
     <img src="/images/overview/binpacking.svg" alt="" width="20%" >
@@ -126,8 +133,10 @@
 <hr>
 <h3 id="in-a-routing-problem">In a routing problem</h3>
 <ul>
-<li>Variables :  the start time of various tasks</li>
-<li>Domains : the set of possible start time slots</li>
+<li><span style="color:#3BAFDA">Variables</span>
+: the nodes visited on a tour</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the potential successors of each node</li>
 </ul>
 <figure>
     <img src="/images/overview/routing.svg" alt="" width="30%" >
@@ -136,8 +145,12 @@
 <h3 id="different-types-of-variables-are-available">Different types of variables are available:</h3>
 <ul>
 <li><code style='font-family: monospace;color:#05507D;'>IntVar</code> has its values in $\mathbb{Z}^1$</li>
-<li><code style='font-family: monospace;color:#05507D;'>IntView</code>s relies on an <code style='font-family: monospace;color:#05507D;'>IntVar</code>, like <code style='font-family: monospace;color:#05507D;'>IntAffineView</code></li>
-<li><code style='font-family: monospace;color:#05507D;'>BoolVar</code> (<code style='font-family: monospace;color:#05507D;'>BoolView</code>) has its values in {$0,1$}
+<li><code style='font-family: monospace;color:#05507D;'>IntView</code>s relies on an <code style='font-family: monospace;color:#05507D;'>IntVar</code>
+<ul>
+<li>like <code style='font-family: monospace;color:#05507D;'>IntAffineView</code></li>
+</ul>
+</li>
+<li><code style='font-family: monospace;color:#05507D;'>BoolVar</code> (and <code style='font-family: monospace;color:#05507D;'>BoolView</code>) has its values in {$0,1$}
 <ul>
 <li>sub-type of <code style='font-family: monospace;color:#05507D;'>IntVar</code></li>
 </ul>
@@ -145,57 +158,65 @@
 </ul>
 </br>
 </br>
-<small>$1$ : But it is always necessary to declare at least one value interval.</small>
+<small>$1$ : But it is always necessary to declare at least an interval.</small>
 <hr>
 <ul>
-<li><code style='font-family: monospace;color:#05507D;'>Task</code> to manage with task/interval</li>
+<li><code style='font-family: monospace;color:#05507D;'>Task</code> to manage with task/interval: $s+d = e$</li>
 <li><code style='font-family: monospace;color:#05507D;'>SetVar</code> and <code style='font-family: monospace;color:#05507D;'>SetView</code></li>
 <li><code style='font-family: monospace;color:#05507D;'>(Un)DirectedGraphVar</code> and  <code style='font-family: monospace;color:#05507D;'>GraphView</code></li>
-<li>and also <code style='font-family: monospace;color:#05507D;'>RealVar</code>.</li>
+<li>and also <code style='font-family: monospace;color:#05507D;'>RealVar</code></li>
 </ul>
 <hr>
 <h3 id="ways-to-declare-integer-variables">Ways to declare integer variables</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;y&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">ws</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;w&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><hr>
+<pre><code class="language-java{|2-3|4|5}">Model m = new Model();
+IntVar x = m.intVar(&quot;x&quot;, 0, 4);
+IntVar y = m.intVar(&quot;y&quot;, new int[]{1,3,5});
+IntVar[] vs = m.intVarArray(&quot;v&quot;, 4, 1, 3);
+IntVar[][] ws = m.intVarMatrix(&quot;w&quot;, 2, 2, 1, 2);
+</code></pre>
+<hr>
 <h3 id="ways-to-declare-boolean-variables">Ways to declare Boolean variables</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">bs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;bs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">bss</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;bss&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>Similar APIs for other types of variables.</p>
+<pre><code class="language-java{|2-3|4}">Model m = new Model();
+BoolVar b = m.boolVar(&quot;b&quot;);
+BoolVar[] bs = m.boolVarArray(&quot;bs&quot;, 10);
+BoolVar[][] bss = m.boolVarMatrix(&quot;bss&quot;, 4, 3);
+</code></pre>
+<p>Similar APIs for other types of variables.</p>
 <hr>
 <h3 id="some-views-declaration">Some views declaration</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>                        
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>               
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// v = 2.x - 3
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isEq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// b = (x == 2)     
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolNotView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// n = !b    
-</span></span></span></code></pre></div></br>
+<pre><code class="language-java{|3|4|5}">Model m = new Model();                        
+IntVar x = m.intVar(&quot;x&quot;, 0, 5);               
+IntVar v = m.intView(2, x, -3); // v = 2.x - 3
+BoolVar b = m.isEq(x, 2); // b = (x == 2)     
+BoolVar n = b.not(); // n = !b    
+</code></pre>
+</br>
 <p><small>And also <code style='font-family: monospace;color:#05507D;'>abs(x), mu(x, 2), neg(x), isLeq(x, 3),</code> &hellip;</small></p>
 <hr>
 <h3 id="reading-a-variable">Reading a variable</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>                                    
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>                           
-</span></span><span style="display:flex;"><span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Variable : %s = [%d, %d]\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span>           
-</span></span><span style="display:flex;"><span>        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">());</span>               
-</span></span><span style="display:flex;"><span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is %s instantiated\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span>              
-</span></span><span style="display:flex;"><span>        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isInstantiated</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">?</span> <span style="color:#4e9a06">&#34;&#34;</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;not&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>   
-</span></span></code></pre></div><p>outputs</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Variable : <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span>0, 4<span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>x is not instantiated   
-</span></span></code></pre></div><p><span class='fragment ' >Only once instantiated can the value be retrieved by calling <code>x.getValue()</code></span></p>
+<pre><code class="language-java{|4|6}">Model m = new Model();                                    
+IntVar x = m.intVar(&quot;x&quot;, 0, 4);                           
+System.out.printf(&quot;Variable : %s = [%d, %d]\n&quot;,           
+        x.getName(), x.getLB(), x.getUB());               
+System.out.printf(&quot;%s is %s instantiated\n&quot;,              
+        x.getName(), x.isInstantiated() ? &quot;&quot; : &quot;not&quot;);   
+</code></pre>
+<p>outputs</p>
+<pre><code class="language-shell{}">Variable : x = [0, 4]
+x is not instantiated   
+</code></pre>
+<p><span class='fragment ' >If instantiated, a variable can return its assignment value with <code>x.getValue()</code>.</span></p>
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex2">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>TODO</li>
-</ul>
+      data-background="#76bde8">
+<h3 id="abcde-x-4--edcba">ABCDE x 4 = EDCBA</h3>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=68997" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<p><small><em>This clickable logo indicates that a workshop is available at <a href="https://moodle.caseine.org/">Caseine</a></em> </small></p>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69633" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 
 </section>
 

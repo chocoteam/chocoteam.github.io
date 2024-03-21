@@ -91,6 +91,9 @@ window.MathJax = {
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -306,150 +309,157 @@ this solution was preferred to one based on an additional dependency.</p>
 </div>
 
 <p>If you still want to use this implementation, here is an example of its use:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">MiniSat</span> <span style="color:#000">sat</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">a</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">sat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">newVariable</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">sat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">newVariable</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">sat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addClause</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">makeLiteral</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">neg</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">makeLiteral</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)));</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Boolean</span> <span style="color:#000">ret</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">sat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>Alternatively, you can parse a CNF file:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">MiniSat</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parse</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;/path/to/instance.cnf&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Boolean</span> <span style="color:#000">ret</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>Now, if you want to mix SAT and CP, having access to the SAT solver might be helpful.</p>
+<pre><code class="language-java">MiniSat sat = new MiniSat();
+int a = sat.newVariable();
+int b = sat.newVariable();
+sat.addClause(MiniSat.makeLiteral(a), MiniSat.neg(MiniSat.makeLiteral(b)));
+MiniSat.Boolean ret = sat.solve();
+</code></pre>
+<p>Alternatively, you can parse a CNF file:</p>
+<pre><code class="language-java">MiniSat solver = new MiniSat();
+solver.parse(&quot;/path/to/instance.cnf&quot;);
+MiniSat.Boolean ret = solver.solve();
+</code></pre>
+<p>Now, if you want to mix SAT and CP, having access to the SAT solver might be helpful.</p>
 <h3 id="binding-cp-variables-to-sat-variables">Binding CP variables to SAT variables</h3>
 <p>Facilities are given to link a <code>BoolVar</code> to its equivalent on the SAT side.
 This is achieved using <code>satVar()</code> API.
 Calling this method on an instance of <code>BoolVar</code> will create (or return) the
 variable in the SAT solver attached to a <code>Solver</code> and return its id (an <code>int</code>).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span> <span style="color:#000">a</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;a&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sa</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">satVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">satVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>Then, it is possible to declare a clause using these SAT variables.
+<pre><code class="language-java">Model model  = new Model();
+BoolVar a = m.boolVar(&quot;a&quot;);
+BoolVar b = m.boolVar(&quot;b&quot;);
+int sa = a.satVar();
+int sb = b.satVar();
+</code></pre>
+<p>Then, it is possible to declare a clause using these SAT variables.
 However, this requires the positive (<code>lit(sb)</code>) and negative (<code>neg(sa)</code>) literals to be entered.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// a is true implies b is true (a is false or b is true)
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addClause</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">neg</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sa</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lit</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sb</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span></code></pre></div><p>One can also want to bind an integer variable to SAT variable.
+<pre><code class="language-java">// a is true implies b is true (a is false or b is true)
+model.addClause(model.neg(sa), model.lit(sb));
+</code></pre>
+<p>One can also want to bind an integer variable to SAT variable.
 In that case, a relationship is needed; this is achieved thanks to some binary relational expression:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sc</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">satVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sd</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">le</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">satVar</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// c is equal to 2 and d is less than or equal to 3
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addClause</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">neg</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sc</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lit</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sd</span><span style="color:#ce5c00;font-weight:bold">))</span>
-</span></span></code></pre></div><p>This can also be achieved by using views and reifications.</p>
+<pre><code class="language-java">Model model  = new Model();
+IntVar c = m.intVar(&quot;c&quot;, 1, 3);
+IntVar d = m.intVar(&quot;d&quot;, 2, 4);
+int sc = c.eq(2).satVar();
+int sd = d.le(3).satVar();
+// c is equal to 2 and d is less than or equal to 3
+model.addClause(model.neg(sc), model.lit(sd))
+</code></pre>
+<p>This can also be achieved by using views and reifications.</p>
 <h4 id="go-off-the-beaten-track">Go off the beaten track</h4>
 <p>It is also possible to declare its own links, by implementing the <code>Literalizer</code> interface.
 Doing so, it is possible to bind manually a relationship to a SAT variable:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">e</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;e&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{},</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// link the membership of the value 2 to the set e
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">se</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">satVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">SetInLit</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// then declare clauses
-</span></span></span></code></pre></div><p>where <code>SetInLit</code> is defined as:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.sat.MiniSat.sgn</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import static</span> <span style="color:#000">org.chocosolver.sat.MiniSat.var</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">SetInLit</span> <span style="color:#204a87;font-weight:bold">implements</span> <span style="color:#000">Literalizer</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">SetVar</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">satVar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">SetInLit</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">SetVar</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">cpVar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">satVar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * Set the SAT variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">svar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">svar</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">satVar</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">satVar</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">svar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">throw</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">UnsupportedOperationException</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Overriding Literalizer&#39;s satVar is forbidden&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @return this SAT variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">svar</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">satVar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @return this CP variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">Variable</span> <span style="color:#000">cvar</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**                                                 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @return {@code true} if this will fix its literal
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>                                                 
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">canReact</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">contains</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">contains</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**                                                     
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * Turns an event into a literal and returns it.        
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     *                                                      
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @return the literal to enqueue in SAT                
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>                                                     
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">toLit</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">MiniSat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">makeLiteral</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">satVar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">contains</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**                                                                                                      
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * Turns an event from SAT side (in the form of a literal) to an event in CP side.                       
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * Actually, it is expected that the event is directly applied, that&#39;s why a contradiction may be thrown.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     *                                                                                                       
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @param lit   the literal                                                                              
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @param cause cause (for CP propagation purpose)                                                       
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @return {@code true} if the CP variable has been modified                                             
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @throws ContradictionException if the conversion leads to a failure                                   
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>                                                                                                      
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">toEvent</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">lit</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ICause</span> <span style="color:#000">cause</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">satVar</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">lit</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sgn</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">lit</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">force</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">cause</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">remove</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">cause</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/**                                                 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     * @return {@code true} if this relationship holds
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     */</span>                                                 
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">check</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">sign</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">sign</span> <span style="color:#ce5c00;font-weight:bold">?</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">contains</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">contains</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">equals</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Object</span> <span style="color:#000">o</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">o</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(!(</span><span style="color:#000">o</span> <span style="color:#204a87;font-weight:bold">instanceof</span> <span style="color:#000">SetInLit</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">SetInLit</span> <span style="color:#000">setInLit</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">SetInLit</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">o</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">setInLit</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">val</span> <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> <span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">equals</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">setInLit</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">cpVar</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">hashCode</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">Objects</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">hash</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cpVar</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div>
+<pre><code class="language-java">Model model  = new Model();
+IntVar e = m.setVar(&quot;e&quot;, new int[]{}, new int[]{1,2,3});
+// link the membership of the value 2 to the set e
+int se = model.satVar(v, new SetInLit(s, 2));
+// then declare clauses
+</code></pre>
+<p>where <code>SetInLit</code> is defined as:</p>
+<pre><code class="language-java">import static org.chocosolver.sat.MiniSat.sgn;
+import static org.chocosolver.sat.MiniSat.var;
+
+class SetInLit implements Literalizer {
+    public final SetVar cpVar;
+    public final int val;
+    public int satVar;
+
+    public SetInLit(SetVar cpVar, int val) {
+        this.cpVar = cpVar;
+        this.val = val;
+        this.satVar = -1;
+    }
+
+    /**
+     * Set the SAT variable
+     */
+    @Override
+    public void svar(int svar) {
+        if (satVar == -1) {
+            this.satVar = svar;
+        } else {
+            throw new UnsupportedOperationException(&quot;Overriding Literalizer's satVar is forbidden&quot;);
+        }
+    }
+
+    /**
+     * @return this SAT variable
+     */
+    @Override
+    public int svar() {
+        return satVar;
+    }
+
+    /**
+     * @return this CP variable
+     */
+    @Override
+    public Variable cvar() {
+        return cpVar;
+    }
+
+    /**                                                 
+     * @return {@code true} if this will fix its literal
+     */                                                 
+    @Override
+    public boolean canReact() {
+        return cpVar.getLB().contains(val) || !cpVar.getUB().contains(val);
+    }
+
+    /**                                                     
+     * Turns an event into a literal and returns it.        
+     *                                                      
+     * @return the literal to enqueue in SAT                
+     */                                                     
+    @Override
+    public int toLit() {
+        return MiniSat.makeLiteral(satVar, cpVar.getLB().contains(val));
+    }
+
+    /**                                                                                                      
+     * Turns an event from SAT side (in the form of a literal) to an event in CP side.                       
+     * Actually, it is expected that the event is directly applied, that's why a contradiction may be thrown.
+     *                                                                                                       
+     * @param lit   the literal                                                                              
+     * @param cause cause (for CP propagation purpose)                                                       
+     * @return {@code true} if the CP variable has been modified                                             
+     * @throws ContradictionException if the conversion leads to a failure                                   
+     */                                                                                                      
+    @Override
+    public boolean toEvent(int lit, ICause cause) throws ContradictionException {
+        assert satVar == var(lit);
+        if (sgn(lit)) {
+            return cpVar.force(val, cause);
+        } else {
+            return cpVar.remove(val, cause);
+        }
+    }
+
+    /**                                                 
+     * @return {@code true} if this relationship holds
+     */                                                 
+    @Override
+    public boolean check(boolean sign) {
+        return sign ? cpVar.getLB().contains(val) : !cpVar.getUB().contains(val);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SetInLit)) return false;
+        SetInLit setInLit = (SetInLit) o;
+        return val == setInLit.val &amp;&amp; cpVar.equals(setInLit.cpVar);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cpVar, val);
+    }
+}
+</code></pre>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">

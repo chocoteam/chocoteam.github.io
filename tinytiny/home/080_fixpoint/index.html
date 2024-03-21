@@ -22,27 +22,27 @@
 
 <title>Choco-solver</title><meta property="og:title" content="" />
 <meta property="og:description" content="Many constraints of the same type
-variables = {&#34;x1&#34;: {1, 2, 3}, &#34;x2&#34;: {1, 2, 3}, &#34;x3&#34;: {1, 2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) c2 = LessThan(&#34;x2&#34;, &#34;x3&#34;) We will create a method to iterate on the constraints:
-def fix_point(variables, constraints): for c in constraints: if c.filter(variables) is False: return False return True A call to this method will replace the first line of the enumerate(_,_) function:
-def enumerate(variables, constraints): # if constraint." />
+variables = {&quot;x1&quot;: {1, 2, 3}, &quot;x2&quot;: {1, 2, 3}, &quot;x3&quot;: {1, 2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;) We need to adapt the dfs(_,_) function:
+def dfs(variables, constraints): # if constraint.filter(variables) is False: if not fix_point(variables, constraints): return 0 # at least one constraint is not satisfied # ... and ensure that a fix point is reached.
+Fixpoint reasoning Iteratively applying constraint propagation until no more improvements are possible or a failure is detected." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/080_fixpoint/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Many constraints of the same type
-variables = {&#34;x1&#34;: {1, 2, 3}, &#34;x2&#34;: {1, 2, 3}, &#34;x3&#34;: {1, 2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) c2 = LessThan(&#34;x2&#34;, &#34;x3&#34;) We will create a method to iterate on the constraints:
-def fix_point(variables, constraints): for c in constraints: if c.filter(variables) is False: return False return True A call to this method will replace the first line of the enumerate(_,_) function:
-def enumerate(variables, constraints): # if constraint.">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="310">
+variables = {&quot;x1&quot;: {1, 2, 3}, &quot;x2&quot;: {1, 2, 3}, &quot;x3&quot;: {1, 2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;) We need to adapt the dfs(_,_) function:
+def dfs(variables, constraints): # if constraint.filter(variables) is False: if not fix_point(variables, constraints): return 0 # at least one constraint is not satisfied # ... and ensure that a fix point is reached.
+Fixpoint reasoning Iteratively applying constraint propagation until no more improvements are possible or a failure is detected.">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="281">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Many constraints of the same type
-variables = {&#34;x1&#34;: {1, 2, 3}, &#34;x2&#34;: {1, 2, 3}, &#34;x3&#34;: {1, 2, 3}} c1 = LessThan(&#34;x1&#34;, &#34;x2&#34;) c2 = LessThan(&#34;x2&#34;, &#34;x3&#34;) We will create a method to iterate on the constraints:
-def fix_point(variables, constraints): for c in constraints: if c.filter(variables) is False: return False return True A call to this method will replace the first line of the enumerate(_,_) function:
-def enumerate(variables, constraints): # if constraint."/>
+variables = {&quot;x1&quot;: {1, 2, 3}, &quot;x2&quot;: {1, 2, 3}, &quot;x3&quot;: {1, 2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;) We need to adapt the dfs(_,_) function:
+def dfs(variables, constraints): # if constraint.filter(variables) is False: if not fix_point(variables, constraints): return 0 # at least one constraint is not satisfied # ... and ensure that a fix point is reached.
+Fixpoint reasoning Iteratively applying constraint propagation until no more improvements are possible or a failure is detected."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -81,6 +81,9 @@ def enumerate(variables, constraints): # if constraint."/>
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -106,85 +109,147 @@ def enumerate(variables, constraints): # if constraint."/>
 <section data-shortcode-section>
 <h1 id="many-constraints">Many constraints</h1>
 <p>of the same type</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><hr>
-<p>We will create a method to iterate on the constraints:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">True</span>
-</span></span></code></pre></div><hr>
-<p>A call to this method will replace the first line of the <code>enumerate(_,_)</code> function:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># if constraint.filter(variables) is False:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#8f5902;font-style:italic"># at least one constraint is not satisfied</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># ...        </span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#000;font-weight:bold">}),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>outputs:</p>
-<pre tabindex="0"><code>{&#39;x1&#39;: [1], &#39;x2&#39;: [2], &#39;x3&#39;: [3]}
-it finds 1 solutions
-</code></pre><hr>
-<h3 id="does-fix_point__-work-properly">Does <code>fix_point(_,_)</code> work properly?</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#000;font-weight:bold">})</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>goes:</p>
-<pre tabindex="0"><code>{&#39;x1&#39;: [1, 2], &#39;x2&#39;: [2], &#39;x3&#39;: [3]}
-</code></pre><h3 id="p-classfragmentno-it-doesntp"><p class="fragment">No, it doesn&rsquo;t</p></h3>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+</code></pre>
 <hr>
-<p>Indeed:</p>
-<ol>
-<li><code>c1</code> is called first and bounds <code>&quot;x1&quot;</code> and <code>&quot;x2&quot;</code>,</li>
-<li><code>c2</code> is called and bounds <code>&quot;x2&quot;</code> and  <code>&quot;x3&quot;</code>,</li>
-<li>and the loops ends.</li>
-</ol>
-<p>But <code>c1</code> wasn&rsquo;t <em>informed</em> that <code>&quot;x2&quot;</code> was modified by <code>c2</code>.</p>
+<p>We need to adapt the <code>dfs(_,_)</code> function:</p>
+<pre><code class="language-python{2-4}">def dfs(variables, constraints):
+    # if constraint.filter(variables) is False:
+    if not fix_point(variables, constraints):
+        return 0 # at least one constraint is not satisfied
+    # ...        
+</code></pre>
+<p>and ensure that a <span style="color:#3BAFDA">fix point</span>
+is reached.</p>
 <hr>
+<h2 id="fixpoint-reasoning">Fixpoint reasoning</h2>
+<p>Iteratively applying constraint propagation until
+</br>no more improvements are possible
+</br> or a failure is detected.</p>
 <p>So, as long as a constraint filters values,</br>
 <b><u>all</u></b> the other ones must be checked.</p>
-</br>
-<p class="fragment">
-<small>💡 This could be refined.</small>
-</p>
+<p><small>🚀 This could be refined.</small></p>
 <hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">while</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fltrs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">c</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">constraints</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">flt</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">flt</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># in case of failure</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">elif</span> <span style="color:#000">flt</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># in case of filtering</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">fltrs</span> <span style="color:#ce5c00;font-weight:bold">|=</span> <span style="color:#204a87;font-weight:bold">True</span> <span style="color:#8f5902;font-style:italic"># keep on looping </span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#000">fltrs</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># to break the while-loop</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">True</span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x3&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">fix_point</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#000;font-weight:bold">})</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>now prints:</p>
-<pre tabindex="0"><code>{&#39;x1&#39;: [1], &#39;x2&#39;: [2], &#39;x3&#39;: [3]}
+<table>
+          <thead>
+            <tr>
+              <th>step</th>
+              <th>x1</th>
+              <th>x2</th>
+              <th>x3</th>
+              <th>To check</th>
+              <th>Consistent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>[1,3]</td>
+              <td>[1,3]</td>
+              <td>[1,3]</td>
+              <td>{c1,c2}</td>
+              <td>{}</td>
+            </tr>
+            <tr class="fragment">
+              <td>1</td>
+              <td>[1,<span style="color:#3BAFDA">2</span>]</td>
+              <td>[<span style="color:#3BAFDA">2</span>,3]</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c1</span>,c2}</td>
+              <td>{}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{c2}</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>2</td>
+              <td>-</td>
+              <td>[2,<span style="color:#3BAFDA">2</span>]</td>
+              <td>[<span style="color:#3BAFDA">3</span>,3]</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+              <td>{c1}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{<span style="color:#ED5565">c1</span>}</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>3</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+              <td>{c2}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{}</td>
+              <td>{<span style="color:#3BAFDA">c1</span>,c2}</td>
+            </tr>
+          </tbody>
+        </table>
+<hr>
+<p>We will create a method to iterate on the constraints:</p>
+<pre><code class="language-python">def fix_point(variables, constraints):
+    &quot;&quot;&quot;Reach a fix point.
+    If a failure is raised, returns False,
+    otherwise guarantees that all events are propagated.
+    &quot;&quot;&quot;
 </code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69914" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<hr>
+<pre><code class="language-python">def fix_point(variables, constraints):
+    while True:
+        fltrs = False
+        for c in constraints:
+            flt = c.filter(variables)
+            if flt is False: # in case of failure
+                return False
+            elif flt is True: # in case of filtering
+                fltrs |= True # keep on looping
+        if not fltrs : # to break the while-loop
+            return True
+</code></pre>
+<hr>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+fix_point(variables, {c1, c2})
+print(variables)
+</code></pre>
+<p>outputs:</p>
+<pre><code>{'x1': [1], 'x2': [2], 'x3': [3]}
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp6">
+<h2 id="-propagation-engine">🚀 Propagation engine</h2>
+<ul>
+<li>Event-based reasoning, advisors, watch literals</li>
+<li>Scheduling and propagating</li>
+<li>Variable-oriented or Constraint-oriented</li>
+<li>Iterating on constraints by considering their complexity</li>
+</ul>
+
 </section>
 
 

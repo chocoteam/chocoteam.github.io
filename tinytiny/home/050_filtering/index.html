@@ -21,37 +21,31 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Filtering is not enough Indeed, we remove impossible values
-but no variable is instantiated
-and no solution is built.
-And we can’t do more filtering.
+<meta property="og:description" content="Filtering is not enough It didn&rsquo;t build a solution
+although all impossible values were removed
 It seems that we need to dive into the
-search space 🤿 Since we need variables to take single value, we can:
-select an uninstantiated variable (e.g., the first) pick a value in its domain (e.g., the lower bound) fix the domain of the selected variable to the selected value and see what is going on !" />
+search space 🤿 in a DFS way.
+Adapting the DFS If all variables are fixed, stop the search If inconsistency detected, then backtrack Expand the tree by making a decision$^*$ *: 2-way branching Expand the tree = create a decision or refute the last one Two way decision = more flexible but n-way possible The search space can be seen as a tree where a node corresponds to a decision (here I labeled edge for clarity reason) and a leaf is either a solution or a dead-end." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/050_filtering/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Filtering is not enough Indeed, we remove impossible values
-but no variable is instantiated
-and no solution is built.
-And we can’t do more filtering.
+<meta itemprop="description" content="Filtering is not enough It didn&rsquo;t build a solution
+although all impossible values were removed
 It seems that we need to dive into the
-search space 🤿 Since we need variables to take single value, we can:
-select an uninstantiated variable (e.g., the first) pick a value in its domain (e.g., the lower bound) fix the domain of the selected variable to the selected value and see what is going on !">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="516">
+search space 🤿 in a DFS way.
+Adapting the DFS If all variables are fixed, stop the search If inconsistency detected, then backtrack Expand the tree by making a decision$^*$ *: 2-way branching Expand the tree = create a decision or refute the last one Two way decision = more flexible but n-way possible The search space can be seen as a tree where a node corresponds to a decision (here I labeled edge for clarity reason) and a leaf is either a solution or a dead-end.">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="112">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Filtering is not enough Indeed, we remove impossible values
-but no variable is instantiated
-and no solution is built.
-And we can’t do more filtering.
+<meta name="twitter:description" content="Filtering is not enough It didn&rsquo;t build a solution
+although all impossible values were removed
 It seems that we need to dive into the
-search space 🤿 Since we need variables to take single value, we can:
-select an uninstantiated variable (e.g., the first) pick a value in its domain (e.g., the lower bound) fix the domain of the selected variable to the selected value and see what is going on !"/>
+search space 🤿 in a DFS way.
+Adapting the DFS If all variables are fixed, stop the search If inconsistency detected, then backtrack Expand the tree by making a decision$^*$ *: 2-way branching Expand the tree = create a decision or refute the last one Two way decision = more flexible but n-way possible The search space can be seen as a tree where a node corresponds to a decision (here I labeled edge for clarity reason) and a leaf is either a solution or a dead-end."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -90,6 +84,9 @@ select an uninstantiated variable (e.g., the first) pick a value in its domain (
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -115,134 +112,140 @@ select an uninstantiated variable (e.g., the first) pick a value in its domain (
 <section data-shortcode-section>
 <h1 id="filtering-is-not-enough">Filtering is not enough</h1>
 <hr>
-<p>Indeed, we remove impossible values</p>
-<p><span class='fragment ' >but no variable is <u>instantiated</u></span></p>
-<p><span class='fragment ' >and no solution is built.</span></p>
-<p><span class='fragment ' >And we can’t do more filtering.</span></p>
+<p>It didn&rsquo;t build a solution</p>
+<p><span class='fragment ' >although all impossible values were removed</span></p>
 <hr>
 <p>It seems that we need to dive into the</p>
 <h3 id="search-space-">search space 🤿</h3>
+<p>in a DFS way.</p>
 <hr>
-<p>Since we need variables to take <u>single value</u>, we can:</p>
-<pre tabindex="0"><code class="language-AsciiDoc" data-lang="AsciiDoc">select an uninstantiated variable (e.g., the first)
-pick a value in its domain (e.g., the lower bound)
-fix the domain of the selected variable to the selected value
-and see what is going on !
-</code></pre><hr>
-<p>We created our first <strong>decision</strong>!</p>
-<p><span class='fragment ' >Wait, one decision may not be enough…</span></p>
-<p><span class='fragment ' >… but still, we defined an <em>enumeration strategy</em> 🥳</span></p>
+<h2 id="adapting-the-dfs">Adapting the DFS</h2>
+<ul>
+<li>If all variables are fixed, stop the search</li>
+<li>If inconsistency detected, then <span style="color:#ED5565">backtrack</span></li>
+<li>Expand the tree by making a <span style="color:#ED5565">decision$^*$</span></li>
+</ul>
+</br>
+</br>
+<small>*: 2-way branching</small>
+<aside class="notes"><ul>
+<li>Expand the tree = create a decision or refute the last one</li>
+<li>Two way decision = more flexible but n-way possible</li>
+</ul>
+</aside>
 <hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    Return a couple (var, val) where 
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    &#39;var&#39; is the name of the first unfixed variable and
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    &#39;val&#39; its lower bound.
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    If no such free variable exists, return None
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">None</span>
-</span></span></code></pre></div><h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69652" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
-<hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># find a variable with at least two values in its domain</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">dom</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">next</span><span style="color:#000;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">lambda</span> <span style="color:#000">x</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">])</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">()),</span> 
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">))</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">var</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># it true, returns the decision</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dom</span><span style="color:#000;font-weight:bold">))</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># otherwise, all variables are instantiated</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">None</span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#...</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># take a first decision</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">dec</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span> <span style="color:#000">dec</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># if a decision exists</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">dec</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># then fix the selected variable to the selected value</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># call the constraint to filter impossible values</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">c1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># take another decision</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">dec</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Solution found: &#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><hr>
-<h2 id="what-if">What if&hellip;</h2>
-<p>we want to find another solution?</p>
-<p>Or enumerate all solutions?</p>
+<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+<aside class="notes"><p>The search space can be seen as a tree
+where a node corresponds to a decision (here I labeled edge for clarity reason)
+and a leaf is either a solution or a dead-end.</p>
+</aside>
 <hr>
 <section data-noprocess>
+<h2>Backtracking</h2
 <p>For this, we need <span style="color:deepskyblue;">to retrieve the state of the domains</span> before a decision is applied.</p>
 <p><span class="fragment">And therefore it must have been registered beforehand.</span></p>
 <p><span class="fragment">And we must be able to rebut a decision.</span></p>
 <hr>
-<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+<h2 id="search-strategy">Search strategy</h2>
+<p>How to select the next decision to apply?</p>
+<pre><code class="language-AsciiDoc{1|2|3|}">select an uninstantiated variable
+pick a value in its domain (e.g., the lower bound)
+</code></pre>
 <hr>
 <h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
 <p>Let&rsquo;s break down the needs into 4 functions.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">pass</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">copy_domains</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">pass</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">propagate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">apply</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">pass</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">pass</span>
-</span></span></code></pre></div><h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69653" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<pre><code class="language-python">def make_decision(variables):``
+    pass
+
+def copy_domains(variables):
+    pass
+
+def apply_decision(variables, var, val, apply, constraint):
+    pass
+
+def enumerate(variables, constraint):
+    pass
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69653" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 <hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># find a variable with at least two values in its domain</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">dom</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">next</span><span style="color:#000;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">lambda</span> <span style="color:#000">x</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">])</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">()),</span> 
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">))</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">var</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># it true, returns the decision</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">dom</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># otherwise, all variables are instantiated</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">None</span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">copy_domains</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># returns a deep copy of the dictionnary</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">dom</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">copy</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">dom</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">()}</span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">propagate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">apply</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># makes a backup of the variables</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">c_variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">copy_domains</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># applies the decision or rebuts is</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">c_variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">x</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">x</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">c_variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">var</span><span style="color:#000;font-weight:bold">]</span> \
-</span></span><span style="display:flex;"><span>				<span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">apply</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">c_variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">make_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">var</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#8f5902;font-style:italic"># prints the solution</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">propagate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">propagate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">n</span>
-</span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;There are&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>should output:</p>
-<pre tabindex="0"><code>{&#39;x1&#39;: [1], &#39;x2&#39;: [2]}
-{&#39;x1&#39;: [1], &#39;x2&#39;: [3]}
-{&#39;x1&#39;: [2], &#39;x2&#39;: [3]}
+<pre><code class="language-python{1|2|3|4-6|7-10|11|}">def dfs(variables, constraint):
+  constraint.filter(variables)
+  dec = make_decision(variables)
+  if dec is None:
+      print(variables)  # prints the solution
+      return 1
+  else:
+      var, val = dec
+      n = apply_decision(variables, var, val, True, constraint)
+      n += apply_decision(variables, var, val, False, constraint)
+  return n
+</code></pre>
+<hr>
+<pre><code class="language-python{2-4|5-7|8-10}">def make_decision(variables):
+    var, dom = next(
+        filter(lambda x: len(x[1]) &gt; 1, variables.items()),
+        (None, None))
+    if var is not None:
+        # if true, returns the decision
+        return (var, min(dom))
+    else:
+        # otherwise, all variables are instantiated
+        return None
+</code></pre>
+<hr>
+<pre><code class="language-python{}">def copy_domains(variables):
+    # returns a deep copy of the dictionnary
+    return {var: dom.copy() for var, dom in variables.items()}
+</code></pre>
+<hr>
+<pre><code class="language-python{1|2-3|4-6|7-8|}">def apply_decision(variables, var, val, apply, constraint):
+  # copy the domains
+  c_variables = copy_domains(variables)
+  # applies the decision or rebuts is
+  c_variables[var] = {x for x in c_variables[var] \
+                      if apply is (x == val)}
+  # explore the sub-branch
+  return dfs(c_variables, constraint)
+</code></pre>
+<hr>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+
+print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<p>should output:</p>
+<pre><code>{'x1': {1}, 'x2': {2}}
+{'x1': {1}, 'x2': {3}}
+{'x1': {2}, 'x2': {3}}
 There are 3 solutions
-</code></pre><hr>
+</code></pre>
+<hr>
 <h1 id="we-did-it-">We did it !</h1>
 <p>Well almost, but still you can pat yourself back !</p>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp2">
+<h2 id="-managing-backups">🚀 Managing backups</h2>
+<p><small>📄&quot;Comparing trailing and copying for constraint programming&quot;, C. Schulte, ICLP'99.</small></p>
+<ul>
+<li><strong>Copying</strong>: An identical copy of S is created before S is changed.</li>
+<li><strong>Trailing</strong>: Changes to S are recorded such that they can be undone later.</li>
+<li><strong>Recomputation</strong>: If needed, S is recomputed from scratch.</li>
+<li><strong>Adaptive recomputation</strong>: Compromise between Copying and Recomputation.</li>
+</ul>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp3">
+<h2 id="-making-decisions">🚀 Making decisions</h2>
+<ul>
+<li>Dynamic criteria for variable selection</li>
+<li>And value selection (<em>min</em>, <em>max</em>, <em>mid</em>, <em>rnd</em>)</li>
+<li>Different operators ($=, \neq, \leq, \geq$)</li>
+<li>Depth-first, limited-discrepancy, large neighborhood</li>
+</ul>
 
 </section>
 

@@ -71,6 +71,9 @@
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -250,8 +253,9 @@
 	</header>
 	<p>In addition to the modelling language, Choco-solver can parse files in <a href="https://xcsp.org/competitions/">XCSP3</a>, <a href="https://www.minizinc.org/">MiniZinc (flatzinc)</a> and <a href="https://jix.github.io/varisat/manual/0.2.0/formats/dimacs.html">DIMACS</a> formats.</p>
 <p>The standard practice is to call the choco JAR directly with the instance as an argument, such as:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar choco-parsers-4.10.13-light.jar /path/to/the/instance
-</span></span></code></pre></div><p>XCSP3 and DIMACS files do not require any preliminary steps and can therefore be read and resolved directly.
+<pre><code class="language-bash">java -jar choco-parsers-4.10.13-light.jar /path/to/the/instance
+</code></pre>
+<p>XCSP3 and DIMACS files do not require any preliminary steps and can therefore be read and resolved directly.
 Instructions can be founds <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/XCSP3.md">here</a> and <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/DIMACS.md">here</a>.</p>
 <p>But MiniZinc models must be turned into Flatzinc models with the right set of constraints, the ones supported by Choco-solver.
 The easiest way, in that case, is to rely on MinizincIDE and add Choco-solver as additional solver.

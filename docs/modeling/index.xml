@@ -1736,13 +1736,14 @@ Consider $X_i = [\![0,99]\!], i \in [1,3]$, and the following relationship:&lt;/
 &lt;li&gt;&lt;em&gt;else if $X_1 = 3$ then $X_2 = 2$ and $X_3 = 1$.&lt;/em&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The allowed tuples are:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{0, 0, 0}
+&lt;pre&gt;&lt;code&gt;{0, 0, 0}
 {0, 0, 1}
 ...
 {0, 0, 98}
 {0, 0, 99}
 {3, 2, 1}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture &lt;em&gt;$X_3$ can take any value&lt;/em&gt;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture &lt;em&gt;$X_3$ can take any value&lt;/em&gt;.
 It&amp;rsquo;s a use case of universal value.
  
 
@@ -2120,8 +2121,9 @@ If necessary, it creates intermediary variable and posts intermediary constraint
 &lt;h4 class=&#34;alert-heading&#34;&gt;Alert&lt;/h4&gt;
 
     &lt;p&gt;The following operators are not supported by &lt;code&gt;equation()&lt;/code&gt; and should be declared in &lt;a href=&#34;https://choco-solver.org/docs/advanced-usages/ibex/&#34;&gt;Ibex&lt;/a&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pow, atan2, ln, tan, acos, asin, atan, cosh, sinh, tanh, acosh, asinh, atanh 
+&lt;pre&gt;&lt;code&gt;pow, atan2, ln, tan, acos, asin, atan, cosh, sinh, tanh, acosh, asinh, atanh 
 &lt;/code&gt;&lt;/pre&gt;
+
 
 &lt;/div&gt;
 
@@ -2319,8 +2321,9 @@ If necessary, it creates intermediary variable and posts intermediary constraint
 &lt;h4 class=&#34;alert-heading&#34;&gt;Alert&lt;/h4&gt;
 
     &lt;p&gt;The following operators are not supported by &lt;code&gt;equation()&lt;/code&gt; and should be declared in &lt;a href=&#34;https://choco-solver.org/docs/advanced-usages/ibex/&#34;&gt;Ibex&lt;/a&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pow, atan2, ln, tan, acos, asin, atan, cosh, sinh, tanh, acosh, asinh, atanh 
+&lt;pre&gt;&lt;code&gt;pow, atan2, ln, tan, acos, asin, atan, cosh, sinh, tanh, acosh, asinh, atanh 
 &lt;/code&gt;&lt;/pre&gt;
+
 
 &lt;/div&gt;
 

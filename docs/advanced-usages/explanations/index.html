@@ -91,6 +91,9 @@ window.MathJax = {
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -346,8 +349,9 @@ Decisions from the current one to the return decision (excluded) are erased.
 Then, the signed-clause is added to the constraint network and automatically dominates decision refutation; then the search goes on.
 If the explanation jumps back to the root node, the problem is proven to have no solution and search stops.</p>
 <p><strong>API</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLearningSignedClauses</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><ul>
+<pre><code class="language-java">solver.setLearningSignedClauses();
+</code></pre>
+<ul>
 <li><em>solver</em>: the solver to explain.</li>
 </ul>
 <p>See Settings to configure learning algorithm.</p>

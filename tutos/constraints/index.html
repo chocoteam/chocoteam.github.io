@@ -91,6 +91,9 @@ window.MathJax = {
         <a class="nav-link active" href="/tutos/"><span class="active">Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -396,22 +399,23 @@ itself.
 </div>
 
 <p>The entailment method can be implemented as is:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">ESat</span> <span style="color:#000">isEntailed</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TRUE</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">FALSE</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">UNDEFINED</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="filtering-algorithm">Filtering algorithm</h3>
+<pre><code class="language-java">Override
+public ESat isEntailed() {
+   int sumUB = 0, sumLB = 0;
+   for (int i = 0; i &lt; vars.length; i++) {
+       sumLB += vars[i].getLB();
+       sumUB += vars[i].getUB();
+   }
+   if (sumUB &lt;= b) {
+       return ESat.TRUE;
+   }
+   if (sumLB &gt; b) {
+       return ESat.FALSE;
+   }
+   return ESat.UNDEFINED;
+}
+</code></pre>
+<h3 id="filtering-algorithm">Filtering algorithm</h3>
 <p>A propagator&rsquo;s first objective is to remove, from its variables domain,
 values that cannot belong to any solutions. This is the role of the
 propagate(int m) method. This method bases its deductions on the current
@@ -447,25 +451,26 @@ $F &lt; 0$ an exception should be thrown. In other cases, the methods that
 modify the variables domain can thrown such an exception too, when for
 example, the domain becomes empty.</p>
 <p>The filtering method can be implemented as is:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">sumLB</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fails</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">lb</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>The parameter of the method is ignored for now. On line 9, since the
+<pre><code class="language-java">@Override
+public void propagate(int evtmask) throws ContradictionException {
+    int sumLB = 0;
+    for (int i  = 0; i &lt; vars.length; i++) {
+        sumLB += vars[i].getLB();
+    }
+    int F = b - sumLB;
+    if (F &lt; 0) {
+        fails();
+    }
+    for (int i  = 0; i &lt; vars.length; i++) {
+        int lb = vars[i].getLB();
+        int ub = vars[i].getUB();
+        if (ub - lb &gt; F) {
+            vars[i].updateUpperBound(F + lb, this);
+        }
+    }
+}
+</code></pre>
+<p>The parameter of the method is ignored for now. On line 9, since the
 condition of unsatisfaction is met, a <code>ContradictionException</code> is thrown
 by calling <code>fails()</code>. On line 16, the $i^{th}$ variable upper bound is
 updated. If the new value is greater or equal to than the current upper
@@ -517,11 +522,12 @@ of all type of modifications.</p>
 <p>In our case, nothing can be done on value removal nor on upper bound
 modification. Thus, the following method can be override (note that is
 optional but leads to better performances):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">getPropagationConditions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">combine</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INSTANTIATE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INCLOW</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Note that this method is called statically on each of its variables
+<pre><code class="language-java">@Override
+public int getPropagationConditions(int vIdx) {
+    return IntEventType.combine(IntEventType.INSTANTIATE, IntEventType.INCLOW);
+}
+</code></pre>
+<p>Note that this method is called statically on each of its variables
 (denoted by <code>vIdx</code>) when posting the constraint to the model. Some
 propagators can thus declare distinct propagation conditions for each
 variable.</p>
@@ -550,76 +556,78 @@ events. This parameter will be presented in more details later on.</p>
 priority is based on the complexity which is linear in the number of
 variables and false. In addition, the constant &lsquo;b&rsquo; needs to be stored
 too.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Constructor of the specific sum propagator : x1 + x2 + ... + xn &lt;= b
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * @param x array of integer variables
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * @param b a constant
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MyPropagator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">PropagatorPriority</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">LINEAR</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="mypropagator">MyPropagator</h3>
+<pre><code class="language-java">/**
+ * Constructor of the specific sum propagator : x1 + x2 + ... + xn &lt;= b
+ * @param x array of integer variables
+ * @param b a constant
+ */
+public MyPropagator(IntVar[] x, int b) {
+    super(x, PropagatorPriority.LINEAR, false);
+    this.b = b;
+}
+</code></pre>
+<h3 id="mypropagator">MyPropagator</h3>
 <p>A basic yet sound propagator which ensures that the sum of all variables
 is less than or equal to a constant is declared below.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">MyPropagator</span> <span style="color:#204a87;font-weight:bold">extends</span> <span style="color:#000">Propagator</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  * The constant the sum cannot be greater than
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  */</span>
-</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  * Constructor of the specific sum propagator : x1 + x2 + ... + xn &lt;= b
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  * @param x array of integer variables
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  * @param b a constant
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  */</span>
-</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MyPropagator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">PropagatorPriority</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">LINEAR</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">getPropagationConditions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">combine</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INSTANTIATE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">IntEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">INCLOW</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">var</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">sumLB</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fails</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">var</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">lb</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">ESat</span> <span style="color:#000">isEntailed</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">var</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TRUE</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">FALSE</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">ESat</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">UNDEFINED</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>This first implementation outlines key concepts a propagator required.
+<pre><code class="language-java">public class MyPropagator extends Propagator&lt;IntVar&gt; {
+
+ /**
+  * The constant the sum cannot be greater than
+  */
+ final int b;
+
+ /**
+  * Constructor of the specific sum propagator : x1 + x2 + ... + xn &lt;= b
+  * @param x array of integer variables
+  * @param b a constant
+  */
+ public MyPropagator(IntVar[] x, int b) {
+     super(x, PropagatorPriority.LINEAR, false);
+     this.b = b;
+ }
+
+ @Override
+ public int getPropagationConditions(int vIdx) {
+     return IntEventType.combine(IntEventType.INSTANTIATE, IntEventType.INCLOW);
+ }
+
+ @Override
+ public void propagate(int evtmask) throws ContradictionException {
+    int sumLB = 0;
+    for (IntVar var : vars) {
+        sumLB += var.getLB();
+    }
+    int F = b - sumLB;
+    if (F &lt; 0) {
+        fails();
+    }
+    for (IntVar var : vars) {
+        int lb = var.getLB();
+        int ub = var.getUB();
+        if (ub - lb &gt; F) {
+            var.updateUpperBound(F + lb, this);
+        }
+    }
+ }
+
+ @Override
+ public ESat isEntailed() {
+    int sumUB = 0, sumLB = 0;
+    for (IntVar var : vars) {
+        sumLB += var.getLB();
+        sumUB += var.getUB();
+    }
+    if (sumUB &lt;= b) {
+        return ESat.TRUE;
+    }
+    if (sumLB &gt; b) {
+        return ESat.FALSE;
+    }
+    return ESat.UNDEFINED;
+ }
+}
+</code></pre>
+<p>This first implementation outlines key concepts a propagator required.
 The entailment method should not ignored since it is helpful (even
 essential) to check the correctness of the implementation. The optional
 one which describes the propagation conditions can sometimes reduce the
@@ -644,31 +652,32 @@ state in which it will not be informed of any new modifications
 occurring <strong>in the current search sub-tree</strong> (i.e., the propagator will
 be reactivated automatically on backtrack).</p>
 <p>The filtering method can be modified like that:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">sumLB</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fails</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">lb</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">E</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">sumUB</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">E</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPassive</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Line 18, a counter is updated with the sharpest upper bound of each
+<pre><code class="language-java">@Override
+public void propagate(int evtmask) throws ContradictionException {
+    int sumLB = 0;
+    for (int i  = 0; i &lt; vars.length; i++) {
+        sumLB += vars[i].getLB();
+    }
+    int F = b - sumLB;
+    if (F &lt; 0) {
+        fails();
+    }
+    int sumUB = 0;
+    for (int i  = 0; i &lt; vars.length; i++) {
+        int lb = vars[i].getLB();
+        int ub = vars[i].getUB();
+        if (ub - lb &gt; F) {
+            vars[i].updateUpperBound(F + lb, this);
+        }
+        sumUB += vars[i].getUB();
+    }
+    int E = sumUB - b;
+    if (E &lt;= 0) {
+        this.setPassive();
+    }
+}
+</code></pre>
+<p>Line 18, a counter is updated with the sharpest upper bound of each
 variables. Line 21-23, if the condition is satisfied, the propagator is
 entailed and set to a passive state.</p>
 
@@ -695,38 +704,39 @@ there could be a benefit to incrementally compute $F$.</p>
 <p>First, a <code>IStateInt</code> object and an <code>IStateInt</code> array are declared as class
 variables. In the propagator&rsquo;s constructor, through the <code>Model</code>, the
 objects are initialized:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * The constant the sum cannot be greater than
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * object to store F in an incremental way.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Corresponds to a backtrackable int.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">IStateInt</span> <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * array to store variables&#39; previous lower bound.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * each cell is a backtrackable int.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">IStateInt</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">prev_lbs</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Constructor of the specific sum propagator : x1 + x2 + ... + xn &lt;= b
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * @param x array of integer variables
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * @param b a constant
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">MyPropagator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">PropagatorPriority</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">LINEAR</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">F</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getEnvironment</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">makeInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">prev_lbs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IStateInt</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">];</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">prev_lbs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getEnvironment</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">makeInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>$F$ is created with value 0; its correct value will be set on the first call
+<pre><code class="language-java">/**
+ * The constant the sum cannot be greater than
+ */
+final int b;
+
+/**
+ * object to store F in an incremental way.
+ * Corresponds to a backtrackable int.
+ */
+final IStateInt F;
+
+/**
+ * array to store variables' previous lower bound.
+ * each cell is a backtrackable int.
+ */
+final IStateInt[] prev_lbs;
+
+/**
+ * Constructor of the specific sum propagator : x1 + x2 + ... + xn &lt;= b
+ * @param x array of integer variables
+ * @param b a constant
+ */
+public MyPropagator(IntVar[] x, int b) {
+    super(x, PropagatorPriority.LINEAR, false);
+    this.b = b;
+    this.F = this.model.getEnvironment().makeInt(0);
+    this.prev_lbs = new IStateInt[x.length];
+    for(int i = 0 ; i &lt; x.length; i++){
+        prev_lbs[i] = this.model.getEnvironment().makeInt(0);
+    }
+}
+</code></pre>
+<p>$F$ is created with value 0; its correct value will be set on the first call
 to <code>propagate(int evtmask)</code> method. Same goes with prev_ubs. Any
 backtrackable primitive or operation is created thanks to the
 <em>environment</em> attached to the model. This ensures the integrity of the
@@ -755,48 +765,49 @@ filtering algorithm. But it can be made of no filtering at all (that&rsquo;s
 the case here) or no delayed call to custom filtering algorithm.</p>
 <p>In our case, we will only incrementally maintain $F$ and then delegate the
 filtering to the custom propagation.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">prepare</span><span style="color:#ce5c00;font-weight:bold">(){</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span> <span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">sumLB</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">// set the current lower bound in &#39;prev_lbs&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#000">prev_lbs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">set</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// set the value of F
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">set</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">sumLB</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">mask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 1. get the current lower bound of the modified variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 2. update F with the difference between old and new lower bound
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">prev_lbs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 3. set the new lower bound
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">prev_lbs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">vIdx</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">set</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">lb</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 4. delegate the filtering later on
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">forcePropagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PropagatorEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">CUSTOM_PROPAGATION</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">propagate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PropagatorEventType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isFullPropagation</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">evtmask</span><span style="color:#ce5c00;font-weight:bold">)){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">// First call to the filtering algorithm, F is not up-to-date
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#8f5902;font-style:italic">// so prepare initialize its value and &#39;prev_lbs&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#000">prepare</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fails</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">var</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ub</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">lb</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">())</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">updateUpperBound</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">F</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">lb</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>A call to <code>forcePropagate(int evtmask)</code> will call <code>propagate(int evtmask)</code>
+<pre><code class="language-java">private void prepare(){
+    int sumLB = 0;
+    for(int i = 0 ; i &lt; vars.length; i++){
+        sumLB += vars[i].getLB();
+        // set the current lower bound in 'prev_lbs'
+        prev_lbs[i].set(vars[i].getLB());
+    }
+    // set the value of F
+    F.set(b - sumLB);
+}
+
+@Override
+public void propagate(int vIdx, int mask) throws ContradictionException {
+    // 1. get the current lower bound of the modified variable
+    int lb = vars[vIdx].getLB();
+    // 2. update F with the difference between old and new lower bound
+    F.add(lb - prev_lbs[vIdx].get());
+    // 3. set the new lower bound
+    prev_lbs[vIdx].set(lb);
+    // 4. delegate the filtering later on
+    forcePropagate(PropagatorEventType.CUSTOM_PROPAGATION);
+}
+
+@Override
+public void propagate(int evtmask) throws ContradictionException {
+    if(PropagatorEventType.isFullPropagation(evtmask)){
+        // First call to the filtering algorithm, F is not up-to-date
+        // so prepare initialize its value and 'prev_lbs'
+        prepare();
+    }
+    if (F.get() &lt; 0) {
+        fails();
+    }
+    for (IntVar var : vars) {
+        int lb = var.getLB();
+        int ub = var.getUB();
+        if (ub - lb &gt; F.get()) {
+            var.updateUpperBound(F.get() + lb, this);
+        }
+    }
+}
+</code></pre>
+<p>A call to <code>forcePropagate(int evtmask)</code> will call <code>propagate(int evtmask)</code>
 only when all fine events are received. This ensures that F is set to
 the correct value before filtering forbidden values.</p>
 

@@ -29,7 +29,7 @@ $\mathcal{X} = \{X_1, X_2, X_3\}$ $\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/020_theory/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="A little bit of theory We are talking about Constraint Satisfaction Problem .
@@ -37,7 +37,7 @@ A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{D},\mathcal{C}\ri
 $\mathcal{X} = \{X_1, \ldots, X_n\}$ is a set of variables, $\mathcal{D}$ is a function associating a domain to each variable, $\mathcal{C}$ is a set of constraints. It can be turn into a COP quite easily
 Let&rsquo;s consider the following CSP $\mathcal{P}$:
 $\mathcal{X} = \{X_1, X_2, X_3\}$ $\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[1,3]\}$ $\mathcal{C} = \{X_1\leq X_2,X_2\leq X_3,AtMost(1,[X_1, X_2, X_3],2)\}$ A constraint defines a relation between variables.">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
 <meta itemprop="wordCount" content="255">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
@@ -84,6 +84,9 @@ $\mathcal{X} = \{X_1, X_2, X_3\}$ $\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -121,7 +124,7 @@ where:</p>
 <p><em>It can be turn into a COP quite easily</em></p>
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#8CC152"
+      data-background="#C6D0B4"
       id="ex1">
 <p>Let&rsquo;s consider the following CSP $\mathcal{P}$:</p>
 <ul>
@@ -142,7 +145,7 @@ if :</p>
 *: $x_{i_k} \in \mathcal{D}(X_{i_k})$
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#8CC152"
+      data-background="#C6D0B4"
       id="ex2">
 <p>In $\mathcal{P}$, the constraint $AtMost(1,[X_1, X_2, X_3],2)$ holds iff <u>at most</u> 1 variable among $X_1, X_2, X_3$ is assigned to the value 2.</p>
 <ul>

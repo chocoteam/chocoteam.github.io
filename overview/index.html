@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/reveal-js/dist/reset.css">
-<link rel="stylesheet" href="/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/reveal-js/dist/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/reveal-js/dist/theme/simple.css" id="theme">
 <link rel="stylesheet" href="/highlight-js/github.min.css">
   </head>
   <body>
@@ -75,7 +75,7 @@ is the current version</li>
 <li>5 types of variable available</li>
 <li>$&gt; 200$  propagators</li>
 <li>State-of-the-art search strategies</li>
-<li>Almost LCG-ready</li>
+<li><em>Almost</em> LCG-ready</li>
 </ul>
 </section><section>
 <p>Visit the website for more documentation, tutorials, javadoc , etc</p>
@@ -104,21 +104,22 @@ is the current version</li>
       data-background-iframe="https://choco-solver.org/docs/getting-started/">
 </section><section>
 <h2 id="a-first-example">A first example</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">8</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;-queens problem&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Q&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">allDifferent</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++){</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;-&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">vs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">j</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solution</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div>
+<pre><code class="language-java" data-line-numbers="|2|3|4-10|11-14">int n = 8;
+Model model = new Model(n + &quot;-queens problem&quot;);
+IntVar[] vs = model.intVarArray(&quot;Q&quot;, n, 1, n);
+model.allDifferent(vs).post();
+for(int i  = 0; i &lt; n-1; i++){
+    for(int j = i + 1; j &lt; n; j++){
+        model.arithm(vs[i], &quot;!=&quot;, vs[j], &quot;-&quot;, j - i).post();
+        model.arithm(vs[i], &quot;!=&quot;, vs[j], &quot;+&quot;, j - i).post();
+    }
+}
+Solution solution = model.getSolver().findSolution();
+if(solution != null){
+    System.out.println(solution.toString());
+}
+</code></pre>
+
 </section>
 </section>
     <section>
@@ -141,49 +142,42 @@ solving a problem.</li>
 <p><small>$1$: So you don’t have to know all the objects in advance.</small></p>
 </section><section>
 <h3 id="several-builders">Several builders</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>								 							 <span style="color:#8f5902;font-style:italic">// 1
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">);</span>					 					 <span style="color:#8f5902;font-style:italic">// 2
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">settings</span> <span style="color:#000">settings</span><span style="color:#ce5c00;font-weight:bold">);</span>				 			 <span style="color:#8f5902;font-style:italic">// 3
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Settings</span> <span style="color:#000">settings</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// 4
-</span></span></span></code></pre></div><p>Prefer choices 1 and 2 to start with.</p>
+<pre><code class="language-java" data-line-numbers="|1-2">Model m = new Model();								 							 // 1
+Model m = new Model(String name);					 					 // 2
+Model m = new Model(settings settings);				 			 // 3
+Model m = new Model(String name, Settings settings); // 4
+</code></pre>
+<p>Prefer choices 1 and 2 to start with.</p>
 </section>
 <section data-noprocess data-shortcode-slide
       id="code1"
       data-transition="none-out">
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">package</span> <span style="color:#000">apetizer</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Example</span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div></section>
+<pre><code class="language-java" data-line-numbers>package apetizer;
+
+
+
+public class Example{
+
+    public static void main(String[] args){
+
+    }
+}
+</code></pre>
+</section>
 <section data-noprocess data-shortcode-slide
       id="code2"
       data-transition="none-in">
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">package</span> <span style="color:#000">apetizer</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.Model</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Example</span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">Model</span> <span style="color:#000">myModel</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My first model&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div></section>
-<section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex1">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>Create a class named <code style='font-family: monospace;color:#05507D;'>Example</code></li>
-<li>Declare a <code style='font-family: monospace;color:#05507D;'>main</code> method</li>
-<li>Build an instance of <code style='font-family: monospace;color:#05507D;'>Model</code> named <code style='font-family: monospace;color:#05507D;'>m</code></li>
-</ul>
+<pre><code class="language-java" data-line-numbers="3,8">package apetizer;
+
+import org.chocosolver.solver.Model;
+
+public class Example{
+
+    public static void main(String[] args){
+        Model myModel = new Model(&quot;My first model&quot;);
+    }
+}
+</code></pre>
 
 </section>
 </section>
@@ -196,15 +190,17 @@ solving a problem.</li>
 <h2>A variable </h2>
 <ul>
 <li class="fragment">is a symbolic representation of an <span style="color:deepskyblue;">unknown</span> quantity/decision,</li>
-<li class="fragment">comes with potential values that the solver can assign to it, a.k.a. its <span style="color:deepskyblue;">domain</span>,</li>	
+<li class="fragment">comes with potential values that the solver can assign to it, a.k.a. its <span style="color:deepskyblue;">domain</span>,</li>
 <li class="fragment">to be determined/<span style="color:deepskyblue;">assigned</span> during the problem-solving process.</li>
 </ul>
 <!--</section> to bind to the next section tag-->
 </section><section>
 <h3 id="in-a-scheduling-problem">In a scheduling problem</h3>
 <ul>
-<li>Variables :  the start time of various tasks</li>
-<li>Domains : the set of possible start time slots</li>
+<li><span style="color:#3BAFDA">Variables</span>
+:  the start time of various tasks</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the set of possible start time slots</li>
 </ul>
 <figure>
     <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
@@ -212,8 +208,10 @@ solving a problem.</li>
 </section><section>
 <h3 id="in-a-packing-problem">In a packing problem</h3>
 <ul>
-<li>Variables : the assignment of items to bins</li>
-<li>Domains : the set of possible bins</li>
+<li><span style="color:#3BAFDA">Variables</span>
+: the assignment of items to bins</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the set of possible bins</li>
 </ul>
 <figure>
     <img src="/images/overview/binpacking.svg" alt="" width="20%" >
@@ -221,8 +219,10 @@ solving a problem.</li>
 </section><section>
 <h3 id="in-a-routing-problem">In a routing problem</h3>
 <ul>
-<li>Variables :  the start time of various tasks</li>
-<li>Domains : the set of possible start time slots</li>
+<li><span style="color:#3BAFDA">Variables</span>
+: the nodes visited on a tour</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the potential successors of each node</li>
 </ul>
 <figure>
     <img src="/images/overview/routing.svg" alt="" width="30%" >
@@ -231,8 +231,12 @@ solving a problem.</li>
 <h3 id="different-types-of-variables-are-available">Different types of variables are available:</h3>
 <ul>
 <li><code style='font-family: monospace;color:#05507D;'>IntVar</code> has its values in $\mathbb{Z}^1$</li>
-<li><code style='font-family: monospace;color:#05507D;'>IntView</code>s relies on an <code style='font-family: monospace;color:#05507D;'>IntVar</code>, like <code style='font-family: monospace;color:#05507D;'>IntAffineView</code></li>
-<li><code style='font-family: monospace;color:#05507D;'>BoolVar</code> (<code style='font-family: monospace;color:#05507D;'>BoolView</code>) has its values in {$0,1$}
+<li><code style='font-family: monospace;color:#05507D;'>IntView</code>s relies on an <code style='font-family: monospace;color:#05507D;'>IntVar</code>
+<ul>
+<li>like <code style='font-family: monospace;color:#05507D;'>IntAffineView</code></li>
+</ul>
+</li>
+<li><code style='font-family: monospace;color:#05507D;'>BoolVar</code> (and <code style='font-family: monospace;color:#05507D;'>BoolView</code>) has its values in {$0,1$}
 <ul>
 <li>sub-type of <code style='font-family: monospace;color:#05507D;'>IntVar</code></li>
 </ul>
@@ -240,57 +244,65 @@ solving a problem.</li>
 </ul>
 </br>
 </br>
-<small>$1$ : But it is always necessary to declare at least one value interval.</small>
+<small>$1$ : But it is always necessary to declare at least an interval.</small>
 </section><section>
 <ul>
-<li><code style='font-family: monospace;color:#05507D;'>Task</code> to manage with task/interval</li>
+<li><code style='font-family: monospace;color:#05507D;'>Task</code> to manage with task/interval: $s+d = e$</li>
 <li><code style='font-family: monospace;color:#05507D;'>SetVar</code> and <code style='font-family: monospace;color:#05507D;'>SetView</code></li>
 <li><code style='font-family: monospace;color:#05507D;'>(Un)DirectedGraphVar</code> and  <code style='font-family: monospace;color:#05507D;'>GraphView</code></li>
-<li>and also <code style='font-family: monospace;color:#05507D;'>RealVar</code>.</li>
+<li>and also <code style='font-family: monospace;color:#05507D;'>RealVar</code></li>
 </ul>
 </section><section>
 <h3 id="ways-to-declare-integer-variables">Ways to declare integer variables</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;y&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">vs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;v&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">ws</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;w&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div></section><section>
+<pre><code class="language-java" data-line-numbers="|2-3|4|5">Model m = new Model();
+IntVar x = m.intVar(&quot;x&quot;, 0, 4);
+IntVar y = m.intVar(&quot;y&quot;, new int[]{1,3,5});
+IntVar[] vs = m.intVarArray(&quot;v&quot;, 4, 1, 3);
+IntVar[][] ws = m.intVarMatrix(&quot;w&quot;, 2, 2, 1, 2);
+</code></pre>
+</section><section>
 <h3 id="ways-to-declare-boolean-variables">Ways to declare Boolean variables</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">bs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;bs&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">bss</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVarMatrix</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;bss&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>Similar APIs for other types of variables.</p>
+<pre><code class="language-java" data-line-numbers="|2-3|4">Model m = new Model();
+BoolVar b = m.boolVar(&quot;b&quot;);
+BoolVar[] bs = m.boolVarArray(&quot;bs&quot;, 10);
+BoolVar[][] bss = m.boolVarMatrix(&quot;bss&quot;, 4, 3);
+</code></pre>
+<p>Similar APIs for other types of variables.</p>
 </section><section>
 <h3 id="some-views-declaration">Some views declaration</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>                        
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>               
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// v = 2.x - 3
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isEq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// b = (x == 2)     
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolNotView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// n = !b    
-</span></span></span></code></pre></div></br>
+<pre><code class="language-java" data-line-numbers="|3|4|5">Model m = new Model();                        
+IntVar x = m.intVar(&quot;x&quot;, 0, 5);               
+IntVar v = m.intView(2, x, -3); // v = 2.x - 3
+BoolVar b = m.isEq(x, 2); // b = (x == 2)     
+BoolVar n = b.not(); // n = !b    
+</code></pre>
+</br>
 <p><small>And also <code style='font-family: monospace;color:#05507D;'>abs(x), mu(x, 2), neg(x), isLeq(x, 3),</code> &hellip;</small></p>
 </section><section>
 <h3 id="reading-a-variable">Reading a variable</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>                                    
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>                           
-</span></span><span style="display:flex;"><span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Variable : %s = [%d, %d]\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span>           
-</span></span><span style="display:flex;"><span>        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getUB</span><span style="color:#ce5c00;font-weight:bold">());</span>               
-</span></span><span style="display:flex;"><span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is %s instantiated\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span>              
-</span></span><span style="display:flex;"><span>        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isInstantiated</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">?</span> <span style="color:#4e9a06">&#34;&#34;</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;not&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>   
-</span></span></code></pre></div><p>outputs</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>Variable : <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">[</span>0, 4<span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>x is not instantiated   
-</span></span></code></pre></div><p><span class='fragment ' >Only once instantiated can the value be retrieved by calling <code>x.getValue()</code></span></p>
+<pre><code class="language-java" data-line-numbers="|4|6">Model m = new Model();                                    
+IntVar x = m.intVar(&quot;x&quot;, 0, 4);                           
+System.out.printf(&quot;Variable : %s = [%d, %d]\n&quot;,           
+        x.getName(), x.getLB(), x.getUB());               
+System.out.printf(&quot;%s is %s instantiated\n&quot;,              
+        x.getName(), x.isInstantiated() ? &quot;&quot; : &quot;not&quot;);   
+</code></pre>
+<p>outputs</p>
+<pre><code class="language-shell" data-line-numbers>Variable : x = [0, 4]
+x is not instantiated   
+</code></pre>
+<p><span class='fragment ' >If instantiated, a variable can return its assignment value with <code>x.getValue()</code>.</span></p>
 </section>
 <section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex2">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>TODO</li>
-</ul>
+      data-background="#76bde8">
+<h3 id="abcde-x-4--edcba">ABCDE x 4 = EDCBA</h3>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=68997" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<p><small><em>This clickable logo indicates that a workshop is available at <a href="https://moodle.caseine.org/">Caseine</a></em> </small></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69633" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 
 </section>
 </section>
@@ -304,31 +316,20 @@ solving a problem.</li>
 <h2>A constraint </h2>
 <ul>
 <li class="fragment">represents a problem's <span style="color:deepskyblue;">requirements or limitations</span>,</li>
-<li class="fragment">defines a <span style="color:deepskyblue;">relationships among variables,</span> </li>	
+<li class="fragment">defines a <span style="color:deepskyblue;">relationships among variables,</span> </li>
 <li class="fragment">expresses <span style="color:deepskyblue;">conditions</span> that must be satisfied by the values assigned to the variables,</li>
 <li class="fragment">is equipped with a <span style="color:deepskyblue;">filtering</span> algorithm.</li>
 </ul>
+<p class="fragment">For example: $X < Y$</p>
 <!--</section> to bind to the next section tag-->
 </section><section>
 <script src="dist/reveal.js"></script>
-<p>The goal of constraint programming is to find a combination of variable assignments that simultaneously satisfies all the specified constraints.</p>
+<p>The goal of constraint programming is to find a combination of variable assignments that <span style="color:#3BAFDA">simultaneously</span>
+satisfies <span style="color:#3BAFDA">all</span>
+the specified constraints.</p>
 </section><section>
-<figure>
-    <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
-    <figcaption>Solution for a <em style="font-variant: small-caps">Cumulative</em> constraint. </figcaption>
-</figure>
+<h2 id="basic-constraints">Basic constraints</h2>
 </section><section>
-<figure>
-    <img src="/images/overview/binpacking.svg" alt="" width="20%" >
-    <figcaption>Solution for a <em style="font-variant: small-caps">BinPacking</em> constraint. </figcaption>
-</figure>
-</section><section>
-<figure>
-    <img src="/images/overview/routing.svg" alt="" width="30%" >
-    <figcaption>Solution for a <em style="font-variant: small-caps">Circuit</em> constraint. </figcaption>
-</figure>
-</section><section>
-<h3 id="basic-constraints">Basic constraints</h3>
 <small>
 <table>
 <thead>
@@ -391,35 +392,116 @@ Arrays of variables are designated by capital letters</small>
 </section><section>
 <h3 id="adding-a-constraint-to-the-model">Adding a constraint to the model</h3>
 <small>
-<p>Once a constraint has been created, it must be <span style="color:#3BAFDA">activated (x)or reified</span></p>
+<p>Once a constraint has been created, it must be <span style="color:#3BAFDA">activated or reified</span></p>
 <table>  
 	<tr>
-		<th>Action</th> 
-		<th>Syntax</th> 
+		<th>Action</th>
+		<th>Syntax</th>
 	</tr>
-	<tr><td></td><td></td></tr> 
-	<tr> 
-		<td rowspan="1">Activate $c$</td> 
-		<td><code style='font-family: monospace;color:#05507D;'>c.post();</code></td> 
-	</tr> 
-	<tr> 
-		<td>$c \iff b$</td> 
-		<td><code style='font-family: monospace;color:#05507D;'>c.reifyWith(b);</code></br><code style='font-family: monospace;color:#05507D;'>BoolVar b = c.reify();</code></td> 
+	<tr><td></td><td></td></tr>
+	<tr>
+		<td rowspan="1">Activate $c$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.post();</code></td>
+	</tr>
+	<tr>
+		<td>$c \iff b$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.reifyWith(b);</code></br><code style='font-family: monospace;color:#05507D;'>BoolVar b = c.reify();</code></td>
 	</tr>  
-	<tr> 
-		<td rowspan="1">$c \implies  b$</td> 
-		<td><code style='font-family: monospace;color:#05507D;'>c.implies(b);</code></td> 
+	<tr>
+		<td rowspan="1">$c \implies  b$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.implies(b);</code></td>
 	</tr>
-	<tr> 
-		<td rowspan="1">$b \implies c$</td> 
-		<td><code style='font-family: monospace;color:#05507D;'>c.impliedBy(b);</code></td> 
+	<tr>
+		<td rowspan="1">$b \implies c$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.impliedBy(b);</code></td>
 	</tr>
-	<tr/> 
+	<tr/>
 </table>
 </br>
 </small>
 </section><section>
+<h3 id="what-if-you-want-to-express-such-a-a-non-linear-constraint--">What if you want to express such a a non-linear constraint 🔋 ?</h3>
+<figure>
+    <img src="/images/overview/battery.svg" alt="This is an alt" width="70%" >
+</figure>
+</section><section>
+<h2 id="in-extension">In extension</h2>
+</section><section>
+<p>This can be achieved with a <em style="font-variant: small-caps">Table</em>  constraint</p>
+<pre><code class="language-java" data-line-numbers="|4-10|11">Model m = new Model();
+IntVar c = m.intVar(&quot;SoC&quot;, 0, 100);
+IntVar v = m.intVar(&quot;cV&quot;, 1140, 1280);
+Tuples tuples = new Tuples();
+tuples.add(100, 1273);
+tuples.add(90, 1240);
+tuples.add(80, 1235);
+//...
+tuples.add(20, 1195);
+tuples.add(10, 1151);
+m.table(c, v, tuples).post();
+</code></pre>
+</section><section>
+<h3 id="types-of-em-stylefont-variant-small-capstableem-constraints">Types of <em style="font-variant: small-caps">Table</em> constraints</h3>
+</section><section>
+<p>Allowed tuples</p>
+<pre><code class="language-java">Model m = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 1, 3);
+
+// all equal
+Tuples tuples = new Tuples();
+tuples.add(1, 1, 1);
+tuples.add(2, 2, 2);
+tuples.add(3, 3, 3);
+
+m.table(xs, tuples).post();
+</code></pre>
+</section><section>
+<p><span style="color:#3BAFDA">Forbidden</span>
+tuples</p>
+<pre><code class="language-java" data-line-numbers="4-5|">Model m = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 1, 3);
+
+// *not* all equal
+Tuples tuples = new Tuples(false);
+tuples.add(1, 1, 1);
+tuples.add(2, 2, 2);
+tuples.add(3, 3, 3);
+
+m.table(xs, tuples).post();
+</code></pre>
+</section><section>
+<p><span style="color:#3BAFDA">Universal value</span></p>
+<p><small>Like <code>'*'</code> symbol in regular expression.</small></p>
+<pre><code class="language-java" data-line-numbers="5-7|">Model model = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 0, 3);
+
+Tuples ts = new Tuples();
+int star = 99;
+ts.setUniversalValue(star);
+ts.add(3, star, 1);
+ts.add(1, 2, 3);
+ts.add(2, 3, 2);
+model.table(xs, ts).post();
+</code></pre>
+</section><section>
+<p><span style="color:#3BAFDA">Hybrid</span>
+tuples</p>
+<pre><code class="language-java" data-line-numbers="4-8|">Model model = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 1, 3);
+
+HybridTuples tuples = new HybridTuples();
+tuples.add(ne(1), any(), eq(3));
+tuples.add(eq(3), le(2), ne(1));
+tuples.add(lt(3), eq(2), ne(b));
+tuples.add(gt(2), ge(2), any());
+
+model.table(xs, tuples).post();
+</code></pre>
+</section><section>
+<p>It is also possible to express a constraint from a variable</p>
+</section><section>
 <h3 id="expressions">Expressions</h3>
+</section><section>
 <small>
 <table>
 <thead>
@@ -452,16 +534,17 @@ Arrays of variables are designated by capital letters</small>
 </tbody>
 </table>
 <br/>
-$i$ is either an <code style='font-family: monospace;color:#05507D;'>int</code>, a <code style='font-family: monospace;color:#05507D;'>IntVar</code> or an arithmetical expression, 
+$i$ is either an <code style='font-family: monospace;color:#05507D;'>int</code>, a <code style='font-family: monospace;color:#05507D;'>IntVar</code> or an arithmetical expression,
 <br/>$r$ is a relational expression.
 </small>
 </section><section>
 <h3 id="example">Example</h3>
 <p>$(x = y + 1) \lor (x+2 \leq 6)$</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#8f5902;font-style:italic">//...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#8f5902;font-style:italic">//...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">or</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">le</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">6</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div></section><section>
+<pre><code class="language-java" data-line-numbers="|3">IntVar x = //...
+IntVar y = //...
+x.eq(y.add(1)).or(x.add(2).le(6)).post();
+</code></pre>
+</section><section>
 <h3 id="adding-an-expression-to-the-model">Adding an expression to the model</h3>
 <small>
 Here again, there are different ways to work with an expression $e$, depending on its type:
@@ -496,87 +579,11 @@ Here again, there are different ways to work with an expression $e$, depending o
 </tbody>
 </table>
 </small>
-</section><section>
-<h3 id="in-extension">In extension</h3>
-</section><section>
-<h3 id="what-if-you-want-to-express-such-a-a-non-linear-constraint">What if you want to express such a a non-linear constraint?</h3>
-<figure>
-    <img src="/images/overview/battery.svg" alt="This is an alt" width="70%" >
-</figure>
-</section><section>
-<p>This can be achieved with a <em style="font-variant: small-caps">Table</em>  constraint</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;SoC&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;cV&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1140</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1280</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Tuples</span> <span style="color:#000">tuples</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1273</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">90</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1240</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">80</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1235</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">//...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">20</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1195</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1151</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div></section><section>
-<h3 id="types-of-em-stylefont-variant-small-capstableem-constraints">Types of <em style="font-variant: small-caps">Table</em> constraints</h3>
-</section><section>
-<p>Allowed tuples</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">xs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// all equal
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Tuples</span> <span style="color:#000">tuples</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">xs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div></section><section>
-<p><span style="color:#3BAFDA">Forbidden</span>
-tuples</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">xs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// *not* all equal
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Tuples</span> <span style="color:#000">tuples</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">xs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div></section><section>
-<p><span style="color:#3BAFDA">Universal value</span></p>
-<p><small>Like <code>'*'</code> symbol in regular expression.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">xs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Tuples</span> <span style="color:#000">ts</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Tuples</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">star</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">99</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ts</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setUniversalValue</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">star</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ts</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">star</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ts</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ts</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">xs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ts</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div></section><section>
-<p><span style="color:#3BAFDA">Hybrid</span>
-tuples</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">xs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">HybridTuples</span> <span style="color:#000">tuples</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HybridTuples</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ne</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">any</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">le</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">ne</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">lt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">eq</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">ne</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">gt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">ge</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">any</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">xs</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">tuples</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div></section>
+</section>
 <section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex3">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>TODO</li>
-</ul>
+      data-background="#76bde8">
+<h3 id="sujiko">Sujiko</h3>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69634" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 
 </section>
 </section>
@@ -585,6 +592,40 @@ tuples</p>
 <section data-shortcode-section>
 <h1 id="global-constraints">Global Constraints</h1>
 </section><section>
+<h2 id="definitions">Definition(s)</h2>
+<blockquote>
+<p>an expressive and concise condition involving a non-fixed number of variables</p>
+</blockquote>
+<p><a href="https://sofdem.github.io/gccat/gccat/preface.html">[GCCAT]</a></p>
+<p class="fragment">allDifferent($x_1,x_2,\dots$)</p>
+</section><section>
+<h2 id="definitions-1">Definition(s)</h2>
+<blockquote>
+<p>a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C</p>
+</blockquote>
+<p><a href="https://www.lirmm.fr/~bessiere/Site/stock/cp03-glob.pdf">[BvH03]</a></p>
+<p class="fragment">allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$</p>
+</section><section>
+<h3 id="example-of-constraints">Example of constraints</h3>
+<p><span style="color:#ED5565">cumulative(starts, durations, heights, capacity)</span></p>
+<figure>
+    <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">Cumulative</em> constraint. </figcaption>
+</figure>
+</section><section>
+<h3 id="example-of-constraints-1">Example of constraints</h3>
+<p><span style="color:#ED5565">binpacking(bins, weigths, capacity)</span></p>
+<figure>
+    <img src="/images/overview/binpacking.svg" alt="" width="20%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">BinPacking</em> constraint. </figcaption>
+</figure>
+</section><section>
+<h3 id="example-of-constraints-2">Example of constraints</h3>
+<p><span style="color:#ED5565">circuit(successors)</span></p>
+<figure>
+    <img src="/images/overview/routing.svg" alt="" width="30%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">Circuit</em> constraint. </figcaption>
+</figure>
 </section><section>
 <h3 id="some-cardinality-constraints">Some cardinality constraints</h3>
 <small>
@@ -600,7 +641,7 @@ tuples</p>
 <tbody>
 <tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.allDifferent(X)</code></td>
-<td>$X_i\neq X_j, \forall i&lt; j$</td>
+<td>$x_i\neq x_j, \forall i&lt; j$</td>
 </tr>
 <tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.among(n, X, v)</code></td>
@@ -626,7 +667,7 @@ tuples</p>
 <li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 </ul>
-<p></small></p>
+</small>
 </section><section>
 <h3 id="some-connection-constraints">Some connection constraints</h3>
 <small>
@@ -638,6 +679,10 @@ tuples</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
+<td>$\exists i : v = x_{i - o}$</td>
+</tr>
 <tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.argmax(i, o, X)</code></td>
 <td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
@@ -655,10 +700,6 @@ tuples</p>
 <td>$m = \min\{x_i\}$</td>
 </tr>
 <tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
-<td>$\exists i : v = x_{i - o}$</td>
-</tr>
-<tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.inverseChanneling(X, Y)</code></td>
 <td>$ \forall i: x_i = j \iff y_j = i \quad (|X| = |Y|)$</td>
 </tr>
@@ -674,7 +715,7 @@ tuples</p>
 <li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 </ul>
-<p></small></p>
+</small>
 </section><section>
 <h3 id="some-packing-and-scheduling-constraints">Some Packing and Scheduling constraints</h3>
 <small>
@@ -699,8 +740,8 @@ tuples</p>
 <td>$\forall i&lt;j, x_{i} + w_{i} \leq x_{j} \lor x_{j} + h_{j} ≤ x_{i}$<br/>$\quad\quad\quad \lor y_{i} + h_{i} \leq y_{j} \lor y_{j} + w_{j} ≤ y_{i}$</td>
 </tr>
 <tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, w, e, W, E)</code></td>
-<td>$\sum_{i} w_i \times O_i = W \land \sum_{i} e_i \times O_i = E$</td>
+<td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, W, E, w, e)</code></td>
+<td>$\sum_{i} w_i \times O_i = w \land \sum_{i} e_i \times O_i = e$</td>
 </tr>
 <tr>
 <td></td>
@@ -715,7 +756,7 @@ tuples</p>
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 <li>Task (or activity): $a^s + a^d = a^e$</li>
 </ul>
-<p></small></p>
+</small>
 </section><section>
 <h3 id="some-graph-based-constraints">Some Graph-based constraints</h3>
 <small>
@@ -752,15 +793,12 @@ tuples</p>
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 <li>A pair $(i, x_i)$ represents an arc in a graph induced by $X$</li>
 </ul>
-<p></small></p>
+</small>
 </section>
 <section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex4">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>TODO</li>
-</ul>
+      data-background="#76bde8">
+<h2 id="magic-sequence">Magic Sequence</h2>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=71042" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 
 </section>
 </section>
@@ -774,34 +812,36 @@ tuples</p>
       data-transition="none-out">
 <h2 id="csp">CSP</h2>
 <p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ... problem description ...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// here you can read the variables&#39; value
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is fixed to %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>						<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>A call to <code style='font-family: monospace;color:#05507D;'>solver.solve()</code> returns <code style='font-family: monospace;color:#05507D;'>true</code> if a solution exists, <code style='font-family: monospace;color:#05507D;'>false</code> otherwise.</p>
+<pre><code class="language-java" data-line-numbers="|5-6">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+if(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>A call to <code style='font-family: monospace;color:#05507D;'>solver.solve()</code> returns <code style='font-family: monospace;color:#05507D;'>true</code> if a solution exists, <code style='font-family: monospace;color:#05507D;'>false</code> otherwise.</p>
 </section>
 <section data-noprocess data-shortcode-slide
       id="code4"
       data-transition="in-out">
 <h2 id="csp-1">CSP</h2>
 <p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ... problem description ...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// here you can read the variables&#39; value
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is fixed to %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>						<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Since the <code style='font-family: monospace;color:#05507D;'>solver</code> stops on a solution,
+<pre><code class="language-java" data-line-numbers="7-9">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+if(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>Since the <code style='font-family: monospace;color:#05507D;'>solver</code> stops on a solution,
 <br/>
 all the variables are fixed and their value can be read.</p>
 </section>
@@ -810,17 +850,18 @@ all the variables are fixed and their value can be read.</p>
       data-transition="none-in">
 <h2 id="csp-2">CSP</h2>
 <p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ... problem description ...
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// here you can read the variables&#39; value
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s is fixed to %d\n&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>						<span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">());</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Enumerating solutions can be done in a <code style='font-family: monospace;color:#05507D;'>while-loop</code>.
+<pre><code class="language-java" data-line-numbers="6">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+while(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>Enumerating solutions can be done in a <code style='font-family: monospace;color:#05507D;'>while-loop</code>.
 <br/>
 <br/></p>
 </section>
@@ -829,64 +870,140 @@ all the variables are fixed and their value can be read.</p>
       data-transition="none-out">
 <h2 id="solution">Solution</h2>
 <p>We can capture the current state of variables in a <code style='font-family: monospace;color:#05507D;'>Solution</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">solutions</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">record</span><span style="color:#ce5c00;font-weight:bold">());</span>	
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div></section>
+<pre><code class="language-java" data-line-numbers="1,3">List&lt;Solution&gt; solutions = new ArrayList&lt;&gt;();
+while(solver.solve()){
+	solutions.add(new Solution(model).record());
+}
+</code></pre>
+</section>
 <section data-noprocess data-shortcode-slide
       id="code7"
       data-transition="none-in">
 <h2 id="solution-1">Solution</h2>
 <p>This can also be achieved in one line of code
 <br/></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">solutions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><br/>
+<pre><code class="language-java">Solution solution = solver.findSolution();
+</code></pre>
+<pre><code class="language-java">List&lt;Solution&gt; solutions = solver.findAllSolutions();
+</code></pre>
+<br/>
+</section><section>
+<h2 id="cop">COP</h2>
+<p>An <code style='font-family: monospace;color:#05507D;'>IntVar</code> to maximize/minimize    .</p>
+<pre><code class="language-java" data-line-numbers="1|2">Solution bSol = solver.findOptimalSolution(obj, maximize);
+List&lt;Solution&gt; bSols = solver.findAllOptimalSolutions(obj, max);
+</code></pre>
+</section><section>
+<h2 id="solving-is-reducing">Solving is reducing</h2>
+</section><section>
+<h3 id="backtracking-algorithm">Backtracking algorithm</h3>
+<ul>
+<li>recursive traversal of the search tree</li>
+<li>make/cancel decisions</li>
+<li>backtrack on failure</li>
+<li>incremental construction of a solution</li>
+</ul>
+<p><em>Branch and Propagate</em></p>
+</section><section>
+<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+<p>⚠️ 2-way branching</p>
+</section><section>
+<h2 id="making-decisions">Making decisions</h2>
+<p class="fragment" data-fragment-index="1"><em>Can't we just leave it to the solver?</em></p>
+<p class="fragment" data-fragment-index="2">Bring business knowledge</p>
+<p class="fragment" data-fragment-index="3">Help moving towards a solution</p>
+<!--<p class="fragment" data-fragment-index="4">or proving unsat</p>-->
+<p><span class='fragment ' ><em>but Yes, we can</em></span></p>
+</section><section>
+<h2 id="making-decisions-1">Making decisions</h2>
+<ul>
+<li>choose a free variable (how?)</li>
+<li>select an operator (very often $=$)</li>
+<li>determine a value (how?)</li>
+</ul>
+<p>Continue as as long as necessary</p>
+<aside class="notes"><p>A decision is validated through propagation</p>
+<aside class="notes"></section><section>
+<h3 id="select-the-next-variable">Select the next variable</h3>
+<ul>
+<li><code>input_order</code>, <code>first_fail</code>, <code>smallest</code>,&hellip;</li>
+<li><code>dom/wdeg</code>, <code>FBA</code>, <code>CHS</code>, <code>ABS</code>, &hellip;</li>
+</ul>
+<br/>
+<br/>
+<h3 id="choose-a-value">Choose a value</h3>
+<ul>
+<li><code>min</code>, <code>max</code>, <code>med</code>, &hellip;</li>
+</ul>
+</section><section>
+<h2 id="topping">Topping</h2>
+<ul>
+<li>Combining searches</li>
+<li>Restarting: <code>geo</code>, <code>luby</code></li>
+<li>Meta-strategy: <code>lc</code>, <code>cos</code></li>
+<li>Phase saving,</li>
+<li>Best</li>
+</ul>
+</section><section>
+<h3 id="define-your-own">Define your own</h3>
+<pre><code class="language-java" data-line-numbers>solver.setSearch(Search.intVarSearch(
+    variables -&gt; Arrays.stream(variables)
+          .filter(v -&gt; !v.isInstantiated())
+          .min((v1, v2) -&gt; closest(v2, map) - closest(v1, map))
+          .orElse(null),
+    v -&gt; closest(v, map),
+    DecisionOperator.int_eq,
+    planes
+));
+</code></pre>
+<p><a href="https://choco-solver.org/tutos/aircraft-landing-problem/code/">[aircraft landing]</a></p>
 </section><section>
 <h2 id="turnkey-enumeration-strategies">Turnkey enumeration strategies</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Override the default search strategy
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">Search</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lastConflict</span><span style="color:#ce5c00;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#000">Search</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">domOverWDegSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)));</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// possibly combined with restarts
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLubyRestart</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FailCounter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#000">25000</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>Have a look at the <code style='font-family: monospace;color:#05507D;'>Search</code> factory.</p>
+<pre><code class="language-java" data-line-numbers="2,4|3|5-6|7|">// Override the default search strategy
+solver.setSearch(
+	Search.lastConflict(
+		Search.domOverWDegSearch(vars)));
+// possibly combined with restarts
+solver.setLubyRestart(2, new FailCounter(model, 2), 25000);
+solver.findSolution();
+</code></pre>
+<p>Have a look at the <code style='font-family: monospace;color:#05507D;'>Search</code> factory.</p>
 </section>
 <section data-noprocess data-shortcode-slide
       data-background-iframe="https://choco-solver.org/docs/solving/strategies/">
 </section><section>
-<h2 id="cop">COP</h2>
-<p>An <code style='font-family: monospace;color:#05507D;'>IntVar</code> be maximized/minimized.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">bSol</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">obj</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">maximize</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Solution</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">bSols</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllOptimalSolutions</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">obj</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">max</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div></section><section>
+<h1 id="monitoring">Monitoring</h1>
+</section><section>
 <h2 id="information-on-research">Information on research</h2>
 <p>It is possible to have insights on the search process</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">showShortStatistics</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#ce5c00;font-weight:bold">()){};</span>
-</span></span></code></pre></div><p>Or to execute code on solutions using <em>monitors</em>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">plugMonitor</span><span style="color:#ce5c00;font-weight:bold">((</span><span style="color:#000">IMonitorSolution</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// do something here 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span></code></pre></div></section><section>
+<pre><code class="language-java">solver.showShortStatistics();
+while(solver.solve()){};
+</code></pre>
+<p>Or to execute code on solutions using <em>monitors</em>:</p>
+<pre><code class="language-java">solver.plugMonitor((IMonitorSolution) () -&gt; {
+    // do something here
+});
+</code></pre>
+</section><section>
 <h2 id="limits">Limits</h2>
 <p>The search space exploration can be limited.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitTime</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;10s&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span> 
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">limitSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findAllSolutions</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>The first limit reached stops the search.</p>
-
+<pre><code class="language-java">solver.limitTime(&quot;10s&quot;);
+solver.limitSolution(5);
+solver.findAllSolutions();
+</code></pre>
+<p>The first limit reached stops the search.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h2 id="warehouse-location">Warehouse Location</h2>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=70539" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</aside>
+</aside>
 </section>
 </section>
-    <section>
+    
 
 <section data-shortcode-section>
-<h1 id="conclusion">Conclusion</h1>
-</section><section>
-<h2 id="summary">Summary</h2>
-</section>
 <section data-noprocess data-shortcode-slide
       data-background-iframe="https://choco-solver.org/tutos/">
 <h1 id="next-steps">Next steps</h1>
@@ -932,7 +1049,7 @@ all the variables are fixed and their value can be read.</p>
 
   var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
   var revealHugoSiteParams = {};
-  var revealHugoPageParams = {"highlight_theme":"github","slide_number":true,"theme":"solarized"};
+  var revealHugoPageParams = {"highlight_theme":"github","slide_number":true,"theme":"simple"};
 
   var revealHugoPlugins = {
     

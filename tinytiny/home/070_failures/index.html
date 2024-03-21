@@ -21,22 +21,22 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Don&rsquo;t panic and tell what&rsquo;s going on We can tell that the constraint should return :
-None : if nothing was filtered True : if some values were filtered False : if a domain becomes empty Let&rsquo;s fix the code (1/2) def filter(self, vars): d1 = vars[self.v1] d2 = vars[self.v2]	diff = len(d1) &#43; len(d2) # stores current length d1 = [v for v in d1 if v &lt; max(d2)] if len(d1) == 0: # &#34;x1&#34; becomes empty." />
+<meta property="og:description" content="Back to work deal with failures Let&rsquo;s fix the code def dfs(variables, constraint): # manage filtering failure &gt;&gt;🥛&lt;&lt; Let&rsquo;s fix the code def dfs(variables, constraint): if constraint.filter(variables) is False: return 0 var, val = make_decision(variables) if var is None: print(variables) return 1 else: n = propagate(variables, var, val, True, constraint) n &#43;= propagate(variables, var, val, False, constraint) return n None and True will be used later.
+This code variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;) outputs:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/070_failures/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Don&rsquo;t panic and tell what&rsquo;s going on We can tell that the constraint should return :
-None : if nothing was filtered True : if some values were filtered False : if a domain becomes empty Let&rsquo;s fix the code (1/2) def filter(self, vars): d1 = vars[self.v1] d2 = vars[self.v2]	diff = len(d1) &#43; len(d2) # stores current length d1 = [v for v in d1 if v &lt; max(d2)] if len(d1) == 0: # &#34;x1&#34; becomes empty.">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="202">
+<meta itemprop="description" content="Back to work deal with failures Let&rsquo;s fix the code def dfs(variables, constraint): # manage filtering failure &gt;&gt;🥛&lt;&lt; Let&rsquo;s fix the code def dfs(variables, constraint): if constraint.filter(variables) is False: return 0 var, val = make_decision(variables) if var is None: print(variables) return 1 else: n = propagate(variables, var, val, True, constraint) n &#43;= propagate(variables, var, val, False, constraint) return n None and True will be used later.
+This code variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;) outputs:">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="107">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Don&rsquo;t panic and tell what&rsquo;s going on We can tell that the constraint should return :
-None : if nothing was filtered True : if some values were filtered False : if a domain becomes empty Let&rsquo;s fix the code (1/2) def filter(self, vars): d1 = vars[self.v1] d2 = vars[self.v2]	diff = len(d1) &#43; len(d2) # stores current length d1 = [v for v in d1 if v &lt; max(d2)] if len(d1) == 0: # &#34;x1&#34; becomes empty."/>
+<meta name="twitter:description" content="Back to work deal with failures Let&rsquo;s fix the code def dfs(variables, constraint): # manage filtering failure &gt;&gt;🥛&lt;&lt; Let&rsquo;s fix the code def dfs(variables, constraint): if constraint.filter(variables) is False: return 0 var, val = make_decision(variables) if var is None: print(variables) return 1 else: n = propagate(variables, var, val, True, constraint) n &#43;= propagate(variables, var, val, False, constraint) return n None and True will be used later.
+This code variables = {&quot;x1&quot;: {3, 4}, &quot;x2&quot;: {2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;) outputs:"/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -75,6 +75,9 @@ None : if nothing was filtered True : if some values were filtered False : if a 
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -98,55 +101,57 @@ None : if nothing was filtered True : if some values were filtered False : if a 
 
 
 <section data-shortcode-section>
-<h1 id="dont-panic">Don&rsquo;t panic</h1>
-<h2 id="and-tell-whats-going-on">and tell what&rsquo;s going on</h2>
+<h1 id="back-to-work">Back to work</h1>
+<h2 id="deal-with-failures">deal with failures</h2>
 <hr>
-<p>We can tell that the constraint should return :</p>
-<ul>
-<li><code>None</code> : if nothing was filtered</li>
-<li><code>True</code> : if some values were filtered</li>
-<li><code>False</code> : if a domain becomes empty</li>
-</ul>
-<hr>
-<h3 id="lets-fix-the-code-12">Let&rsquo;s fix the code (1/2)</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span>			
-</span></span><span style="display:flex;"><span>    <span style="color:#000">diff</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#8f5902;font-style:italic"># stores current length</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d1</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#204a87">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># &#34;x1&#34; becomes empty...</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d2</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#8f5902;font-style:italic"># &#34;x2&#34; becomes empty...</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">diff</span> <span style="color:#ce5c00;font-weight:bold">-=</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#8f5902;font-style:italic"># difference in length</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d2</span>	
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">diff</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#204a87;font-weight:bold">or</span> <span style="color:#204a87;font-weight:bold">None</span> <span style="color:#8f5902;font-style:italic"># reduction of a domain or ...</span>
-</span></span></code></pre></div><hr>
-<h3 id="lets-fix-the-code-22">Let&rsquo;s fix the code (2/2)</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">constraint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">select_decision</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">var</span> <span style="color:#204a87;font-weight:bold">is</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">propagate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">propagate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">var</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">constraint</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">n</span>
-</span></span></code></pre></div><p><code>None</code> and <code>True</code> will be used later.</p>
-<hr>
-<h3 id="its-fine">It&rsquo;s fine</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;it finds&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">enumerate</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c1</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#4e9a06">&#34;solutions&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span></code></pre></div><p>outputs:</p>
-<pre tabindex="0"><code>it finds 0 solutions
+<h3 id="lets-fix-the-code">Let&rsquo;s fix the code</h3>
+<pre><code class="language-python{}">
+def dfs(variables, constraint):
+    # manage filtering failure
 </code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69913"> >>🥛<<</a></h2>
+<hr>
+<h3 id="lets-fix-the-code-1">Let&rsquo;s fix the code</h3>
+<pre><code class="language-python{2-3|}">def dfs(variables, constraint):
+    if constraint.filter(variables) is False:
+        return 0
+    var, val = make_decision(variables)
+    if var is None:
+        print(variables)
+        return 1
+    else:
+        n = propagate(variables, var, val, True, constraint)
+        n += propagate(variables, var, val, False, constraint)
+        return n
+
+</code></pre>
+<p><code>None</code> and <code>True</code> will be used later.</p>
+<hr>
+<h3 id="this-code">This code</h3>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
+             &quot;x2&quot;: {2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+
+print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<p>outputs:</p>
+<pre><code>There are 0 solutions
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp4">
+<h2 id="-possible-improvements">🚀 Possible improvements</h2>
+<ul>
+<li>Explaining failures (LCG)</li>
+<li>Adapting the research strategy:
+<ul>
+<li>dom/wdeg, pick-on-dom, ABS, etc</li>
+<li>last conflict, COS</li>
+</ul>
+</li>
+</ul>
+
 </section>
 
 

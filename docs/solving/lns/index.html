@@ -91,6 +91,9 @@ window.MathJax = {
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -300,9 +303,10 @@ to assign a value to variables not yet instantiated.
 These two phases are repeated until the search stops (optimality proven or limit reached).</p>
 <p>The <code>INeighborFactory</code> provides pre-defined configurations.
 Here is the way to declare LNS to solve a problem:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLNS</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">INeighborFactory</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">random</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ivars</span><span style="color:#ce5c00;font-weight:bold">),</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">FailCounter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">100</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">objective</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MINIMIZE</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>It declares a <em>random</em> LNS which, on a solution, computes a partial solution based on <code>ivars</code>.
+<pre><code class="language-java">solver.setLNS(INeighborFactory.random(ivars), new FailCounter(solver, 100));
+solver.findOptimalSolution(objective, Model.MINIMIZE);
+</code></pre>
+<p>It declares a <em>random</em> LNS which, on a solution, computes a partial solution based on <code>ivars</code>.
 If no solution are found within 100 fails (<code>FailCounter(solver, 100)</code>), a restart is forced.</p>
 <p>The factory provides other built-in neighbors.</p>
 <h2 id="neighbors">Neighbors</h2>
@@ -336,8 +340,9 @@ This technique has proven to be very flexible and to be easily integrated within
 <h2 id="walking">Walking</h2>
 <p>A complementary technique that appear to be efficient in practice is named <code>Walking</code> and consists in accepting equivalent intermediate solutions in a search iteration instead of requiring a strictly better one.</p>
 <p>This can be achieved by defining an <code>ObjectiveManager</code> like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ObjectiveManager</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">objective</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">ResolutionPolicy</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span></code></pre></div><p>Where the last parameter, named <code>strict</code> must be set to false to accept equivalent intermediate solutions.</p>
+<pre><code class="language-java">solver.setObjectiveManager(new ObjectiveManager(objective, ResolutionPolicy.MAXIMIZE, false));
+</code></pre>
+<p>Where the last parameter, named <code>strict</code> must be set to false to accept equivalent intermediate solutions.</p>
 <p>Other optimization policies may be encoded by using either search monitors or a custom <code>ObjectiveManager</code>.</p>
 
 	

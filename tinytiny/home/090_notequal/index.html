@@ -26,11 +26,11 @@ Adding the constraint $X_1\neq X_2 &#43; c$ where $c$ is a constant
 should be quite easy It requires to define the filter function.
 The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
 2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_2$ values.
-The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self." />
+Let&rsquo;s fix the code class NotEqual: def __init__(self, v1, v2, c=0): pass def filter(self, vars): pass &gt;&gt;🥛&lt;&lt; The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/090_notequal/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Many constraints of the different type
@@ -38,9 +38,9 @@ Adding the constraint $X_1\neq X_2 &#43; c$ where $c$ is a constant
 should be quite easy It requires to define the filter function.
 The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
 2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_2$ values.
-The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self.">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="163">
+Let&rsquo;s fix the code class NotEqual: def __init__(self, v1, v2, c=0): pass def filter(self, vars): pass &gt;&gt;🥛&lt;&lt; The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self.">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="196">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Many constraints of the different type
@@ -48,7 +48,7 @@ Adding the constraint $X_1\neq X_2 &#43; c$ where $c$ is a constant
 should be quite easy It requires to define the filter function.
 The 2 rules of $X_1\neq X_2 &#43; c$ 1. if $X_2$ is instantied to $v_2$, then $v_2&#43;c$ must be removed from $X_1$ values,
 2. if $X_1$ is instantied to $v_1$, then $v_1-c$ must be removed from $X_2$ values.
-The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self."/>
+Let&rsquo;s fix the code class NotEqual: def __init__(self, v1, v2, c=0): pass def filter(self, vars): pass &gt;&gt;🥛&lt;&lt; The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self."/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -87,6 +87,9 @@ The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self."/>
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -123,30 +126,53 @@ The NotEqual class class NotEqual: def __init__(self, v1, v2, c=0): self."/>
 <h2>The 2 rules of $X_1\neq X_2 + c$</h2>
 <p class="fragment">1. if $X_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $X_1$ values,</p>
 <p class="fragment">2. if $X_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $X_2$ values.</p>
+<hr>
+<h3 id="lets-fix-the-code">Let&rsquo;s fix the code</h3>
+<pre><code class="language-python{}">
+  class NotEqual:
+      def __init__(self, v1, v2, c=0):
+          pass
+
+      def filter(self, vars):
+          pass
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=71050"> >>🥛<<</a></h2>
 <!--</section> to bind to the next section tag-->
 <hr>
 <h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">NotEqual</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">__init__</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">v1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">v2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">c</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">c</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">c</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">size</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d1</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d2</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">size</span> <span style="color:#ce5c00;font-weight:bold">-=</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">))</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">size</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#204a87;font-weight:bold">or</span> <span style="color:#204a87;font-weight:bold">None</span>
-</span></span></code></pre></div>
+<pre><code class="language-python{1-5|7-9|11-13|14-16|18,19|10,17,20}">class NotEqual:
+    def __init__(self, v1, v2, c=0):
+        self.v1 = v1
+        self.v2 = v2
+        self.c = c
+
+    def filter(self, vars):
+        d1 = vars[self.v1]
+        d2 = vars[self.v2]
+        size = len(d1) + len(d2)
+        if len(d2) == 1:
+            d1 = {v for v in d1 if v != (d2[0] + self.c)}
+            if len(d1) == 0: return False
+        if len(d1) == 1:
+            d2 = {v for v in d2 if v != (d1[0] - self.c)}
+            if len(d2) == 0: return False
+        size -= (len(d1) + len(d2))
+        vars[self.v1] = d1
+        vars[self.v2] = d2
+        return size &gt; 0 or None
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp7">
+<h2 id="-constraints">🚀 Constraints</h2>
+<ul>
+<li>Different level of inconsistency</li>
+<li>Global reasoning vs decomposition</li>
+<li>Explain domain modifications</li>
+<li>Reification, entailment, &hellip;</li>
+</ul>
+
 </section>
 
 

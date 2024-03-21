@@ -21,22 +21,40 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Global Constraints Some cardinality constraints Syntax Definition m.allDifferent(X) $X_i\neq X_j, \forall i&lt; j$ m.among(n, X, v) $|x_i : x_i \cap v\neq \emptyset | = n$ m.count(y, X, n) $ | \{ x_i : x_i = y \} | = n$ m.nValues(X, n) $|x_i| = n$ Notations
-Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some connection constraints Syntax Definition m.argmax(i, o, X) $i \in \{j - o : x_j = \max\{x_k\}\}$ m." />
+<meta property="og:description" content="Global Constraints Definition(s) an expressive and concise condition involving a non-fixed number of variables
+[GCCAT]
+allDifferent($x_1,x_2,\dots$)
+Definition(s) a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C
+[BvH03]
+allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$
+Example of constraints cumulative(starts, durations, heights, capacity)
+Solution for a Cumulative constraint. Example of constraints binpacking(bins, weigths, capacity)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/060_globals/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-01-26T08:38:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Global Constraints Some cardinality constraints Syntax Definition m.allDifferent(X) $X_i\neq X_j, \forall i&lt; j$ m.among(n, X, v) $|x_i : x_i \cap v\neq \emptyset | = n$ m.count(y, X, n) $ | \{ x_i : x_i = y \} | = n$ m.nValues(X, n) $|x_i| = n$ Notations
-Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some connection constraints Syntax Definition m.argmax(i, o, X) $i \in \{j - o : x_j = \max\{x_k\}\}$ m.">
-<meta itemprop="dateModified" content="2024-01-26T08:38:21+01:00" />
-<meta itemprop="wordCount" content="321">
+<meta itemprop="description" content="Global Constraints Definition(s) an expressive and concise condition involving a non-fixed number of variables
+[GCCAT]
+allDifferent($x_1,x_2,\dots$)
+Definition(s) a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C
+[BvH03]
+allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$
+Example of constraints cumulative(starts, durations, heights, capacity)
+Solution for a Cumulative constraint. Example of constraints binpacking(bins, weigths, capacity)">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="404">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Global Constraints Some cardinality constraints Syntax Definition m.allDifferent(X) $X_i\neq X_j, \forall i&lt; j$ m.among(n, X, v) $|x_i : x_i \cap v\neq \emptyset | = n$ m.count(y, X, n) $ | \{ x_i : x_i = y \} | = n$ m.nValues(X, n) $|x_i| = n$ Notations
-Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some connection constraints Syntax Definition m.argmax(i, o, X) $i \in \{j - o : x_j = \max\{x_k\}\}$ m."/>
+<meta name="twitter:description" content="Global Constraints Definition(s) an expressive and concise condition involving a non-fixed number of variables
+[GCCAT]
+allDifferent($x_1,x_2,\dots$)
+Definition(s) a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C
+[BvH03]
+allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$
+Example of constraints cumulative(starts, durations, heights, capacity)
+Solution for a Cumulative constraint. Example of constraints binpacking(bins, weigths, capacity)"/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -75,6 +93,9 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -100,6 +121,40 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <section data-shortcode-section>
 <h1 id="global-constraints">Global Constraints</h1>
 <hr>
+<h2 id="definitions">Definition(s)</h2>
+<blockquote>
+<p>an expressive and concise condition involving a non-fixed number of variables</p>
+</blockquote>
+<p><a href="https://sofdem.github.io/gccat/gccat/preface.html">[GCCAT]</a></p>
+<p class="fragment">allDifferent($x_1,x_2,\dots$)</p>
+<hr>
+<h2 id="definitions-1">Definition(s)</h2>
+<blockquote>
+<p>a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C</p>
+</blockquote>
+<p><a href="https://www.lirmm.fr/~bessiere/Site/stock/cp03-glob.pdf">[BvH03]</a></p>
+<p class="fragment">allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$</p>
+<hr>
+<h3 id="example-of-constraints">Example of constraints</h3>
+<p><span style="color:#ED5565">cumulative(starts, durations, heights, capacity)</span></p>
+<figure>
+    <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">Cumulative</em> constraint. </figcaption>
+</figure>
+<hr>
+<h3 id="example-of-constraints-1">Example of constraints</h3>
+<p><span style="color:#ED5565">binpacking(bins, weigths, capacity)</span></p>
+<figure>
+    <img src="/images/overview/binpacking.svg" alt="" width="20%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">BinPacking</em> constraint. </figcaption>
+</figure>
+<hr>
+<h3 id="example-of-constraints-2">Example of constraints</h3>
+<p><span style="color:#ED5565">circuit(successors)</span></p>
+<figure>
+    <img src="/images/overview/routing.svg" alt="" width="30%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">Circuit</em> constraint. </figcaption>
+</figure>
 <hr>
 <h3 id="some-cardinality-constraints">Some cardinality constraints</h3>
 <small>
@@ -115,7 +170,7 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <tbody>
 <tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.allDifferent(X)</code></td>
-<td>$X_i\neq X_j, \forall i&lt; j$</td>
+<td>$x_i\neq x_j, \forall i&lt; j$</td>
 </tr>
 <tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.among(n, X, v)</code></td>
@@ -141,7 +196,7 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 </ul>
-<p></small></p>
+</small>
 <hr>
 <h3 id="some-connection-constraints">Some connection constraints</h3>
 <small>
@@ -153,6 +208,10 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
+<td>$\exists i : v = x_{i - o}$</td>
+</tr>
 <tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.argmax(i, o, X)</code></td>
 <td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
@@ -170,10 +229,6 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <td>$m = \min\{x_i\}$</td>
 </tr>
 <tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
-<td>$\exists i : v = x_{i - o}$</td>
-</tr>
-<tr>
 <td><code style='font-family: monospace;color:#05507D;'>m.inverseChanneling(X, Y)</code></td>
 <td>$ \forall i: x_i = j \iff y_j = i \quad (|X| = |Y|)$</td>
 </tr>
@@ -189,7 +244,7 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 </ul>
-<p></small></p>
+</small>
 <hr>
 <h3 id="some-packing-and-scheduling-constraints">Some Packing and Scheduling constraints</h3>
 <small>
@@ -214,8 +269,8 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <td>$\forall i&lt;j, x_{i} + w_{i} \leq x_{j} \lor x_{j} + h_{j} ≤ x_{i}$<br/>$\quad\quad\quad \lor y_{i} + h_{i} \leq y_{j} \lor y_{j} + w_{j} ≤ y_{i}$</td>
 </tr>
 <tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, w, e, W, E)</code></td>
-<td>$\sum_{i} w_i \times O_i = W \land \sum_{i} e_i \times O_i = E$</td>
+<td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, W, E, w, e)</code></td>
+<td>$\sum_{i} w_i \times O_i = w \land \sum_{i} e_i \times O_i = e$</td>
 </tr>
 <tr>
 <td></td>
@@ -230,7 +285,7 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 <li>Task (or activity): $a^s + a^d = a^e$</li>
 </ul>
-<p></small></p>
+</small>
 <hr>
 <h3 id="some-graph-based-constraints">Some Graph-based constraints</h3>
 <small>
@@ -267,15 +322,12 @@ Arrays: $X=\langle x_0, x_1,\ldots\rangle$ Index: $ 0 \leq i &lt; |X|$ Some conn
 <li>Index: $ 0 \leq i &lt; |X|$</li>
 <li>A pair $(i, x_i)$ represents an arc in a graph induced by $X$</li>
 </ul>
-<p></small></p>
+</small>
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex4">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>TODO</li>
-</ul>
+      data-background="#76bde8">
+<h2 id="magic-sequence">Magic Sequence</h2>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=71042" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 
 </section>
 

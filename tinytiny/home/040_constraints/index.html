@@ -21,25 +21,31 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Choco-solver</title><meta property="og:title" content="" />
-<meta property="og:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
-$X_1 &lt; X_2$ Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
-$(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will first create a class to declare the behaviour of this constraint:" />
+<meta property="og:description" content="Constraints $X_1 &lt; X_2$ Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
+Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+$(1,2)$ and $(2,5)$ satisfy the constraint,
+$(2,2)$ and $(5,3)$ do not.
+We will first create a class to declare the behaviour of this constraint:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/040_constraints/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-01-26T08:37:43+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
-$X_1 &lt; X_2$ Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
-$(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will first create a class to declare the behaviour of this constraint:">
-<meta itemprop="dateModified" content="2024-01-26T08:37:43+01:00" />
-<meta itemprop="wordCount" content="417">
+<meta itemprop="description" content="Constraints $X_1 &lt; X_2$ Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
+Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+$(1,2)$ and $(2,5)$ satisfy the constraint,
+$(2,2)$ and $(5,3)$ do not.
+We will first create a class to declare the behaviour of this constraint:">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="514">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Constraints Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
-$X_1 &lt; X_2$ Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
-$(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will first create a class to declare the behaviour of this constraint:"/>
+<meta name="twitter:description" content="Constraints $X_1 &lt; X_2$ Let&rsquo;s roll up our sleeves and tackle the case of the binary &ldquo;strictly less&rdquo; constraint:
+Such a constraint will take two variables as argument and makes sure that the former one takes a value less than the latter one in any solution.
+$(1,2)$ and $(2,5)$ satisfy the constraint,
+$(2,2)$ and $(5,3)$ do not.
+We will first create a class to declare the behaviour of this constraint:"/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -78,6 +84,9 @@ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will 
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -102,30 +111,32 @@ $(1,2)$ and $(2,5)$ satisfy the constraint, $(2,2)$ and $(5,3)$ do not. We will 
 
 <section data-shortcode-section>
 <h1 id="constraints">Constraints</h1>
-<p>Let&rsquo;s roll up our sleeves and tackle the case of the binary <em>&ldquo;strictly less&rdquo;</em> constraint:</p>
 <h3 id="x_1--x_2">$X_1 &lt; X_2$</h3>
+<aside class="notes"><p>Let&rsquo;s roll up our sleeves and tackle the case of the binary <em>&ldquo;strictly less&rdquo;</em> constraint:</p>
+</aside>
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#8CC152"
+      data-background="#C6D0B4"
       id="ex3">
 <p>Such a constraint will take <span style="color:#3BAFDA">two variables</span>
 as argument and makes sure that the former one takes a value less than the latter one in any solution.</p>
-<ul>
-<li>$(1,2)$ and $(2,5)$ satisfy the constraint,</li>
-<li>$(2,2)$ and $(5,3)$ do not.</li>
-</ul>
+<p><span class='fragment ' >$(1,2)$ and $(2,5)$ satisfy the constraint,</span></p>
+<p><span class='fragment ' >$(2,2)$ and $(5,3)$ do not.</span></p>
 <hr>
 <p>We will first create a class to declare the behaviour of this constraint:</p>
-<pre tabindex="0"><code class="language-python[1|2-4]" data-lang="python[1|2-4]">class LessThan:
+<pre><code class="language-python{1|2-4}">class LessThan:
     def __init__(self, v1, v2):
         self.v1 = v1
         self.v2 = v2
-</code></pre><hr>
+</code></pre>
+<hr>
 <p>We can impose that $X_1$ is strictly less than $X_2$:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#8f5902;font-style:italic"># means that x1 &lt; x2 should hold</span>
-</span></span></code></pre></div><p>After doing that we didn&rsquo;t do much&hellip;</p>
+<pre><code class="language-python{3|}">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
+</code></pre>
+<aside class="notes"><p>After doing that we didn&rsquo;t do much&hellip;</p>
+</aside>
 <hr>
 <h2 id="what-can-such-a-constraint-do">What can such a constraint do?</h2>
 <hr>
@@ -135,18 +146,19 @@ to any solution</p>
 <p>(<em>according to its own contract</em>)</p>
 <hr>
 <p>We will create an empty function called <code>filter</code> as follow:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#204a87;font-weight:bold">pass</span> 
-</span></span></code></pre></div><hr>
+<pre><code class="language-python">def filter(self,variables):
+	pass
+</code></pre>
+<hr>
 <section data-noprocess>
 <h2>The 2 rules of $X_1 < X_2$</h2>
 <p class="fragment">1. removing from $X_1$ values <span style="color:deepskyblue;">greater or equal to the largest value</span> in $X_2$,</p>
 <p class="fragment">2. removing from $X_2$ values <span style="color:deepskyblue;">smaller or equal to the smallest value</span> in $X_1$.</p>
-<p class="fragment">Otherwise, in both cases, we could break the contract established between the 2 variables.</p> 
+<p class="fragment">Otherwise, in both cases, we could break the contract established between the 2 variables.</p>
 <!--</section> to bind to the next section tag-->
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#8CC152"
+      data-background="#C6D0B4"
       id="ex4">
 <p>$X_1 = \{1,2,3,4\}$, $X_2 = \{1,2,3,4\}$ and $X_1 &lt; X_2$</p>
 <p>Then</p>
@@ -156,51 +168,72 @@ to any solution</p>
 </ul>
 <hr>
 <section data-noprocess data-shortcode-slide
-      data-background="#8CC152"
+      data-background="#C6D0B4"
       id="ex4">
 <p>In other words:</p>
 <ul>
-<li>$max(X_2)$ is removed from $X_1$</li>
-<li>$min(X_1)$ is removed from $X_2$</li>
+<li>$max(X_2)$ and larger are removed from $X_1$</li>
+<li>$min(X_1)$ and smaller are removed from $X_2$</li>
+</ul>
+<hr>
+<h2 id="deal-with-dead-ends">Deal with dead ends</h2>
+<p>We can tell that the constraint should return :</p>
+<ul>
+<li><code>True</code> : if some values were filtered</li>
+<li><code>False</code> : if a domain becomes empty</li>
+<li><code>None</code> : if nothing was filtered</li>
 </ul>
 <hr>
 <h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">__init__</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">v1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">v2</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">        Filter the domain of the variables declared in &#39;vars&#39;.
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">        The method directly modifies the entries of &#39;vars&#39;.
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">        &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">pass</span>
-</span></span><span style="display:flex;"><span>    
-</span></span></code></pre></div><h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69645"> >>🥛<<</a></h2>
+<pre><code class="language-python{}">class LessThan:
+    def __init__(self, v1, v2):
+        self.v1 = v1
+        self.v2 = v2
+
+    def filter(self, variables):
+        &quot;&quot;&quot;
+        Filter the domain of the variables declared in 'vars'.
+        The method directly modifies the entries of 'vars'.
+        It returns True if some values were filtered,
+        False if a domain becomes empty,
+        None otherwise.
+        &quot;&quot;&quot;
+        pass
+
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69645"> >>🥛<<</a></h2>
 <hr>
 <h3 id="lessthan-filtering-algorithm-1"><code>LessThan</code> filtering algorithm</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#8f5902;font-style:italic"># get current domain of &#34;x1&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#8f5902;font-style:italic"># get current domain of &#34;x2&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># filtering according to the 1st rule</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d1</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#204a87">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d2</span><span style="color:#000;font-weight:bold">)]</span> 
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># filtering according to the 2nd rule</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">d2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">v</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">d2</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">d1</span><span style="color:#000;font-weight:bold">)]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d1</span> <span style="color:#8f5902;font-style:italic"># update the domain of &#34;x1&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">v2</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">d2</span> <span style="color:#8f5902;font-style:italic"># update the domain of &#34;x2&#34;	</span>
-</span></span></code></pre></div><hr>
+<pre><code class="language-python{|2-3|4-7|8-11|12-13|14-15}">def filter(self, variables):
+    cd1 = variables[self.v1] # get current domain of &quot;x1&quot;
+    cd2 = variables[self.v2] # get current domain of &quot;x2&quot;
+    # filtering according to the 1st rule
+    nd1 = {v for v in cd1 if v &lt; max(cd2)}
+    if len(nd1) == 0: # &quot;x1&quot; becomes empty...
+        return False
+    # filtering according to the 2nd rule
+    nd2 = {v for v in cd2 if v &gt; min(cd1)}
+    if len(nd2) == 0: # &quot;x2&quot; becomes empty...
+        return False
+    variables[self.v1] = nd1 # update the domain of &quot;x1&quot;
+    variables[self.v2] = nd2 # update the domain of &quot;x2&quot;
+    modif = cd1 &gt; nd1 or cd2 &gt; nd2 # reduction of a domain
+    return modif or None
+</code></pre>
+<hr>
 <h3 id="does-that-work">Does that work?</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># declare a CSP</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">LessThan</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># call the filtering algorithm</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">c1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">filter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">variables</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># check everything works fine</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x1&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">assert</span> <span style="color:#000">variables</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;x2&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">}</span> 
-</span></span></code></pre></div><hr>
+<pre><code class="language-python{1-10|1-4|5-6|7-10}"># declare a CSP
+variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+# call the filtering algorithm
+modif = c1.filter(variables)
+# check everything works fine
+assert variables[&quot;x1&quot;] == {1, 2}
+assert variables[&quot;x2&quot;] == {2, 3}
+assert modif == True
+</code></pre>
+<hr>
 <h3 id="yes-it-does-">Yes, it does !</h3>
 
 </section>

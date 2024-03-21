@@ -28,15 +28,15 @@ Several builders Model m = new Model();	// 1 Model m = new Model(String name);	/
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/030_modelling/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-01-26T08:38:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Modelling Creation of a Model instance Model is the central object in the Choco-solver library
 Creating a model is the first essential step in declaring and solving a problem. Variables are declared via the model Constraints too In fact, almost anything can be done via a Model instance$^1$.
 $1$: So you don’t have to know all the objects in advance.
 Several builders Model m = new Model();	// 1 Model m = new Model(String name);	// 2 Model m = new Model(settings settings);	// 3 Model m = new Model(String name, Settings settings); // 4 Prefer choices 1 and 2 to start with.">
-<meta itemprop="dateModified" content="2024-01-26T08:38:21+01:00" />
-<meta itemprop="wordCount" content="156">
+<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="wordCount" content="136">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Modelling Creation of a Model instance Model is the central object in the Choco-solver library
@@ -81,6 +81,9 @@ Several builders Model m = new Model();	// 1 Model m = new Model(String name);	/
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -121,49 +124,42 @@ solving a problem.</li>
 <p><small>$1$: So you don’t have to know all the objects in advance.</small></p>
 <hr>
 <h3 id="several-builders">Several builders</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">();</span>								 							 <span style="color:#8f5902;font-style:italic">// 1
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">);</span>					 					 <span style="color:#8f5902;font-style:italic">// 2
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">settings</span> <span style="color:#000">settings</span><span style="color:#ce5c00;font-weight:bold">);</span>				 			 <span style="color:#8f5902;font-style:italic">// 3
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Model</span> <span style="color:#000">m</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Settings</span> <span style="color:#000">settings</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// 4
-</span></span></span></code></pre></div><p>Prefer choices 1 and 2 to start with.</p>
+<pre><code class="language-java{|1-2}">Model m = new Model();								 							 // 1
+Model m = new Model(String name);					 					 // 2
+Model m = new Model(settings settings);				 			 // 3
+Model m = new Model(String name, Settings settings); // 4
+</code></pre>
+<p>Prefer choices 1 and 2 to start with.</p>
 <hr>
 <section data-noprocess data-shortcode-slide
       id="code1"
       data-transition="none-out">
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">package</span> <span style="color:#000">apetizer</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Example</span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><hr>
+<pre><code class="language-java{}">package apetizer;
+
+
+
+public class Example{
+
+    public static void main(String[] args){
+
+    }
+}
+</code></pre>
+<hr>
 <section data-noprocess data-shortcode-slide
       id="code2"
       data-transition="none-in">
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">package</span> <span style="color:#000">apetizer</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">org.chocosolver.solver.Model</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Example</span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">Model</span> <span style="color:#000">myModel</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My first model&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><hr>
-<section data-noprocess data-shortcode-slide
-      data-background="#76bde8"
-      id="ex1">
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<ul>
-<li>Create a class named <code style='font-family: monospace;color:#05507D;'>Example</code></li>
-<li>Declare a <code style='font-family: monospace;color:#05507D;'>main</code> method</li>
-<li>Build an instance of <code style='font-family: monospace;color:#05507D;'>Model</code> named <code style='font-family: monospace;color:#05507D;'>m</code></li>
-</ul>
+<pre><code class="language-java{3,8}">package apetizer;
+
+import org.chocosolver.solver.Model;
+
+public class Example{
+
+    public static void main(String[] args){
+        Model myModel = new Model(&quot;My first model&quot;);
+    }
+}
+</code></pre>
 
 </section>
 

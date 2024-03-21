@@ -91,6 +91,9 @@ window.MathJax = {
         <a class="nav-link" href="/tutos/"><span>Tutorials</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
       <li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -288,102 +291,111 @@ window.MathJax = {
 <h4 id="using-selectors">Using selectors</h4>
 <p>To design your own strategy using <code>Search.intVarSearch</code>, you simply have to implement
 your own variable and value selectors:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#000">IntStrategy</span> <span style="color:#000">intVarSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">VariableSelector</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">varSelector</span><span style="color:#ce5c00;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                    <span style="color:#000">IntValueSelector</span> <span style="color:#000">valSelector</span><span style="color:#ce5c00;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                    <span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">...</span> <span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">)</span>
-</span></span></code></pre></div><p>For instance, to select the first non instantiated variable and assign it to its lower bound:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">intVarSearch</span><span style="color:#ce5c00;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">// variable selector
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">VariableSelector</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">&gt;)</span> <span style="color:#000">variables</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(!</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isInstantiated</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">// value selector
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntValueSelector</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">var</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(),</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">// variables to branch on
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span></code></pre></div><p><strong>NOTE</strong>: When all variables are instantiated, a <code>VariableSelector</code> must return <code>null</code>.</p>
+<pre><code class="language-java">public static IntStrategy intVarSearch(VariableSelector&lt;IntVar&gt; varSelector,
+                                    IntValueSelector valSelector,
+                                    IntVar... vars)
+</code></pre>
+<p>For instance, to select the first non instantiated variable and assign it to its lower bound:</p>
+<pre><code class="language-java">Solver s = model.getSolver();
+s.setSearch(intVarSearch(
+        // variable selector
+        (VariableSelector&lt;IntVar&gt;) variables -&gt; {
+            for(IntVar v:variables){
+                if(!v.isInstantiated()){
+                    return v;
+                }
+            }
+            return null;
+        },
+        // value selector
+        (IntValueSelector) var -&gt; var.getLB(),
+        // variables to branch on
+        x, y
+));
+</code></pre>
+<p><strong>NOTE</strong>: When all variables are instantiated, a <code>VariableSelector</code> must return <code>null</code>.</p>
 <h4 id="from-scratch">From scratch</h4>
 <p>You can design your own strategy by creating <code>Decision</code> objects directly as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">AbstractStrategy</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">&gt;(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// enables to recycle decision objects (good practice)
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PoolManager</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">IntDecision</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">pool</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">PoolManager</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#5c35cc;font-weight:bold">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">Decision</span> <span style="color:#000">getDecision</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">IntDecision</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">pool</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getE</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">==</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">IntDecision</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">pool</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">IntVar</span> <span style="color:#000">next</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">for</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">IntVar</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(!</span><span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isInstantiated</span><span style="color:#ce5c00;font-weight:bold">()){</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">next</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">break</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">next</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#8f5902;font-style:italic">// next decision is assigning nextVar to its lower bound
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>            <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">set</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">next</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">next</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLB</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">DecisionOperator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">int_eq</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">d</span><span style="color:#ce5c00;font-weight:bold">;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span></code></pre></div><h3 id="making-a-decision-greedy">Making a decision greedy</h3>
+<pre><code class="language-java">s.setSearch(new AbstractStrategy&lt;IntVar&gt;(x,y) {
+    // enables to recycle decision objects (good practice)
+    PoolManager&lt;IntDecision&gt; pool = new PoolManager();
+    @Override
+    public Decision getDecision() {
+        IntDecision d = pool.getE();
+        if(d==null) d = new IntDecision(pool);
+        IntVar next = null;
+        for(IntVar v:vars){
+            if(!v.isInstantiated()){
+                next = v; break;
+            }
+        }
+        if(next == null){
+            return null;
+        }else {
+            // next decision is assigning nextVar to its lower bound
+            d.set(next,next.getLB(), DecisionOperator.int_eq);
+            return d;
+        }
+    }
+});
+</code></pre>
+<h3 id="making-a-decision-greedy">Making a decision greedy</h3>
 <p>You can make a decision non-refutable by using <code>decision.setRefutable(false)</code> inside your</p>
 <p>To make an entire search strategy greedy, use:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Solver</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">greedySearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">inputOrderLBSearch</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">)));</span>
-</span></span></code></pre></div><h3 id="large-neighborhood-search-lns">Large Neighborhood Search (LNS)</h3>
+<pre><code class="language-java">Solver s = model.getSolver();
+s.setSearch(greedySearch(inputOrderLBSearch(x,y,z)));
+</code></pre>
+<h3 id="large-neighborhood-search-lns">Large Neighborhood Search (LNS)</h3>
 <h5 id="defining-its-own-neighborhoods">Defining its own neighborhoods</h5>
 <p>A presentation of the <a href="https://choco-solver.org/docs/solving/lns/">functioning of LNS</a> was given earlier. It is said that anyone can define its own neighbor, dedicated to the problem solved.
 This is achieved by extending either the abstract class <code>IntNeighbor</code> or by implementing the interface <code>INeighbor</code>.
 The former implements all methods from the latter but <code>void fixSomeVariables() throws ContradictionException;</code> that defines which variables should be fixed to their value in the last solution.</p>
 <p><code>INeighbor</code> forces to implements the following methods:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Action to perform on a solution. 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Typically, storing the current variables’ value.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">recordSolution</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// where `values` and `variables` are class instances
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">getValue</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>  
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Fix some variables to their value in the last solution.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">fixSomeVariables</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#204a87;font-weight:bold">throws</span> <span style="color:#000">ContradictionException</span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// An example of random neighbor where a coin is tossed
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// for each variable to choose if it is fixed or not in the current fragment
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Math</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">random</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span> <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">9</span><span style="color:#ce5c00;font-weight:bold">){</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#000">variables</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">].</span><span style="color:#c4a000">instantiateTo</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">values</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">],</span> <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#8f5902;font-style:italic">// alternatively call: `this.freeze(i);`    
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Relax the number of variables fixed. 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Called when no solution was found during a LNS run 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * (i.e., trapped into a local optimum).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * if the fragment is based on a class instance (e.g, number of fixed variables)
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * it may be updated there
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">restrictLess</span><span style="color:#ce5c00;font-weight:bold">()</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// for instance, the threshold (0.9) previously declare in `fixSomeVariables()`
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// can be reduced here
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">/** 
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Indicates whether the neighbor is complete, that is, can end.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> * Most of the time, this is related to `restrictLess()`
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isSearchComplete</span><span style="color:#ce5c00;font-weight:bold">()</span><span style="color:#a40000">`</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// for instance, if the threshold is 0. after a certain number of attempts.
-</span></span></span></code></pre></div>
+<pre><code class="language-java">/**
+ * Action to perform on a solution. 
+ * Typically, storing the current variables’ value.
+ */
+public void recordSolution() {
+    // where `values` and `variables` are class instances
+    for (int i = 0; i &lt; variables.length; i++) {
+        values[i] = variables[i].getValue();
+    }
+}  
+</code></pre>
+<pre><code class="language-java">/**
+ * Fix some variables to their value in the last solution.
+ */
+public void fixSomeVariables() throws ContradictionException{
+    // An example of random neighbor where a coin is tossed
+    // for each variable to choose if it is fixed or not in the current fragment
+    for (int i = 0; i &lt; variables.length; i++) {
+        if(Math.random() &lt; .9){
+            variables[i].instantiateTo(values[i], this);
+            // alternatively call: `this.freeze(i);`    
+        }
+    }
+}
+
+</code></pre>
+<pre><code class="language-java">/**
+ * Relax the number of variables fixed. 
+ * Called when no solution was found during a LNS run 
+ * (i.e., trapped into a local optimum).
+ * if the fragment is based on a class instance (e.g, number of fixed variables)
+ * it may be updated there
+ */
+void restrictLess()
+// for instance, the threshold (0.9) previously declare in `fixSomeVariables()`
+// can be reduced here
+</code></pre>
+<pre><code class="language-java">/** 
+ * Indicates whether the neighbor is complete, that is, can end.
+ * Most of the time, this is related to `restrictLess()`
+ */
+boolean isSearchComplete()`
+// for instance, if the threshold is 0. after a certain number of attempts.
+</code></pre>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
