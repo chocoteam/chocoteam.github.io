@@ -25,11 +25,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/040_variables/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-03-26T11:52:09+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-26T16:55:31+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval.">
-<meta itemprop="dateModified" content="2024-03-26T11:52:09+01:00" />
+<meta itemprop="dateModified" content="2024-03-26T16:55:31+01:00" />
 <meta itemprop="wordCount" content="427">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
@@ -246,7 +246,7 @@ x is not instantiated
 </li>
 <li>variables
 <ul>
-<li>$\forall i \in \{th,hu,te,on\}, x_i \in [1,9]$</li>
+<li>$\forall i \in \{th,hu,te,on\}, x_i \in [0,9]$</li>
 <li>$age \in [0,99]$</li>
 </ul>
 </li>
