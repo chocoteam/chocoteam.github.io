@@ -21,7 +21,7 @@
 </br>
 Charles Prud'homme, March 2024
 <p>IMT Atlantique, LS2N, TASC</p>
-<p><span style="color:#ED5565">This is a work in progress</span></p>
+<p><small style="color:#C70039">&lt; press [N] / [P] to go the next / previous slide &gt;</small></p>
 
 
 
@@ -375,7 +375,7 @@ pick a value in its domain (e.g., the lower bound)
 </section><section>
 <h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
 <p>Let&rsquo;s break down the needs into 4 functions.</p>
-<pre><code class="language-python">def make_decision(variables):``
+<pre><code class="language-python">def make_decision(variables):
     pass
 
 def copy_domains(variables):
@@ -384,23 +384,10 @@ def copy_domains(variables):
 def apply_decision(variables, var, val, apply, constraint):
     pass
 
-def enumerate(variables, constraint):
+def dfs(variables, constraint):
     pass
 </code></pre>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69653" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
-</section><section>
-<pre><code class="language-python" data-line-numbers="1|2|3|4-6|7-10|11|">def dfs(variables, constraint):
-  constraint.filter(variables)
-  dec = make_decision(variables)
-  if dec is None:
-      print(variables)  # prints the solution
-      return 1
-  else:
-      var, val = dec
-      n = apply_decision(variables, var, val, True, constraint)
-      n += apply_decision(variables, var, val, False, constraint)
-  return n
-</code></pre>
 </section><section>
 <pre><code class="language-python" data-line-numbers="2-4|5-7|8-10">def make_decision(variables):
     var, dom = next(
@@ -427,6 +414,19 @@ def enumerate(variables, constraint):
                       if apply is (x == val)}
   # explore the sub-branch
   return dfs(c_variables, constraint)
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers="1|2|3|4-6|7-10|11|">def dfs(variables, constraint):
+  constraint.filter(variables)
+  dec = make_decision(variables)
+  if dec is None:
+      print(variables)  # prints the solution
+      return 1
+  else:
+      var, val = dec
+      n = apply_decision(variables, var, val, True, constraint)
+      n += apply_decision(variables, var, val, False, constraint)
+  return n
 </code></pre>
 </section><section>
 <pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
@@ -519,7 +519,7 @@ print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;)
 <li>Adapting the research strategy:
 <ul>
 <li>dom/wdeg, pick-on-dom, ABS, etc</li>
-<li>last conflict, COS</li>
+<li>last conflict, conflict ordering search</li>
 </ul>
 </li>
 </ul>
@@ -610,7 +610,7 @@ is reached.</p>
             </tr>
             <tr class="fragment">
               <td>3</td>
-              <td>-</td>
+              <td>[1,<span style="color:#3BAFDA">1</span>]</td>
               <td>-</td>
               <td>-</td>
               <td>{<span style="color:#3BAFDA">c1</span>}</td>
@@ -621,8 +621,24 @@ is reached.</p>
               <td></td>
               <td></td>
               <td></td>
+              <td>{<span style="color:#ED5565">c2</span>}</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>4</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+              <td>{c1}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td>{}</td>
-              <td>{<span style="color:#3BAFDA">c1</span>,c2}</td>
+              <td>{<span style="color:#3BAFDA">c1, c2</span>}</td>
             </tr>
           </tbody>
         </table>

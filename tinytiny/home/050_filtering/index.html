@@ -29,7 +29,7 @@ Adapting the DFS If all variables are fixed, stop the search If inconsistency de
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/050_filtering/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-26T09:38:35+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Filtering is not enough It didn&rsquo;t build a solution
@@ -37,7 +37,7 @@ although all impossible values were removed
 It seems that we need to dive into the
 search space 🤿 in a DFS way.
 Adapting the DFS If all variables are fixed, stop the search If inconsistency detected, then backtrack Expand the tree by making a decision$^*$ *: 2-way branching Expand the tree = create a decision or refute the last one Two way decision = more flexible but n-way possible The search space can be seen as a tree where a node corresponds to a decision (here I labeled edge for clarity reason) and a leaf is either a solution or a dead-end.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="dateModified" content="2024-03-26T09:38:35+01:00" />
 <meta itemprop="wordCount" content="112">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
@@ -154,7 +154,7 @@ pick a value in its domain (e.g., the lower bound)
 <hr>
 <h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
 <p>Let&rsquo;s break down the needs into 4 functions.</p>
-<pre><code class="language-python">def make_decision(variables):``
+<pre><code class="language-python">def make_decision(variables):
     pass
 
 def copy_domains(variables):
@@ -163,23 +163,10 @@ def copy_domains(variables):
 def apply_decision(variables, var, val, apply, constraint):
     pass
 
-def enumerate(variables, constraint):
+def dfs(variables, constraint):
     pass
 </code></pre>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69653" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
-<hr>
-<pre><code class="language-python{1|2|3|4-6|7-10|11|}">def dfs(variables, constraint):
-  constraint.filter(variables)
-  dec = make_decision(variables)
-  if dec is None:
-      print(variables)  # prints the solution
-      return 1
-  else:
-      var, val = dec
-      n = apply_decision(variables, var, val, True, constraint)
-      n += apply_decision(variables, var, val, False, constraint)
-  return n
-</code></pre>
 <hr>
 <pre><code class="language-python{2-4|5-7|8-10}">def make_decision(variables):
     var, dom = next(
@@ -206,6 +193,19 @@ def enumerate(variables, constraint):
                       if apply is (x == val)}
   # explore the sub-branch
   return dfs(c_variables, constraint)
+</code></pre>
+<hr>
+<pre><code class="language-python{1|2|3|4-6|7-10|11|}">def dfs(variables, constraint):
+  constraint.filter(variables)
+  dec = make_decision(variables)
+  if dec is None:
+      print(variables)  # prints the solution
+      return 1
+  else:
+      var, val = dec
+      n = apply_decision(variables, var, val, True, constraint)
+      n += apply_decision(variables, var, val, False, constraint)
+  return n
 </code></pre>
 <hr>
 <pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},

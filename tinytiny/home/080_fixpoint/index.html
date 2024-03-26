@@ -28,15 +28,15 @@ Fixpoint reasoning Iteratively applying constraint propagation until no more imp
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/080_fixpoint/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-26T09:38:35+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Many constraints of the same type
 variables = {&quot;x1&quot;: {1, 2, 3}, &quot;x2&quot;: {1, 2, 3}, &quot;x3&quot;: {1, 2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;) We need to adapt the dfs(_,_) function:
 def dfs(variables, constraints): # if constraint.filter(variables) is False: if not fix_point(variables, constraints): return 0 # at least one constraint is not satisfied # ... and ensure that a fix point is reached.
 Fixpoint reasoning Iteratively applying constraint propagation until no more improvements are possible or a failure is detected.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
-<meta itemprop="wordCount" content="281">
+<meta itemprop="dateModified" content="2024-03-26T09:38:35+01:00" />
+<meta itemprop="wordCount" content="290">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Many constraints of the same type
@@ -188,7 +188,7 @@ is reached.</p>
             </tr>
             <tr class="fragment">
               <td>3</td>
-              <td>-</td>
+              <td>[1,<span style="color:#3BAFDA">1</span>]</td>
               <td>-</td>
               <td>-</td>
               <td>{<span style="color:#3BAFDA">c1</span>}</td>
@@ -199,8 +199,24 @@ is reached.</p>
               <td></td>
               <td></td>
               <td></td>
+              <td>{<span style="color:#ED5565">c2</span>}</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>4</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+              <td>{c1}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td>{}</td>
-              <td>{<span style="color:#3BAFDA">c1</span>,c2}</td>
+              <td>{<span style="color:#3BAFDA">c1, c2</span>}</td>
             </tr>
           </tbody>
         </table>
