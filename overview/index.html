@@ -300,11 +300,47 @@ x is not instantiated
 <h3 id="abcde-x-4--edcba">ABCDE x 4 = EDCBA</h3>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=68997" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 <p><small><em>This clickable logo indicates that a workshop is available at <a href="https://moodle.caseine.org/">Caseine</a></em> </small></p>
+</section><section>
+<h3 id="a-model">A Model</h3>
+<ul>
+<li>variables
+<ul>
+<li>$\forall i \in \{a,b,c,d,e\}, l_i \in [ 0,9]$</li>
+</ul>
+</li>
+<li>constraints
+<ul>
+<li>$\forall i\neq j \in \{a,b,c,d,e\}, l_i \neq l_j$</li>
+<li>$39999l_a + 3990l_b + 300l_c - 960l_d - 9996l_e = 0$</li>
+</ul>
+</li>
+</ul>
 </section>
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69633" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</section><section>
+<h3 id="a-model-1">A Model</h3>
+<ul>
+<li>parameter
+<ul>
+<li>$input$: the current year</li>
+</ul>
+</li>
+<li>variables
+<ul>
+<li>$\forall i \in \{th,hu,te,on\}, x_i \in [1,9]$</li>
+<li>$age \in [0,99]$</li>
+</ul>
+</li>
+<li>Constraints
+<ul>
+<li>$x_{th} + x_{hu} + x_{te} + x_{on} = {age}$</li>
+<li>$1000x_{th} + 100x_{hu} + 10x_{te} + x_{on} + age = input$</li>
+</ul>
+</li>
+</ul>
 
 </section>
 </section>
@@ -586,6 +622,29 @@ Here again, there are different ways to work with an expression $e$, depending o
       data-background="#76bde8">
 <h3 id="sujiko">Sujiko</h3>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69634" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</section><section>
+<h3 id="a-model">A Model</h3>
+<ul>
+<li>Parameters
+<ul>
+<li>$S_0, S_1, S_2, S_3$: the four circled number clues</li>
+<li>$f_{i,j}$: some fixed cells</li>
+</ul>
+</li>
+<li>Variables
+<ul>
+<li>$\forall i,j \in [0,2], x_{i,j} \in [0,9]$</li>
+</ul>
+</li>
+<li>Constraints
+<ul>
+<li>$\forall i\neq i&rsquo;, j\neq j&rsquo;  \in [0,2], x_i \neq x_j$</li>
+<li>$\forall i \in [0,3], k = \frac{i}{2}, \ell = i \mod 2,$
+$x_{k,\ell} + x_{k + 1,\ell} + x_{k,\ell + 1} + x_{k + 1,\ell +1} = S_i$</li>
+<li>+clues</li>
+</ul>
+</li>
+</ul>
 
 </section>
 </section>

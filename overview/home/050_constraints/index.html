@@ -27,14 +27,14 @@ Basic constraints Constraint Syntax Comment $x &#43; y = z$ m." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/050_constraints/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-26T11:48:02+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Constraints (and propagators) A constraint represents a problem&#39;s requirements or limitations, defines a relationships among variables, expresses conditions that must be satisfied by the values assigned to the variables, is equipped with a filtering algorithm. For example: $X &lt; Y$
 The goal of constraint programming is to find a combination of variable assignments that simultaneously satisfies all the specified constraints.
 Basic constraints Constraint Syntax Comment $x &#43; y = z$ m.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
-<meta itemprop="wordCount" content="504">
+<meta itemprop="dateModified" content="2024-03-26T11:48:02+01:00" />
+<meta itemprop="wordCount" content="568">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Constraints (and propagators) A constraint represents a problem&#39;s requirements or limitations, defines a relationships among variables, expresses conditions that must be satisfied by the values assigned to the variables, is equipped with a filtering algorithm. For example: $X &lt; Y$
@@ -379,6 +379,29 @@ Here again, there are different ways to work with an expression $e$, depending o
       data-background="#76bde8">
 <h3 id="sujiko">Sujiko</h3>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69634" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<hr>
+<h3 id="a-model">A Model</h3>
+<ul>
+<li>Parameters
+<ul>
+<li>$S_0, S_1, S_2, S_3$: the four circled number clues</li>
+<li>$f_{i,j}$: some fixed cells</li>
+</ul>
+</li>
+<li>Variables
+<ul>
+<li>$\forall i,j \in [0,2], x_{i,j} \in [0,9]$</li>
+</ul>
+</li>
+<li>Constraints
+<ul>
+<li>$\forall i\neq i&rsquo;, j\neq j&rsquo;  \in [0,2], x_i \neq x_j$</li>
+<li>$\forall i \in [0,3], k = \frac{i}{2}, \ell = i \mod 2,$
+$x_{k,\ell} + x_{k + 1,\ell} + x_{k,\ell + 1} + x_{k + 1,\ell +1} = S_i$</li>
+<li>+clues</li>
+</ul>
+</li>
+</ul>
 
 </section>
 

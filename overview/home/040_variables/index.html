@@ -25,12 +25,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/040_variables/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
+<meta property="article:modified_time" content="2024-03-26T11:48:02+01:00" /><meta property="og:site_name" content="Choco-solver" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
-<meta itemprop="wordCount" content="357">
+<meta itemprop="dateModified" content="2024-03-26T11:48:02+01:00" />
+<meta itemprop="wordCount" content="427">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval."/>
@@ -213,10 +213,46 @@ x is not instantiated
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=68997" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
 <p><small><em>This clickable logo indicates that a workshop is available at <a href="https://moodle.caseine.org/">Caseine</a></em> </small></p>
 <hr>
+<h3 id="a-model">A Model</h3>
+<ul>
+<li>variables
+<ul>
+<li>$\forall i \in \{a,b,c,d,e\}, l_i \in [ 0,9]$</li>
+</ul>
+</li>
+<li>constraints
+<ul>
+<li>$\forall i\neq j \in \{a,b,c,d,e\}, l_i \neq l_j$</li>
+<li>$39999l_a + 3990l_b + 300l_c - 960l_d - 9996l_e = 0$</li>
+</ul>
+</li>
+</ul>
+<hr>
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69633" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<hr>
+<h3 id="a-model-1">A Model</h3>
+<ul>
+<li>parameter
+<ul>
+<li>$input$: the current year</li>
+</ul>
+</li>
+<li>variables
+<ul>
+<li>$\forall i \in \{th,hu,te,on\}, x_i \in [1,9]$</li>
+<li>$age \in [0,99]$</li>
+</ul>
+</li>
+<li>Constraints
+<ul>
+<li>$x_{th} + x_{hu} + x_{te} + x_{on} = {age}$</li>
+<li>$1000x_{th} + 100x_{hu} + 10x_{te} + x_{on} + age = input$</li>
+</ul>
+</li>
+</ul>
 
 </section>
 
