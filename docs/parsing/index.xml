@@ -1,9 +1,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Choco-solver – Parsing</title>
+    <title>Choco-solver – Modelling languages</title>
     <link>https://choco-solver.org/docs/parsing/</link>
-    <description>Recent content in Parsing on Choco-solver</description>
+    <description>Recent content in Modelling languages on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Tue, 07 Jan 2020 16:08:22 +0100</lastBuildDate>
     
 	  <atom:link href="https://choco-solver.org/docs/parsing/index.xml" rel="self" type="application/rss+xml" />
@@ -13,6 +14,102 @@
         
       
     
+    
+    <item>
+      <title>Docs: Deal with MiniZinc files</title>
+      <link>https://choco-solver.org/docs/parsing/minizinc/</link>
+      <pubDate>Tue, 02 Jul 2024 18:41:10 +0100</pubDate>
+      
+      <guid>https://choco-solver.org/docs/parsing/minizinc/</guid>
+      <description>
+        
+        
+        &lt;p&gt;You can find here the instructions to parse and solve &lt;a href=&#34;http://www.minizinc.org&#34;&gt;MiniZinc&lt;/a&gt; files with Choco-solver.
+The first thing to understand is that MiniZinc is a high-level constraint modeling language and
+choco-solver is not able to parse MiniZinc files directly.
+Actually, MiniZinc files must be converted into &lt;a href=&#34;https://docs.minizinc.dev/en/stable/part_4_reference.html&#34;&gt;FlatZinc&lt;/a&gt;
+files before being parsed by Choco-solver.&lt;/p&gt;
+&lt;p&gt;There exists different ways to parse and solve MiniZinc files with Choco-solver.
+The recommended way is to use the MiniZinc IDE,
+which is a graphical user interface that allows to write, parse and solve MiniZinc files.&lt;/p&gt;
+&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
+&lt;p&gt;Before starting, you need to download the Choco-solver jar file that contains the parser for FlatZinc files.
+This jar file is available on the &lt;a href=&#34;https://github.com/chocoteam/choco-solver/releases&#34;&gt;Choco-solver repository&lt;/a&gt; on GitHub.
+Or you can build it from the source code.
+In that case, you need to get the jar file from the &lt;code&gt;parsers/target&lt;/code&gt; directory.
+Select the jar file that contains the &lt;code&gt;-light&lt;/code&gt; suffix.&lt;/p&gt;
+&lt;h3 id=&#34;executable-script&#34;&gt;Executable script&lt;/h3&gt;
+&lt;p&gt;To parse and solve FlatZinc files, you need an executable script that calls the Choco-solver parser.
+This script is available in the &lt;a href=&#34;https://github.com/chocoteam/choco-solver/tree/master/parsers/src/main/minizinc&#34;&gt;&lt;code&gt;parsers/src/main/minizinc&lt;/code&gt; directory&lt;/a&gt;
+of the Choco-solver repository on GitHub.
+The entry point of this script is the &lt;code&gt;fzn-choco.py&lt;/code&gt; file, which is a Python3 script that calls the Choco-solver parser.
+Unfortunately, MiniZinc requires an executable script, so you need to create a shell script that calls the Python script.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s why two additional files are provided:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a bash shell script for Linux and maxOS systems, named &lt;code&gt;fzn-choco.sh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;a batch file script for Windows systems, named &lt;code&gt;fzn-choco.bat&lt;/code&gt;
+to call the Python3 script from the MiniZincIDE.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;minizinc-ide&#34;&gt;MiniZinc IDE&lt;/h2&gt;
+&lt;p&gt;Now, Choco-solver can be added as a &lt;a href=&#34;https://docs.minizinc.dev/en/stable/fzn-spec.html#solver-configuration-files&#34;&gt;third-Party Solver in MiniZinc IDE&lt;/a&gt;
+in MiniZincIDE.
+This step requires to create a &lt;em&gt;solver configuration file&lt;/em&gt;  (with &lt;em&gt;.msc&lt;/em&gt; extension) that contains some basic information.
+With respect to &lt;a href=&#34;https://docs.minizinc.dev/en/stable/fzn-spec.html#solver-configuration-files&#34;&gt;MiniZinc specification&lt;/a&gt;,
+this file can be added in:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the directory &lt;code&gt;$HOME/.minizinc/solvers&lt;/code&gt; on Linux and macOS systems, and the Application Data directory on Windows systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;important&#34;&gt;Important&lt;/h3&gt;
+&lt;p&gt;Before moving the file to the correct directory, it must be edited to set the correct paths.
+There are two fields in the &lt;em&gt;.msc&lt;/em&gt; file that must be set:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;mznlib&amp;quot;&lt;/code&gt;: the absolute path to the directory containing the global constraints definition, i.e. &lt;code&gt;mzn_lib&lt;/code&gt; directory.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;executable&amp;quot;&lt;/code&gt;: the absolute path to the executable script &lt;code&gt;fzn_choco.sh&lt;/code&gt; or &lt;code&gt;fzn-choco.bat&lt;/code&gt; depending on your OS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The script referred to in this file (&lt;em&gt;choco.msc)&lt;/em&gt;, together with global constraints definition can be downloaded from
+&lt;a href=&#34;https://github.com/chocoteam/choco-solver/tree/master/parsers/src/main/minizinc&#34;&gt;the MiniZinc repository&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Edit &lt;code&gt;choco.msc&lt;/code&gt; to set the &lt;code&gt;&amp;quot;mznlib&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;executable&amp;quot;&lt;/code&gt; fields.
+&lt;ol&gt;
+&lt;li&gt;The &lt;code&gt;&amp;quot;executable&amp;quot;&lt;/code&gt; field should be set to the path of the executable script &lt;code&gt;fzn-choco&lt;/code&gt;.
+You must set the full path to the script, including the extension (like &lt;code&gt;.exe&lt;/code&gt; or &lt;code&gt;.bin&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;&amp;quot;mznlib&amp;quot;&lt;/code&gt; field should be set to the absolute path of the directory containing the global constraints definition,
+i.e. &lt;code&gt;mzn_lib&lt;/code&gt; directory.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;choco.msc&lt;/code&gt; to the directory recommended by MiniZinc (please refer to the MiniZinc documentation).&lt;/li&gt;
+&lt;li&gt;Restart MiniZinc IDE.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h3&gt;
+&lt;p&gt;Note that the &lt;code&gt;fzn-choco&lt;/code&gt; script can be used in a Docker container.
+A &lt;code&gt;Dockerfile&lt;/code&gt; is available in the &lt;code&gt;parsers/src/main/minizinc&lt;/code&gt; directory of the Choco-solver repository on GitHub.
+Some Choco-solver Docker images for the MiniZinc Challenge are available on
+&lt;a href=&#34;https://hub.docker.com/repository/docker/chocoteam/choco-solver-mzn/general&#34;&gt;hub.docker.com/&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: XCSP3 and DIMACS</title>
+      <link>https://choco-solver.org/docs/parsing/others/</link>
+      <pubDate>Wed, 03 Jul 2024 10:14:19 +0200</pubDate>
+      
+      <guid>https://choco-solver.org/docs/parsing/others/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Dealing with XCSP3 and DIMACS formats is simpler than dealing with MiniZinc files.
+Actually, Choco-solver is able to parse and solve instances in these formats directly, without any conversion.&lt;/p&gt;
+&lt;p&gt;The command line to parse and solve XCSP3 files is the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;java -cp /path/to/choco-X.Y.Z-light.jar org.chocosolver.parser.xcsp.ChocoXCSP [&amp;lt;options&amp;gt;] [&amp;lt;file&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The command line to parse and solve DIMACS files is the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;java -cp /path/to/choco-X.Y.Z-light.jar org.chocosolver.parser.dimacs.ChocoDIMACS [&amp;lt;options&amp;gt;] [&amp;lt;file&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To have an up-to-date lists of options, you can run the command with the &lt;code&gt;-h&lt;/code&gt; option.&lt;/p&gt;
+
+      </description>
+    </item>
     
   </channel>
 </rss>

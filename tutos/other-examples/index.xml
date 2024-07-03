@@ -4,6 +4,7 @@
     <link>https://choco-solver.org/tutos/other-examples/</link>
     <description>Recent content in Other examples on Choco-solver</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     
 	  <atom:link href="https://choco-solver.org/tutos/other-examples/index.xml" rel="self" type="application/rss+xml" />
     
@@ -249,7 +250,7 @@ while (slv.solve()){
         &lt;p&gt;In this example, we are going to see how to use the &lt;code&gt;StableKeysort&lt;/code&gt; constraint.
 The &lt;code&gt;StableKeysort(L,P,S,k)&lt;/code&gt; provides a &lt;em&gt;view&lt;/em&gt; $S$ of an array of variables $L$ in which those variables are sorted using a stable multi-criteria sort on the first k keys.
 Hence, it eases the expression of constraints on both the &lt;em&gt;sorted&lt;/em&gt; side of the problem.&lt;/p&gt;
-&lt;p&gt;❗ &lt;em&gt;This model was developed with Choco-solver v.4.10.11&lt;/em&gt; ❗&lt;/p&gt;
+&lt;p&gt;&amp;#x2757; &lt;em&gt;This model was developed with Choco-solver v.4.10.11&lt;/em&gt; &amp;#x2757;&lt;/p&gt;
 &lt;h2 id=&#34;a-scheduling-problem&#34;&gt;A scheduling problem&lt;/h2&gt;
 &lt;p&gt;Consider a task scheduling problem, consisting of 10 tasks fixed in time, to be executed in a given day.
 Any task is either easy or hard.&lt;/p&gt;

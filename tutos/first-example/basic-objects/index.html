@@ -1,11 +1,11 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.124.1">
 
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
 
@@ -24,17 +24,15 @@
 <meta property="og:description" content="A quick tour of the library&#39;s essential items.
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://choco-solver.org/tutos/first-example/basic-objects/" /><meta property="article:section" content="tutos" />
+<meta property="og:url" content="http://localhost:1313/tutos/first-example/basic-objects/" /><meta property="article:section" content="tutos" />
 <meta property="article:published_time" content="2020-01-31T11:48:22+01:00" />
-<meta property="article:modified_time" content="2020-01-31T14:49:05+01:00" /><meta property="og:site_name" content="Choco-solver" />
-
+<meta property="article:modified_time" content="2020-01-31T14:49:05+01:00" />
 <meta itemprop="name" content="Basic Objects">
 <meta itemprop="description" content="A quick tour of the library&#39;s essential items.
 "><meta itemprop="datePublished" content="2020-01-31T11:48:22+01:00" />
 <meta itemprop="dateModified" content="2020-01-31T14:49:05+01:00" />
 <meta itemprop="wordCount" content="1455">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Basic Objects"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Basic Objects"/>
 <meta name="twitter:description" content="A quick tour of the library&#39;s essential items.
 "/>
 
@@ -50,8 +48,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.3b5ef8a63c84e3fd0bd5ed1b92c92fff9c5cc7e0a0902a110c143c1dd0e55ee9.css" as="style">
-<link href="/scss/main.min.3b5ef8a63c84e3fd0bd5ed1b92c92fff9c5cc7e0a0902a110c143c1dd0e55ee9.css" rel="stylesheet" integrity="">
+
+<link href="/scss/main.css" rel="stylesheet">
 
 
 <script
@@ -295,13 +293,13 @@ window.MathJax = {
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="https://choco-solver.org/tutos/">Tutorials</a>
+    <a href="http://localhost:1313/tutos/">Tutorials</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="https://choco-solver.org/tutos/first-example/">First Example</a>
+    <a href="http://localhost:1313/tutos/first-example/">First Example</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="https://choco-solver.org/tutos/first-example/basic-objects/" aria-disabled="true" class="btn-link disabled">Basic Objects</a>
+    <a href="http://localhost:1313/tutos/first-example/basic-objects/" aria-disabled="true" class="btn-link disabled">Basic Objects</a>
   </li>
   </ol>
 </nav>
@@ -329,8 +327,9 @@ Choco-solver&rsquo;s User Guide. Here, we <strong>briefly</strong> described the
 the most commonly used objects. This does not aim at being complete: it
 covers the basic information.</p>
 <h2 id="the-model">The Model</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My model&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>As said before, the <code>Model</code> is a key component of the library. It has to
+<pre><code class="language-java">Model model = new Model(&quot;My model&quot;);
+</code></pre>
+<p>As said before, the <code>Model</code> is a key component of the library. It has to
 be the first instruction declared, since it provides entry point methods
 that help modelling a problem.</p>
 <p>A good habit is to declare a model with a name, otherwise a random one
@@ -339,9 +338,10 @@ will be assigned by default.</p>
 needed to describe a problem from it.</p>
 <p>For example, it stores its variables and constraints. Variables and
 constraints of a model can be retrieved thanks to API :</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">retrieveIntVars</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// extract IntVars, including BoolVars
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getCstrs</span><span style="color:#ce5c00;font-weight:bold">();</span> <span style="color:#8f5902;font-style:italic">// extract posted constraints
-</span></span></span></code></pre></div>
+<pre><code class="language-java">model.retrieveIntVars(true); // extract IntVars, including BoolVars
+model.getCstrs(); // extract posted constraints
+</code></pre>
+
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -367,20 +367,22 @@ differs from one type of variable to the other.</p>
 <h3 id="integer-variable">Integer variable</h3>
 <p>An integer variable, <code>IntVar</code>, should be assigned to an integer value. There are
 many ways to declare an <code>IntVar</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A variable with a unique value in its domain, in other words, a constant
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">two</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;TWO&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Any value in [1..4] can be assigned to this variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Only the values 1, 3 and 4 can be assigned to this variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">IntVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span></code></pre></div>
+<pre><code class="language-java">// A variable with a unique value in its domain, in other words, a constant
+IntVar two = model.intVar(&quot;TWO&quot;, 2);
+// Any value in [1..4] can be assigned to this variable
+IntVar x = model.intVar(&quot;X&quot;, 1, 4);
+// Only the values 1, 3 and 4 can be assigned to this variable
+IntVar y = model.intVar(&quot;X&quot;, new int[]{1, 3, 4});
+</code></pre>
+
 
 <div class="alert alert-secondary" role="alert">
 <h4 class="alert-heading">Warning</h4>
 
     <p>Declaring a variable with an <em>infinite</em> domain, like :</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MIN_VALUE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">MAX_VALUE</span><span style="color:#ce5c00;font-weight:bold">)</span>
-</span></span></code></pre></div><p>is clearly a bad idea.</p>
+<pre><code class="language-java">model.intVar(&quot;X&quot;, Integer.MIN_VALUE, Integer.MAX_VALUE)
+</code></pre>
+<p>is clearly a bad idea.</p>
 <p>Too large domains may lead to underflow or overflow issues and most of
 the time, even if Choco-solver will finally compute the right bounds by
 itself, you certainly want to save space and time by directly
@@ -426,24 +428,27 @@ false, 1 for true. Thus a BoolVar can be declared in any integer
 constraint (<em>e.g.</em>, a sum) and boolean constraints (<em>e.g.</em>, in clauses
 store).</p>
 <p>Here is the common way to declare a BoolVar</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A [0,1]-variable
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">b</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><h3 id="set-variable">Set variable</h3>
+<pre><code class="language-java">// A [0,1]-variable
+BoolVar b = model.boolVar(&quot;b&quot;);
+</code></pre>
+<h3 id="set-variable">Set variable</h3>
 <p>A set variable, <code>SetVar</code>, should be assigned to a set of integer values
 (possibly empty or singleton). Its domain is defined by a set of
 intervals $[\![m,o]\!]$ where $m$ denotes the integers that figure in all
 solutions and $o$ the integers that potentially figure in a solution.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// SetVar representing a subset of {1,2,3,5,12}
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">SetVar</span> <span style="color:#000">y</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;y&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{},</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">12</span><span style="color:#ce5c00;font-weight:bold">});</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// possible values: {}, {2}, {1,3,5} ...
-</span></span></span></code></pre></div><h3 id="real-variable">Real variable</h3>
+<pre><code class="language-java">// SetVar representing a subset of {1,2,3,5,12}
+SetVar y = model.setVar(&quot;y&quot;, new int[]{}, new int[]{1,2,3,5,12});
+// possible values: {}, {2}, {1,3,5} ...
+</code></pre>
+<h3 id="real-variable">Real variable</h3>
 <p>A real variable, <code>RealVar</code>, should be assigned an interval of doubles. Its
 domain is defined by its bounds and a <em>precision</em>. The precision
 parameter helps considering a real variable as instantiated: when the
 distance between the two bounds is less than or equal to the precision.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A [0.2d, 3.4d]-variable, with a precision of 0.001d
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">RealVar</span> <span style="color:#000">x</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">2d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">4d</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">001d</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div>
+<pre><code class="language-java">// A [0.2d, 3.4d]-variable, with a precision of 0.001d
+RealVar x = model.realVar(&quot;x&quot;, 0.2d, 3.4d, 0.001d);
+</code></pre>
+
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -469,11 +474,12 @@ values to be removed are detected.</p>
 <h3 id="posting-a-constraint">Posting a constraint</h3>
 <p>For a constraint to be integrated in a model, a call to post() is
 required :</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// x and y must be different in any solution
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// or, in a more verbose way
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">));</span>
-</span></span></code></pre></div>
+<pre><code class="language-java">// x and y must be different in any solution
+model.arithm(x, &quot;!=&quot;, y).post();
+// or, in a more verbose way
+model.post(model.arithm(x, &quot;&lt;&quot;, z));
+</code></pre>
+
 
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">Info</h4>
@@ -499,21 +505,23 @@ resolution is called.
 <p>The only reason why a constraint is not posted a model is to <em>reify</em> it.</p>
 <h3 id="reifying-a-constraint">Reifying a constraint</h3>
 <p>Alternatively, a constraint can be reified with a BoolVar :</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// the constraint is reified with `b`
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">r1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// equivalent to:
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">BoolVar</span> <span style="color:#000">r2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;r2&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">reifyWith</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">r2</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span></code></pre></div><p>The BoolVar that reifies a constraint represents whether or not a
+<pre><code class="language-java">// the constraint is reified with `b`
+BoolVar r1 = model.arithm(x, &quot;!=&quot;, y).reify();
+// equivalent to:
+BoolVar r2 = model.boolVar(&quot;r2&quot;);
+model.arithm(x, &quot;&lt;&quot;, z).reifyWith(r2);
+</code></pre>
+<p>The BoolVar that reifies a constraint represents whether or not a
 constraint is satisfied. If the constraint is satisfied, the boolean
 variable is set to true, false otherwise. If the boolean variable is set
 to true the constraint should be satisfied, unsatisfied otherwise.</p>
 <p>Reifying constraints is helpful to express conditions like:
 (x = y) xor (x &gt; 15) :</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">BoolVar</span> <span style="color:#000">c1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">BoolVar</span> <span style="color:#000">c2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;&gt;&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">c1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">c2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div>
+<pre><code class="language-java">BoolVar c1 = model.arithm(x, &quot;=&quot;, y).reify();
+BoolVar c2 = model.arithm(x, &quot;&gt;&quot;, 15).reify();
+model.arithm(c1, &quot;+&quot;, c2, &quot;=&quot;, 1).post();
+</code></pre>
+
 
 <div class="alert alert-secondary" role="alert">
 <h4 class="alert-heading">Warning</h4>
@@ -544,12 +552,13 @@ used ones.</p>
 <h2 id="the-solver">The Solver</h2>
 <p>The <code>Model</code> serves at describing the problem with variables and
 constraints. The resolution is managed by the Solver.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000">Model</span> <span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Model</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My problem&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// variables declaration
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// constraints declaration
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Solver</span> <span style="color:#000">solver</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Solution</span> <span style="color:#000">solution</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">solver</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#ce5c00;font-weight:bold">();</span>
-</span></span></code></pre></div><p>Having access to the Solver is needed to tune the resolution and launch
+<pre><code class="language-java">Model model = new Model(&quot;My problem&quot;);
+// variables declaration
+// constraints declaration
+Solver solver = model.getSolver();
+Solution solution = solver.findSolution();
+</code></pre>
+<p>Having access to the Solver is needed to tune the resolution and launch
 it. It provides methods to configure <em>search strategies</em>, to define
 resolution goals (<em>i.e.</em>, finding one solution, all solutions or optimal
 solutions) and getting resolution statistics.</p>
@@ -569,7 +578,7 @@ you good chances to master your problem.</p>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 31.01.2020: <a href="https://github.com/chocoteam/website/commit/71a7ad339b02cbdd2345dacc16f23315567e7528">Mise à jour du site (71a7ad3)</a>
+  Last modified January 31, 2020: <a href="https://github.com/chocoteam/website/commit/71a7ad339b02cbdd2345dacc16f23315567e7528">Mise à jour du site (71a7ad3)</a>
 </div>
 
 </div>
@@ -647,7 +656,7 @@ you good chances to master your problem.</p>
 
 
     </div>
-    <script src="/js/main.min.8148da822e7757a98f067e3f43175e5b9af29eca7993a926f772ad7ea68be97c.js" integrity="sha256-gUjagi53V6mPBn4/QxdeW5rynsp5k6km93KtfqaL6Xw=" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

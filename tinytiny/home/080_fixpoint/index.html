@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.124.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -28,8 +28,7 @@ Fixpoint reasoning Iteratively applying constraint propagation until no more imp
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/080_fixpoint/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-03-26T09:38:35+01:00" /><meta property="og:site_name" content="Choco-solver" />
-
+<meta property="article:modified_time" content="2024-03-26T09:38:35+01:00" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Many constraints of the same type
 variables = {&quot;x1&quot;: {1, 2, 3}, &quot;x2&quot;: {1, 2, 3}, &quot;x3&quot;: {1, 2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;) We need to adapt the dfs(_,_) function:
@@ -37,8 +36,7 @@ def dfs(variables, constraints): # if constraint.filter(variables) is False: if 
 Fixpoint reasoning Iteratively applying constraint propagation until no more improvements are possible or a failure is detected.">
 <meta itemprop="dateModified" content="2024-03-26T09:38:35+01:00" />
 <meta itemprop="wordCount" content="290">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Many constraints of the same type
 variables = {&quot;x1&quot;: {1, 2, 3}, &quot;x2&quot;: {1, 2, 3}, &quot;x3&quot;: {1, 2, 3}} c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;) We need to adapt the dfs(_,_) function:
 def dfs(variables, constraints): # if constraint.filter(variables) is False: if not fix_point(variables, constraints): return 0 # at least one constraint is not satisfied # ... and ensure that a fix point is reached.
@@ -132,7 +130,7 @@ is reached.</p>
 </br> or a failure is detected.</p>
 <p>So, as long as a constraint filters values,</br>
 <b><u>all</u></b> the other ones must be checked.</p>
-<p><small>🚀 This could be refined.</small></p>
+<p><small>&#x1f680; This could be refined.</small></p>
 <hr>
 <table>
           <thead>
@@ -258,7 +256,7 @@ print(variables)
 <section data-noprocess data-shortcode-slide
       data-background="#b4c6d0"
       id="imp6">
-<h2 id="-propagation-engine">🚀 Propagation engine</h2>
+<h2 id="rocket-propagation-engine">&#x1f680; Propagation engine</h2>
 <ul>
 <li>Event-based reasoning, advisors, watch literals</li>
 <li>Scheduling and propagating</li>
@@ -340,7 +338,7 @@ print(variables)
 
 
     </div>
-    <script src="/js/main.min.8148da822e7757a98f067e3f43175e5b9af29eca7993a926f772ad7ea68be97c.js" integrity="sha256-gUjagi53V6mPBn4/QxdeW5rynsp5k6km93KtfqaL6Xw=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.8bd1f5aff9aa1324575d08769061d5d7c42106c5db48b227840407105f000b06.js" integrity="sha256-i9H1r/mqEyRXXQh2kGHV18QhBsXbSLInhAQHEF8ACwY=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

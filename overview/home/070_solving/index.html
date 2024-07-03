@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.124.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -27,16 +27,14 @@ CSP The solving process is managed by a unique Solver instance attached to a mod
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/070_solving/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-03-21T12:13:21+01:00" /><meta property="og:site_name" content="Choco-solver" />
-
+<meta property="article:modified_time" content="2024-07-03T11:10:11+02:00" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Solving CSP The solving process is managed by a unique Solver instance attached to a model.
 Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&quot;%s is fixed to %d\n&quot;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
 CSP The solving process is managed by a unique Solver instance attached to a model.">
-<meta itemprop="dateModified" content="2024-03-21T12:13:21+01:00" />
+<meta itemprop="dateModified" content="2024-07-03T11:10:11+02:00" />
 <meta itemprop="wordCount" content="454">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Solving CSP The solving process is managed by a unique Solver instance attached to a model.
 Model model = new Model(); // ... problem description ... Solver solver = model.getSolver(); if(solver.solve()){ // here you can read the variables&#39; value System.out.printf(&quot;%s is fixed to %d\n&quot;, x.getName(), x.getValue()); } A call to solver.solve() returns true if a solution exists, false otherwise.
 CSP The solving process is managed by a unique Solver instance attached to a model."/>
@@ -205,7 +203,7 @@ List&lt;Solution&gt; bSols = solver.findAllOptimalSolutions(obj, max);
 <p><em>Branch and Propagate</em></p>
 <hr>
 <p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
-<p>⚠️ 2-way branching</p>
+<p>&#x26a0;&#xfe0f; 2-way branching</p>
 <hr>
 <h2 id="making-decisions">Making decisions</h2>
 <p class="fragment" data-fragment-index="1"><em>Can't we just leave it to the solver?</em></p>
@@ -222,7 +220,8 @@ List&lt;Solution&gt; bSols = solver.findAllOptimalSolutions(obj, max);
 </ul>
 <p>Continue as as long as necessary</p>
 <aside class="notes"><p>A decision is validated through propagation</p>
-<aside class="notes"><hr>
+</aside>
+<hr>
 <h3 id="select-the-next-variable">Select the next variable</h3>
 <ul>
 <li><code>input_order</code>, <code>first_fail</code>, <code>smallest</code>,&hellip;</li>
@@ -296,8 +295,7 @@ solver.findAllSolutions();
       data-background="#76bde8">
 <h2 id="warehouse-location">Warehouse Location</h2>
 <h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=70539" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
-</aside>
-</aside>
+
 </section>
 
 
@@ -372,7 +370,7 @@ solver.findAllSolutions();
 
 
     </div>
-    <script src="/js/main.min.8148da822e7757a98f067e3f43175e5b9af29eca7993a926f772ad7ea68be97c.js" integrity="sha256-gUjagi53V6mPBn4/QxdeW5rynsp5k6km93KtfqaL6Xw=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.8bd1f5aff9aa1324575d08769061d5d7c42106c5db48b227840407105f000b06.js" integrity="sha256-i9H1r/mqEyRXXQh2kGHV18QhBsXbSLInhAQHEF8ACwY=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

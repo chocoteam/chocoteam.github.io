@@ -15,7 +15,7 @@
     <lastmod>2020-03-16T14:23:48+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/parsing/</loc>
-    <lastmod>2023-06-30T13:57:38+02:00</lastmod>
+    <lastmod>2024-07-03T11:10:11+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/advanced-usages/</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
@@ -134,8 +134,14 @@
     <loc>https://choco-solver.org/tinytiny/home/040_constraints/</loc>
     <lastmod>2024-03-21T12:13:21+01:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/docs/parsing/minizinc/</loc>
+    <lastmod>2024-07-03T11:10:11+02:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tutos/aircraft-landing-problem/description/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
+  </url><url>
+    <loc>https://choco-solver.org/docs/parsing/others/</loc>
+    <lastmod>2024-07-03T11:10:11+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tutos/aircraft-landing-problem/math/</loc>
     <lastmod>2020-02-05T17:42:22+01:00</lastmod>
@@ -201,7 +207,7 @@
     <lastmod>2020-06-03T15:47:56+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/overview/home/070_solving/</loc>
-    <lastmod>2024-03-21T12:13:21+01:00</lastmod>
+    <lastmod>2024-07-03T11:10:11+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/tinytiny/home/070_failures/</loc>
     <lastmod>2024-03-26T09:38:35+01:00</lastmod>
@@ -264,7 +270,7 @@
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/</loc>
-    <lastmod>2024-02-19T15:27:16+01:00</lastmod>
+    <lastmod>2024-07-03T11:10:11+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/community/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>

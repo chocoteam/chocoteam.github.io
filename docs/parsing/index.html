@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.124.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -21,17 +21,15 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Parsing | Choco-solver</title><meta property="og:title" content="Parsing" />
-<meta property="og:description" content="What does your user need to know to parse a model?
+<title>Modelling languages | Choco-solver</title><meta property="og:title" content="Modelling languages" />
+<meta property="og:description" content="Dealing with different modelling languages
 " />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://choco-solver.org/docs/parsing/" /><meta property="og:site_name" content="Choco-solver" />
-
-<meta itemprop="name" content="Parsing">
-<meta itemprop="description" content="What does your user need to know to parse a model?
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Parsing"/>
-<meta name="twitter:description" content="What does your user need to know to parse a model?
+<meta property="og:url" content="https://choco-solver.org/docs/parsing/" />
+<meta itemprop="name" content="Modelling languages">
+<meta itemprop="description" content="Dealing with different modelling languages
+"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Modelling languages"/>
+<meta name="twitter:description" content="Dealing with different modelling languages
 "/>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
@@ -154,8 +152,15 @@
   <a href="/docs/solving/portfolio/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsparsing-li">
-  <a href="/docs/parsing/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="td-sidebar-nav-active-item">Parsing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsparsing-li">
+  <a href="/docs/parsing/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="td-sidebar-nav-active-item">Modelling languages</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
+  <a href="/docs/parsing/minizinc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
+  <a href="/docs/parsing/others/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
+</li>
+  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
   <a href="/docs/advanced-usages/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
   <ul class="ul-2 foldable">
@@ -191,7 +196,7 @@
 <a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Parsing/_index.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
   <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Parsing/_index.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
   <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Parsing/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/chocoteam/website/issues/new?title=Parsing" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a href="https://github.com/chocoteam/website/issues/new?title=Modelling%20languages" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -228,14 +233,14 @@
     <a href="https://choco-solver.org/docs/">Documentation</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="https://choco-solver.org/docs/parsing/" aria-disabled="true" class="btn-link disabled">Parsing</a>
+    <a href="https://choco-solver.org/docs/parsing/" aria-disabled="true" class="btn-link disabled">Modelling languages</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Parsing</h1>
-  <div class="lead">What does your user need to know to parse a model?</div>
+	<h1>Modelling languages</h1>
+  <div class="lead">Dealing with different modelling languages</div>
 	<header class="article-meta">
 		
 
@@ -251,15 +256,13 @@
 
 		
 	</header>
-	<p>In addition to the modelling language, Choco-solver can parse files in <a href="https://xcsp.org/competitions/">XCSP3</a>, <a href="https://www.minizinc.org/">MiniZinc (flatzinc)</a> and <a href="https://jix.github.io/varisat/manual/0.2.0/formats/dimacs.html">DIMACS</a> formats.</p>
-<p>The standard practice is to call the choco JAR directly with the instance as an argument, such as:</p>
-<pre><code class="language-bash">java -jar choco-parsers-4.10.13-light.jar /path/to/the/instance
-</code></pre>
-<p>XCSP3 and DIMACS files do not require any preliminary steps and can therefore be read and resolved directly.
-Instructions can be founds <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/XCSP3.md">here</a> and <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/DIMACS.md">here</a>.</p>
-<p>But MiniZinc models must be turned into Flatzinc models with the right set of constraints, the ones supported by Choco-solver.
-The easiest way, in that case, is to rely on MinizincIDE and add Choco-solver as additional solver.
-Instructions can be found on <a href="https://github.com/chocoteam/choco-solver/blob/master/parsers/MINIZINC.md">here</a>.</p>
+	<h1 id="modelling-languages">Modelling languages</h1>
+<p>Choco-solver is able to parse and solve instances in different modelling languages.
+The main language is the Choco-solver modelling language, which is a Java-based language.
+It is a high-level language that allows to define constraints and variables in a very concise way.</p>
+<p>In addition, Choco-solver is able to parse and solve instances in other languages.
+The two most common languages are <a href="https://www.minizinc.org/">MiniZinc</a> and <a href="https://xcsp.org/competitions/">XCSP3</a>.
+Choco-solver is also able to parse and solve instances in <a href="https://jix.github.io/varisat/manual/0.2.0/formats/dimacs.html">DIMACS</a> format.</p>
 
         <div class="section-index">
     
@@ -270,13 +273,31 @@ Instructions can be found on <a href="https://github.com/chocoteam/choco-solver/
     
     
     
+    <hr class="panel-line">
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/docs/parsing/minizinc/">Deal with MiniZinc files</a>
+                </h5>
+                <p>MiniZinc software stack</p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/docs/parsing/others/">XCSP3 and DIMACS</a>
+                </h5>
+                <p>XCSP3 and DIMACS formats</p>
+            </div>
+        
     
 </div>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 30.06.2023: <a href="https://github.com/chocoteam/website/commit/1ba3a90c8712e2f2b170bf464188ab04ef69c28e">Update doc (1ba3a90)</a>
+  Last modified July 3, 2024: <a href="https://github.com/chocoteam/website/commit/41186e3e24cdbb6d76921fdac6e42f988e76f726">Update parsers doc &#43; some fixes (41186e3)</a>
 </div>
 
 </div>
@@ -353,7 +374,7 @@ Instructions can be found on <a href="https://github.com/chocoteam/choco-solver/
 
 
     </div>
-    <script src="/js/main.min.8148da822e7757a98f067e3f43175e5b9af29eca7993a926f772ad7ea68be97c.js" integrity="sha256-gUjagi53V6mPBn4/QxdeW5rynsp5k6km93KtfqaL6Xw=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.8bd1f5aff9aa1324575d08769061d5d7c42106c5db48b227840407105f000b06.js" integrity="sha256-i9H1r/mqEyRXXQh2kGHV18QhBsXbSLInhAQHEF8ACwY=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

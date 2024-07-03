@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.124.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -29,8 +29,7 @@ Adapting the DFS If all variables are fixed, stop the search If inconsistency de
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/tinytiny/home/050_filtering/" /><meta property="article:section" content="tinytiny" />
 
-<meta property="article:modified_time" content="2024-03-26T09:38:35+01:00" /><meta property="og:site_name" content="Choco-solver" />
-
+<meta property="article:modified_time" content="2024-03-26T09:38:35+01:00" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Filtering is not enough It didn&rsquo;t build a solution
 although all impossible values were removed
@@ -39,8 +38,7 @@ search space 🤿 in a DFS way.
 Adapting the DFS If all variables are fixed, stop the search If inconsistency detected, then backtrack Expand the tree by making a decision$^*$ *: 2-way branching Expand the tree = create a decision or refute the last one Two way decision = more flexible but n-way possible The search space can be seen as a tree where a node corresponds to a decision (here I labeled edge for clarity reason) and a leaf is either a solution or a dead-end.">
 <meta itemprop="dateModified" content="2024-03-26T09:38:35+01:00" />
 <meta itemprop="wordCount" content="112">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Filtering is not enough It didn&rsquo;t build a solution
 although all impossible values were removed
 It seems that we need to dive into the
@@ -227,8 +225,8 @@ There are 3 solutions
 <section data-noprocess data-shortcode-slide
       data-background="#b4c6d0"
       id="imp2">
-<h2 id="-managing-backups">🚀 Managing backups</h2>
-<p><small>📄&quot;Comparing trailing and copying for constraint programming&quot;, C. Schulte, ICLP'99.</small></p>
+<h2 id="rocket-managing-backups">&#x1f680; Managing backups</h2>
+<p><small>📄&ldquo;Comparing trailing and copying for constraint programming&rdquo;, C. Schulte, ICLP'99.</small></p>
 <ul>
 <li><strong>Copying</strong>: An identical copy of S is created before S is changed.</li>
 <li><strong>Trailing</strong>: Changes to S are recorded such that they can be undone later.</li>
@@ -239,7 +237,7 @@ There are 3 solutions
 <section data-noprocess data-shortcode-slide
       data-background="#b4c6d0"
       id="imp3">
-<h2 id="-making-decisions">🚀 Making decisions</h2>
+<h2 id="rocket-making-decisions">&#x1f680; Making decisions</h2>
 <ul>
 <li>Dynamic criteria for variable selection</li>
 <li>And value selection (<em>min</em>, <em>max</em>, <em>mid</em>, <em>rnd</em>)</li>
@@ -321,7 +319,7 @@ There are 3 solutions
 
 
     </div>
-    <script src="/js/main.min.8148da822e7757a98f067e3f43175e5b9af29eca7993a926f772ad7ea68be97c.js" integrity="sha256-gUjagi53V6mPBn4/QxdeW5rynsp5k6km93KtfqaL6Xw=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.8bd1f5aff9aa1324575d08769061d5d7c42106c5db48b227840407105f000b06.js" integrity="sha256-i9H1r/mqEyRXXQh2kGHV18QhBsXbSLInhAQHEF8ACwY=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>
