@@ -25,11 +25,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/040_variables/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-03-26T16:55:31+01:00" />
+<meta property="article:modified_time" content="2024-09-17T15:47:51+02:00" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval.">
-<meta itemprop="dateModified" content="2024-03-26T16:55:31+01:00" />
-<meta itemprop="wordCount" content="427">
+<meta itemprop="dateModified" content="2024-09-17T15:47:51+02:00" />
+<meta itemprop="wordCount" content="822">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Variables and domains A variable is a symbolic representation of an unknown quantity/decision, comes with potential values that the solver can assign to it, a.k.a. its domain, to be determined/assigned during the problem-solving process. In a scheduling problem Variables : the start time of various tasks Domains : the set of possible start time slots In a packing problem Variables : the assignment of items to bins Domains : the set of possible bins In a routing problem Variables : the nodes visited on a tour Domains : the potential successors of each node Different types of variables are available: IntVar has its values in $\mathbb{Z}^1$ IntViews relies on an IntVar like IntAffineView BoolVar (and BoolView) has its values in {$0,1$} sub-type of IntVar $1$ : But it is always necessary to declare at least an interval."/>
 
@@ -208,19 +208,22 @@ x is not instantiated
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="abcde-x-4--edcba">ABCDE x 4 = EDCBA</h3>
-<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=68997" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
-<p><small><em>This clickable logo indicates that a workshop is available at <a href="https://moodle.caseine.org/">Caseine</a></em> </small></p>
+<p>If ABCDE times 4 equals EDCBA, and each letter is a different digit from 0 to 9,</p>
+<p>what is the value of each letter?</p>
+<p><a href="https://mindyourdecisions.com/blog/2023/11/22/abcde-times-4-equals-edcba/">source</a></p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="a-model">A Model</h3>
 <ul>
-<li>variables
+<li>
+<p><strong>Variables</strong>:</p>
 <ul>
 <li>$\forall i \in \{a,b,c,d,e\}, l_i \in [ 0,9]$</li>
 </ul>
 </li>
-<li>constraints
+<li>
+<p><strong>Constraints</strong> :</p>
 <ul>
 <li>$\forall i\neq j \in \{a,b,c,d,e\}, l_i \neq l_j$</li>
 <li>$39999l_a + 3990l_b + 300l_c - 960l_d - 9996l_e = 0$</li>
@@ -230,31 +233,126 @@ x is not instantiated
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
+<h3 id="choco-solver-code">Choco-solver code</h3>
+<pre><code class="language-java">// Create a model
+Model model = new Model(&quot;ABCDE x 4 = EDCBA&quot;);
+
+// Declare the variables with their initial domain
+IntVar A = model.intVar(&quot;A&quot;, 0, 9);
+IntVar B = model.intVar(&quot;B&quot;, 0, 9);
+IntVar C = model.intVar(&quot;C&quot;, 0, 9);
+IntVar D = model.intVar(&quot;D&quot;, 0, 9);
+IntVar E = model.intVar(&quot;E&quot;, 0, 9);
+
+// Constraint 1:
+// &quot;each letter is a different digit from 0 to 9&quot;
+// the second part of the constraint is defined
+// by the domain of each variable
+model.allDifferent(A, B, C, D, E).post();
+
+// Constraint 2:
+// &quot;org.step1.ABCDE times 4 equals EDCBA&quot;
+// 40000 A + 4000 B + 400 C + 40 D + 4 E = 10000 E + 1000 D + 100 C + 10 B + A
+// &lt;=&gt; 39999 A + 3990 B + 300 C + -960 D - 9996 E = 0
+model.scalar(
+        new IntVar[]{A, B, C, D, E},
+        new int[]{39_999, 3_990, 300, -960, -9_996},
+        &quot;=&quot;, 0).post();
+
+// Find a solution and print it
+if (model.getSolver().solve()) {
+      int[] sol = new int[]{A.getValue(), B.getValue(), C.getValue(), D.getValue(), E.getValue()};
+      System.out.printf(&quot; %d%d%d%d%d\nx    4\n------\n %d%d%d%d%d\n&quot;,
+        sol[0], sol[1], sol[2], sol[3], sol[4],
+        sol[4], sol[3], sol[2], sol[1], sol[0]);
+}else{
+      System.out.println(&quot;No solution found&quot;);
+}        
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="output">Output</h3>
+<pre><code class="language-shell{}"> 21978
+x    4
+------
+ 87912
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
 <h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
-<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69633" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<p>Someone comes up to you and says:</p>
+<blockquote>
+<p>On my birthday in 2025, my age will be equal to the sum of the digits of my birth year. I am less than 100 years old. What could my birth year be?</p>
+</blockquote>
+<p>Can you model this as a CP problem?</p>
+<p><a href="https://mindyourdecisions.com/blog/2023/07/03/age-equals-sum-of-birth-year-digits/">source</a></p>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="a-model-1">A Model</h3>
 <ul>
-<li>parameter
+<li><strong>Parameters</strong>
 <ul>
 <li>$input$: the current year</li>
 </ul>
 </li>
-<li>variables
+<li><strong>Variables</strong>
 <ul>
 <li>$\forall i \in \{th,hu,te,on\}, x_i \in [0,9]$</li>
 <li>$age \in [0,99]$</li>
 </ul>
 </li>
-<li>Constraints
+<li><strong>Constraints</strong>
 <ul>
 <li>$x_{th} + x_{hu} + x_{te} + x_{on} = {age}$</li>
 <li>$1000x_{th} + 100x_{hu} + 10x_{te} + x_{on} + age = input$</li>
 </ul>
 </li>
 </ul>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="hints">Hints</h3>
+<pre><code class="language-java">model.sum(IntVar[], String, int)
+model.scalar(IntVar[], int[], String, int)
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-choco-solver-code">A Choco-solver code</h3>
+<pre><code class="language-java">Model model = new Model(&quot;Age equals sum of birth year digits&quot;);
+
+IntVar th = model.intVar(&quot;th&quot;, 0, 9);
+IntVar hu = model.intVar(&quot;hu&quot;, 0, 9);
+IntVar te = model.intVar(&quot;te&quot;, 0, 9);
+IntVar on = model.intVar(&quot;on&quot;, 0, 9);
+
+IntVar age = model.intVar(&quot;age&quot;, 0, 99);
+
+model.sum(new IntVar[]{th, hu, te, on}, &quot;=&quot;, age).post();
+model.scalar(
+        new IntVar[]{th, hu, te, on, age},
+        new int[]{1_000, 100, 10, 1, 1},
+        &quot;=&quot;, 2025).post();
+
+while (model.getSolver().solve()) {
+    int[] sol = new int[]{th.getValue(), hu.getValue(), te.getValue(), on.getValue()};
+    System.out.printf(&quot;I was born in %d%d%d%d, I am %d years old\n&quot;, sol[0], sol[1], sol[2], sol[3], age.getValue());
+}
+if(model.getSolver().getSolutionCount() == 0) {
+    System.out.println(&quot;No solution found&quot;);
+}
+
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="output-1">Output</h3>
+<pre><code class="language-shell{}">I was born in 1998, I am 27 years old
+I was born in 2016, I am 9 years old
+</code></pre>
 
 </section>
 

@@ -27,13 +27,13 @@ Basic constraints Constraint Syntax Comment $x &#43; y = z$ m." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/050_constraints/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-03-26T11:52:09+01:00" />
+<meta property="article:modified_time" content="2024-09-17T15:47:51+02:00" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Constraints (and propagators) A constraint represents a problem&#39;s requirements or limitations, defines a relationships among variables, expresses conditions that must be satisfied by the values assigned to the variables, is equipped with a filtering algorithm. For example: $X &lt; Y$
 The goal of constraint programming is to find a combination of variable assignments that simultaneously satisfies all the specified constraints.
 Basic constraints Constraint Syntax Comment $x &#43; y = z$ m.">
-<meta itemprop="dateModified" content="2024-03-26T11:52:09+01:00" />
-<meta itemprop="wordCount" content="568">
+<meta itemprop="dateModified" content="2024-09-17T15:47:51+02:00" />
+<meta itemprop="wordCount" content="846">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Constraints (and propagators) A constraint represents a problem&#39;s requirements or limitations, defines a relationships among variables, expresses conditions that must be satisfied by the values assigned to the variables, is equipped with a filtering algorithm. For example: $X &lt; Y$
 The goal of constraint programming is to find a combination of variable assignments that simultaneously satisfies all the specified constraints.
@@ -376,24 +376,32 @@ Here again, there are different ways to work with an expression $e$, depending o
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="sujiko">Sujiko</h3>
-<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69634" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<p>The puzzle takes place on a 3x3 grid with four circled number clues at the centre of each quadrant which indicate the sum of the four numbers in that quadrant.</p>
+<p>The numbers 1-9 must be placed in the grid, in accordance with the circled clues, to complete the puzzle.</p>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="empty-grid">Empty grid</h3>
+<figure>
+    <img src="/images/overview/sujiko.png" alt="This is an alt" width="50%" >
+</figure>
 <hr>
 <section data-noprocess data-shortcode-slide
       data-background="#76bde8">
 <h3 id="a-model">A Model</h3>
 <ul>
-<li>Parameters
+<li><strong>Parameters</strong>
 <ul>
 <li>$S_0, S_1, S_2, S_3$: the four circled number clues</li>
 <li>$f_{i,j}$: some fixed cells</li>
 </ul>
 </li>
-<li>Variables
+<li><strong>Variables</strong>
 <ul>
 <li>$\forall i,j \in [0,2], x_{i,j} \in [0,9]$</li>
 </ul>
 </li>
-<li>Constraints
+<li><strong>Constraints</strong>
 <ul>
 <li>$\forall i\neq i&rsquo;, j\neq j&rsquo;  \in [0,2], x_i \neq x_j$</li>
 <li>$\forall i \in [0,3], k = \frac{i}{2}, \ell = i \mod 2,$
@@ -402,6 +410,72 @@ $x_{k,\ell} + x_{k + 1,\ell} + x_{k,\ell + 1} + x_{k + 1,\ell +1} = S_i$</li>
 </ul>
 </li>
 </ul>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="hints">Hints</h3>
+<pre><code class="language-java">model.allDifferent(IntVar[])
+model.sum(IntVar[], String, int)
+model.arithm(IntVar, String, int)
+</code></pre>
+<pre><code class="language-java">int[] circles = new int[]{10, 21, 18, 20};
+int[] clues = new int[]{0, 0, 0, 0, 0, 0, 8, 0, 7};
+</code></pre>
+<pre><code class="language-java">private IntVar[] quadrant(IntVar[][] grid, int i) {
+	int x = i / 2;
+	int y = i % 2;
+	return new IntVar[]{grid[x][y], grid[x + 1][y], grid[x][y + 1], grid[x + 1][y + 1]};
+}
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-choco-solver-code">A Choco-solver code</h3>
+<pre><code class="language-java">Model model = new Model(&quot;Sujiko&quot;);
+
+IntVar[][] grid = model.intVarMatrix(&quot;x&quot;, 3, 3, 1, 9);
+
+// Constraint: &quot;The numbers 1-9 must be placed in the grid&quot;
+// implies that all values must be different
+model.allDifferent(ArrayUtils.flatten(grid)).post();
+
+// Constraint: &quot;each quadrant which indicate the sum of the four numbers in that quadrant&quot;
+for (int i = 0; i &lt; 4; i++) {
+	IntVar[] cells = quadrant(grid, i);
+	model.sum(cells, &quot;=&quot;, circles[i]).post();
+}
+
+// Constraint: &quot;the clues&quot;
+for (int i = 0; i &lt; 3; i++) {
+	for (int j = 0; j &lt; 3; j++) {
+		if (clues[i * 3 + j] != 0) {
+			model.arithm(grid[i][j], &quot;=&quot;, clues[i * 3 + j]).post();
+		}
+	}
+}
+
+while (model.getSolver().solve()) {
+	System.out.println(&quot;Solution:&quot;);
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++) {
+			System.out.print(grid[i][j].getValue() + &quot; &quot;);
+		}
+		System.out.println();
+	}
+}
+if (model.getSolver().getSolutionCount() == 0) {
+	System.out.println(&quot;No solution found&quot;);
+}
+</code></pre>
+<hr>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="output">Output</h3>
+<pre><code class="language-shell{}">Solution:
+1 4 9 
+3 2 6 
+8 5 7 
+</code></pre>
 
 </section>
 

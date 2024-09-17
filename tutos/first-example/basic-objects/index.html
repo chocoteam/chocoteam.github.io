@@ -31,7 +31,7 @@
 <meta itemprop="description" content="A quick tour of the library&#39;s essential items.
 "><meta itemprop="datePublished" content="2020-01-31T11:48:22+01:00" />
 <meta itemprop="dateModified" content="2020-01-31T14:49:05+01:00" />
-<meta itemprop="wordCount" content="1455">
+<meta itemprop="wordCount" content="1466">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Basic Objects"/>
 <meta name="twitter:description" content="A quick tour of the library&#39;s essential items.
 "/>
@@ -327,8 +327,25 @@ Choco-solver&rsquo;s User Guide. Here, we <strong>briefly</strong> described the
 the most commonly used objects. This does not aim at being complete: it
 covers the basic information.</p>
 <h2 id="the-model">The Model</h2>
-<pre><code class="language-java">Model model = new Model(&quot;My model&quot;);
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-00-00-tab" data-toggle="tab" href="#tabs-00-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-00-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My model&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+</div>
+
 <p>As said before, the <code>Model</code> is a key component of the library. It has to
 be the first instruction declared, since it provides entry point methods
 that help modelling a problem.</p>
@@ -338,9 +355,26 @@ will be assigned by default.</p>
 needed to describe a problem from it.</p>
 <p>For example, it stores its variables and constraints. Variables and
 constraints of a model can be retrieved thanks to API :</p>
-<pre><code class="language-java">model.retrieveIntVars(true); // extract IntVars, including BoolVars
-model.getCstrs(); // extract posted constraints
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-01-00-tab" data-toggle="tab" href="#tabs-01-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-01-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-1-content">
+    <div class="tab-pane fade show active"
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">retrieveIntVars</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// extract IntVars, including BoolVars</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getCstrs</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">extract</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">posted</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">constraints</span></span></span></code></pre></div>
+    </div>
+</div>
+
 
 
 <div class="alert alert-primary" role="alert">
@@ -367,21 +401,51 @@ differs from one type of variable to the other.</p>
 <h3 id="integer-variable">Integer variable</h3>
 <p>An integer variable, <code>IntVar</code>, should be assigned to an integer value. There are
 many ways to declare an <code>IntVar</code>:</p>
-<pre><code class="language-java">// A variable with a unique value in its domain, in other words, a constant
-IntVar two = model.intVar(&quot;TWO&quot;, 2);
-// Any value in [1..4] can be assigned to this variable
-IntVar x = model.intVar(&quot;X&quot;, 1, 4);
-// Only the values 1, 3 and 4 can be assigned to this variable
-IntVar y = model.intVar(&quot;X&quot;, new int[]{1, 3, 4});
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-4" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-04-00-tab" data-toggle="tab" href="#tabs-04-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-04-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-4-content">
+    <div class="tab-pane fade show active"
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A variable with a unique value in its domain, in other words, a constant</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">two</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;TWO&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Any value in [1..4] can be assigned to this variable</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Only the values 1, 3 and 4 can be assigned to this variable</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">});</span></span></span></code></pre></div>
+    </div>
+</div>
+
 
 
 <div class="alert alert-secondary" role="alert">
 <h4 class="alert-heading">Warning</h4>
 
     <p>Declaring a variable with an <em>infinite</em> domain, like :</p>
-<pre><code class="language-java">model.intVar(&quot;X&quot;, Integer.MIN_VALUE, Integer.MAX_VALUE)
-</code></pre>
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-00-00-tab" data-toggle="tab" href="#tabs-00-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-00-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+<div class="tab-content" id="tabs-0-content">
+    <div class="tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Integer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">MIN_VALUE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Integer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">MAX_VALUE</span><span style="color:#000;font-weight:bold">)</span></span></span></code></pre></div>
+    </div>
+</div>
 <p>is clearly a bad idea.</p>
 <p>Too large domains may lead to underflow or overflow issues and most of
 the time, even if Choco-solver will finally compute the right bounds by
@@ -428,26 +492,77 @@ false, 1 for true. Thus a BoolVar can be declared in any integer
 constraint (<em>e.g.</em>, a sum) and boolean constraints (<em>e.g.</em>, in clauses
 store).</p>
 <p>Here is the common way to declare a BoolVar</p>
-<pre><code class="language-java">// A [0,1]-variable
-BoolVar b = model.boolVar(&quot;b&quot;);
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-7" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-07-00-tab" data-toggle="tab" href="#tabs-07-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-07-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-7-content">
+    <div class="tab-pane fade show active"
+        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A [0,1]-variable</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">b</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+</div>
+
 <h3 id="set-variable">Set variable</h3>
 <p>A set variable, <code>SetVar</code>, should be assigned to a set of integer values
 (possibly empty or singleton). Its domain is defined by a set of
 intervals $[\![m,o]\!]$ where $m$ denotes the integers that figure in all
 solutions and $o$ the integers that potentially figure in a solution.</p>
-<pre><code class="language-java">// SetVar representing a subset of {1,2,3,5,12}
-SetVar y = model.setVar(&quot;y&quot;, new int[]{}, new int[]{1,2,3,5,12});
-// possible values: {}, {2}, {1,3,5} ...
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-8" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-08-00-tab" data-toggle="tab" href="#tabs-08-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-08-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-8-content">
+    <div class="tab-pane fade show active"
+        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// SetVar representing a subset of {1,2,3,5,12}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SetVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;y&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">12</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">possible</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span></span></span></code></pre></div>
+    </div>
+</div>
+
 <h3 id="real-variable">Real variable</h3>
 <p>A real variable, <code>RealVar</code>, should be assigned an interval of doubles. Its
 domain is defined by its bounds and a <em>precision</em>. The precision
 parameter helps considering a real variable as instantiated: when the
 distance between the two bounds is less than or equal to the precision.</p>
-<pre><code class="language-java">// A [0.2d, 3.4d]-variable, with a precision of 0.001d
-RealVar x = model.realVar(&quot;x&quot;, 0.2d, 3.4d, 0.001d);
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-9" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-09-00-tab" data-toggle="tab" href="#tabs-09-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-09-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-9-content">
+    <div class="tab-pane fade show active"
+        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A [0.2d, 3.4d]-variable, with a precision of 0.001d</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">RealVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">2d</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">4d</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">001d</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+</div>
+
 
 
 <div class="alert alert-primary" role="alert">
@@ -474,11 +589,28 @@ values to be removed are detected.</p>
 <h3 id="posting-a-constraint">Posting a constraint</h3>
 <p>For a constraint to be integrated in a model, a call to post() is
 required :</p>
-<pre><code class="language-java">// x and y must be different in any solution
-model.arithm(x, &quot;!=&quot;, y).post();
-// or, in a more verbose way
-model.post(model.arithm(x, &quot;&lt;&quot;, z));
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-11" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-11-00-tab" data-toggle="tab" href="#tabs-11-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-11-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-11-content">
+    <div class="tab-pane fade show active"
+        id="tabs-11-00" role="tabpanel" aria-labelled-by="tabs-11-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// x and y must be different in any solution</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// or, in a more verbose way</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">));</span></span></span></code></pre></div>
+    </div>
+</div>
+
 
 
 <div class="alert alert-primary" role="alert">
@@ -505,22 +637,56 @@ resolution is called.
 <p>The only reason why a constraint is not posted a model is to <em>reify</em> it.</p>
 <h3 id="reifying-a-constraint">Reifying a constraint</h3>
 <p>Alternatively, a constraint can be reified with a BoolVar :</p>
-<pre><code class="language-java">// the constraint is reified with `b`
-BoolVar r1 = model.arithm(x, &quot;!=&quot;, y).reify();
-// equivalent to:
-BoolVar r2 = model.boolVar(&quot;r2&quot;);
-model.arithm(x, &quot;&lt;&quot;, z).reifyWith(r2);
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-14" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-14-00-tab" data-toggle="tab" href="#tabs-14-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-14-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-14-content">
+    <div class="tab-pane fade show active"
+        id="tabs-14-00" role="tabpanel" aria-labelled-by="tabs-14-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// the constraint is reified with `b`</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">r1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// equivalent to:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">r2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;r2&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reifyWith</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">r2</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+    </div>
+</div>
+
 <p>The BoolVar that reifies a constraint represents whether or not a
 constraint is satisfied. If the constraint is satisfied, the boolean
 variable is set to true, false otherwise. If the boolean variable is set
 to true the constraint should be satisfied, unsatisfied otherwise.</p>
 <p>Reifying constraints is helpful to express conditions like:
 (x = y) xor (x &gt; 15) :</p>
-<pre><code class="language-java">BoolVar c1 = model.arithm(x, &quot;=&quot;, y).reify();
-BoolVar c2 = model.arithm(x, &quot;&gt;&quot;, 15).reify();
-model.arithm(c1, &quot;+&quot;, c2, &quot;=&quot;, 1).post();
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-15" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-15-00-tab" data-toggle="tab" href="#tabs-15-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-15-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-15-content">
+    <div class="tab-pane fade show active"
+        id="tabs-15-00" role="tabpanel" aria-labelled-by="tabs-15-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">15</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+
 
 
 <div class="alert alert-secondary" role="alert">
@@ -552,12 +718,29 @@ used ones.</p>
 <h2 id="the-solver">The Solver</h2>
 <p>The <code>Model</code> serves at describing the problem with variables and
 constraints. The resolution is managed by the Solver.</p>
-<pre><code class="language-java">Model model = new Model(&quot;My problem&quot;);
-// variables declaration
-// constraints declaration
-Solver solver = model.getSolver();
-Solution solution = solver.findSolution();
-</code></pre>
+ 
+
+<ul class="nav nav-tabs" id="tabs-18" role="tablist">
+  <li class="nav-item">
+      <a class="nav-link active persistLang-Java"
+          id="tabs-18-00-tab" data-toggle="tab" href="#tabs-18-00" role="tab"
+          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-18-00" aria-selected="false">
+        Java
+      </a>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-18-content">
+    <div class="tab-pane fade show active"
+        id="tabs-18-00" role="tabpanel" aria-labelled-by="tabs-18-00-tab">
+        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My problem&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// variables declaration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// constraints declaration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solution</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solution</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
+    </div>
+</div>
+
 <p>Having access to the Solver is needed to tune the resolution and launch
 it. It provides methods to configure <em>search strategies</em>, to define
 resolution goals (<em>i.e.</em>, finding one solution, all solutions or optimal
