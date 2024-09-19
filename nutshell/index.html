@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>CP in a nutshell</title>
+<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/reveal-js/dist/theme/simple.css" id="theme">
+<link rel="stylesheet" href="/highlight-js/github.min.css">
+  </head>
+  <body>
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section><h2 id="cp-in-a-nutshell">CP in a Nutshell</h2>
+</br>
+Charles Prud'homme, Sept. 2025
+<p>IMT Atlantique, LS2N, TASC</p>
+<br/>
+<small style="color:#C70039">< press [N] / [P] to go the next / previous slide ></small>
+</section><section>
+<h2 id="constraint-programming">Constraint Programming</h2>
+<p>CP is a powerful paradigm for solving combinatorial problems.</p>
+<p>Originated from AI and operations research.</p>
+<p>Widely used in scheduling, planning, and resource allocation.</p>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="techniques-for-solving-combinatorial-problems">Techniques for Solving Combinatorial Problems</h2>
+<h3 id="exact-methods">Exact methods</h3>
+<p>Linear Programming, Integer Programming, SAT, <span style="color:#3BAFDA">CP</span>
+, &hellip;</p>
+<h3 id="approximation-methods">Approximation methods</h3>
+<p>Heuristics, Metaheuristics, Local Search, &hellip;</p>
+</section><section>
+<h2 id="exact-method">Exact Method</h2>
+<p>CP is an exact method, meaning it guarantees to find a solution if one exists or proves no solution is possible.</p>
+<p>Typically it involves searching the solution space exhaustively but with intelligent pruning.</p>
+</section><section>
+<h2 id="similarities-with-linear-programming-lp">Similarities with Linear Programming (LP)</h2>
+<ul>
+<li>Both CP and LP are used to solve optimization problems.</li>
+<li>They both define variables, domains, and constraints.</li>
+<li>Both use systematic search techniques for exploring solutions.</li>
+</ul>
+</section><section>
+<h2 id="differences-with-lp">Differences with LP</h2>
+<ul>
+<li><strong>LP</strong>: Problems are expressed using linear constraints and an objective function.</li>
+<li><strong>CP</strong>: Can handle non-linear and logical constraints without requiring an objective function.</li>
+</ul>
+<p>CP is more flexible in expressing combinatorial relationships.</p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h1 id="p--vdc">P = (V,D,C)</h1>
+</section><section>
+<h2 id="what-is-a-variable">What is a Variable?</h2>
+<p>A variable represents an unknown value that needs to be determined.</p>
+</section><section>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>In a Sudoku puzzle, each cell can be a variable representing its value.</li>
+<li>In a scheduling problem, each task can be a variable representing its start time.</li>
+<li>In a routing problem, each node can be a variable representing its successor.</li>
+<li>In a packing problem, each item can be a variable representing its bin.</li>
+</ul>
+</section><section>
+<h2 id="what-is-a-domain">What is a Domain?</h2>
+<p>The domain of a variable is the set of possible values that the variable can take.</p>
+</section><section>
+<h3 id="examples-1">Examples</h3>
+<ul>
+<li>For a Sudoku cell, the domain might be the set of possible values: {1, 2, 3, 4, 5, 6, 7, 8, 9}.</li>
+<li>For a scheduling task, the domain might be the set of possible start times: [1, 999].</li>
+<li>For a routing problem, the domain might be the set of possible successors: {A, B, C, D}.</li>
+</ul>
+</section><section>
+<h2 id="what-is-a-constraint">What is a Constraint?</h2>
+<p>A constraint defines a condition that must be satisfied by the variables in its scope.</p>
+</section><section>
+<h3 id="examples-2">Examples</h3>
+<ul>
+<li>In Sudoku, &ldquo;each row must contain all numbers from 1 to 9&rdquo; is a constraint.</li>
+<li>In scheduling, &ldquo;no two tasks can happen at the same time&rdquo; is a constraint.</li>
+<li>In routing, &ldquo;each node must be visited exactly once&rdquo; is a constraint.</li>
+<li>In packing, &ldquo;the sum of weights in each bin must not exceed the bin capacity&rdquo; is a constraint.</li>
+</ul>
+</section><section>
+<h2 id="what-is-a-solution">What is a Solution?</h2>
+<p>A solution is an assignment of values to all variables such that all constraints are satisfied.</p>
+<p>CP problems may have one, many, or no solutions.</p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="constraint-propagation">Constraint Propagation</h2>
+<p>Constraint propagation is a core technique in CP to reduce the domain of variables.</p>
+<ul>
+<li>Propagates the impact of constraints throughout the problem, reducing search space.</li>
+<li>Pruning infeasible values from domains.</li>
+</ul>
+</section><section>
+<h2 id="example-of-propagation">Example of Propagation</h2>
+<p>Consider two variables <code>X</code> and <code>Y</code> with domain <code>{1, 2, 3}</code> and a constraint <code>X &gt; Y</code>.</p>
+<p>After propagation:</p>
+<ul>
+<li>the domain of <code>X</code> becomes <code>{2,3}</code>.</li>
+<li>the domain of <code>Y</code> becomes <code>{1,2}</code>.</li>
+</ul>
+</section><section>
+<h2 id="propagation-in-practice">Propagation in Practice</h2>
+<p><em>Global constraints</em> are used to capture common patterns and enable efficient propagation.</p>
+<p>In real-world problems, propagation can significantly reduce the time it takes to find a solution.</p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="search-space">Search Space</h2>
+<p>CP solvers alternate between <strong>Depth-First Search (DFS)</strong> and constraint propagation to find a solution.</p>
+<p>DFS explores one possible solution at a time and backtracks whenever a constraint is violated.</p>
+</section><section>
+<h2 id="search-strategies">Search Strategies</h2>
+<p>CP solvers explore possible assignments of values to variables.</p>
+<p>Each node in the search tree represents a partial assignment, validated through constraint propagation.</p>
+</section><section>
+<h2 id="backtracking-in-cp">Backtracking in CP</h2>
+<p>When a conflict arises, CP solvers backtrack.</p>
+<ul>
+<li>This means undoing the most recent variable assignment and trying an alternative.</li>
+<li>This is crucial for ensuring that all potential solutions are explored.</li>
+</ul>
+
+</section>
+</section><section>
+<h2 id="benefits-of-constraint-programming">Benefits of Constraint Programming</h2>
+<ul>
+<li><strong>Expressive</strong>: Can handle complex relationships and constraints.</li>
+<li><strong>Flexible</strong>: Easily adapts to various domains like scheduling, routing, and resource allocation.</li>
+</ul>
+</section><section>
+<h2 id="applications-of-cp">Applications of CP</h2>
+<ul>
+<li>Scheduling (e.g., airline crew scheduling).</li>
+<li>Resource allocation (e.g., production planning).</li>
+<li>Routing problems (e.g., vehicle routing).</li>
+</ul>
+</section><section>
+<h2 id="conclusion">Conclusion</h2>
+<p>Constraint Programming is a versatile and powerful tool for solving complex combinatorial problems.</p>
+<p>Ideal for problems with rich, non-linear constraints.</p>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+
+<script src="/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {};
+  var revealHugoPageParams = {"highlight_theme":"github","slide_number":true,"theme":"simple"};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+    
+  </body>
+</html>

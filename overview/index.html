@@ -309,7 +309,7 @@ x is not instantiated
 <li>
 <p><strong>Variables</strong>:</p>
 <ul>
-<li>$\forall i \in \{a,b,c,d,e\}, l_i \in [ 0,9]$</li>
+<li>$\forall i \in \{a,b,c,d,e\}, l_i \in [\![ 0,9]\!]$</li>
 </ul>
 </li>
 <li>
@@ -390,8 +390,8 @@ x    4
 </li>
 <li><strong>Variables</strong>
 <ul>
-<li>$\forall i \in \{th,hu,te,on\}, x_i \in [0,9]$</li>
-<li>$age \in [0,99]$</li>
+<li>$\forall i \in \{th,hu,te,on\}, x_i \in [\![0,9]\!]$</li>
+<li>$age \in [\![0,99]\!]$</li>
 </ul>
 </li>
 <li><strong>Constraints</strong>
@@ -745,13 +745,13 @@ Here again, there are different ways to work with an expression $e$, depending o
 </li>
 <li><strong>Variables</strong>
 <ul>
-<li>$\forall i,j \in [0,2], x_{i,j} \in [0,9]$</li>
+<li>$\forall i,j \in [\![0,2]\!]^2, x_{i,j} \in [\![1,9]\!]$</li>
 </ul>
 </li>
 <li><strong>Constraints</strong>
 <ul>
-<li>$\forall i\neq i&rsquo;, j\neq j&rsquo;  \in [0,2], x_i \neq x_j$</li>
-<li>$\forall i \in [0,3], k = \frac{i}{2}, \ell = i \mod 2,$
+<li>$\forall i, i&rsquo;, j, j&rsquo;  \in [\![0,2]\!]^4, (i,j)\neq(i&rsquo;,j&rsquo;), x_{i,j} \neq x_{i&rsquo;,j&rsquo;}$</li>
+<li>$\forall i \in [\![0,3]\!], k = \frac{i}{2}, \ell = i \mod 2,$
 $x_{k,\ell} + x_{k + 1,\ell} + x_{k,\ell + 1} + x_{k + 1,\ell +1} = S_i$</li>
 <li>+clues</li>
 </ul>
@@ -1315,6 +1315,8 @@ solver.findAllSolutions();
 
 
 
+
+  
 
   
 

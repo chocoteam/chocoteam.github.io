@@ -27,13 +27,13 @@ Basic constraints Constraint Syntax Comment $x &#43; y = z$ m." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://choco-solver.org/overview/home/050_constraints/" /><meta property="article:section" content="overview" />
 
-<meta property="article:modified_time" content="2024-09-17T15:47:51+02:00" />
+<meta property="article:modified_time" content="2024-09-19T17:04:17+02:00" />
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Constraints (and propagators) A constraint represents a problem&#39;s requirements or limitations, defines a relationships among variables, expresses conditions that must be satisfied by the values assigned to the variables, is equipped with a filtering algorithm. For example: $X &lt; Y$
 The goal of constraint programming is to find a combination of variable assignments that simultaneously satisfies all the specified constraints.
 Basic constraints Constraint Syntax Comment $x &#43; y = z$ m.">
-<meta itemprop="dateModified" content="2024-09-17T15:47:51+02:00" />
-<meta itemprop="wordCount" content="846">
+<meta itemprop="dateModified" content="2024-09-19T17:04:17+02:00" />
+<meta itemprop="wordCount" content="847">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Constraints (and propagators) A constraint represents a problem&#39;s requirements or limitations, defines a relationships among variables, expresses conditions that must be satisfied by the values assigned to the variables, is equipped with a filtering algorithm. For example: $X &lt; Y$
 The goal of constraint programming is to find a combination of variable assignments that simultaneously satisfies all the specified constraints.
@@ -398,13 +398,13 @@ Here again, there are different ways to work with an expression $e$, depending o
 </li>
 <li><strong>Variables</strong>
 <ul>
-<li>$\forall i,j \in [0,2], x_{i,j} \in [0,9]$</li>
+<li>$\forall i,j \in [\![0,2]\!]^2, x_{i,j} \in [\![1,9]\!]$</li>
 </ul>
 </li>
 <li><strong>Constraints</strong>
 <ul>
-<li>$\forall i\neq i&rsquo;, j\neq j&rsquo;  \in [0,2], x_i \neq x_j$</li>
-<li>$\forall i \in [0,3], k = \frac{i}{2}, \ell = i \mod 2,$
+<li>$\forall i, i&rsquo;, j, j&rsquo;  \in [\![0,2]\!]^4, (i,j)\neq(i&rsquo;,j&rsquo;), x_{i,j} \neq x_{i&rsquo;,j&rsquo;}$</li>
+<li>$\forall i \in [\![0,3]\!], k = \frac{i}{2}, \ell = i \mod 2,$
 $x_{k,\ell} + x_{k + 1,\ell} + x_{k,\ell + 1} + x_{k + 1,\ell +1} = S_i$</li>
 <li>+clues</li>
 </ul>
