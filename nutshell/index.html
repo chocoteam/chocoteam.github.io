@@ -19,15 +19,17 @@
 
     <section><h2 id="cp-in-a-nutshell">CP in a Nutshell</h2>
 </br>
-Charles Prud'homme, Sept. 2025
+Charles Prud'homme, Philippe David 
+<p>Sept. 2025</p>
 <p>IMT Atlantique, LS2N, TASC</p>
 <br/>
 <small style="color:#C70039">< press [N] / [P] to go the next / previous slide ></small>
 </section><section>
 <h2 id="constraint-programming">Constraint Programming</h2>
-<p>CP is a powerful paradigm for solving combinatorial problems.</p>
-<p>Originated from AI and operations research.</p>
-<p>Widely used in scheduling, planning, and resource allocation.</p>
+<p>Powerful paradigm for solving <span style="color:#3BAFDA">combinatorial problems</span></p>
+<p>Originated from <span style="color:#3BAFDA">AI</span>
+and <span style="color:#3BAFDA">OR</span></p>
+<p>Widely used in scheduling, planning, configuration, etc.</p>
 </section><section>
 
 
@@ -63,6 +65,11 @@ Charles Prud'homme, Sept. 2025
 
 <section data-shortcode-section>
 <h1 id="p--vdc">P = (V,D,C)</h1>
+<ul>
+<li>A set of variables : X = {X1, X2, &hellip;, Xn}</li>
+<li>A domain for each variable: D = {D1, D2, &hellip;, Dn}</li>
+<li>A set of constraints: C = {C1, C2, &hellip;, Cm}</li>
+</ul>
 </section><section>
 <h2 id="what-is-a-variable">What is a Variable?</h2>
 <p>A variable represents an unknown value that needs to be determined.</p>
@@ -90,10 +97,10 @@ Charles Prud'homme, Sept. 2025
 </section><section>
 <h3 id="examples-2">Examples</h3>
 <ul>
-<li>In Sudoku, &ldquo;each row must contain all numbers from 1 to 9&rdquo; is a constraint.</li>
-<li>In scheduling, &ldquo;no two tasks can happen at the same time&rdquo; is a constraint.</li>
-<li>In routing, &ldquo;each node must be visited exactly once&rdquo; is a constraint.</li>
-<li>In packing, &ldquo;the sum of weights in each bin must not exceed the bin capacity&rdquo; is a constraint.</li>
+<li>In Sudoku, &ldquo;<em>each row must contain all numbers from 1 to 9</em>&rdquo; is a constraint.</li>
+<li>In scheduling, &ldquo;<em>no two tasks can happen at the same time</em>&rdquo; is a constraint.</li>
+<li>In routing, &ldquo;<em>each node must be visited exactly once</em>&rdquo; is a constraint.</li>
+<li>In packing, &ldquo;<em>the sum of weights in each bin must not exceed the bin capacity</em>&rdquo; is a constraint.</li>
 </ul>
 </section><section>
 <h2 id="what-is-a-solution">What is a Solution?</h2>
