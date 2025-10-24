@@ -66,7 +66,7 @@
     <lastmod>2024-09-17T15:47:21+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/modeling/intconstraints/</loc>
-    <lastmod>2024-03-28T09:27:43+01:00</lastmod>
+    <lastmod>2025-03-18T17:00:06+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/modeling/intexpressions/</loc>
     <lastmod>2023-10-02T13:14:41+02:00</lastmod>
@@ -177,7 +177,7 @@
     <lastmod>2020-03-16T19:01:08+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/advanced-usages/explanations/</loc>
-    <lastmod>2020-03-16T19:01:08+01:00</lastmod>
+    <lastmod>2025-10-23T16:48:27+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/docs/advanced-usages/ibex/</loc>
     <lastmod>2020-03-16T19:01:08+01:00</lastmod>
@@ -251,6 +251,9 @@
     <loc>https://choco-solver.org/tutos/other-examples/the_knapsack_problem/</loc>
     <lastmod>2024-09-17T15:47:21+02:00</lastmod>
   </url><url>
+    <loc>https://choco-solver.org/tutos/other-examples/euler-103/</loc>
+    <lastmod>2025-03-18T17:00:06+01:00</lastmod>
+  </url><url>
     <loc>https://choco-solver.org/tinytiny/home/110_sudoku/</loc>
     <lastmod>2024-03-21T16:19:03+01:00</lastmod>
   </url><url>
@@ -263,14 +266,11 @@
     <loc>https://choco-solver.org/tinytiny/home/140_thank_you/</loc>
     <lastmod>2024-03-21T12:13:21+01:00</lastmod>
   </url><url>
-    <loc>https://choco-solver.org/tutos/other-examples/euler-103/</loc>
-    <lastmod>2024-09-17T15:47:21+02:00</lastmod>
-  </url><url>
     <loc>https://choco-solver.org/index.json</loc>
     <lastmod>2020-01-30T21:50:46+01:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/</loc>
-    <lastmod>2024-07-03T11:10:11+02:00</lastmod>
+    <lastmod>2025-10-24T10:27:49+02:00</lastmod>
   </url><url>
     <loc>https://choco-solver.org/community/</loc>
     <lastmod>2020-01-31T14:49:05+01:00</lastmod>

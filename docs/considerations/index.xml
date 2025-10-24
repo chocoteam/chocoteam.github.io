@@ -1,18 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Choco-solver – Considerations</title>
+    <title>Considerations on Choco-solver</title>
     <link>https://choco-solver.org/docs/considerations/</link>
     <description>Recent content in Considerations on Choco-solver</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    
-	  <atom:link href="https://choco-solver.org/docs/considerations/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-        
-      
-    
-    
+    <atom:link href="https://choco-solver.org/docs/considerations/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

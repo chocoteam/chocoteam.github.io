@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <title>Tiny Tiny Constraint Solver</title>
-<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,7 +17,7 @@
       <div class="slides">
   
 
-    <section><h1 id="the-very-tiny-br-constraint-solver">The Very Tiny </br> Constraint Solver</h1>
+    <section><h1 id="the-very-tiny--constraint-solver">The Very Tiny </br> Constraint Solver</h1>
 </br>
 Charles Prud'homme, March 2024
 <p>IMT Atlantique, LS2N, TASC</p>
@@ -983,34 +983,34 @@ of CP lies</p>
 </section><section>
 <h3 id="examples">Examples</h3>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>alldifferent</code></td>
-<td>enforces all variables in its scope to take distinct values</td>
-</tr>
-<tr>
-<td><code>increasing</code></td>
-<td>the variables in its scope are increasing</td>
-</tr>
-<tr>
-<td><code>maximum</code></td>
-<td>a variable is the maximum value of a collection of variables</td>
-</tr>
-<tr>
-<td>&hellip;</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>alldifferent</code></td>
+          <td>enforces all variables in its scope to take distinct values</td>
+      </tr>
+      <tr>
+          <td><code>increasing</code></td>
+          <td>the variables in its scope are increasing</td>
+      </tr>
+      <tr>
+          <td><code>maximum</code></td>
+          <td>a variable is the maximum value of a collection of variables</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 </section><section>
 <h3 id="others-are-less-obvious-">Others are less obvious 😇</h3>
@@ -1073,30 +1073,30 @@ of CP lies</p>
 </section><section>
 <h2 id="summary">Summary</h2>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</th>
-<th>$\texttt{allDifferent}(X)$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>#cstrs</td>
-<td>$\frac{\vert X \vert \times \vert X\vert -1}{2}$</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Filtering</td>
-<td>weak and late</td>
-<td><em>arc-consistency</em> in polynomial time and space</td>
-</tr>
-<tr>
-<td>Algorithm</td>
-<td>straightforward</td>
-<td>tricky*</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</th>
+          <th>$\texttt{allDifferent}(X)$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>#cstrs</td>
+          <td>$\frac{\vert X \vert \times \vert X\vert -1}{2}$</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>Filtering</td>
+          <td>weak and late</td>
+          <td><em>arc-consistency</em> in polynomial time and space</td>
+      </tr>
+      <tr>
+          <td>Algorithm</td>
+          <td>straightforward</td>
+          <td>tricky*</td>
+      </tr>
+  </tbody>
 </table>
 <p><small>*: but already done for you in libraries</small></p>
 <aside class="notes"><p>fix-point might be long</p>

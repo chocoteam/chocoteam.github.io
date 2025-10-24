@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <title>Overview of Choco-solver</title>
-<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -129,7 +129,7 @@ if(solution != null){
 <section data-shortcode-section>
 <h1 id="modelling">Modelling</h1>
 </section><section>
-<h2 id="creation-of-a-code-stylefont-family-monospacecolor05507dmodelcode-instance">Creation of a <code style='font-family: monospace;color:#05507D;'>Model</code> instance</h2>
+<h2 id="creation-of-a-model-instance">Creation of a <code style='font-family: monospace;color:#05507D;'>Model</code> instance</h2>
 </section><section>
 <p><code style='font-family: monospace;color:#05507D;'>Model</code> is the <span style="color:#3BAFDA">central object</span>
 in the Choco-solver library</p>
@@ -374,8 +374,7 @@ x    4
 <h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
 <p>Someone comes up to you and says:</p>
 <blockquote>
-<p>On my birthday in 2025, my age will be equal to the sum of the digits of my birth year. I am less than 100 years old. What could my birth year be?</p>
-</blockquote>
+<p>On my birthday in 2025, my age will be equal to the sum of the digits of my birth year. I am less than 100 years old. What could my birth year be?</p></blockquote>
 <p>Can you model this as a CP problem?</p>
 <p><a href="https://mindyourdecisions.com/blog/2023/07/03/age-equals-sum-of-birth-year-digits/">source</a></p>
 </section>
@@ -472,60 +471,60 @@ the specified constraints.</p>
 </section><section>
 <small>
 <table>
-<thead>
-<tr>
-<th>Constraint</th>
-<th>Syntax</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>$x + y = z$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.arithm(x,&quot;+&quot;,y,&quot;=&quot;,z)</code></td>
-<td>Up to 3 variables</td>
-</tr>
-<tr>
-<td>$\sum_i C_i\cdot X_i = 11$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.scalar(X,C,&quot;=&quot;,11)</code></td>
-<td>See also <code style='font-family: monospace;color:#05507D;'>m.sum(x,op,c)</code></td>
-</tr>
-<tr>
-<td>$x\times y = z$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.times(x,y,z)</code></td>
-<td>Alt. Euclidean division</td>
-</tr>
-<tr>
-<td>$y = |x|$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.absolute(y,x)</code></td>
-<td>Or view: <code style='font-family: monospace;color:#05507D;'>y = m.abs(x)</code></td>
-</tr>
-<tr>
-<td>$ |x-y | &gt; 3$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.distance(x,y,&quot;&gt;&quot;, 3)</code></td>
-<td></td>
-</tr>
-<tr>
-<td>$z = \max(x,y)$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.max(z,x,y)</code></td>
-<td>Alt. $\min$</td>
-</tr>
-<tr>
-<td>$\bigvee_i B_i$</td>
-<td><code style='font-family: monospace;color:#05507D;'>m.or(B)</code></td>
-<td>Alt. <code style='font-family: monospace;color:#05507D;'>m.and(B)</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Constraint</th>
+          <th>Syntax</th>
+          <th>Comment</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>$x + y = z$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.arithm(x,&quot;+&quot;,y,&quot;=&quot;,z)</code></td>
+          <td>Up to 3 variables</td>
+      </tr>
+      <tr>
+          <td>$\sum_i C_i\cdot X_i = 11$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.scalar(X,C,&quot;=&quot;,11)</code></td>
+          <td>See also <code style='font-family: monospace;color:#05507D;'>m.sum(x,op,c)</code></td>
+      </tr>
+      <tr>
+          <td>$x\times y = z$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.times(x,y,z)</code></td>
+          <td>Alt. Euclidean division</td>
+      </tr>
+      <tr>
+          <td>$y = |x|$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.absolute(y,x)</code></td>
+          <td>Or view: <code style='font-family: monospace;color:#05507D;'>y = m.abs(x)</code></td>
+      </tr>
+      <tr>
+          <td>$ |x-y | &gt; 3$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.distance(x,y,&quot;&gt;&quot;, 3)</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>$z = \max(x,y)$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.max(z,x,y)</code></td>
+          <td>Alt. $\min$</td>
+      </tr>
+      <tr>
+          <td>$\bigvee_i B_i$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.or(B)</code></td>
+          <td>Alt. <code style='font-family: monospace;color:#05507D;'>m.and(B)</code></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 </br>
 Arrays of variables are designated by capital letters</small>
@@ -581,7 +580,7 @@ tuples.add(10, 1151);
 m.table(c, v, tuples).post();
 </code></pre>
 </section><section>
-<h3 id="types-of-em-stylefont-variant-small-capstableem-constraints">Types of <em style="font-variant: small-caps">Table</em> constraints</h3>
+<h3 id="types-of-table-constraints">Types of <em style="font-variant: small-caps">Table</em> constraints</h3>
 </section><section>
 <p>Allowed tuples</p>
 <pre><code class="language-java">Model m = new Model();
@@ -644,34 +643,34 @@ model.table(xs, tuples).post();
 </section><section>
 <small>
 <table>
-<thead>
-<tr>
-<th>Family</th>
-<th>Syntax</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Arithmetic</td>
-<td><code style='font-family: monospace;color:#05507D;'>x.neg() x.abs() x.sqr()</code><br/><code style='font-family: monospace;color:#05507D;'>x.add(i, &hellip;) x.sub(i, &hellip;)</code> <br/> <code style='font-family: monospace;color:#05507D;'>x.div(i) x.mod(i) x.pow(i) x.dist(i)</code> <br> <code style='font-family: monospace;color:#05507D;'>x.max(i, &hellip;) x.min(i, &hellip;)</code></td>
-</tr>
-<tr>
-<td>Relational</td>
-<td><code style='font-family: monospace;color:#05507D;'>x.eq(i) x.ne(i) x.in(i, &hellip;) x.nin(i, &hellip;)</code><br/><code style='font-family: monospace;color:#05507D;'>x.lt(i) x.le(i) x.gt(i) x.ge(i)</code></td>
-</tr>
-<tr>
-<td>Logical</td>
-<td><code style='font-family: monospace;color:#05507D;'>x.not() x.imp(r) x.iff(r) x.ift(r1, r2)</code> <br> <code style='font-family: monospace;color:#05507D;'>x.and(r, &hellip;) x.or(r, &hellip;) x.xor(r, &hellip;)</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Family</th>
+          <th>Syntax</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Arithmetic</td>
+          <td><code style='font-family: monospace;color:#05507D;'>x.neg() x.abs() x.sqr()</code><br/><code style='font-family: monospace;color:#05507D;'>x.add(i, &hellip;) x.sub(i, &hellip;)</code> <br/> <code style='font-family: monospace;color:#05507D;'>x.div(i) x.mod(i) x.pow(i) x.dist(i)</code> <br> <code style='font-family: monospace;color:#05507D;'>x.max(i, &hellip;) x.min(i, &hellip;)</code></td>
+      </tr>
+      <tr>
+          <td>Relational</td>
+          <td><code style='font-family: monospace;color:#05507D;'>x.eq(i) x.ne(i) x.in(i, &hellip;) x.nin(i, &hellip;)</code><br/><code style='font-family: monospace;color:#05507D;'>x.lt(i) x.le(i) x.gt(i) x.ge(i)</code></td>
+      </tr>
+      <tr>
+          <td>Logical</td>
+          <td><code style='font-family: monospace;color:#05507D;'>x.not() x.imp(r) x.iff(r) x.ift(r1, r2)</code> <br> <code style='font-family: monospace;color:#05507D;'>x.and(r, &hellip;) x.or(r, &hellip;) x.xor(r, &hellip;)</code></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 $i$ is either an <code style='font-family: monospace;color:#05507D;'>int</code>, a <code style='font-family: monospace;color:#05507D;'>IntVar</code> or an arithmetical expression,
@@ -689,34 +688,34 @@ x.eq(y.add(1)).or(x.add(2).le(6)).post();
 <small>
 Here again, there are different ways to work with an expression $e$, depending on its type:
 <table>
-<thead>
-<tr>
-<th>Syntax</th>
-<th>Ar.</th>
-<th>Re.</th>
-<th>Lo.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>e.post();</code></td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>c = e.decompose();</code> <br/><code style='font-family: monospace;color:#05507D;'>c = e.extension();</code></td>
-<td>❌<br/>❌</td>
-<td>✅<br/>✅</td>
-<td>✅<br/>✅</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>x = e.intVar();</code><br/><code style='font-family: monospace;color:#05507D;'>b = e.boolVar();</code></td>
-<td>✅<br/>❌</td>
-<td>❌<br/>✅</td>
-<td>❌<br/>✅</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Ar.</th>
+          <th>Re.</th>
+          <th>Lo.</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>e.post();</code></td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>c = e.decompose();</code> <br/><code style='font-family: monospace;color:#05507D;'>c = e.extension();</code></td>
+          <td>❌<br/>❌</td>
+          <td>✅<br/>✅</td>
+          <td>✅<br/>✅</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>x = e.intVar();</code><br/><code style='font-family: monospace;color:#05507D;'>b = e.boolVar();</code></td>
+          <td>✅<br/>❌</td>
+          <td>❌<br/>✅</td>
+          <td>❌<br/>✅</td>
+      </tr>
+  </tbody>
 </table>
 </small>
 </section>
@@ -833,15 +832,13 @@ if (model.getSolver().getSolutionCount() == 0) {
 </section><section>
 <h2 id="definitions">Definition(s)</h2>
 <blockquote>
-<p>an expressive and concise condition involving a non-fixed number of variables</p>
-</blockquote>
+<p>an expressive and concise condition involving a non-fixed number of variables</p></blockquote>
 <p><a href="https://sofdem.github.io/gccat/gccat/preface.html">[GCCAT]</a></p>
 <p class="fragment">allDifferent($x_1,x_2,\dots$)</p>
 </section><section>
 <h2 id="definitions-1">Definition(s)</h2>
 <blockquote>
-<p>a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C</p>
-</blockquote>
+<p>a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C</p></blockquote>
 <p><a href="https://www.lirmm.fr/~bessiere/Site/stock/cp03-glob.pdf">[BvH03]</a></p>
 <p class="fragment">allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$</p>
 </section><section>
@@ -871,34 +868,34 @@ if (model.getSolver().getSolutionCount() == 0) {
 <br/>
 <br/>
 <table>
-<thead>
-<tr>
-<th>Syntax</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.allDifferent(X)</code></td>
-<td>$x_i\neq x_j, \forall i&lt; j$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.among(n, X, v)</code></td>
-<td>$|x_i : x_i \cap v\neq \emptyset | = n$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.count(y, X, n)</code></td>
-<td>$ | \{ x_i : x_i = y \} | = n$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.nValues(X, n)</code></td>
-<td>$|x_i| = n$</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.allDifferent(X)</code></td>
+          <td>$x_i\neq x_j, \forall i&lt; j$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.among(n, X, v)</code></td>
+          <td>$|x_i : x_i \cap v\neq \emptyset | = n$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.count(y, X, n)</code></td>
+          <td>$ | \{ x_i : x_i = y \} | = n$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.nValues(X, n)</code></td>
+          <td>$|x_i| = n$</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <p><strong>Notations</strong></p>
@@ -911,42 +908,42 @@ if (model.getSolver().getSolutionCount() == 0) {
 <h3 id="some-connection-constraints">Some connection constraints</h3>
 <small>
 <table>
-<thead>
-<tr>
-<th>Syntax</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
-<td>$\exists i : v = x_{i - o}$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.argmax(i, o, X)</code></td>
-<td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.argmin(i, o, X)</code></td>
-<td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.max(m, X)</code></td>
-<td>$m = \max\{x_i\}$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.min(m, X)</code></td>
-<td>$m = \min\{x_i\}$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.inverseChanneling(X, Y)</code></td>
-<td>$ \forall i: x_i = j \iff y_j = i \quad (|X| = |Y|)$</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
+          <td>$\exists i : v = x_{i - o}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.argmax(i, o, X)</code></td>
+          <td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.argmin(i, o, X)</code></td>
+          <td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.max(m, X)</code></td>
+          <td>$m = \max\{x_i\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.min(m, X)</code></td>
+          <td>$m = \min\{x_i\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.inverseChanneling(X, Y)</code></td>
+          <td>$ \forall i: x_i = j \iff y_j = i \quad (|X| = |Y|)$</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <p><strong>Notations</strong></p>
@@ -959,34 +956,34 @@ if (model.getSolver().getSolutionCount() == 0) {
 <h3 id="some-packing-and-scheduling-constraints">Some Packing and Scheduling constraints</h3>
 <small>
 <table>
-<thead>
-<tr>
-<th>Syntax</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.binPacking(X, S, L, o)</code></td>
-<td>$ \forall b \in \{x_i\},\sum_{i : x_i = b} S_i \leq L_b$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.cumulative(A, H, c)</code></td>
-<td>$ \forall t \in \mathcal{N},\sum\{h_i : a^s_i \leq t &lt; a^e_i\} \leq c$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.diffN(X, Y, W, H, true)</code></td>
-<td>$\forall i&lt;j, x_{i} + w_{i} \leq x_{j} \lor x_{j} + h_{j} ≤ x_{i}$<br/>$\quad\quad\quad \lor y_{i} + h_{i} \leq y_{j} \lor y_{j} + w_{j} ≤ y_{i}$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, W, E, w, e)</code></td>
-<td>$\sum_{i} w_i \times O_i = w \land \sum_{i} e_i \times O_i = e$</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.binPacking(X, S, L, o)</code></td>
+          <td>$ \forall b \in \{x_i\},\sum_{i : x_i = b} S_i \leq L_b$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.cumulative(A, H, c)</code></td>
+          <td>$ \forall t \in \mathcal{N},\sum\{h_i : a^s_i \leq t &lt; a^e_i\} \leq c$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.diffN(X, Y, W, H, true)</code></td>
+          <td>$\forall i&lt;j, x_{i} + w_{i} \leq x_{j} \lor x_{j} + h_{j} ≤ x_{i}$<br/>$\quad\quad\quad \lor y_{i} + h_{i} \leq y_{j} \lor y_{j} + w_{j} ≤ y_{i}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, W, E, w, e)</code></td>
+          <td>$\sum_{i} w_i \times O_i = w \land \sum_{i} e_i \times O_i = e$</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <p><strong>Notations</strong></p>
@@ -1000,30 +997,30 @@ if (model.getSolver().getSolutionCount() == 0) {
 <h3 id="some-graph-based-constraints">Some Graph-based constraints</h3>
 <small>
 <table>
-<thead>
-<tr>
-<th>Syntax</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.circuit(X) </code></td>
-<td>$\{(i, x_i) : i \neq x_i\}$ forms a circuit of size $&gt; 1$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.path(X, s, e)</code></td>
-<td>$\{(i, x_i) : i \neq x_i\}$ forms a path from $s$ to $e$</td>
-</tr>
-<tr>
-<td><code style='font-family: monospace;color:#05507D;'>m.tree(X, n)</code></td>
-<td>$\{(i, x_i) : i \neq x_i\}$ is partitioned into $n$ anti-arborescences</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.circuit(X) </code></td>
+          <td>$\{(i, x_i) : i \neq x_i\}$ forms a circuit of size $&gt; 1$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.path(X, s, e)</code></td>
+          <td>$\{(i, x_i) : i \neq x_i\}$ forms a path from $s$ to $e$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.tree(X, n)</code></td>
+          <td>$\{(i, x_i) : i \neq x_i\}$ is partitioned into $n$ anti-arborescences</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <br/>
 <p><strong>Notations</strong></p>
