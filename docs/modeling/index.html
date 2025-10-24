@@ -31,7 +31,7 @@
   <meta itemprop="name" content="Modeling">
   <meta itemprop="description" content="What do you need to know to express a problem?">
   <meta itemprop="dateModified" content="2023-10-02T13:14:41+02:00">
-  <meta itemprop="wordCount" content="111">
+  <meta itemprop="wordCount" content="117">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Modeling">
   <meta name="twitter:description" content="What do you need to know to express a problem?">
@@ -230,95 +230,188 @@
 	<h2 id="the-model">The Model</h2>
 <p>The object <code>Model</code> is the key component. It should be imported :</p>
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-<ul class="nav nav-tabs" id="tabs-0" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
-        Java
-      </button>
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-0-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-00-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-0-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-0-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.Model</span><span style="color:#000;font-weight:bold">;</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">import org.chocosolver.solver.Model;</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">pychoco</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Model</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">from pychoco import Model</code></pre></div>
+  
 </div>
 
 <p>Then, an instance of a model is built as follows:</p>
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-<ul class="nav nav-tabs" id="tabs-1" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
-        Java
-      </button>
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-1-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-01-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-1-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-1-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Model model = new Model();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Model</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model = Model()</code></pre></div>
+  
 </div>
 
 <p>A name can be attached to an instance:</p>
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-<ul class="nav nav-tabs" id="tabs-2" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
-        Java
-      </button>
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-2-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-02-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-2-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-2-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Model model = new Model(&#34;my problem&#34;);</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my problem&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model = Model(&#34;my problem&#34;);</code></pre></div>
+  
 </div>
 
 <p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
@@ -495,7 +588,7 @@
 </footer>
 
     </div>
-    <script src="/js/main.min.150aaf5197c4dbb87d67089ae18568cd85aee4a175fbe7c6bc8fab0b6ac87281.js" integrity="sha256-FQqvUZfE27h9Zwia4YVozYWu5KF1&#43;&#43;fGvI&#43;rC2rIcoE=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
 <script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 

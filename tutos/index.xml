@@ -1,25 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorials on Choco-solver</title>
+    <title>Choco-solver – Tutorials</title>
     <link>https://choco-solver.org/tutos/</link>
     <description>Recent content in Tutorials on Choco-solver</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="https://choco-solver.org/tutos/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Designing a constraint</title>
-      <link>https://choco-solver.org/tutos/constraints/</link>
-      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://choco-solver.org/tutos/constraints/</guid>
-      <description>&lt;p&gt;In this part, we are going to see how to create a constraint to be used&#xA;by Choco-solver. The work will be based on the sum constraint, more&#xA;specifically: $\sum_{i = 1}^{n} x_i \leq b$ where&#xA;$x_i = [\underline{x_i},\overline{x_i}]$ are distinct variables and&#xA;where $b$ is a constant.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.8.8962&#34;&gt;Bounds Consistency Techniques for Long Linear&#xA;Constraint&lt;/a&gt;&#xA;by W.Harvey and J.Schimpf described in details how such a constraint is&#xA;implemented and will serve as a basis of this tutorials.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A CD-CL overview</title>
-      <link>https://choco-solver.org/tutos/cdcl_overview/</link>
-      <pubDate>Fri, 30 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://choco-solver.org/tutos/cdcl_overview/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This file can be downloaded as a &lt;a href=&#34;https://jupyter.org/&#34;&gt;jupyter notebook&lt;/a&gt; and executed with a &lt;a href=&#34;https://github.com/SpencerPark/IJava&#34;&gt;Java kernel&lt;/a&gt;. The next cell is then used to add the dependency to choco and can be ignored otherwise.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://choco-solver.org/notebooks/content/en/tutos/CDCL_overview.ipynb&#34;&gt;&amp;raquo; ipynb &amp;laquo;&lt;/a&gt;&lt;/p&gt;&#xA; &#xA;&#xA;&lt;ul class=&#34;nav nav-tabs&#34; id=&#34;tabs-0&#34; role=&#34;tablist&#34;&gt;&#xA;  &lt;li class=&#34;nav-item&#34;&gt;&#xA;      &lt;button class=&#34;nav-link active&#34;&#xA;          id=&#34;tabs-00-00-tab&#34; data-bs-toggle=&#34;tab&#34; data-bs-target=&#34;#tabs-00-00&#34; role=&#34;tab&#34;&#xA;          data-td-tp-persist=&#34;java&#34; aria-controls=&#34;tabs-00-00&#34; aria-selected=&#34;true&#34;&gt;&#xA;        Java&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;&lt;div class=&#34;tab-content&#34; id=&#34;tabs-0-content&#34;&gt;&#xA;    &lt;div class=&#34;tab-pane fade show active&#34;&#xA;        id=&#34;tabs-00-00&#34; role=&#34;tabpanel&#34; aria-labelled-by=&#34;tabs-00-00-tab&#34; tabindex=&#34;0&#34;&gt;&#xA;        &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Add maven dependencies at runtime &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;maven&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;choco&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;solver&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;choco&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;solver&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;13&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;The CD-CL framework is an adapation of the well-konw SAT &lt;a href=&#34;https://en.wikipedia.org/wiki/Conflict-driven_clause_learning&#34;&gt;CDCL algorithm&lt;/a&gt; to discrete constraint solver.&#xA;By exploiting the implication graph (that records events, i.e. variables&amp;rsquo; modifications), this algorithm is able to derive a new constraint from the events that led to a contradiction.&lt;/p&gt;</description>
-    </item>
+    
+	  <atom:link href="https://choco-solver.org/tutos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
   </channel>
 </rss>

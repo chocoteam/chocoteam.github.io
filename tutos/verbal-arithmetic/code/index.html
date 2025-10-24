@@ -34,7 +34,7 @@
   <meta itemprop="description" content="A bunch of code.">
   <meta itemprop="datePublished" content="2020-01-31T14:26:13+01:00">
   <meta itemprop="dateModified" content="2024-09-17T15:47:21+02:00">
-  <meta itemprop="wordCount" content="681">
+  <meta itemprop="wordCount" content="685">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Code">
   <meta name="twitter:description" content="A bunch of code.">
@@ -272,46 +272,61 @@ window.MathJax = {
 <p>The first model is based on the global interpretation of the equation.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-0" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-0-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-0-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;SEND+MORE=MONEY&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;S&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;E&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">N</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;N&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">D</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;D&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">M</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;M&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">O</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;0&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">R</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;R&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Y&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">9</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">allDifferent</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">N</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">D</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">O</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">R</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Y</span><span style="color:#000;font-weight:bold">}).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">N</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">D</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">O</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">R</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">O</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">N</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Y</span><span style="color:#000;font-weight:bold">};</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">COEFFS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">100</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">100</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">10000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">100</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">};</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ALL</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">COEFFS</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">showStatistics</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">showSolutions</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Model model = new Model(&#34;SEND+MORE=MONEY&#34;);
+IntVar S = model.intVar(&#34;S&#34;, 1, 9, false);
+IntVar E = model.intVar(&#34;E&#34;, 0, 9, false);
+IntVar N = model.intVar(&#34;N&#34;, 0, 9, false);
+IntVar D = model.intVar(&#34;D&#34;, 0, 9, false);
+IntVar M = model.intVar(&#34;M&#34;, 1, 9, false);
+IntVar O = model.intVar(&#34;0&#34;, 0, 9, false);
+IntVar R = model.intVar(&#34;R&#34;, 0, 9, false);
+IntVar Y = model.intVar(&#34;Y&#34;, 0, 9, false);
+
+model.allDifferent(new IntVar[]{S, E, N, D, M, O, R, Y}).post();
+
+IntVar[] ALL = new IntVar[]{
+    S, E, N, D,
+    M, O, R, E,
+    M, O, N, E, Y};
+int[] COEFFS = new int[]{
+    1000, 100, 10, 1,
+    1000, 100, 10, 1,
+    -10000, -1000, -100, -10, -1};
+model.scalar(ALL, COEFFS, &#34;=&#34;, 0).post();
+
+Solver solver = model.getSolver();
+solver.showStatistics();
+solver.showSolutions();
+solver.findSolution();</code></pre></div>
+  
 </div>
 
 <p>The solution found is:</p>
@@ -352,26 +367,41 @@ each variable is assigned to a single value. Their value can then be
 read calling S.getValue():</p>
  
 
-<ul class="nav nav-tabs" id="tabs-1" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-1-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-1-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">().</span><span style="color:#c4a000">showStatistics</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">().</span><span style="color:#c4a000">solve</span><span style="color:#000;font-weight:bold">())</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s = %d\n&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%s = %d\n&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getName</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// ...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.getSolver().showStatistics();
+if (model.getSolver().solve()) {
+    System.out.printf(&#34;%s = %d\n&#34;, S.getName(), S.getValue());
+    System.out.printf(&#34;%s = %d\n&#34;, E.getName(), E.getValue());
+    // ...
+}</code></pre></div>
+  
 </div>
 
 
@@ -388,27 +418,42 @@ them all. However, this problem has only one solution.
 <p>The second model requires to introduces 3 additional variables.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-3" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-03-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-3" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-3-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-3-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// additional variables: the carries</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">r</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// declare local equations</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">D</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">eq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Y</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mul</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">))).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">N</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">R</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">eq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mul</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">))).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">O</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">eq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">N</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mul</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">))).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">r</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">eq</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">O</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mul</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">))).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// additional variables: the carries
+BoolVar[] r = model.boolVarArray(3);
+// declare local equations
+D.add(E).eq(Y.add(r[0].mul(10))).post();
+r[0].add(N).add(R).eq(E.add(r[1].mul(10))).post();
+r[1].add(E).add(O).eq(N.add(r[2].mul(10))).post();
+r[2].add(S).add(M).eq(O.add(M.mul(10))).post();</code></pre></div>
+  
 </div>
 
 <p>Doing so, we increase the number of variables and constraints and
@@ -421,21 +466,36 @@ assigned by propagation.</p>
 it:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-4" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-4-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-4-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Search</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">inputOrderLBSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">E</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">N</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">D</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">O</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">R</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Y</span><span style="color:#000;font-weight:bold">));</span></span></span></code></pre></div>
-    </div>
+        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">solver.setSearch(Search.inputOrderLBSearch(S, E, N, D, M, O, R, Y));</code></pre></div>
+  
 </div>
 
 <p>Here, we consider the variables in the input order (<code>S</code> is selected first,
@@ -581,7 +641,7 @@ solver exploring the search space.</li>
       <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
 onload='renderMathInElement(document.body, null);'>
 </script>
-    <script src="/js/main.min.150aaf5197c4dbb87d67089ae18568cd85aee4a175fbe7c6bc8fab0b6ac87281.js" integrity="sha256-FQqvUZfE27h9Zwia4YVozYWu5KF1&#43;&#43;fGvI&#43;rC2rIcoE=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
 <script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 

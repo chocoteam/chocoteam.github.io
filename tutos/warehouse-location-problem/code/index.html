@@ -34,7 +34,7 @@
   <meta itemprop="description" content="A bunch of code.">
   <meta itemprop="datePublished" content="2020-02-03T13:35:26+01:00">
   <meta itemprop="dateModified" content="2024-09-17T15:47:21+02:00">
-  <meta itemprop="wordCount" content="1267">
+  <meta itemprop="wordCount" content="1275">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Code">
   <meta name="twitter:description" content="A bunch of code.">
@@ -274,58 +274,73 @@ window.MathJax = {
 	<h2 id="a-model">A model</h2>
  
 
-<ul class="nav nav-tabs" id="tabs-0" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-0-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-0-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// load parameters</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// ...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// A new model instance</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;WarehouseLocation&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// VARIABLES</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// a warehouse is either open or closed</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;o&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// which warehouse supplies a store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;supplier&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// supplying cost per store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cost</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;cost&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">96</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Total of all costs</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;C&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">99999</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// CONSTRAINTS</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// a warehouse is &#39;open&#39;, if it supplies to a store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// Compute &#39;cost&#39; for each store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cost</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">P</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// additional variable &#39;occ&#39; is created on the fly</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// its domain includes the constraint on capacity</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occ</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;occur_&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">K</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// for-loop starts at 0, warehouse index starts at 1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// =&gt; we count occurrences of (i+1) in &#39;supplier&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">count</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occ</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// redundant link between &#39;occ&#39; and &#39;open&#39; for better propagation</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">occ</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">ge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">open</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Prepare the constraint that maintains &#39;tot_cost&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">coeffs</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">W</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Arrays</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">fill</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">coeffs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Arrays</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">fill</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">coeffs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// then post it</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ArrayUtils</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cost</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">coeffs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// load parameters
+// ...
+// A new model instance
+Model model = new Model(&#34;WarehouseLocation&#34;);
+
+// VARIABLES
+// a warehouse is either open or closed
+BoolVar[] open = model.boolVarArray(&#34;o&#34;, W);
+// which warehouse supplies a store
+IntVar[] supplier = model.intVarArray(&#34;supplier&#34;, S, 1, W, false);
+// supplying cost per store
+IntVar[] cost = model.intVarArray(&#34;cost&#34;, S, 1, 96, true);
+// Total of all costs
+IntVar tot_cost = model.intVar(&#34;C&#34;, 0, 99999, true);
+
+// CONSTRAINTS
+for (int j = 0; j &lt; S; j++) {
+    // a warehouse is &#39;open&#39;, if it supplies to a store
+    model.element(model.intVar(1), open, supplier[j], 1).post();
+    // Compute &#39;cost&#39; for each store
+    model.element(cost[j], P[j], supplier[j], 1).post();
+}
+for (int i = 0; i &lt; W; i++) {
+    // additional variable &#39;occ&#39; is created on the fly
+    // its domain includes the constraint on capacity
+    IntVar occ = model.intVar(&#34;occur_&#34; + i, 0, K[i], true);
+    // for-loop starts at 0, warehouse index starts at 1
+    // =&gt; we count occurrences of (i+1) in &#39;supplier&#39;
+    model.count(i+1, supplier, occ).post();
+    // redundant link between &#39;occ&#39; and &#39;open&#39; for better propagation
+    occ.ge(open[i]).post();
+}
+// Prepare the constraint that maintains &#39;tot_cost&#39;
+int[] coeffs = new int[W + S];
+Arrays.fill(coeffs, 0, W, C);
+Arrays.fill(coeffs, W, W + S, 1);
+// then post it
+model.scalar(ArrayUtils.append(open, cost), coeffs, &#34;=&#34;, tot_cost).post();</code></pre></div>
+  
 </div>
 
 <p>The last parameter of the element constraints (line 19 and 21) indicates
@@ -348,50 +363,80 @@ assigned to it, with a floor rounding policy (the closest value greater
 or equal to the middle value is returned).</p>
  
 
-<ul class="nav nav-tabs" id="tabs-1" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-1-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-1-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Search</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">VariableSelectorWithTies</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">FirstFail</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Smallest</span><span style="color:#000;font-weight:bold">()),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntDomainMiddle</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">ArrayUtils</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">supplier</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cost</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Solver solver = model.getSolver();
+solver.setSearch(Search.intVarSearch(
+    new VariableSelectorWithTies&lt;&gt;(
+        new FirstFail(model),
+        new Smallest()),
+    new IntDomainMiddle(false),
+    ArrayUtils.append(supplier, cost, open))
+);</code></pre></div>
+  
 </div>
 
 <h2 id="the-resolution-objective">The resolution objective</h2>
 <p>The objective is to minimize &rsquo;tot_cost&rsquo;.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-2" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-2-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-2-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Find a solution that minimizes &#39;tot_cost&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solution</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">best</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Find a solution that minimizes &#39;tot_cost&#39;
+Solution best = solver.findOptimalSolution(tot_cost, false);</code></pre></div>
+  
 </div>
 
 <p>This method attempts to find the optimal solution.</p>
@@ -412,24 +457,39 @@ entirely managed by the solver.
 <p>Alternatively, the search loop can be unfold.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-4" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-4-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-4-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setObjective</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#000;font-weight:bold">()){</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// do something on solution</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span></span></span></code></pre></div>
-    </div>
+        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.setObjective(false, tot_cost);
+while(solver.solve()){
+    // do something on solution
+}</code></pre></div>
+  
 </div>
 
 <p>The objective variable and criteria should be declared, but there is no
@@ -437,26 +497,41 @@ need to post the cut manually, the solver manages this. When the unfold
 search process is used, one can modify the way the cut is handled:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-5" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-05-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-5" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-5-0-tab" data-toggle="tab" href="#tabs-5-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-5-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-5-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Walking cut: allow same value solutions</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getObjectiveManager</span><span style="color:#000;font-weight:bold">().</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000">setCutComputer</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">obj</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">obj</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setObjective</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#000;font-weight:bold">()){</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// do something on solution</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span></span></span></code></pre></div>
-    </div>
+        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Walking cut: allow same value solutions
+solver.getObjectiveManager().&lt;Integer&gt;setCutComputer(obj -&gt; obj);
+model.setObjective(false, tot_cost);
+while(solver.solve()){
+    // do something on solution
+}</code></pre></div>
+  
 </div>
 
 <p>Unfold search process allows you to execute code on solution easily.</p>
@@ -464,23 +539,38 @@ search process is used, one can modify the way the cut is handled:</p>
 second-limit can be defined like this:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-6" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-06-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-06-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-6" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-6-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-6-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab" tabindex="6">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">limitTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;10s&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// then run the resolution</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solution</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">best</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">findOptimalSolution</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">solver.limitTime(&#34;10s&#34;);
+// then run the resolution
+Solution best = solver.findOptimalSolution(tot_cost, false);</code></pre></div>
+  
 </div>
 
 <p>The search should be configured <strong>before</strong> being called. There can be
@@ -489,129 +579,159 @@ multiple limitations, in that case, the first reached stops the search.</p>
 <p>We can define a function that prints any solutions in a pretty way.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-7" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-07-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-07-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-7" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-7-0-tab" data-toggle="tab" href="#tabs-7-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-7-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-7-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab" tabindex="7">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">private</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">void</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">prettyPrint</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">StringBuilder</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">st</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">StringBuilder</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">st</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Solution #&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">().</span><span style="color:#c4a000">getSolutionCount</span><span style="color:#000;font-weight:bold">()).</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">open</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#000">st</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\tWarehouse %d supplies customers : &#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">)));</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">supplier</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">==</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                    </span><span style="color:#000">st</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;%d &#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">)));</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#000">st</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">st</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\tTotal C: &#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">st</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span></span></span></code></pre></div>
-    </div>
+        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">private void prettyPrint(Model model, IntVar[] open, int W, IntVar[] supplier, int S, IntVar tot_cost) {
+    StringBuilder st = new StringBuilder();
+    st.append(&#34;Solution #&#34;).append(model.getSolver().getSolutionCount()).append(&#34;\n&#34;);
+    for (int i = 0; i &lt; W; i++) {
+        if (open[i].getValue() &gt; 0) {
+            st.append(String.format(&#34;\tWarehouse %d supplies customers : &#34;, (i + 1)));
+            for (int j = 0; j &lt; S; j++) {
+                if (supplier[j].getValue() == (i + 1)) {
+                    st.append(String.format(&#34;%d &#34;, (j + 1)));
+                }
+            }
+            st.append(&#34;\n&#34;);
+        }
+    }
+    st.append(&#34;\tTotal C: &#34;).append(tot_cost.getValue());
+    System.out.println(st.toString());
+}</code></pre></div>
+  
 </div>
 
 <p>Calling this method is made easy with the unfold resolution instruction.</p>
 <h2 id="the-entire-code">The entire code</h2>
  
 
-<ul class="nav nav-tabs" id="tabs-8" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-08-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-08-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-8" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-8-0-tab" data-toggle="tab" href="#tabs-8-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-8-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-8-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab" tabindex="8">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// load parameters</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// number of warehouses</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// number of stores</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// maintenance cost</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">30</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// capacity of each warehouse</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">K</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">};</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// matrix of supply costs, store x warehouse</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[][]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">P</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[][]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">20</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">24</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">11</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">25</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">30</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">28</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">27</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">82</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">83</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">74</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">74</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">97</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">71</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">96</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">70</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">55</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">73</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">69</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">61</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">46</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">96</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">59</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">83</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">42</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">22</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">29</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">67</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">59</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">73</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">59</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">56</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">73</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">13</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">43</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">96</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">93</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">35</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">63</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">85</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">46</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">47</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">65</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">55</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">71</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">95</span><span style="color:#000;font-weight:bold">}};</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// A new model instance</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;WarehouseLocation&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// VARIABLES</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// a warehouse is either open or closed</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;o&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// which warehouse supplies a store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;supplier&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// supplying cost per store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cost</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;cost&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">96</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Total of all costs</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;tot_cost&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">99999</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// CONSTRAINTS</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// a warehouse is &#39;open&#39;, if it supplies to a store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// Compute &#39;cost&#39; for each store</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">cost</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">P</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">j</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// additional variable &#39;occ&#39; is created on the fly</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// its domain includes the constraint on capacity</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occ</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;occur_&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">K</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// for-loop starts at 0, warehouse index starts at 1</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// =&gt; we count occurrences of (i+1) in &#39;supplier&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">count</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occ</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">// redundant link between &#39;occ&#39; and &#39;open&#39; for better propagation</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">occ</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">ge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">open</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Prepare the constraint that maintains &#39;tot_cost&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">coeffs</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">W</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Arrays</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">fill</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">coeffs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Arrays</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">fill</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">coeffs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// then post it</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ArrayUtils</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cost</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">coeffs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setObjective</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">MINIMIZE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Search</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">VariableSelectorWithTies</span><span style="color:#ce5c00;font-weight:bold">&lt;&gt;</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">FirstFail</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Smallest</span><span style="color:#000;font-weight:bold">()),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntDomainMiddle</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">ArrayUtils</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">supplier</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cost</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">showShortStatistics</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#000;font-weight:bold">()){</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">prettyPrint</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">supplier</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tot_cost</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span></span></span></code></pre></div>
-    </div>
+        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// load parameters
+// number of warehouses
+int W = 5;
+// number of stores
+int S = 10;
+// maintenance cost
+int C = 30;
+// capacity of each warehouse
+int[] K = new int[]{1, 4, 2, 1, 3};
+// matrix of supply costs, store x warehouse
+int[][] P = new int[][]{
+    {20, 24, 11, 25, 30},
+    {28, 27, 82, 83, 74},
+    {74, 97, 71, 96, 70},
+    {2, 55, 73, 69, 61},
+    {46, 96, 59, 83, 4},
+    {42, 22, 29, 67, 59},
+    {1, 5, 73, 59, 56},
+    {10, 73, 13, 43, 96},
+    {93, 35, 63, 85, 46},
+    {47, 65, 55, 71, 95}};
+
+// A new model instance
+Model model = new Model(&#34;WarehouseLocation&#34;);
+
+// VARIABLES
+// a warehouse is either open or closed
+BoolVar[] open = model.boolVarArray(&#34;o&#34;, W);
+// which warehouse supplies a store
+IntVar[] supplier = model.intVarArray(&#34;supplier&#34;, S, 1, W, false);
+// supplying cost per store
+IntVar[] cost = model.intVarArray(&#34;cost&#34;, S, 1, 96, true);
+// Total of all costs
+IntVar tot_cost = model.intVar(&#34;tot_cost&#34;, 0, 99999, true);
+
+// CONSTRAINTS
+for (int j = 0; j &lt; S; j++) {
+    // a warehouse is &#39;open&#39;, if it supplies to a store
+    model.element(model.intVar(1), open, supplier[j], 1).post();
+    // Compute &#39;cost&#39; for each store
+    model.element(cost[j], P[j], supplier[j], 1).post();
+}
+for (int i = 0; i &lt; W; i++) {
+    // additional variable &#39;occ&#39; is created on the fly
+    // its domain includes the constraint on capacity
+    IntVar occ = model.intVar(&#34;occur_&#34; + i, 0, K[i], true);
+    // for-loop starts at 0, warehouse index starts at 1
+    // =&gt; we count occurrences of (i+1) in &#39;supplier&#39;
+    model.count(i+1, supplier, occ).post();
+    // redundant link between &#39;occ&#39; and &#39;open&#39; for better propagation
+    occ.ge(open[i]).post();
+}
+// Prepare the constraint that maintains &#39;tot_cost&#39;
+int[] coeffs = new int[W + S];
+Arrays.fill(coeffs, 0, W, C);
+Arrays.fill(coeffs, W, W + S, 1);
+// then post it
+model.scalar(ArrayUtils.append(open, cost), coeffs, &#34;=&#34;, tot_cost).post();
+
+model.setObjective(Model.MINIMIZE, tot_cost);
+Solver solver = model.getSolver();
+solver.setSearch(Search.intVarSearch(
+    new VariableSelectorWithTies&lt;&gt;(
+        new FirstFail(model),
+        new Smallest()),
+    new IntDomainMiddle(false),
+    ArrayUtils.append(supplier, cost, open))
+);
+solver.showShortStatistics();
+while(solver.solve()){
+    prettyPrint(model, open, W, supplier, S, tot_cost);
+}</code></pre></div>
+  
 </div>
 
 <p>The best solution found is:</p>
@@ -767,7 +887,7 @@ using the unfold resolution process.</li>
       <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
 onload='renderMathInElement(document.body, null);'>
 </script>
-    <script src="/js/main.min.150aaf5197c4dbb87d67089ae18568cd85aee4a175fbe7c6bc8fab0b6ac87281.js" integrity="sha256-FQqvUZfE27h9Zwia4YVozYWu5KF1&#43;&#43;fGvI&#43;rC2rIcoE=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
 <script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 

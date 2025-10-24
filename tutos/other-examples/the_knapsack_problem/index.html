@@ -34,7 +34,7 @@
   <meta itemprop="description" content="A model for the knapsack problem.">
   <meta itemprop="datePublished" content="2023-06-23T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-09-17T15:47:21+02:00">
-  <meta itemprop="wordCount" content="556">
+  <meta itemprop="wordCount" content="567">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="The knapsack problem">
   <meta name="twitter:description" content="A model for the knapsack problem.">
@@ -272,22 +272,37 @@ window.MathJax = {
 <p><a href="/notebooks/content/en/tutos/Other%20examples/The_knapsack_problem.ipynb">&raquo; ipynb &laquo;</a></p>
  
 
-<ul class="nav nav-tabs" id="tabs-0" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-0-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-0-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Add maven dependencies at runtime </span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#000">maven</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">choco</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">choco</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">10</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">13</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Add maven dependencies at runtime 
+%maven org.choco-solver:choco-solver:4.10.13</code></pre></div>
+  
 </div>
 
 <hr>
@@ -297,52 +312,82 @@ window.MathJax = {
 <p>First manage imports.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-1" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-1-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-1-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.Model</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">import</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.Solver</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">import</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.exception.ContradictionException</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">import</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.variables.IntVar</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">import</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">java.util.Arrays</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">import static</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.search.strategy.Search.inputOrderLBSearch</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">import static</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">org.chocosolver.solver.search.strategy.Search.inputOrderUBSearch</span><span style="color:#000;font-weight:bold">;</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">import org.chocosolver.solver.Model;
+import org.chocosolver.solver.Solver;
+import org.chocosolver.solver.exception.ContradictionException;
+import org.chocosolver.solver.variables.IntVar;
+
+import java.util.Arrays;
+
+import static org.chocosolver.solver.search.strategy.Search.inputOrderLBSearch;
+import static org.chocosolver.solver.search.strategy.Search.inputOrderUBSearch;</code></pre></div>
+  
 </div>
 
 <h2 id="input-data">Input data</h2>
  
 
-<ul class="nav nav-tabs" id="tabs-2" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-2-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-2-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">n</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// number of different items</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">67</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// a maximum weight capacity </span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">w</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">23</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">26</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">20</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">18</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">32</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">27</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">29</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">26</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">30</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">27</span><span style="color:#000;font-weight:bold">};</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// weight of items</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">505</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">352</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">458</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">220</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">354</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">414</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">498</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">545</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">473</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">543</span><span style="color:#000;font-weight:bold">};</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">of</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">items</span></span></span></code></pre></div>
-    </div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">int n = 10; // number of different items
+int W = 67; // a maximum weight capacity 
+int[] w = new int[]{23, 26,20,18,32, 27, 29, 26, 30, 27}; // weight of items
+int[] v = new int[]{505, 352, 458, 220, 354, 414, 498, 545, 473, 543}; // value of items</code></pre></div>
+  
 </div>
 
 <h2 id="the-model">The model</h2>
@@ -352,44 +397,74 @@ It is required to declare and store the variables and the constraints.
 For convenience, an instance can be declared with a name.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-3" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-03-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-3" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-3-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-3-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Knapsack&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Model model = new Model(&#34;Knapsack&#34;);</code></pre></div>
+  
 </div>
 
 <p>For each object, a variable is declared to count the number of times it appears in the knapsack.</p>
  
 
-<ul class="nav nav-tabs" id="tabs-4" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-4-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-4-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">items</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">n</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;item_&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Math</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">ceil</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">W</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">w</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">));</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span></span></span></code></pre></div>
-    </div>
+        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar[] items = new IntVar[n];
+for (int i = 0; i &lt; n; i++) {
+    items[i] = model.intVar(&#34;item_&#34; + (i + 1), 0, (int) Math.ceil(W*1. / w[i]));
+}</code></pre></div>
+  
 </div>
 
 <p>The paramaters are:</p>
@@ -403,81 +478,141 @@ For convenience, an instance can be declared with a name.</p>
 This amount is maintained in a variable:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-5" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-05-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-5" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-5-0-tab" data-toggle="tab" href="#tabs-5-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-5-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-5-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;value&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Arrays</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">v</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">max</span><span style="color:#000;font-weight:bold">().</span><span style="color:#c4a000">orElse</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">999</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">n</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar value = model.intVar(&#34;value&#34;, 0, Arrays.stream(v).max().orElse(999) * n);</code></pre></div>
+  
 </div>
 
 <p>The sum of the weights is less than or equal to the knapsack&rsquo;s capacity:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-6" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-06-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-06-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-6" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-6-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-6-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab" tabindex="6">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">weight</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;weight&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">W</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar weight = model.intVar(&#34;weight&#34;, 0, W);</code></pre></div>
+  
 </div>
 
 <p>All variables are now declared, the <code>knapsack</code> constraint can be declared:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-7" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-07-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-07-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-7" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-7-0-tab" data-toggle="tab" href="#tabs-7-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-7-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-7-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab" tabindex="7">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">knapsack</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">weight</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">w</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.knapsack(items, weight, value, w, v).post();</code></pre></div>
+  
 </div>
 
 <p>The <code>value</code> variable has to be maximized:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-8" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-08-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-08-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-8" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-8-0-tab" data-toggle="tab" href="#tabs-8-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-8-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-8-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab" tabindex="8">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setObjective</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">MAXIMIZE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.setObjective(Model.MAXIMIZE, value);</code></pre></div>
+  
 </div>
 
 <h2 id="finding-the-optimal-solution">Finding the optimal solution</h2>
@@ -485,53 +620,83 @@ This amount is maintained in a variable:</p>
 Here we define a top-down maximization:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-9" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-09-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-09-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-9" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-9-0-tab" data-toggle="tab" href="#tabs-9-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-9-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-9-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab" tabindex="9">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">inputOrderUBSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">inputOrderLBSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">));</span></span></span></code></pre></div>
-    </div>
+        id="tabs-9-0" role="tabpanel" aria-labelled-by="tabs-9-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Solver solver = model.getSolver();
+solver.setSearch(
+    inputOrderUBSearch(value), 
+    inputOrderLBSearch(items));</code></pre></div>
+  
 </div>
 
 <p>Let&rsquo;s execute the solving:</p>
  
 
-<ul class="nav nav-tabs" id="tabs-10" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-10-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-10-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-10" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-10-0-tab" data-toggle="tab" href="#tabs-10-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-10-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-10-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-10-00" role="tabpanel" aria-labelled-by="tabs-10-00-tab" tabindex="10">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">while</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">solve</span><span style="color:#000;font-weight:bold">())</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Knapsack -- %d items\n&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">n</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\tItem: Count&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">items</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\tItem #%d: %d\n&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">items</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n\tWeight: %d\n&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">weight</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">System</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">printf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\n\tValue: %d\n&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getValue</span><span style="color:#000;font-weight:bold">());</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">reset</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">to</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solve</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">the</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">several</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">times</span></span></span></code></pre></div>
-    </div>
+        id="tabs-10-0" role="tabpanel" aria-labelled-by="tabs-10-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">while (solver.solve()) {
+    System.out.printf(&#34;Knapsack -- %d items\n&#34;, n);
+    System.out.println(&#34;\tItem: Count&#34;);
+    for (int i = 0; i &lt; items.length; i++) {
+        System.out.printf(&#34;\tItem #%d: %d\n&#34;, (i+1), items[i].getValue());
+    }
+    System.out.printf(&#34;\n\tWeight: %d\n&#34;, weight.getValue());
+    System.out.printf(&#34;\n\tValue: %d\n&#34;, value.getValue());
+}
+solver.reset(); // to solve the model several times</code></pre></div>
+  
 </div>
 
 <pre><code>Knapsack -- 10 items
@@ -681,7 +846,7 @@ Here we define a top-down maximization:</p>
       <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
 onload='renderMathInElement(document.body, null);'>
 </script>
-    <script src="/js/main.min.150aaf5197c4dbb87d67089ae18568cd85aee4a175fbe7c6bc8fab0b6ac87281.js" integrity="sha256-FQqvUZfE27h9Zwia4YVozYWu5KF1&#43;&#43;fGvI&#43;rC2rIcoE=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
 <script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 

@@ -34,7 +34,7 @@
   <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.">
   <meta itemprop="datePublished" content="2020-01-07T16:07:15+01:00">
   <meta itemprop="dateModified" content="2025-03-18T17:00:06+01:00">
-  <meta itemprop="wordCount" content="2257">
+  <meta itemprop="wordCount" content="2300">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Constraints over integer variables">
   <meta name="twitter:description" content="Overview of constraints based on boolean and integer variables.">
@@ -283,74 +283,136 @@ For instance, a threshold constraint can be posted as following:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-0" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-0-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-00-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-0-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-0-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.arithm(x, &#34;&gt;=&#34;, 3).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.arithm(x, &#34;&gt;=&#34;, 3).post()</code></pre></div>
+  
 </div>
 
 <p>Accepted mathematical operators for these constraints are <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>=</code> and <code>!=</code>. When more than one variable is constrained, one can use the following methods:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-1" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-1-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-01-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-1-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-1-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// with x an IntVar and y either an IntVar or an int</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// either &#34;+&#34; or &#34;-&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">with</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">and</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">and</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">is</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">either</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">an</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">or</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">an</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">String op = &#34;&gt;=&#34;; // among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+model.arithm(x, op, y).post();
+// with x an IntVar and y either an IntVar or an int
+
+String op2 = &#34;+&#34;; // either &#34;+&#34; or &#34;-&#34;
+model.arithm(x, op2, y, op, z).post();
+// with x and y IntVar, and z is either an int or an IntVar</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span> <span style="color:#8f5902;font-style:italic"># among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># with x an IntVar and y either an IntVar or an int</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">op2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;+&#34;</span> <span style="color:#8f5902;font-style:italic"># either &#34;+&#34; or &#34;-&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">op2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># with x and y IntVar, and z is either an int or an IntVar</span></span></span></code></pre></div>
-    </div>
+        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">op = &#34;&gt;=&#34; # among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+model.arithm(x, op, y).post()
+# with x an IntVar and y either an IntVar or an int
+
+op2 = &#34;+&#34; # either &#34;+&#34; or &#34;-&#34;
+model.arithm(x, op2, y, op, z).post()
+# with x and y IntVar, and z is either an int or an IntVar</code></pre></div>
+  
 </div>
 
 <h2 id="other-mathematical-constraints">Other mathematical constraints</h2>
@@ -360,35 +422,66 @@ For instance, a threshold constraint can be posted as following:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-2" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-2-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-02-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-2-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-2-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// x * a = z</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// x * y = a</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">times</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span></span></span></code></pre></div>
-    </div>
+        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.times(x, a, z).post(); // x * a = z
+model.times(x, y, a).post(); // x * y = a
+model.times(x, y, z).post(); // x * y = z</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">times</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x * a = z</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">times</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x * y = a</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">times</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x * y = z</span></span></span></code></pre></div>
-    </div>
+        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.times(x, a, z).post() # x * a = z
+model.times(x, y, a).post() # x * y = a
+model.times(x, y, z).post() # x * y = z</code></pre></div>
+  
 </div>
 
 
@@ -404,99 +497,192 @@ For instance, a threshold constraint can be posted as following:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-4" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-4-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-04-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-04-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-4-1-tab" data-toggle="tab" href="#tabs-4-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-4-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-4-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">div</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// x / y = z</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">it</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">assures</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">that</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">!=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">and</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">is</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">rounding</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">towards</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">.</span></span></span></code></pre></div>
-    </div>
+        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.div(x, y, z).post(); // x / y = z
+// it assures that y != 0, and z is rounding towards 0.</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-04-01" role="tabpanel" aria-labelled-by="tabs-04-01-tab" tabindex="4">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">div</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x / y = z</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># it assures that y != 0, and z is rounding towards 0.</span></span></span></code></pre></div>
-    </div>
+        id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.div(x, y, z).post() # x / y = z
+# it assures that y != 0, and z is rounding towards 0.</code></pre></div>
+  
 </div>
 
 <p><em>modulo</em> constraints are of three types:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-5" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-05-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-5" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-5-0-tab" data-toggle="tab" href="#tabs-5-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-5-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-05-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-05-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-5-1-tab" data-toggle="tab" href="#tabs-5-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-5-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-5-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">b</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// x % a = b</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// x % a = z</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">mod</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span></span></span></code></pre></div>
-    </div>
+        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.mod(x, a, b).post(); // x % a = b
+model.mod(x, a, z).post(); // x % a = z
+model.mod(x, y, z).post(); // x % y = z</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-05-01" role="tabpanel" aria-labelled-by="tabs-05-01-tab" tabindex="5">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">mod</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">b</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x % a = b</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">mod</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x % a = z</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">mod</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x % y = z</span></span></span></code></pre></div>
-    </div>
+        id="tabs-5-1" role="tabpanel" aria-labelled-by="tabs-5-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.mod(x, a, b).post() # x % a = b
+model.mod(x, a, z).post() # x % a = z
+model.mod(x, y, z).post() # x % y = z</code></pre></div>
+  
 </div>
 
 <p>An <em>absolute</em> constraint is posted like this:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-6" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-06-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-06-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-6" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-6-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-06-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-06-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-6-1-tab" data-toggle="tab" href="#tabs-6-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-6-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-6-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab" tabindex="6">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">absolute</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">y</span><span style="color:#ce5c00;font-weight:bold">|</span></span></span></code></pre></div>
-    </div>
+        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.absolute(x, y).post(); // x = |y|</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-06-01" role="tabpanel" aria-labelled-by="tabs-06-01-tab" tabindex="6">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">absolute</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">y</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># x = |y|</span></span></span></code></pre></div>
-    </div>
+        id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.absolute(x, y).post() # x = |y|</code></pre></div>
+  
 </div>
 
 <h3 id="global-constraints">Global constraints</h3>
@@ -506,33 +692,64 @@ minimum of the variables in <code>vars</code> and <code>max</code> the maximum o
 
 
 
-<ul class="nav nav-tabs" id="tabs-7" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-07-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-07-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-7" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-7-0-tab" data-toggle="tab" href="#tabs-7-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-7-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-07-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-07-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-7-1-tab" data-toggle="tab" href="#tabs-7-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-7-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-7-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab" tabindex="7">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">min</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">max</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.min(min, vars).post();
+model.max(max, vars).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-07-01" role="tabpanel" aria-labelled-by="tabs-07-01-tab" tabindex="7">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">min</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">max</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-7-1" role="tabpanel" aria-labelled-by="tabs-7-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.min(min, vars).post()
+model.max(max, vars).post()</code></pre></div>
+  
 </div>
 
 <h4 id="sum-and-scalar">Sum and scalar</h4>
@@ -540,68 +757,130 @@ minimum of the variables in <code>vars</code> and <code>max</code> the maximum o
 
 
 
-<ul class="nav nav-tabs" id="tabs-8" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-08-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-08-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-8" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-8-0-tab" data-toggle="tab" href="#tabs-8-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-8-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-08-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-08-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-8-1-tab" data-toggle="tab" href="#tabs-8-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-8-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-8-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab" tabindex="8">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">here</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">it</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">gives</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span></span></span></code></pre></div>
-    </div>
+        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">String op = &#34;&gt;=&#34;; // among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+model.sum(vars, op, x).post(); // here, it gives sum(vars) &gt;= x</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-08-01" role="tabpanel" aria-labelled-by="tabs-08-01-tab" tabindex="8">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span> <span style="color:#8f5902;font-style:italic"># among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># here, it gives sum(vars) &gt;= x</span></span></span></code></pre></div>
-    </div>
+        id="tabs-8-1" role="tabpanel" aria-labelled-by="tabs-8-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">op = &#34;&gt;=&#34; # among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+model.sum(vars, op, x).post() # here, it gives sum(vars) &gt;= x</code></pre></div>
+  
 </div>
 
 <p>And, finally, for weighted sums, one should use the <code>scalar</code> constraint:</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-9" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-09-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-09-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-9" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-9-0-tab" data-toggle="tab" href="#tabs-9-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-9-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-09-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-09-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-9-1-tab" data-toggle="tab" href="#tabs-9-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-9-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-9-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab" tabindex="9">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;=&#34;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">scalar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">coefs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// coefs being an array of int</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">here</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">it</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">gives</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">coefs</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span></span></span></code></pre></div>
-    </div>
+        id="tabs-9-0" role="tabpanel" aria-labelled-by="tabs-9-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">String op = &#34;&gt;=&#34;; // among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+model.scalar(vars, coefs, op, x).post(); // coefs being an array of int
+// here, it gives sum(vars[i] * coefs[i]) &gt;= x</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-09-01" role="tabpanel" aria-labelled-by="tabs-09-01-tab" tabindex="9">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">op</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&gt;=&#34;</span> <span style="color:#8f5902;font-style:italic"># among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">scalar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">coefs</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">op</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># coefs being an array of int</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># here, it gives sum(vars[i] * coefs[i]) &gt;= x</span></span></span></code></pre></div>
-    </div>
+        id="tabs-9-1" role="tabpanel" aria-labelled-by="tabs-9-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">op = &#34;&gt;=&#34; # among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
+model.scalar(vars, coefs, op, x).post() # coefs being an array of int
+# here, it gives sum(vars[i] * coefs[i]) &gt;= x</code></pre></div>
+  
 </div>
 
 <h2 id="remarkable-global-constraints">Remarkable global constraints</h2>
@@ -612,33 +891,64 @@ One can consult the complete list of constraints in the <a href="https://javadoc
 
 
 
-<ul class="nav nav-tabs" id="tabs-10" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-10-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-10-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-10" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-10-0-tab" data-toggle="tab" href="#tabs-10-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-10-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-10-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-10-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-10-1-tab" data-toggle="tab" href="#tabs-10-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-10-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-10-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-10-00" role="tabpanel" aria-labelled-by="tabs-10-00-tab" tabindex="10">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vars</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">allDifferent</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-10-0" role="tabpanel" aria-labelled-by="tabs-10-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar[] vars = model.intVarArray(&#34;X&#34;, 4, 1, 5);
+model.allDifferent(vars).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-10-01" role="tabpanel" aria-labelled-by="tabs-10-01-tab" tabindex="10">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#204a87">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvars</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">all_different</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-10-1" role="tabpanel" aria-labelled-by="tabs-10-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">vars = model.intvars(4, 1, 5,&#34;X&#34;)
+model.all_different(vars).post()</code></pre></div>
+  
 </div>
 
 <p>An instantiation that satisfies this constraint is
@@ -648,35 +958,66 @@ One can consult the complete list of constraints in the <a href="https://javadoc
 
 
 
-<ul class="nav nav-tabs" id="tabs-11" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-11-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-11-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-11" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-11-0-tab" data-toggle="tab" href="#tabs-11-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-11-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-11-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-11-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-11-1-tab" data-toggle="tab" href="#tabs-11-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-11-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-11-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-11-00" role="tabpanel" aria-labelled-by="tabs-11-00-tab" tabindex="11">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occ0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;occ0&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vars</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">7</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">count</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occ0</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-11-0" role="tabpanel" aria-labelled-by="tabs-11-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar occ0 = model.intVar(&#34;occ0&#34;, 0, 5);
+IntVar[] vars = model.intVarArray(&#34;X&#34;, 7, 0, 5);
+model.count(0, vars, occ0).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-11-01" role="tabpanel" aria-labelled-by="tabs-11-01-tab" tabindex="11">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">occ0</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;occ0&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvars</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">count</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">occ0</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-11-1" role="tabpanel" aria-labelled-by="tabs-11-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">occ0 = model.intvar(0, 5, &#34;occ0&#34;)
+vars = model.intvars(7, 0, 5, &#34;X&#34;)
+model.count(0, vars, occ0).post();</code></pre></div>
+  
 </div>
 
 <p>A solution to this constraint is <code>vars = [0, 1, 0, 1, 5, 5, 5]</code>, <code>occ0 = 2</code>.</p>
@@ -685,37 +1026,68 @@ One can consult the complete list of constraints in the <a href="https://javadoc
 
 
 
-<ul class="nav nav-tabs" id="tabs-12" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-12-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-12-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-12-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-12" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-12-0-tab" data-toggle="tab" href="#tabs-12-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-12-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-12-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-12-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-12-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-12-1-tab" data-toggle="tab" href="#tabs-12-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-12-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-12-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-12-00" role="tabpanel" aria-labelled-by="tabs-12-00-tab" tabindex="12">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vars</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">7</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">values</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">};</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occs</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVarArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;O&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">globalCardinality</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">vars</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">occs</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-12-0" role="tabpanel" aria-labelled-by="tabs-12-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar[] vars = model.intVarArray(&#34;X&#34;, 7, 0, 5);
+int[] values = new int[]{1, 3, 5};
+IntVar[] occs = model.intVarArray(&#34;O&#34;, 2, 0, 3);
+model.globalCardinality(vars, values, occs, false).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-12-01" role="tabpanel" aria-labelled-by="tabs-12-01-tab" tabindex="12">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#204a87">vars</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvars</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">values</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">occs</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvars</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;O&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">global_cardinality</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">vars</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">values</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">occs</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-12-1" role="tabpanel" aria-labelled-by="tabs-12-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">vars = model.intvars(7, 0, 5, &#34;X&#34;)
+values = [1,3,5]
+occs = model.intvars(2, 0, 3, &#34;O&#34;)
+model.global_cardinality(vars, values, occs, False).post();</code></pre></div>
+  
 </div>
 
 <p>A solution to this constraint is <code>vars = [0, 1, 0, 1, 5, 5, 5]</code>, <code>occs = [2, 0, 3]</code>.</p>
@@ -727,35 +1099,66 @@ A solution is : <code>vars = [3, 1, 3, 1, 5, 5, 5]</code>, <code>occs = [2, 2, 3
 
 
 
-<ul class="nav nav-tabs" id="tabs-13" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-13-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-13-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-13-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-13" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-13-0-tab" data-toggle="tab" href="#tabs-13-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-13-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-13-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-13-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-13-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-13-1-tab" data-toggle="tab" href="#tabs-13-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-13-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-13-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-13-00" role="tabpanel" aria-labelled-by="tabs-13-00-tab" tabindex="13">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">idx</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;I&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">rst</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;R&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">10</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">element</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">rst</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">6</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">7</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">idx</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-13-0" role="tabpanel" aria-labelled-by="tabs-13-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar idx = model.intVar(&#34;I&#34;, 0, 5, false);
+IntVar rst = model.intVar(&#34;R&#34;, 0, 10, false);
+model.element(rst, new int[]{0, 2, 4, 6, 7}, idx).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-13-01" role="tabpanel" aria-labelled-by="tabs-13-01-tab" tabindex="13">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">idx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;I&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">rst</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;R&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">element</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">rst</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">idx</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-13-1" role="tabpanel" aria-labelled-by="tabs-13-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">idx = model.intvar(0, 5, &#34;I&#34;)
+rst = model.intvar(0, 10, &#34;R&#34;)
+model.element(rst, [0, 2, 4, 6, 7], idx).post()</code></pre></div>
+  
 </div>
 
 <p>An assignment of <code>idx</code> and <code>rst</code> that satisfies this constraint is: <code>idx = 3</code> and <code>rst = 6</code>.</p>
@@ -769,93 +1172,186 @@ The cumulative constraint limits the number of concurrent tasks.</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-14" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-14-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-14-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-14-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-14" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-14-0-tab" data-toggle="tab" href="#tabs-14-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-14-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-14-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-14-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-14-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-14-1-tab" data-toggle="tab" href="#tabs-14-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-14-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-14-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-14-00" role="tabpanel" aria-labelled-by="tabs-14-00-tab" tabindex="14">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">duration</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-14-0" role="tabpanel" aria-labelled-by="tabs-14-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(start, duration);</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-14-01" role="tabpanel" aria-labelled-by="tabs-14-01-tab" tabindex="14">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">duration</span><span style="color:#000;font-weight:bold">)</span></span></span></code></pre></div>
-    </div>
+        id="tabs-14-1" role="tabpanel" aria-labelled-by="tabs-14-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">task = model.task(start, duration)</code></pre></div>
+  
 </div>
 
 <p>Optionally an end <code>IntVar</code> can be supplied. Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-15" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-15-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-15-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-15-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-15" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-15-0-tab" data-toggle="tab" href="#tabs-15-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-15-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-15-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-15-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-15-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-15-1-tab" data-toggle="tab" href="#tabs-15-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-15-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-15-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-15-00" role="tabpanel" aria-labelled-by="tabs-15-00-tab" tabindex="15">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">duration</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">end</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-15-0" role="tabpanel" aria-labelled-by="tabs-15-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(start, duration, end);</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-15-01" role="tabpanel" aria-labelled-by="tabs-15-01-tab" tabindex="15">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">duration</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">end</span><span style="color:#000;font-weight:bold">)</span></span></span></code></pre></div>
-    </div>
+        id="tabs-15-1" role="tabpanel" aria-labelled-by="tabs-15-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">task = model.task(start, duration, end)</code></pre></div>
+  
 </div>
 
 <p>A task can have an unknown duration. In this case create the task with 3 <code>IntVar</code>: start, varDuration and end. Task will ensure that <em>start + varDuration = end</em>, end being an offset view of <em>start + varDuration</em>.</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-16" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-16-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-16-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-16-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-16" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-16-0-tab" data-toggle="tab" href="#tabs-16-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-16-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-16-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-16-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-16-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-16-1-tab" data-toggle="tab" href="#tabs-16-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-16-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-16-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-16-00" role="tabpanel" aria-labelled-by="tabs-16-00-tab" tabindex="16">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">varDuration</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">end</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-16-0" role="tabpanel" aria-labelled-by="tabs-16-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(start, varDuration, end);</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-16-01" role="tabpanel" aria-labelled-by="tabs-16-01-tab" tabindex="16">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">task</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">varDuration</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">end</span><span style="color:#000;font-weight:bold">)</span></span></span></code></pre></div>
-    </div>
+        id="tabs-16-1" role="tabpanel" aria-labelled-by="tabs-16-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">task = model.task(start, varDuration, end)</code></pre></div>
+  
 </div>
 
 <p>Finally, a task can be created based on the <code>Model</code> and 5 <code>int</code>: earliestStart, latestStart, duration, earliestEnd, latestEnd.<br>
@@ -864,21 +1360,36 @@ An end <code>IntVar</code> will be created with a domain of <em>[earliestEnd, la
 Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
 
 
-<ul class="nav nav-tabs" id="tabs-17" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-17-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-17-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-17-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-17" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-17-0-tab" data-toggle="tab" href="#tabs-17-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-17-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-17-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-17-00" role="tabpanel" aria-labelled-by="tabs-17-00-tab" tabindex="17">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">task</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">earliestStart</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">latestStart</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">duration</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">earliestEnd</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">latestEnd</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
-    </div>
+        id="tabs-17-0" role="tabpanel" aria-labelled-by="tabs-17-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(model, earliestStart, latestStart, duration, earliestEnd, latestEnd);</code></pre></div>
+  
 </div>
 
 <h3 id="cumulative-constraint"><code>Cumulative</code> constraint</h3>
@@ -889,31 +1400,62 @@ Task duration and height should be $\geq$ 0. Tasks with duration or height equal
 
 
 
-<ul class="nav nav-tabs" id="tabs-18" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-18-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-18-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-18-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-18" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-18-0-tab" data-toggle="tab" href="#tabs-18-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-18-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-18-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-18-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-18-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-18-1-tab" data-toggle="tab" href="#tabs-18-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-18-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-18-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-18-00" role="tabpanel" aria-labelled-by="tabs-18-00-tab" tabindex="18">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">cumulative</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">heights</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">capacity</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-18-0" role="tabpanel" aria-labelled-by="tabs-18-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.cumulative(tasks, heights, capacity).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-18-01" role="tabpanel" aria-labelled-by="tabs-18-01-tab" tabindex="18">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">cumulative</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">heights</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">capacity</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-18-1" role="tabpanel" aria-labelled-by="tabs-18-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.cumulative(tasks, heights, capacity).post()</code></pre></div>
+  
 </div>
 
 <p>If only one task can happen concurrently, set the heights fixed equal to the capacity, either by setting fixed values or posting constraints between the variables.<br>
@@ -922,43 +1464,74 @@ Other combinations of concurrently (or not) planned tasks can be modelled by set
 
 
 
-<ul class="nav nav-tabs" id="tabs-19" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-19-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-19-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-19-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-19" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-19-0-tab" data-toggle="tab" href="#tabs-19-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-19-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-19-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-19-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-19-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-19-1-tab" data-toggle="tab" href="#tabs-19-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-19-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-19-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-19-00" role="tabpanel" aria-labelled-by="tabs-19-00-tab" tabindex="19">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tasks</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Task</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">heights</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IntVar</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">for</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">starts</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++</span><span style="color:#000;font-weight:bold">){</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">tasks</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">starts</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">durations</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">heights</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">capacity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">cumulative</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">heights</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">capacity</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-19-0" role="tabpanel" aria-labelled-by="tabs-19-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task[] tasks = new Task[4];
+IntVar[] heights = new IntVar[4];
+for(int i = 0, i &lt; starts.length; i++){
+  tasks[i] = new Task(starts[i], durations[i]);
+  heights[i] = model.intVar(1);
+}
+IntVar capacity = model.intVar(1);
+
+model.cumulative(tasks, heights, capacity).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-19-01" role="tabpanel" aria-labelled-by="tabs-19-01-tab" tabindex="19">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">tasks</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">task</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">starts</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">durations</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">])</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">i</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">heights</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">_</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">capacity</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">intvar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">cumulative</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tasks</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">heights</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">capacity</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span></span></span></code></pre></div>
-    </div>
+        id="tabs-19-1" role="tabpanel" aria-labelled-by="tabs-19-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">tasks = [ model.task(starts[i], durations[i]) for i in range(4) ]
+heights = [ model.intvar(1) for _ in range(4) ]
+capacity = model.intvar(1)
+
+model.cumulative(tasks, heights, capacity).post()</code></pre></div>
+  
 </div>
 
 <p>Solving this will result in all 4 tasks happening consecutively so:
@@ -979,41 +1552,72 @@ $$Table(X,T)\equiv \bigvee_{t \in T}\bigwedge_{i \in I}(X_i = t_i)$$</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-20" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-20-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-20-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-20-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-20" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-20-0-tab" data-toggle="tab" href="#tabs-20-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-20-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-20-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-20-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-20-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-20-1-tab" data-toggle="tab" href="#tabs-20-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-20-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-20-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-20-00" role="tabpanel" aria-labelled-by="tabs-20-00-tab" tabindex="20">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Tuples</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">allEqual</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Tuples</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// true stands for &#39;allowed&#39; combinations</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-20-0" role="tabpanel" aria-labelled-by="tabs-20-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Tuples allEqual = new Tuples(true); // true stands for &#39;allowed&#39; combinations
+allEqual.add({0,0,0,0});
+allEqual.add({1,1,1,1});
+allEqual.add({2,2,2,2});
+allEqual.add({3,3,3,3});
+model.table(X, allEqual, &#34;CT+&#34;).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-20-01" role="tabpanel" aria-labelled-by="tabs-20-01-tab" tabindex="20">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">allEqual</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">table</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># True stands for &#39;allowed&#39; combinations</span></span></span></code></pre></div>
-    </div>
+        id="tabs-20-1" role="tabpanel" aria-labelled-by="tabs-20-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">allEqual = []
+allEqual.append([0,0,0,0])
+allEqual.append([1,1,1,1])
+allEqual.append([2,2,2,2])
+allEqual.append([3,3,3,3])
+model.table(X, allEqual, True, &#34;CT+&#34;).post() # True stands for &#39;allowed&#39; combinations</code></pre></div>
+  
 </div>
 
 <p>Only defined combinations are solutions.</p>
@@ -1023,41 +1627,72 @@ $$Table(X,T)\equiv \bigvee_{t \in T}\bigwedge_{i \in I}(X_i = t_i)$$</p>
 
 
 
-<ul class="nav nav-tabs" id="tabs-21" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-21-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-21-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-21-00" aria-selected="true">
-        Java
-      </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-21" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-21-0-tab" data-toggle="tab" href="#tabs-21-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-21-0" aria-selected="true">
+        Tab 1
+      </a>
     </li><li class="nav-item">
-      <button class="nav-link"
-          id="tabs-21-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-21-01" role="tab"
-          data-td-tp-persist="python" aria-controls="tabs-21-01" aria-selected="false">
-        Python
-      </button>
-    </li>
-</ul>
+      <a class="nav-link tab-Tab-2"
+        id="tabs-21-1-tab" data-toggle="tab" href="#tabs-21-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
+        aria-controls="tabs-21-1" aria-selected="false">
+        Tab 2
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-21-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-21-00" role="tabpanel" aria-labelled-by="tabs-21-00-tab" tabindex="21">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Tuples</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">allEqual</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Tuples</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// false stands for &#39;forbidden&#39; combinations</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-21-0" role="tabpanel" aria-labelled-by="tabs-21-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Tuples allEqual = new Tuples(false); // false stands for &#39;forbidden&#39; combinations
+allEqual.add({0,0,0,0});
+allEqual.add({1,1,1,1});
+allEqual.add({2,2,2,2});
+allEqual.add({3,3,3,3});
+model.table(X, allEqual, &#34;CT+&#34;).post();</code></pre></div>
+  
+        
+          
+        
     <div class="tab-pane fade"
-        id="tabs-21-01" role="tabpanel" aria-labelled-by="tabs-21-01-tab" tabindex="21">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#000">allEqual</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">allEqual</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">([</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">table</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">allEqual</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;CT+&#34;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">post</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#8f5902;font-style:italic"># False stands for &#39;forbidden&#39; combinations</span></span></span></code></pre></div>
-    </div>
+        id="tabs-21-1" role="tabpanel" aria-labelled-by="tabs-21-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">allEqual = []
+allEqual.append([0,0,0,0])
+allEqual.append([1,1,1,1])
+allEqual.append([2,2,2,2])
+allEqual.append([3,3,3,3])
+model.table(X, allEqual, False, &#34;CT+&#34;).post() # False stands for &#39;forbidden&#39; combinations</code></pre></div>
+  
 </div>
 
 <p>All undefined combinations are solution, for example <code>{0,0,0,1}</code> or <code>{0,1,2,3}</code>.</p>
@@ -1080,26 +1715,41 @@ Consider $X_i = [\![0,99]\!], i \in [1,3]$, and the following relationship:</p>
 It&rsquo;s a use case of universal value.
 
 
-<ul class="nav nav-tabs" id="tabs-22" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-22-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-22-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-22-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-22" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-22-0-tab" data-toggle="tab" href="#tabs-22-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-22-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-22-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-22-00" role="tabpanel" aria-labelled-by="tabs-22-00-tab" tabindex="22">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">STAR</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Tuples</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">rel</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Tuples</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">rel</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setUniversalValue</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">STAR</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">rel</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">STAR</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">rel</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#000;font-weight:bold">({</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">table</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">X</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">rel</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
-    </div>
+        id="tabs-22-0" role="tabpanel" aria-labelled-by="tabs-22-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">int STAR = -1;
+Tuples rel = new Tuples(true);
+rel.setUniversalValue(STAR);
+rel.add({0,0,STAR});
+rel.add({3,2,1});
+model.table(X, rel).post();</code></pre></div>
+  
 </div>
 
 <code>STAR</code> represents the universal value, here $-1$.
@@ -1111,23 +1761,38 @@ The SAT solver is internally managed as a constraint (and a propagator), that’
 There exists two type of clauses declaration: pre-defined ones (such as <code>addClausesBoolLt</code> or <code>addClausesAtMostNMinusOne</code>) or more free ones by specifying a <code>LogOp</code> that represents a clause expression:</p>
 
 
-<ul class="nav nav-tabs" id="tabs-23" role="tablist">
-  <li class="nav-item">
-      <button class="nav-link active"
-          id="tabs-23-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-23-00" role="tab"
-          data-td-tp-persist="java" aria-controls="tabs-23-00" aria-selected="true">
-        Java
-      </button>
-    </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="tabs-23" role="tablist"><li class="nav-item">
+      <a class="nav-link active tab-Tab-1"
+        id="tabs-23-0-tab" data-toggle="tab" href="#tabs-23-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
+        aria-controls="tabs-23-0" aria-selected="true">
+        Tab 1
+      </a>
+    </li></ul>
+
 
 <div class="tab-content" id="tabs-23-content">
+        
+          
+        
     <div class="tab-pane fade show active"
-        id="tabs-23-00" role="tabpanel" aria-labelled-by="tabs-23-00-tab" tabindex="23">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">addClauses</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">LogOp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">and</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">LogOp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">nand</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">LogOp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">nor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">b</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">LogOp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">or</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">d</span><span style="color:#000;font-weight:bold">)),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">e</span><span style="color:#000;font-weight:bold">));</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// with static import of LogOp</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">addClauses</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">and</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">nand</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">nor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">b</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">or</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">d</span><span style="color:#000;font-weight:bold">)),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">e</span><span style="color:#000;font-weight:bold">));</span></span></span></code></pre></div>
-    </div>
+        id="tabs-23-0" role="tabpanel" aria-labelled-by="tabs-23-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.addClauses(LogOp.and(LogOp.nand(LogOp.nor(a, b), LogOp.or(c, d)), e));
+// with static import of LogOp
+model.addClauses(and(nand(nor(a, b), or(c, d)), e));</code></pre></div>
+  
 </div>
 
 <h2 id="automaton-based-constraints">Automaton-based Constraints</h2>
@@ -1272,7 +1937,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
       <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
 onload='renderMathInElement(document.body, null);'>
 </script>
-    <script src="/js/main.min.150aaf5197c4dbb87d67089ae18568cd85aee4a175fbe7c6bc8fab0b6ac87281.js" integrity="sha256-FQqvUZfE27h9Zwia4YVozYWu5KF1&#43;&#43;fGvI&#43;rC2rIcoE=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
 <script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
