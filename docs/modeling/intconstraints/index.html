@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.148.1">
+<meta name="generator" content="Hugo 0.161.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -28,13 +28,13 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:published_time" content="2020-01-07T16:07:15+01:00">
-    <meta property="article:modified_time" content="2025-03-18T17:00:06+01:00">
+    <meta property="article:modified_time" content="2026-05-08T10:33:47+02:00">
 
   <meta itemprop="name" content="Constraints over integer variables">
   <meta itemprop="description" content="Overview of constraints based on boolean and integer variables.">
   <meta itemprop="datePublished" content="2020-01-07T16:07:15+01:00">
-  <meta itemprop="dateModified" content="2025-03-18T17:00:06+01:00">
-  <meta itemprop="wordCount" content="2300">
+  <meta itemprop="dateModified" content="2026-05-08T10:33:47+02:00">
+  <meta itemprop="wordCount" content="2409">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Constraints over integer variables">
   <meta name="twitter:description" content="Overview of constraints based on boolean and integer variables.">
@@ -47,12 +47,17 @@
 
   gtag('config', 'G-738NJHH4T5');
 </script>
-<link rel="preload" href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" as="style" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
-<link href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" rel="stylesheet" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
+<link rel="preload" href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" as="style" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
+<link href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" rel="stylesheet" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
 
@@ -76,10 +81,11 @@ window.MathJax = {
   </head>
   <body class="td-page">
     <header>
-      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
-<div class="container-fluid flex-column flex-md-row">
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><path style="fill:#005c94;stroke:none;stroke-width:4.78758144" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
-  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
@@ -97,128 +103,160 @@ window.MathJax = {
         <a class="nav-link" href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html" target="_blank" rel="noopener"><span>Javadoc</span></a>
       </li>
       </ul>
+    <div class="scroll-indicator scroll-right"></div>
   </div>
-  <div class="d-none d-lg-block">
+  <div class="td-navbar__search d-none d-lg-block">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
   </div>
 </div>
 </nav>
     </header>
     <div class="container-fluid td-outer">
-      <div class="td-main">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
             <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="td-sidebar-nav collapse" id="td-section-nav">
     <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
-  <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
-  <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsconsiderations-li">
-  <a href="/docs/considerations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
-  <a href="/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
-  <a href="/docs/modeling/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="">Modeling</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingvariables-li">
-  <a href="/docs/modeling/variables/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingvariables"><span class="">Declaring variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingconstraints-li">
-  <a href="/docs/modeling/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingconstraints"><span class="">Handling constraints</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsmodelingintconstraints-li">
-  <a href="/docs/modeling/intconstraints/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintconstraints"><span class="td-sidebar-nav-active-item">Constraints over integer variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintexpressions-li">
-  <a href="/docs/modeling/intexpressions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
-  <a href="/docs/modeling/setconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
-  <a href="/docs/modeling/graphconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
-  <a href="/docs/modeling/realconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
-  <a href="/docs/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
-  <a href="/docs/solving/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolving"><span class="">Lauching the resolution process</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolutions-li">
-  <a href="/docs/solving/solutions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolutions"><span class="">Dealing with solutions</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstrategies-li">
-  <a href="/docs/solving/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstrategies"><span class="">Search Strategies</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstatistics-li">
-  <a href="/docs/solving/statistics/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
-  <a href="/docs/solving/limits/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
-  <a href="/docs/solving/lns/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
-  <a href="/docs/solving/restarts/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
-  <a href="/docs/solving/portfolio/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsparsing-li">
-  <a href="/docs/parsing/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Modelling languages</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
-  <a href="/docs/parsing/minizinc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
-  <a href="/docs/parsing/others/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
-  <a href="/docs/advanced-usages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagespropagator-li">
-  <a href="/docs/advanced-usages/propagator/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagespropagator"><span class="">Designing a propagator</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesstrategies-li">
-  <a href="/docs/advanced-usages/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesstrategies"><span class="">Designing a search strategy</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessearch-loop-li">
-  <a href="/docs/advanced-usages/search-loop/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessearch-loop"><span class="">Search loop</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesexplanations-li">
-  <a href="/docs/advanced-usages/explanations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesexplanations"><span class="">Explanations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesibex-li">
-  <a href="/docs/advanced-usages/ibex/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesibex"><span class="">Ibex</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessat-li">
-  <a href="/docs/advanced-usages/sat/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessat"><span class="">SAT</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesmiscellaneous-li">
-  <a href="/docs/advanced-usages/miscellaneous/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
-  <a href="/docs/frequently-asked-questions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
-</li>
-  </ul>
-</li>
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsconsiderations-li">
+    <a href="/docs/considerations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
+    <a href="/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
+    <a href="/docs/modeling/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="">Modeling</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingvariables-li">
+    <a href="/docs/modeling/variables/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingvariables"><span class="">Declaring variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingconstraints-li">
+    <a href="/docs/modeling/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingconstraints"><span class="">Handling constraints</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsmodelingintconstraints-li">
+    <a href="/docs/modeling/intconstraints/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintconstraints"><span class="td-sidebar-nav-active-item">Constraints over integer variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintexpressions-li">
+    <a href="/docs/modeling/intexpressions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
+    <a href="/docs/modeling/setconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
+    <a href="/docs/modeling/graphconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
+    <a href="/docs/modeling/realconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
+    <a href="/docs/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
+    <a href="/docs/solving/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolving"><span class="">Lauching the resolution process</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolutions-li">
+    <a href="/docs/solving/solutions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolutions"><span class="">Dealing with solutions</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstrategies-li">
+    <a href="/docs/solving/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstrategies"><span class="">Search Strategies</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstatistics-li">
+    <a href="/docs/solving/statistics/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
+    <a href="/docs/solving/limits/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
+    <a href="/docs/solving/lns/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
+    <a href="/docs/solving/restarts/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
+    <a href="/docs/solving/portfolio/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsparsing-li">
+    <a href="/docs/parsing/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Modelling languages</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
+    <a href="/docs/parsing/minizinc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
+    <a href="/docs/parsing/others/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
+    <a href="/docs/advanced-usages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagespropagator-li">
+    <a href="/docs/advanced-usages/propagator/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagespropagator"><span class="">Designing a propagator</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesstrategies-li">
+    <a href="/docs/advanced-usages/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesstrategies"><span class="">Designing a search strategy</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessearch-loop-li">
+    <a href="/docs/advanced-usages/search-loop/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessearch-loop"><span class="">Search loop</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesexplanations-li">
+    <a href="/docs/advanced-usages/explanations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesexplanations"><span class="">Explanations</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesibex-li">
+    <a href="/docs/advanced-usages/ibex/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesibex"><span class="">Ibex</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessat-li">
+    <a href="/docs/advanced-usages/sat/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessat"><span class="">SAT</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesmiscellaneous-li">
+    <a href="/docs/advanced-usages/miscellaneous/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
+    <a href="/docs/frequently-asked-questions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
+  </li>
+    </ul>
+  </li>
     </ul>
   </nav>
 </div>
-
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="td-sidebar-toc">
             <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 <a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Modeling/IntConstraints.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
   <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Modeling/IntConstraints.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
   <a href="https://github.com/chocoteam/website/issues/new?title=Constraints%20over%20integer%20variables" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
 
-            <div class="td-toc">
-        <nav id="TableOfContents">
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#arithmetical-constraints">Arithmetical constraints</a></li>
     <li><a href="#other-mathematical-constraints">Other mathematical constraints</a>
@@ -252,15 +290,13 @@ window.MathJax = {
     <li><a href="#automaton-based-constraints">Automaton-based Constraints</a></li>
   </ul>
 </nav>
-      </div>
-    
+  </div>
+
             
 
           </aside>
           <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             
-  
-
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -283,136 +319,74 @@ For instance, a threshold constraint can be posted as following:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-0-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-0-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-00-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-0-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.arithm(x, &#34;&gt;=&#34;, 3).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;&gt;=&#34;</span>, 3).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.arithm(x, &#34;&gt;=&#34;, 3).post()</code></pre></div>
-  
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>arithm(x, <span style="color:#e6db74">&#34;&gt;=&#34;</span>, <span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>post()</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Accepted mathematical operators for these constraints are <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>=</code> and <code>!=</code>. When more than one variable is constrained, one can use the following methods:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-1-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-1-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-01-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-1-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">String op = &#34;&gt;=&#34;; // among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
-model.arithm(x, op, y).post();
-// with x an IntVar and y either an IntVar or an int
-
-String op2 = &#34;+&#34;; // either &#34;+&#34; or &#34;-&#34;
-model.arithm(x, op2, y, op, z).post();
-// with x and y IntVar, and z is either an int or an IntVar</code></pre></div>
-  
-        
-          
-        
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>String op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&gt;=&#34;</span>; <span style="color:#75715e">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">arithm</span>(x, op, y).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// with x an IntVar and y either an IntVar or an int</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>String op2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span>; <span style="color:#75715e">// either &#34;+&#34; or &#34;-&#34;</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">arithm</span>(x, op2, y, op, z).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> with x and y IntVar, and z is either an <span style="color:#66d9ef">int</span> or an IntVar</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">op = &#34;&gt;=&#34; # among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
-model.arithm(x, op, y).post()
-# with x an IntVar and y either an IntVar or an int
-
-op2 = &#34;+&#34; # either &#34;+&#34; or &#34;-&#34;
-model.arithm(x, op2, y, op, z).post()
-# with x and y IntVar, and z is either an int or an IntVar</code></pre></div>
-  
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&gt;=&#34;</span> <span style="color:#75715e"># among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>arithm(x, op, y)<span style="color:#f92672">.</span>post()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># with x an IntVar and y either an IntVar or an int</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>op2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#75715e"># either &#34;+&#34; or &#34;-&#34;</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>arithm(x, op2, y, op, z)<span style="color:#f92672">.</span>post()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># with x and y IntVar, and z is either an int or an IntVar</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="other-mathematical-constraints">Other mathematical constraints</h2>
@@ -422,267 +396,172 @@ model.arithm(x, op2, y, op, z).post()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-2-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-2-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-02-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-2-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.times(x, a, z).post(); // x * a = z
-model.times(x, y, a).post(); // x * y = a
-model.times(x, y, z).post(); // x * y = z</code></pre></div>
-  
-        
-          
-        
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">times</span>(x, a, z).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// x * a = z</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">times</span>(x, y, a).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// x * y = a</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">times</span>(x, y, z).<span style="color:#a6e22e">post</span>(); <span style="color:#f92672">//</span> x <span style="color:#f92672">*</span> y <span style="color:#f92672">=</span> z</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.times(x, a, z).post() # x * a = z
-model.times(x, y, a).post() # x * y = a
-model.times(x, y, z).post() # x * y = z</code></pre></div>
-  
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>times(x, a, z)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x * a = z</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>times(x, y, a)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x * y = a</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>times(x, y, z)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x * y = z</span></span></span></code></pre></div>
+    </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    For the first type of <em>times</em> constraint, one might prefer to use a view: <code>z = model.intScaleView(x, a);</code>.
-
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>For the first type of <em>times</em> constraint, one might prefer to use a view: <code>z = model.intScaleView(x, a);</code>.</p>
 </div>
-
 <p>A <em>div</em> constraint corresponds to a euclidean division. It is posted as following:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-4-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-4" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-4-1-tab" data-toggle="tab" href="#tabs-4-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-4-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-04-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-04-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-4-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.div(x, y, z).post(); // x / y = z
-// it assures that y != 0, and z is rounding towards 0.</code></pre></div>
-  
-        
-          
-        
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">div</span>(x, y, z).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// x / y = z</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> it assures that y <span style="color:#f92672">!=</span> 0, and z is rounding towards 0.</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.div(x, y, z).post() # x / y = z
-# it assures that y != 0, and z is rounding towards 0.</code></pre></div>
-  
+        id="tabs-04-01" role="tabpanel" aria-labelled-by="tabs-04-01-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>div(x, y, z)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x / y = z</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># it assures that y != 0, and z is rounding towards 0.</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <p><em>modulo</em> constraints are of three types:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-5" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-5-0-tab" data-toggle="tab" href="#tabs-5-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-5-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-5" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-05-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-5-1-tab" data-toggle="tab" href="#tabs-5-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-5-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-05-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-05-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-5-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.mod(x, a, b).post(); // x % a = b
-model.mod(x, a, z).post(); // x % a = z
-model.mod(x, y, z).post(); // x % y = z</code></pre></div>
-  
-        
-          
-        
+        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">mod</span>(x, a, b).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// x % a = b</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">mod</span>(x, a, z).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// x % a = z</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">mod</span>(x, y, z).<span style="color:#a6e22e">post</span>(); <span style="color:#f92672">//</span> x <span style="color:#f92672">%</span> y <span style="color:#f92672">=</span> z</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-5-1" role="tabpanel" aria-labelled-by="tabs-5-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.mod(x, a, b).post() # x % a = b
-model.mod(x, a, z).post() # x % a = z
-model.mod(x, y, z).post() # x % y = z</code></pre></div>
-  
+        id="tabs-05-01" role="tabpanel" aria-labelled-by="tabs-05-01-tab" tabindex="5">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>mod(x, a, b)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x % a = b</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>mod(x, a, z)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x % a = z</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>mod(x, y, z)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x % y = z</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <p>An <em>absolute</em> constraint is posted like this:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-6" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-6-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-6" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-06-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-06-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-6-1-tab" data-toggle="tab" href="#tabs-6-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-6-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-06-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-06-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-6-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.absolute(x, y).post(); // x = |y|</code></pre></div>
-  
-        
-          
-        
+        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab" tabindex="6">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">absolute</span>(x, y).<span style="color:#a6e22e">post</span>(); <span style="color:#f92672">//</span> x <span style="color:#f92672">=</span> <span style="color:#f92672">|</span>y<span style="color:#f92672">|</span></span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.absolute(x, y).post() # x = |y|</code></pre></div>
-  
+        id="tabs-06-01" role="tabpanel" aria-labelled-by="tabs-06-01-tab" tabindex="6">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>absolute(x, y)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x = |y|</span></span></span></code></pre></div>
+    </div>
+</div>
+
+<p>A <em>power</em> constraint can express <code>x = base ^ exponent</code>. Both the exponent and base can be variables:</p>
+
+
+
+<ul class="nav nav-tabs" id="tabs-7" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-07-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-07-00" aria-selected="true">
+        Java
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-07-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-07-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-7-content">
+    <div class="tab-pane fade show active"
+        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab" tabindex="7">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">pow</span>(base, exponent, x).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// x = base ^ exponent</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// where base, exponent, and x are IntVar</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> or exponent can be a fixed <span style="color:#66d9ef">int</span>: model.<span style="color:#a6e22e">pow</span>(base, 2, x).<span style="color:#a6e22e">post</span>()</span></span></code></pre></div>
+    </div>
+    <div class="tab-pane fade"
+        id="tabs-07-01" role="tabpanel" aria-labelled-by="tabs-07-01-tab" tabindex="7">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>pow(base, exponent, x)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># x = base ^ exponent</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># where base, exponent, and x are IntVar</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or exponent can be a fixed int: model.pow(base, 2, x).post()</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <h3 id="global-constraints">Global constraints</h3>
@@ -692,64 +571,33 @@ minimum of the variables in <code>vars</code> and <code>max</code> the maximum o
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-7" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-7-0-tab" data-toggle="tab" href="#tabs-7-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-7-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-8" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-08-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-08-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-7-1-tab" data-toggle="tab" href="#tabs-7-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-7-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-08-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-08-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-7-content">
-        
-          
-        
+<div class="tab-content" id="tabs-8-content">
     <div class="tab-pane fade show active"
-        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.min(min, vars).post();
-model.max(max, vars).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab" tabindex="8">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">min</span>(min, vars).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">max</span>(max, vars).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-7-1" role="tabpanel" aria-labelled-by="tabs-7-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.min(min, vars).post()
-model.max(max, vars).post()</code></pre></div>
-  
+        id="tabs-08-01" role="tabpanel" aria-labelled-by="tabs-08-01-tab" tabindex="8">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>min(min, vars)<span style="color:#f92672">.</span>post()
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>max(max, vars)<span style="color:#f92672">.</span>post()</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="sum-and-scalar">Sum and scalar</h4>
@@ -757,130 +605,68 @@ model.max(max, vars).post()</code></pre></div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-8" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-8-0-tab" data-toggle="tab" href="#tabs-8-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-8-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-9" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-09-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-09-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-8-1-tab" data-toggle="tab" href="#tabs-8-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-8-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-09-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-09-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-8-content">
-        
-          
-        
+<div class="tab-content" id="tabs-9-content">
     <div class="tab-pane fade show active"
-        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">String op = &#34;&gt;=&#34;; // among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
-model.sum(vars, op, x).post(); // here, it gives sum(vars) &gt;= x</code></pre></div>
-  
-        
-          
-        
+        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab" tabindex="9">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>String op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&gt;=&#34;</span>; <span style="color:#75715e">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">sum</span>(vars, op, x).<span style="color:#a6e22e">post</span>(); <span style="color:#f92672">//</span> here, it gives <span style="color:#a6e22e">sum</span>(vars) <span style="color:#f92672">&gt;=</span> x</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-8-1" role="tabpanel" aria-labelled-by="tabs-8-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">op = &#34;&gt;=&#34; # among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
-model.sum(vars, op, x).post() # here, it gives sum(vars) &gt;= x</code></pre></div>
-  
+        id="tabs-09-01" role="tabpanel" aria-labelled-by="tabs-09-01-tab" tabindex="9">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&gt;=&#34;</span> <span style="color:#75715e"># among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>sum(vars, op, x)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># here, it gives sum(vars) &gt;= x</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <p>And, finally, for weighted sums, one should use the <code>scalar</code> constraint:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-9" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-9-0-tab" data-toggle="tab" href="#tabs-9-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-9-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-10" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-10-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-10-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-9-1-tab" data-toggle="tab" href="#tabs-9-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-9-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-10-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-10-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-10-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-9-content">
-        
-          
-        
+<div class="tab-content" id="tabs-10-content">
     <div class="tab-pane fade show active"
-        id="tabs-9-0" role="tabpanel" aria-labelled-by="tabs-9-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">String op = &#34;&gt;=&#34;; // among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
-model.scalar(vars, coefs, op, x).post(); // coefs being an array of int
-// here, it gives sum(vars[i] * coefs[i]) &gt;= x</code></pre></div>
-  
-        
-          
-        
+        id="tabs-10-00" role="tabpanel" aria-labelled-by="tabs-10-00-tab" tabindex="10">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>String op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&gt;=&#34;</span>; <span style="color:#75715e">// among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">scalar</span>(vars, coefs, op, x).<span style="color:#a6e22e">post</span>(); <span style="color:#75715e">// coefs being an array of int</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> here, it gives <span style="color:#a6e22e">sum</span>(vars<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> coefs<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>) <span style="color:#f92672">&gt;=</span> x</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-9-1" role="tabpanel" aria-labelled-by="tabs-9-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">op = &#34;&gt;=&#34; # among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;
-model.scalar(vars, coefs, op, x).post() # coefs being an array of int
-# here, it gives sum(vars[i] * coefs[i]) &gt;= x</code></pre></div>
-  
+        id="tabs-10-01" role="tabpanel" aria-labelled-by="tabs-10-01-tab" tabindex="10">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>op <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&gt;=&#34;</span> <span style="color:#75715e"># among &#34;&gt;=&#34;, &#34;&gt;&#34;, &#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;=&#34; and &#34;!=&#34;</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>scalar(vars, coefs, op, x)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># coefs being an array of int</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># here, it gives sum(vars[i] * coefs[i]) &gt;= x</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="remarkable-global-constraints">Remarkable global constraints</h2>
@@ -891,133 +677,77 @@ One can consult the complete list of constraints in the <a href="https://javadoc
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-10" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-10-0-tab" data-toggle="tab" href="#tabs-10-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-10-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-11" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-11-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-11-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-10-1-tab" data-toggle="tab" href="#tabs-10-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-10-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-11-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-11-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-10-content">
-        
-          
-        
+<div class="tab-content" id="tabs-11-content">
     <div class="tab-pane fade show active"
-        id="tabs-10-0" role="tabpanel" aria-labelled-by="tabs-10-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar[] vars = model.intVarArray(&#34;X&#34;, 4, 1, 5);
-model.allDifferent(vars).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-11-00" role="tabpanel" aria-labelled-by="tabs-11-00-tab" tabindex="11">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;X&#34;</span>, 4, 1, 5);
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">allDifferent</span>(vars).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-10-1" role="tabpanel" aria-labelled-by="tabs-10-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">vars = model.intvars(4, 1, 5,&#34;X&#34;)
-model.all_different(vars).post()</code></pre></div>
-  
+        id="tabs-11-01" role="tabpanel" aria-labelled-by="tabs-11-01-tab" tabindex="11">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>vars <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvars(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>,<span style="color:#e6db74">&#34;X&#34;</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>all_different(vars)<span style="color:#f92672">.</span>post()</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>An instantiation that satisfies this constraint is
 <code>[1,5,2,3]</code>.</p>
+<p><strong>Variants:</strong></p>
+<ul>
+<li><code>allDifferentExcept0(IntVar[] vars)</code> ensures all variables are distinct except those assigned to 0.</li>
+<li><code>allDifferentExceptValues(IntVar[] vars, int... values)</code> ensures all variables are distinct except those assigned to one of the specified values.</li>
+<li><code>allDiffPrec(IntVar[] vars, int[][] predecessors, int[][] successors, String filter)</code> combines AllDifferent with precedence constraints (useful for scheduling problems).</li>
+</ul>
 <h3 id="count">Count</h3>
 <p>This constraint is very helpful to count the number of occurences of a value in an array of variables.</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-11" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-11-0-tab" data-toggle="tab" href="#tabs-11-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-11-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-12" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-12-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-12-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-12-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-11-1-tab" data-toggle="tab" href="#tabs-11-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-11-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-12-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-12-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-12-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-11-content">
-        
-          
-        
+<div class="tab-content" id="tabs-12-content">
     <div class="tab-pane fade show active"
-        id="tabs-11-0" role="tabpanel" aria-labelled-by="tabs-11-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar occ0 = model.intVar(&#34;occ0&#34;, 0, 5);
-IntVar[] vars = model.intVarArray(&#34;X&#34;, 7, 0, 5);
-model.count(0, vars, occ0).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-12-00" role="tabpanel" aria-labelled-by="tabs-12-00-tab" tabindex="12">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar occ0 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;occ0&#34;</span>, 0, 5);
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;X&#34;</span>, 7, 0, 5);
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">count</span>(0, vars, occ0).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-11-1" role="tabpanel" aria-labelled-by="tabs-11-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">occ0 = model.intvar(0, 5, &#34;occ0&#34;)
-vars = model.intvars(7, 0, 5, &#34;X&#34;)
-model.count(0, vars, occ0).post();</code></pre></div>
-  
+        id="tabs-12-01" role="tabpanel" aria-labelled-by="tabs-12-01-tab" tabindex="12">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>occ0 <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;occ0&#34;</span>)
+</span></span><span style="display:flex;"><span>vars <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvars(<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;X&#34;</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>count(<span style="color:#ae81ff">0</span>, vars, occ0)<span style="color:#f92672">.</span>post();</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>A solution to this constraint is <code>vars = [0, 1, 0, 1, 5, 5, 5]</code>, <code>occ0 = 2</code>.</p>
@@ -1026,68 +756,37 @@ model.count(0, vars, occ0).post();</code></pre></div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-12" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-12-0-tab" data-toggle="tab" href="#tabs-12-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-12-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-13" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-13-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-13-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-13-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-12-1-tab" data-toggle="tab" href="#tabs-12-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-12-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-13-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-13-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-13-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-12-content">
-        
-          
-        
+<div class="tab-content" id="tabs-13-content">
     <div class="tab-pane fade show active"
-        id="tabs-12-0" role="tabpanel" aria-labelled-by="tabs-12-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar[] vars = model.intVarArray(&#34;X&#34;, 7, 0, 5);
-int[] values = new int[]{1, 3, 5};
-IntVar[] occs = model.intVarArray(&#34;O&#34;, 2, 0, 3);
-model.globalCardinality(vars, values, occs, false).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-13-00" role="tabpanel" aria-labelled-by="tabs-13-00-tab" tabindex="13">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;X&#34;</span>, 7, 0, 5);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> values <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1, 3, 5};
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> occs <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;O&#34;</span>, 2, 0, 3);
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">globalCardinality</span>(vars, values, occs, <span style="color:#66d9ef">false</span>).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-12-1" role="tabpanel" aria-labelled-by="tabs-12-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">vars = model.intvars(7, 0, 5, &#34;X&#34;)
-values = [1,3,5]
-occs = model.intvars(2, 0, 3, &#34;O&#34;)
-model.global_cardinality(vars, values, occs, False).post();</code></pre></div>
-  
+        id="tabs-13-01" role="tabpanel" aria-labelled-by="tabs-13-01-tab" tabindex="13">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>vars <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvars(<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;X&#34;</span>)
+</span></span><span style="display:flex;"><span>values <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>occs <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvars(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;O&#34;</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>global_cardinality(vars, values, occs, <span style="color:#66d9ef">False</span>)<span style="color:#f92672">.</span>post();</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>A solution to this constraint is <code>vars = [0, 1, 0, 1, 5, 5, 5]</code>, <code>occs = [2, 0, 3]</code>.</p>
@@ -1099,66 +798,35 @@ A solution is : <code>vars = [3, 1, 3, 1, 5, 5, 5]</code>, <code>occs = [2, 2, 3
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-13" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-13-0-tab" data-toggle="tab" href="#tabs-13-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-13-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-14" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-14-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-14-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-14-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-13-1-tab" data-toggle="tab" href="#tabs-13-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-13-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-14-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-14-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-14-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-13-content">
-        
-          
-        
+<div class="tab-content" id="tabs-14-content">
     <div class="tab-pane fade show active"
-        id="tabs-13-0" role="tabpanel" aria-labelled-by="tabs-13-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar idx = model.intVar(&#34;I&#34;, 0, 5, false);
-IntVar rst = model.intVar(&#34;R&#34;, 0, 10, false);
-model.element(rst, new int[]{0, 2, 4, 6, 7}, idx).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-14-00" role="tabpanel" aria-labelled-by="tabs-14-00-tab" tabindex="14">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar idx <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;I&#34;</span>, 0, 5, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>IntVar rst <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;R&#34;</span>, 0, 10, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">element</span>(rst, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{0, 2, 4, 6, 7}, idx).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-13-1" role="tabpanel" aria-labelled-by="tabs-13-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">idx = model.intvar(0, 5, &#34;I&#34;)
-rst = model.intvar(0, 10, &#34;R&#34;)
-model.element(rst, [0, 2, 4, 6, 7], idx).post()</code></pre></div>
-  
+        id="tabs-14-01" role="tabpanel" aria-labelled-by="tabs-14-01-tab" tabindex="14">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>idx <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;I&#34;</span>)
+</span></span><span style="display:flex;"><span>rst <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#34;R&#34;</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>element(rst, [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>], idx)<span style="color:#f92672">.</span>post()</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>An assignment of <code>idx</code> and <code>rst</code> that satisfies this constraint is: <code>idx = 3</code> and <code>rst = 6</code>.</p>
@@ -1172,186 +840,93 @@ The cumulative constraint limits the number of concurrent tasks.</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-14" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-14-0-tab" data-toggle="tab" href="#tabs-14-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-14-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-15" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-15-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-15-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-15-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-14-1-tab" data-toggle="tab" href="#tabs-14-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-14-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-15-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-15-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-15-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-14-content">
-        
-          
-        
+<div class="tab-content" id="tabs-15-content">
     <div class="tab-pane fade show active"
-        id="tabs-14-0" role="tabpanel" aria-labelled-by="tabs-14-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(start, duration);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-15-00" role="tabpanel" aria-labelled-by="tabs-15-00-tab" tabindex="15">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Task(start, duration);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-14-1" role="tabpanel" aria-labelled-by="tabs-14-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">task = model.task(start, duration)</code></pre></div>
-  
+        id="tabs-15-01" role="tabpanel" aria-labelled-by="tabs-15-01-tab" tabindex="15">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>task <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>task(start, duration)</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Optionally an end <code>IntVar</code> can be supplied. Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-15" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-15-0-tab" data-toggle="tab" href="#tabs-15-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-15-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-16" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-16-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-16-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-16-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-15-1-tab" data-toggle="tab" href="#tabs-15-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-15-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-16-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-16-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-16-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-15-content">
-        
-          
-        
+<div class="tab-content" id="tabs-16-content">
     <div class="tab-pane fade show active"
-        id="tabs-15-0" role="tabpanel" aria-labelled-by="tabs-15-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(start, duration, end);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-16-00" role="tabpanel" aria-labelled-by="tabs-16-00-tab" tabindex="16">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Task(start, duration, end);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-15-1" role="tabpanel" aria-labelled-by="tabs-15-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">task = model.task(start, duration, end)</code></pre></div>
-  
+        id="tabs-16-01" role="tabpanel" aria-labelled-by="tabs-16-01-tab" tabindex="16">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>task <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>task(start, duration, end)</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>A task can have an unknown duration. In this case create the task with 3 <code>IntVar</code>: start, varDuration and end. Task will ensure that <em>start + varDuration = end</em>, end being an offset view of <em>start + varDuration</em>.</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-16" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-16-0-tab" data-toggle="tab" href="#tabs-16-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-16-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-17" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-17-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-17-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-17-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-16-1-tab" data-toggle="tab" href="#tabs-16-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-16-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-17-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-17-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-17-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-16-content">
-        
-          
-        
+<div class="tab-content" id="tabs-17-content">
     <div class="tab-pane fade show active"
-        id="tabs-16-0" role="tabpanel" aria-labelled-by="tabs-16-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(start, varDuration, end);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-17-00" role="tabpanel" aria-labelled-by="tabs-17-00-tab" tabindex="17">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Task(start, varDuration, end);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-16-1" role="tabpanel" aria-labelled-by="tabs-16-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">task = model.task(start, varDuration, end)</code></pre></div>
-  
+        id="tabs-17-01" role="tabpanel" aria-labelled-by="tabs-17-01-tab" tabindex="17">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>task <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>task(start, varDuration, end)</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Finally, a task can be created based on the <code>Model</code> and 5 <code>int</code>: earliestStart, latestStart, duration, earliestEnd, latestEnd.<br>
@@ -1360,36 +935,21 @@ An end <code>IntVar</code> will be created with a domain of <em>[earliestEnd, la
 Task will ensure that <em>start + duration = end</em>, end being an offset view of <em>start + duration</em>.</p>
 
 
+<ul class="nav nav-tabs" id="tabs-18" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-18-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-18-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-18-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-17" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-17-0-tab" data-toggle="tab" href="#tabs-17-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-17-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
-
-<div class="tab-content" id="tabs-17-content">
-        
-          
-        
+<div class="tab-content" id="tabs-18-content">
     <div class="tab-pane fade show active"
-        id="tabs-17-0" role="tabpanel" aria-labelled-by="tabs-17-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task task = new Task(model, earliestStart, latestStart, duration, earliestEnd, latestEnd);</code></pre></div>
-  
+        id="tabs-18-00" role="tabpanel" aria-labelled-by="tabs-18-00-tab" tabindex="18">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Task(model, earliestStart, latestStart, duration, earliestEnd, latestEnd);</span></span></code></pre></div>
+    </div>
 </div>
 
 <h3 id="cumulative-constraint"><code>Cumulative</code> constraint</h3>
@@ -1400,62 +960,31 @@ Task duration and height should be $\geq$ 0. Tasks with duration or height equal
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-18" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-18-0-tab" data-toggle="tab" href="#tabs-18-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-18-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-19" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-19-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-19-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-19-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-18-1-tab" data-toggle="tab" href="#tabs-18-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-18-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-19-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-19-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-19-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-18-content">
-        
-          
-        
+<div class="tab-content" id="tabs-19-content">
     <div class="tab-pane fade show active"
-        id="tabs-18-0" role="tabpanel" aria-labelled-by="tabs-18-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.cumulative(tasks, heights, capacity).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-19-00" role="tabpanel" aria-labelled-by="tabs-19-00-tab" tabindex="19">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">cumulative</span>(tasks, heights, capacity).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-18-1" role="tabpanel" aria-labelled-by="tabs-18-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model.cumulative(tasks, heights, capacity).post()</code></pre></div>
-  
+        id="tabs-19-01" role="tabpanel" aria-labelled-by="tabs-19-01-tab" tabindex="19">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>cumulative(tasks, heights, capacity)<span style="color:#f92672">.</span>post()</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>If only one task can happen concurrently, set the heights fixed equal to the capacity, either by setting fixed values or posting constraints between the variables.<br>
@@ -1464,74 +993,43 @@ Other combinations of concurrently (or not) planned tasks can be modelled by set
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-19" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-19-0-tab" data-toggle="tab" href="#tabs-19-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-19-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-20" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-20-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-20-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-20-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-19-1-tab" data-toggle="tab" href="#tabs-19-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-19-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-20-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-20-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-20-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-19-content">
-        
-          
-        
+<div class="tab-content" id="tabs-20-content">
     <div class="tab-pane fade show active"
-        id="tabs-19-0" role="tabpanel" aria-labelled-by="tabs-19-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Task[] tasks = new Task[4];
-IntVar[] heights = new IntVar[4];
-for(int i = 0, i &lt; starts.length; i++){
-  tasks[i] = new Task(starts[i], durations[i]);
-  heights[i] = model.intVar(1);
-}
-IntVar capacity = model.intVar(1);
-
-model.cumulative(tasks, heights, capacity).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-20-00" role="tabpanel" aria-labelled-by="tabs-20-00-tab" tabindex="20">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Task<span style="color:#f92672">[]</span> tasks <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Task<span style="color:#f92672">[</span>4<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> heights <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> IntVar<span style="color:#f92672">[</span>4<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0, i <span style="color:#f92672">&lt;</span> starts.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>  tasks<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Task(starts<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, durations<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>  heights<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(1);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>IntVar capacity <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(1);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">cumulative</span>(tasks, heights, capacity).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-19-1" role="tabpanel" aria-labelled-by="tabs-19-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">tasks = [ model.task(starts[i], durations[i]) for i in range(4) ]
-heights = [ model.intvar(1) for _ in range(4) ]
-capacity = model.intvar(1)
-
-model.cumulative(tasks, heights, capacity).post()</code></pre></div>
-  
+        id="tabs-20-01" role="tabpanel" aria-labelled-by="tabs-20-01-tab" tabindex="20">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>tasks <span style="color:#f92672">=</span> [ model<span style="color:#f92672">.</span>task(starts[i], durations[i]) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>) ]
+</span></span><span style="display:flex;"><span>heights <span style="color:#f92672">=</span> [ model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>) ]
+</span></span><span style="display:flex;"><span>capacity <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>cumulative(tasks, heights, capacity)<span style="color:#f92672">.</span>post()</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Solving this will result in all 4 tasks happening consecutively so:
@@ -1547,77 +1045,49 @@ $$Table(X,T)\equiv \bigvee_{t \in T}\bigwedge_{i \in I}(X_i = t_i)$$</p>
 <p><em>When dealing with forbidden combinations, the <code>$=$</code> operator below is replaced by a <code>$\neq$</code> operator.</em></p>
 <p>Table constraints are also known as constraints <em>in extension</em> since all possible (or impossible) combinations are needed as input.</p>
 <p>Table constraints usually provide domain consistency filtering algorithm, with diverse spatial and temporal complexities which depend on the number of variables involved and the number of tuples.</p>
+<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Hybrid Tuples</div>
+<p>The <code>HybridTuples</code> format provides a more efficient representation for large tables, especially when there are repeated values or patterns. Use <code>model.table(vars, new HybridTuples(tuples))</code> for automatic optimization.</p>
+</div>
 <h3 id="allowed-combinations">Allowed combinations</h3>
 <p>Let&rsquo;s take the example of four variables $X_i = [\![0,3]\!], i \in [1,4]$, that <strong>must</strong> all be equal. This relationship can be expressed with a Table constraint as follow:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-20" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-20-0-tab" data-toggle="tab" href="#tabs-20-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-20-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-22" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-22-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-22-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-22-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-20-1-tab" data-toggle="tab" href="#tabs-20-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-20-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-22-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-22-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-22-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-20-content">
-        
-          
-        
+<div class="tab-content" id="tabs-22-content">
     <div class="tab-pane fade show active"
-        id="tabs-20-0" role="tabpanel" aria-labelled-by="tabs-20-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Tuples allEqual = new Tuples(true); // true stands for &#39;allowed&#39; combinations
-allEqual.add({0,0,0,0});
-allEqual.add({1,1,1,1});
-allEqual.add({2,2,2,2});
-allEqual.add({3,3,3,3});
-model.table(X, allEqual, &#34;CT+&#34;).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-22-00" role="tabpanel" aria-labelled-by="tabs-22-00-tab" tabindex="22">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Tuples allEqual <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Tuples(<span style="color:#66d9ef">true</span>); <span style="color:#75715e">// true stands for &#39;allowed&#39; combinations</span>
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({0,0,0,0});
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({1,1,1,1});
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({2,2,2,2});
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({3,3,3,3});
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">table</span>(X, allEqual, <span style="color:#e6db74">&#34;CT+&#34;</span>).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-20-1" role="tabpanel" aria-labelled-by="tabs-20-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">allEqual = []
-allEqual.append([0,0,0,0])
-allEqual.append([1,1,1,1])
-allEqual.append([2,2,2,2])
-allEqual.append([3,3,3,3])
-model.table(X, allEqual, True, &#34;CT+&#34;).post() # True stands for &#39;allowed&#39; combinations</code></pre></div>
-  
+        id="tabs-22-01" role="tabpanel" aria-labelled-by="tabs-22-01-tab" tabindex="22">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>allEqual <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>table(X, allEqual, <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#34;CT+&#34;</span>)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># True stands for &#39;allowed&#39; combinations</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Only defined combinations are solutions.</p>
@@ -1627,72 +1097,41 @@ model.table(X, allEqual, True, &#34;CT+&#34;).post() # True stands for &#39;allo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-21" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-21-0-tab" data-toggle="tab" href="#tabs-21-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-21-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-23" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-23-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-23-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-23-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-21-1-tab" data-toggle="tab" href="#tabs-21-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-21-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-23-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-23-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-23-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-21-content">
-        
-          
-        
+<div class="tab-content" id="tabs-23-content">
     <div class="tab-pane fade show active"
-        id="tabs-21-0" role="tabpanel" aria-labelled-by="tabs-21-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Tuples allEqual = new Tuples(false); // false stands for &#39;forbidden&#39; combinations
-allEqual.add({0,0,0,0});
-allEqual.add({1,1,1,1});
-allEqual.add({2,2,2,2});
-allEqual.add({3,3,3,3});
-model.table(X, allEqual, &#34;CT+&#34;).post();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-23-00" role="tabpanel" aria-labelled-by="tabs-23-00-tab" tabindex="23">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Tuples allEqual <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Tuples(<span style="color:#66d9ef">false</span>); <span style="color:#75715e">// false stands for &#39;forbidden&#39; combinations</span>
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({0,0,0,0});
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({1,1,1,1});
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({2,2,2,2});
+</span></span><span style="display:flex;"><span>allEqual.<span style="color:#a6e22e">add</span>({3,3,3,3});
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">table</span>(X, allEqual, <span style="color:#e6db74">&#34;CT+&#34;</span>).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-21-1" role="tabpanel" aria-labelled-by="tabs-21-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">allEqual = []
-allEqual.append([0,0,0,0])
-allEqual.append([1,1,1,1])
-allEqual.append([2,2,2,2])
-allEqual.append([3,3,3,3])
-model.table(X, allEqual, False, &#34;CT+&#34;).post() # False stands for &#39;forbidden&#39; combinations</code></pre></div>
-  
+        id="tabs-23-01" role="tabpanel" aria-labelled-by="tabs-23-01-tab" tabindex="23">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>allEqual <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>allEqual<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>table(X, allEqual, <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">&#34;CT+&#34;</span>)<span style="color:#f92672">.</span>post() <span style="color:#75715e"># False stands for &#39;forbidden&#39; combinations</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <p>All undefined combinations are solution, for example <code>{0,0,0,1}</code> or <code>{0,1,2,3}</code>.</p>
@@ -1704,52 +1143,36 @@ Consider $X_i = [\![0,99]\!], i \in [1,3]$, and the following relationship:</p>
 <li><em>else if $X_1 = 3$ then $X_2 = 2$ and $X_3 = 1$.</em></li>
 </ol>
 <p>The allowed tuples are:</p>
-<pre><code>{0, 0, 0}
+<pre tabindex="0"><code>{0, 0, 0}
 {0, 0, 1}
 ...
 {0, 0, 98}
 {0, 0, 99}
 {3, 2, 1}
-</code></pre>
-<p>We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture <em>$X_3$ can take any value</em>.
+</code></pre><p>We can see that this relation requires 100 combinations to be expressed and 99 of them are needed to capture <em>$X_3$ can take any value</em>.
 It&rsquo;s a use case of universal value.
 
 
+<ul class="nav nav-tabs" id="tabs-24" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-24-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-24-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-24-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-22" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-22-0-tab" data-toggle="tab" href="#tabs-22-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-22-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
-
-<div class="tab-content" id="tabs-22-content">
-        
-          
-        
+<div class="tab-content" id="tabs-24-content">
     <div class="tab-pane fade show active"
-        id="tabs-22-0" role="tabpanel" aria-labelled-by="tabs-22-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">int STAR = -1;
-Tuples rel = new Tuples(true);
-rel.setUniversalValue(STAR);
-rel.add({0,0,STAR});
-rel.add({3,2,1});
-model.table(X, rel).post();</code></pre></div>
-  
+        id="tabs-24-00" role="tabpanel" aria-labelled-by="tabs-24-00-tab" tabindex="24">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> STAR <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1;
+</span></span><span style="display:flex;"><span>Tuples rel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Tuples(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>rel.<span style="color:#a6e22e">setUniversalValue</span>(STAR);
+</span></span><span style="display:flex;"><span>rel.<span style="color:#a6e22e">add</span>({0,0,STAR});
+</span></span><span style="display:flex;"><span>rel.<span style="color:#a6e22e">add</span>({3,2,1});
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">table</span>(X, rel).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
 </div>
 
 <code>STAR</code> represents the universal value, here $-1$.
@@ -1761,38 +1184,23 @@ The SAT solver is internally managed as a constraint (and a propagator), that’
 There exists two type of clauses declaration: pre-defined ones (such as <code>addClausesBoolLt</code> or <code>addClausesAtMostNMinusOne</code>) or more free ones by specifying a <code>LogOp</code> that represents a clause expression:</p>
 
 
+<ul class="nav nav-tabs" id="tabs-25" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-25-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-25-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-25-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-23" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-23-0-tab" data-toggle="tab" href="#tabs-23-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-23-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
-
-<div class="tab-content" id="tabs-23-content">
-        
-          
-        
+<div class="tab-content" id="tabs-25-content">
     <div class="tab-pane fade show active"
-        id="tabs-23-0" role="tabpanel" aria-labelled-by="tabs-23-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">model.addClauses(LogOp.and(LogOp.nand(LogOp.nor(a, b), LogOp.or(c, d)), e));
-// with static import of LogOp
-model.addClauses(and(nand(nor(a, b), or(c, d)), e));</code></pre></div>
-  
+        id="tabs-25-00" role="tabpanel" aria-labelled-by="tabs-25-00-tab" tabindex="25">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">addClauses</span>(LogOp.<span style="color:#a6e22e">and</span>(LogOp.<span style="color:#a6e22e">nand</span>(LogOp.<span style="color:#a6e22e">nor</span>(a, b), LogOp.<span style="color:#a6e22e">or</span>(c, d)), e));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// with static import of LogOp</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">addClauses</span>(and(nand(nor(a, b), or(c, d)), e));</span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="automaton-based-constraints">Automaton-based Constraints</h2>
@@ -1867,7 +1275,7 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 </script>
 <br />
 <div class="td-page-meta__lastmod">
-  Last modified March 18, 2025: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/0e70f925ab2608ede3cbb3de3b82d3d6421014e3">Fix typo in doc (0e70f92)</a>
+  Last modified May 8, 2026: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/924b883a43eaa8633cd5fa34c98826c166fd56ca">Update website (924b883)</a>
 </div>
 
 </div>
@@ -1882,46 +1290,31 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
       <div class="td-footer__left col-6 col-sm-4 order-sm-1">
         <ul class="td-footer__links-list">
   
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Google group" aria-label="Google group">
-    <a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/choco-solver" aria-label="Google group">
-      <i class="fa fa-comments"></i>
-    </a>
-  </li>
-  
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Stack Overflow" aria-label="Stack Overflow">
-    <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow">
+    <a href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow" target="_blank" rel="noopener">
       <i class="fab fa-stack-overflow"></i>
     </a>
   </li>
   
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
+    <a href="https://discord.gg/aH6zxa7e64" aria-label="Discord" target="_blank" rel="noopener">
       <i class="fab fa-discord"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a href="https://github.com/chocoteam/choco-solver" aria-label="GitHub" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
     </a>
   </li>
   
 </ul>
 
       </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
-        <ul class="td-footer__links-list">
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
-    <a target="_blank" rel="noopener" href="https://github.com/chocoteam/choco-solver" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-  </li>
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
-      <i class="fab fa-discord"></i>
-    </a>
-  </li>
-  
-</ul>
-
+        
       </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
         <span class="td-footer__copyright">&copy;
-    2025
+    2026
     <span class="td-footer__authors">The Choco-solver Authors</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span><span class="ms-2"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></span>
       </div>
     </div>
@@ -1929,16 +1322,8 @@ Then to distinct, in the word 101, the symbols 0, 1, 10 and 101, two additional 
 </footer>
 
     </div>
-    
-      <link rel="stylesheet" href="/css/katex.min.css" integrity="sha512-nleNesO1Jws3rjLtrng1p0TNp3NANubi8czxbzgrBWzNUcDfa37zRwmRNXoCZQeECqIsF0DqL&#43;a7zptCI8XBgg==" crossorigin="anonymous">
-    
-      <script defer src="/js/katex.min.js" integrity="sha512-qDvmQ3P&#43;wKCMK0HbLaai1I8Q5dpRKlnc6e6Er7Gdcw6MbDpau62GNrHegRr6mETPt36JMcc3C6xnVWW5U6kw4g==" crossorigin="anonymous" ></script>
-    
-      <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
-onload='renderMathInElement(document.body, null);'>
-</script>
-    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
-<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.c60de03ed52a34012f330c3e18c526426ec97efa9822bedfadbf14ffe917bc3e.js" integrity="sha256-xg3gPtUqNAEvMww&#43;GMUmQm7JfvqYIr7frb8U/&#43;kXvD4=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

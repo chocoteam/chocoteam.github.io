@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.148.1">
+<meta name="generator" content="Hugo 0.161.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://choco-solver.org/docs/modeling/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -30,8 +29,8 @@
 
   <meta itemprop="name" content="Modeling">
   <meta itemprop="description" content="What do you need to know to express a problem?">
-  <meta itemprop="dateModified" content="2023-10-02T13:14:41+02:00">
-  <meta itemprop="wordCount" content="117">
+  <meta itemprop="dateModified" content="2026-05-08T10:33:47+02:00">
+  <meta itemprop="wordCount" content="111">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Modeling">
   <meta name="twitter:description" content="What do you need to know to express a problem?">
@@ -44,12 +43,17 @@
 
   gtag('config', 'G-738NJHH4T5');
 </script>
-<link rel="preload" href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" as="style" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
-<link href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" rel="stylesheet" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
+<link rel="preload" href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" as="style" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
+<link href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" rel="stylesheet" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
 
@@ -57,10 +61,11 @@
   </head>
   <body class="td-section">
     <header>
-      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
-<div class="container-fluid flex-column flex-md-row">
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><path style="fill:#005c94;stroke:none;stroke-width:4.78758144" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
-  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
@@ -78,141 +83,171 @@
         <a class="nav-link" href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html" target="_blank" rel="noopener"><span>Javadoc</span></a>
       </li>
       </ul>
+    <div class="scroll-indicator scroll-right"></div>
   </div>
-  <div class="d-none d-lg-block">
+  <div class="td-navbar__search d-none d-lg-block">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
   </div>
 </div>
 </nav>
     </header>
     <div class="container-fluid td-outer">
-      <div class="td-main">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
             <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="td-sidebar-nav collapse" id="td-section-nav">
     <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
-  <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
-  <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsconsiderations-li">
-  <a href="/docs/considerations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
-  <a href="/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
-  <a href="/docs/modeling/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="td-sidebar-nav-active-item">Modeling</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingvariables-li">
-  <a href="/docs/modeling/variables/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingvariables"><span class="">Declaring variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingconstraints-li">
-  <a href="/docs/modeling/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingconstraints"><span class="">Handling constraints</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintconstraints-li">
-  <a href="/docs/modeling/intconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintconstraints"><span class="">Constraints over integer variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintexpressions-li">
-  <a href="/docs/modeling/intexpressions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
-  <a href="/docs/modeling/setconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
-  <a href="/docs/modeling/graphconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
-  <a href="/docs/modeling/realconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
-  <a href="/docs/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
-  <a href="/docs/solving/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolving"><span class="">Lauching the resolution process</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolutions-li">
-  <a href="/docs/solving/solutions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolutions"><span class="">Dealing with solutions</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstrategies-li">
-  <a href="/docs/solving/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstrategies"><span class="">Search Strategies</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstatistics-li">
-  <a href="/docs/solving/statistics/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
-  <a href="/docs/solving/limits/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
-  <a href="/docs/solving/lns/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
-  <a href="/docs/solving/restarts/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
-  <a href="/docs/solving/portfolio/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsparsing-li">
-  <a href="/docs/parsing/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Modelling languages</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
-  <a href="/docs/parsing/minizinc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
-  <a href="/docs/parsing/others/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
-  <a href="/docs/advanced-usages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagespropagator-li">
-  <a href="/docs/advanced-usages/propagator/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagespropagator"><span class="">Designing a propagator</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesstrategies-li">
-  <a href="/docs/advanced-usages/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesstrategies"><span class="">Designing a search strategy</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessearch-loop-li">
-  <a href="/docs/advanced-usages/search-loop/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessearch-loop"><span class="">Search loop</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesexplanations-li">
-  <a href="/docs/advanced-usages/explanations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesexplanations"><span class="">Explanations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesibex-li">
-  <a href="/docs/advanced-usages/ibex/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesibex"><span class="">Ibex</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessat-li">
-  <a href="/docs/advanced-usages/sat/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessat"><span class="">SAT</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesmiscellaneous-li">
-  <a href="/docs/advanced-usages/miscellaneous/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
-  <a href="/docs/frequently-asked-questions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
-</li>
-  </ul>
-</li>
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsconsiderations-li">
+    <a href="/docs/considerations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
+    <a href="/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
+    <a href="/docs/modeling/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="td-sidebar-nav-active-item">Modeling</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingvariables-li">
+    <a href="/docs/modeling/variables/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingvariables"><span class="">Declaring variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingconstraints-li">
+    <a href="/docs/modeling/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingconstraints"><span class="">Handling constraints</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintconstraints-li">
+    <a href="/docs/modeling/intconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintconstraints"><span class="">Constraints over integer variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintexpressions-li">
+    <a href="/docs/modeling/intexpressions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
+    <a href="/docs/modeling/setconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
+    <a href="/docs/modeling/graphconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
+    <a href="/docs/modeling/realconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
+    <a href="/docs/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
+    <a href="/docs/solving/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolving"><span class="">Lauching the resolution process</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolutions-li">
+    <a href="/docs/solving/solutions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolutions"><span class="">Dealing with solutions</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstrategies-li">
+    <a href="/docs/solving/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstrategies"><span class="">Search Strategies</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstatistics-li">
+    <a href="/docs/solving/statistics/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
+    <a href="/docs/solving/limits/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
+    <a href="/docs/solving/lns/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
+    <a href="/docs/solving/restarts/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
+    <a href="/docs/solving/portfolio/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsparsing-li">
+    <a href="/docs/parsing/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Modelling languages</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
+    <a href="/docs/parsing/minizinc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
+    <a href="/docs/parsing/others/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
+    <a href="/docs/advanced-usages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagespropagator-li">
+    <a href="/docs/advanced-usages/propagator/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagespropagator"><span class="">Designing a propagator</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesstrategies-li">
+    <a href="/docs/advanced-usages/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesstrategies"><span class="">Designing a search strategy</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessearch-loop-li">
+    <a href="/docs/advanced-usages/search-loop/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessearch-loop"><span class="">Search loop</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesexplanations-li">
+    <a href="/docs/advanced-usages/explanations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesexplanations"><span class="">Explanations</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesibex-li">
+    <a href="/docs/advanced-usages/ibex/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesibex"><span class="">Ibex</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessat-li">
+    <a href="/docs/advanced-usages/sat/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessat"><span class="">SAT</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesmiscellaneous-li">
+    <a href="/docs/advanced-usages/miscellaneous/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
+    <a href="/docs/frequently-asked-questions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
+  </li>
+    </ul>
+  </li>
     </ul>
   </nav>
 </div>
-
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="td-sidebar-toc">
             <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 <a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Modeling/_index.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
   <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Modeling/_index.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
   <a href="https://github.com/chocoteam/website/issues/new?title=Modeling" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
 
-            <div class="td-toc">
-        <nav id="TableOfContents">
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#the-model">The Model</a></li>
   </ul>
 </nav>
-      </div>
-    
+  </div>
+
             
 
           </aside>
           <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             
-  
-
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -230,198 +265,101 @@
 	<h2 id="the-model">The Model</h2>
 <p>The object <code>Model</code> is the key component. It should be imported :</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-0-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-0-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-00-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-0-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">import org.chocosolver.solver.Model;</code></pre></div>
-  
-        
-          
-        
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.chocosolver.solver.Model;</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">from pychoco import Model</code></pre></div>
-  
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pychoco <span style="color:#f92672">import</span> Model</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Then, an instance of a model is built as follows:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-1-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-1-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-01-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-1-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Model model = new Model();</code></pre></div>
-  
-        
-          
-        
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Model model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Model();</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model = Model()</code></pre></div>
-  
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Model()</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>A name can be attached to an instance:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-2-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-2-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-02-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-02-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-2-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Model model = new Model(&#34;my problem&#34;);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Model model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Model(<span style="color:#e6db74">&#34;my problem&#34;</span>);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">model = Model(&#34;my problem&#34;);</code></pre></div>
-  
+        id="tabs-02-01" role="tabpanel" aria-labelled-by="tabs-02-01-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Model(<span style="color:#e6db74">&#34;my problem&#34;</span>);</span></span></code></pre></div>
+    </div>
 </div>
 
 <p><code>Model</code> is the top-level object that stores declared variables, posted constraints and gives access to the <code>Solver</code>.</p>
-
-
 <div class="pageinfo pageinfo-primary">
 <p>This should be the first instruction, prior to any other modeling instructions, as it is needed to declare variables and constraints.</p>
-
 </div>
-
 <p>Once the model is created, variables and constraints can be defined.</p>
 
 	<div class="section-index">
@@ -456,13 +394,13 @@
                 <h5>
                     <a href="/docs/modeling/setconstraints/">Constraints over set variables</a>
                 </h5>
-                <p>Overview of constraints based on set variables.</p>
+                <p>Overview of constraints on set variables.</p>
             </div>
         <div class="entry">
                 <h5>
                     <a href="/docs/modeling/graphconstraints/">Constraints over graph variables</a>
                 </h5>
-                <p>Overview of constraints based on graph variables.</p>
+                <p>Overview of constraints on graph variables.</p>
             </div>
         <div class="entry">
                 <h5>
@@ -528,7 +466,7 @@
 </script>
 <br />
 <div class="td-page-meta__lastmod">
-  Last modified October 2, 2023: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/a7725699fa93f28f77cb2109d0d809c21ee2eba2">start doc for python (a772569)</a>
+  Last modified May 8, 2026: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/924b883a43eaa8633cd5fa34c98826c166fd56ca">Update website (924b883)</a>
 </div>
 </div>
 
@@ -541,46 +479,31 @@
       <div class="td-footer__left col-6 col-sm-4 order-sm-1">
         <ul class="td-footer__links-list">
   
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Google group" aria-label="Google group">
-    <a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/choco-solver" aria-label="Google group">
-      <i class="fa fa-comments"></i>
-    </a>
-  </li>
-  
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Stack Overflow" aria-label="Stack Overflow">
-    <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow">
+    <a href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow" target="_blank" rel="noopener">
       <i class="fab fa-stack-overflow"></i>
     </a>
   </li>
   
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
+    <a href="https://discord.gg/aH6zxa7e64" aria-label="Discord" target="_blank" rel="noopener">
       <i class="fab fa-discord"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a href="https://github.com/chocoteam/choco-solver" aria-label="GitHub" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
     </a>
   </li>
   
 </ul>
 
       </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
-        <ul class="td-footer__links-list">
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
-    <a target="_blank" rel="noopener" href="https://github.com/chocoteam/choco-solver" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-  </li>
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
-      <i class="fab fa-discord"></i>
-    </a>
-  </li>
-  
-</ul>
-
+        
       </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
         <span class="td-footer__copyright">&copy;
-    2025
+    2026
     <span class="td-footer__authors">The Choco-solver Authors</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span><span class="ms-2"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></span>
       </div>
     </div>
@@ -588,8 +511,8 @@
 </footer>
 
     </div>
-    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
-<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.c60de03ed52a34012f330c3e18c526426ec97efa9822bedfadbf14ffe917bc3e.js" integrity="sha256-xg3gPtUqNAEvMww&#43;GMUmQm7JfvqYIr7frb8U/&#43;kXvD4=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

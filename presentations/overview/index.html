@@ -1,0 +1,1414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Overview of Choco-solver</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/presentations/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/presentations/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/presentations/reveal-js/dist/theme/simple.css" id="theme">
+<link rel="stylesheet" href="/presentations/highlight-js/github.min.css">
+  </head>
+  <body>
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section><h2 id="modelling-and-solving">Modelling and Solving</h2>
+<h2 id="with-choco-solver">with Choco-solver</h2>
+</br>
+Charles Prud'homme, Sept. 2025
+<p>IMT Atlantique, LS2N, TASC</p>
+<br/>
+<small style="color:#C70039">< press [N] / [P] to go the next / previous slide ></small>
+</section><section>
+
+
+<section data-shortcode-section>
+<h3 id="we-will-see">We will see</h3>
+<ul>
+<li>A short presentation of Choco-solver</li>
+<li>The key elements of modelling and solving</li>
+<li>Some ways of extending the library</li>
+<li>Playing with some problems</li>
+</ul>
+</section><section>
+<h3 id="we-will-not-see">We will not see</h3>
+<ul>
+<li>What is Constraint Programming</li>
+<li>How a constraint solver works, see <a href="https://choco-solver.org/tinytiny">this presentation instead</a></li>
+<li>High-level modelling languages like <a href="http://xcsp.org/">XCSP$^3$ / PyCSP3</a>, <a href="https://www.minizinc.org/index.html">MiniZinc</a>, <a href="https://cpmpy.readthedocs.io/en/latest/">CPMpy</a>, &hellip;</li>
+</ul>
+
+</section>
+</section>
+
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h1 id="choco-solver">Choco-solver</h1>
+</section><section>
+<h2 id="features">Features</h2>
+<ul>
+<li>Since the early 2000s</li>
+<li>Open-source (BSD-License)</li>
+<li>Java-based (jdk8)</li>
+<li>Python binding available (<em>WIP</em>)</li>
+<li>Available on <a href="https://mvnrepository.com/artifact/org.choco-solver/choco-solver">MCR</a> and <a href="https://pypi.org/project/pychoco/">pypi</a></li>
+<li>Hosted on <a href="https://github.com/chocoteam/choco-solver">Github</a></li>
+</ul>
+</section><section>
+<ul>
+<li>Parsers for <a href="https://xcsp.org/">XCSP$^3$</a>, <a href="https://www.minizinc.org/index.html">MiniZinc</a> and <a href="https://jix.github.io/varisat/manual/0.2.0/formats/dimacs.html">DIMACS CNF</a> files</li>
+<li>Included in PyCSP3 (<code>-solver=choco</code>)</li>
+<li>As tier 3 solver in CPMpy (since 0.9.17)</li>
+</ul>
+</section><section>
+<ul>
+<li>About 3 releases per year</li>
+<li><span style="color:#3BAFDA">6.0.0</span>
+is the current version</li>
+<li>$\approx5,860$ downloads per month, according to MCR</li>
+<li>5 types of variable available</li>
+<li>$&gt; 200$  propagators</li>
+<li>State-of-the-art search strategies</li>
+<li>LCG-ready</li>
+</ul>
+</section><section>
+<p>Visit the website for more documentation, tutorials, javadoc , etc</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="https://choco-solver.org/">
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="getting-started">Getting Started</h1>
+</section><section>
+<ul>
+<li>JRE 17+ installed (<a href="https://www.oracle.com/java/technologies/downloads/">Oracle</a> or <a href="https://jdk.java.net/21/">OpenJDK</a>)</li>
+<li>Easier with:
+<ul>
+<li>an IDE: <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>, <a href="https://www.eclipse.org/downloads/">Eclipse IDE</a>, <a href="https://netbeans.apache.org/">Apache NetBeans</a> or <a href="https://code.visualstudio.com/">VSCode</a></li>
+<li>a build automation tool: <a href="https://maven.apache.org/download.cgi">Apache Maven 3+</a> or <a href="https://gradle.org/releases/">Gradle 6+</a></li>
+</ul>
+</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="https://choco-solver.org/docs/getting-started/">
+</section><section>
+<h2 id="a-first-example">A first example</h2>
+<pre><code class="language-java" data-line-numbers="|2|3|4-10|11-14">int n = 8;
+Model model = new Model(n + &quot;-queens problem&quot;);
+IntVar[] vs = model.intVarArray(&quot;Q&quot;, n, 1, n);
+model.allDifferent(vs).post();
+for(int i  = 0; i &lt; n-1; i++){
+    for(int j = i + 1; j &lt; n; j++){
+        model.arithm(vs[i], &quot;!=&quot;, vs[j], &quot;-&quot;, j - i).post();
+        model.arithm(vs[i], &quot;!=&quot;, vs[j], &quot;+&quot;, j - i).post();
+    }
+}
+Solution solution = model.getSolver().findSolution();
+if(solution != null){
+    System.out.println(solution.toString());
+}
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="modelling">Modelling</h1>
+</section><section>
+<h2 id="creation-of-a-model-instance">Creation of a <code style='font-family: monospace;color:#05507D;'>Model</code> instance</h2>
+</section><section>
+<p><code style='font-family: monospace;color:#05507D;'>Model</code> is the <span style="color:#3BAFDA">central object</span>
+in the Choco-solver library</p>
+<ul>
+<li>Creating a model is the <span style="color:#3BAFDA">first essential step</span>
+in declaring and
+solving a problem.</li>
+<li>Variables are declared via the model</li>
+<li>Constraints too</li>
+</ul>
+<p>In fact, almost anything can be done via a <code style='font-family: monospace;color:#05507D;'>Model</code> instance$^1$.</p>
+<p><small>$1$: So you don’t have to know all the objects in advance.</small></p>
+</section><section>
+<h3 id="several-builders">Several builders</h3>
+<pre><code class="language-java" data-line-numbers="|1-2">Model m = new Model();								 							 // 1
+Model m = new Model(String name);					 					 // 2
+Model m = new Model(settings settings);				 			 // 3
+Model m = new Model(String name, Settings settings); // 4
+</code></pre>
+<p>Prefer choices 1 and 2 to start with.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code1"
+      data-transition="none-out">
+<pre><code class="language-java" data-line-numbers>package apetizer;
+
+
+
+public class Example{
+
+    public static void main(String[] args){
+
+    }
+}
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code2"
+      data-transition="none-in">
+<pre><code class="language-java" data-line-numbers="3,8">package apetizer;
+
+import org.chocosolver.solver.Model;
+
+public class Example{
+
+    public static void main(String[] args){
+        Model myModel = new Model(&quot;My first model&quot;);
+    }
+}
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="variables-and-domains">Variables and domains</h1>
+</section>
+<section data-noprocess >
+<h2>A variable </h2>
+<ul>
+<li class="fragment">is a symbolic representation of an <span style="color:deepskyblue;">unknown</span> quantity/decision,</li>
+<li class="fragment">comes with potential values that the solver can assign to it, a.k.a. its <span style="color:deepskyblue;">domain</span>,</li>
+<li class="fragment">to be determined/<span style="color:deepskyblue;">assigned</span> during the problem-solving process.</li>
+</ul>
+<!--</section> to bind to the next section tag-->
+</section><section>
+<h3 id="in-a-scheduling-problem">In a scheduling problem</h3>
+<ul>
+<li><span style="color:#3BAFDA">Variables</span>
+:  the start time of various tasks</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the set of possible start time slots</li>
+</ul>
+<figure>
+    <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
+</figure>
+</section><section>
+<h3 id="in-a-packing-problem">In a packing problem</h3>
+<ul>
+<li><span style="color:#3BAFDA">Variables</span>
+: the assignment of items to bins</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the set of possible bins</li>
+</ul>
+<figure>
+    <img src="/images/overview/binpacking.svg" alt="" width="20%" >
+</figure>
+</section><section>
+<h3 id="in-a-routing-problem">In a routing problem</h3>
+<ul>
+<li><span style="color:#3BAFDA">Variables</span>
+: the nodes visited on a tour</li>
+<li><span style="color:#3BAFDA">Domains</span>
+: the potential successors of each node</li>
+</ul>
+<figure>
+    <img src="/images/overview/routing.svg" alt="" width="30%" >
+</figure>
+</section><section>
+<h3 id="different-types-of-variables-are-available">Different types of variables are available:</h3>
+<ul>
+<li><code style='font-family: monospace;color:#05507D;'>IntVar</code> has its values in $\mathbb{Z}^1$</li>
+<li><code style='font-family: monospace;color:#05507D;'>IntView</code>s relies on an <code style='font-family: monospace;color:#05507D;'>IntVar</code>
+<ul>
+<li>like <code style='font-family: monospace;color:#05507D;'>IntAffineView</code></li>
+</ul>
+</li>
+<li><code style='font-family: monospace;color:#05507D;'>BoolVar</code> (and <code style='font-family: monospace;color:#05507D;'>BoolView</code>) has its values in {$0,1$}
+<ul>
+<li>sub-type of <code style='font-family: monospace;color:#05507D;'>IntVar</code></li>
+</ul>
+</li>
+</ul>
+</br>
+</br>
+<small>$1$ : But it is always necessary to declare at least an interval.</small>
+</section><section>
+<ul>
+<li><code style='font-family: monospace;color:#05507D;'>Task</code> to manage with task/interval: $s+d = e$</li>
+<li><code style='font-family: monospace;color:#05507D;'>SetVar</code> and <code style='font-family: monospace;color:#05507D;'>SetView</code></li>
+<li><code style='font-family: monospace;color:#05507D;'>(Un)DirectedGraphVar</code> and  <code style='font-family: monospace;color:#05507D;'>GraphView</code></li>
+<li>and also <code style='font-family: monospace;color:#05507D;'>RealVar</code></li>
+</ul>
+</section><section>
+<h3 id="ways-to-declare-integer-variables">Ways to declare integer variables</h3>
+<pre><code class="language-java" data-line-numbers="|2-3|4|5">Model m = new Model();
+IntVar x = m.intVar(&quot;x&quot;, 0, 4);
+IntVar y = m.intVar(&quot;y&quot;, new int[]{1,3,5});
+IntVar[] vs = m.intVarArray(&quot;v&quot;, 4, 1, 3);
+IntVar[][] ws = m.intVarMatrix(&quot;w&quot;, 2, 2, 1, 2);
+</code></pre>
+</section><section>
+<h3 id="ways-to-declare-boolean-variables">Ways to declare Boolean variables</h3>
+<pre><code class="language-java" data-line-numbers="|2-3|4">Model m = new Model();
+BoolVar b = m.boolVar(&quot;b&quot;);
+BoolVar[] bs = m.boolVarArray(&quot;bs&quot;, 10);
+BoolVar[][] bss = m.boolVarMatrix(&quot;bss&quot;, 4, 3);
+</code></pre>
+<p>Similar APIs for other types of variables.</p>
+</section><section>
+<h3 id="some-views-declaration">Some views declaration</h3>
+<pre><code class="language-java" data-line-numbers="|3|4|5">Model m = new Model();                        
+IntVar x = m.intVar(&quot;x&quot;, 0, 5);               
+IntVar v = m.intView(2, x, -3); // v = 2.x - 3
+BoolVar b = m.isEq(x, 2); // b = (x == 2)     
+BoolVar n = b.not(); // n = !b    
+</code></pre>
+</br>
+<p><small>And also <code style='font-family: monospace;color:#05507D;'>abs(x), mu(x, 2), neg(x), isLeq(x, 3),</code> &hellip;</small></p>
+</section><section>
+<h3 id="reading-a-variable">Reading a variable</h3>
+<pre><code class="language-java" data-line-numbers="|4|6">Model m = new Model();                                    
+IntVar x = m.intVar(&quot;x&quot;, 0, 4);                           
+System.out.printf(&quot;Variable : %s = [%d, %d]\n&quot;,           
+        x.getName(), x.getLB(), x.getUB());               
+System.out.printf(&quot;%s is %s instantiated\n&quot;,              
+        x.getName(), x.isInstantiated() ? &quot;&quot; : &quot;not&quot;);   
+</code></pre>
+<p>outputs</p>
+<pre><code class="language-shell" data-line-numbers>Variable : x = [0, 4]
+x is not instantiated   
+</code></pre>
+<p><span class='fragment ' >If instantiated, a variable can return its assignment value with <code>x.getValue()</code>.</span></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="abcde-x-4--edcba">ABCDE x 4 = EDCBA</h3>
+<p>If ABCDE times 4 equals EDCBA, and each letter is a different digit from 0 to 9,</p>
+<p>what is the value of each letter?</p>
+<p><a href="https://mindyourdecisions.com/blog/2023/11/22/abcde-times-4-equals-edcba/">source</a></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-model">A Model</h3>
+<ul>
+<li>
+<p><strong>Variables</strong>:</p>
+<ul>
+<li>$\forall i \in \{a,b,c,d,e\}, l_i \in [\![ 0,9]\!]$</li>
+</ul>
+</li>
+<li>
+<p><strong>Constraints</strong> :</p>
+<ul>
+<li>$\forall i\neq j \in \{a,b,c,d,e\}, l_i \neq l_j$</li>
+<li>$39999l_a + 3990l_b + 300l_c - 960l_d - 9996l_e = 0$</li>
+</ul>
+</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="choco-solver-code">Choco-solver code</h3>
+<pre><code class="language-java">// Create a model
+Model model = new Model(&quot;ABCDE x 4 = EDCBA&quot;);
+
+// Declare the variables with their initial domain
+IntVar A = model.intVar(&quot;A&quot;, 0, 9);
+IntVar B = model.intVar(&quot;B&quot;, 0, 9);
+IntVar C = model.intVar(&quot;C&quot;, 0, 9);
+IntVar D = model.intVar(&quot;D&quot;, 0, 9);
+IntVar E = model.intVar(&quot;E&quot;, 0, 9);
+
+// Constraint 1:
+// &quot;each letter is a different digit from 0 to 9&quot;
+// the second part of the constraint is defined
+// by the domain of each variable
+model.allDifferent(A, B, C, D, E).post();
+
+// Constraint 2:
+// &quot;org.step1.ABCDE times 4 equals EDCBA&quot;
+// 40000 A + 4000 B + 400 C + 40 D + 4 E = 10000 E + 1000 D + 100 C + 10 B + A
+// &lt;=&gt; 39999 A + 3990 B + 300 C + -960 D - 9996 E = 0
+model.scalar(
+        new IntVar[]{A, B, C, D, E},
+        new int[]{39_999, 3_990, 300, -960, -9_996},
+        &quot;=&quot;, 0).post();
+
+// Find a solution and print it
+if (model.getSolver().solve()) {
+      int[] sol = new int[]{A.getValue(), B.getValue(), C.getValue(), D.getValue(), E.getValue()};
+      System.out.printf(&quot; %d%d%d%d%d\nx    4\n------\n %d%d%d%d%d\n&quot;,
+        sol[0], sol[1], sol[2], sol[3], sol[4],
+        sol[4], sol[3], sol[2], sol[1], sol[0]);
+}else{
+      System.out.println(&quot;No solution found&quot;);
+}        
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="output">Output</h3>
+<pre><code class="language-shell" data-line-numbers> 21978
+x    4
+------
+ 87912
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="can-you-guess-his-year-of-birth">Can you guess his year of birth?</h3>
+<p>Someone comes up to you and says:</p>
+<blockquote>
+<p>On my birthday in 2025, my age will be equal to the sum of the digits of my birth year. I am less than 100 years old. What could my birth year be?</p>
+</blockquote>
+<p>Can you model this as a CP problem?</p>
+<p><a href="https://mindyourdecisions.com/blog/2023/07/03/age-equals-sum-of-birth-year-digits/">source</a></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-model-1">A Model</h3>
+<ul>
+<li><strong>Parameters</strong>
+<ul>
+<li>$input$: the current year</li>
+</ul>
+</li>
+<li><strong>Variables</strong>
+<ul>
+<li>$\forall i \in \{th,hu,te,on\}, x_i \in [\![0,9]\!]$</li>
+<li>$age \in [\![0,99]\!]$</li>
+</ul>
+</li>
+<li><strong>Constraints</strong>
+<ul>
+<li>$x_{th} + x_{hu} + x_{te} + x_{on} = {age}$</li>
+<li>$1000x_{th} + 100x_{hu} + 10x_{te} + x_{on} + age = input$</li>
+</ul>
+</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="hints">Hints</h3>
+<pre><code class="language-java">model.sum(IntVar[], String, int)
+model.scalar(IntVar[], int[], String, int)
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-choco-solver-code">A Choco-solver code</h3>
+<pre><code class="language-java">Model model = new Model(&quot;Age equals sum of birth year digits&quot;);
+
+IntVar th = model.intVar(&quot;th&quot;, 0, 9);
+IntVar hu = model.intVar(&quot;hu&quot;, 0, 9);
+IntVar te = model.intVar(&quot;te&quot;, 0, 9);
+IntVar on = model.intVar(&quot;on&quot;, 0, 9);
+
+IntVar age = model.intVar(&quot;age&quot;, 0, 99);
+
+model.sum(new IntVar[]{th, hu, te, on}, &quot;=&quot;, age).post();
+model.scalar(
+        new IntVar[]{th, hu, te, on, age},
+        new int[]{1_000, 100, 10, 1, 1},
+        &quot;=&quot;, 2025).post();
+
+while (model.getSolver().solve()) {
+    int[] sol = new int[]{th.getValue(), hu.getValue(), te.getValue(), on.getValue()};
+    System.out.printf(&quot;I was born in %d%d%d%d, I am %d years old\n&quot;, sol[0], sol[1], sol[2], sol[3], age.getValue());
+}
+if(model.getSolver().getSolutionCount() == 0) {
+    System.out.println(&quot;No solution found&quot;);
+}
+
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="output-1">Output</h3>
+<pre><code class="language-shell" data-line-numbers>I was born in 1998, I am 27 years old
+I was born in 2016, I am 9 years old
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="constraints">Constraints</h1>
+<h2 id="and-propagators">(and propagators)</h2>
+</section>
+<section data-noprocess >
+<h2>A constraint </h2>
+<ul>
+<li class="fragment">represents a problem's <span style="color:deepskyblue;">requirements or limitations</span>,</li>
+<li class="fragment">defines a <span style="color:deepskyblue;">relationships among variables,</span> </li>
+<li class="fragment">expresses <span style="color:deepskyblue;">conditions</span> that must be satisfied by the values assigned to the variables,</li>
+<li class="fragment">is equipped with a <span style="color:deepskyblue;">filtering</span> algorithm.</li>
+</ul>
+<p class="fragment">For example: $X < Y$</p>
+<!--</section> to bind to the next section tag-->
+</section><section>
+<script src="dist/reveal.js"></script>
+<p>The goal of constraint programming is to find a combination of variable assignments that <span style="color:#3BAFDA">simultaneously</span>
+satisfies <span style="color:#3BAFDA">all</span>
+the specified constraints.</p>
+</section><section>
+<h2 id="basic-constraints">Basic constraints</h2>
+</section><section>
+<small>
+<table>
+  <thead>
+      <tr>
+          <th>Constraint</th>
+          <th>Syntax</th>
+          <th>Comment</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>$x + y = z$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.arithm(x,&quot;+&quot;,y,&quot;=&quot;,z)</code></td>
+          <td>Up to 3 variables</td>
+      </tr>
+      <tr>
+          <td>$\sum_i C_i\cdot X_i = 11$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.scalar(X,C,&quot;=&quot;,11)</code></td>
+          <td>See also <code style='font-family: monospace;color:#05507D;'>m.sum(x,op,c)</code></td>
+      </tr>
+      <tr>
+          <td>$x\times y = z$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.times(x,y,z)</code></td>
+          <td>Alt. Euclidean division</td>
+      </tr>
+      <tr>
+          <td>$y = |x|$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.absolute(y,x)</code></td>
+          <td>Or view: <code style='font-family: monospace;color:#05507D;'>y = m.abs(x)</code></td>
+      </tr>
+      <tr>
+          <td>$ |x-y | &gt; 3$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.distance(x,y,&quot;&gt;&quot;, 3)</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>$z = \max(x,y)$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.max(z,x,y)</code></td>
+          <td>Alt. $\min$</td>
+      </tr>
+      <tr>
+          <td>$\bigvee_i B_i$</td>
+          <td><code style='font-family: monospace;color:#05507D;'>m.or(B)</code></td>
+          <td>Alt. <code style='font-family: monospace;color:#05507D;'>m.and(B)</code></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+</br>
+Arrays of variables are designated by capital letters</small>
+</section><section>
+<h3 id="adding-a-constraint-to-the-model">Adding a constraint to the model</h3>
+<small>
+<p>Once a constraint has been created, it must be <span style="color:#3BAFDA">activated or reified</span></p>
+<table>  
+	<tr>
+		<th>Action</th>
+		<th>Syntax</th>
+	</tr>
+	<tr><td></td><td></td></tr>
+	<tr>
+		<td rowspan="1">Activate $c$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.post();</code></td>
+	</tr>
+	<tr>
+		<td>$c \iff b$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.reifyWith(b);</code></br><code style='font-family: monospace;color:#05507D;'>BoolVar b = c.reify();</code></td>
+	</tr>  
+	<tr>
+		<td rowspan="1">$c \implies  b$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.implies(b);</code></td>
+	</tr>
+	<tr>
+		<td rowspan="1">$b \implies c$</td>
+		<td><code style='font-family: monospace;color:#05507D;'>c.impliedBy(b);</code></td>
+	</tr>
+	<tr/>
+</table>
+</br>
+</small>
+</section><section>
+<h3 id="what-if-you-want-to-express-such-a-a-non-linear-constraint--">What if you want to express such a a non-linear constraint 🔋 ?</h3>
+<figure>
+    <img src="/images/overview/battery.svg" alt="This is an alt" width="70%" >
+</figure>
+</section><section>
+<h2 id="in-extension">In extension</h2>
+</section><section>
+<p>This can be achieved with a <em style="font-variant: small-caps">Table</em>  constraint</p>
+<pre><code class="language-java" data-line-numbers="|4-10|11">Model m = new Model();
+IntVar c = m.intVar(&quot;SoC&quot;, 0, 100);
+IntVar v = m.intVar(&quot;cV&quot;, 1140, 1280);
+Tuples tuples = new Tuples();
+tuples.add(100, 1273);
+tuples.add(90, 1240);
+tuples.add(80, 1235);
+//...
+tuples.add(20, 1195);
+tuples.add(10, 1151);
+m.table(c, v, tuples).post();
+</code></pre>
+</section><section>
+<h3 id="types-of-table-constraints">Types of <em style="font-variant: small-caps">Table</em> constraints</h3>
+</section><section>
+<p>Allowed tuples</p>
+<pre><code class="language-java">Model m = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 1, 3);
+
+// all equal
+Tuples tuples = new Tuples();
+tuples.add(1, 1, 1);
+tuples.add(2, 2, 2);
+tuples.add(3, 3, 3);
+
+m.table(xs, tuples).post();
+</code></pre>
+</section><section>
+<p><span style="color:#3BAFDA">Forbidden</span>
+tuples</p>
+<pre><code class="language-java" data-line-numbers="4-5|">Model m = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 1, 3);
+
+// *not* all equal
+Tuples tuples = new Tuples(false);
+tuples.add(1, 1, 1);
+tuples.add(2, 2, 2);
+tuples.add(3, 3, 3);
+
+m.table(xs, tuples).post();
+</code></pre>
+</section><section>
+<p><span style="color:#3BAFDA">Universal value</span></p>
+<p><small>Like <code>'*'</code> symbol in regular expression.</small></p>
+<pre><code class="language-java" data-line-numbers="5-7|">Model model = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 0, 3);
+
+Tuples ts = new Tuples();
+int star = 99;
+ts.setUniversalValue(star);
+ts.add(3, star, 1);
+ts.add(1, 2, 3);
+ts.add(2, 3, 2);
+model.table(xs, ts).post();
+</code></pre>
+</section><section>
+<p><span style="color:#3BAFDA">Hybrid</span>
+tuples</p>
+<pre><code class="language-java" data-line-numbers="4-8|">Model model = new Model();
+IntVar[] xs = m.intVarArray(&quot;x&quot;, 3, 1, 3);
+
+HybridTuples tuples = new HybridTuples();
+tuples.add(ne(1), any(), eq(3));
+tuples.add(eq(3), le(2), ne(1));
+tuples.add(lt(3), eq(2), ne(b));
+tuples.add(gt(2), ge(2), any());
+
+model.table(xs, tuples).post();
+</code></pre>
+</section><section>
+<p>It is also possible to express a constraint from a variable</p>
+</section><section>
+<h3 id="expressions">Expressions</h3>
+</section><section>
+<small>
+<table>
+  <thead>
+      <tr>
+          <th>Family</th>
+          <th>Syntax</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Arithmetic</td>
+          <td><code style='font-family: monospace;color:#05507D;'>x.neg() x.abs() x.sqr()</code><br/><code style='font-family: monospace;color:#05507D;'>x.add(i, &hellip;) x.sub(i, &hellip;)</code> <br/> <code style='font-family: monospace;color:#05507D;'>x.div(i) x.mod(i) x.pow(i) x.dist(i)</code> <br> <code style='font-family: monospace;color:#05507D;'>x.max(i, &hellip;) x.min(i, &hellip;)</code></td>
+      </tr>
+      <tr>
+          <td>Relational</td>
+          <td><code style='font-family: monospace;color:#05507D;'>x.eq(i) x.ne(i) x.in(i, &hellip;) x.nin(i, &hellip;)</code><br/><code style='font-family: monospace;color:#05507D;'>x.lt(i) x.le(i) x.gt(i) x.ge(i)</code></td>
+      </tr>
+      <tr>
+          <td>Logical</td>
+          <td><code style='font-family: monospace;color:#05507D;'>x.not() x.imp(r) x.iff(r) x.ift(r1, r2)</code> <br> <code style='font-family: monospace;color:#05507D;'>x.and(r, &hellip;) x.or(r, &hellip;) x.xor(r, &hellip;)</code></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<br/>
+$i$ is either an <code style='font-family: monospace;color:#05507D;'>int</code>, a <code style='font-family: monospace;color:#05507D;'>IntVar</code> or an arithmetical expression,
+<br/>$r$ is a relational expression.
+</small>
+</section><section>
+<h3 id="example">Example</h3>
+<p>$(x = y + 1) \lor (x+2 \leq 6)$</p>
+<pre><code class="language-java" data-line-numbers="|3">IntVar x = //...
+IntVar y = //...
+x.eq(y.add(1)).or(x.add(2).le(6)).post();
+</code></pre>
+</section><section>
+<h3 id="adding-an-expression-to-the-model">Adding an expression to the model</h3>
+<small>
+Here again, there are different ways to work with an expression $e$, depending on its type:
+<table>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Ar.</th>
+          <th>Re.</th>
+          <th>Lo.</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>e.post();</code></td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>c = e.decompose();</code> <br/><code style='font-family: monospace;color:#05507D;'>c = e.extension();</code></td>
+          <td>❌<br/>❌</td>
+          <td>✅<br/>✅</td>
+          <td>✅<br/>✅</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>x = e.intVar();</code><br/><code style='font-family: monospace;color:#05507D;'>b = e.boolVar();</code></td>
+          <td>✅<br/>❌</td>
+          <td>❌<br/>✅</td>
+          <td>❌<br/>✅</td>
+      </tr>
+  </tbody>
+</table>
+</small>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="sujiko">Sujiko</h3>
+<p>The puzzle takes place on a 3x3 grid with four circled number clues at the centre of each quadrant which indicate the sum of the four numbers in that quadrant.</p>
+<p>The numbers 1-9 must be placed in the grid, in accordance with the circled clues, to complete the puzzle.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="empty-grid">Empty grid</h3>
+<figure>
+    <img src="/images/overview/sujiko.png" alt="This is an alt" width="50%" >
+</figure>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-model">A Model</h3>
+<ul>
+<li><strong>Parameters</strong>
+<ul>
+<li>$S_0, S_1, S_2, S_3$: the four circled number clues</li>
+<li>$f_{i,j}$: some fixed cells</li>
+</ul>
+</li>
+<li><strong>Variables</strong>
+<ul>
+<li>$\forall i,j \in [\![0,2]\!]^2, x_{i,j} \in [\![1,9]\!]$</li>
+</ul>
+</li>
+<li><strong>Constraints</strong>
+<ul>
+<li>$\forall i, i&rsquo;, j, j&rsquo;  \in [\![0,2]\!]^4, (i,j)\neq(i&rsquo;,j&rsquo;), x_{i,j} \neq x_{i&rsquo;,j&rsquo;}$</li>
+<li>$\forall i \in [\![0,3]\!], k = \frac{i}{2}, \ell = i \mod 2,$
+$x_{k,\ell} + x_{k + 1,\ell} + x_{k,\ell + 1} + x_{k + 1,\ell +1} = S_i$</li>
+<li>+clues</li>
+</ul>
+</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="hints">Hints</h3>
+<pre><code class="language-java">model.allDifferent(IntVar[])
+model.sum(IntVar[], String, int)
+model.arithm(IntVar, String, int)
+</code></pre>
+<pre><code class="language-java">int[] circles = new int[]{10, 21, 18, 20};
+int[] clues = new int[]{0, 0, 0, 0, 0, 0, 8, 0, 7};
+</code></pre>
+<pre><code class="language-java">private IntVar[] quadrant(IntVar[][] grid, int i) {
+	int x = i / 2;
+	int y = i % 2;
+	return new IntVar[]{grid[x][y], grid[x + 1][y], grid[x][y + 1], grid[x + 1][y + 1]};
+}
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="a-choco-solver-code">A Choco-solver code</h3>
+<pre><code class="language-java">Model model = new Model(&quot;Sujiko&quot;);
+
+IntVar[][] grid = model.intVarMatrix(&quot;x&quot;, 3, 3, 1, 9);
+
+// Constraint: &quot;The numbers 1-9 must be placed in the grid&quot;
+// implies that all values must be different
+model.allDifferent(ArrayUtils.flatten(grid)).post();
+
+// Constraint: &quot;each quadrant which indicate the sum of the four numbers in that quadrant&quot;
+for (int i = 0; i &lt; 4; i++) {
+	IntVar[] cells = quadrant(grid, i);
+	model.sum(cells, &quot;=&quot;, circles[i]).post();
+}
+
+// Constraint: &quot;the clues&quot;
+for (int i = 0; i &lt; 3; i++) {
+	for (int j = 0; j &lt; 3; j++) {
+		if (clues[i * 3 + j] != 0) {
+			model.arithm(grid[i][j], &quot;=&quot;, clues[i * 3 + j]).post();
+		}
+	}
+}
+
+while (model.getSolver().solve()) {
+	System.out.println(&quot;Solution:&quot;);
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++) {
+			System.out.print(grid[i][j].getValue() + &quot; &quot;);
+		}
+		System.out.println();
+	}
+}
+if (model.getSolver().getSolutionCount() == 0) {
+	System.out.println(&quot;No solution found&quot;);
+}
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h3 id="output">Output</h3>
+<pre><code class="language-shell" data-line-numbers>Solution:
+1 4 9 
+3 2 6 
+8 5 7 
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="global-constraints">Global Constraints</h1>
+</section><section>
+<h2 id="definitions">Definition(s)</h2>
+<blockquote>
+<p>an expressive and concise condition involving a non-fixed number of variables</p>
+</blockquote>
+<p><a href="https://sofdem.github.io/gccat/gccat/preface.html">[GCCAT]</a></p>
+<p class="fragment">allDifferent($x_1,x_2,\dots$)</p>
+</section><section>
+<h2 id="definitions-1">Definition(s)</h2>
+<blockquote>
+<p>a constraint C is often called &ldquo;global&rdquo; when &ldquo;processing&rdquo; as a whole gives better results than &ldquo;processing&rdquo; any conjunction of constraints that is &ldquo;semantically equivalent&rdquo; to C</p>
+</blockquote>
+<p><a href="https://www.lirmm.fr/~bessiere/Site/stock/cp03-glob.pdf">[BvH03]</a></p>
+<p class="fragment">allDifferent($x_1,x_2,x_3$) $\iff (x_1\neq x_2) \land (x_2\neq x_3) \land (x_3\neq x_1)$</p>
+</section><section>
+<h3 id="example-of-constraints">Example of constraints</h3>
+<p><span style="color:#ED5565">cumulative(starts, durations, heights, capacity)</span></p>
+<figure>
+    <img src="/images/overview/scheduling.svg" alt="This is an alt" width="40%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">Cumulative</em> constraint. </figcaption>
+</figure>
+</section><section>
+<h3 id="example-of-constraints-1">Example of constraints</h3>
+<p><span style="color:#ED5565">binpacking(bins, weigths, capacity)</span></p>
+<figure>
+    <img src="/images/overview/binpacking.svg" alt="" width="20%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">BinPacking</em> constraint. </figcaption>
+</figure>
+</section><section>
+<h3 id="example-of-constraints-2">Example of constraints</h3>
+<p><span style="color:#ED5565">circuit(successors)</span></p>
+<figure>
+    <img src="/images/overview/routing.svg" alt="" width="30%" >
+    <figcaption>Solution for a <em style="font-variant: small-caps">Circuit</em> constraint. </figcaption>
+</figure>
+</section><section>
+<h3 id="some-cardinality-constraints">Some cardinality constraints</h3>
+<small>
+<br/>
+<br/>
+<table>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.allDifferent(X)</code></td>
+          <td>$x_i\neq x_j, \forall i&lt; j$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.among(n, X, v)</code></td>
+          <td>$|x_i : x_i \cap v\neq \emptyset | = n$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.count(y, X, n)</code></td>
+          <td>$ | \{ x_i : x_i = y \} | = n$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.nValues(X, n)</code></td>
+          <td>$|x_i| = n$</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<br/>
+<p><strong>Notations</strong></p>
+<ul>
+<li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
+<li>Index: $ 0 \leq i &lt; |X|$</li>
+</ul>
+</small>
+</section><section>
+<h3 id="some-connection-constraints">Some connection constraints</h3>
+<small>
+<table>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.element(v, X, i, o)</code></td>
+          <td>$\exists i : v = x_{i - o}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.argmax(i, o, X)</code></td>
+          <td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.argmin(i, o, X)</code></td>
+          <td>$i \in \{j - o : x_j = \max\{x_k\}\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.max(m, X)</code></td>
+          <td>$m = \max\{x_i\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.min(m, X)</code></td>
+          <td>$m = \min\{x_i\}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.inverseChanneling(X, Y)</code></td>
+          <td>$ \forall i: x_i = j \iff y_j = i \quad (|X| = |Y|)$</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<br/>
+<p><strong>Notations</strong></p>
+<ul>
+<li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
+<li>Index: $ 0 \leq i &lt; |X|$</li>
+</ul>
+</small>
+</section><section>
+<h3 id="some-packing-and-scheduling-constraints">Some Packing and Scheduling constraints</h3>
+<small>
+<table>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.binPacking(X, S, L, o)</code></td>
+          <td>$ \forall b \in \{x_i\},\sum_{i : x_i = b} S_i \leq L_b$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.cumulative(A, H, c)</code></td>
+          <td>$ \forall t \in \mathcal{N},\sum\{h_i : a^s_i \leq t &lt; a^e_i\} \leq c$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.diffN(X, Y, W, H, true)</code></td>
+          <td>$\forall i&lt;j, x_{i} + w_{i} \leq x_{j} \lor x_{j} + h_{j} ≤ x_{i}$<br/>$\quad\quad\quad \lor y_{i} + h_{i} \leq y_{j} \lor y_{j} + w_{j} ≤ y_{i}$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.knapsack(O, W, E, w, e)</code></td>
+          <td>$\sum_{i} w_i \times O_i = w \land \sum_{i} e_i \times O_i = e$</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<br/>
+<p><strong>Notations</strong></p>
+<ul>
+<li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
+<li>Index: $ 0 \leq i &lt; |X|$</li>
+<li>Task (or activity): $a^s + a^d = a^e$</li>
+</ul>
+</small>
+</section><section>
+<h3 id="some-graph-based-constraints">Some Graph-based constraints</h3>
+<small>
+<table>
+  <thead>
+      <tr>
+          <th>Syntax</th>
+          <th>Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.circuit(X) </code></td>
+          <td>$\{(i, x_i) : i \neq x_i\}$ forms a circuit of size $&gt; 1$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.path(X, s, e)</code></td>
+          <td>$\{(i, x_i) : i \neq x_i\}$ forms a path from $s$ to $e$</td>
+      </tr>
+      <tr>
+          <td><code style='font-family: monospace;color:#05507D;'>m.tree(X, n)</code></td>
+          <td>$\{(i, x_i) : i \neq x_i\}$ is partitioned into $n$ anti-arborescences</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<br/>
+<p><strong>Notations</strong></p>
+<ul>
+<li>Arrays: $X=\langle x_0, x_1,\ldots\rangle$</li>
+<li>Index: $ 0 \leq i &lt; |X|$</li>
+<li>A pair $(i, x_i)$ represents an arc in a graph induced by $X$</li>
+</ul>
+</small>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h2 id="magic-sequence">Magic Sequence</h2>
+<p>A magic series of length $n$ is a sequence of integers $[x_0, &hellip;, x_{n-1}]$  between $0$ and $n-1$, such that for all $i \in \{0 , &hellip;, n-1\}$, the number $i$ occurs exactly $x_i$ times in the sequence.</p>
+<p>For instance, $[1,2,1,0]$ is a magic series of length $4$ :</p>
+<ul>
+<li>value 0 occurs once</li>
+<li>value 1 occurs twice</li>
+<li>value 2 occurs once</li>
+<li>value 3 does not occur</li>
+</ul>
+<p>Write a CP model in java using the Choco solver to find magic series for any given n.</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="solving">Solving</h1>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code3"
+      data-transition="none-out">
+<h2 id="csp">CSP</h2>
+<p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
+<pre><code class="language-java" data-line-numbers="|5-6">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+if(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>A call to <code style='font-family: monospace;color:#05507D;'>solver.solve()</code> returns <code style='font-family: monospace;color:#05507D;'>true</code> if a solution exists, <code style='font-family: monospace;color:#05507D;'>false</code> otherwise.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code4"
+      data-transition="in-out">
+<h2 id="csp-1">CSP</h2>
+<p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
+<pre><code class="language-java" data-line-numbers="7-9">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+if(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>Since the <code style='font-family: monospace;color:#05507D;'>solver</code> stops on a solution,
+<br/>
+all the variables are fixed and their value can be read.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code5"
+      data-transition="none-in">
+<h2 id="csp-2">CSP</h2>
+<p><small>The solving process is managed by a unique <code style='font-family: monospace;color:#05507D;'>Solver</code> instance attached to a <code style='font-family: monospace;color:#05507D;'>model</code>.</small></p>
+<pre><code class="language-java" data-line-numbers="6">Model model = new Model();
+
+// ... problem description ...
+
+Solver solver = model.getSolver();
+while(solver.solve()){
+	// here you can read the variables' value
+	System.out.printf(&quot;%s is fixed to %d\n&quot;,
+						x.getName(), x.getValue());
+}
+</code></pre>
+<p>Enumerating solutions can be done in a <code style='font-family: monospace;color:#05507D;'>while-loop</code>.
+<br/>
+<br/></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code6"
+      data-transition="none-out">
+<h2 id="solution">Solution</h2>
+<p>We can capture the current state of variables in a <code style='font-family: monospace;color:#05507D;'>Solution</code>.</p>
+<pre><code class="language-java" data-line-numbers="1,3">List&lt;Solution&gt; solutions = new ArrayList&lt;&gt;();
+while(solver.solve()){
+	solutions.add(new Solution(model).record());
+}
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      id="code7"
+      data-transition="none-in">
+<h2 id="solution-1">Solution</h2>
+<p>This can also be achieved in one line of code
+<br/></p>
+<pre><code class="language-java">Solution solution = solver.findSolution();
+</code></pre>
+<pre><code class="language-java">List&lt;Solution&gt; solutions = solver.findAllSolutions();
+</code></pre>
+<br/>
+</section><section>
+<h2 id="cop">COP</h2>
+<p>An <code style='font-family: monospace;color:#05507D;'>IntVar</code> to maximize/minimize    .</p>
+<pre><code class="language-java" data-line-numbers="1|2">Solution bSol = solver.findOptimalSolution(obj, maximize);
+List&lt;Solution&gt; bSols = solver.findAllOptimalSolutions(obj, max);
+</code></pre>
+</section><section>
+<h2 id="solving-is-reducing">Solving is reducing</h2>
+</section><section>
+<h3 id="backtracking-algorithm">Backtracking algorithm</h3>
+<ul>
+<li>recursive traversal of the search tree</li>
+<li>make/cancel decisions</li>
+<li>backtrack on failure</li>
+<li>incremental construction of a solution</li>
+</ul>
+<p><em>Branch and Propagate</em></p>
+</section><section>
+<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+<p>:warning: 2-way branching</p>
+</section><section>
+<h2 id="making-decisions">Making decisions</h2>
+<p class="fragment" data-fragment-index="1"><em>Can't we just leave it to the solver?</em></p>
+<p class="fragment" data-fragment-index="2">Bring business knowledge</p>
+<p class="fragment" data-fragment-index="3">Help moving towards a solution</p>
+<!--<p class="fragment" data-fragment-index="4">or proving unsat</p>-->
+<p><span class='fragment ' ><em>but Yes, we can</em></span></p>
+</section><section>
+<h2 id="making-decisions-1">Making decisions</h2>
+<ul>
+<li>choose a free variable (how?)</li>
+<li>select an operator (very often $=$)</li>
+<li>determine a value (how?)</li>
+</ul>
+<p>Continue as as long as necessary</p>
+<aside class="notes"><p>A decision is validated through propagation</p>
+</aside>
+</section><section>
+<h3 id="select-the-next-variable">Select the next variable</h3>
+<ul>
+<li><code>input_order</code>, <code>first_fail</code>, <code>smallest</code>,&hellip;</li>
+<li><code>dom/wdeg</code>, <code>FBA</code>, <code>CHS</code>, <code>ABS</code>, &hellip;</li>
+</ul>
+<br/>
+<br/>
+<h3 id="choose-a-value">Choose a value</h3>
+<ul>
+<li><code>min</code>, <code>max</code>, <code>med</code>, &hellip;</li>
+</ul>
+</section><section>
+<h2 id="topping">Topping</h2>
+<ul>
+<li>Combining searches</li>
+<li>Restarting: <code>geo</code>, <code>luby</code></li>
+<li>Meta-strategy: <code>lc</code>, <code>cos</code></li>
+<li>Phase saving,</li>
+<li>Best</li>
+</ul>
+</section><section>
+<h3 id="define-your-own">Define your own</h3>
+<pre><code class="language-java" data-line-numbers>solver.setSearch(Search.intVarSearch(
+    variables -&gt; Arrays.stream(variables)
+          .filter(v -&gt; !v.isInstantiated())
+          .min((v1, v2) -&gt; closest(v2, map) - closest(v1, map))
+          .orElse(null),
+    v -&gt; closest(v, map),
+    DecisionOperator.int_eq,
+    planes
+));
+</code></pre>
+<p><a href="https://choco-solver.org/tutos/aircraft-landing-problem/code/">[aircraft landing]</a></p>
+</section><section>
+<h2 id="turnkey-enumeration-strategies">Turnkey enumeration strategies</h2>
+<pre><code class="language-java" data-line-numbers="2,4|3|5-6|7|">// Override the default search strategy
+solver.setSearch(
+	Search.lastConflict(
+		Search.domOverWDegSearch(vars)));
+// possibly combined with restarts
+solver.setLubyRestart(2, new FailCounter(model, 2), 25000);
+solver.findSolution();
+</code></pre>
+<p>Have a look at the <code style='font-family: monospace;color:#05507D;'>Search</code> factory.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="https://choco-solver.org/docs/solving/strategies/">
+</section><section>
+<h1 id="monitoring">Monitoring</h1>
+</section><section>
+<h2 id="information-on-research">Information on research</h2>
+<p>It is possible to have insights on the search process</p>
+<pre><code class="language-java">solver.showShortStatistics();
+while(solver.solve()){};
+</code></pre>
+<p>Or to execute code on solutions using <em>monitors</em>:</p>
+<pre><code class="language-java">solver.plugMonitor((IMonitorSolution) () -&gt; {
+    // do something here
+});
+</code></pre>
+</section><section>
+<h2 id="limits">Limits</h2>
+<p>The search space exploration can be limited.</p>
+<pre><code class="language-java">solver.limitTime(&quot;10s&quot;);
+solver.limitSolution(5);
+solver.findAllSolutions();
+</code></pre>
+<p>The first limit reached stops the search.</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#76bde8">
+<h2 id="warehouse-location">Warehouse Location</h2>
+<h1><a href="https://choco-solver.org/tutos/warehouse-location-problem/description/" target="_blank" rel="noopener noreferrer"> >>🏭<<</a></h1>
+
+</section>
+</section>
+    
+
+<section data-shortcode-section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="https://choco-solver.org/tutos/">
+<h1 id="next-steps">Next steps</h1>
+</section><section>
+<h1 id="thank-you">Thank you</h1>
+
+</section>
+</section>
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/presentations/reveal-hugo/object-assign.js></script>
+
+
+<script src="/presentations/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {};
+  var revealHugoPageParams = {"highlight_theme":"github","slide_number":true,"theme":"simple"};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+    
+  </body>
+</html>

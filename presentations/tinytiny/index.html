@@ -1,0 +1,1309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Tiny Tiny Constraint Solver</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/presentations/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/presentations/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/presentations/reveal-js/dist/theme/league.css" id="theme">
+<link rel="stylesheet" href="/presentations/highlight-js/github.min.css">
+  </head>
+  <body>
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section><h1 id="the-very-tiny--constraint-solver">The Very Tiny </br> Constraint Solver</h1>
+</br>
+Charles Prud'homme, March 2024
+<p>IMT Atlantique, LS2N, TASC</p>
+<p><small style="color:#C70039">&lt; press [N] / [P] to go the next / previous slide &gt;</small></p>
+
+
+
+<aside class="notes"><p>Don&rsquo;t forget disable <code>codeFences</code> in <code>config.toml</code>.</p>
+</aside>
+</section><section>
+<p>In this presentation, we are going to code <span class='fragment highlight-blue'
+  >
+  from scratch
+</span> a minimalist constraint solver.</p>
+<p>The aim is nothing but <span class='fragment highlight-blue'
+  >
+  understanding
+</span> the internal mechanics.</p>
+</section>
+
+  
+
+    <section>
+
+<section data-shortcode-section>
+<h1 id="spoiler-alerts">Spoiler alerts</h1>
+</section><section>
+<p>There are already plenty of great open source constraint solvers:</p>
+<p><a href="https://choco-solver.org/">choco-solver🐙</a>, <a href="https://developers.google.com/optimization/">or-tools</a>, <a href="https://www.gecode.org/">gecode</a>,
+<a href="http://www.cril.univ-artois.fr/en/software/ace.en.html">ACE</a>, <a href="https://github.com/radsz/jacop">JaCoP</a>, <a href="https://homepages.laas.fr/ehebrard/mistral.html">Mistral</a>, <a href="https://github.com/chuffed/chuffed">Chuffed</a>, &hellip;</p>
+</br>
+<small>🐙 My favourite.... but I am biased</small>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="https://choco-solver.org/">
+</section><section>
+<p>And several excellent constraint modeling languages:</p>
+<p><a href="https://www.minizinc.org/index.html">MiniZinc</a>, <a href="http://xcsp.org/">XCSP3 / PyCSP3</a>, <a href="https://cpmpy.readthedocs.io/en/latest/">CPMpy</a>, &hellip;</p>
+</section><section>
+<p>So basically here</br>
+we are <span style="color:#3BAFDA">not going to reinvent</span>
+the wheel </br>
+or break the paradigm </br>
+but just</p>
+<h3 id="understand-by-doing">understand by doing</h3>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="a-little-bit-of-theory">A little bit of theory</h1>
+</section><section>
+<p>We are talking about <span style="color:#3BAFDA">Constraint Satisfaction Problem</span>
+.</p>
+<p>A CSP $\mathcal{P}$ is a triple $\left&lt;\mathcal{X},\mathcal{D},\mathcal{C}\right&gt;$
+where:</p>
+<ul>
+<li>$\mathcal{X} = \{X_1, \ldots, X_n\}$ is a set of variables,</li>
+<li>$\mathcal{D}$ is a function associating a domain to each variable,</li>
+<li>$\mathcal{C}$ is a set of constraints.</li>
+</ul>
+<p><em>It can be turn into a COP quite easily</em></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#C6D0B4"
+      id="ex1">
+<p>Let&rsquo;s consider the following CSP $\mathcal{P}$:</p>
+<ul>
+<li>$\mathcal{X} = \{X_1, X_2, X_3\}$</li>
+<li>$\mathcal{D} = \{D(X_1)=D(X_2)=[1,2], D(X_3)=[1,3]\}$</li>
+<li>$\mathcal{C} = \{X_1\leq X_2,X_2\leq X_3,AtMost(1,[X_1, X_2, X_3],2)\}$</li>
+</ul>
+</section><section>
+<p>A constraint defines a <span style="color:#3BAFDA">relation between variables.</span></p>
+<p>It is said to be <span style="color:#3BAFDA">satisfied</span>
+if :</p>
+<ul>
+<li>its variables are <em>instantiated</em> to a single value*</li>
+<li>and the relation holds</li>
+</ul>
+</br>
+</br>
+*: $x_{i_k} \in \mathcal{D}(X_{i_k})$
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#C6D0B4"
+      id="ex2">
+<p>In $\mathcal{P}$, the constraint $AtMost(1,[X_1, X_2, X_3],2)$ holds iff <u>at most</u> 1 variable among $X_1, X_2, X_3$ is assigned to the value 2.</p>
+<ul>
+<li>$(1,1,1)$ and $(1,2,3)$ satisfy the constraint,</li>
+<li>$(2,2,1)$ does not.</li>
+</ul>
+</section><section>
+<p>The constraints can be defined in <span style="color:#3BAFDA">intension</span>
+or in <span style="color:#3BAFDA">extension</span>
+.</p>
+<p>For $X_1$, $X_2$ on domains $\{1,2\}$:</p>
+<ul>
+<li>intension:
+<ul>
+<li>expression in a higher level language</li>
+<li><em>e.g.</em>, $X_1+X_2\le3$</li>
+</ul>
+</li>
+<li>extension:
+<ul>
+<li>allowed combinations</li>
+<li><em>e.g.</em>, ${(1,1),(1,2),(2,1)}$</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="less-formally">Less formally</h2>
+</section><section>
+<p>What we know about a <span style="color:#3BAFDA">variable</span>
+is that :</p>
+<ul>
+<li>it takes its values from a <span style="color:#3BAFDA">domain</span>
+*, <em>e.g.</em>, <code>{1,2,3,5}</code>,</li>
+<li>it is linked to other variables using <span style="color:#3BAFDA">constraints</span>
+,</li>
+<li>and it must be <em>instantiated</em> in a <span style="color:#3BAFDA">solution</span>
+.</li>
+</ul>
+</br>
+</br>
+*: discrete domain in our case.
+</section><section>
+<p>On the other hand, a <span style="color:#3BAFDA">constraint</span>
+:</p>
+<ul>
+<li>defines a <span style="color:#3BAFDA">contract</span>
+between its variables,</li>
+<li>must be <span style="color:#3BAFDA">satisfied</span>
+in every solutions,</li>
+<li>and is more than just a checker.</li>
+</ul>
+</section><section>
+<p>Choose your favourite programming language</p>
+<p>(I chose <a href="https://www.python.org/">Python</a>)</p>
+<h1 id="and-lets-get-started">and let&rsquo;s get started</h1>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="variables-and-domains">Variables and domains</h1>
+</section><section>
+<h2 id="lets-make-it-simple">Let&rsquo;s make it simple</h2>
+<p>A variable will be referenced by a key, its name.</p>
+<p>A domain will be associated to it.</br>
+<br/>
+<span style="color:#ED5565">Beware:</span>  each value can appear only once.</p>
+</section><section>
+<p>A dictionary and sets will do :</p>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69637" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+<p><small><em>This clickable logo indicates that a workshop is available at <a href="https://moodle.caseine.org/">Caseine</a></em> </small></p>
+</section><section>
+<p>A dictionary and sets will do :</p>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+</code></pre>
+<h3 id="and-thats-enough">and that&rsquo;s enough.</h3>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp1">
+<h2 id="-possible-improvements">🚀 Possible improvements</h2>
+<ul>
+<li>Creating a variable object</li>
+<li>Effective domain representation (<em>e.g.</em>, bitset)</li>
+<li>Introducing variable views (<em>e.g.</em>, $y = a.x + b$)</li>
+<li>Other types of variable (<em>e.g.</em>, Boolean, set, graph)</li>
+</ul>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="constraints">Constraints</h1>
+<h3 id="x_1--x_2">$X_1 &lt; X_2$</h3>
+<aside class="notes"><p>Let&rsquo;s roll up our sleeves and tackle the case of the binary <em>&ldquo;strictly less&rdquo;</em> constraint:</p>
+</aside>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#C6D0B4"
+      id="ex3">
+<p>Such a constraint will take <span style="color:#3BAFDA">two variables</span>
+as argument and makes sure that the former one takes a value less than the latter one in any solution.</p>
+<p><span class='fragment ' >$(1,2)$ and $(2,5)$ satisfy the constraint,</span></p>
+<p><span class='fragment ' >$(2,2)$ and $(5,3)$ do not.</span></p>
+</section><section>
+<p>We will first create a class to declare the behaviour of this constraint:</p>
+<pre><code class="language-python" data-line-numbers="1|2-4">class LessThan:
+    def __init__(self, v1, v2):
+        self.v1 = v1
+        self.v2 = v2
+</code></pre>
+</section><section>
+<p>We can impose that $X_1$ is strictly less than $X_2$:</p>
+<pre><code class="language-python" data-line-numbers="3|">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;) # means that x1 &lt; x2 should hold
+</code></pre>
+<aside class="notes"><p>After doing that we didn&rsquo;t do much&hellip;</p>
+</aside>
+</section><section>
+<h2 id="what-can-such-a-constraint-do">What can such a constraint do?</h2>
+</section><section>
+<h3 id="in-cp-we-remove">In CP, we remove</h3>
+<p>The basic behaviour of a constraint is to remove from the variable domain those values <span style="color:#3BAFDA">that cannot be extended</span>
+to any solution</p>
+<p>(<em>according to its own contract</em>)</p>
+</section><section>
+<p>We will create an empty function called <code>filter</code> as follow:</p>
+<pre><code class="language-python">def filter(self,variables):
+	pass
+</code></pre>
+</section>
+<section data-noprocess>
+<h2>The 2 rules of $X_1 < X_2$</h2>
+<p class="fragment">1. removing from $X_1$ values <span style="color:deepskyblue;">greater or equal to the largest value</span> in $X_2$,</p>
+<p class="fragment">2. removing from $X_2$ values <span style="color:deepskyblue;">smaller or equal to the smallest value</span> in $X_1$.</p>
+<p class="fragment">Otherwise, in both cases, we could break the contract established between the 2 variables.</p>
+<!--</section> to bind to the next section tag-->
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#C6D0B4"
+      id="ex4">
+<p>$X_1 = \{1,2,3,4\}$, $X_2 = \{1,2,3,4\}$ and $X_1 &lt; X_2$</p>
+<p>Then</p>
+<ul>
+<li>4 is removed from $X_1$</li>
+<li>1 is removed from $X_2$</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#C6D0B4"
+      id="ex4">
+<p>In other words:</p>
+<ul>
+<li>$max(X_2)$ and larger are removed from $X_1$</li>
+<li>$min(X_1)$ and smaller are removed from $X_2$</li>
+</ul>
+</section><section>
+<h2 id="deal-with-dead-ends">Deal with dead ends</h2>
+<p>We can tell that the constraint should return :</p>
+<ul>
+<li><code>True</code> : if some values were filtered</li>
+<li><code>False</code> : if a domain becomes empty</li>
+<li><code>None</code> : if nothing was filtered</li>
+</ul>
+</section><section>
+<h3 id="lessthan-filtering-algorithm"><code>LessThan</code> filtering algorithm</h3>
+<pre><code class="language-python" data-line-numbers>class LessThan:
+    def __init__(self, v1, v2):
+        self.v1 = v1
+        self.v2 = v2
+
+    def filter(self, variables):
+        &quot;&quot;&quot;
+        Filter the domain of the variables declared in 'vars'.
+        The method directly modifies the entries of 'vars'.
+        It returns True if some values were filtered,
+        False if a domain becomes empty,
+        None otherwise.
+        &quot;&quot;&quot;
+        pass
+
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69645"> >>🥛<<</a></h2>
+</section><section>
+<h3 id="lessthan-filtering-algorithm-1"><code>LessThan</code> filtering algorithm</h3>
+<pre><code class="language-python" data-line-numbers="|2-3|4-7|8-11|12-13|14-15">def filter(self, variables):
+    cd1 = variables[self.v1] # get current domain of &quot;x1&quot;
+    cd2 = variables[self.v2] # get current domain of &quot;x2&quot;
+    # filtering according to the 1st rule
+    nd1 = {v for v in cd1 if v &lt; max(cd2)}
+    if len(nd1) == 0: # &quot;x1&quot; becomes empty...
+        return False
+    # filtering according to the 2nd rule
+    nd2 = {v for v in cd2 if v &gt; min(cd1)}
+    if len(nd2) == 0: # &quot;x2&quot; becomes empty...
+        return False
+    variables[self.v1] = nd1 # update the domain of &quot;x1&quot;
+    variables[self.v2] = nd2 # update the domain of &quot;x2&quot;
+    modif = cd1 &gt; nd1 or cd2 &gt; nd2 # reduction of a domain
+    return modif or None
+</code></pre>
+</section><section>
+<h3 id="does-that-work">Does that work?</h3>
+<pre><code class="language-python" data-line-numbers="1-10|1-4|5-6|7-10"># declare a CSP
+variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+# call the filtering algorithm
+modif = c1.filter(variables)
+# check everything works fine
+assert variables[&quot;x1&quot;] == {1, 2}
+assert variables[&quot;x2&quot;] == {2, 3}
+assert modif == True
+</code></pre>
+</section><section>
+<h3 id="yes-it-does-">Yes, it does !</h3>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="filtering-is-not-enough">Filtering is not enough</h1>
+</section><section>
+<p>It didn&rsquo;t build a solution</p>
+<p><span class='fragment ' >although all impossible values were removed</span></p>
+</section><section>
+<p>It seems that we need to dive into the</p>
+<h3 id="search-space-">search space 🤿</h3>
+<p>in a DFS way.</p>
+</section><section>
+<h2 id="adapting-the-dfs">Adapting the DFS</h2>
+<ul>
+<li>If all variables are fixed, stop the search</li>
+<li>If inconsistency detected, then <span style="color:#ED5565">backtrack</span></li>
+<li>Expand the tree by making a <span style="color:#ED5565">decision$^*$</span></li>
+</ul>
+</br>
+</br>
+<small>*: 2-way branching</small>
+<aside class="notes"><ul>
+<li>Expand the tree = create a decision or refute the last one</li>
+<li>Two way decision = more flexible but n-way possible</li>
+</ul>
+</aside>
+</section><section>
+<p><img src="/images/tinytiny/filtering/bintree.svg" alt="Alt text."></p>
+<aside class="notes"><p>The search space can be seen as a tree
+where a node corresponds to a decision (here I labeled edge for clarity reason)
+and a leaf is either a solution or a dead-end.</p>
+</aside>
+</section>
+<section data-noprocess>
+<h2>Backtracking</h2
+<p>For this, we need <span style="color:deepskyblue;">to retrieve the state of the domains</span> before a decision is applied.</p>
+<p><span class="fragment">And therefore it must have been registered beforehand.</span></p>
+<p><span class="fragment">And we must be able to rebut a decision.</span></p>
+</section><section>
+<h2 id="search-strategy">Search strategy</h2>
+<p>How to select the next decision to apply?</p>
+<pre><code class="language-AsciiDoc" data-line-numbers="1|2|3|">select an uninstantiated variable
+pick a value in its domain (e.g., the lower bound)
+</code></pre>
+</section><section>
+<h3 id="a-recursive-approach-should-simplify-our-task">A recursive approach should simplify our task</h3>
+<p>Let&rsquo;s break down the needs into 4 functions.</p>
+<pre><code class="language-python">def make_decision(variables):
+    pass
+
+def copy_domains(variables):
+    pass
+
+def apply_decision(variables, var, val, apply, constraint):
+    pass
+
+def dfs(variables, constraint):
+    pass
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69653" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</section><section>
+<pre><code class="language-python" data-line-numbers="2-4|5-7|8-10">def make_decision(variables):
+    var, dom = next(
+        filter(lambda x: len(x[1]) &gt; 1, variables.items()),
+        (None, None))
+    if var is not None:
+        # if true, returns the decision
+        return (var, min(dom))
+    else:
+        # otherwise, all variables are instantiated
+        return None
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers>def copy_domains(variables):
+    # returns a deep copy of the dictionnary
+    return {var: dom.copy() for var, dom in variables.items()}
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers="1|2-3|4-6|7-8|">def apply_decision(variables, var, val, apply, constraint):
+  # copy the domains
+  c_variables = copy_domains(variables)
+  # applies the decision or rebuts is
+  c_variables[var] = {x for x in c_variables[var] \
+                      if apply is (x == val)}
+  # explore the sub-branch
+  return dfs(c_variables, constraint)
+</code></pre>
+</section><section>
+<pre><code class="language-python" data-line-numbers="1|2|3|4-6|7-10|11|">def dfs(variables, constraint):
+  constraint.filter(variables)
+  dec = make_decision(variables)
+  if dec is None:
+      print(variables)  # prints the solution
+      return 1
+  else:
+      var, val = dec
+      n = apply_decision(variables, var, val, True, constraint)
+      n += apply_decision(variables, var, val, False, constraint)
+  return n
+</code></pre>
+</section><section>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+
+print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<p>should output:</p>
+<pre><code>{'x1': {1}, 'x2': {2}}
+{'x1': {1}, 'x2': {3}}
+{'x1': {2}, 'x2': {3}}
+There are 3 solutions
+</code></pre>
+</section><section>
+<h1 id="we-did-it-">We did it !</h1>
+<p>Well almost, but still you can pat yourself back !</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp2">
+<h2 id="-managing-backups">🚀 Managing backups</h2>
+<p><small>📄&ldquo;Comparing trailing and copying for constraint programming&rdquo;, C. Schulte, ICLP'99.</small></p>
+<ul>
+<li><strong>Copying</strong>: An identical copy of S is created before S is changed.</li>
+<li><strong>Trailing</strong>: Changes to S are recorded such that they can be undone later.</li>
+<li><strong>Recomputation</strong>: If needed, S is recomputed from scratch.</li>
+<li><strong>Adaptive recomputation</strong>: Compromise between Copying and Recomputation.</li>
+</ul>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp3">
+<h2 id="-making-decisions">🚀 Making decisions</h2>
+<ul>
+<li>Dynamic criteria for variable selection</li>
+<li>And value selection (<em>min</em>, <em>max</em>, <em>mid</em>, <em>rnd</em>)</li>
+<li>Different operators ($=, \neq, \leq, \geq$)</li>
+<li>Depth-first, limited-discrepancy, large neighborhood</li>
+</ul>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="back-to-work">Back to work</h1>
+<h2 id="deal-with-failures">deal with failures</h2>
+</section><section>
+<h3 id="lets-fix-the-code">Let&rsquo;s fix the code</h3>
+<pre><code class="language-python" data-line-numbers>
+def dfs(variables, constraint):
+    # manage filtering failure
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69913"> >>🥛<<</a></h2>
+</section><section>
+<h3 id="lets-fix-the-code-1">Let&rsquo;s fix the code</h3>
+<pre><code class="language-python" data-line-numbers="2-3|">def dfs(variables, constraint):
+    if constraint.filter(variables) is False:
+        return 0
+    var, val = make_decision(variables)
+    if var is None:
+        print(variables)
+        return 1
+    else:
+        n = propagate(variables, var, val, True, constraint)
+        n += propagate(variables, var, val, False, constraint)
+        return n
+
+</code></pre>
+<p><code>None</code> and <code>True</code> will be used later.</p>
+</section><section>
+<h3 id="this-code">This code</h3>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {3, 4},
+             &quot;x2&quot;: {2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+
+print(&quot;There are&quot;, dfs(variables, c1), &quot;solutions&quot;)
+</code></pre>
+<p>outputs:</p>
+<pre><code>There are 0 solutions
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp4">
+<h2 id="-possible-improvements">🚀 Possible improvements</h2>
+<ul>
+<li>Explaining failures (LCG)</li>
+<li>Adapting the research strategy:
+<ul>
+<li>dom/wdeg, pick-on-dom, ABS, etc</li>
+<li>last conflict, conflict ordering search</li>
+</ul>
+</li>
+</ul>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="many-constraints">Many constraints</h1>
+<p>of the same type</p>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+</code></pre>
+</section><section>
+<p>We need to adapt the <code>dfs(_,_)</code> function:</p>
+<pre><code class="language-python" data-line-numbers="2-4">def dfs(variables, constraints):
+    # if constraint.filter(variables) is False:
+    if not fix_point(variables, constraints):
+        return 0 # at least one constraint is not satisfied
+    # ...        
+</code></pre>
+<p>and ensure that a <span style="color:#3BAFDA">fix point</span>
+is reached.</p>
+</section><section>
+<h2 id="fixpoint-reasoning">Fixpoint reasoning</h2>
+<p>Iteratively applying constraint propagation until
+</br>no more improvements are possible
+</br> or a failure is detected.</p>
+<p>So, as long as a constraint filters values,</br>
+<b><u>all</u></b> the other ones must be checked.</p>
+<p><small>:rocket: This could be refined.</small></p>
+</section><section>
+<table>
+          <thead>
+            <tr>
+              <th>step</th>
+              <th>x1</th>
+              <th>x2</th>
+              <th>x3</th>
+              <th>To check</th>
+              <th>Consistent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>[1,3]</td>
+              <td>[1,3]</td>
+              <td>[1,3]</td>
+              <td>{c1,c2}</td>
+              <td>{}</td>
+            </tr>
+            <tr class="fragment">
+              <td>1</td>
+              <td>[1,<span style="color:#3BAFDA">2</span>]</td>
+              <td>[<span style="color:#3BAFDA">2</span>,3]</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c1</span>,c2}</td>
+              <td>{}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{c2}</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>2</td>
+              <td>-</td>
+              <td>[2,<span style="color:#3BAFDA">2</span>]</td>
+              <td>[<span style="color:#3BAFDA">3</span>,3]</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+              <td>{c1}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{<span style="color:#ED5565">c1</span>}</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>3</td>
+              <td>[1,<span style="color:#3BAFDA">1</span>]</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+              <td>{c2}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{<span style="color:#ED5565">c2</span>}</td>
+              <td>{<span style="color:#3BAFDA">c1</span>}</td>
+            </tr>
+            <tr class="fragment">
+              <td>4</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{<span style="color:#3BAFDA">c2</span>}</td>
+              <td>{c1}</td>
+            </tr>
+            <tr class="fragment">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{}</td>
+              <td>{<span style="color:#3BAFDA">c1, c2</span>}</td>
+            </tr>
+          </tbody>
+        </table>
+</section><section>
+<p>We will create a method to iterate on the constraints:</p>
+<pre><code class="language-python">def fix_point(variables, constraints):
+    &quot;&quot;&quot;Reach a fix point.
+    If a failure is raised, returns False,
+    otherwise guarantees that all events are propagated.
+    &quot;&quot;&quot;
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69914" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</section><section>
+<pre><code class="language-python">def fix_point(variables, constraints):
+    while True:
+        fltrs = False
+        for c in constraints:
+            flt = c.filter(variables)
+            if flt is False: # in case of failure
+                return False
+            elif flt is True: # in case of filtering
+                fltrs |= True # keep on looping
+        if not fltrs : # to break the while-loop
+            return True
+</code></pre>
+</section><section>
+<pre><code class="language-python">variables = {&quot;x1&quot;: {1, 2, 3},
+             &quot;x2&quot;: {1, 2, 3},
+             &quot;x3&quot;: {1, 2, 3}}
+c1 = LessThan(&quot;x1&quot;, &quot;x2&quot;)
+c2 = LessThan(&quot;x2&quot;, &quot;x3&quot;)
+fix_point(variables, {c1, c2})
+print(variables)
+</code></pre>
+<p>outputs:</p>
+<pre><code>{'x1': [1], 'x2': [2], 'x3': [3]}
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp6">
+<h2 id="-propagation-engine">🚀 Propagation engine</h2>
+<ul>
+<li>Event-based reasoning, advisors, watch literals</li>
+<li>Scheduling and propagating</li>
+<li>Variable-oriented or Constraint-oriented</li>
+<li>Iterating on constraints by considering their complexity</li>
+</ul>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="many-constraints">Many constraints</h1>
+<p>of the different type</p>
+</section><section>
+<h2 id="adding-the-constraint">Adding the constraint</h2>
+<h3 id="x_1neq-x_2--c">$X_1\neq X_2 + c$</h3>
+<p>where $c$ is a constant</p>
+<h2 id="should-be-quite-easy">should be quite easy</h2>
+<p><span class='fragment ' >It requires to define the <code>filter</code> function.</span></p>
+</section>
+<section data-noprocess>
+<h2>The 2 rules of $X_1\neq X_2 + c$</h2>
+<p class="fragment">1. if $X_2$ is instantied to $v_2$, </br>then $v_2+c$ must be removed from $X_1$ values,</p>
+<p class="fragment">2. if $X_1$ is instantied to $v_1$, </br>then $v_1-c$ must be removed from $X_2$ values.</p>
+</section><section>
+<h3 id="lets-fix-the-code">Let&rsquo;s fix the code</h3>
+<pre><code class="language-python" data-line-numbers>
+  class NotEqual:
+      def __init__(self, v1, v2, c=0):
+          pass
+
+      def filter(self, vars):
+          pass
+</code></pre>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=71050"> >>🥛<<</a></h2>
+<!--</section> to bind to the next section tag-->
+</section><section>
+<h3 id="the-notequal-class">The <code>NotEqual</code> class</h3>
+<pre><code class="language-python" data-line-numbers="1-5|6-8|9-14|15-20|21-22">class NotEqual:
+    def __init__(self, v1, v2, c=0):
+        self.v1 = v1
+        self.v2 = v2
+        self.c = c
+
+    def filter(self, vars):
+      size = len(vars[self.v1]) + len(vars[self.v2])
+      if len(vars[self.v2]) == 1:
+          f = min(vars[self.v2]) + self.c
+          nd1 = {v for v in vars[self.v1] if v != f}
+          if len(nd1) == 0:
+            return False
+          vars[self.v1] = nd1
+      if len(vars[self.v1]) == 1:
+          f = min(vars[self.v1]) - self.c
+          nd2 = {v for v in vars[self.v2] if v != f}
+          if len(nd2) == 0:
+            return False
+          vars[self.v2] = nd2
+      modif = size &gt; len(vars[self.v1]) + len(vars[self.v2])
+      return modif or None
+</code></pre>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background="#b4c6d0"
+      id="imp7">
+<h2 id="-constraints">🚀 Constraints</h2>
+<ul>
+<li>Different level of inconsistency</li>
+<li>Global reasoning vs decomposition</li>
+<li>Explain domain modifications</li>
+<li>Reification, entailment, &hellip;</li>
+</ul>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<p>Now, we are able to</p>
+<h1 id="solve-a-basic-problem">solve a basic problem</h1>
+</section><section>
+<h1>The 8 queens puzzle</h1>
+<blockquote>The eight queens puzzle is the problem of placing eight chess queens on an 8×8  chessboard so that no two queens threaten each other;  thus, a solution requires that no two queens share the same row, column, or diagonal.</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle">Wikipedia</a></p>
+</section><section>
+<figure>
+    <img src="/images/tinytiny/nqueens/8queens.png" alt="This is an alt" width="40%" >
+    <figcaption>Src: <a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle">Wikipedia</a></figcaption>
+</figure>
+</section><section>
+<p>A first idea is to indicate by a <span style="color:deepskyblue;">Boolean</span> variable if a cell is occupied by a queen or not.</p>
+<p><span class='fragment ' >But we wouldn’t be able to use our constraints.</span></p>
+<p><span class='fragment ' >Also, it is very MILP-like or SAT-like.</span></p>
+</section><section>
+<h2 id="a-more-cp-way-to-model-it">A more CP way to model it</h2>
+<p>A <span style="color:deepskyblue;">variable</span> per column.</p>
+<p>Each <span style="color:deepskyblue;">domain</span> encodes the row where the queen is set.</p>
+<p>Four groups of inequality <span style="color:deepskyblue;">constraints</span> are posed:</p>
+<ol>
+<li>no two queens share the same row</li>
+<li>no two queens share the same column (➡️ <em>handled by the model</em> 🤘)</li>
+<li>no two queens share the same upward diagonal</li>
+<li>no two queens share the same downward diagonal</li>
+</ol>
+</section><section>
+<h2><a href="https://moodle.caseine.org/mod/vpl/view.php?id=69930" target="_blank" rel="noopener noreferrer"> >>🥛<<</a></h2>
+</section><section>
+<h2 id="8-queens-puzzle-in-python">8 Queens puzzle in Python</h2>
+<pre><code class="language-python" data-line-numbers="4-6|8-13|15-17|19-23">import model as m
+
+n = 8
+vs = {}
+for i in range(1, n + 1):
+    vs[&quot;x&quot; + str(i)] = {k for k in range(1, n + 1)}
+
+cs = []
+for i in range(1, n):
+    for j in range(i + 1, n + 1):
+        cs.append(m.NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j)))
+        cs.append(m.NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j), c=(j - i)))
+        cs.append(m.NotEqual(&quot;x&quot; + str(i), &quot;x&quot; + str(j), c=-(j - i)))
+
+# mirror symm. breaking
+vs[&quot;cst&quot;] = {int(n / 2) + 1}
+cs.append(m.LessThan(&quot;x1&quot;, &quot;cst&quot;))
+
+# search for all solutions
+sols = []
+m.dfs(vs, cs, sols, nos=0)
+print(len(sols), &quot;solution(s) found&quot;)
+print(sols)
+</code></pre>
+</section><section>
+<h3 id="46-solutions">46 solutions</h3>
+<pre><code class="language-bash">46 solution(s) found
+[[1, 5, 8, 6, 3, 7, 2, 4, 5], ..., [4, 8, 5, 3, 1, 7, 2, 6, 5]]
+</code></pre>
+<p>There are 92 solutions without the (simple) symmetry breaking constraint, 46 otherwise.</p>
+</section><section>
+<h2 id="we-did-it-">We did it 🍾</h2>
+<p>We build a minimalist CP solver :</p>
+<ul>
+<li>based on integer variables,</li>
+<li>using two different types of constraints,
+<ul>
+<li>each equipped with a filtering algorithm,</li>
+</ul>
+</li>
+<li>exploring the search space in DFS way.</li>
+</ul>
+<p>And we were able to enumerate solutions</br>
+on a puzzle !</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="analogy-with-sudoku">Analogy with Sudoku</h1>
+</section><section>
+<h2 id="we-reached-the-sudoku-point">We reached the Sudoku point</h2>
+<p>When trying to explain how constraint programming works,
+it is common to draw a parallel with sudoku.</p>
+</section><section>
+<h2 id="at-modelling-step">At modelling step</h2>
+<ul>
+<li>
+<p>One must write a value in $[1,9]$ in each cell</p>
+<ul>
+<li>➡️ a variable and a domain</li>
+</ul>
+</li>
+<li>
+<p>Such that each digit is used exactly once per <span style="color:#3BAFDA">row</span>
+, per <span style="color:#3BAFDA">column</span>
+and per <span style="color:#3BAFDA">square</span></p>
+<ul>
+<li>➡️ sets of $\neq$ constraints</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="at-solving-step">At solving step</h2>
+</section><section>
+<h3 id="local-reasonning">Local reasonning</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/local.png" alt="This is an alt" width="40%" >
+    <figcaption>Each constraint infers on a local view. </figcaption>
+</figure>
+</section><section>
+<h3 id="filtering">Filtering</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/filtering.png" alt="This is an alt" width="40%" >
+    <figcaption>Impossible values are removed </br> from a variable's domain</figcaption>
+</figure>
+</section><section>
+<h3 id="propagation">Propagation</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/propagations.png" alt="This is an alt" width="40%" >
+    <figcaption>The information is shared between the constraints through the variables</figcaption>
+</figure>
+</section><section>
+<h3 id="search">Search</h3>
+<p>On <strong>devil sudoku</strong>, one has to make assumptions.</p>
+<p>And validate them by propagation.</p>
+</section><section>
+<h3 id="a-4x4-sudoku-example">A 4x4 sudoku example</h3>
+<figure>
+    <img src="/images/tinytiny/sudoku/4x4sudoku.png" alt="This is an alt" width="20%" >
+</figure>
+</section><section>
+<pre><code class="language-python">import model as m
+
+n = 4
+variables = {}
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        variables[&quot;x&quot; + str(i) + str(j)] = {k for k in range(1, n + 1)}
+# fix values
+variables[&quot;x12&quot;] = [2]
+variables[&quot;x21&quot;] = [3]
+variables[&quot;x31&quot;] = [2]
+variables[&quot;x32&quot;] = [1]
+variables[&quot;x33&quot;] = [3]
+variables[&quot;x41&quot;] = [4]
+variables[&quot;x43&quot;] = [2]
+
+zones = []
+# rows
+zones.append([&quot;x11&quot;, &quot;x12&quot;, &quot;x13&quot;, &quot;x14&quot;])
+zones.append([&quot;x21&quot;, &quot;x22&quot;, &quot;x23&quot;, &quot;x24&quot;])
+zones.append([&quot;x31&quot;, &quot;x32&quot;, &quot;x33&quot;, &quot;x34&quot;])
+zones.append([&quot;x41&quot;, &quot;x42&quot;, &quot;x43&quot;, &quot;x44&quot;])
+# columns
+zones.append([&quot;x11&quot;, &quot;x21&quot;, &quot;x31&quot;, &quot;x41&quot;])
+zones.append([&quot;x12&quot;, &quot;x22&quot;, &quot;x32&quot;, &quot;x42&quot;])
+zones.append([&quot;x13&quot;, &quot;x23&quot;, &quot;x33&quot;, &quot;x43&quot;])
+zones.append([&quot;x14&quot;, &quot;x24&quot;, &quot;x34&quot;, &quot;x44&quot;])
+# square
+zones.append([&quot;x11&quot;, &quot;x12&quot;, &quot;x21&quot;, &quot;x22&quot;])
+zones.append([&quot;x13&quot;, &quot;x14&quot;, &quot;x23&quot;, &quot;x24&quot;])
+zones.append([&quot;x31&quot;, &quot;x32&quot;, &quot;x41&quot;, &quot;x42&quot;])
+zones.append([&quot;x33&quot;, &quot;x34&quot;, &quot;x43&quot;, &quot;x44&quot;])
+
+cs = []
+for z in zones:
+    for j in range(0, n):
+        for k in range(j + 1, n):
+            cs.append(NotEqual(z[j], z[k]))
+
+sols = []
+m.dfs(variables, cs, sols, nos=0)
+print(len(sols), &quot;solution(s) found&quot;)
+u_sol = sols[0]
+for i in range(4):
+		print(u_sol[i * 4:i * 4 + 4])
+</code></pre>
+</section><section>
+<h3 id="1-solution">1 solution</h3>
+<pre><code class="language-bash">1 solution(s) found
+[1, 2, 4, 3]
+[3, 4, 1, 2]
+[2, 1, 3, 4]
+[4, 3, 2, 1]
+</code></pre>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<p>The <span style="color:#3BAFDA">value</span>
+of CP lies</p>
+<h2 id="in-the-constraints">in the constraints</h2>
+<p><span class='fragment ' >We only saw two basic binary constraints.</span></p>
+<p><span class='fragment ' >But there are hundreds of them.</span></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-background-iframe="http://sofdem.github.io/gccat/gccat/sec5.html"
+      id="gccat">
+</section><section>
+<h2 id="why-are-there-so-many-of-them">Why are there so many of them?</h2>
+<p>Is it not possible to do with less?</p>
+<p><span class='fragment ' >Indeed, MILP and SAT are doing very well with <strong>one</strong> type of constraint !</span></p>
+</section><section>
+<h2 id="two-main-reasons">Two main reasons</h2>
+<ol>
+<li><span style="color:#3BAFDA">Modeling</span>
+: stronger expressive power</li>
+<li><span style="color:#3BAFDA">Solving</span>
+: increased filter quality</li>
+</ol>
+</section><section>
+<h3 id="at-the-modeling-stage">At the modeling stage</h3>
+<ul>
+<li>each constraint is semantically defined</li>
+<li>which also indicates the contract it guarantees</li>
+</ul>
+</section><section>
+<h3 id="examples">Examples</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>alldifferent</code></td>
+          <td>enforces all variables in its scope to take distinct values</td>
+      </tr>
+      <tr>
+          <td><code>increasing</code></td>
+          <td>the variables in its scope are increasing</td>
+      </tr>
+      <tr>
+          <td><code>maximum</code></td>
+          <td>a variable is the maximum value of a collection of variables</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+</section><section>
+<h3 id="others-are-less-obvious-">Others are less obvious 😇</h3>
+<p><code>subgraph_isomorphism</code>, <code>path</code>, <code>diffn</code>, <code>geost</code>, &hellip;</p>
+<p>but are documented</p>
+</section><section>
+<h3 id="at-the-modeling-stage-22">At the modeling stage (2/2)</h3>
+<ul>
+<li>A CSP model is a conjunction of constraints</li>
+<li>The model can be very compact</li>
+<li>It is easy to understand and modify a model</li>
+</ul>
+<p><span class='fragment ' >Recall that there are modelling languages to do this</span></p>
+</section><section>
+<h3 id="at-solving-stage">At solving stage</h3>
+<p>But it is rather here that one can measure the interest of the constraints</p>
+</section><section>
+<p>A constraint captures a sub-problem</p>
+<h3 id="and-provides-an-efficient-way-to-deal-with-it">and provides an efficient way to deal with it</h3>
+<p>thanks to an adapted filtering algorithm</p>
+</section><section>
+<h2 id="on-one-example">On one example</h2>
+</section><section>
+<h3 id="bigwedge_x_ix_j-in-x-ineq-j-x_i-neq-x_j">$\bigwedge_{X_i,X_j \in X, i\neq j} X_i \neq X_j$</h3>
+<h3 id="-vs-">-vs-</h3>
+<h3 id="textttalldifferentx">$\texttt{allDifferent}(X)$</h3>
+<p><span class='fragment ' >Both version find the same solutions</span></p>
+<p><span class='fragment ' >but the 2nd filters more</span></p>
+</section><section>
+<h3 id="with-binary-constraints">With binary constraints</h3>
+<p><img src="/images/tinytiny/constraints/alldiff1.svg" alt="Alt text."></p>
+<p>What can be deduced?</p>
+<p><span class='fragment ' >Nothing until a variable is set</span></p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="fade-in none">
+<h3 id="with-a-global-constraint">With a global constraint</h3>
+<p><img src="/images/tinytiny/constraints/alldiff1.svg" alt="Alt text."></p>
+<p>Rely on graph theory&hellip;</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="fade-in none">
+<h3 id="with-a-global-constraint-1">With a global constraint</h3>
+<p><img src="/images/tinytiny/constraints/alldiff2.svg" alt="Alt text."></p>
+<p>pair variables and values in a bipartite graph&hellip;</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="none"
+      data-transition-speed="fast">
+<h3 id="with-a-global-constraint-2">With a global constraint</h3>
+<p><img src="/images/tinytiny/constraints/alldiff3.svg" alt="Alt text."></p>
+<p>find maximum cardinality matchings&hellip;</p>
+</section>
+<section data-noprocess data-shortcode-slide
+      data-transition="none"
+      data-transition-speed="fast">
+<h3 id="with-a-global-constraint-3">With a global constraint</h3>
+<p><img src="/images/tinytiny/constraints/alldiff4.svg" alt="Alt text."></p>
+<p>remove values which belong to none of them.</p>
+</section><section>
+<h2 id="summary">Summary</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>$\bigwedge_{x_i,x_j \in X, i\neq j} x_i \neq x_j$</th>
+          <th>$\texttt{allDifferent}(X)$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>#cstrs</td>
+          <td>$\frac{\vert X \vert \times \vert X\vert -1}{2}$</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>Filtering</td>
+          <td>weak and late</td>
+          <td><em>arc-consistency</em> in polynomial time and space</td>
+      </tr>
+      <tr>
+          <td>Algorithm</td>
+          <td>straightforward</td>
+          <td>tricky*</td>
+      </tr>
+  </tbody>
+</table>
+<p><small>*: but already done for you in libraries</small></p>
+<aside class="notes"><p>fix-point might be long</p>
+<p>$$O(n\sqrt{\sum d})$$</p>
+</aside>
+</section><section>
+<h2 id="remarks-about-global-constraints">Remarks about global constraints</h2>
+<p>Many model <span style="color:#3BAFDA">highly combinatorial problems</span></p>
+<p>It is likely that:</p>
+<ul>
+<li>arc-consistency is not reached (<em>i.e., weaker filtering</em>)</li>
+<li>filtering is complex to achieve</li>
+</ul>
+<p>Their expressive power remains strong</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="improvements">Improvements</h1>
+<p>that we do not develop</p>
+</section><section>
+<h2 id="at-the-modelling-level">At the modelling level</h2>
+<ul>
+<li>Other kinds of variables</li>
+<li>Other constraints or way to express rules</li>
+<li>Search space exploration
+<ul>
+<li>Black-box strategies,</li>
+<li>Restarting,</li>
+<li>Alternatives to DFS</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="at-the-solving-step">At the solving step</h2>
+<ul>
+<li>Refine the way constraints are propagated</li>
+<li>Fine response of propagators to variables&rsquo; changes</li>
+<li>Restore by copy or trail</li>
+<li>Conflict-driven Clause-learning</li>
+<li>&hellip;</li>
+</ul>
+</section><section>
+<p>And so many other things !</p>
+
+</section>
+</section>
+    <section>
+
+<section data-shortcode-section>
+<h1 id="thank-you">Thank you</h1>
+<p>Q?</p>
+
+</section>
+</section>
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/presentations/reveal-hugo/object-assign.js></script>
+
+
+<script src="/presentations/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/presentations/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {};
+  var revealHugoPageParams = {"highlight_theme":"github","slide_number":true,"theme":"league"};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+    
+  </body>
+</html>

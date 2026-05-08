@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.148.1">
+<meta name="generator" content="Hugo 0.161.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -28,13 +28,13 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:published_time" content="2020-01-07T16:06:55+01:00">
-    <meta property="article:modified_time" content="2023-10-02T13:14:41+02:00">
+    <meta property="article:modified_time" content="2026-05-08T10:33:47+02:00">
 
   <meta itemprop="name" content="Declaring variables">
   <meta itemprop="description" content="How to declare variables?">
   <meta itemprop="datePublished" content="2020-01-07T16:06:55+01:00">
-  <meta itemprop="dateModified" content="2023-10-02T13:14:41+02:00">
-  <meta itemprop="wordCount" content="1769">
+  <meta itemprop="dateModified" content="2026-05-08T10:33:47+02:00">
+  <meta itemprop="wordCount" content="2373">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Declaring variables">
   <meta name="twitter:description" content="How to declare variables?">
@@ -47,12 +47,17 @@
 
   gtag('config', 'G-738NJHH4T5');
 </script>
-<link rel="preload" href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" as="style" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
-<link href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" rel="stylesheet" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
+<link rel="preload" href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" as="style" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
+<link href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" rel="stylesheet" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
 
@@ -76,10 +81,11 @@ window.MathJax = {
   </head>
   <body class="td-page">
     <header>
-      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
-<div class="container-fluid flex-column flex-md-row">
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><path style="fill:#005c94;stroke:none;stroke-width:4.78758144" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
-  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
@@ -97,128 +103,160 @@ window.MathJax = {
         <a class="nav-link" href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html" target="_blank" rel="noopener"><span>Javadoc</span></a>
       </li>
       </ul>
+    <div class="scroll-indicator scroll-right"></div>
   </div>
-  <div class="d-none d-lg-block">
+  <div class="td-navbar__search d-none d-lg-block">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
   </div>
 </div>
 </nav>
     </header>
     <div class="container-fluid td-outer">
-      <div class="td-main">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
             <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="td-sidebar-nav collapse" id="td-section-nav">
     <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
-  <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
-  <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsconsiderations-li">
-  <a href="/docs/considerations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
-  <a href="/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
-  <a href="/docs/modeling/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="">Modeling</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsmodelingvariables-li">
-  <a href="/docs/modeling/variables/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-docsmodelingvariables"><span class="td-sidebar-nav-active-item">Declaring variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingconstraints-li">
-  <a href="/docs/modeling/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingconstraints"><span class="">Handling constraints</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintconstraints-li">
-  <a href="/docs/modeling/intconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintconstraints"><span class="">Constraints over integer variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintexpressions-li">
-  <a href="/docs/modeling/intexpressions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
-  <a href="/docs/modeling/setconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
-  <a href="/docs/modeling/graphconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
-  <a href="/docs/modeling/realconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
-  <a href="/docs/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
-  <a href="/docs/solving/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolving"><span class="">Lauching the resolution process</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolutions-li">
-  <a href="/docs/solving/solutions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolutions"><span class="">Dealing with solutions</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstrategies-li">
-  <a href="/docs/solving/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstrategies"><span class="">Search Strategies</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstatistics-li">
-  <a href="/docs/solving/statistics/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
-  <a href="/docs/solving/limits/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
-  <a href="/docs/solving/lns/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
-  <a href="/docs/solving/restarts/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
-  <a href="/docs/solving/portfolio/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsparsing-li">
-  <a href="/docs/parsing/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Modelling languages</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
-  <a href="/docs/parsing/minizinc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
-  <a href="/docs/parsing/others/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
-  <a href="/docs/advanced-usages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagespropagator-li">
-  <a href="/docs/advanced-usages/propagator/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagespropagator"><span class="">Designing a propagator</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesstrategies-li">
-  <a href="/docs/advanced-usages/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesstrategies"><span class="">Designing a search strategy</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessearch-loop-li">
-  <a href="/docs/advanced-usages/search-loop/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessearch-loop"><span class="">Search loop</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesexplanations-li">
-  <a href="/docs/advanced-usages/explanations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesexplanations"><span class="">Explanations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesibex-li">
-  <a href="/docs/advanced-usages/ibex/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesibex"><span class="">Ibex</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessat-li">
-  <a href="/docs/advanced-usages/sat/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessat"><span class="">SAT</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesmiscellaneous-li">
-  <a href="/docs/advanced-usages/miscellaneous/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
-  <a href="/docs/frequently-asked-questions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
-</li>
-  </ul>
-</li>
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsconsiderations-li">
+    <a href="/docs/considerations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsconsiderations"><span class="">Considerations</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-started-li">
+    <a href="/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">Getting Started</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsmodeling-li">
+    <a href="/docs/modeling/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsmodeling"><span class="">Modeling</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsmodelingvariables-li">
+    <a href="/docs/modeling/variables/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-docsmodelingvariables"><span class="td-sidebar-nav-active-item">Declaring variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingconstraints-li">
+    <a href="/docs/modeling/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingconstraints"><span class="">Handling constraints</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintconstraints-li">
+    <a href="/docs/modeling/intconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintconstraints"><span class="">Constraints over integer variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingintexpressions-li">
+    <a href="/docs/modeling/intexpressions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingintexpressions"><span class="">Building expressions on integer variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingsetconstraints-li">
+    <a href="/docs/modeling/setconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingsetconstraints"><span class="">Constraints over set variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelinggraphconstraints-li">
+    <a href="/docs/modeling/graphconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelinggraphconstraints"><span class="">Constraints over graph variables</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsmodelingrealconstraints-li">
+    <a href="/docs/modeling/realconstraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsmodelingrealconstraints"><span class="">Constraints over real variables</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssolving-li">
+    <a href="/docs/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docssolving"><span class="">Solving</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolving-li">
+    <a href="/docs/solving/solving/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolving"><span class="">Lauching the resolution process</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingsolutions-li">
+    <a href="/docs/solving/solutions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingsolutions"><span class="">Dealing with solutions</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstrategies-li">
+    <a href="/docs/solving/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstrategies"><span class="">Search Strategies</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingstatistics-li">
+    <a href="/docs/solving/statistics/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingstatistics"><span class="">Statistics</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglimits-li">
+    <a href="/docs/solving/limits/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglimits"><span class="">Limits</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvinglns-li">
+    <a href="/docs/solving/lns/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvinglns"><span class="">Large Neighborhood Search</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingrestarts-li">
+    <a href="/docs/solving/restarts/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingrestarts"><span class="">Restarts</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssolvingportfolio-li">
+    <a href="/docs/solving/portfolio/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docssolvingportfolio"><span class="">Multi-thread resolution</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsparsing-li">
+    <a href="/docs/parsing/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsparsing"><span class="">Modelling languages</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingminizinc-li">
+    <a href="/docs/parsing/minizinc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingminizinc"><span class="">Deal with MiniZinc files</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsparsingothers-li">
+    <a href="/docs/parsing/others/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsparsingothers"><span class="">XCSP3 and DIMACS</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvanced-usages-li">
+    <a href="/docs/advanced-usages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvanced-usages"><span class="">Advanced usages</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagespropagator-li">
+    <a href="/docs/advanced-usages/propagator/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagespropagator"><span class="">Designing a propagator</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesstrategies-li">
+    <a href="/docs/advanced-usages/strategies/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesstrategies"><span class="">Designing a search strategy</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessearch-loop-li">
+    <a href="/docs/advanced-usages/search-loop/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessearch-loop"><span class="">Search loop</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesexplanations-li">
+    <a href="/docs/advanced-usages/explanations/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesexplanations"><span class="">Explanations</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesibex-li">
+    <a href="/docs/advanced-usages/ibex/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesibex"><span class="">Ibex</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagessat-li">
+    <a href="/docs/advanced-usages/sat/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagessat"><span class="">SAT</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvanced-usagesmiscellaneous-li">
+    <a href="/docs/advanced-usages/miscellaneous/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvanced-usagesmiscellaneous"><span class="">Miscellaneous</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfrequently-asked-questions-li">
+    <a href="/docs/frequently-asked-questions/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsfrequently-asked-questions"><span class="">FAQ</span></a>
+  </li>
+    </ul>
+  </li>
     </ul>
   </nav>
 </div>
-
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="td-sidebar-toc">
             <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 <a href="https://github.com/chocoteam/website/tree/master/content/en/docs/Modeling/Variables.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
   <a href="https://github.com/chocoteam/website/edit/master/content/en/docs/Modeling/Variables.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/docs/Modeling?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
   <a href="https://github.com/chocoteam/website/issues/new?title=Declaring%20variables" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
 
-            <div class="td-toc">
-        <nav id="TableOfContents">
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#integer-variables">Integer variables</a>
       <ul>
@@ -230,6 +268,13 @@ window.MathJax = {
     <li><a href="#set-variables">Set variables</a></li>
     <li><a href="#graph-variables">Graph Variables</a></li>
     <li><a href="#real-variables">Real variables</a></li>
+    <li><a href="#task-variables">Task variables</a>
+      <ul>
+        <li><a href="#basic-task">Basic Task</a></li>
+        <li><a href="#optional-task">Optional Task</a></li>
+        <li><a href="#task-arrays">Task arrays</a></li>
+      </ul>
+    </li>
     <li><a href="#views-creating-variables-from-constraints">Views: Creating variables from constraints</a>
       <ul>
         <li><a href="#arithmetical-views">Arithmetical views</a></li>
@@ -238,17 +283,25 @@ window.MathJax = {
         <li><a href="#view-over-real-variable">View over real variable</a></li>
       </ul>
     </li>
+    <li><a href="#result-variables">Result Variables</a>
+      <ul>
+        <li><a href="#sum-result-variable">Sum result variable</a></li>
+        <li><a href="#count-result-variable">Count result variable</a></li>
+        <li><a href="#minmax-result-variables">Min/Max result variables</a></li>
+        <li><a href="#argument-minmax">Argument min/max</a></li>
+        <li><a href="#element-result-variable">Element result variable</a></li>
+        <li><a href="#set-result-variables">Set result variables</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
-      </div>
-    
+  </div>
+
             
 
           </aside>
           <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             
-  
-
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -276,141 +329,79 @@ When creating a variable, the user can specify a name to help reading the output
 To create an integer variable, the <code>Model</code> should be used:</p>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-0-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-0-1-tab" data-toggle="tab" href="#tabs-0-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-0-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-00-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-00-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-0-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Create a constant variable equal to 42
-IntVar v0 = model.intVar(&#34;v0&#34;, 42);
-// Create a variable taking its value in [1, 3] (the value is 1, 2 or 3)
-IntVar v1 = model.intVar(&#34;v1&#34;, 1, 3);
-// Create a variable taking its value in {1, 3} (the value is 1 or 3)
-IntVar v2 = model.intVar(&#34;v2&#34;, new int[]{1, 3});</code></pre></div>
-  
-        
-          
-        
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Create a constant variable equal to 42</span>
+</span></span><span style="display:flex;"><span>IntVar v0 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;v0&#34;</span>, 42);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create a variable taking its value in [1, 3] (the value is 1, 2 or 3)</span>
+</span></span><span style="display:flex;"><span>IntVar v1 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;v1&#34;</span>, 1, 3);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create a variable taking its value in {1, 3} (the value is 1 or 3)</span>
+</span></span><span style="display:flex;"><span>IntVar v2 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;v2&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1, 3});</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2"># Create a constant variable equal to 42
-v0 = model.intvar(42, name=&#34;v0&#34;)
-# Create a variable taking its value in [1, 3] (the value is 1, 2 or 3)
-v1 = model.intvar(1, 3, name=&#34;v1&#34;)
-# Create a variable taking its value in {1, 3} (the value is 1 or 3)
-v2 = model.intvar([1, 3], name=&#34;v2&#34;)</code></pre></div>
-  
+        id="tabs-00-01" role="tabpanel" aria-labelled-by="tabs-00-01-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># Create a constant variable equal to 42</span>
+</span></span><span style="display:flex;"><span>v0 <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">42</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a variable taking its value in [1, 3] (the value is 1, 2 or 3)</span>
+</span></span><span style="display:flex;"><span>v1 <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a variable taking its value in {1, 3} (the value is 1 or 3)</span>
+</span></span><span style="display:flex;"><span>v2 <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v2&#34;</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>It is then possible to build directly arrays and matrices of variables having the same initial domain with:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-1-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-1-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-01-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-01-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-1-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Create an array of 5 variables taking their value in [-1, 1]
-IntVar[] vs = model.intVarArray(&#34;vs&#34;, 5, -1, 1);
-// Create a matrix of 5x6 variables taking their value in [-1, 1]
-IntVar[][] vs = model.intVarMatrix(&#34;ws&#34;, 5, 6, -1, 1);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Create an array of 5 variables taking their value in [-1, 1]</span>
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vs <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;vs&#34;</span>, 5, <span style="color:#f92672">-</span>1, 1);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create a matrix of 5x6 variables taking their value in [-1, 1]</span>
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[][]</span> vs <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarMatrix</span>(<span style="color:#e6db74">&#34;ws&#34;</span>, 5, 6, <span style="color:#f92672">-</span>1, 1);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2"># Create an array of 5 variables taking their value in [-1, 1]
-vs = model.intvars(5, -1, 1,name=&#34;vs&#34;)
-# Create a matrix of 5x6 variables taking their value in [-1, 1]
-ws = [ model.intvars(6, -1, 1, name=&#34;ws_&#34;+str(i)) for i in range(5) ]</code></pre></div>
-  
+        id="tabs-01-01" role="tabpanel" aria-labelled-by="tabs-01-01-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># Create an array of 5 variables taking their value in [-1, 1]</span>
+</span></span><span style="display:flex;"><span>vs <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvars(<span style="color:#ae81ff">5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vs&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a matrix of 5x6 variables taking their value in [-1, 1]</span>
+</span></span><span style="display:flex;"><span>ws <span style="color:#f92672">=</span> [ model<span style="color:#f92672">.</span>intvars(<span style="color:#ae81ff">6</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ws_&#34;</span><span style="color:#f92672">+</span>str(i)) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>) ]</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>There exists different ways to encode the domain of an integer variable: bounded domain or enumerated domain.</p>
@@ -423,50 +414,29 @@ values 2, 3, 7 and 8 are infeasible, then this learning will be lost as it canno
 However, whenever the values 9 and 10 are removed from the variable&rsquo;s domain, the upper bound of the variable will be set to 6 by such a constraint.</p>
 <p>To specify you want to use bounded domains, set the <code>boundedDomain</code> argument to <code>true</code> when creating variables:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-2-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-2-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar v = model.intVar(&#34;v&#34;, 1, 12, true);</code></pre></div>
-  
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar v <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;v&#34;</span>, 1, 12, <span style="color:#66d9ef">true</span>);</span></span></code></pre></div>
+    </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    When using bounded domains, branching decisions must either be domain splits or bound assignments/removals.
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>When using bounded domains, branching decisions must either be domain splits or bound assignments/removals.
 Indeed, assigning a bounded variable to a value strictly comprised between its bounds may results in infinite loop
-because such branching decisions will not be refutable.
-
+because such branching decisions will not be refutable.</p>
 </div>
-
 <h3 id="enumerated-domains">Enumerated domains</h3>
 <p>When the domain of an integer variable is said to be <em>enumerated</em>, it is represented through
 the set of possible values, in the form:</p>
@@ -478,77 +448,40 @@ Enumerated domains provide more information than bounded domains but are heavier
 <p>To specify you want to use enumerated domains, either set the <code>boundedDomain</code> argument to <code>false</code> when creating variables by specifying two bounds
 or use the signature that specifies the array of possible values:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-4-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-4" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-4-1-tab" data-toggle="tab" href="#tabs-4-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-4-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-04-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-04-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-4-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar v = model.intVar(&#34;v&#34;, 1, 4, false);
-IntVar v = model.intVar(&#34;v&#34;, new int[]{1,2,3,4});</code></pre></div>
-  
-        
-          
-        
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar v <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;v&#34;</span>, 1, 4, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>IntVar v <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;v&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1,2,3,4});</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">v = model.intvar([1,2,3,4], name=&#34;2&#34;)</code></pre></div>
-  
+        id="tabs-04-01" role="tabpanel" aria-labelled-by="tabs-04-01-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>v <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2&#34;</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    If the API without the <code>boundedDomain</code> argument is used, the engine will select the more accurate representation
-depending on the domain&rsquo;s cardinality.
-
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>If the API without the <code>boundedDomain</code> argument is used, the engine will select the more accurate representation
+depending on the domain&rsquo;s cardinality.</p>
 </div>
-
 <h2 id="boolean-variables">Boolean variables</h2>
 <p>Boolean variables, <code>BoolVar</code>, are specific <code>IntVar</code> that take their value in $[\![0,1]\!]$.
 The avantage of <code>BoolVar</code> is twofold:</p>
@@ -558,68 +491,37 @@ The avantage of <code>BoolVar</code> is twofold:</p>
 </ul>
 <p>To create a new boolean variable:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-6" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-6-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-6" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-06-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-06-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-6-1-tab" data-toggle="tab" href="#tabs-6-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-6-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-06-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-06-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-06-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-6-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">BoolVar b = model.boolVar(&#34;b&#34;);
-// A Boolean variable fixed to True
-BoolVar b = model.boolVar(true);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-06-00" role="tabpanel" aria-labelled-by="tabs-06-00-tab" tabindex="6">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">boolVar</span>(<span style="color:#e6db74">&#34;b&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// A Boolean variable fixed to True</span>
+</span></span><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">boolVar</span>(<span style="color:#66d9ef">true</span>);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">b = model.boolVar(name=&#34;b&#34;)
-# A Boolean variable fixed to True
-t = model.boolvar(True)</code></pre></div>
-  
+        id="tabs-06-01" role="tabpanel" aria-labelled-by="tabs-06-01-tab" tabindex="6">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>boolVar(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A Boolean variable fixed to True</span>
+</span></span><span style="display:flex;"><span>t <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>boolvar(<span style="color:#66d9ef">True</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="set-variables">Set variables</h2>
@@ -638,84 +540,53 @@ Then, decisions and filtering algorithms will remove integers from $o$ and add s
 A set variable is instantiated if and only if $m = o$.</p>
 <p>A set variable can be created as follows:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-7" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-7-0-tab" data-toggle="tab" href="#tabs-7-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-7-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-7" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-07-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-07-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-7-1-tab" data-toggle="tab" href="#tabs-7-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-7-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-07-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-07-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-7-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-7-0" role="tabpanel" aria-labelled-by="tabs-7-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Constant SetVar equal to {2,3,12}
-SetVar x = model.setVar(&#34;x&#34;, new int[]{2,3,12});
-
-// SetVar representing a subset of {1,2,3,5,12}
-SetVar y = model.setVar(&#34;y&#34;, new int[]{}, new int[]{1,2,3,5,12});
-// possible values: {}, {2}, {1,3,5} ...
-
-// SetVar representing a superset of {2,3} and a subset of {1,2,3,5,12}
-SetVar z = model.setVar(&#34;z&#34;, new int[]{2,3}, new int[]{1,2,3,5,12});
-// possible values: {2,3}, {2,3,5}, {1,2,3,5} ...</code></pre></div>
-  
-        
-          
-        
+        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab" tabindex="7">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Constant SetVar equal to {2,3,12}</span>
+</span></span><span style="display:flex;"><span>SetVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">setVar</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{2,3,12});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// SetVar representing a subset of {1,2,3,5,12}</span>
+</span></span><span style="display:flex;"><span>SetVar y <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">setVar</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{}, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1,2,3,5,12});
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// possible values: {}, {2}, {1,3,5} ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// SetVar representing a superset of {2,3} and a subset of {1,2,3,5,12}</span>
+</span></span><span style="display:flex;"><span>SetVar z <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">setVar</span>(<span style="color:#e6db74">&#34;z&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{2,3}, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1,2,3,5,12});
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> possible values: {2,3}, {2,3,5}, {1,2,3,5} ...</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-7-1" role="tabpanel" aria-labelled-by="tabs-7-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2"># Constant SetVar equal to {2,3,12}, with a list
-x1 = model.setvar([2,3,12], name=&#34;x1&#34;)
-# or with a set
-x2 = model.setvar({4,5,13}, name=&#34;x2&#34;)
-
-# SetVar representing a subset of {1,2,3,5,12}
-y = model.setvar({}, {1,2,3,5,12}, name=&#34;y&#34;)
-# possible values: {}, {2}, {1,3,5} ...
-
-# SetVar representing a superset of {2,3} and a subset of {1,2,3,5,12}
-z = model.setvar([2,3], {1,2,3,5,12})
-# possible values: {2,3}, {2,3,5}, {1,2,3,5} ...</code></pre></div>
-  
+        id="tabs-07-01" role="tabpanel" aria-labelled-by="tabs-07-01-tab" tabindex="7">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># Constant SetVar equal to {2,3,12}, with a list</span>
+</span></span><span style="display:flex;"><span>x1 <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>setvar([<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">12</span>], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x1&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or with a set</span>
+</span></span><span style="display:flex;"><span>x2 <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>setvar({<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">13</span>}, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x2&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># SetVar representing a subset of {1,2,3,5,12}</span>
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>setvar({}, {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">12</span>}, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;y&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># possible values: {}, {2}, {1,3,5} ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># SetVar representing a superset of {2,3} and a subset of {1,2,3,5,12}</span>
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>setvar([<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>], {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">12</span>})
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># possible values: {2,3}, {2,3,5}, {1,2,3,5} ...</span></span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="graph-variables">Graph Variables</h2>
@@ -725,91 +596,60 @@ z = model.setvar([2,3], {1,2,3,5,12})
 <p>A graph variable is instantiated if and only if $\underline{G} = \overline{G}$.</p>
 <p>A graph variable can be created as follows:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-8" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-8-0-tab" data-toggle="tab" href="#tabs-8-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-8-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-8" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-08-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-08-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-8-1-tab" data-toggle="tab" href="#tabs-8-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-8-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
-
+      <button class="nav-link"
+          id="tabs-08-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-08-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-8-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-8-0" role="tabpanel" aria-labelled-by="tabs-8-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// A directed graph
-// first declare the lower bound
-DirectedGraph LB = GraphFactory.makeStoredDirectedGraph(model, 3, SetType.BITSET, SetType.BITSET);
-// then declare the upper bound
-DirectedGraph UB = GraphFactory.makeStoredAllNodesDirectedGraph(model, 3, SetType.BITSET, SetType.BITSET, false);
-UB.addEdge(0, 1);
-UB.addEdge(1, 2);
-UB.addEdge(2, 0);
-// finally declare the graph variable
-DirectedGraphVar g = model.digraphVar(&#34;g&#34;, LB, UB);
-
-// An undirected graph
-UndirectedGraph LB = GraphFactory.makeStoredUndirectedGraph(model, 3, SetType.BITSET, SetType.BITSET);
-// the last parameter indicates that a complete graph is required
-UndirectedGraph UB = GraphFactory.makeCompleteStoredUndirectedGraph(model, 3, SetType.BITSET, SetType.BITSET, true);
-UndirectedGraphVar g = model.graphVar(&#34;g&#34;, LB, UB);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab" tabindex="8">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// A directed graph</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// first declare the lower bound</span>
+</span></span><span style="display:flex;"><span>DirectedGraph LB <span style="color:#f92672">=</span> GraphFactory.<span style="color:#a6e22e">makeStoredDirectedGraph</span>(model, 3, SetType.<span style="color:#a6e22e">BITSET</span>, SetType.<span style="color:#a6e22e">BITSET</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// then declare the upper bound</span>
+</span></span><span style="display:flex;"><span>DirectedGraph UB <span style="color:#f92672">=</span> GraphFactory.<span style="color:#a6e22e">makeStoredAllNodesDirectedGraph</span>(model, 3, SetType.<span style="color:#a6e22e">BITSET</span>, SetType.<span style="color:#a6e22e">BITSET</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>UB.<span style="color:#a6e22e">addEdge</span>(0, 1);
+</span></span><span style="display:flex;"><span>UB.<span style="color:#a6e22e">addEdge</span>(1, 2);
+</span></span><span style="display:flex;"><span>UB.<span style="color:#a6e22e">addEdge</span>(2, 0);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// finally declare the graph variable</span>
+</span></span><span style="display:flex;"><span>DirectedGraphVar g <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">digraphVar</span>(<span style="color:#e6db74">&#34;g&#34;</span>, LB, UB);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// An undirected graph</span>
+</span></span><span style="display:flex;"><span>UndirectedGraph LB <span style="color:#f92672">=</span> GraphFactory.<span style="color:#a6e22e">makeStoredUndirectedGraph</span>(model, 3, SetType.<span style="color:#a6e22e">BITSET</span>, SetType.<span style="color:#a6e22e">BITSET</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the last parameter indicates that a complete graph is required</span>
+</span></span><span style="display:flex;"><span>UndirectedGraph UB <span style="color:#f92672">=</span> GraphFactory.<span style="color:#a6e22e">makeCompleteStoredUndirectedGraph</span>(model, 3, SetType.<span style="color:#a6e22e">BITSET</span>, SetType.<span style="color:#a6e22e">BITSET</span>, <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>UndirectedGraphVar g <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">graphVar</span>(<span style="color:#e6db74">&#34;g&#34;</span>, LB, UB);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-8-1" role="tabpanel" aria-labelled-by="tabs-8-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">from pychoco.objects.graphs.directed_graph import create_directed_graph
-# A directed graph
-# first declare the lower bound
-lb = create_directed_graph(model, n, [], [])
-# then declare the upper bound
-ub = create_directed_graph(model, n, [0,1,2],[[0,1], [1,2], [2,0]])
-# finally declare the graph variable
-g = model.digraphvar(lb, ub, &#34;g&#34;)
-
-from pychoco.objects.graphs.undirected_graph import create_undirected_graph, create_complete_undirected_graph
-lb = create_undirected_graph(model, n, [], [])
-ub = create_complete_undirected_graph(model, 3)
-g = model.graphvar(lb, ub, &#34;g&#34;)</code></pre></div>
-  
+        id="tabs-08-01" role="tabpanel" aria-labelled-by="tabs-08-01-tab" tabindex="8">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pychoco.objects.graphs.directed_graph <span style="color:#f92672">import</span> create_directed_graph
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A directed graph</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># first declare the lower bound</span>
+</span></span><span style="display:flex;"><span>lb <span style="color:#f92672">=</span> create_directed_graph(model, n, [], [])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># then declare the upper bound</span>
+</span></span><span style="display:flex;"><span>ub <span style="color:#f92672">=</span> create_directed_graph(model, n, [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>],[[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># finally declare the graph variable</span>
+</span></span><span style="display:flex;"><span>g <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>digraphvar(lb, ub, <span style="color:#e6db74">&#34;g&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pychoco.objects.graphs.undirected_graph <span style="color:#f92672">import</span> create_undirected_graph, create_complete_undirected_graph
+</span></span><span style="display:flex;"><span>lb <span style="color:#f92672">=</span> create_undirected_graph(model, n, [], [])
+</span></span><span style="display:flex;"><span>ub <span style="color:#f92672">=</span> create_complete_undirected_graph(model, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>g <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>graphvar(lb, ub, <span style="color:#e6db74">&#34;g&#34;</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="real-variables">Real variables</h2>
@@ -819,46 +659,159 @@ so its actual value is generally an interval of doubles, whose size is constrain
 Real variables have a specific status in Choco 4, which uses <a href="http://www.ibex-lib.org/">Ibex solver</a> to define constraints.</p>
 <p>A real variable is declared with three doubles defining its bound and a precision:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-9" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-9-0-tab" data-toggle="tab" href="#tabs-9-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-9-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-9" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-09-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-09-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-9-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-9-0" role="tabpanel" aria-labelled-by="tabs-9-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">RealVar x = model.realVar(&#34;x&#34;, 0.2d, 3.4d, 0.001d);</code></pre></div>
-  
+        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab" tabindex="9">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>RealVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">realVar</span>(<span style="color:#e6db74">&#34;x&#34;</span>, 0.<span style="color:#a6e22e">2d</span>, 3.<span style="color:#a6e22e">4d</span>, 0.<span style="color:#a6e22e">001d</span>);</span></span></code></pre></div>
+    </div>
 </div>
 
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p><code>pychoco</code> version does not support <code>realvar</code>.</p>
+</div>
+<h2 id="task-variables">Task variables</h2>
+<p>Task variables are used for scheduling problems. A task has a start time (IntVar), a duration, and an end time (IntVar). The constraint <code>start + duration = end</code> is automatically enforced.</p>
+<h3 id="basic-task">Basic Task</h3>
+<p>A task is created with a start variable and a fixed duration:</p>
 
 
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
 
-    <code>pychoco</code> version does not support <code>realvar</code>.
+<ul class="nav nav-tabs" id="tabs-11" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-11-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-11-00" aria-selected="true">
+        Java
+      </button>
+    </li><li class="nav-item">
+      <button class="nav-link"
+          id="tabs-11-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-11-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
+<div class="tab-content" id="tabs-11-content">
+    <div class="tab-pane fade show active"
+        id="tabs-11-00" role="tabpanel" aria-labelled-by="tabs-11-00-tab" tabindex="11">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar start <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;start&#34;</span>, 0, 10);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> duration <span style="color:#f92672">=</span> 5;
+</span></span><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">taskVar</span>(start, duration);</span></span></code></pre></div>
+    </div>
+    <div class="tab-pane fade"
+        id="tabs-11-01" role="tabpanel" aria-labelled-by="tabs-11-01-tab" tabindex="11">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>start <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>intvar(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#34;start&#34;</span>)
+</span></span><span style="display:flex;"><span>duration <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>task <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>task(start, duration)</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>You can also specify an end variable or a variable duration:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-12" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-12-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-12-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-12-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-12-content">
+    <div class="tab-pane fade show active"
+        id="tabs-12-00" role="tabpanel" aria-labelled-by="tabs-12-00-tab" tabindex="12">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar start <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;start&#34;</span>, 0, 10);
+</span></span><span style="display:flex;"><span>IntVar duration <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;duration&#34;</span>, 1, 5);
+</span></span><span style="display:flex;"><span>IntVar end <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;end&#34;</span>, 0, 15);
+</span></span><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">taskVar</span>(start, duration, end);</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>Or from time bounds (EST, LST, ECT, LCT):</p>
+
+
+<ul class="nav nav-tabs" id="tabs-13" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-13-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-13-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-13-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-13-content">
+    <div class="tab-pane fade show active"
+        id="tabs-13-00" role="tabpanel" aria-labelled-by="tabs-13-00-tab" tabindex="13">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Earliest Start Time, Latest Start Time, duration, Earliest Completion Time, Latest Completion Time</span>
+</span></span><span style="display:flex;"><span>Task task <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">taskVar</span>(0, 5, 3, 5, 10);</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="optional-task">Optional Task</h3>
+<p>An optional task is a task that may or may not be performed. It has an additional Boolean variable <code>performed</code> that indicates whether the task is active:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-14" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-14-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-14-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-14-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-14-content">
+    <div class="tab-pane fade show active"
+        id="tabs-14-00" role="tabpanel" aria-labelled-by="tabs-14-00-tab" tabindex="14">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar start <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;start&#34;</span>, 0, 10);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> duration <span style="color:#f92672">=</span> 5;
+</span></span><span style="display:flex;"><span>BoolVar performed <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">boolVar</span>(<span style="color:#e6db74">&#34;performed&#34;</span>);
+</span></span><span style="display:flex;"><span>OptionalTask task <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">taskVar</span>(start, duration, performed);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// or with variable duration</span>
+</span></span><span style="display:flex;"><span>IntVar dur <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;duration&#34;</span>, 1, 5);
+</span></span><span style="display:flex;"><span>OptionalTask task <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">taskVar</span>(start, dur, performed);</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>Optional tasks are useful in scheduling problems where some tasks are optional or conditional.</p>
+<h3 id="task-arrays">Task arrays</h3>
+<p>Create arrays of task variables for modeling multiple scheduling entities:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-15" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-15-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-15-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-15-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-15-content">
+    <div class="tab-pane fade show active"
+        id="tabs-15-00" role="tabpanel" aria-labelled-by="tabs-15-00-tab" tabindex="15">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> starts <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;s&#34;</span>, 10, 0, 20);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> durations <span style="color:#f92672">=</span> {2, 3, 4, 2, 5, 3, 2, 4, 3, 2};
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> ends <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;e&#34;</span>, 10, 0, 25);
+</span></span><span style="display:flex;"><span>Task<span style="color:#f92672">[]</span> tasks <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">taskVarArray</span>(starts, durations, ends);</span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="views-creating-variables-from-constraints">Views: Creating variables from constraints</h2>
@@ -869,627 +822,493 @@ Otherwise, it is simply a modeling shortcut to create a variable and post a cons
 <p>An arithmetical view requires an integer variable.</p>
 <h4 id="x--y--2-">$x = y + 2$ :</h4>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-11" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-11-0-tab" data-toggle="tab" href="#tabs-11-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-11-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-16" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-16-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-16-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-16-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-11-1-tab" data-toggle="tab" href="#tabs-11-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-11-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-16-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-16-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-16-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-11-content">
-        
-          
-        
+<div class="tab-content" id="tabs-16-content">
     <div class="tab-pane fade show active"
-        id="tabs-11-0" role="tabpanel" aria-labelled-by="tabs-11-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar x = model.intOffsetView(y, 2);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-16-00" role="tabpanel" aria-labelled-by="tabs-16-00-tab" tabindex="16">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intOffsetView</span>(y, 2);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-11-1" role="tabpanel" aria-labelled-by="tabs-11-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">x = model.int_offset_view(y, 2)</code></pre></div>
-  
+        id="tabs-16-01" role="tabpanel" aria-labelled-by="tabs-16-01-tab" tabindex="16">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_offset_view(y, <span style="color:#ae81ff">2</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="x---y-">$x = -y$ :</h4>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
-<ul class="nav nav-tabs" id="tabs-12" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-12-0-tab" data-toggle="tab" href="#tabs-12-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-12-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-17" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-17-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-17-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-17-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-12-1-tab" data-toggle="tab" href="#tabs-12-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-12-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-17-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-17-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-17-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-12-content">
-        
-          
-        
+<div class="tab-content" id="tabs-17-content">
     <div class="tab-pane fade show active"
-        id="tabs-12-0" role="tabpanel" aria-labelled-by="tabs-12-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar x = model.intMinusView(y);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-17-00" role="tabpanel" aria-labelled-by="tabs-17-00-tab" tabindex="17">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intMinusView</span>(y);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-12-1" role="tabpanel" aria-labelled-by="tabs-12-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">x = model.int_minus_view(y)</code></pre></div>
-  
+        id="tabs-17-01" role="tabpanel" aria-labelled-by="tabs-17-01-tab" tabindex="17">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_minus_view(y)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="x--3times-y-">$x = 3\times y$ :</h4>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-13" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-13-0-tab" data-toggle="tab" href="#tabs-13-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-13-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-18" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-18-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-18-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-18-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-13-1-tab" data-toggle="tab" href="#tabs-13-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-13-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-18-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-18-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-18-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-13-content">
-        
-          
-        
+<div class="tab-content" id="tabs-18-content">
     <div class="tab-pane fade show active"
-        id="tabs-13-0" role="tabpanel" aria-labelled-by="tabs-13-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar x = model.intScaleView(y, 3);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-18-00" role="tabpanel" aria-labelled-by="tabs-18-00-tab" tabindex="18">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intScaleView</span>(y, 3);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-13-1" role="tabpanel" aria-labelled-by="tabs-13-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">x = model.int_scale_view(y, 3)</code></pre></div>
-  
+        id="tabs-18-01" role="tabpanel" aria-labelled-by="tabs-18-01-tab" tabindex="18">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_scale_view(y, <span style="color:#ae81ff">3</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h3 id="logical-views">Logical views</h3>
 <p>A logical view is based on an integer variable, a basic arithmetical relation ($=,\neq,\leq,\geq$) and a constant. The resulting view states whether or not the relation holds.</p>
 <h4 id="b-leftrightarrow-x--4-">$b \Leftrightarrow (x = 4)$ :</h4>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-14" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-14-0-tab" data-toggle="tab" href="#tabs-14-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-14-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-19" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-19-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-19-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-19-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-14-1-tab" data-toggle="tab" href="#tabs-14-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-14-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-19-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-19-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-19-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-14-content">
-        
-          
-        
+<div class="tab-content" id="tabs-19-content">
     <div class="tab-pane fade show active"
-        id="tabs-14-0" role="tabpanel" aria-labelled-by="tabs-14-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">BoolVar b = model.intEqView(x, 4);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-19-00" role="tabpanel" aria-labelled-by="tabs-19-00-tab" tabindex="19">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intEqView</span>(x, 4);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-14-1" role="tabpanel" aria-labelled-by="tabs-14-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">b = model.int_eq_view(x, 4)</code></pre></div>
-  
+        id="tabs-19-01" role="tabpanel" aria-labelled-by="tabs-19-01-tab" tabindex="19">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_eq_view(x, <span style="color:#ae81ff">4</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="b-leftrightarrow-x-neq-4-">$b \Leftrightarrow (x \neq 4)$ :</h4>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-15" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-15-0-tab" data-toggle="tab" href="#tabs-15-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-15-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-20" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-20-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-20-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-20-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-15-1-tab" data-toggle="tab" href="#tabs-15-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-15-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-20-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-20-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-20-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-15-content">
-        
-          
-        
+<div class="tab-content" id="tabs-20-content">
     <div class="tab-pane fade show active"
-        id="tabs-15-0" role="tabpanel" aria-labelled-by="tabs-15-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">BoolVar b = model.intNeView(x, 4);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-20-00" role="tabpanel" aria-labelled-by="tabs-20-00-tab" tabindex="20">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intNeView</span>(x, 4);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-15-1" role="tabpanel" aria-labelled-by="tabs-15-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">b = model.int_ne_view(x, 4)</code></pre></div>
-  
+        id="tabs-20-01" role="tabpanel" aria-labelled-by="tabs-20-01-tab" tabindex="20">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_ne_view(x, <span style="color:#ae81ff">4</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="b-leftrightarrow-x-leq-4-">$b \Leftrightarrow (x \leq 4)$ :</h4>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-16" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-16-0-tab" data-toggle="tab" href="#tabs-16-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-16-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-21" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-21-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-21-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-21-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-16-1-tab" data-toggle="tab" href="#tabs-16-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-16-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-21-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-21-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-21-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-16-content">
-        
-          
-        
+<div class="tab-content" id="tabs-21-content">
     <div class="tab-pane fade show active"
-        id="tabs-16-0" role="tabpanel" aria-labelled-by="tabs-16-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">BoolVar b = model.intLeView(x, 4);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-21-00" role="tabpanel" aria-labelled-by="tabs-21-00-tab" tabindex="21">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intLeView</span>(x, 4);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-16-1" role="tabpanel" aria-labelled-by="tabs-16-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">b = model.int_le_view(x, 4)</code></pre></div>
-  
+        id="tabs-21-01" role="tabpanel" aria-labelled-by="tabs-21-01-tab" tabindex="21">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_le_view(x, <span style="color:#ae81ff">4</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="b-leftrightarrow-x-geq-4-">$b \Leftrightarrow (x \geq 4)$ :</h4>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-17" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-17-0-tab" data-toggle="tab" href="#tabs-17-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-17-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-22" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-22-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-22-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-22-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-17-1-tab" data-toggle="tab" href="#tabs-17-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-17-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-22-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-22-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-22-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-17-content">
-        
-          
-        
+<div class="tab-content" id="tabs-22-content">
     <div class="tab-pane fade show active"
-        id="tabs-17-0" role="tabpanel" aria-labelled-by="tabs-17-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">BoolVar b = model.intGeView(x, 4);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-22-00" role="tabpanel" aria-labelled-by="tabs-22-00-tab" tabindex="22">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intGeView</span>(x, 4);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-17-1" role="tabpanel" aria-labelled-by="tabs-17-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">b = model.int_ge_view(x, 4)</code></pre></div>
-  
+        id="tabs-22-01" role="tabpanel" aria-labelled-by="tabs-22-01-tab" tabindex="22">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_ge_view(x, <span style="color:#ae81ff">4</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h4 id="d-leftrightarrow-neg-b">$d \Leftrightarrow \neg b$</h4>
 <p>This is a specific case, related to the negation of a <code>BoolVar</code>.
 No additional variable is needed, a view based on the variable to refute is enough.</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-18" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-18-0-tab" data-toggle="tab" href="#tabs-18-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-18-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-23" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-23-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-23-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-23-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-18-1-tab" data-toggle="tab" href="#tabs-18-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-18-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-23-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-23-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-23-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-18-content">
-        
-          
-        
+<div class="tab-content" id="tabs-23-content">
     <div class="tab-pane fade show active"
-        id="tabs-18-0" role="tabpanel" aria-labelled-by="tabs-18-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">BoolVar d = model.boolNotView(b);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-23-00" role="tabpanel" aria-labelled-by="tabs-23-00-tab" tabindex="23">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar d <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">boolNotView</span>(b);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-18-1" role="tabpanel" aria-labelled-by="tabs-18-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">d = model.bool_not_view(b)</code></pre></div>
-  
+        id="tabs-23-01" role="tabpanel" aria-labelled-by="tabs-23-01-tab" tabindex="23">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>d <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>bool_not_view(b)</span></span></code></pre></div>
+    </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    <p>The same result can be obtained in shorted version (in Java only):</p>
-<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-0-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>The same result can be obtained in shorted version (in Java only):</p>
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 <div class="tab-content" id="tabs-0-content">
-<pre><code>&lt;div class=&quot;tab-pane fade show active&quot;
-    id=&quot;tabs-0-0&quot; role=&quot;tabpanel&quot; aria-labelled-by=&quot;tabs-0-0-tab&quot;&gt;&lt;pre tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-Tab 1&quot; data-lang=&quot;Tab 1&quot;&gt;BoolVar d = b.not();&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-</code></pre>
+    <div class="tab-pane fade show active"
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar d <span style="color:#f92672">=</span> b.<span style="color:#a6e22e">not</span>();</span></span></code></pre></div>
+    </div>
 </div>
-
 </div>
-
 <h3 id="composition">Composition</h3>
 <p>Views can be combined together, e.g. $x = 2\times y + 5$ is:</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-20" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-20-0-tab" data-toggle="tab" href="#tabs-20-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-20-0" aria-selected="true">
-        Tab 1
-      </a>
+<ul class="nav nav-tabs" id="tabs-25" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-25-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-25-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-25-00" aria-selected="true">
+        Java
+      </button>
     </li><li class="nav-item">
-      <a class="nav-link tab-Tab-2"
-        id="tabs-20-1-tab" data-toggle="tab" href="#tabs-20-1" role="tab" onclick="handleClick(&#34;Tab-2&#34;);"
-        aria-controls="tabs-20-1" aria-selected="false">
-        Tab 2
-      </a>
-    </li></ul>
+      <button class="nav-link"
+          id="tabs-25-01-tab" data-bs-toggle="tab" data-bs-target="#tabs-25-01" role="tab"
+          data-td-tp-persist="python" aria-controls="tabs-25-01" aria-selected="false">
+        Python
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-20-content">
-        
-          
-        
+<div class="tab-content" id="tabs-25-content">
     <div class="tab-pane fade show active"
-        id="tabs-20-0" role="tabpanel" aria-labelled-by="tabs-20-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar x = model.intOffsetView(model.intScaleView(y,2),5);</code></pre></div>
-  
-        
-          
-        
+        id="tabs-25-00" role="tabpanel" aria-labelled-by="tabs-25-00-tab" tabindex="25">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intOffsetView</span>(model.<span style="color:#a6e22e">intScaleView</span>(y,2),5);</span></span></code></pre></div>
+    </div>
     <div class="tab-pane fade"
-        id="tabs-20-1" role="tabpanel" aria-labelled-by="tabs-20-1-tab"><pre tabindex="0"><code class="language-Tab 2" data-lang="Tab 2">x = model.int_offset_view(model.int_scale_view(y,2),5)</code></pre></div>
-  
+        id="tabs-25-01" role="tabpanel" aria-labelled-by="tabs-25-01-tab" tabindex="25">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>int_offset_view(model<span style="color:#f92672">.</span>int_scale_view(y,<span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">5</span>)</span></span></code></pre></div>
+    </div>
 </div>
 
 <h3 id="view-over-real-variable">View over real variable</h3>
 <p>We can also use a view mecanism to link an integer variable with a real variable.</p>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-<ul class="nav nav-tabs" id="tabs-21" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-21-0-tab" data-toggle="tab" href="#tabs-21-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-21-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
+<ul class="nav nav-tabs" id="tabs-26" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-26-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-26-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-26-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
-
-<div class="tab-content" id="tabs-21-content">
-        
-          
-        
+<div class="tab-content" id="tabs-26-content">
     <div class="tab-pane fade show active"
-        id="tabs-21-0" role="tabpanel" aria-labelled-by="tabs-21-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">IntVar ivar = model.intVar(&#34;i&#34;, 0, 4);
-double precision = 0.001d;
-RealVar rvar = model.realIntView(ivar, precision);</code></pre></div>
-  
+        id="tabs-26-00" role="tabpanel" aria-labelled-by="tabs-26-00-tab" tabindex="26">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar ivar <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;i&#34;</span>, 0, 4);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> precision <span style="color:#f92672">=</span> 0.<span style="color:#a6e22e">001d</span>;
+</span></span><span style="display:flex;"><span>RealVar rvar <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">realIntView</span>(ivar, precision);</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>This code enables to embed an integer variable in a constraint that is defined over real variables.</p>
+<h2 id="result-variables">Result Variables</h2>
+<p>Result variables are convenience methods that create a new variable and immediately post a constraint linking it to other variables or values. This eliminates the need to manually create the variable and post the constraint separately.</p>
+<h3 id="sum-result-variable">Sum result variable</h3>
+<p>Create a sum variable directly:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-27" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-27-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-27-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-27-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-27-content">
+    <div class="tab-pane fade show active"
+        id="tabs-27-00" role="tabpanel" aria-labelled-by="tabs-27-00-tab" tabindex="27">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;x&#34;</span>, 5, 0, 10);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// This creates an IntVar constrained to be the sum of vars</span>
+</span></span><span style="display:flex;"><span>IntVar sum <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">sum</span>(<span style="color:#e6db74">&#34;sum&#34;</span>, vars);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// equivalent to:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// IntVar sum = model.intVar(&#34;sum&#34;, 0, 50);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> model.<span style="color:#a6e22e">sum</span>(vars, <span style="color:#e6db74">&#34;=&#34;</span>, sum).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="count-result-variable">Count result variable</h3>
+<p>Create a count variable that counts occurrences of a value:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-28" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-28-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-28-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-28-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-28-content">
+    <div class="tab-pane fade show active"
+        id="tabs-28-00" role="tabpanel" aria-labelled-by="tabs-28-00-tab" tabindex="28">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;x&#34;</span>, 5, 0, 10);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Count how many times value 5 appears in vars</span>
+</span></span><span style="display:flex;"><span>IntVar count <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">count</span>(<span style="color:#e6db74">&#34;count&#34;</span>, 5, vars);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Or with a variable value to count</span>
+</span></span><span style="display:flex;"><span>IntVar val <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;val&#34;</span>, 0, 10);
+</span></span><span style="display:flex;"><span>IntVar count2 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">count</span>(<span style="color:#e6db74">&#34;count2&#34;</span>, val, vars);</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="minmax-result-variables">Min/Max result variables</h3>
+<p>Create minimum and maximum variables:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-29" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-29-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-29-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-29-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-29-content">
+    <div class="tab-pane fade show active"
+        id="tabs-29-00" role="tabpanel" aria-labelled-by="tabs-29-00-tab" tabindex="29">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;x&#34;</span>, 5, 0, 10);
+</span></span><span style="display:flex;"><span>IntVar min <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">min</span>(<span style="color:#e6db74">&#34;min&#34;</span>, vars);
+</span></span><span style="display:flex;"><span>IntVar max <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">max</span>(<span style="color:#e6db74">&#34;max&#34;</span>, vars);</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="argument-minmax">Argument min/max</h3>
+<p>Create variables representing the index of the minimum or maximum:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-30" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-30-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-30-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-30-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-30-content">
+    <div class="tab-pane fade show active"
+        id="tabs-30-00" role="tabpanel" aria-labelled-by="tabs-30-00-tab" tabindex="30">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> vars <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;x&#34;</span>, 5, 0, 10);
+</span></span><span style="display:flex;"><span>IntVar argmin <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">argmin</span>(<span style="color:#e6db74">&#34;argmin&#34;</span>, vars, 0);  <span style="color:#75715e">// 0 is the offset</span>
+</span></span><span style="display:flex;"><span>IntVar argmax <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">argmax</span>(<span style="color:#e6db74">&#34;argmax&#34;</span>, vars, 0);</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="element-result-variable">Element result variable</h3>
+<p>Create an element variable that retrieves a value from a table by index:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-31" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-31-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-31-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-31-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-31-content">
+    <div class="tab-pane fade show active"
+        id="tabs-31-00" role="tabpanel" aria-labelled-by="tabs-31-00-tab" tabindex="31">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> table <span style="color:#f92672">=</span> {10, 20, 30, 40, 50};
+</span></span><span style="display:flex;"><span>IntVar index <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;index&#34;</span>, 0, 4);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create a variable constrained to be the element at position index</span>
+</span></span><span style="display:flex;"><span>IntVar element <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">element</span>(<span style="color:#e6db74">&#34;element&#34;</span>, table, index, 0);</span></span></code></pre></div>
+    </div>
+</div>
+
+<h3 id="set-result-variables">Set result variables</h3>
+<p>Result variables for set operations:</p>
+
+
+<ul class="nav nav-tabs" id="tabs-32" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-32-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-32-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-32-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="tabs-32-content">
+    <div class="tab-pane fade show active"
+        id="tabs-32-00" role="tabpanel" aria-labelled-by="tabs-32-00-tab" tabindex="32">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>SetVar<span style="color:#f92672">[]</span> sets <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">setVarArray</span>(<span style="color:#e6db74">&#34;s&#34;</span>, 3, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{}, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{0, 1, 2, 3});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Union of all sets</span>
+</span></span><span style="display:flex;"><span>SetVar union <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">union</span>(<span style="color:#e6db74">&#34;union&#34;</span>, sets);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Intersection of all sets</span>
+</span></span><span style="display:flex;"><span>SetVar intersection <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intersection</span>(<span style="color:#e6db74">&#34;intersection&#34;</span>, sets);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Count non-empty sets</span>
+</span></span><span style="display:flex;"><span>IntVar nbEmpty <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">nbEmpty</span>(<span style="color:#e6db74">&#34;nbEmpty&#34;</span>, sets);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Number of distinct elements across all sets</span>
+</span></span><span style="display:flex;"><span>IntVar nValues <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">nValues</span>(<span style="color:#e6db74">&#34;nValues&#34;</span>, sets);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sum of elements in a set</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> weights <span style="color:#f92672">=</span> {1, 2, 3, 4};
+</span></span><span style="display:flex;"><span>SetVar s <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">setVar</span>(<span style="color:#e6db74">&#34;s&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{}, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{0, 1, 2, 3});
+</span></span><span style="display:flex;"><span>IntVar weightedSum <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">sum</span>(<span style="color:#e6db74">&#34;wsum&#34;</span>, weights, 0, s);</span></span></code></pre></div>
+    </div>
+</div>
+
+<p>These result variables are particularly useful when you need an intermediate variable that&rsquo;s purely derived from other variables, avoiding the boilerplate of creating the variable and posting the constraint separately.</p>
 
 	<style>
   .feedback--answer {
@@ -1548,7 +1367,7 @@ RealVar rvar = model.realIntView(ivar, precision);</code></pre></div>
 </script>
 <br />
 <div class="td-page-meta__lastmod">
-  Last modified October 2, 2023: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/a7725699fa93f28f77cb2109d0d809c21ee2eba2">start doc for python (a772569)</a>
+  Last modified May 8, 2026: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/924b883a43eaa8633cd5fa34c98826c166fd56ca">Update website (924b883)</a>
 </div>
 
 </div>
@@ -1563,46 +1382,31 @@ RealVar rvar = model.realIntView(ivar, precision);</code></pre></div>
       <div class="td-footer__left col-6 col-sm-4 order-sm-1">
         <ul class="td-footer__links-list">
   
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Google group" aria-label="Google group">
-    <a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/choco-solver" aria-label="Google group">
-      <i class="fa fa-comments"></i>
-    </a>
-  </li>
-  
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Stack Overflow" aria-label="Stack Overflow">
-    <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow">
+    <a href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow" target="_blank" rel="noopener">
       <i class="fab fa-stack-overflow"></i>
     </a>
   </li>
   
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
+    <a href="https://discord.gg/aH6zxa7e64" aria-label="Discord" target="_blank" rel="noopener">
       <i class="fab fa-discord"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a href="https://github.com/chocoteam/choco-solver" aria-label="GitHub" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
     </a>
   </li>
   
 </ul>
 
       </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
-        <ul class="td-footer__links-list">
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
-    <a target="_blank" rel="noopener" href="https://github.com/chocoteam/choco-solver" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-  </li>
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
-      <i class="fab fa-discord"></i>
-    </a>
-  </li>
-  
-</ul>
-
+        
       </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
         <span class="td-footer__copyright">&copy;
-    2025
+    2026
     <span class="td-footer__authors">The Choco-solver Authors</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span><span class="ms-2"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></span>
       </div>
     </div>
@@ -1610,16 +1414,8 @@ RealVar rvar = model.realIntView(ivar, precision);</code></pre></div>
 </footer>
 
     </div>
-    
-      <link rel="stylesheet" href="/css/katex.min.css" integrity="sha512-nleNesO1Jws3rjLtrng1p0TNp3NANubi8czxbzgrBWzNUcDfa37zRwmRNXoCZQeECqIsF0DqL&#43;a7zptCI8XBgg==" crossorigin="anonymous">
-    
-      <script defer src="/js/katex.min.js" integrity="sha512-qDvmQ3P&#43;wKCMK0HbLaai1I8Q5dpRKlnc6e6Er7Gdcw6MbDpau62GNrHegRr6mETPt36JMcc3C6xnVWW5U6kw4g==" crossorigin="anonymous" ></script>
-    
-      <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
-onload='renderMathInElement(document.body, null);'>
-</script>
-    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
-<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.c60de03ed52a34012f330c3e18c526426ec97efa9822bedfadbf14ffe917bc3e.js" integrity="sha256-xg3gPtUqNAEvMww&#43;GMUmQm7JfvqYIr7frb8U/&#43;kXvD4=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

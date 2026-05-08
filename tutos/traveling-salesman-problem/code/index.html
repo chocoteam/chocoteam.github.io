@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.148.1">
+<meta name="generator" content="Hugo 0.161.1">
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -34,7 +34,7 @@
   <meta itemprop="description" content="A bunch of code.">
   <meta itemprop="datePublished" content="2020-06-03T11:18:39+02:00">
   <meta itemprop="dateModified" content="2024-09-17T15:47:21+02:00">
-  <meta itemprop="wordCount" content="1297">
+  <meta itemprop="wordCount" content="1291">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Code">
   <meta name="twitter:description" content="A bunch of code.">
@@ -47,12 +47,17 @@
 
   gtag('config', 'G-738NJHH4T5');
 </script>
-<link rel="preload" href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" as="style" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
-<link href="/scss/main.min.32bbb7bad0fc94fa6af054df1636095fe201d3e6d1505782f14684718e369705.css" rel="stylesheet" integrity="sha256-Mru3utD8lPpq8FTfFjYJX&#43;IB0&#43;bRUFeC8UaEcY42lwU=" crossorigin="anonymous">
+<link rel="preload" href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" as="style" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
+<link href="/scss/main.min.0b7cf04986ecfb729599828ee3bfc20b0cc9b0a3076563c7eb3e5e6e28c11b67.css" rel="stylesheet" integrity="sha256-C3zwSYbs&#43;3KVmYKO47/CCwzJsKMHZWPH6z5ebijBG2c=" crossorigin="anonymous">
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
 
@@ -76,10 +81,11 @@ window.MathJax = {
   </head>
   <body class="td-page">
     <header>
-      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
-<div class="container-fluid flex-column flex-md-row">
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><path style="fill:#005c94;stroke:none;stroke-width:4.78758144" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
-  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="/docs/"><span>Documentation</span></a>
@@ -97,146 +103,178 @@ window.MathJax = {
         <a class="nav-link" href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html" target="_blank" rel="noopener"><span>Javadoc</span></a>
       </li>
       </ul>
+    <div class="scroll-indicator scroll-right"></div>
   </div>
-  <div class="d-none d-lg-block">
+  <div class="td-navbar__search d-none d-lg-block">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
   </div>
 </div>
 </nav>
     </header>
     <div class="container-fluid td-outer">
-      <div class="td-main">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
             <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
+</div><div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    name="q"
+    class="td-search__input form-control"
+    placeholder='Search this site…'
+    aria-label='Search this site…'
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="td-sidebar-nav collapse" id="td-section-nav">
     <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutos-li">
-  <a href="/tutos/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-tutos"><span class="">Tutorials</span></a>
-  <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosfirst-example-li">
-  <a href="/tutos/first-example/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosfirst-example"><span class="">First Example</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefirst-model-li">
-  <a href="/tutos/first-example/first-model/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefirst-model"><span class="">First Model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefollow-up-li">
-  <a href="/tutos/first-example/follow-up/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefollow-up"><span class="">Follow-Up</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosverbal-arithmetic-li">
-  <a href="/tutos/verbal-arithmetic/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosverbal-arithmetic"><span class="">Verbal Arithmetic</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticdescription-li">
-  <a href="/tutos/verbal-arithmetic/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticmath-li">
-  <a href="/tutos/verbal-arithmetic/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticmath"><span class="">Mathematical model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticcode-li">
-  <a href="/tutos/verbal-arithmetic/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutoswarehouse-location-problem-li">
-  <a href="/tutos/warehouse-location-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutoswarehouse-location-problem"><span class="">Warehouse Location Problem</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemdescription-li">
-  <a href="/tutos/warehouse-location-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemmath-li">
-  <a href="/tutos/warehouse-location-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemmath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemcode-li">
-  <a href="/tutos/warehouse-location-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosaircraft-landing-problem-li">
-  <a href="/tutos/aircraft-landing-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosaircraft-landing-problem"><span class="">Airplane Landing Problem</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemdescription-li">
-  <a href="/tutos/aircraft-landing-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemmath-li">
-  <a href="/tutos/aircraft-landing-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemmath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemcode-li">
-  <a href="/tutos/aircraft-landing-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosnonogram-li">
-  <a href="/tutos/nonogram/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosnonogram"><span class="">Nonogram</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramdescription-li">
-  <a href="/tutos/nonogram/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogrammath-li">
-  <a href="/tutos/nonogram/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogrammath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramcode-li">
-  <a href="/tutos/nonogram/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosgolomb-ruler-li">
-  <a href="/tutos/golomb-ruler/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosgolomb-ruler"><span class="">Golomb Ruler</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulerdescription-li">
-  <a href="/tutos/golomb-ruler/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulerdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulermath-li">
-  <a href="/tutos/golomb-ruler/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulermath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulercode-li">
-  <a href="/tutos/golomb-ruler/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulercode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutostraveling-salesman-problem-li">
-  <a href="/tutos/traveling-salesman-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutostraveling-salesman-problem"><span class="">Traveling Salesman Problem</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemdescription-li">
-  <a href="/tutos/traveling-salesman-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemmath-li">
-  <a href="/tutos/traveling-salesman-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemmath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tutostraveling-salesman-problemcode-li">
-  <a href="/tutos/traveling-salesman-problem/code/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemcode"><span class="td-sidebar-nav-active-item">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosconstraints-li">
-  <a href="/tutos/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosconstraints"><span class="">Designing a constraint</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoscdcl_overview-li">
-  <a href="/tutos/cdcl_overview/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoscdcl_overview"><span class="">A CD-CL overview</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosother-examples-li">
-  <a href="/tutos/other-examples/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosother-examples"><span class="">Other examples</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-connector-problem-li">
-  <a href="/tutos/other-examples/the-connector-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-connector-problem"><span class="">The connector problem</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-keysort-example-li">
-  <a href="/tutos/other-examples/the-keysort-example/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-keysort-example"><span class="">The keysort example</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe_knapsack_problem-li">
-  <a href="/tutos/other-examples/the_knapsack_problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe_knapsack_problem"><span class="">The knapsack problem</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-exampleseuler-103-li">
-  <a href="/tutos/other-examples/euler-103/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-exampleseuler-103"><span class="">Project Euler, Problem 103</span></a>
-</li>
-  </ul>
-</li>
-  </ul>
-</li>
+    <a href="/tutos/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-tutos"><span class="">Tutorials</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosfirst-example-li">
+    <a href="/tutos/first-example/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosfirst-example"><span class="">First Example</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefirst-model-li">
+    <a href="/tutos/first-example/first-model/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefirst-model"><span class="">First Model</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefollow-up-li">
+    <a href="/tutos/first-example/follow-up/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefollow-up"><span class="">Follow-Up</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosverbal-arithmetic-li">
+    <a href="/tutos/verbal-arithmetic/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosverbal-arithmetic"><span class="">Verbal Arithmetic</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticdescription-li">
+    <a href="/tutos/verbal-arithmetic/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticmath-li">
+    <a href="/tutos/verbal-arithmetic/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticmath"><span class="">Mathematical model</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticcode-li">
+    <a href="/tutos/verbal-arithmetic/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutoswarehouse-location-problem-li">
+    <a href="/tutos/warehouse-location-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutoswarehouse-location-problem"><span class="">Warehouse Location Problem</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemdescription-li">
+    <a href="/tutos/warehouse-location-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemmath-li">
+    <a href="/tutos/warehouse-location-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemmath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemcode-li">
+    <a href="/tutos/warehouse-location-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosaircraft-landing-problem-li">
+    <a href="/tutos/aircraft-landing-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosaircraft-landing-problem"><span class="">Airplane Landing Problem</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemdescription-li">
+    <a href="/tutos/aircraft-landing-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemmath-li">
+    <a href="/tutos/aircraft-landing-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemmath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemcode-li">
+    <a href="/tutos/aircraft-landing-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosnonogram-li">
+    <a href="/tutos/nonogram/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosnonogram"><span class="">Nonogram</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramdescription-li">
+    <a href="/tutos/nonogram/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogrammath-li">
+    <a href="/tutos/nonogram/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogrammath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramcode-li">
+    <a href="/tutos/nonogram/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosgolomb-ruler-li">
+    <a href="/tutos/golomb-ruler/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosgolomb-ruler"><span class="">Golomb Ruler</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulerdescription-li">
+    <a href="/tutos/golomb-ruler/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulerdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulermath-li">
+    <a href="/tutos/golomb-ruler/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulermath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulercode-li">
+    <a href="/tutos/golomb-ruler/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulercode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutostraveling-salesman-problem-li">
+    <a href="/tutos/traveling-salesman-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutostraveling-salesman-problem"><span class="">Traveling Salesman Problem</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemdescription-li">
+    <a href="/tutos/traveling-salesman-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemmath-li">
+    <a href="/tutos/traveling-salesman-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemmath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tutostraveling-salesman-problemcode-li">
+    <a href="/tutos/traveling-salesman-problem/code/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemcode"><span class="td-sidebar-nav-active-item">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosconstraints-li">
+    <a href="/tutos/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosconstraints"><span class="">Designing a constraint</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoscdcl_overview-li">
+    <a href="/tutos/cdcl_overview/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoscdcl_overview"><span class="">A CD-CL overview</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosother-examples-li">
+    <a href="/tutos/other-examples/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosother-examples"><span class="">Other examples</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-connector-problem-li">
+    <a href="/tutos/other-examples/the-connector-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-connector-problem"><span class="">The connector problem</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-keysort-example-li">
+    <a href="/tutos/other-examples/the-keysort-example/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-keysort-example"><span class="">The keysort example</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe_knapsack_problem-li">
+    <a href="/tutos/other-examples/the_knapsack_problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe_knapsack_problem"><span class="">The knapsack problem</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-exampleseuler-103-li">
+    <a href="/tutos/other-examples/euler-103/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-exampleseuler-103"><span class="">Project Euler, Problem 103</span></a>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
     </ul>
   </nav>
 </div>
-
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="td-sidebar-toc">
             <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 <a href="https://github.com/chocoteam/website/tree/master/content/en/tutos/Traveling%20Salesman%20Problem/Code.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
   <a href="https://github.com/chocoteam/website/edit/master/content/en/tutos/Traveling%20Salesman%20Problem/Code.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/tutos/Traveling%20Salesman%20Problem?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/tutos/Traveling%20Salesman%20Problem?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
   <a href="https://github.com/chocoteam/website/issues/new?title=Code" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
 
-            <div class="td-toc">
-        <nav id="TableOfContents">
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#a-model">A model</a></li>
     <li><a href="#a-search-strategy">A search strategy</a></li>
@@ -246,15 +284,13 @@ window.MathJax = {
     <li><a href="#things-to-remember">Things to remember</a></li>
   </ul>
 </nav>
-      </div>
-    
+  </div>
+
             
 
           </aside>
           <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             
-  
-
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -274,69 +310,54 @@ window.MathJax = {
 	<h2 id="a-model">A model</h2>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-0" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-0-0-tab" data-toggle="tab" href="#tabs-0-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-0-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-0" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-0-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-0-0" role="tabpanel" aria-labelled-by="tabs-0-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// load parameters
-// ...
-// A new model instance
-Model model = new Model(&#34;TSP&#34;);
-
-// VARIABLES
-// For each city, the next one visited in the route
-IntVar[] succ = model.intVarArray(&#34;succ&#34;, C, 0, C - 1);
-// For each city, the distance to the next visited one
-IntVar[] dist = model.intVarArray(&#34;dist&#34;, C, 0, max);
-// Total distance of the route
-IntVar totDist = model.intVar(&#34;Total distance&#34;, 0, max * C);
-
-// CONSTRAINTS
-for (int i = 0; i &lt; C; i++) {
-    // For each city, the distance to the next one should be maintained
-    // this is achieved, here, with a TABLE constraint
-    // Such table is inputed with a Tuples object
-    // that stores all possible combinations
-    Tuples tuples = new Tuples(true);
-    for (int j = 0; j &lt; C; j++) {
-        // For a given city i
-        // a couple is made of a city j and the distance i and j 
-        if(j!=i)tuples.add(j, D[i][j]);
-    }
-    // The Table constraint ensures that one combination holds 
-    // in a solution
-    model.table(succ[i], dist[i], tuples).post();
-}
-// The route forms an Hamiltonian path.
-// That is, a single circuit of size C, visiting all cities
-model.subCircuit(succ, 0, model.intVar(C)).post();
-// Defining the total distance
-model.sum(dist, &#34;=&#34;, totDist).post();</code></pre></div>
-  
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// load parameters</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// A new model instance</span>
+</span></span><span style="display:flex;"><span>Model model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Model(<span style="color:#e6db74">&#34;TSP&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// VARIABLES</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For each city, the next one visited in the route</span>
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> succ <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;succ&#34;</span>, C, 0, C <span style="color:#f92672">-</span> 1);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For each city, the distance to the next visited one</span>
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> dist <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;dist&#34;</span>, C, 0, max);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Total distance of the route</span>
+</span></span><span style="display:flex;"><span>IntVar totDist <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;Total distance&#34;</span>, 0, max <span style="color:#f92672">*</span> C);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CONSTRAINTS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> C; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// For each city, the distance to the next one should be maintained</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// this is achieved, here, with a TABLE constraint</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Such table is inputed with a Tuples object</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// that stores all possible combinations</span>
+</span></span><span style="display:flex;"><span>    Tuples tuples <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Tuples(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0; j <span style="color:#f92672">&lt;</span> C; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// For a given city i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// a couple is made of a city j and the distance i and j </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(j<span style="color:#f92672">!=</span>i)tuples.<span style="color:#a6e22e">add</span>(j, D<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The Table constraint ensures that one combination holds </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// in a solution</span>
+</span></span><span style="display:flex;"><span>    model.<span style="color:#a6e22e">table</span>(succ<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, dist<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, tuples).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// The route forms an Hamiltonian path.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// That is, a single circuit of size C, visiting all cities</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">subCircuit</span>(succ, 0, model.<span style="color:#a6e22e">intVar</span>(C)).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Defining the total distance</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">sum</span>(dist, <span style="color:#e6db74">&#34;=&#34;</span>, totDist).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>The <code>table</code> constraints maintain the distance metric when the sub-set of cities to be visited from a given one is refined.
@@ -348,38 +369,23 @@ This is achieved calling <code>tuples.setUniversalValue(star)</code>, where <cod
 <p>Alternatively in the TSP, table constraints can be replaced by element constraints:</p>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-1" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-1-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-1" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-1-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">for (int i = 0; i &lt; C; i++) {
-    model.element(dist[i], D[i], succ[i]).post();
-}   </code></pre></div>
-  
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> C; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    model.<span style="color:#a6e22e">element</span>(dist<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, D<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, succ<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span>}   </span></span></code></pre></div>
+    </div>
 </div>
 
 <p>The <code>subCircuit</code> constraint ensures that <code>next</code> variables form a circuit of size <code>C</code>.</p>
@@ -393,79 +399,49 @@ And select the one that maximizes this difference.
 Doing so, we try to favour variables whose non-selection could increase the objective function too much.</p>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-2" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-2-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-2" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-02-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-02-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-02-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-2-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">Solver solver = model.getSolver();
-solver.setSearch(
-    Search.intVarSearch(
-        new MaxRegret(), 
-        new IntDomainMin(), 
-        dist)
-);</code></pre></div>
-  
+        id="tabs-02-00" role="tabpanel" aria-labelled-by="tabs-02-00-tab" tabindex="2">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Solver solver <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">getSolver</span>();
+</span></span><span style="display:flex;"><span>solver.<span style="color:#a6e22e">setSearch</span>(
+</span></span><span style="display:flex;"><span>    Search.<span style="color:#a6e22e">intVarSearch</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> MaxRegret(), 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> IntDomainMin(), 
+</span></span><span style="display:flex;"><span>        dist)
+</span></span><span style="display:flex;"><span>);</span></span></code></pre></div>
+    </div>
 </div>
 
 <h2 id="the-resolution-objective">The resolution objective</h2>
 <p>The objective is to minimize &rsquo;totDist'.</p>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-3" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-3-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-3" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-03-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-03-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-03-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-3-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// Find a solution that minimizes &#39;totDist&#39;
-Solution best = solver.findOptimalSolution(totDist, false);</code></pre></div>
-  
+        id="tabs-03-00" role="tabpanel" aria-labelled-by="tabs-03-00-tab" tabindex="3">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Find a solution that minimizes &#39;totDist&#39;</span>
+</span></span><span style="display:flex;"><span>Solution best <span style="color:#f92672">=</span> solver.<span style="color:#a6e22e">findOptimalSolution</span>(totDist, <span style="color:#66d9ef">false</span>);</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>This method attempts to find the optimal solution.</p>
@@ -473,159 +449,128 @@ Solution best = solver.findOptimalSolution(totDist, false);</code></pre></div>
 <p>We can define a function that prints any solutions in a pretty way.</p>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-4" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-4-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-4" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-4-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">int current = 0;
-System.out.printf(&#34;C_%d &#34;, current);
-for (int j = 0; j &lt; C; j++) {
-    System.out.printf(&#34;-&gt; C_%d &#34;, succ[current].getValue());
-    current = succ[current].getValue();
-}
-System.out.printf(&#34;\nTotal distance = %d\n&#34;, totDist.getValue());</code></pre></div>
-  
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> current <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;C_%d &#34;</span>, current);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0; j <span style="color:#f92672">&lt;</span> C; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;-&gt; C_%d &#34;</span>, succ<span style="color:#f92672">[</span>current<span style="color:#f92672">]</span>.<span style="color:#a6e22e">getValue</span>());
+</span></span><span style="display:flex;"><span>    current <span style="color:#f92672">=</span> succ<span style="color:#f92672">[</span>current<span style="color:#f92672">]</span>.<span style="color:#a6e22e">getValue</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;\nTotal distance = %d\n&#34;</span>, totDist.<span style="color:#a6e22e">getValue</span>());</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>Calling this method is made easy with the unfold resolution instruction.</p>
 <h2 id="the-entire-code">The entire code</h2>
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="nav nav-tabs" id="tabs-5" role="tablist"><li class="nav-item">
-      <a class="nav-link active tab-Tab-1"
-        id="tabs-5-0-tab" data-toggle="tab" href="#tabs-5-0" role="tab" onclick="handleClick(&#34;Tab-1&#34;);"
-        aria-controls="tabs-5-0" aria-selected="true">
-        Tab 1
-      </a>
-    </li></ul>
-
+<ul class="nav nav-tabs" id="tabs-5" role="tablist">
+  <li class="nav-item">
+      <button class="nav-link active"
+          id="tabs-05-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-05-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-05-00" aria-selected="true">
+        Java
+      </button>
+    </li>
+</ul>
 
 <div class="tab-content" id="tabs-5-content">
-        
-          
-        
     <div class="tab-pane fade show active"
-        id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab"><pre tabindex="0"><code class="language-Tab 1" data-lang="Tab 1">// GR17 is a set of 17 cities, from TSPLIB. The minimal tour has length 2085.
-// number of cities
-int C = 17;
-// matrix of distances
-int[][] D = new int[][]{
-            {0, 633, 257, 91, 412, 150, 80, 134, 259, 505, 353, 324, 70, 211, 268, 246, 121},
-            {633, 0, 390, 661, 227, 488, 572, 530, 555, 289, 282, 638, 567, 466, 420, 745, 518},
-            {257, 390, 0, 228, 169, 112, 196, 154, 372, 262, 110, 437, 191, 74, 53, 472, 142},
-            {91, 661, 228, 0, 383, 120, 77, 105, 175, 476, 324, 240, 27, 182, 239, 237, 84},
-            {412, 227, 169, 383, 0, 267, 351, 309, 338, 196, 61, 421, 346, 243, 199, 528, 297},
-            {150, 488, 112, 120, 267, 0, 63, 34, 264, 360, 208, 329, 83, 105, 123, 364, 35},
-            {80, 572, 196, 77, 351, 63, 0, 29, 232, 444, 292, 297, 47, 150, 207, 332, 29},
-            {134, 530, 154, 105, 309, 34, 29, 0, 249, 402, 250, 314, 68, 108, 165, 349, 36},
-            {259, 555, 372, 175, 338, 264, 232, 249, 0, 495, 352, 95, 189, 326, 383, 202, 236},
-            {505, 289, 262, 476, 196, 360, 444, 402, 495, 0, 154, 578, 439, 336, 240, 685, 390},
-            {353, 282, 110, 324, 61, 208, 292, 250, 352, 154, 0, 435, 287, 184, 140, 542, 238},
-            {324, 638, 437, 240, 421, 329, 297, 314, 95, 578, 435, 0, 254, 391, 448, 157, 301},
-            {70, 567, 191, 27, 346, 83, 47, 68, 189, 439, 287, 254, 0, 145, 202, 289, 55},
-            {211, 466, 74, 182, 243, 105, 150, 108, 326, 336, 184, 391, 145, 0, 57, 426, 96},
-            {268, 420, 53, 239, 199, 123, 207, 165, 383, 240, 140, 448, 202, 57, 0, 483, 153},
-            {246, 745, 472, 237, 528, 364, 332, 349, 202, 685, 542, 157, 289, 426, 483, 0, 336},
-            {121, 518, 142, 84, 297, 35, 29, 36, 236, 390, 238, 301, 55, 96, 153, 336, 0}
-    };
-
-// A new model instance
-Model model = new Model(&#34;TSP&#34;);
-
-// VARIABLES
-// For each city, the next one visited in the route
-IntVar[] succ = model.intVarArray(&#34;succ&#34;, C, 0, C - 1);
-// For each city, the distance to the succ visited one
-IntVar[] dist = model.intVarArray(&#34;dist&#34;, C, 0, max);
-// Total distance of the route
-IntVar totDist = model.intVar(&#34;Total distance&#34;, 0, max * C);
-
-// CONSTRAINTS
-for (int i = 0; i &lt; C; i++) {
-    // For each city, the distance to the next one should be maintained
-    // this is achieved, here, with a TABLE constraint
-    // Such table is inputed with a Tuples object
-    // that stores all possible combinations
-    Tuples tuples = new Tuples(true);
-    for (int j = 0; j &lt; C; j++) {
-        // For a given city i
-        // a couple is made of a city j and the distance i and j 
-        if(j!=i)tuples.add(j, D[i][j]);
-    }
-    // The Table constraint ensures that one combination holds 
-    // in a solution
-    model.table(succ[i], dist[i], tuples).post();
-}
-// The route forms a single circuit of size C, visiting all cities
-model.subCircuit(succ, 0, model.intVar(C)).post();
-// Defining the total distance
-model.sum(dist, &#34;=&#34;, totDist).post();
-
-model.setObjective(Model.MINIMIZE, totDist);
-Solver solver = model.getSolver();
-solver.setSearch(
-    Search.intVarSearch(
-        new MaxRegret(), 
-        new IntDomainMin(), 
-        dist)
-);
-solver.showShortStatistics();
-while(solver.solve()){
-    int current = 0;
-    System.out.printf(&#34;C_%d &#34;, current);
-    for (int j = 0; j &lt; C; j++) {
-        System.out.printf(&#34;-&gt; C_%d &#34;, succ[current].getValue());
-        current = succ[current].getValue();
-    }
-    System.out.printf(&#34;\nTotal distance = %d\n&#34;, totDist.getValue());
-}</code></pre></div>
-  
+        id="tabs-05-00" role="tabpanel" aria-labelled-by="tabs-05-00-tab" tabindex="5">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// GR17 is a set of 17 cities, from TSPLIB. The minimal tour has length 2085.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// number of cities</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> C <span style="color:#f92672">=</span> 17;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// matrix of distances</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> D <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span>{
+</span></span><span style="display:flex;"><span>            {0, 633, 257, 91, 412, 150, 80, 134, 259, 505, 353, 324, 70, 211, 268, 246, 121},
+</span></span><span style="display:flex;"><span>            {633, 0, 390, 661, 227, 488, 572, 530, 555, 289, 282, 638, 567, 466, 420, 745, 518},
+</span></span><span style="display:flex;"><span>            {257, 390, 0, 228, 169, 112, 196, 154, 372, 262, 110, 437, 191, 74, 53, 472, 142},
+</span></span><span style="display:flex;"><span>            {91, 661, 228, 0, 383, 120, 77, 105, 175, 476, 324, 240, 27, 182, 239, 237, 84},
+</span></span><span style="display:flex;"><span>            {412, 227, 169, 383, 0, 267, 351, 309, 338, 196, 61, 421, 346, 243, 199, 528, 297},
+</span></span><span style="display:flex;"><span>            {150, 488, 112, 120, 267, 0, 63, 34, 264, 360, 208, 329, 83, 105, 123, 364, 35},
+</span></span><span style="display:flex;"><span>            {80, 572, 196, 77, 351, 63, 0, 29, 232, 444, 292, 297, 47, 150, 207, 332, 29},
+</span></span><span style="display:flex;"><span>            {134, 530, 154, 105, 309, 34, 29, 0, 249, 402, 250, 314, 68, 108, 165, 349, 36},
+</span></span><span style="display:flex;"><span>            {259, 555, 372, 175, 338, 264, 232, 249, 0, 495, 352, 95, 189, 326, 383, 202, 236},
+</span></span><span style="display:flex;"><span>            {505, 289, 262, 476, 196, 360, 444, 402, 495, 0, 154, 578, 439, 336, 240, 685, 390},
+</span></span><span style="display:flex;"><span>            {353, 282, 110, 324, 61, 208, 292, 250, 352, 154, 0, 435, 287, 184, 140, 542, 238},
+</span></span><span style="display:flex;"><span>            {324, 638, 437, 240, 421, 329, 297, 314, 95, 578, 435, 0, 254, 391, 448, 157, 301},
+</span></span><span style="display:flex;"><span>            {70, 567, 191, 27, 346, 83, 47, 68, 189, 439, 287, 254, 0, 145, 202, 289, 55},
+</span></span><span style="display:flex;"><span>            {211, 466, 74, 182, 243, 105, 150, 108, 326, 336, 184, 391, 145, 0, 57, 426, 96},
+</span></span><span style="display:flex;"><span>            {268, 420, 53, 239, 199, 123, 207, 165, 383, 240, 140, 448, 202, 57, 0, 483, 153},
+</span></span><span style="display:flex;"><span>            {246, 745, 472, 237, 528, 364, 332, 349, 202, 685, 542, 157, 289, 426, 483, 0, 336},
+</span></span><span style="display:flex;"><span>            {121, 518, 142, 84, 297, 35, 29, 36, 236, 390, 238, 301, 55, 96, 153, 336, 0}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// A new model instance</span>
+</span></span><span style="display:flex;"><span>Model model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Model(<span style="color:#e6db74">&#34;TSP&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// VARIABLES</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For each city, the next one visited in the route</span>
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> succ <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;succ&#34;</span>, C, 0, C <span style="color:#f92672">-</span> 1);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For each city, the distance to the succ visited one</span>
+</span></span><span style="display:flex;"><span>IntVar<span style="color:#f92672">[]</span> dist <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVarArray</span>(<span style="color:#e6db74">&#34;dist&#34;</span>, C, 0, max);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Total distance of the route</span>
+</span></span><span style="display:flex;"><span>IntVar totDist <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;Total distance&#34;</span>, 0, max <span style="color:#f92672">*</span> C);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CONSTRAINTS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> C; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// For each city, the distance to the next one should be maintained</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// this is achieved, here, with a TABLE constraint</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Such table is inputed with a Tuples object</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// that stores all possible combinations</span>
+</span></span><span style="display:flex;"><span>    Tuples tuples <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Tuples(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0; j <span style="color:#f92672">&lt;</span> C; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// For a given city i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// a couple is made of a city j and the distance i and j </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(j<span style="color:#f92672">!=</span>i)tuples.<span style="color:#a6e22e">add</span>(j, D<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The Table constraint ensures that one combination holds </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// in a solution</span>
+</span></span><span style="display:flex;"><span>    model.<span style="color:#a6e22e">table</span>(succ<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, dist<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, tuples).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// The route forms a single circuit of size C, visiting all cities</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">subCircuit</span>(succ, 0, model.<span style="color:#a6e22e">intVar</span>(C)).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Defining the total distance</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">sum</span>(dist, <span style="color:#e6db74">&#34;=&#34;</span>, totDist).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">setObjective</span>(Model.<span style="color:#a6e22e">MINIMIZE</span>, totDist);
+</span></span><span style="display:flex;"><span>Solver solver <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">getSolver</span>();
+</span></span><span style="display:flex;"><span>solver.<span style="color:#a6e22e">setSearch</span>(
+</span></span><span style="display:flex;"><span>    Search.<span style="color:#a6e22e">intVarSearch</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> MaxRegret(), 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> IntDomainMin(), 
+</span></span><span style="display:flex;"><span>        dist)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>solver.<span style="color:#a6e22e">showShortStatistics</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(solver.<span style="color:#a6e22e">solve</span>()){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> current <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;C_%d &#34;</span>, current);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0; j <span style="color:#f92672">&lt;</span> C; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;-&gt; C_%d &#34;</span>, succ<span style="color:#f92672">[</span>current<span style="color:#f92672">]</span>.<span style="color:#a6e22e">getValue</span>());
+</span></span><span style="display:flex;"><span>        current <span style="color:#f92672">=</span> succ<span style="color:#f92672">[</span>current<span style="color:#f92672">]</span>.<span style="color:#a6e22e">getValue</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;\nTotal distance = %d\n&#34;</span>, totDist.<span style="color:#a6e22e">getValue</span>());
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+    </div>
 </div>
 
 <p>The best solution found is:</p>
-<pre><code>Model[TSP], 11 Solutions, MINIMIZE Total distance = 2085, Resolution time 1,426s, Time to best solution 1,426s, 6038 Nodes (4 233,4 n/s), 12022 Backtracks, 0 Backjumps, 6007 Fails, 0 Restarts
+<pre tabindex="0"><code>Model[TSP], 11 Solutions, MINIMIZE Total distance = 2085, Resolution time 1,426s, Time to best solution 1,426s, 6038 Nodes (4 233,4 n/s), 12022 Backtracks, 0 Backjumps, 6007 Fails, 0 Restarts
 C_0 -&gt; C_3 -&gt; C_12 -&gt; C_6 -&gt; C_7 -&gt; C_5 -&gt; C_16 -&gt; C_13 -&gt; C_14 -&gt; C_2 -&gt; C_10 -&gt; C_9 -&gt; C_1 -&gt; C_4 -&gt; C_8 -&gt; C_11 -&gt; C_15 -&gt; C_0 
 Total distance = 2085
-</code></pre>
-<h2 id="things-to-remember">Things to remember</h2>
+</code></pre><h2 id="things-to-remember">Things to remember</h2>
 <ul>
 <li>The <em>table</em> constraint can be very expressive. It is not restricted to couple of variables but may be extended to an array of variables.</li>
 <li>The <em>table</em> constraint can easily encode non linear expressions.</li>
@@ -704,46 +649,31 @@ Total distance = 2085
       <div class="td-footer__left col-6 col-sm-4 order-sm-1">
         <ul class="td-footer__links-list">
   
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Google group" aria-label="Google group">
-    <a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/choco-solver" aria-label="Google group">
-      <i class="fa fa-comments"></i>
-    </a>
-  </li>
-  
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Stack Overflow" aria-label="Stack Overflow">
-    <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow">
+    <a href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow" target="_blank" rel="noopener">
       <i class="fab fa-stack-overflow"></i>
     </a>
   </li>
   
   <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
+    <a href="https://discord.gg/aH6zxa7e64" aria-label="Discord" target="_blank" rel="noopener">
       <i class="fab fa-discord"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a href="https://github.com/chocoteam/choco-solver" aria-label="GitHub" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
     </a>
   </li>
   
 </ul>
 
       </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
-        <ul class="td-footer__links-list">
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
-    <a target="_blank" rel="noopener" href="https://github.com/chocoteam/choco-solver" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-  </li>
-  
-  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
-    <a target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
-      <i class="fab fa-discord"></i>
-    </a>
-  </li>
-  
-</ul>
-
+        
       </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
         <span class="td-footer__copyright">&copy;
-    2025
+    2026
     <span class="td-footer__authors">The Choco-solver Authors</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span><span class="ms-2"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></span>
       </div>
     </div>
@@ -751,16 +681,8 @@ Total distance = 2085
 </footer>
 
     </div>
-    
-      <link rel="stylesheet" href="/css/katex.min.css" integrity="sha512-nleNesO1Jws3rjLtrng1p0TNp3NANubi8czxbzgrBWzNUcDfa37zRwmRNXoCZQeECqIsF0DqL&#43;a7zptCI8XBgg==" crossorigin="anonymous">
-    
-      <script defer src="/js/katex.min.js" integrity="sha512-qDvmQ3P&#43;wKCMK0HbLaai1I8Q5dpRKlnc6e6Er7Gdcw6MbDpau62GNrHegRr6mETPt36JMcc3C6xnVWW5U6kw4g==" crossorigin="anonymous" ></script>
-    
-      <script defer src="/js/auto-render.min.js" integrity="sha512-6bKDPShiPRjAcdeO8T6cedaVEi0pavPbzue/G/ZRiwVlurWZOSZ/vI9fr2lhk8IPXK7z51AZac&#43;zBvZzgDJzDQ==" crossorigin="anonymous"
-onload='renderMathInElement(document.body, null);'>
-</script>
-    <script src="/js/main.min.cc628c11b0e8af7bfd3c5d9d140525daedbe505acd76c7a64b9494142d530c09.js" integrity="sha256-zGKMEbDor3v9PF2dFAUl2u2&#43;UFrNdsemS5SUFC1TDAk=" crossorigin="anonymous"></script>
-<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.c60de03ed52a34012f330c3e18c526426ec97efa9822bedfadbf14ffe917bc3e.js" integrity="sha256-xg3gPtUqNAEvMww&#43;GMUmQm7JfvqYIr7frb8U/&#43;kXvD4=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>
