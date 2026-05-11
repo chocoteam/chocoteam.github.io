@@ -55,11 +55,6 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 
-<script
-  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
-  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
-  crossorigin="anonymous"></script>
-
 
 
   </head>
@@ -93,20 +88,6 @@
     <div class="td-search">
   <div class="td-search__icon"></div>
   <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
-</div><div class="td-search td-search--offline">
-  <div class="td-search__icon"></div>
-  <input
-    type="search"
-    name="q"
-    class="td-search__input form-control"
-    placeholder='Search this site…'
-    aria-label='Search this site…'
-    autocomplete="off"
-    
-    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
-    data-offline-search-base-href="/"
-    data-offline-search-max-results="10"
-  >
 </div>
   </div>
 </div>
@@ -117,29 +98,18 @@
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
             <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
   <form class="td-sidebar__search d-flex align-items-center">
     <div class="td-search">
   <div class="td-search__icon"></div>
   <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
-</div><div class="td-search td-search--offline">
-  <div class="td-search__icon"></div>
-  <input
-    type="search"
-    name="q"
-    class="td-search__input form-control"
-    placeholder='Search this site…'
-    aria-label='Search this site…'
-    autocomplete="off"
-    
-    data-offline-search-index-json-src="/offline-search-index.fe895d99bab75ffa1b7356b525a0683f.json"
-    data-offline-search-base-href="/"
-    data-offline-search-max-results="10"
-  >
 </div>
     <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
-  <nav class="td-sidebar-nav collapse" id="td-section-nav">
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled" id="td-section-nav">
     <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutos-li">
     <a href="/tutos/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-tutos"><span class="">Tutorials</span></a>
@@ -409,7 +379,7 @@ equation is satisfied. Note that:</p>
 </footer>
 
     </div>
-    <script src="/js/main.min.c60de03ed52a34012f330c3e18c526426ec97efa9822bedfadbf14ffe917bc3e.js" integrity="sha256-xg3gPtUqNAEvMww&#43;GMUmQm7JfvqYIr7frb8U/&#43;kXvD4=" crossorigin="anonymous"></script>
+    <script src="/js/main.min.464abf5106ec4e1423fe6f1af9342dc9ad603be106e6a4bc9db3e97f7205da6f.js" integrity="sha256-Rkq/UQbsThQj/m8a&#43;TQtya1gO&#43;EG5qS8nbPpf3IF2m8=" crossorigin="anonymous"></script>
 <script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 

@@ -3,7 +3,7 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.124.1">
+<meta name="generator" content="Hugo 0.161.1">
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
@@ -20,21 +20,24 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Basic Objects | Choco-solver</title><meta property="og:title" content="Basic Objects" />
-<meta property="og:description" content="A quick tour of the library&#39;s essential items.
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/tutos/first-example/basic-objects/" /><meta property="article:section" content="tutos" />
-<meta property="article:published_time" content="2020-01-31T11:48:22+01:00" />
-<meta property="article:modified_time" content="2024-09-17T15:47:21+02:00" />
-<meta itemprop="name" content="Basic Objects">
-<meta itemprop="description" content="A quick tour of the library&#39;s essential items.
-"><meta itemprop="datePublished" content="2020-01-31T11:48:22+01:00" />
-<meta itemprop="dateModified" content="2024-09-17T15:47:21+02:00" />
-<meta itemprop="wordCount" content="1466">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Basic Objects"/>
-<meta name="twitter:description" content="A quick tour of the library&#39;s essential items.
-"/>
+<title>Basic Objects | Choco-solver</title><meta property="og:url" content="http://localhost:1313/tutos/first-example/basic-objects/">
+  <meta property="og:site_name" content="Choco-solver">
+  <meta property="og:title" content="Basic Objects">
+  <meta property="og:description" content="A quick tour of the library&#39;s essential items.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="tutos">
+    <meta property="article:published_time" content="2020-01-31T11:48:22+01:00">
+    <meta property="article:modified_time" content="2024-09-17T15:47:21+02:00">
+
+  <meta itemprop="name" content="Basic Objects">
+  <meta itemprop="description" content="A quick tour of the library&#39;s essential items.">
+  <meta itemprop="datePublished" content="2020-01-31T11:48:22+01:00">
+  <meta itemprop="dateModified" content="2024-09-17T15:47:21+02:00">
+  <meta itemprop="wordCount" content="1466">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Basic Objects">
+  <meta name="twitter:description" content="A quick tour of the library&#39;s essential items.">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-738NJHH4T5"></script>
 <script>
@@ -44,13 +47,7 @@
 
   gtag('config', 'G-738NJHH4T5');
 </script>
-
-
-
-
-
 <link href="/scss/main.css" rel="stylesheet">
-
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -78,171 +75,177 @@ window.MathJax = {
   </head>
   <body class="td-page">
     <header>
-      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500" sodipodi:docname="logo.svg" inkscape:version="0.92.2 5c3e80d, 2017-08-06"><defs id="defs953"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1432" inkscape:window-height="773" id="namedview951" showgrid="false" inkscape:zoom=".472" inkscape:cx="365.4661" inkscape:cy="250" inkscape:window-x="10" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="Layer_1"/><path inkscape:export-ydpi="300" inkscape:export-xdpi="300" style="fill:#005c94;stroke:none;stroke-width:4.78758144" inkscape:connector-curvature="0" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
-  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-    <ul class="navbar-nav mt-2 mt-lg-0">
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><path style="fill:#005c94;stroke:none;stroke-width:4.78758144" id="path2" d="m279.38249 191.64706c-5.13397-7.99619-.49997-20.9386 10.34205-28.91 10.85587-7.96647 23.80888-7.93677 28.9475.0694 5.13861 8.00113.51387 20.94354-10.34204 28.91-10.84664 7.96153-23.80888 7.93677-28.94751-.0693m60.91337 161.55234c0-12.74437-9.30965-14.87832-14.2955-14.87832-12.6984.0-13.55482 16.74491-4.60161 16.74491 6.23113.0 10.59666-3.74803 8.49491-9.47655 5.29602 4.64917 4.26828 16.56173-9.97633 15.97253-16.36486-.6585-15.48525-28.22675 4.79606-28.90507 13.81869-.46043 25.04031 7.15946 25.04031 20.55241.0 21.71095-28.71142 34.40086-53.97393 20.54744 18.13327 8.31306 44.51609-1.69825 44.51609-20.55735M221.0801 379.08926c0 13.5712-10.11059 21.01777-22.41548 21.01777-12.30951.0-25.76712-10.28855-19.61467-28.38517-3.67111 16.48252 10.13369 21.66147 17.82773 21.66147 9.97168.0 16.01302-7.26339 16.01302-15.08134.0-7.81298-4.00905-10.17964-8.36528-10.17964-6.38856.0-10.65222 7.03565-6.62927 9.76869-7.69403.0-3.42575-13.84351 6.92091-14.80406 8.84674-.82683 16.26304 4.89673 16.26304 16.00228m85.79166-143.69352c18.4851-7.50106 32.30379.3763 84.74543-17.03706 47.49743-15.77447 108.81357-81.14008 61.79759-126.750421-38.48404-37.341884-116.35484-26.632444-159.8988 4.34219-16.02692 11.392671-27.95683 26.478951-37.63685 41.466211 2.65265.47035 4.99511 1.63883 6.66632 3.70349 5.09693 6.29791 2.29616 17.81931-6.24504 25.71648-6.91631 6.39694-15.43437 8.37741-21.15164 5.58988-16.39264 25.10252-37.26652 35.67333-52.68697 39.45108 14.79549-6.71383 31.7066-22.71109 38.97473-38.2628-41.96531 16.29436-55.72848-24.45391-24.70238-30.65281-14.95288 4.21841-14.03163 25.01342 5.66637 25.01342 22.63767.0 27.83648-41.25333-5.66637-41.25333-19.37394.0-31.15569 10.08064-39.2664 22.95868 36.78045 25.52832 18.36478 60.33025-6.76814 60.33025-45.02073.0-20.5915-56.74064.69903-35.08909-17.79534-11.94723-28.96602 24.63712-.3472 24.63712 22.68396.0 24.4524-31.08852 1.56937-41.81278-18.32309-8.58043-42.75233-6.71383-57.066373 11.94719-13.47148 17.57673-10.85126 38.37173 7.226453 51.02203 22.10531 15.46752 11.76791 39.6838-.18056 47.45716-13.735373 8.93195-31.164973 4.31744-31.164973-7.43669.0-4.10949 2.7915-10.8233 8.02272-10.8233-5.75896 1.48535-6.61077 14.13565 5.86078 14.13565 8.19865.0 18.249033-4.26794 18.249033-16.67562.0-8.22886-4.370153-20.94849-27.378163-20.94849-22.60064.0-46.46509 19.75526-46.46509 49.79908.0 30.04875 26.86892 41.89696 58.63572 38.35686 25.128263-2.79742 36.090663-21.45845 59.681963-7.83773 26.17915 15.12093 21.0498 49.4277 12.82803 67.46984-10.2078 22.39423-5.61081 61.50368 36.91004 57.67145 34.71572-3.11926 41.79867-28.79612 40.83113-45.63016-1.05088-18.47784-10.81887-27.34543-22.68396-31.44995 17.45274-5.22846 38.18313 3.75795 47.81684 27.62268 6.63393 16.42806 22.33677 29.86063 47.46969 29.86063 38.39143.0 58.55704-24.81536 55.83957-55.24537-1.05086-11.75908-8.0227-29.11795-24.4246-31.72722 9.07359-12.31853 23.38301-17.17565 53.04807-10.45195 25.79027 5.83744 48.16868-15.30413 48.16868-35.46537.0-33.96516-28.97066-40.31753-41.53015-40.31753-14.66588.0-28.42903 8.19916-28.42903 23.1369.0 12.68991 9.39302 17.93322 20.04521 17.93322 12.22158.0 19.80451-4.87693 19.80451-12.90777.0-13.06618-17.71201-15.49723-24.01262-7.03562 5.90711-13.77421 30.73446-9.61523 30.73446 8.74873.0 10.05093-6.99036 19.40371-27.57259 19.40371-24.5033.0-36.6508-23.51815-28.62808-41.06514-6.97186 1.86658-13.95296 7.47132-21.05905 10.58564-40.8589 17.9035-51.60833-16.28942-36.32674-22.48337"/></svg></span><span class="navbar-brand__name">Choco-solver</span></a>
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
         <a class="nav-link" href="/docs/"><span>Documentation</span></a>
       </li>
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
-        <a class="nav-link active" href="/tutos/"><span class="active">Tutorials</span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href="/tutos/"><span>Tutorials</span></a>
       </li>
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
+      <li class="nav-item">
         <a class="nav-link" href="/docs/frequently-asked-questions/"><span>FAQ</span></a>
       </li>
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
+      <li class="nav-item">
         <a class="nav-link" href="/community/"><span>Community</span></a>
       </li>
-      <li class="nav-item mr-4 mb-2 mb-lg-0">
-        <a class="nav-link" href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html" target="_blank"><span>Javadoc</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="https://javadoc.io/doc/org.choco-solver/choco-solver/latest/org.chocosolver/module-summary.html" target="_blank" rel="noopener"><span>Javadoc</span></a>
       </li>
       </ul>
+    <div class="scroll-indicator scroll-right"></div>
   </div>
-  <div class="navbar-nav d-none d-lg-block">
+  <div class="td-navbar__search d-none d-lg-block">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
 </div>
-
   </div>
+</div>
 </nav>
     </header>
     <div class="container-fluid td-outer">
-      <div class="td-main">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-            
-<div id="td-sidebar-menu" class="td-sidebar__inner">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
   <form class="td-sidebar__search d-flex align-items-center">
     <div class="td-search">
   <div class="td-search__icon"></div>
-  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+  <input type="search" name="q" class="td-search__input form-control td-search-input" placeholder='Search this site…' aria-label='Search this site…' autocomplete="off">
 </div>
-
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
-  <nav class="collapse td-sidebar-nav" id="td-section-nav">
-    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutos-li">
-  <a href="/tutos/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-tutos"><span class="">Tutorials</span></a>
-  <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutosfirst-example-li">
-  <a href="/tutos/first-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutosfirst-example"><span class="">First Example</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefirst-model-li">
-  <a href="/tutos/first-example/first-model/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefirst-model"><span class="">First Model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tutosfirst-examplebasic-objects-li">
-  <a href="/tutos/first-example/basic-objects/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplebasic-objects"><span class="td-sidebar-nav-active-item">Basic Objects</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefollow-up-li">
-  <a href="/tutos/first-example/follow-up/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefollow-up"><span class="">Follow-Up</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosverbal-arithmetic-li">
-  <a href="/tutos/verbal-arithmetic/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutosverbal-arithmetic"><span class="">Verbal Arithmetic</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticdescription-li">
-  <a href="/tutos/verbal-arithmetic/description/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticmath-li">
-  <a href="/tutos/verbal-arithmetic/math/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticmath"><span class="">Mathematical model</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticcode-li">
-  <a href="/tutos/verbal-arithmetic/code/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutoswarehouse-location-problem-li">
-  <a href="/tutos/warehouse-location-problem/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutoswarehouse-location-problem"><span class="">Warehouse Location Problem</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemdescription-li">
-  <a href="/tutos/warehouse-location-problem/description/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemmath-li">
-  <a href="/tutos/warehouse-location-problem/math/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemmath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemcode-li">
-  <a href="/tutos/warehouse-location-problem/code/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosaircraft-landing-problem-li">
-  <a href="/tutos/aircraft-landing-problem/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutosaircraft-landing-problem"><span class="">Airplane Landing Problem</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemdescription-li">
-  <a href="/tutos/aircraft-landing-problem/description/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemmath-li">
-  <a href="/tutos/aircraft-landing-problem/math/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemmath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemcode-li">
-  <a href="/tutos/aircraft-landing-problem/code/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosnonogram-li">
-  <a href="/tutos/nonogram/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutosnonogram"><span class="">Nonogram</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramdescription-li">
-  <a href="/tutos/nonogram/description/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogrammath-li">
-  <a href="/tutos/nonogram/math/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogrammath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramcode-li">
-  <a href="/tutos/nonogram/code/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosgolomb-ruler-li">
-  <a href="/tutos/golomb-ruler/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutosgolomb-ruler"><span class="">Golomb Ruler</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulerdescription-li">
-  <a href="/tutos/golomb-ruler/description/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulerdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulermath-li">
-  <a href="/tutos/golomb-ruler/math/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulermath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulercode-li">
-  <a href="/tutos/golomb-ruler/code/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulercode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutostraveling-salesman-problem-li">
-  <a href="/tutos/traveling-salesman-problem/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutostraveling-salesman-problem"><span class="">Traveling Salesman Problem</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemdescription-li">
-  <a href="/tutos/traveling-salesman-problem/description/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemdescription"><span class="">Description</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemmath-li">
-  <a href="/tutos/traveling-salesman-problem/math/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemmath"><span class="">Math</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemcode-li">
-  <a href="/tutos/traveling-salesman-problem/code/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemcode"><span class="">Code</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosconstraints-li">
-  <a href="/tutos/constraints/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosconstraints"><span class="">Designing a constraint</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoscdcl_overview-li">
-  <a href="/tutos/cdcl_overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutoscdcl_overview"><span class="">A CD-CL overview</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosother-examples-li">
-  <a href="/tutos/other-examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tutosother-examples"><span class="">Other examples</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-connector-problem-li">
-  <a href="/tutos/other-examples/the-connector-problem/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-connector-problem"><span class="">The connector problem</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-keysort-example-li">
-  <a href="/tutos/other-examples/the-keysort-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-keysort-example"><span class="">The keysort example</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe_knapsack_problem-li">
-  <a href="/tutos/other-examples/the_knapsack_problem/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe_knapsack_problem"><span class="">The knapsack problem</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-exampleseuler-103-li">
-  <a href="/tutos/other-examples/euler-103/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-exampleseuler-103"><span class="">Project Euler, Problem 103</span></a>
-</li>
-  </ul>
-</li>
-  </ul>
-</li>
+    <a href="/tutos/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-tutos"><span class="">Tutorials</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tutosfirst-example-li">
+    <a href="/tutos/first-example/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosfirst-example"><span class="">First Example</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefirst-model-li">
+    <a href="/tutos/first-example/first-model/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefirst-model"><span class="">First Model</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tutosfirst-examplebasic-objects-li">
+    <a href="/tutos/first-example/basic-objects/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplebasic-objects"><span class="td-sidebar-nav-active-item">Basic Objects</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosfirst-examplefollow-up-li">
+    <a href="/tutos/first-example/follow-up/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosfirst-examplefollow-up"><span class="">Follow-Up</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosverbal-arithmetic-li">
+    <a href="/tutos/verbal-arithmetic/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosverbal-arithmetic"><span class="">Verbal Arithmetic</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticdescription-li">
+    <a href="/tutos/verbal-arithmetic/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticmath-li">
+    <a href="/tutos/verbal-arithmetic/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticmath"><span class="">Mathematical model</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosverbal-arithmeticcode-li">
+    <a href="/tutos/verbal-arithmetic/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosverbal-arithmeticcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutoswarehouse-location-problem-li">
+    <a href="/tutos/warehouse-location-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutoswarehouse-location-problem"><span class="">Warehouse Location Problem</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemdescription-li">
+    <a href="/tutos/warehouse-location-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemmath-li">
+    <a href="/tutos/warehouse-location-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemmath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoswarehouse-location-problemcode-li">
+    <a href="/tutos/warehouse-location-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoswarehouse-location-problemcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosaircraft-landing-problem-li">
+    <a href="/tutos/aircraft-landing-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosaircraft-landing-problem"><span class="">Airplane Landing Problem</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemdescription-li">
+    <a href="/tutos/aircraft-landing-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemmath-li">
+    <a href="/tutos/aircraft-landing-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemmath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosaircraft-landing-problemcode-li">
+    <a href="/tutos/aircraft-landing-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosaircraft-landing-problemcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosnonogram-li">
+    <a href="/tutos/nonogram/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosnonogram"><span class="">Nonogram</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramdescription-li">
+    <a href="/tutos/nonogram/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogrammath-li">
+    <a href="/tutos/nonogram/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogrammath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosnonogramcode-li">
+    <a href="/tutos/nonogram/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosnonogramcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosgolomb-ruler-li">
+    <a href="/tutos/golomb-ruler/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosgolomb-ruler"><span class="">Golomb Ruler</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulerdescription-li">
+    <a href="/tutos/golomb-ruler/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulerdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulermath-li">
+    <a href="/tutos/golomb-ruler/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulermath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosgolomb-rulercode-li">
+    <a href="/tutos/golomb-ruler/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosgolomb-rulercode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutostraveling-salesman-problem-li">
+    <a href="/tutos/traveling-salesman-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutostraveling-salesman-problem"><span class="">Traveling Salesman Problem</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemdescription-li">
+    <a href="/tutos/traveling-salesman-problem/description/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemdescription"><span class="">Description</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemmath-li">
+    <a href="/tutos/traveling-salesman-problem/math/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemmath"><span class="">Math</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutostraveling-salesman-problemcode-li">
+    <a href="/tutos/traveling-salesman-problem/code/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutostraveling-salesman-problemcode"><span class="">Code</span></a>
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosconstraints-li">
+    <a href="/tutos/constraints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosconstraints"><span class="">Designing a constraint</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutoscdcl_overview-li">
+    <a href="/tutos/cdcl_overview/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutoscdcl_overview"><span class="">A CD-CL overview</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tutosother-examples-li">
+    <a href="/tutos/other-examples/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-tutosother-examples"><span class="">Other examples</span></a>
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-connector-problem-li">
+    <a href="/tutos/other-examples/the-connector-problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-connector-problem"><span class="">The connector problem</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe-keysort-example-li">
+    <a href="/tutos/other-examples/the-keysort-example/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe-keysort-example"><span class="">The keysort example</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-examplesthe_knapsack_problem-li">
+    <a href="/tutos/other-examples/the_knapsack_problem/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-examplesthe_knapsack_problem"><span class="">The knapsack problem</span></a>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tutosother-exampleseuler-103-li">
+    <a href="/tutos/other-examples/euler-103/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-tutosother-exampleseuler-103"><span class="">Project Euler, Problem 103</span></a>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
     </ul>
   </nav>
 </div>
-
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
-            
-<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/chocoteam/website/tree/master/content/en/tutos/First%20example/Basic%20objects.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/chocoteam/website/edit/master/content/en/tutos/First%20example/Basic%20objects.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/chocoteam/website/new/master/content/en/tutos/First%20example/Basic%20objects.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/chocoteam/website/issues/new?title=Basic%20Objects" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
-  <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
+          <aside class="td-sidebar-toc">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/chocoteam/website/tree/master/content/en/tutos/First%20example/Basic%20objects.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/chocoteam/website/edit/master/content/en/tutos/First%20example/Basic%20objects.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/chocoteam/website/new/master/content/en/tutos/First%20example?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/chocoteam/website/issues/new?title=Basic%20Objects" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a href="https://github.com/chocoteam/choco-solver/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
 
-            <div class="td-toc">
-        <nav id="TableOfContents">
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#the-model">The Model</a></li>
     <li><a href="#the-variables">The Variables</a>
@@ -263,65 +266,29 @@ window.MathJax = {
     <li><a href="#modelling-and-solving">Modelling and Solving</a></li>
   </ul>
 </nav>
-      </div>
-    
+  </div>
+
             
-
-	
-		
-
-
-
-  
-  
-
-	
-		
-
-
-
-  
-  
-
-	
 
           </aside>
-          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             
-  
-
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="http://localhost:1313/tutos/">Tutorials</a>
-  </li>
+    <a href="/tutos/">Tutorials</a></li>
   <li class="breadcrumb-item">
-    <a href="http://localhost:1313/tutos/first-example/">First Example</a>
-  </li>
+    <a href="/tutos/first-example/">First Example</a></li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="http://localhost:1313/tutos/first-example/basic-objects/" aria-disabled="true" class="btn-link disabled">Basic Objects</a>
-  </li>
+    Basic Objects</li>
   </ol>
 </nav>
-            
 <div class="td-content">
 	<h1>Basic Objects</h1>
 	<div class="lead">A quick tour of the library&rsquo;s essential items.</div>
 	<header class="article-meta">
 		
-
-  
-    
-
-
-  
-    
-
-
-  
-
-		
-	</header>    
+</header>
 	<p>The content of this section is extracted from the Javadoc and the
 Choco-solver&rsquo;s User Guide. Here, we <strong>briefly</strong> described the main aspects of
 the most commonly used objects. This does not aim at being complete: it
@@ -331,18 +298,18 @@ covers the basic information.</p>
 
 <ul class="nav nav-tabs" id="tabs-0" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-00-00-tab" data-toggle="tab" href="#tabs-00-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-00-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-0-content">
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My model&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Model model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Model(<span style="color:#e6db74">&#34;My model&#34;</span>);</span></span></code></pre></div>
     </div>
 </div>
 
@@ -359,45 +326,33 @@ constraints of a model can be retrieved thanks to API :</p>
 
 <ul class="nav nav-tabs" id="tabs-1" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-01-00-tab" data-toggle="tab" href="#tabs-01-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-01-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-01-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-01-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-01-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-1-content">
     <div class="tab-pane fade show active"
-        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">retrieveIntVars</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">// extract IntVars, including BoolVars</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getCstrs</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">extract</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">posted</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">constraints</span></span></span></code></pre></div>
+        id="tabs-01-00" role="tabpanel" aria-labelled-by="tabs-01-00-tab" tabindex="1">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">retrieveIntVars</span>(<span style="color:#66d9ef">true</span>); <span style="color:#75715e">// extract IntVars, including BoolVars</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">getCstrs</span>(); <span style="color:#f92672">//</span> extract posted constraints</span></span></code></pre></div>
     </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    We strongly encourage you to attach the Javadoc (provides either on the website or on Maven Central Repository) to the library in your IDE.
-
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>We strongly encourage you to attach the Javadoc (provides either on the website or on Maven Central Repository) to the library in your IDE.</p>
 </div>
-
 <h2 id="the-variables">The Variables</h2>
 <p>A variable is an <em>unknown</em>, mathematically speaking. In a solution of a
 given problem (considering that at least one exists), each variable is
 assigned to a <em>value</em> selected within its domain. The notion of <em>value</em>
 differs from one type of variable to the other.</p>
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    A variable can be declared in only one model at a time. Indeed, a reference to the declaring model is maintained in it.
-
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>A variable can be declared in only one model at a time. Indeed, a reference to the declaring model is maintained in it.</p>
 </div>
-
 <h3 id="integer-variable">Integer variable</h3>
 <p>An integer variable, <code>IntVar</code>, should be assigned to an integer value. There are
 many ways to declare an <code>IntVar</code>:</p>
@@ -405,45 +360,41 @@ many ways to declare an <code>IntVar</code>:</p>
 
 <ul class="nav nav-tabs" id="tabs-4" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-04-00-tab" data-toggle="tab" href="#tabs-04-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-04-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-04-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-04-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-04-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-4-content">
     <div class="tab-pane fade show active"
-        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A variable with a unique value in its domain, in other words, a constant</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">two</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;TWO&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Any value in [1..4] can be assigned to this variable</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// Only the values 1, 3 and 4 can be assigned to this variable</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">IntVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4</span><span style="color:#000;font-weight:bold">});</span></span></span></code></pre></div>
+        id="tabs-04-00" role="tabpanel" aria-labelled-by="tabs-04-00-tab" tabindex="4">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// A variable with a unique value in its domain, in other words, a constant</span>
+</span></span><span style="display:flex;"><span>IntVar two <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;TWO&#34;</span>, 2);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Any value in [1..4] can be assigned to this variable</span>
+</span></span><span style="display:flex;"><span>IntVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;X&#34;</span>, 1, 4);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Only the values 1, 3 and 4 can be assigned to this variable</span>
+</span></span><span style="display:flex;"><span>IntVar y <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;X&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1, 3, 4});</span></span></code></pre></div>
     </div>
 </div>
 
-
-
-<div class="alert alert-secondary" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    <p>Declaring a variable with an <em>infinite</em> domain, like :</p>
+<div class="alert alert-secondary" role="alert"><div class="h4 alert-heading" role="heading">Warning</div>
+<p>Declaring a variable with an <em>infinite</em> domain, like :</p>
 <ul class="nav nav-tabs" id="tabs-0" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-00-00-tab" data-toggle="tab" href="#tabs-00-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-00-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-00-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-00-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-00-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 <div class="tab-content" id="tabs-0-content">
     <div class="tab-pane fade show active"
-        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">intVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Integer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">MIN_VALUE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Integer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">MAX_VALUE</span><span style="color:#000;font-weight:bold">)</span></span></span></code></pre></div>
+        id="tabs-00-00" role="tabpanel" aria-labelled-by="tabs-00-00-tab" tabindex="0">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>model.<span style="color:#a6e22e">intVar</span>(<span style="color:#e6db74">&#34;X&#34;</span>, Integer.<span style="color:#a6e22e">MIN_VALUE</span>, Integer.<span style="color:#a6e22e">MAX_VALUE</span>)</span></span></code></pre></div>
     </div>
 </div>
 <p>is clearly a bad idea.</p>
@@ -451,10 +402,7 @@ many ways to declare an <code>IntVar</code>:</p>
 the time, even if Choco-solver will finally compute the right bounds by
 itself, you certainly want to save space and time by directly
 declaring relevant bounds.</p>
-
-
 </div>
-
 <p>The domain of an integer variable in Choco-solver can either be <em>bounded</em> or
 <em>enumerated</em>. In a bounded domain, only current bounds are stored in
 memory. This saves memory (only two integers are needed) but it
@@ -462,12 +410,8 @@ restricts its usage: there is no possibility to make holes in it.</p>
 <p>On the contrary, with an enumerated domain, all possible values are
 explicitly stored in memory. This consumes more memory (one integer and
 a bitset &ndash; many longs &ndash; are needed) but it allows making holes in it.</p>
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Bounded or Enumerated?</h4>
-
-    <p>The memory consumption should not be the only criterion to consider
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Bounded or Enumerated?</div>
+<p>The memory consumption should not be the only criterion to consider
 when one needs to choose between one representation and the other.
 Indeed, the <em>filtering</em> strength of the model, through constraints,
 has to be considered too. For instance, some constraints can only
@@ -481,10 +425,7 @@ enumerated domains are relevant.</p>
 without loss of efficiency</li>
 <li>in any case, empirical evaluation is a good habit.</li>
 </ul>
-
-
 </div>
-
 <h3 id="boolean-variable">Boolean variable</h3>
 <p>An boolean variable, <code>BoolVar</code>, should be assigned to a boolean value. A <code>BoolVar</code>
 is a specific IntVar with a domain restricted to $[0,1]$, 0 stands for
@@ -496,19 +437,19 @@ store).</p>
 
 <ul class="nav nav-tabs" id="tabs-7" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-07-00-tab" data-toggle="tab" href="#tabs-07-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-07-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-07-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-07-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-07-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-7-content">
     <div class="tab-pane fade show active"
-        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A [0,1]-variable</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">b</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;b&#34;</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+        id="tabs-07-00" role="tabpanel" aria-labelled-by="tabs-07-00-tab" tabindex="7">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// A [0,1]-variable</span>
+</span></span><span style="display:flex;"><span>BoolVar b <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">boolVar</span>(<span style="color:#e6db74">&#34;b&#34;</span>);</span></span></code></pre></div>
     </div>
 </div>
 
@@ -521,20 +462,20 @@ solutions and $o$ the integers that potentially figure in a solution.</p>
 
 <ul class="nav nav-tabs" id="tabs-8" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-08-00-tab" data-toggle="tab" href="#tabs-08-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-08-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-08-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-08-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-08-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-8-content">
     <div class="tab-pane fade show active"
-        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// SetVar representing a subset of {1,2,3,5,12}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SetVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">setVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;y&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">int</span><span style="color:#ce5c00;font-weight:bold">[]</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">12</span><span style="color:#000;font-weight:bold">});</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">//</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">possible</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">values</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#000;font-weight:bold">},</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#000;font-weight:bold">}</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span></span></span></code></pre></div>
+        id="tabs-08-00" role="tabpanel" aria-labelled-by="tabs-08-00-tab" tabindex="8">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// SetVar representing a subset of {1,2,3,5,12}</span>
+</span></span><span style="display:flex;"><span>SetVar y <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">setVar</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{}, <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>{1,2,3,5,12});
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> possible values: {}, {2}, {1,3,5} ...</span></span></code></pre></div>
     </div>
 </div>
 
@@ -547,34 +488,28 @@ distance between the two bounds is less than or equal to the precision.</p>
 
 <ul class="nav nav-tabs" id="tabs-9" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-09-00-tab" data-toggle="tab" href="#tabs-09-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-09-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-09-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-09-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-09-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-9-content">
     <div class="tab-pane fade show active"
-        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A [0.2d, 3.4d]-variable, with a precision of 0.001d</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">RealVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">realVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;x&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">2d</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">4d</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">001d</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+        id="tabs-09-00" role="tabpanel" aria-labelled-by="tabs-09-00-tab" tabindex="9">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// A [0.2d, 3.4d]-variable, with a precision of 0.001d</span>
+</span></span><span style="display:flex;"><span>RealVar x <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">realVar</span>(<span style="color:#e6db74">&#34;x&#34;</span>, 0.<span style="color:#a6e22e">2d</span>, 3.<span style="color:#a6e22e">4d</span>, 0.<span style="color:#a6e22e">001d</span>);</span></span></code></pre></div>
     </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    Using RealVar requires to install <a href="http://www.ibx-lib.org">Ibex</a>
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>Using RealVar requires to install <a href="http://www.ibx-lib.org">Ibex</a>
 before.
 Indeed, Choco-solver relies on Ibex to deal with continuous
-constraints.
-
+constraints.</p>
 </div>
-
 <h2 id="the-constraints">The Constraints</h2>
 <p>A constraint is a relation between one or more variables of a model. It
 defines conditions over these variables that must be respected in a
@@ -593,47 +528,35 @@ required :</p>
 
 <ul class="nav nav-tabs" id="tabs-11" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-11-00-tab" data-toggle="tab" href="#tabs-11-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-11-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-11-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-11-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-11-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-11-content">
     <div class="tab-pane fade show active"
-        id="tabs-11-00" role="tabpanel" aria-labelled-by="tabs-11-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// x and y must be different in any solution</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// or, in a more verbose way</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">));</span></span></span></code></pre></div>
+        id="tabs-11-00" role="tabpanel" aria-labelled-by="tabs-11-00-tab" tabindex="11">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// x and y must be different in any solution</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;!=&#34;</span>, y).<span style="color:#a6e22e">post</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// or, in a more verbose way</span>
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">post</span>(model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;&lt;&#34;</span>, z));</span></span></code></pre></div>
     </div>
 </div>
 
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    A constraint can be posted in only one model at a time. Indeed, a
-reference to the declaring model is maintained in it.
-
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>A constraint can be posted in only one model at a time. Indeed, a
+reference to the declaring model is maintained in it.</p>
 </div>
-
 <p>Once posted, a constraint is known from a model and will be integrated
 in the filtering loop.</p>
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Info</h4>
-
-    Posting a constraint does not remove any value from its variables'
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Info</div>
+<p>Posting a constraint does not remove any value from its variables'
 domain. Indeed, Choco-solver runs the <em>initial propagation</em> only when a
-resolution is called.
-
+resolution is called.</p>
 </div>
-
 <p>The only reason why a constraint is not posted a model is to <em>reify</em> it.</p>
 <h3 id="reifying-a-constraint">Reifying a constraint</h3>
 <p>Alternatively, a constraint can be reified with a BoolVar :</p>
@@ -641,22 +564,22 @@ resolution is called.
 
 <ul class="nav nav-tabs" id="tabs-14" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-14-00-tab" data-toggle="tab" href="#tabs-14-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-14-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-14-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-14-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-14-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-14-content">
     <div class="tab-pane fade show active"
-        id="tabs-14-00" role="tabpanel" aria-labelled-by="tabs-14-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// the constraint is reified with `b`</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">r1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;!=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// equivalent to:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">r2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">boolVar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;r2&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&lt;&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reifyWith</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">r2</span><span style="color:#000;font-weight:bold">);</span></span></span></code></pre></div>
+        id="tabs-14-00" role="tabpanel" aria-labelled-by="tabs-14-00-tab" tabindex="14">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// the constraint is reified with `b`</span>
+</span></span><span style="display:flex;"><span>BoolVar r1 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;!=&#34;</span>, y).<span style="color:#a6e22e">reify</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// equivalent to:</span>
+</span></span><span style="display:flex;"><span>BoolVar r2 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">boolVar</span>(<span style="color:#e6db74">&#34;r2&#34;</span>);
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;&lt;&#34;</span>, z).<span style="color:#a6e22e">reifyWith</span>(r2);</span></span></code></pre></div>
     </div>
 </div>
 
@@ -670,46 +593,34 @@ to true the constraint should be satisfied, unsatisfied otherwise.</p>
 
 <ul class="nav nav-tabs" id="tabs-15" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-15-00-tab" data-toggle="tab" href="#tabs-15-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-15-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-15-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-15-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-15-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-15-content">
     <div class="tab-pane fade show active"
-        id="tabs-15-00" role="tabpanel" aria-labelled-by="tabs-15-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">BoolVar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&gt;&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">15</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">reify</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">arithm</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">c1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;+&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;=&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#000;font-weight:bold">).</span><span style="color:#c4a000">post</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
+        id="tabs-15-00" role="tabpanel" aria-labelled-by="tabs-15-00-tab" tabindex="15">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>BoolVar c1 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;=&#34;</span>, y).<span style="color:#a6e22e">reify</span>();
+</span></span><span style="display:flex;"><span>BoolVar c2 <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">arithm</span>(x, <span style="color:#e6db74">&#34;&gt;&#34;</span>, 15).<span style="color:#a6e22e">reify</span>();
+</span></span><span style="display:flex;"><span>model.<span style="color:#a6e22e">arithm</span>(c1, <span style="color:#e6db74">&#34;+&#34;</span>, c2, <span style="color:#e6db74">&#34;=&#34;</span>, 1).<span style="color:#a6e22e">post</span>();</span></span></code></pre></div>
     </div>
 </div>
 
-
-
-<div class="alert alert-secondary" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    A reified constraint <strong>should not</strong> be posted. Indeed, posting it will
+<div class="alert alert-secondary" role="alert"><div class="h4 alert-heading" role="heading">Warning</div>
+<p>A reified constraint <strong>should not</strong> be posted. Indeed, posting it will
 declare it as a <em>hard</em> constraint, to be satisfied, reifying it will
 declare it as a <em>soft</em> constraint, that can be unsatisfied. Both state
-cannot co-exist simultaneously: hard state dominates soft one.
-
+cannot co-exist simultaneously: hard state dominates soft one.</p>
 </div>
-
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Caution</h4>
-
-    A constraint that is neither posted or reified <strong>is not considered at
+<div class="alert alert-primary" role="alert"><div class="h4 alert-heading" role="heading">Caution</div>
+<p>A constraint that is neither posted or reified <strong>is not considered at
 all</strong> in the resolution. Make sure all constraints are either posted
-or reified.
-
+or reified.</p>
 </div>
-
 <p>There are more than 80 constraints in Choco-solver, and anyone can create its
 own constraint easily. Native constraints are provided by the model, as
 seen before. A look at the Javadoc gives a big picture of the ones
@@ -722,22 +633,22 @@ constraints. The resolution is managed by the Solver.</p>
 
 <ul class="nav nav-tabs" id="tabs-18" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active persistLang-Java"
-          id="tabs-18-00-tab" data-toggle="tab" href="#tabs-18-00" role="tab"
-          onclick="persistLang(&#34;Java&#34;);"aria-controls="tabs-18-00" aria-selected="false">
+      <button class="nav-link active"
+          id="tabs-18-00-tab" data-bs-toggle="tab" data-bs-target="#tabs-18-00" role="tab"
+          data-td-tp-persist="java" aria-controls="tabs-18-00" aria-selected="true">
         Java
-      </a>
+      </button>
     </li>
 </ul>
 
 <div class="tab-content" id="tabs-18-content">
     <div class="tab-pane fade show active"
-        id="tabs-18-00" role="tabpanel" aria-labelled-by="tabs-18-00-tab">
-        <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#000">Model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Model</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;My problem&#34;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// variables declaration</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">// constraints declaration</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">model</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">getSolver</span><span style="color:#000;font-weight:bold">();</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Solution</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solution</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">solver</span><span style="color:#000;font-weight:bold">.</span><span style="color:#c4a000">findSolution</span><span style="color:#000;font-weight:bold">();</span></span></span></code></pre></div>
+        id="tabs-18-00" role="tabpanel" aria-labelled-by="tabs-18-00-tab" tabindex="18">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Model model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Model(<span style="color:#e6db74">&#34;My problem&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// variables declaration</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// constraints declaration</span>
+</span></span><span style="display:flex;"><span>Solver solver <span style="color:#f92672">=</span> model.<span style="color:#a6e22e">getSolver</span>();
+</span></span><span style="display:flex;"><span>Solution solution <span style="color:#f92672">=</span> solver.<span style="color:#a6e22e">findSolution</span>();</span></span></code></pre></div>
     </div>
 </div>
 
@@ -758,10 +669,64 @@ on average. But, injecting problem expertise in the search process is a
 key component of success. Choco-solver offers a large range of features to let
 you good chances to master your problem.</p>
 
-	
-	
-	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified September 17, 2024: <a href="https://github.com/chocoteam/website/commit/e8ffa5003757c6217effce8ba4f5be27c31a7ff7">Change codeFence to tabpane (e8ffa50)</a>
+	<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/chocoteam/choco-solver/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/chocoteam/choco-solver/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'page_helpful', {
+      'event_category': 'Helpful',
+      'event_label': window.location.pathname,
+      'value': value
+    });
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback( 100 );
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+<br />
+<div class="td-page-meta__lastmod">
+  Last modified September 17, 2024: <a data-proofer-ignore href="https://github.com/chocoteam/website/commit/e8ffa5003757c6217effce8ba4f5be27c31a7ff7">Change codeFence to tabpane (e8ffa50)</a>
 </div>
 
 </div>
@@ -770,76 +735,46 @@ you good chances to master your problem.</p>
           </main>
         </div>
       </div>
-      
-<footer class="bg-dark py-5 row d-print-none">
-  <div class="container-fluid mx-sm-5">
-    <div class="row">
-      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
-        
-        
-        
-<ul class="list-inline mb-0">
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        <ul class="td-footer__links-list">
   
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Google group" aria-label="Google group">
-    <a class="text-white" target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/choco-solver" aria-label="Google group">
-      <i class="fa fa-comments"></i>
-    </a>
-  </li>
-  
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
-    <a class="text-white" target="_blank" rel="noopener" href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow">
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Stack Overflow" aria-label="Stack Overflow">
+    <a href="https://stackoverflow.com/questions/tagged/choco" aria-label="Stack Overflow" target="_blank" rel="noopener">
       <i class="fab fa-stack-overflow"></i>
     </a>
   </li>
   
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Discord" aria-label="Discord">
-    <a class="text-white" target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Discord" aria-label="Discord">
+    <a href="https://discord.gg/aH6zxa7e64" aria-label="Discord" target="_blank" rel="noopener">
       <i class="fab fa-discord"></i>
     </a>
   </li>
   
-</ul>
-
-        
-        
-      </div>
-      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
-        
-        
-        
-<ul class="list-inline mb-0">
-  
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/chocoteam/choco-solver" aria-label="GitHub">
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a href="https://github.com/chocoteam/choco-solver" aria-label="GitHub" target="_blank" rel="noopener">
       <i class="fab fa-github"></i>
     </a>
   </li>
   
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Discord" aria-label="Discord">
-    <a class="text-white" target="_blank" rel="noopener" href="https://discord.gg/aH6zxa7e64" aria-label="Discord">
-      <i class="fab fa-discord"></i>
-    </a>
-  </li>
-  
 </ul>
 
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
         
-        
-      </div>
-      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2024 The Choco-solver Authors All Rights Reserved</small>
-        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></small>
-	
-		
-	
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2026
+    <span class="td-footer__authors">The Choco-solver Authors</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span><span class="ms-2"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></span>
       </div>
     </div>
   </div>
 </footer>
 
-
     </div>
     <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

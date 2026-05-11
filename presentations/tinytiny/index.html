@@ -306,7 +306,8 @@ to any solution</p>
         return False
     variables[self.v1] = nd1 # update the domain of &quot;x1&quot;
     variables[self.v2] = nd2 # update the domain of &quot;x2&quot;
-    modif = cd1 &gt; nd1 or cd2 &gt; nd2 # reduction of a domain
+    # reduction of a domain ?
+    modif = len(cd1) &gt; len(nd1) or len(cd2) &gt; len(nd2) 
     return modif or None
 </code></pre>
 </section><section>
@@ -1119,7 +1120,7 @@ of CP lies</p>
 <h1 id="improvements">Improvements</h1>
 <p>that we do not develop</p>
 </section><section>
-<h2 id="at-the-modelling-level">At the modelling level</h2>
+<h2 id="from-user-point-of-view">From user point of view</h2>
 <ul>
 <li>Other kinds of variables</li>
 <li>Other constraints or way to express rules</li>
@@ -1132,7 +1133,7 @@ of CP lies</p>
 </li>
 </ul>
 </section><section>
-<h2 id="at-the-solving-step">At the solving step</h2>
+<h2 id="from-developer-point-of-view">From developer point of view</h2>
 <ul>
 <li>Refine the way constraints are propagated</li>
 <li>Fine response of propagators to variables&rsquo; changes</li>
